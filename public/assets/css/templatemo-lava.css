@@ -118,12 +118,12 @@ body {
 }
 
 ::selection {
-  background: #f1556a;
+  background: #29B390;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #f1556a;
+  background: #29B390;
   color: #fff;
 }
 
@@ -147,7 +147,7 @@ a.main-button-slider {
   font-size: 14px;
   border-radius: 25px;
   padding: 15px 25px;
-  background-color: #fba70b;
+  background-color: #29B390;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
@@ -159,14 +159,14 @@ a.main-button-slider {
 }
 
 a.main-button-slider:hover {
-  background-color: #f1556a;
+  background-color: #BA1F00;
 }
 
 a.main-button {
   font-size: 14px;
   border-radius: 25px;
   padding: 15px 25px;
-  background-color: #f4813f;
+  background-color: #29B390;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
@@ -178,7 +178,7 @@ a.main-button {
 }
 
 a.main-button:hover {
-  background-color: #f1556a;
+  background-color: #BA1F00;
 }
 
 button.main-button {
@@ -188,7 +188,7 @@ button.main-button {
   font-size: 14px;
   border-radius: 25px;
   padding: 15px 25px;
-  background-color: #f4813f;
+  background-color: #29B390;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
@@ -200,7 +200,7 @@ button.main-button {
 }
 
 button.main-button:hover {
-  background-color: #f1556a;
+  background-color: #BA1F00;
 }
 
 
@@ -219,7 +219,7 @@ button.main-button:hover {
 
 .center-heading h2 em {
   font-style: normal;
-  color: #f4813f;
+  color: #29B390;
 }
 
 .center-heading p {
@@ -236,26 +236,27 @@ header
 */
 
 .background-header {
-  background-color: #fff;
-  height: 60px!important;
+  background-color: rgb(255,255,255);
+  height: 67px!important;
   position: fixed!important;
   top: 0px;
   left: 0px;
   right: 0px;
+  /*¨se debería quitar el box shadow pero de momento se ve bien*/
   box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
 }
 
-.background-header .logo,
+.background-header,
 .background-header .main-nav .nav li a {
-  color: #1e1e1e!important;
+  color: #474444 !important;
 }
 
 .background-header .main-nav .nav li:hover a {
-  color: #fba70b!important;
+  border-top: 1px solid #BA1F00;
 }
 
 .background-header .nav li a.active {
-  color: #fba70b!important;
+  border-top: 1px solid #BA1F00;
 }
 
 .header-area {
@@ -272,17 +273,20 @@ header
 }
 
 .header-area .main-nav {
-  min-height: 80px;
+  min-height: 67px;
   background: transparent;
+  width: 100%;
 }
 
 .header-area .main-nav .logo{
   line-height: 80px;
-  color: #191a20;
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  color:#474444;
+  font-family: Karla,sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  /*font-weight: 700;
+  letter-spacing: 2px;*/
   float: left;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -310,7 +314,7 @@ header
   margin-top: 27px;
   margin-left: 15%;
   margin-right: 0px;
-  background-color: #fff;
+  background-color: transparent;
   padding: 0px 20px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -333,8 +337,7 @@ header
   display: block;
   font-weight: 500;
   font-size: 13px;
-  color: #7a7a7a;
-  text-transform: uppercase;
+  color: #474444;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -346,7 +349,7 @@ header
 }
 
 .header-area .main-nav .nav li:hover a {
-  color: #fba70b;
+  color: #BA1F00;
 }
 
 .header-area .main-nav .nav li.submenu {
@@ -355,8 +358,7 @@ header
 }
 
 .header-area .main-nav .nav li.submenu:after {
-  font-family: FontAwesome;
-  content: "\f107";
+  font-family: Karla,sans-serif;
   font-size: 12px;
   color: #7a7a7a;
   position: absolute;
@@ -386,7 +388,7 @@ header
 .header-area .main-nav .nav li.submenu ul li a {
   display: block;
   background: #fff;
-  color: #7a7a7a!important;
+  color: #474444!important;
   padding-left: 20px;
   height: 40px;
   line-height: 40px;
@@ -397,6 +399,7 @@ header
   position: relative;
   font-size: 13px;
   border-bottom: 1px solid #f5f5f5;
+  border: none;
 }
 
 .header-area .main-nav .nav li.submenu ul li a:before {
@@ -411,12 +414,12 @@ header
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  background: #fba70b;
+  background: #BA1F00;
 }
 
 .header-area .main-nav .nav li.submenu ul li a:hover {
   background: #fff;
-  color: #fba70b!important;
+  color: #BA1F00!important;
   padding-left: 25px;
 }
 
@@ -447,7 +450,7 @@ header
 
 .menu-carrito{
   cursor: pointer;
-  display: block;
+  display: none;
   position: absolute;
   top: 19px;
   width: 32px;
@@ -455,7 +458,10 @@ header
   font-size: 31px;
   z-index: 100;
   right: 40px;
-  display: block;
+}
+
+.menu-carrito:hover{
+  border-top:1px solid #BA1F00;;
 }
 
 .header-area .main-nav .menu-trigger span,
@@ -565,7 +571,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #fba70b;
+  color: #BA1F00;
 }
 
 @media (max-width: 1200px) {
@@ -591,6 +597,13 @@ header
     display: block !important;
     
   }
+.logo2:hover{
+  border-top: 1px #BA1F00;
+}
+
+  .menu-carrito{
+    display: block;
+  }
 
   .carritoli{
     display: none;
@@ -614,6 +627,9 @@ header
   }
   .header-area .main-nav {
     overflow: hidden;
+  }
+  .logo2{
+    color:black;
   }
   .header-area .main-nav .nav {
     float: none;
@@ -646,7 +662,7 @@ header
   }
   .header-area .main-nav .nav li a:hover {
     background: #eee !important;
-    color: #fba70b!important;
+    color: #BA1F00!important;
   }
   .header-area .main-nav .nav li.submenu ul {
     position: relative;

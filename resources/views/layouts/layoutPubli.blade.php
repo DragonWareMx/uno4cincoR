@@ -28,7 +28,12 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <link rel="stylesheet" href="assets/css/templatemo-lava.css">
 
+    <link rel="stylesheet" href="assets/css/templatemo-oscar.css">
+
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
 </head>
 
@@ -53,7 +58,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            Novedades
+                            <i style="color:#BA1F00;" class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Novedades
                         </a>
 
                         <a href="index.html" class="logo2" style="display:none">
@@ -65,7 +70,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             <li class="scroll-to-section"><a href="#welcome" class="menu-item">¿QUIÉNES SOMOS?</a></li>
                             </li>
                             <li class="submenu">
-                                <a href="javascript:;">TIENDA</a>
+                                <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
                                     <li><a href="" class="menu-item">TIENDA</a></li>
@@ -74,7 +79,7 @@ https://templatemo.com/tm-540-lava-landing-page
                                 </ul>
                             </li>
                             <li class="submenu">
-                                <a href="javascript:;">AUTORES</a>
+                                <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
                                     <li><a href="" class="menu-item">TIENDA</a></li>
@@ -83,7 +88,7 @@ https://templatemo.com/tm-540-lava-landing-page
                                 </ul>
                             </li>
                             <li class="submenu">
-                                <a href="javascript:;">BLOG</a>
+                                <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
                                     <li><a href="" class="menu-item">TIENDA</a></li>
