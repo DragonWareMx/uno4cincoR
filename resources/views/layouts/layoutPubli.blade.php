@@ -59,7 +59,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <i style="color:#BA1F00;" class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Novedades
+                            <img class="logonovedades" src="{{ asset('img/ico/signo!.png') }}">&nbsp;&nbsp;&nbsp;Novedades
                         </a>
 
                         <a href="index.html" class="logo2" style="display:none">
@@ -73,28 +73,24 @@ https://templatemo.com/tm-540-lava-landing-page
                             <li class="submenu">
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
-                                    <li><a href="" class="menu-item">TIENDA</a></li>
-                                    <li><a href="" class="menu-item">AUTORES</a></li>
-                                    <li><a href="" class="menu-item">BLOG</a></li>
+                                    <li><a href="" class="menu-item">NOVEDADES</a></li>
+                                    <li><a href="" class="menu-item">CATÁLOGO</a></li>
+                                    <li><a href="" class="menu-item">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
-                                    <li><a href="" class="menu-item">TIENDA</a></li>
-                                    <li><a href="" class="menu-item">AUTORES</a></li>
-                                    <li><a href="" class="menu-item">BLOG</a></li>
+                                    <li><a href="" class="menu-item">UNO4CINCO</a></li>
+                                    <li><a href="" class="menu-item">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">¿QUIÉNES SOMOS?</a></li>
-                                    <li><a href="" class="menu-item">TIENDA</a></li>
-                                    <li><a href="" class="menu-item">AUTORES</a></li>
-                                    <li><a href="" class="menu-item">BLOG</a></li>
+                                    <li><a href="" class="menu-item">EVENTOS</a></li>
+                                    <li><a href="" class="menu-item">ARTÍCULOS</a></li>
+                                    <li><a href="" class="menu-item">VER TODO</a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CONTACTO</a></li>
