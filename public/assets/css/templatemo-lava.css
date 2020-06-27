@@ -1033,15 +1033,7 @@ footer
   }
 }
 
-footer {
-  margin-top: 200px;
-  padding-top: 120px;
-  background-image: url(../images/footer-bg.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  width: 100%;
-}
+
 
 footer .footer-content {
   padding: 120px 0px;
