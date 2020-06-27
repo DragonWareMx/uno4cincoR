@@ -1,2 +1,1 @@
-index
-<h1>uno4cinco</h1>
+@extends('layouts.layoutPubli')
