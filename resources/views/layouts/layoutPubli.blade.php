@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ asset('/img/logo.png') }}" type="image/icon type">
 
+    <script src="https://kit.fontawesome.com/ba2b187421.js" crossorigin="anonymous"></script>
+
     <title>Inicio | Editorial uno4cinco</title>
 <!--
 
@@ -44,7 +46,7 @@ https://templatemo.com/tm-540-lava-landing-page
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -52,6 +54,10 @@ https://templatemo.com/tm-540-lava-landing-page
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
                             Novedades
+                        </a>
+
+                        <a href="index.html" class="logo2" style="display:none">
+                            <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -86,10 +92,14 @@ https://templatemo.com/tm-540-lava-landing-page
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CONTACTO</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CARRITO</a></li>
+                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><i class="fas fa-shopping-cart"></i> CARRITO</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
+                        </a>
+
+                        <a class='menu-carrito'>
+                            <i class="fas fa-shopping-cart"></i>
                         </a>
                         <!-- ***** Menu End ***** -->
                     </nav>
