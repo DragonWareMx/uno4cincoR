@@ -8,10 +8,17 @@
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
+    <link rel="icon" href="{{ asset('/img/logos/logo.png') }}" type="image/icon type">
 
     <script src="https://kit.fontawesome.com/ba2b187421.js" crossorigin="anonymous"></script>
     @yield('header')
+<!--
+
+Lava Landing Page
+
+https://templatemo.com/tm-540-lava-landing-page
+
+-->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -61,7 +68,7 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{{ route('sobreNosotros') }}" class="menu-item">¿QUIÉNES SOMOS?</a></li>
+                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">¿QUIÉNES SOMOS?</a></li>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
@@ -86,8 +93,8 @@
                                     <li><a href="" class="menu-item">VER TODO</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="{{ route('contacto') }}" class="menu-item">CONTACTO</a></li>
-                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">CARRITO</a></li>
+                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CONTACTO</a></li>
+                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
