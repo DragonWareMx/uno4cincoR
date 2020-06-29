@@ -12,13 +12,6 @@
 
     <script src="https://kit.fontawesome.com/ba2b187421.js" crossorigin="anonymous"></script>
     @yield('header')
-<!--
-
-Lava Landing Page
-
-https://templatemo.com/tm-540-lava-landing-page
-
--->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -62,39 +55,39 @@ https://templatemo.com/tm-540-lava-landing-page
                             <img class="logonovedades" src="{{ asset('img/ico/signo!.png') }}">&nbsp;&nbsp;&nbsp;Novedades
                         </a>
 
-                        <a href="index.html" class="logo2" style="display:none">
+                        <a href="{{ route('inicio') }}" class="logo2" style="display:none">
                             <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">¿QUIÉNES SOMOS?</a></li>
+                            <li class=""><a href="{{ route('sobreNosotros') }}" class="">¿QUIÉNES SOMOS?</a></li>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">NOVEDADES</a></li>
-                                    <li><a href="" class="menu-item">CATÁLOGO</a></li>
-                                    <li><a href="" class="menu-item">145</a></li>
+                                    <li><a href="{{ route('sobreNosotros') }}" class="">NOVEDADES</a></li>
+                                    <li><a href="" class="">CATÁLOGO</a></li>
+                                    <li><a href="" class="">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">UNO4CINCO</a></li>
-                                    <li><a href="" class="menu-item">145</a></li>
+                                    <li><a href="" class="">UNO4CINCO</a></li>
+                                    <li><a href="" class="">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="menu-item">EVENTOS</a></li>
-                                    <li><a href="" class="menu-item">ARTÍCULOS</a></li>
-                                    <li><a href="" class="menu-item">VER TODO</a></li>
+                                    <li><a href="" class="">EVENTOS</a></li>
+                                    <li><a href="" class="">ARTÍCULOS</a></li>
+                                    <li><a href="" class="">VER TODO</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CONTACTO</a></li>
-                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
+                            <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>
+                            <li class="carritoli"><a href="#contact-us" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
