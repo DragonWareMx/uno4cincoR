@@ -1,0 +1,140 @@
+.txt-TitulosApartados{
+    font-family: 'Abril Fatface', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 25px;
+    color:black;
+}
+.hr-Titulos-long{
+    border: 0.05px solid #29B390;
+    position: absolute;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.hr-Titulos-small{
+    border: 2px solid #29B390;
+    position: absolute;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 15px;
+}
+.img-banne-quienessomos{
+    width:100%;
+    margin-top:85px; 
+    opacity:0.9;
+}
+.txt-SubtitulosApartados{
+    font-family: 'Abril Fatface', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #29B390;
+    margin-top: 60px;
+    width: 100%;
+    text-align: center;
+}
+.p-txt-content{
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #1D2120;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 55%;
+}
+.div-mision-vision{
+    width: 55%; 
+    margin-top: 0px;
+    margin-left:auto; 
+    margin-right:auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    
+}
+.div-txt-quienessomos{
+    width: 70%;
+}
+.p-txt-mision-vision{
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #1D2120;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1050px){
+    .img-banne-quienessomos{
+        margin-top: 40px;
+    }
+}
+@media(max-width: 800px){
+    .p-txt-content{
+        width: 70%;
+    }
+    .txt-SubtitulosApartados{
+        margin-top: 20px;
+    }
+    .div-mision-vision{
+        width: 75%;
+    }
+}
+@media(max-width: 600px){
+    .img-banne-quienessomos{
+        margin-top: 30px;
+    }
+    .txt-TitulosApartados {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    .txt-SubtitulosApartados{
+        font-size: 20px;
+    }
+    
+}
+@media(max-width: 550px){
+    .p-txt-content{
+        width: 95%;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    .div-mision-vision{
+        width: 95%;
+    }
+    .p-txt-mision-vision{
+        font-size: 16px;
+    }
+}
+@media(max-width: 400px){
+    .img-banne-quienessomos{
+        margin-top: 25px;
+    }
+    .p-txt-content{
+        font-size: 14px;
+    }
+    .p-txt-mision-vision{
+        font-size: 14px;
+    }
+    .txt-TitulosApartados{
+        font-size: 18px;
+        margin-top: 5px;
+    }
+    .txt-SubtitulosApartados{
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    
+}

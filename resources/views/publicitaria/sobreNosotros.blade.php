@@ -1,76 +1,66 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Sobre Nosotros | Editorial uno4cinco</title>
+<title>Quiénes somos | Editorial uno4cinco</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 @endsection
 
 @section('content')
-<!-- ***** Welcome Area Start ***** -->
-<div class="welcome-area" id="welcome">
 
-    <!-- ***** Header Text Start ***** -->
-    <div class="header-text">
-        <div class="container">
-            <div class="row">
-                <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
-                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <h1>Simple App that we <em>CREATE</em></h1>
-                    <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
-                       You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p> 
-                    <a href="#about" class="main-button-slider">KNOW US BETTER</a>
-                </div>
-            </div>
+<section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
+    {{-- TITTLE --}}
+    <p class="txt-TitulosApartados">¿QUIÉNES SOMOS?</p>
+    <hr class="hr-Titulos-long">
+    <hr class="hr-Titulos-small">
+    {{-- BANNER IMAGE --}}
+    <img src="/img/quienessomos/slogan.jpg" class="img-banne-quienessomos">
+
+    <p class="txt-SubtitulosApartados">Nosotros</p>
+
+    <p class="p-txt-content">
+        Como empresa creemos que <b>el arte humaniza</b>, por lo que nos es preciso recuperar el clásico 
+        proceso editorial y el <b>sagrado vínculo espiritual entre escritora editora lectora</b>, que ha 
+        dado como resultado los libros más emblemáticos de la historia, bajo la cíclica mirada del siglo 
+        XXI. 
+    </p>
+    <p class="p-txt-content">
+        Esto implica, por supuesto, una adecuada corrección de estilo, un diseño editorial elegante y un 
+        preciso maquetado para que el lanzamiento digital y/o la impresión se den en las mejores condiciones, 
+        asegurando así, que estos lleguen siempre ti a través de nuestro sistema CCS: <b>Calidad en la obra, 
+        Comodidad en la compra y Seguridad en la entrega.</b>
+    </p>
+
+    <p class="txt-SubtitulosApartados" style="margin-top: 35px">Misión</p>
+
+    <div class="div-mision-vision">
+        <div class="img-quienessomos" style="width: 30%">
+            <img src="/img/quienessomos/6007.png" style="width: 80%; margin-left:10%; margin-right:10%">
+        </div>
+        <div class="div-txt-quienessomos" style="border-left: 4px solid #29B390; padding-left: 2%;">
+            <p class="p-txt-mision-vision">Servir como medio para la edición y divulgación de obras artísticas literarias de valor 
+                humano que contribuyan siempre al crecimiento, sostenimiento y vinculación de la comunidad 
+                lectoescritora.
+            </p>
         </div>
     </div>
-    <!-- ***** Header Text End ***** -->
-</div>
 
-<section class="section" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>01</h2>
-                        <img src="assets/images/features-icon-1.png" alt="">
-                        <h4>Trend Analysis</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>02</h2>
-                        <img src="assets/images/features-icon-2.png" alt="">
-                        <h4>Site Optimization</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            Discover More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>03</h2>
-                        <img src="assets/images/features-icon-3.png" alt="">
-                        <h4>Email Design</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            More Detail
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <p class="txt-SubtitulosApartados" style="margin-top: 10px">Visión</p>
+
+    <div class="div-mision-vision" style="margin-top:25px">
+        <div class="div-txt-quienessomos" style="padding-right: 2%; border-right: 4px solid #29B390;">
+            <p class="p-txt-mision-vision" >Sentar las bases necesarias para la creación de una nueva forma 
+                de entender el concepto de consumo de literatura, teniendo siempre en cuenta a la ser humano 
+                como origen y fin de toda actividad artística. 
+            </p>
+        </div>
+        <div class="img-quienessomos" style="width: 30%; ">
+            <img src="/img/quienessomos/4715.png" style="width: 80%;">
         </div>
     </div>
+
 </section>
 @endsection
