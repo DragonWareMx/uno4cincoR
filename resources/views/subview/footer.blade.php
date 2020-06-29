@@ -17,13 +17,33 @@
         </p>    
       </div>
       <div>
-        <p class="footernav">
+        {{-- <p class="footernav">
             <a href="">¿QUIÉNES SOMOS?</a><br>
             <a href="">TIENDA</a><br>
             <a href="">AUTORES</a><br>
             <a href="">BLOG</a><br>
             <a href="">CONTACTO</a><br>
-        </p>
+        </p> --}}
+        <ul>
+          <li>
+            <a href="{{ route('inicio') }}">INICIO</a><br>
+          </li>
+          <li>
+              <a href="{{ route('sobreNosotros') }}">¿QUIÉNES SOMOS?</a><br>
+          </li>
+          <li>
+              <a href="">TIENDA</a><br>
+          </li>
+          <li>
+              <a href="">AUTORES</a> <br>
+          </li>
+          <li>
+            <a href="">BLOG</a> <br>
+        </li>
+        <li>
+          <a href="{{ route('contacto') }}">CONTACTO</a> <br>
+      </li>
+      </ul>
       </div>
     </div>
 
@@ -44,7 +64,7 @@
                     <a href=""><img class="logodragon" src="{{ asset('img/ico/phone.png') }}">&nbsp;+524432209371</a><br>
                 </li>
                 <li>
-                    <a href=""><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Morelia, Col. Centro, #13, CP. 58170</a><br>
+                    <a href=""><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Toluca, México</a><br>
                 </li>
                 <li>
                     <a href=""><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp; correo@gmail.com</a> <br>
@@ -61,7 +81,7 @@
       </div>
       <div>
         <p class="footernav">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam dicta nobis itaque praesentium.
+          Servimos como medio para la edición y divulgación de obras artísticas literarias de valor humano.
         </p>
       </div>  
 
