@@ -94,14 +94,14 @@ https://templatemo.com/tm-540-lava-landing-page
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#contact-us" class="menu-item">CONTACTO</a></li>
-                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><i class="fas fa-shopping-cart"></i> CARRITO</a></li>
+                            <li class="scroll-to-section carritoli"><a href="#contact-us" class="menu-item"><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">CARRITO</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
 
                         <a class='menu-carrito'>
-                            <i class="fas fa-shopping-cart"></i>
+                            <img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" height="30px">
                         </a>
                         <!-- ***** Menu End ***** -->
                     </nav>
