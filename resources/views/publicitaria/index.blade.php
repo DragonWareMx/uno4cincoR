@@ -2,6 +2,8 @@
 
 @section('header')
 <title>Inicio | Editorial uno4cinco</title>
+<!--hoja de estilos-->
+<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 <!--BOOTSTRAP-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -12,12 +14,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
 		<!-- Vendors-->
 		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
 		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
 		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
-		<!-- App & fonts-->
+        <!-- App & fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
 		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -36,10 +40,10 @@
                             <div class="hero__title_inner"><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
                                 <br>
                                 <br>
-                                <h4 class="hero__text" style="color:black">Los mejores libros a la puerta de tu casa, siempre</h4>
+                                <h4 class="hero__text" style="color:black">Los mejores libros, a la puerta de tu casa, siempre</h4>
                                 <br>
                                 <h4 class="hero__text" style="color:white">Pronto estaremos contigo</h4>
-                                <div class="countdown__module hide" data-date="2020/7/3">
+                                <div class="countdown__module hide" data-date="2020/8/13">
                                     <p><span>%D</span> Días</p>
                                     <p><span>%H</span> Horas</p>
                                     <p><span>%M</span> Minutos</p>
@@ -51,18 +55,18 @@
                 <div style="position: absolute; width:502px; height:216px; top: 410px; left: 50px"> <img src="{{ asset('img/logos/escritorio.png') }}"></div>      
         </div>
     </div><!-- End / hero -->
-        
-    <div class="md-content" style="background-color: #E5E5E5 ; display:flex ; flex-direction:column; justify-content:center; align-items:center; padding:10px">
-        <div class="title_index" style="width: 270px; line-height: 49px; margin:10px">
-            <h2 style="font-family: Abril Fatface; font-style: normal; font-weight: normal; font-size: 36px; color: #1D2120">Novedades</h2>
+        <!--comienza div de banners y sliders-->
+    <div id="div_contenido" class="md-content" style="">
+        <div class="title_index" style="">
+            <h2 class="text_title" style="">LIBROS</h2>
         </div>
             <!--slider LIBROS-->
-        <div class="cajaBannerLibros" style=" width: 1294px; height: 352px; left: 21px; top: 780px; border: 1px solid #303030; box-sizing: border-box; margin:30px; margin-bottom:75px">
-            <div id="carruselLibros" class="carousel slide" data-ride="carousel" style=" position: relative; width: 1294px; height: 381px; left: 10px; top: 10px;  background: #1D2120;">
+        <div class="cajaBannerLibros" style="">
+            <div id="carruselLibros" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li data-target="#carruselLibros" data-slide-to="0" class="active" style="width:10px; height:10px; border-radius:100%"></li>
-                      <li data-target="#carruselLibros" data-slide-to="1"style="width:10px; height:10px; border-radius:100%"></li>
-                      <li data-target="#carruselLibros" data-slide-to="2" style="width:10px; height:10px; border-radius:100%"></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="1" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="2" style=""></li>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active" style="background: url('{{asset('img/prueba1.jpg')}}');
@@ -98,34 +102,65 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    <div class="slider_footer" style="position: relative;
-                    width: 1294px;
-                    height: 25px;
-                    top: 356px;">
+                    
+                    <div class="slider_footer" style="">
                     </div>
 
-                    
-                    <div class="details_libro" style="width: 1293px;
-                    height: 152px;
-                    background: #BA1F00;
-                    border: 1px solid #BA1F00;
-                    box-sizing: border-box; padding:5px; display:none">
-                        <h1><img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="widht:128px; height:138px">ESTE ES UN LIBRO</h1>
+                    <!--div pestaña detalles libro-->
+                    <div class="details_libro" style="">
+                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="widht:128px; height:138px; margin-left:10px; margin-right:10px">
+                        <div class="details_content" style="">
+                            <p class="details_txt" style="">Título: 
+                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo</span></p>
+                            
+                            <p class="details_txt" style="">Autor:
+                                <span class="details_data" style="" name="details_title">José Agustín Solórzano</span>
+                            </p>
+                            <p class="details_txt" style="">Sello:
+                                <span class="details_data" style="" name="details_title">Uno4cinco</span>
+                            </p>  
+                        </div>
+                        <div class="details_content" style="">
+                            <p class="details_txt" >Género:
+                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                            </p>
+                            
+                            <p class="details_txt">Tipo:
+                                <span class="details_data" style="" name="details_title">Digital/Papel</span>
+                            </p>
+                            <p class="details_txt">Precio:
+                                <span class="details_data" style="" name="details_title">$200</span>
+                            </p>
+                        </div>
+                        <div class="btn_details" >
+                            <p style="text-align:center; font-family: Karla;
+                            font-style: normal;
+                            font-weight: bold;
+                            font-size: 18px;
+                            line-height: 21px;
+                            color:black">Comprar</p>
+                        </div>
                     </div> 
-                    <div class="pestana_details" style= "background: #BA1F00; width:91px; height:22px;" name="details_libro">
-                        <p style="text-align: center; font-family: Abril Fatface; color:white">detalles</p>
+                    
+                    <!--pestaña click-->
+                    <div class="pestana_details" style= "" name="details_libro">
+                        <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
+                            más
+                        </p>    
                     </div>
             </div>
-            
-
         </div>  
+
+        <div class="title_index" style="">
+            <h2 class="text_title" style="">AUTORES</h2>
+        </div>
         <!--SLIDER AUTORES-->
-        <div class="cajaBanner" style=" width: 1294px; height: 352px; left: 21px; top: 780px; border: 1px solid #303030; box-sizing: border-box; margin:30px; margin-bottom:75px">
-            <div id="carruselAutores" class="carousel slide" data-ride="carousel" style=" position: relative; width: 1294px; height: 381px; left: 10px; top: 10px;  background: #1D2120;">
+        <div class="cajaBannerAutores" style="">
+            <div id="carruselAutores" class="carousel slide" data-ride="carousel" style="">
                     <ol class="carousel-indicators">
-                      <li data-target="#carruselAutores" data-slide-to="0" class="active" style="width:10px; height:10px; border-radius:100%"></li>
-                      <li data-target="#carruselAutores" data-slide-to="1"style="width:10px; height:10px; border-radius:100%"></li>
-                      <li data-target="#carruselAutores" data-slide-to="2" style="width:10px; height:10px; border-radius:100%"></li>
+                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="0"></li>
+                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="1"></li>
+                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active" style="background: url('{{asset('img/prueba1.jpg')}}');
@@ -167,28 +202,101 @@
                     </div>
 
                     
-                    <div class="details_autor" style="postition:relative; width: 1293px;
-                    height: 152px;
-                    background: #BA1F00;
-                    border: 1px solid #BA1F00;
-                    box-sizing: border-box; padding:5px; display:none">
-                        <h1><img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="widht:128px; height:148px">ESTE ES UN LIBRO</h1>
+                    <div class="details_autor" style="">
+                        
+                        <div class="detailsAutor_content" style="">
+                            <img class="img_libro_aut" src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="">
+                            <div class=detailsAutor_txt>
+                            <p class="details_txt" >Título:
+                                <span class="details_data" style="" name="details_title">Cuaderno de ensayo</span>
+                            </p>
+                            <p class="details_txt" >Género:
+                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                            </p>
+                            <p class="details_txt" >Precio:
+                                <span class="details_data" style="" name="details_title">$200</span>
+                            </p>
+                            </div>
+                            <div class="btn_details_autor" >
+                                <p style="text-align:center; font-family: Karla;
+                                font-style: normal;
+                                font-weight: bold;
+                                font-size: 18px;
+                                line-height: 21px;
+                                color:black">Comprar</p>
+                            </div> 
+                        </div>
+                        
+                        <div class="detailsAutor_content" style="">
+                            <img class="img_libro_aut" src="{{ asset('img/portada2.jpg') }}" alt="" srcset="" style="">
+                            <div class=detailsAutor_txt>
+                            <p class="details_txt" >Título:
+                                <span class="details_data" style="" name="details_title">Monomanía del autómata</span>
+                            </p>
+                            <p class="details_txt" >Género:
+                                <span class="details_data" style="" name="details_title">Poesía</span>
+                            </p>
+                            <p class="details_txt" >Precio:
+                                <span class="details_data" style="" name="details_title">$200</span>
+                            </p>
+                            </div>
+                            <div class="btn_details_autor" >
+                                <p style="text-align:center; font-family: Karla;
+                                font-style: normal;
+                                font-weight: bold;
+                                font-size: 18px;
+                                line-height: 21px;
+                                color:black">Comprar</p>
+                            </div> 
+                            
+                        </div>
                     </div> 
-                    <div class="pestana_details" style= "background: #BA1F00; width:91px; height:22px;" name="details_autor">
-                        <p style="text-align: center; font-family: Abril Fatface; color:white">detalles</p>
+                    
+                    <div class="pestana_details_autor" style= "" name="details_autor">
+                        <p class="pestana_txt_autor" style="">
+                            más
+                        </p>
                     </div>
             </div>
         
     
     </div>
+
+    <!--script para mostrar pestañas de detalles-->
     <script type="text/javascript">
-                        
+        var clickLibro=false;
+        var clickAutor=false;
         $(document).ready(function() {
             $('[name=details_libro]').on('click', function () {
-               $('.cajaBannerLibros').css('margin-bottom','230px');
-                $('.details_libro').show();
+                if(clickLibro){  
+                    clickLibro=false;
+                    $('.details_libro').hide();
+                    $('.cajaBannerLibros').css({'margin-bottom':'75px', 'height':'352px'});
+                    $('.pestana_txt').html("más");
+                }   
+                else{
+                    clickLibro=true;
+                    $('.cajaBannerLibros').css({'margin-bottom':'230px','height':'452px'});
+                    $('.details_libro').css({ "display": "flex", "flex-direction": "row" });
+                    $('.details_libro').show();
+                    $('.pestana_txt').html("menos");
+                }      
+            });
 
-                    
+            $('[name=details_autor]').on('click', function () {
+                if(clickAutor){  
+                    clickAutor=false;
+                    $('.details_autor').hide();
+                    $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':'352px'});
+                    $('.pestana_txt_autor').html('más');
+                }   
+                else{
+                    clickAutor=true;
+                    $('.cajaBannerAutores').css({'margin-bottom':'230px','height':'452px'});
+                    $('.details_autor').css({ "display": "flex", "flex-direction": "row", "justify-content":"center",});
+                    $('.details_autor').show();
+                    $('.pestana_txt_autor').html('menos')
+                }      
             });
         });
     </script>
