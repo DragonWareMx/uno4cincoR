@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','paginaInicioController@index')->name('inicio');
 Route::get('/contacto','paginaInicioController@contacto')->name('contacto');
-Route::get('/sobre-nosotros','paginaInicioController@sobreNosotros')->name('sobreNosotros');
+Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobreNosotros');
 
 
 

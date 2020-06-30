@@ -1033,10 +1033,6 @@ footer
 */
 
 @media (max-width: 992px) {
-  footer {
-    padding-top: 0px!important;
-    margin-top: 0px!important;
-  }
   .contact-form {
     margin-bottom: 45px;
   }
