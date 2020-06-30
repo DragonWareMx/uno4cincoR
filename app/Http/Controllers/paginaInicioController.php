@@ -8,7 +8,7 @@ class paginaInicioController extends Controller
 {
     //
     public function index(){
-        return view('publicitaria.countdown');
+        return view('publicitaria.index');
     }
 
     public function contacto(){

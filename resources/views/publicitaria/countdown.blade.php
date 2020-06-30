@@ -31,12 +31,13 @@
                             <div class="hero__title_inner"><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
                                 <br>
                                 <br>
-                                <h1 class="hero__title">Página web en construcción</h1>
-                                <p class="hero__text">Los mejores libros a la puerta de tu casa, siempre.</p>
+                                <h1 class="hero__text" style="color:black">Página en construcción</h1>
+                                <h4 class="hero__text" style="color:black">Los mejores libros a la puerta de tu casa, siempre</h4>
                             </div>
                         </div>
                     </div>
-                    
+                
+
                     <!-- countdown__module hide undefined -->
                     <div class="countdown__module hide" data-date="2020/7/3">
                         <p><span>%D</span> Días</p>
@@ -44,6 +45,8 @@
                         <p><span>%M</span> Minutos</p>
                         <p><span>%S</span> Segundos</p>
                     </div><!-- End / countdown__module hide undefined -->
+                    
+                    
                     
                     <div class="service-wrapper">
                         
@@ -70,6 +73,7 @@
                         </div><!-- End / service -->
                         
                     </div>
+            
                 </div>
             </div>
         </div><!-- End / hero -->
