@@ -2,75 +2,92 @@
 
 @section('header')
 <title>Contacto | Editorial uno4cinco</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/contacto.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 @endsection
 
 @section('content')
-<!-- ***** Welcome Area Start ***** -->
-<div class="welcome-area" id="welcome">
+<section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
+    {{-- TITTLE --}}
+    <p class="txt-TitulosApartados">CONTACTO</p>
+    <hr class="hr-Titulos-long">
+    <hr class="hr-Titulos-small">
 
-    <!-- ***** Header Text Start ***** -->
-    <div class="header-text">
-        <div class="container">
-            <div class="row">
-                <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
-                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <h1>Simple App that we <em>CREATE</em></h1>
-                    <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
-                       You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p> 
-                    <a href="#about" class="main-button-slider">KNOW US BETTER</a>
+    {{-- CARRUSEL --}}
+    <div class="p-txt-content">
+        <div class="border-contacto">
+            <div class="div-contacto">
+                <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <div class="textContacto">
+                            <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
+                            <p>+524432209371</p>
+                            <h1><img src="{{asset('img/ico/gps.png')}}"> Domicilio</h1>
+                            <p>Morelia, Col. Centro, #13, CP. 58770</p>
+                            <h1><img src="{{asset('img/ico/email.png')}}"> Correo</h1>
+                            <p>correo@gmail.com</p>
+                            <h1>Síguenos</h1>
+                            <div class="contactoRedes">
+                                <img src="{{asset('img/ico/twt.png')}}">
+                                <img src="{{asset('img/ico/fb.png')}}" style="margin-left: 27px;">
+                                <img src="{{asset('img/ico/ig.png')}}" style="margin-left: 27px;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mySlides">
+                        <div class="textContacto">
+                            <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
+                            <p>+524432209371</p>
+                        </div>
+                    </div>
+                
+                    
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
                 </div>
             </div>
         </div>
     </div>
-    <!-- ***** Header Text End ***** -->
-</div>
-
-<section class="section" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>01</h2>
-                        <img src="assets/images/features-icon-1.png" alt="">
-                        <h4>Trend Analysis</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>02</h2>
-                        <img src="assets/images/features-icon-2.png" alt="">
-                        <h4>Site Optimization</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            Discover More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                <div class="features-item">
-                    <div class="features-icon">
-                        <h2>03</h2>
-                        <img src="assets/images/features-icon-3.png" alt="">
-                        <h4>Email Design</h4>
-                        <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
-                        <a href="#testimonials" class="main-button">
-                            More Detail
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div style="text-align:center; margin-top:33px; margin-left: 16px;">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
     </div>
 </section>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
 @endsection
