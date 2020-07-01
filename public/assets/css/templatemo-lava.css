@@ -589,11 +589,11 @@ header
     display: none;
   }
   .logonovedades{
-    width: 20%;
+    width: 18%;
   }
   .logo{
-    font-size:12px ;
-    width: 126px;
+    font-size:10px ;
+    width: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
