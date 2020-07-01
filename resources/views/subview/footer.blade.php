@@ -2,8 +2,8 @@
 <footer class="footer-distributed" style="background-color: #FAFAFA">
  
     <div class="footer-left">
-        <img class="logo145" src="{{ asset('img/logos/logo.png') }}">
-      <p class="footer-company-name" style="margin-top: 5px">© 2020 Editorial uno4cinco</p>
+      <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/logo.png') }}"> </a>
+      <p class="footer-company-name" style="margin-top: 15px">© 2020 Editorial uno4cinco</p>
 
       <a href="http://" target="blank">
         <p class="footer-company-name dragonware-name">Desarrollado por DragonWare <img class="logodragon" src="{{ asset('img/logos/dragonware.png') }}"></p>
@@ -61,7 +61,7 @@
             </p> --}}
             <ul>
                 <li>
-                    <a href=""><img class="logodragon" src="{{ asset('img/ico/phone.png') }}">&nbsp;+524432209371</a><br>
+                    <a href=""><img class="logodragon" src="{{ asset('img/ico/phone.png') }}">&nbsp;+520000000000</a><br>
                 </li>
                 <li>
                     <a href=""><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Toluca, México</a><br>
@@ -87,7 +87,7 @@
 
         <div class="footer-icons">
             <a href="" target="blank"><img src="{{ asset('img/ico/twt.png')}}" width="22px"></a>
-            <a href="" target="blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
+            <a href="https://www.facebook.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
             <a href="" target="blank"><img src="{{ asset('img/ico/ig.png') }}" width="22px"></a>
         </div>
     </div>

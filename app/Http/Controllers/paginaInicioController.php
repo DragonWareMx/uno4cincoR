@@ -18,4 +18,8 @@ class paginaInicioController extends Controller
     public function sobreNosotros(){
         return view('publicitaria.sobreNosotros');
     }
+
+    public function registro(){
+        return view('publicitaria.registro');
+    }
 }
