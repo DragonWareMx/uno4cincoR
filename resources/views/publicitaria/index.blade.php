@@ -93,15 +93,16 @@
                       -webkit-background-size: cover;
                       height:356px;">
                       </div>
+                      <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carruselLibros"  data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carruselLibros" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    
                     
                     <div class="slider_footer" style="">
                     </div>
@@ -188,13 +189,14 @@
                       height:356px;">
                       </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carruselAutores"  data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carruselAutores" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </a>
+                    <a class="carousel-control-prev" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
                     <div class="slider_footer" style="position: relative;
                     width: 1294px;
                     height: 25px;
