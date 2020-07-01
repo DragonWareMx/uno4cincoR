@@ -32,28 +32,31 @@
 <div class="page-wrap" id="root">
     <!-- Content-->
     <!-- hero -->
-    <div class="" style="background-color: #83D7B5"> 
+    <div class="" style="background-color: #83D7B5; width:100%;"> 
         <div class="container">
             <div class="hero__wrapper">
-                    <div class="row">
-                        <div class="col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-1 ">
-                            <div class="hero__title_inner"><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
+                    <div class="row" style="">
+                        <div class="col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-1 "  >
+                            <div class="hero__title_inner" ><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
                                 <br>
                                 <br>
-                                <h4 class="hero__text" style="color:black">Los mejores libros, a la puerta de tu casa, siempre</h4>
+                                <h4 id="viledruid" class="hero__text" style="color: #1D2120; font-family:Karla;">Los mejores libros, a la puerta de tu casa, siempre</h4>
                                 <br>
-                                <h4 class="hero__text" style="color:white">Pronto estaremos contigo</h4>
-                                <div class="countdown__module hide" data-date="2020/8/13">
+                                <div class="mesita_escondida" style=""> <img src="{{ asset('img/logos/escritorio.png') }}" style="width:100%"></div> 
+                                <h4 id="viledruid" class="hero__text" style="color:white; font-family:Karla">Pronto estaremos contigo</h4>
+                                <div id="clocki" class="countdown__module hide" data-date="2020/8/13" style="">
                                     <p><span>%D</span> Días</p>
                                     <p><span>%H</span> Horas</p>
                                     <p><span>%M</span> Minutos</p>
-                                </div><!-- End / countdown__module hide undefined -->   
+                                </div><!-- End / countdown__module hide undefined -->         
                             </div>
+                              
                         </div>
                     </div>
+
             </div>
-                <div style="position: absolute; width:502px; height:216px; top: 410px; left: 50px"> <img src="{{ asset('img/logos/escritorio.png') }}"></div>      
         </div>
+        <div class="mesita" style=""> <img src="{{ asset('img/logos/escritorio.png') }}" style="width:100%"></div> 
     </div><!-- End / hero -->
         <!--comienza div de banners y sliders-->
     <div id="div_contenido" class="md-content" style="">
@@ -109,44 +112,39 @@
 
                     <!--div pestaña detalles libro-->
                     <div class="details_libro" style="">
-                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="widht:128px; height:138px; margin-left:10px; margin-right:10px">
-                        <div class="details_content" style="">
-                            <p class="details_txt" style="">Título: 
-                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo</span></p>
+                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="width:100px; height:138px; margin-left:10px; margin-right:10px">
+                        <div id="details_content1" class="details_content" style="">
+                            <p id="titulo_txt" class="details_txt" style="">Título: 
+                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo, un libro para valer kk</span></p>
                             
-                            <p class="details_txt" style="">Autor:
+                            <p id="autor_txt" class="details_txt" style="">Autor:
                                 <span class="details_data" style="" name="details_title">José Agustín Solórzano</span>
                             </p>
-                            <p class="details_txt" style="">Sello:
+                            <p id="sello_txt" class="details_txt" style="">Sello:
                                 <span class="details_data" style="" name="details_title">Uno4cinco</span>
                             </p>  
                         </div>
-                        <div class="details_content" style="">
-                            <p class="details_txt" >Género:
+                        <div id="details_content2" class="details_content" style="">
+                            <p id="genero_txt" class="details_txt" >Género:
                                 <span class="details_data" style="" name="details_title">Ensayo</span>
                             </p>
                             
-                            <p class="details_txt">Tipo:
+                            <p id="tipo_txt" class="details_txt">Tipo:
                                 <span class="details_data" style="" name="details_title">Digital/Papel</span>
                             </p>
-                            <p class="details_txt">Precio:
+                            <p id="precio_txt" class="details_txt">Precio:
                                 <span class="details_data" style="" name="details_title">$200</span>
                             </p>
                         </div>
                         <div class="btn_details" >
-                            <p style="text-align:center; font-family: Karla;
-                            font-style: normal;
-                            font-weight: bold;
-                            font-size: 18px;
-                            line-height: 21px;
-                            color:black">Comprar</p>
+                            <p class="btn_txt" style="">Comprar</p>
                         </div>
                     </div> 
                     
                     <!--pestaña click-->
-                    <div class="pestana_details" style= "" name="details_libro">
+                    <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
+                        <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
                         <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
-                            más
                         </p>    
                     </div>
             </div>
@@ -203,12 +201,12 @@
                     top: 356px;">
                     </div>
 
-                    
+                    <!--pestaña detalles autor-->
                     <div class="details_autor" style="">
                         
                         <div class="detailsAutor_content" style="">
                             <img class="img_libro_aut" src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="">
-                            <div class=detailsAutor_txt>
+                            <div id="details_content3" class=detailsAutor_txt>
                             <p class="details_txt" >Título:
                                 <span class="details_data" style="" name="details_title">Cuaderno de ensayo</span>
                             </p>
@@ -220,48 +218,18 @@
                             </p>
                             </div>
                             <div class="btn_details_autor" >
-                                <p style="text-align:center; font-family: Karla;
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 18px;
-                                line-height: 21px;
-                                color:black">Comprar</p>
+                                <p class="btn_txt2" style="">Comprar</p>
                             </div> 
                         </div>
                         
-                        <div class="detailsAutor_content" style="">
-                            <img class="img_libro_aut" src="{{ asset('img/portada2.jpg') }}" alt="" srcset="" style="">
-                            <div class=detailsAutor_txt>
-                            <p class="details_txt" >Título:
-                                <span class="details_data" style="" name="details_title">Monomanía del autómata</span>
-                            </p>
-                            <p class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_title">Poesía</span>
-                            </p>
-                            <p class="details_txt" >Precio:
-                                <span class="details_data" style="" name="details_title">$200</span>
-                            </p>
-                            </div>
-                            <div class="btn_details_autor" >
-                                <p style="text-align:center; font-family: Karla;
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 18px;
-                                line-height: 21px;
-                                color:black">Comprar</p>
-                            </div> 
-                            
-                        </div>
                     </div> 
                     
-                    <div class="pestana_details_autor" style= "" name="details_autor">
+                    <div class="pestana_details_autor" style= "display:flex; justify-content:center" name="details_autor">
+                         <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
                         <p class="pestana_txt_autor" style="">
-                            más
                         </p>
                     </div>
             </div>
-        
-    
     </div>
 
     <!--script para mostrar pestañas de detalles-->
@@ -274,14 +242,14 @@
                     clickLibro=false;
                     $('.details_libro').hide();
                     $('.cajaBannerLibros').css({'margin-bottom':'75px', 'height':'352px'});
-                    $('.pestana_txt').html("más");
+                  
                 }   
                 else{
                     clickLibro=true;
                     $('.cajaBannerLibros').css({'margin-bottom':'230px','height':'452px'});
                     $('.details_libro').css({ "display": "flex", "flex-direction": "row" });
                     $('.details_libro').show();
-                    $('.pestana_txt').html("menos");
+               
                 }      
             });
 
@@ -290,14 +258,14 @@
                     clickAutor=false;
                     $('.details_autor').hide();
                     $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':'352px'});
-                    $('.pestana_txt_autor').html('más');
+                   
                 }   
                 else{
                     clickAutor=true;
                     $('.cajaBannerAutores').css({'margin-bottom':'230px','height':'452px'});
                     $('.details_autor').css({ "display": "flex", "flex-direction": "row", "justify-content":"center",});
                     $('.details_autor').show();
-                    $('.pestana_txt_autor').html('menos')
+                    
                 }      
             });
         });
