@@ -25,7 +25,7 @@
                 <div class="slideshow-container">
 
                     <div class="mySlides fade">
-                        <div class="textContacto">
+                        <div id="first" class="textContacto" style="margin-bottom: 36px;">
                             <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
                             <p>+524432209371</p>
                             <h1><img src="{{asset('img/ico/gps.png')}}"> Domicilio</h1>
@@ -41,10 +41,13 @@
                         </div>
                     </div>
                     
-                    <div class="mySlides">
-                        <div class="textContacto">
-                            <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
-                            <p>+524432209371</p>
+                    <div class="mySlides fade">
+                        <div id="second" class="textContacto" style="margin-bottom: 36px;">
+                            <h1 style="margin-top: 26px">Manuscritos</h1>
+                            <div class="contenidoPagDosContacto">
+                                <p style="margin: 0px">Lorem ipsum dolor sit amet consectetur, adipiscing elit volutpat torquent magna, congue in odio ornare. Curabitur donec parturient est porttitor conubia facilisi fusce, torquent magnis dapibus libero fames bibendum habitasse facilisis, senectus vitae arcu suscipit hendrerit leo interdum, ligula integer accumsan volutpat ultricies neque.</p>
+                            </div>
+                            <img src="{{asset('img/quienessomos/6007.png')}}" style="width: 196px; height:auto; top:-10px">
                         </div>
                     </div>
                 
@@ -61,6 +64,19 @@
         <span class="dot" onclick="currentSlide(2)"></span> 
     </div>
 </section>
+
+<script type="text/javascript">
+    window.onload = function() {
+        var left=document.getElementById('first').clientHeight;
+        var right=document.getElementById('second').clientHeight;
+        if(left>right) {
+            document.getElementById('second').style.height=left+"px";
+        }
+        else {
+            document.getElementById('first').style.height=right+"px";
+        }
+    };
+</script>
 
 <script>
     var slideIndex = 1;

@@ -96,10 +96,6 @@ margin:auto;}
     vertical-align: center;
 }
 
-.textContacto .contactoRedes{
-    margin-bottom: 36px;
-}
-
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
@@ -122,19 +118,80 @@ margin:auto;}
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
+  opacity: 1;
+}
+
+.fade:not(.show){
+    opacity: 1 !important;
+}
+
+.contenidoPagDosContacto{
+    width:94%;
+    max-width:647px;
+    margin:auto;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: 0} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: 0} 
   to {opacity: 1}
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+}
+
+@media(max-width:700px){
+    .div-contacto img{
+        width: 200px;
+        height: auto;
+    }
+    .border-contacto{
+        padding-bottom: 38px;
+    }
+    
+    .div-contacto{
+        left: 0px;
+    }
+    /* Caption text */
+.textContacto {
+    color: #000000;
+    font-size: 15px;
+    padding: 8px 12px;
+    bottom: 8px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 39px;
+  }
+  
+  .textContacto h1{
+      font-size: 17px;
+      margin-bottom: 20px;
+  }
+  
+  .textContacto p{
+      font-size: 14px;
+      margin-bottom: 20px;
+  }
+  
+  .textContacto img{
+      height: 25px;
+      width: auto;
+
+  }
+  .p-txt-content{
+      width: 95%;
+  }
+}
+
+@media(max-width:1000px){
+    .contenidoPagDosContacto{
+        width: 80%;
+    }
 }
