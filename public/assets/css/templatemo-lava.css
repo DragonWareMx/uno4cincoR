@@ -141,6 +141,10 @@ body {
   .mobile-bottom-fix-big {
     margin-bottom: 60px;
   }
+
+  .imagotipoLogo{
+    display: none !important;
+  }
 }
 
 a.main-button-slider {
@@ -1292,4 +1296,8 @@ preloader
   100% {
     opacity: 0;
   }
+}
+
+.ocultoIndex{
+  display: none !important;
 }

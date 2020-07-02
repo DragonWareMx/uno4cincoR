@@ -51,12 +51,24 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="index.html" class="logo" style="
+                            @php
+                                if(Request::path() != '/' )
+                                echo 'display:none';
+                            @endphp
+                        ">
                             <img class="logonovedades" src="{{ asset('img/ico/signo!.png') }}">&nbsp;&nbsp;&nbsp;Novedades
                         </a>
-
                         <a href="{{ route('inicio') }}" class="logo2" style="display:none">
                             <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
+                        </a>
+
+                        <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php
+                                if(strpos(Request::path(),'/') !== false )
+                                echo 'ocultoIndex';
+                            @endphp
+                            " style=" height: 80px;display: flex;align-items: center;">
+                            <img class="" src="{{ asset('img/ico/puerta.png') }}" alt="" srcset="" height="40px" style="vertical-align: middle;margin: auto;">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -66,24 +78,24 @@
                             <li class="submenu">
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="{{ route('sobreNosotros') }}" class="">NOVEDADES</a></li>
-                                    <li><a href="" class="">CATÁLOGO</a></li>
-                                    <li><a href="" class="">145</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">NOVEDADES</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">CATÁLOGO</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="">UNO4CINCO</a></li>
-                                    <li><a href="" class="">145</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">UNO4CINCO</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">145</a></li>
                                 </ul>
                             </li> 
                             <li class="submenu">
                                 <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="" class="">EVENTOS</a></li>
-                                    <li><a href="" class="">ARTÍCULOS</a></li>
-                                    <li><a href="" class="">VER TODO</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">EVENTOS</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">ARTÍCULOS</a></li>
+                                    <li><a href="{{ route('registro') }}" class="">VER TODO</a></li>
                                 </ul>
                             </li>
                             <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>

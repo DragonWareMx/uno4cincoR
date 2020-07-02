@@ -5,7 +5,7 @@
       <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/logo.png') }}"> </a>
       <p class="footer-company-name" style="margin-top: 15px">© 2020 Editorial uno4cinco</p>
 
-      <a href="http://" target="blank">
+      <a href="https://www.facebook.com/DragonWare-110557344026414" target="blank">
         <p class="footer-company-name dragonware-name">Desarrollado por DragonWare <img class="logodragon" src="{{ asset('img/logos/dragonware.png') }}"></p>
       </a>
     </div>
@@ -32,13 +32,13 @@
               <a href="{{ route('sobreNosotros') }}">¿QUIÉNES SOMOS?</a><br>
           </li>
           <li>
-              <a href="">TIENDA</a><br>
+              <a href="{{ route('registro') }}">TIENDA</a><br>
           </li>
           <li>
-              <a href="">AUTORES</a> <br>
+              <a href="{{ route('registro') }}">AUTORES</a> <br>
           </li>
           <li>
-            <a href="">BLOG</a> <br>
+            <a href="{{ route('registro') }}">BLOG</a> <br>
         </li>
         <li>
           <a href="{{ route('contacto') }}">CONTACTO</a> <br>
@@ -61,13 +61,13 @@
             </p> --}}
             <ul>
                 <li>
-                    <a href=""><img class="logodragon" src="{{ asset('img/ico/phone.png') }}">&nbsp;+520000000000</a><br>
+                    <a href="tel:7221834383"><img class="logodragon" src="{{ asset('img/ico/phone.png') }}">&nbsp;7221834383</a><br>
                 </li>
                 <li>
-                    <a href=""><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Toluca, México</a><br>
+                    <a href="https://www.google.com/maps/place/Toluca+de+Lerdo,+M%C3%A9x./@19.294109,-99.6662331,13z/data=!3m1!4b1!4m5!3m4!1s0x85cd89892a50ebb9:0xad3f4ad5550208c4!8m2!3d19.2826098!4d-99.6556653" target="_blank"><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Toluca, México</a><br>
                 </li>
                 <li>
-                    <a href=""><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp; correo@gmail.com</a> <br>
+                    <a href="mailto: contacto@uno4cinco.com"><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp;  contacto@uno4cinco.com</a> <br>
                 </li>
             </ul>
           </div>
@@ -86,9 +86,9 @@
       </div>  
 
         <div class="footer-icons">
-            <a href="" target="blank"><img src="{{ asset('img/ico/twt.png')}}" width="22px"></a>
+            <a href="https://www.youtube.com/channel/UCuYHXFV2FXf76TyP3aKSEqQ" target="blank"><img src="{{ asset('img/ico/ytb.png')}}" width="22px"></a>
             <a href="https://www.facebook.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
-            <a href="" target="blank"><img src="{{ asset('img/ico/ig.png') }}" width="22px"></a>
+            <a href="https://www.instagram.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/ig.png') }}" width="22px"></a>
         </div>
     </div>
   </footer>
