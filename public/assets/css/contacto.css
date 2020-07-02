@@ -1,6 +1,8 @@
 .border-contacto{
     border: 1px solid #1D2120;
+    margin: auto;
     margin-top: 38px;
+    max-width: 815px;
 }
 
 .div-contacto{
@@ -9,6 +11,7 @@
     position: relative;
     left: 16px;
     top: 18px;
+    max-width: 815px;
 }
 
 .div-contacto img{
@@ -65,35 +68,35 @@ margin:auto;}
 }
 
 .textContacto h1{
-    font-family: Karla;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    /* identical to box height */
+  font-family: Karla;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  /* identical to box height */
 
 
-    color: #000000;
+  color: #000000;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .textContacto p{
-    font-family: Karla;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    color: #1D2120;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1D2120;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .textContacto img{
-    height: 35px;
-    width: auto;
-    margin:0px;
-    vertical-align: center;
+  height: 35px;
+  width: auto;
+  margin:0px;
+  vertical-align: center;
 }
 
 /* The dots/bullets/indicators */
@@ -109,7 +112,7 @@ margin:auto;}
 }
 
 .active, .dot:hover {
-    background: #FFFFFF;
+  background: #FFFFFF;
 }
 
 /* Fading animation */
@@ -129,6 +132,21 @@ margin:auto;}
     width:94%;
     max-width:647px;
     margin:auto;
+}
+
+.contenidoPagDosContacto ol{
+  list-style-type: decimal !important;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1D2120;
+}
+
+.contenidoPagDosContacto ul{
+  list-style-type: disc !important;
+  padding-left: 50px;
 }
 
 @-webkit-keyframes fade {
