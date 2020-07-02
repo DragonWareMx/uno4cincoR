@@ -28,15 +28,21 @@
                         <div class="textContacto" style="margin-bottom: 36px;">
                             <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
                             <p>+524432209371</p>
-                            <h1><img src="{{asset('img/ico/gps.png')}}"> Domicilio</h1>
-                            <p>Morelia, Col. Centro, #13, CP. 58770</p>
+                            <h1><img src="{{asset('img/ico/gps.png')}}"> Ubicación</h1>
+                            <p>Toluca, México</p>
                             <h1><img src="{{asset('img/ico/email.png')}}"> Correo</h1>
                             <p>correo@gmail.com</p>
                             <h1>Síguenos</h1>
                             <div class="contactoRedes">
-                                <img src="{{asset('img/ico/twt.png')}}">
-                                <img src="{{asset('img/ico/fb.png')}}" style="margin-left: 27px;">
-                                <img src="{{asset('img/ico/ig.png')}}" style="margin-left: 27px;">
+                                <a href="https://www.youtube.com/channel/UCuYHXFV2FXf76TyP3aKSEqQ" target="_blank">
+                                    <img src="{{asset('img/ico/ytb.png')}}">
+                                </a>
+                                <a href="https://www.facebook.com/uno4cinco/" target="_blank">
+                                    <img src="{{asset('img/ico/fb.png')}}" style="margin-left: 27px;">
+                                </a>
+                                <a href="https://www.instagram.com/uno4cinco/" target="_blank">
+                                    <img src="{{asset('img/ico/ig.png')}}" style="margin-left: 27px;">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,13 +56,13 @@
                                 </p>
                                 <div style="width: fit-content; height:fit-content; margin:auto; text-align:justify; margin-top:19px; margin-bottom:19px;">
                                     <ol>
-                                        <li>Un resumen de tu obra (máximo una cuartilla).</li>
-                                        <li>Una propuesta editorial (máximo una cuartilla) que incluya:</li>
+                                        <li>1. Un resumen de tu obra (máximo una cuartilla).</li>
+                                        <li>2. Una propuesta editorial (máximo una cuartilla) que incluya:</li>
                                         <ul>
-                                            <li>Los datos personales del autor.</li> 
-                                            <li>Índice (si aplica).</li>
-                                            <li>Mercado editorial (a quién va dirigido).</li>  
-                                            <li>Difusión de la obra (cómo puedes llegar a ellos).</li>
+                                            <li><b>-</b> Los datos personales del autor.</li> 
+                                            <li><b>-</b> Índice (si aplica).</li>
+                                            <li><b>-</b> Mercado editorial (a quién va dirigido).</li>  
+                                            <li><b>-</b> Difusión de la obra (cómo puedes llegar a ellos).</li>
                                         </ul>
                                     </ol>
                                 </div>
