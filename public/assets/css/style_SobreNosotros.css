@@ -105,6 +105,12 @@
         margin-top: 40px;
     }
 }
+@media(max-width: 990px){
+    .div-btn-registro{
+        width: 25%;
+    }
+
+}
 @media(max-width: 800px){
     .p-txt-content{
         width: 70%;
@@ -127,6 +133,10 @@
     .txt-SubtitulosApartados{
         font-size: 20px;
     }
+    .div-btn-registro{
+        font-size: 14px;
+    }
+
     
 }
 @media(max-width: 550px){
@@ -141,6 +151,10 @@
     .p-txt-mision-vision{
         font-size: 16px;
     }
+    .div-btn-registro{
+        width: 32%;
+    }
+
 }
 @media(max-width: 400px){
     .img-banne-quienessomos{
@@ -159,6 +173,9 @@
     .txt-SubtitulosApartados{
         font-size: 18px;
         margin-top: 10px;
+    }
+    .div-btn-registro{
+        font-size: 12px;
     }
     
 }
