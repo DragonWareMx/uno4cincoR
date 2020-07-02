@@ -24,8 +24,8 @@
                 <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
                 <div class="slideshow-container">
 
-                    <div class="mySlides fade">
-                        <div id="first" class="textContacto" style="margin-bottom: 36px;">
+                    <div id="first" class="mySlides fade">
+                        <div class="textContacto" style="margin-bottom: 36px;">
                             <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
                             <p>+524432209371</p>
                             <h1><img src="{{asset('img/ico/gps.png')}}"> Domicilio</h1>
@@ -41,13 +41,35 @@
                         </div>
                     </div>
                     
-                    <div class="mySlides fade">
-                        <div id="second" class="textContacto" style="margin-bottom: 36px;">
-                            <h1 style="margin-top: 26px">Manuscritos</h1>
+                    <div id="second" class="mySlides fade">
+                        <div class="textContacto">
+                            <h1>¿Te interesa publicar con nosotros?</h1>
                             <div class="contenidoPagDosContacto">
-                                <p style="margin: 0px">Lorem ipsum dolor sit amet consectetur, adipiscing elit volutpat torquent magna, congue in odio ornare. Curabitur donec parturient est porttitor conubia facilisi fusce, torquent magnis dapibus libero fames bibendum habitasse facilisis, senectus vitae arcu suscipit hendrerit leo interdum, ligula integer accumsan volutpat ultricies neque.</p>
+                                <p style="margin: 0px">
+                                    Envíanos:
+                                </p>
+                                <div style="width: fit-content; height:fit-content; margin:auto; text-align:justify; margin-top:19px; margin-bottom:19px;">
+                                    <ol>
+                                        <li>Un resumen de tu obra (máximo una cuartilla).</li>
+                                        <li>Una propuesta editorial (máximo una cuartilla) que incluya:</li>
+                                        <ul>
+                                            <li>Los datos personales del autor.</li> 
+                                            <li>Índice (si aplica).</li>
+                                            <li>Mercado editorial (a quién va dirigido).</li>  
+                                            <li>Difusión de la obra (cómo puedes llegar a ellos).</li>
+                                        </ul>
+                                    </ol>
+                                </div>
+                                <p>
+                                    Al correo <b>manuscritos@uno4cinco.com</b>
+                                    <br>
+                                </p>
+                                <p style="font-size:14px; text-align:justify;">
+                                    <b>Nota:</b> NO RECIBIMOS MANUSCRITOS, en caso de que la propuesta editorial nos interese
+                                    nos comunicaremos contigo.
+                                </p>
                             </div>
-                            <img src="{{asset('img/quienessomos/6007.png')}}" style="width: 196px; height:auto; top:-10px">
+                            <img src="{{asset('img/quienessomos/6007.png')}}" style="position: relative;width: 196px; height:auto; top:-60px; margin:0px;">
                         </div>
                     </div>
                 
@@ -67,6 +89,9 @@
 
 <script type="text/javascript">
     window.onload = function() {
+        var slides = document.getElementsByClassName("mySlides");
+        slides[0].style.display = "block"; 
+        slides[1].style.display = "block"; 
         var left=document.getElementById('first').clientHeight;
         var right=document.getElementById('second').clientHeight;
         if(left>right) {
@@ -75,6 +100,8 @@
         else {
             document.getElementById('first').style.height=right+"px";
         }
+        slides[0].style.display = "block"; 
+        slides[1].style.display = "none"; 
     };
 </script>
 
