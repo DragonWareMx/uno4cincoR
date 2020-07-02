@@ -26,22 +26,55 @@
 
                     <div id="first" class="mySlides fade">
                         <div class="textContacto" style="margin-bottom: 36px;">
-                            <h1><img src="{{asset('img/ico/phone.png')}}"> Teléfono</h1>
-                            <p>+524432209371</p>
-                            <h1><img src="{{asset('img/ico/gps.png')}}"> Ubicación</h1>
-                            <p>Toluca, México</p>
-                            <h1><img src="{{asset('img/ico/email.png')}}"> Correo</h1>
-                            <p>correo@gmail.com</p>
-                            <h1>Síguenos</h1>
+                            <h1>
+                                <img src="{{asset('img/ico/phone.png')}}">
+                                 Teléfono
+                            </h1>
+                            <p>
+                                <a href="tel:7221834383" class="linkContacto llamarContacto">
+                                    <span>
+                                        +52 722-183-4383
+                                    </span>
+                                </a>
+                            </p>
+                            <h1>
+                                <img src="{{asset('img/ico/gps.png')}}">
+                                 Ubicación
+                            </h1>
+                            <p>
+                                <a href="https://www.google.com/maps/place/Toluca+de+Lerdo,+M%C3%A9x./@19.294109,-99.6662331,13z/data=!3m1!4b1!4m5!3m4!1s0x85cd89892a50ebb9:0xad3f4ad5550208c4!8m2!3d19.2826098!4d-99.6556653" target="_blank"  class="linkContacto ubicacionContacto">
+                                    <span>
+                                        Toluca, México
+                                    </span>
+                                </a>
+                            </p>
+                            <h1>
+                                <img src="{{asset('img/ico/email.png')}}">
+                                 Correo
+                            </h1>
+                            <p>
+                                <a href="mailto: contacto@uno4cinco.com" class="linkContacto mailContacto">
+                                    <span>contacto@uno4cinco.com</span>
+                                </a>
+                            </p>
+                            <h1>
+                                Síguenos
+                            </h1>
                             <div class="contactoRedes">
-                                <a href="https://www.youtube.com/channel/UCuYHXFV2FXf76TyP3aKSEqQ" target="_blank">
-                                    <img src="{{asset('img/ico/ytb.png')}}">
+                                <a href="https://www.youtube.com/channel/UCuYHXFV2FXf76TyP3aKSEqQ" target="_blank" class="sm-link sm-link_padding-bottom sm-link3">
+                                    <span class="sm-link__label">
+                                        <img src="{{asset('img/ico/ytb.png')}}">
+                                    </span>
                                 </a>
-                                <a href="https://www.facebook.com/uno4cinco/" target="_blank">
-                                    <img src="{{asset('img/ico/fb.png')}}" style="margin-left: 27px;">
+                                <a href="https://www.facebook.com/uno4cinco/" target="_blank" class="sm-link sm-link_padding-bottom sm-link3" style="margin-left: 27px;">
+                                    <span class="sm-link__label">
+                                        <img src="{{asset('img/ico/fb.png')}}" style="margin-bottom: 4px;">
+                                    </span>
                                 </a>
-                                <a href="https://www.instagram.com/uno4cinco/" target="_blank">
-                                    <img src="{{asset('img/ico/ig.png')}}" style="margin-left: 27px;">
+                                <a href="https://www.instagram.com/uno4cinco/" target="_blank" class="sm-link sm-link_padding-bottom sm-link3" style="margin-left: 27px;">
+                                    <span class="sm-link__label">
+                                        <img src="{{asset('img/ico/ig.png')}}" style="margin-bottom: 4px;">
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -67,7 +100,10 @@
                                     </ol>
                                 </div>
                                 <p>
-                                    Al correo <b>manuscritos@uno4cinco.com</b>
+                                    Al correo
+                                        <a href="mailto: manuscritos@uno4cinco.com">
+                                            <b>manuscritos@uno4cinco.com</b>
+                                        </a>
                                     <br>
                                 </p>
                                 <p style="font-size:14px; text-align:justify;">
@@ -94,17 +130,21 @@
 </section>
 
 <script type="text/javascript">
-    window.onload = function() {
+    window.onload = function () {
         var slides = document.getElementsByClassName("mySlides");
         slides[0].style.display = "block"; 
         slides[1].style.display = "block"; 
         var left=document.getElementById('first').clientHeight;
         var right=document.getElementById('second').clientHeight;
         if(left>right) {
+            var diferencia = (left-right)/2;
             document.getElementById('second').style.height=left+"px";
+            document.getElementById('first').style.padding = diferencia + "px 0";
         }
         else {
+            var diferencia = (right-left)/2;
             document.getElementById('first').style.height=right+"px";
+            document.getElementById('first').style.padding = diferencia + "px 0";
         }
         slides[0].style.display = "block"; 
         slides[1].style.display = "none"; 
