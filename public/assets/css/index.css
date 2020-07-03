@@ -1,5 +1,5 @@
 #div_contenido{
-    background-color: #E5E5E5 ;
+    background-color: #F9F9F9 ;
      display:flex ;
      flex-direction:column;
      justify-content:center;
@@ -25,8 +25,24 @@
     display:flex;
     justify-content:space-around;
 }
+.cajaBannerLibrosHide{
+    width: 90%;
+    height: 352px;
+    left: 21px; 
+    top: 780px; 
+    border: 1px solid #303030; 
+    box-sizing: border-box; 
+    margin:30px; 
+    margin-bottom:75px;
+    display:none;
+    justify-content:space-around;
+
+}
 #carruselLibros{
     position: relative; width: 100%; height: 381px; left:10px; top:10px;  background: #1D2120;
+}
+.img_carrusel{
+    height:356px;
 }
 #carrusel_indic{
     width:10px; height:10px; border-radius:100%;
@@ -79,7 +95,7 @@
 .pestana_details{
     background: #BA1F00; width:8%; height:8%; padding-left:3px; padding-bottom:5px; margin-left:auto; 
     margin-right: auto;
-    margin-right: auto;
+
     cursor:pointer; cursor: hand
 }
 .cajaBannerAutores{
@@ -222,6 +238,43 @@
     }
 }
 
+@media(max-width: 950px){
+    .img_carrusel{
+        height: 304px;
+    }
+    .cajaBannerLibros{
+        height: 300px;
+    }
+    
+    .cajaBannerAutores{
+        height: 300px;
+    }
+    #carruselAutores{
+        height: 329px; 
+    }
+    #carruselLibros{
+        height: 329px;
+    }
+}
+@media(max-width: 750px){
+    .img_carrusel{
+        height: 204px;
+    }
+    .cajaBannerLibros{
+        height: 200px;
+    }
+    
+    .cajaBannerAutores{
+        height: 200px;
+    }
+    #carruselAutores{
+        height: 229px; 
+    }
+    #carruselLibros{
+        height: 229px;
+    }
+}
+
 @media (max-width: 890px){
  
     .details_txt{
@@ -233,6 +286,7 @@
     .btn_txt{
         font-size:14px;
     }
+
 }
 
 @media (max-width: 780px){
@@ -292,6 +346,22 @@
 }
 
 
+@media (max-width: 550px){
+   .cajaBannerLibros{
+       display: none;
+   }
+    .cajaBannerLibrosHide{
+        display: flex;
+        height: 352px;
+   }
+   .img_carrusel{
+        height: 356px;
+    }
+    #carruselLibros{
+    height: 352x;
+    }    
+}
+    
 @media (max-width: 500px){
     .btn_details{
         width: 50%;
@@ -300,6 +370,7 @@
         margin-left: auto;
         margin-right: auto;
     }
+
     
 }
 

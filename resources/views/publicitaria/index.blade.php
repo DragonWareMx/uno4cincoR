@@ -70,33 +70,33 @@
                       <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
                       <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="1" style=""></li>
                       <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="2" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="3" style=""></li>
                     </ol>
                     <div class="carousel-inner">
-                      <div class="carousel-item active" style="background: url('{{asset('img/prueba1.jpg')}}');
-                        background-position: center center !important;
-                        background-size: cover;
-                        -moz-background-size: cover;
-                        -o-background-size: cover;
-                        -webkit-background-size: cover;
-                        height:356px;">
-                      </div>
-                      <div class="carousel-item" style="background: url('{{asset('img/prueba2.jpg')}}');
-                      background-position: center center !important;
-                      background-size: cover;
-                      -moz-background-size: cover;
-                      -o-background-size: cover;
-                      -webkit-background-size: cover;
-                      height:356px;">
-                      </div>
-                      <div class="carousel-item" style="background: url('{{asset('img/prueba3.jpg')}}');
-                      background-position: center center !important;
-                      background-size: cover;
-                      -moz-background-size: cover;
-                      -o-background-size: cover;
-                      -webkit-background-size: cover;
-                      height:356px;">
-                      </div>
-                      <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                        @php
+                        $i=0; 
+                        @endphp
+                        @foreach ($bannerLibros as $banner)
+                        @if ($i==0)
+                            <div id='{{$banner->idRelacion}}' class="carousel-item active img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                        @else
+                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>    
+                        @endif
+                        @php
+                            $i++;
+                        @endphp
+                        @endforeach
+                    <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
@@ -150,6 +150,97 @@
             </div>
         </div>  
 
+        <!--CARRUSEL ESCONDIDO LIBROS-->
+        <div class="cajaBannerLibrosHide" style="">
+            <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="1" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="2" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="3" style=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        @php
+                        $i=0; 
+                        @endphp
+                        @foreach ($bannerLibros as $banner)
+                        @if ($i==0)
+                            <div id='{{$banner->idRelacion}}' class="carousel-item active img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                        @else
+                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>    
+                        @endif
+                        @php
+                            $i++;
+                        @endphp
+                        @endforeach
+                    <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    
+                    
+                    <div class="slider_footer" style="">
+                    </div>
+
+                    <!--div pestaña detalles libro-->
+                    <div class="details_libro" style="">
+                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="width:100px; height:138px; margin-left:10px; margin-right:10px">
+                        <div id="details_content1" class="details_content" style="">
+                            <p id="titulo_txt" class="details_txt" style="">Título: 
+                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo, un libro para valer kk</span></p>
+                            
+                            <p id="autor_txt" class="details_txt" style="">Autor:
+                                <span class="details_data" style="" name="details_title">José Agustín Solórzano</span>
+                            </p>
+                            <p id="sello_txt" class="details_txt" style="">Sello:
+                                <span class="details_data" style="" name="details_title">Uno4cinco</span>
+                            </p>  
+                        </div>
+                        <div id="details_content2" class="details_content" style="">
+                            <p id="genero_txt" class="details_txt" >Género:
+                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                            </p>
+                            
+                            <p id="tipo_txt" class="details_txt">Tipo:
+                                <span class="details_data" style="" name="details_title">Digital/Papel</span>
+                            </p>
+                            <p id="precio_txt" class="details_txt">Precio:
+                                <span class="details_data" style="" name="details_title">$200</span>
+                            </p>
+                        </div>
+                        <div class="btn_details" >
+                            <p class="btn_txt" style="">Comprar</p>
+                        </div>
+                    </div> 
+                    
+                    <!--pestaña click-->
+                    <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
+                        <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                        <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
+                        </p>    
+                    </div>
+            </div>
+        </div>  
+
+        <!--FIN CARRUSEL ESCONDIDO-->
+
+
+
         <div class="title_index" style="">
             <h2 class="text_title" style="">AUTORES</h2>
         </div>
@@ -162,31 +253,29 @@
                       <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                      <div class="carousel-item active" style="background: url('{{asset('img/prueba1.jpg')}}');
-                        background-position: center center !important;
-                        background-size: cover;
-                        -moz-background-size: cover;
-                        -o-background-size: cover;
-                        -webkit-background-size: cover;
-                        height:356px;">
-                      </div>
-                      <div class="carousel-item" style="background: url('{{asset('img/prueba2.jpg')}}');
-                      background-position: center center !important;
-                      background-size: cover;
-                      -moz-background-size: cover;
-                      -o-background-size: cover;
-                      -webkit-background-size: cover;
-                      height:356px;">
-                      </div>
-                      <div class="carousel-item" style="background: url('{{asset('img/prueba3.jpg')}}');
-                      background-position: center center !important;
-                      background-size: cover;
-                      -moz-background-size: cover;
-                      -o-background-size: cover;
-                      -webkit-background-size: cover;
-                      height:356px;">
-                      </div>
-                    </div>
+                        @php
+                        $i=0; 
+                        @endphp
+                        @foreach ($bannerAutores as $banner)
+                        @if ($i==0)
+                            <div id='{{$banner->idRelacion}}' class="img_carrusel carousel-item active " style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');background-position: center center !important;
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                        @else
+                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>    
+                        @endif
+                        @php
+                            $i++;
+                        @endphp
+                        @endforeach
                     <a class="carousel-control-prev" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -195,6 +284,7 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                       </a>
+                    </div>
                     <div class="slider_footer" style="position: relative;
                     width: 1294px;
                     height: 25px;
@@ -241,12 +331,12 @@
                 if(clickLibro){  
                     clickLibro=false;
                     $('.details_libro').hide();
-                    $('.cajaBannerLibros').css({'margin-bottom':'75px', 'height':'352px'});
+                    $('.cajaBannerLibros').css({'margin-bottom':'75px', 'height':''});
                   
                 }   
                 else{
                     clickLibro=true;
-                    $('.cajaBannerLibros').css({'margin-bottom':'230px','height':'452px'});
+                    $('.cajaBannerLibros').css({'margin-bottom':'230px','height':''});
                     $('.details_libro').css({ "display": "flex", "flex-direction": "row" });
                     $('.details_libro').show();
                
@@ -257,12 +347,12 @@
                 if(clickAutor){  
                     clickAutor=false;
                     $('.details_autor').hide();
-                    $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':'352px'});
+                    $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':''});
                    
                 }   
                 else{
                     clickAutor=true;
-                    $('.cajaBannerAutores').css({'margin-bottom':'230px','height':'452px'});
+                    $('.cajaBannerAutores').css({'margin-bottom':'230px','height':''});
                     $('.details_autor').css({ "display": "flex", "flex-direction": "row", "justify-content":"center",});
                     $('.details_autor').show();
                     
