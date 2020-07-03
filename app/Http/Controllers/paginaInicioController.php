@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Banner;
 use App\Author;
 use App\Book;
+use App\Image;
 
 class paginaInicioController extends Controller
 {
@@ -16,9 +17,10 @@ class paginaInicioController extends Controller
         $BannerAutores=Banner::where('tipo','autor')->get();
         $Libros=Book::get();
         $Autores=Author::get();
+        $Imagenes=Image::get();
         //dd($BannerLibros,$BannerAutores,$Libros,$Autores);
         return view('publicitaria.index',['bannerLibros'=>$BannerLibros, 'bannerAutores'=>$BannerAutores, 
-        'libros'=>$Libros, 'autores'=>$Autores]);
+        'libros'=>$Libros, 'autores'=>$Autores, 'imagenes'=>$Imagenes]);
     }
 
     public function contacto(){

@@ -64,7 +64,7 @@
             <h2 class="text_title" style="">LIBROS</h2>
         </div>
             <!--slider LIBROS-->
-        <div class="cajaBannerLibros" style="">
+            <div class="cajaBannerLibros" style="">
             <div id="carruselLibros" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                       <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
@@ -112,28 +112,28 @@
 
                     <!--div pestaña detalles libro-->
                     <div class="details_libro" style="">
-                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="width:100px; height:138px; margin-left:10px; margin-right:10px">
+                        <img id="portada_libro" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                         <div id="details_content1" class="details_content" style="">
                             <p id="titulo_txt" class="details_txt" style="">Título: 
-                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo, un libro para valer kk</span></p>
+                            <span class="details_data" style="" name="details_title_libro">Desordenes de la memoria</span></p>
                             
                             <p id="autor_txt" class="details_txt" style="">Autor:
-                                <span class="details_data" style="" name="details_title">José Agustín Solórzano</span>
+                                <span class="details_data" style="" name="details_autor_libro">Aless Segovia</span>
                             </p>
                             <p id="sello_txt" class="details_txt" style="">Sello:
-                                <span class="details_data" style="" name="details_title">Uno4cinco</span>
+                                <span class="details_data" style="" name="details_sello_libro">Uno4cinco</span>
                             </p>  
                         </div>
                         <div id="details_content2" class="details_content" style="">
                             <p id="genero_txt" class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                                <span class="details_data" style="" name="details_genero_libro">Poesía</span>
                             </p>
                             
                             <p id="tipo_txt" class="details_txt">Tipo:
-                                <span class="details_data" style="" name="details_title">Digital/Papel</span>
+                                <span class="details_data" style="" name="details_tipo_libro">Digital/Papel</span>
                             </p>
                             <p id="precio_txt" class="details_txt">Precio:
-                                <span class="details_data" style="" name="details_title">$200</span>
+                                <span class="details_data" style="" name="details_precio_libro">$</span>
                             </p>
                         </div>
                         <div class="btn_details" >
@@ -152,12 +152,12 @@
 
         <!--CARRUSEL ESCONDIDO LIBROS-->
         <div class="cajaBannerLibrosHide" style="">
-            <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+            <div id="carruselLibrosHide" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="1" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="2" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="3" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="0" class="active" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="1" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="2" style=""></li>
+                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="3" style=""></li>
                     </ol>
                     <div class="carousel-inner">
                         @php
@@ -183,11 +183,11 @@
                             $i++;
                         @endphp
                         @endforeach
-                    <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                    <a class="carousel-control-prev" data-target="#carruselLibrosHide" data-slide="prev" style="cursor: pointer; cursor:hand;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
-                      <a class="carousel-control-next" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
+                      <a class="carousel-control-next" data-target="#carruselLibrosHide" data-slide="next" style="cursor: pointer; cursor:hand;">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                       </a>
@@ -199,28 +199,28 @@
 
                     <!--div pestaña detalles libro-->
                     <div class="details_libro" style="">
-                        <img src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="width:100px; height:138px; margin-left:10px; margin-right:10px">
+                        <img id="portada_libroHide" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                         <div id="details_content1" class="details_content" style="">
                             <p id="titulo_txt" class="details_txt" style="">Título: 
-                            <span class="details_data" style="" name="details_title">Cuaderno de ensayo, un libro para valer kk</span></p>
+                            <span class="details_data" style="" name="details_title_libro">Desórdenes de la memoria</span></p>
                             
                             <p id="autor_txt" class="details_txt" style="">Autor:
-                                <span class="details_data" style="" name="details_title">José Agustín Solórzano</span>
+                                <span class="details_data" style="" name="details_autor_libro">Aless Segovia</span>
                             </p>
                             <p id="sello_txt" class="details_txt" style="">Sello:
-                                <span class="details_data" style="" name="details_title">Uno4cinco</span>
+                                <span class="details_data" style="" name="details_sello_libro">Uno4cinco</span>
                             </p>  
                         </div>
                         <div id="details_content2" class="details_content" style="">
                             <p id="genero_txt" class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                                <span class="details_data" style="" name="details_genre_libro">Poesía</span>
                             </p>
                             
                             <p id="tipo_txt" class="details_txt">Tipo:
-                                <span class="details_data" style="" name="details_title">Digital/Papel</span>
+                                <span class="details_data" style="" name="details_tipo_libro">Digital/Papel</span>
                             </p>
                             <p id="precio_txt" class="details_txt">Precio:
-                                <span class="details_data" style="" name="details_title">$200</span>
+                                <span class="details_data" style="" name="details_precio_libro">$</span>
                             </p>
                         </div>
                         <div class="btn_details" >
@@ -229,10 +229,8 @@
                     </div> 
                     
                     <!--pestaña click-->
-                    <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
+                    <div class="pestana_details" style= "display:none; justify-content:center" name="details_libro">
                         <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                        <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
-                        </p>    
                     </div>
             </div>
         </div>  
@@ -251,6 +249,7 @@
                       <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="0"></li>
                       <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="1"></li>
                       <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="2"></li>
+                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="3"></li>
                     </ol>
                     <div class="carousel-inner">
                         @php
@@ -295,16 +294,16 @@
                     <div class="details_autor" style="">
                         
                         <div class="detailsAutor_content" style="">
-                            <img class="img_libro_aut" src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="">
+                            <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="">
                             <div id="details_content3" class=detailsAutor_txt>
                             <p class="details_txt" >Título:
-                                <span class="details_data" style="" name="details_title">Cuaderno de ensayo</span>
+                                <span class="details_data" style="" name="details_title_autor">Desórdenes de la memoria</span>
                             </p>
                             <p class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_title">Ensayo</span>
+                                <span class="details_data" style="" name="details_genre_autor">Poesía</span>
                             </p>
                             <p class="details_txt" >Precio:
-                                <span class="details_data" style="" name="details_title">$200</span>
+                                <span class="details_data" style="" name="details_precio_autor">$</span>
                             </p>
                             </div>
                             <div class="btn_details_autor" >
@@ -314,45 +313,154 @@
                         
                     </div> 
                     
-                    <div class="pestana_details_autor" style= "display:flex; justify-content:center" name="details_autor">
+                    <div class="pestana_details_autor" style= "display:none; justify-content:center" name="details_autor">
                          <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                        <p class="pestana_txt_autor" style="">
-                        </p>
+                        
                     </div>
             </div>
     </div>
+    <!--slider ESCONDIDO AUTORES-->
+    <div class="cajaBannerAutoresHide" style="">
+        <div id="carruselAutoresHide" class="carousel slide" data-ride="carousel" style="">
+                <ol class="carousel-indicators">
+                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="0"></li>
+                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="1"></li>
+                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="2"></li>
+                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @php
+                    $i=0; 
+                    @endphp
+                    @foreach ($bannerAutores as $banner)
+                    @if ($i==0)
+                        <div id='elemento' class="img_carrusel carousel-item active " style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');background-position: center center !important;
+                            background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            -webkit-background-size: 100% 100%;">
+                        </div>
+                    @else
+                        <div id='elemento' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                            background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                        -webkit-background-size: 100% 100%;">
+                        </div>    
+                    @endif
+                    @php
+                        $i++;
+                    @endphp
+                    @endforeach
+                <a class="carousel-control-prev" data-target="#carruselAutoresHide" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" data-target="#carruselAutoresHide" data-slide="next" style="cursor: pointer; cursor:hand;">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <div class="slider_footer" style="position: relative;
+                width: 1294px;
+                height: 25px;
+                top: 356px;">
+                </div>
 
+                <!--pestaña detalles autor-->
+                <div class="details_autor" style="">
+                    
+                    <div class="detailsAutor_content" style="">
+                        <img class="img_libro_aut" src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="">
+                        <div id="details_content3" class=detailsAutor_txt>
+                        <p class="details_txt" >Título:
+                            <span class="details_data" style="" name="details_title_autor">Cuaderno de ensayo</span>
+                        </p>
+                        <p class="details_txt" >Género:
+                            <span class="details_data" style="" name="details_genre_autor">Ensayo</span>
+                        </p>
+                        <p class="details_txt" >Precio:
+                            <span class="details_data" style="" name="details_precio_autor">$200</span>
+                        </p>
+                        </div>
+                        <div class="btn_details_autor" >
+                            <p class="btn_txt2" style="">Comprar</p>
+                        </div> 
+                    </div>
+                    
+                </div> 
+                
+                <div class="pestana_details_autor" style= "display:none; justify-content:center" name="details_autor">
+                     <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                    <p class="pestana_txt_autor" style="">
+                    </p>
+                </div>
+        </div>
+</div>
+<!--FIN ESLIDER ESCONDIDO AUTORES-->
     <!--script para mostrar pestañas de detalles-->
     <script type="text/javascript">
         var clickLibro=false;
         var clickAutor=false;
+        var idLibros;
+        var idLibros2;
+        var idAutores;
+        var books = @json($libros);
+        var autor =@json($autores);
+        var imagen =@json($imagenes);
+        //oski mañana trabaja en esto (que funcione con varios libros y autores)
+        var banners =@json($bannerLibros);
+        var matrizLibros;
+
         $(document).ready(function() {
+        
+        
+
             $('[name=details_libro]').on('click', function () {
+
                 if(clickLibro){  
                     clickLibro=false;
                     $('.details_libro').hide();
                     $('.cajaBannerLibros').css({'margin-bottom':'75px', 'height':''});
-                  
+                    $('.cajaBannerLibrosHide').css({'margin-bottom':'75px', 'height':''});
                 }   
                 else{
+                
                     clickLibro=true;
-                    $('.cajaBannerLibros').css({'margin-bottom':'230px','height':''});
+                    $('.cajaBannerLibros').css({'margin-bottom':'250px','height':''});
+                    $('.cajaBannerLibrosHide').css({'margin-bottom':'250px','height':''});
                     $('.details_libro').css({ "display": "flex", "flex-direction": "row" });
                     $('.details_libro').show();
-               
-                }      
+                    
+                    $('#carruselLibros').on('slid.bs.carousel', function() {
+                
+                    idLibros = $('div.active').index();
+           
+                   $('[name=details_title_libro]').html(books[idLibros]['titulo']);
+                   $('[name=details_autor_libro]').html(autor[idLibros]['nombre']);
+                    $('#portada_libro').attr('src','storage/libros/'+imagen[idLibros]['imagen']);   
+                
+           
+               });
+                    
+                }
+                    
+                           
             });
 
             $('[name=details_autor]').on('click', function () {
+                
                 if(clickAutor){  
                     clickAutor=false;
                     $('.details_autor').hide();
                     $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':''});
-                   
+                    $('.cajaBannerAutoresHide').css({'margin-bottom':'75px', 'height':''});
                 }   
                 else{
+                   
                     clickAutor=true;
-                    $('.cajaBannerAutores').css({'margin-bottom':'230px','height':''});
+                    $('.cajaBannerAutores').css({'margin-bottom':'250px','height':''});
+                    $('.cajaBannerAutoresHide').css({'margin-bottom':'250px','height':''});
                     $('.details_autor').css({ "display": "flex", "flex-direction": "row", "justify-content":"center",});
                     $('.details_autor').show();
                     

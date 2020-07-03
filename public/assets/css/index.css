@@ -7,6 +7,9 @@
      align-items:center;
      padding:10px;
 }
+.img_carrusel{
+    height: 356px;
+}
 .title_index{
     width: 270px; line-height: 49px; margin:10px; text-align:left; margin-right: auto; margin-left: 5%;
 }
@@ -25,6 +28,7 @@
     display:flex;
     justify-content:space-around;
 }
+
 .cajaBannerLibrosHide{
     width: 90%;
     height: 352px;
@@ -40,6 +44,10 @@
 }
 #carruselLibros{
     position: relative; width: 100%; height: 381px; left:10px; top:10px;  background: #1D2120;
+}
+#carruselLibrosHide{
+    position: relative; width: 100%; height: 381px; left:10px; top:10px;  background: #1D2120;
+}   
 }
 .img_carrusel{
     height:356px;
@@ -95,8 +103,7 @@
 .pestana_details{
     background: #BA1F00; width:8%; height:8%; padding-left:3px; padding-bottom:5px; margin-left:auto; 
     margin-right: auto;
-
-    cursor:pointer; cursor: hand
+    cursor:pointer; cursor: hand;
 }
 .cajaBannerAutores{
     width: 90%;
@@ -106,9 +113,26 @@
     border: 1px solid #303030;
     box-sizing: border-box;
     margin:30px;
-    margin-bottom:75px
+    margin-bottom:75px;
+    display: flex;
+    justify-content: space-around;
+}
+.cajaBannerAutoresHide{
+    width: 90%;
+    height: 352px;
+    left: 21px;
+    top: 780px;
+    border: 1px solid #303030;
+    box-sizing: border-box;
+    margin:30px;
+    margin-bottom:75px;
+    display:none;
 }
 #carruselAutores{
+    position: relative; width: 100%; height: 381px; left: 10px; top: 10px;  background: #1D2120;
+}
+
+#carruselAutoresHide{
     position: relative; width: 100%; height: 381px; left: 10px; top: 10px;  background: #1D2120;
 }
 .details_autor{
@@ -120,9 +144,9 @@
     display:none;
 }
 .pestana_details_autor{
-    background: #29b390; width:8%; height:8%; margin-left:auto; 
+    background: #29b390; width:8%; height:8%; margin-left:auto; padding-left: 3px;scroll-padding-right: 3px; padding-bottom: 5px;
     margin-right: auto;
-    cursor:pointer; cursor: hand
+    cursor:pointer; cursor: hand;
 }
 .pestana_txt{
     text-align: center; font-family: Abril Fatface; color:white
@@ -347,19 +371,29 @@
 
 
 @media (max-width: 550px){
-   .cajaBannerLibros{
-       display: none;
-   }
-    .cajaBannerLibrosHide{
-        display: flex;
-        height: 352px;
-   }
-   .img_carrusel{
-        height: 356px;
+    .cajaBannerLibros{
+        display: none;
     }
-    #carruselLibros{
-    height: 352x;
-    }    
+     .cajaBannerLibrosHide{
+         display: flex;
+         height: 352px;
+    }
+    .img_carrusel{
+         height: 357px;
+     }
+     #carruselLibrosHide{
+        height: 382px;
+     }    
+     .cajaBannerAutores{
+         display:none;
+     }
+     .cajaBannerAutoresHide{
+         display:flex;
+         height:352px;
+     }
+     #carruselAutoresHide{
+        height: 382px;
+     }    
 }
     
 @media (max-width: 500px){

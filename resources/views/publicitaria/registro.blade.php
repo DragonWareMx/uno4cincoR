@@ -29,7 +29,7 @@
                 <div class="hero__wrapper">
                     <p class="txt-TitulosApartados" style="font-family:'Karla'; color:white">PRONTO ESTAREMOS CONTIGO</p>
                     <!-- countdown__module hide undefined -->
-                    <div class="countdown__module hide" data-date="2020/7/3">
+                    <div class="countdown__module hide" data-date="2020/8/13">
                         <p><span>%D</span> Días</p>
                         <p><span>%H</span> Horas</p>
                         <p><span>%M</span> Minutos</p>
@@ -37,8 +37,8 @@
                     </div><!-- End / countdown__module hide undefined -->
 
                     <p class="p-txt-content" style="margin-top:0px; color:#1D2120">
-                        <b>Registrate al evento de facebook</b> Lorem ipsum dolor sit amet consectetur adipiscing elit varius integer accumsan 
-                    </p>
+                        <b>Registrate al evento de facebook</b> para seguir los eventos de lanzamiento de la editorial. Se parte 
+                    de uno4cinco</p>
                     <a href="https://www.facebook.com/uno4cinco" target="blank">
                         <div class="div-btn-registro" >
                             Registrarme
