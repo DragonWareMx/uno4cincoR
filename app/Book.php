@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -26,5 +26,9 @@ class Book extends Model
 
     public function sells(){
         return $this->belongsToMany('App\Sell')->withTimestamps();
+    }
+
+    public function sello(){
+        return $this->belongsTo('App\Sello');
     }
 }

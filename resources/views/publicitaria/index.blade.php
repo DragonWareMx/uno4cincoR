@@ -23,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9]-->
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 @endsection
 
@@ -63,361 +63,318 @@
         <div class="title_index" style="">
             <h2 class="text_title" style="">LIBROS</h2>
         </div>
-            <!--slider LIBROS-->
-            <div class="cajaBannerLibros" style="">
-            <div id="carruselLibros" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="0" class="active" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="1" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="2" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibros" data-slide-to="3" style=""></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        @php
-                        $i=0; 
-                        @endphp
-                        @foreach ($bannerLibros as $banner)
-                        @if ($i==0)
-                            <div id='{{$banner->idRelacion}}' class="carousel-item active img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+        <!--slider LIBROS-->
+        <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @php
+                    $i=0; 
+                @endphp
+                @foreach ($bannerLibros as $banner)
+                    @if ($i==0)
+                        <div class="carousel-item active" >
+                            <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
-                        @else
-                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
-                                background-size: 100% 100%;
-                                -moz-background-size: 100% 100%;
-                                -o-background-size: 100% 100%;
-                                -webkit-background-size: 100% 100%;">
-                            </div>    
-                        @endif
-                        @php
-                            $i++;
-                        @endphp
-                        @endforeach
-                    <a class="carousel-control-prev" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                    
-                    
-                    <div class="slider_footer" style="">
-                    </div>
-
-                    <!--div pestaña detalles libro-->
-                    <div class="details_libro" style="">
-                        <img id="portada_libro" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
-                        <div id="details_content1" class="details_content" style="">
-                            <p id="titulo_txt" class="details_txt" style="">Título: 
-                            <span class="details_data" style="" name="details_title_libro">Desordenes de la memoria</span></p>
-                            
-                            <p id="autor_txt" class="details_txt" style="">Autor:
-                                <span class="details_data" style="" name="details_autor_libro">Aless Segovia</span>
-                            </p>
-                            <p id="sello_txt" class="details_txt" style="">Sello:
-                                <span class="details_data" style="" name="details_sello_libro">Uno4cinco</span>
-                            </p>  
+                            <!--div pestaña detalles libro-->
+                            <div class="details_libro" style="overflow-x:scroll">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <div id="details_content1" class="details_content" style="">
+                                    <p id="titulo_txt" class="details_txt" style="">Título: 
+                                        <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
+                                    </p> 
+                                    <p id="autor_txt" class="details_txt" style="">Autor:
+                                    <span class="details_data" style="" name="details_autor_libro">{{$banner->book->authors[0]->nombre}}</span>
+                                    </p>
+                                    <p id="sello_txt" class="details_txt" style="">Sello:
+                                    <span class="details_data" style="" name="details_sello_libro">{{$banner->book->sello->nombre}}</span>
+                                    </p>  
+                                </div>
+                                <div id="details_content2" class="details_content" style="">
+                                    <p id="genero_txt" class="details_txt" >Género:
+                                    <span class="details_data" style="" name="details_genero_libro">{{$banner->book->genres[0]->nombre}}</span>
+                                    </p>
+                                    <p id="tipo_txt" class="details_txt">Tipo:
+                                        <span class="details_data" style="" name="details_tipo_libro">
+                                            @if ($banner->book->stockFisico>0)
+                                                Físico/Digital
+                                            @else
+                                                Digital
+                                            @endif
+                                        </span>
+                                    </p>
+                                    <p id="precio_txt" class="details_txt">Precio:
+                                        <span class="details_data" style="" name="details_precio_libro">
+                                            @if ($banner->book->stockFisico>0)
+                                                @if($banner->book->descuentoFisico>0 && $banner->book->descuentoDigital>0)
+                                                    ${{$banner->book->precioFisico}} Descuento: %{{$banner->book->descuentoFisico}} / ${{$banner->book->precioDigital}} Descuento:  %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico>0 && $banner->book->descuentoDigital==0)
+                                                    ${{$banner->book->precioFisico}} Descuento: %{{$banner->book->descuentoFisico}} / ${{$banner->book->precioDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico>=0 && $banner->book->descuentoDigital>0)
+                                                    ${{$banner->book->precioFisico}} / ${{$banner->book->precioDigital}}  Descuento: %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico==0 && $banner->book->descuentoDigital==0)
+                                                    ${{$banner->book->precioFisico}} / ${{$banner->book->precioDigital}}
+                                                @endif
+                                            @else
+                                                @if($banner->book->descuentoDigital>0)
+                                                   ${{$banner->book->precioDigital}} Descuento:  %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoDigital==0)
+                                                   ${{$banner->book->precioDigital}}
+                                                @endif
+                                            @endif
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="btn_details" >
+                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                </div>
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                                <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
+                                </p>    
+                            </div>
                         </div>
-                        <div id="details_content2" class="details_content" style="">
-                            <p id="genero_txt" class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_genero_libro">Poesía</span>
-                            </p>
-                            
-                            <p id="tipo_txt" class="details_txt">Tipo:
-                                <span class="details_data" style="" name="details_tipo_libro">Digital/Papel</span>
-                            </p>
-                            <p id="precio_txt" class="details_txt">Precio:
-                                <span class="details_data" style="" name="details_precio_libro">$</span>
-                            </p>
-                        </div>
-                        <div class="btn_details" >
-                            <p class="btn_txt" style="">Comprar</p>
-                        </div>
-                    </div> 
-                    
-                    <!--pestaña click-->
-                    <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
-                        <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                        <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
-                        </p>    
-                    </div>
-            </div>
-        </div>  
-
-        <!--CARRUSEL ESCONDIDO LIBROS-->
-        <div class="cajaBannerLibrosHide" style="">
-            <div id="carruselLibrosHide" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="0" class="active" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="1" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="2" style=""></li>
-                      <li id="carrusel_indic" data-target="#carruselLibrosHide" data-slide-to="3" style=""></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        @php
-                        $i=0; 
-                        @endphp
-                        @foreach ($bannerLibros as $banner)
-                        @if ($i==0)
-                            <div id='{{$banner->idRelacion}}' class="carousel-item active img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                    @else
+                        <div class="carousel-item " >
+                            <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
-                        @else
-                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
-                                background-size: 100% 100%;
-                                -moz-background-size: 100% 100%;
-                                -o-background-size: 100% 100%;
-                                -webkit-background-size: 100% 100%;">
-                            </div>    
-                        @endif
-                        @php
-                            $i++;
-                        @endphp
-                        @endforeach
-                    <a class="carousel-control-prev" data-target="#carruselLibrosHide" data-slide="prev" style="cursor: pointer; cursor:hand;">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" data-target="#carruselLibrosHide" data-slide="next" style="cursor: pointer; cursor:hand;">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                    
-                    
-                    <div class="slider_footer" style="">
-                    </div>
-
-                    <!--div pestaña detalles libro-->
-                    <div class="details_libro" style="">
-                        <img id="portada_libroHide" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
-                        <div id="details_content1" class="details_content" style="">
-                            <p id="titulo_txt" class="details_txt" style="">Título: 
-                            <span class="details_data" style="" name="details_title_libro">Desórdenes de la memoria</span></p>
-                            
-                            <p id="autor_txt" class="details_txt" style="">Autor:
-                                <span class="details_data" style="" name="details_autor_libro">Aless Segovia</span>
-                            </p>
-                            <p id="sello_txt" class="details_txt" style="">Sello:
-                                <span class="details_data" style="" name="details_sello_libro">Uno4cinco</span>
-                            </p>  
-                        </div>
-                        <div id="details_content2" class="details_content" style="">
-                            <p id="genero_txt" class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_genre_libro">Poesía</span>
-                            </p>
-                            
-                            <p id="tipo_txt" class="details_txt">Tipo:
-                                <span class="details_data" style="" name="details_tipo_libro">Digital/Papel</span>
-                            </p>
-                            <p id="precio_txt" class="details_txt">Precio:
-                                <span class="details_data" style="" name="details_precio_libro">$</span>
-                            </p>
-                        </div>
-                        <div class="btn_details" >
-                            <p class="btn_txt" style="">Comprar</p>
-                        </div>
-                    </div> 
-                    
-                    <!--pestaña click-->
-                    <div class="pestana_details" style= "display:none; justify-content:center" name="details_libro">
-                        <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                    </div>
+                            <!--div pestaña detalles libro-->
+                            <div class="details_libro" style="overflow-x:scroll">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <div id="details_content1" class="details_content" style="">
+                                    <p id="titulo_txt" class="details_txt" style="">Título: 
+                                        <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
+                                    </p> 
+                                    <p id="autor_txt" class="details_txt" style="">Autor:
+                                    <span class="details_data" style="" name="details_autor_libro">{{$banner->book->authors[0]->nombre}}</span>
+                                    </p>
+                                    <p id="sello_txt" class="details_txt" style="">Sello:
+                                    <span class="details_data" style="" name="details_sello_libro">{{$banner->book->sello->nombre}}</span>
+                                    </p>  
+                                </div>
+                                <div id="details_content2" class="details_content" style="">
+                                    <p id="genero_txt" class="details_txt" >Género:
+                                    <span class="details_data" style="" name="details_genero_libro">{{$banner->book->genres[0]->nombre}}</span>
+                                    </p>
+                                    <p id="tipo_txt" class="details_txt">Tipo:
+                                        <span class="details_data" style="" name="details_tipo_libro">
+                                            @if ($banner->book->stockFisico>0)
+                                                Físico/Digital
+                                            @else
+                                                Digital
+                                            @endif
+                                        </span>
+                                    </p>
+                                    <p id="precio_txt" class="details_txt">Precio:
+                                        <span class="details_data" style="" name="details_precio_libro">
+                                            @if ($banner->book->stockFisico>0)
+                                                @if($banner->book->descuentoFisico>0 && $banner->book->descuentoDigital>0)
+                                                    ${{$banner->book->precioFisico}} Descuento: %{{$banner->book->descuentoFisico}} / ${{$banner->book->precioDigital}} Descuento:  %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico>0 && $banner->book->descuentoDigital==0)
+                                                    ${{$banner->book->precioFisico}} Descuento: %{{$banner->book->descuentoFisico}} / ${{$banner->book->precioDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico>=0 && $banner->book->descuentoDigital>0)
+                                                    ${{$banner->book->precioFisico}} / ${{$banner->book->precioDigital}}  Descuento: %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoFisico==0 && $banner->book->descuentoDigital==0)
+                                                    ${{$banner->book->precioFisico}} / ${{$banner->book->precioDigital}}
+                                                @endif
+                                            @else
+                                                @if($banner->book->descuentoDigital>0)
+                                                   ${{$banner->book->precioDigital}} Descuento:  %{{$banner->book->descuentoDigital}}
+                                                @endif
+                                                @if($banner->book->descuentoDigital==0)
+                                                   ${{$banner->book->precioDigital}}
+                                                @endif
+                                            @endif
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="btn_details" >
+                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                </div>
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details" style= "display:flex; justify-content:center" name="details_libro">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                                <p class="pestana_txt" style="text-align: center; font-family: Abril Fatface; color:white">
+                                </p>    
+                            </div>
+                        </div>  
+                    @endif
+                    @php
+                        $i++;
+                    @endphp
+                @endforeach
+                <a class="carousel-control-prev flechasPosicion" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next flechasPosicion" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </div>  
-
-        <!--FIN CARRUSEL ESCONDIDO-->
-
-
+        </div>
+        {{-- Fin slider libros --}}
 
         <div class="title_index" style="">
             <h2 class="text_title" style="">AUTORES</h2>
         </div>
         <!--SLIDER AUTORES-->
-        <div class="cajaBannerAutores" style="">
-            <div id="carruselAutores" class="carousel slide" data-ride="carousel" style="">
-                    <ol class="carousel-indicators">
-                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="0"></li>
-                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="1"></li>
-                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="2"></li>
-                      <li id="carrusel_indic" data-target="#carruselAutores" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        @php
-                        $i=0; 
-                        @endphp
-                        @foreach ($bannerAutores as $banner)
-                        @if ($i==0)
-                            <div id='{{$banner->idRelacion}}' class="img_carrusel carousel-item active " style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');background-position: center center !important;
-                                background-size: 100% 100%;
-                                -moz-background-size: 100% 100%;
-                                -o-background-size: 100% 100%;
-                                -webkit-background-size: 100% 100%;">
-                            </div>
-                        @else
-                            <div id='{{$banner->idRelacion}}' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
-                                background-size: 100% 100%;
-                                -moz-background-size: 100% 100%;
-                                -o-background-size: 100% 100%;
-                                -webkit-background-size: 100% 100%;">
-                            </div>    
-                        @endif
-                        @php
-                            $i++;
-                        @endphp
-                        @endforeach
-                    <a class="carousel-control-prev" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                    <div class="slider_footer" style="position: relative;
-                    width: 1294px;
-                    height: 25px;
-                    top: 356px;">
-                    </div>
-
-                    <!--pestaña detalles autor-->
-                    <div class="details_autor" style="">
-                        
-                        <div class="detailsAutor_content" style="">
-                            <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/aless.png') }}" alt="" srcset="" style="">
-                            <div id="details_content3" class=detailsAutor_txt>
-                            <p class="details_txt" >Título:
-                                <span class="details_data" style="" name="details_title_autor">Desórdenes de la memoria</span>
-                            </p>
-                            <p class="details_txt" >Género:
-                                <span class="details_data" style="" name="details_genre_autor">Poesía</span>
-                            </p>
-                            <p class="details_txt" >Precio:
-                                <span class="details_data" style="" name="details_precio_autor">$</span>
-                            </p>
-                            </div>
-                            <div class="btn_details_autor" >
-                                <p class="btn_txt2" style="">Comprar</p>
-                            </div> 
-                        </div>
-                        
-                    </div> 
-                    
-                    <div class="pestana_details_autor" style= "display:none; justify-content:center" name="details_autor">
-                         <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                        
-                    </div>
-            </div>
-    </div>
-    <!--slider ESCONDIDO AUTORES-->
-    <div class="cajaBannerAutoresHide" style="">
-        <div id="carruselAutoresHide" class="carousel slide" data-ride="carousel" style="">
-                <ol class="carousel-indicators">
-                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="0"></li>
-                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="1"></li>
-                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="2"></li>
-                  <li id="carrusel_indic" data-target="#carruselAutoresHide" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                    @php
+        <div id="carruselAutores" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @php
                     $i=0; 
-                    @endphp
-                    @foreach ($bannerAutores as $banner)
+                @endphp
+                @foreach ($bannerAutores as $banner)
                     @if ($i==0)
-                        <div id='elemento' class="img_carrusel carousel-item active " style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');background-position: center center !important;
-                            background-size: 100% 100%;
-                            -moz-background-size: 100% 100%;
-                            -o-background-size: 100% 100%;
-                            -webkit-background-size: 100% 100%;">
+                        <div class="carousel-item active" >
+                            <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                            <!--div pestaña detalles autor-->
+                            <div class="details_autor" style="overflow-x:scroll">
+                                @php
+                                    $i=0;   
+                                @endphp
+                                @foreach ($banner->author->books as $book)
+                                    <div class="detailsAutor_content" style="overflow-y:scroll">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <div id="details_content3" class=detailsAutor_txt>
+                                            <p class="details_txt" >Título:
+                                                <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>
+                                            </p>
+                                            <p class="details_txt" >Género:
+                                                <span class="details_data" style="" name="details_genre_autor">{{$book->genres[0]->nombre}}</span>
+                                            </p>
+                                            <p class="details_txt" >Tipo:
+                                                <span class="details_data" style="" name="details_precio_autor">
+                                                    @if ($book->stockFisico>0)
+                                                        Físico/Digital
+                                                    @else
+                                                        Digital
+                                                    @endif                                                    
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="btn_details_autor" >
+                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                        </div> 
+                                    </div>
+                                    @if($i==2)
+                                        @break;
+                                    @endif
+                                    @php
+                                        $i++;   
+                                    @endphp                                    
+                                @endforeach
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details_autor" style= "display:flex; justify-content:center" name="details_autor">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                           </div>
                         </div>
                     @else
-                        <div id='elemento' class="carousel-item img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
-                            background-size: 100% 100%;
-                            -moz-background-size: 100% 100%;
-                            -o-background-size: 100% 100%;
-                        -webkit-background-size: 100% 100%;">
-                        </div>    
+                        <div class="carousel-item" >
+                            <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                            <!--div pestaña detalles autor-->
+                            <div class="details_autor" style="overflow-x:scroll">
+                                @php
+                                    $i=0;   
+                                @endphp
+                                @foreach ($banner->author->books as $book)
+                                    <div class="detailsAutor_content" style="overflow-y:scroll">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <div id="details_content3" class=detailsAutor_txt>
+                                            <p class="details_txt" >Título:
+                                                <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>
+                                            </p>
+                                            <p class="details_txt" >Género:
+                                                <span class="details_data" style="" name="details_genre_autor">{{$book->genres[0]->nombre}}</span>
+                                            </p>
+                                            <p class="details_txt" >Tipo:
+                                                <span class="details_data" style="" name="details_precio_autor">
+                                                    @if ($book->stockFisico>0)
+                                                        Físico/Digital
+                                                    @else
+                                                        Digital
+                                                    @endif                                                    
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="btn_details_autor" >
+                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                        </div> 
+                                    </div>
+                                    @if($i==2)
+                                        @break;
+                                    @endif
+                                    @php
+                                        $i++;   
+                                    @endphp                                    
+                                @endforeach
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details_autor" style= "display:flex; justify-content:center" name="details_autor">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                            </div>
+                        </div>      
                     @endif
                     @php
                         $i++;
                     @endphp
-                    @endforeach
-                <a class="carousel-control-prev" data-target="#carruselAutoresHide" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                @endforeach
+                <a class="carousel-control-prev flechasPosicion" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" data-target="#carruselAutoresHide" data-slide="next" style="cursor: pointer; cursor:hand;">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                  </a>
-                </div>
-                <div class="slider_footer" style="position: relative;
-                width: 1294px;
-                height: 25px;
-                top: 356px;">
-                </div>
-
-                <!--pestaña detalles autor-->
-                <div class="details_autor" style="">
-                    
-                    <div class="detailsAutor_content" style="">
-                        <img class="img_libro_aut" src="{{ asset('img/portada.jpg') }}" alt="" srcset="" style="">
-                        <div id="details_content3" class=detailsAutor_txt>
-                        <p class="details_txt" >Título:
-                            <span class="details_data" style="" name="details_title_autor">Cuaderno de ensayo</span>
-                        </p>
-                        <p class="details_txt" >Género:
-                            <span class="details_data" style="" name="details_genre_autor">Ensayo</span>
-                        </p>
-                        <p class="details_txt" >Precio:
-                            <span class="details_data" style="" name="details_precio_autor">$200</span>
-                        </p>
-                        </div>
-                        <div class="btn_details_autor" >
-                            <p class="btn_txt2" style="">Comprar</p>
-                        </div> 
-                    </div>
-                    
-                </div> 
-                
-                <div class="pestana_details_autor" style= "display:none; justify-content:center" name="details_autor">
-                     <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                    <p class="pestana_txt_autor" style="">
-                    </p>
-                </div>
+                </a>
+                <a class="carousel-control-next flechasPosicion" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
-</div>
-<!--FIN ESLIDER ESCONDIDO AUTORES-->
+
+        <div class="title_index" style="">
+            <h2 class="text_title" style="">BLOGS</h2>
+        </div>
+
+        {{-- Slider de Blogs --}}
+
+    </div>
+
+
     <!--script para mostrar pestañas de detalles-->
     <script type="text/javascript">
         var clickLibro=false;
         var clickAutor=false;
-        var idLibros;
-        var idLibros2;
-        var idAutores;
-        var books = @json($libros);
-        var autor =@json($autores);
-        var imagen =@json($imagenes);
-        //oski mañana trabaja en esto (que funcione con varios libros y autores)
-        var banners =@json($bannerLibros);
-        var matrizLibros;
-
         $(document).ready(function() {
         
         
 
             $('[name=details_libro]').on('click', function () {
-
                 if(clickLibro){  
                     clickLibro=false;
                     $('.details_libro').hide();
@@ -430,19 +387,7 @@
                     $('.cajaBannerLibros').css({'margin-bottom':'250px','height':''});
                     $('.cajaBannerLibrosHide').css({'margin-bottom':'250px','height':''});
                     $('.details_libro').css({ "display": "flex", "flex-direction": "row" });
-                    $('.details_libro').show();
-                    
-                    $('#carruselLibros').on('slid.bs.carousel', function() {
-                
-                    idLibros = $('div.active').index();
-           
-                   $('[name=details_title_libro]').html(books[idLibros]['titulo']);
-                   $('[name=details_autor_libro]').html(autor[idLibros]['nombre']);
-                    $('#portada_libro').attr('src','storage/libros/'+imagen[idLibros]['imagen']);   
-                
-           
-               });
-                    
+                    $('.details_libro').show(); 
                 }
                     
                            
@@ -468,7 +413,7 @@
             });
         });
     </script>
- </div>
+</div>
 <!-- End / Content-->
 <!-- Vendors-->
 <script type="text/javascript" src="assetsTimer/vendors/jquery/jquery.min.js"></script>

@@ -17,7 +17,7 @@ class bannersTable extends Seeder
             'imagenCell'=>'Aless-vertical.jpg',
             'boton'=>'',
             'link'=>'http://uno4cinco.com/registro',
-            'idRelacion'=>'1',
+            'author_id'=>'1',
             ]);
             
             DB::table('banners')->insert([
@@ -26,7 +26,7 @@ class bannersTable extends Seeder
                 'imagenCell'=>'Estefania-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
-                'idRelacion'=>'2',
+                'author_id'=>'2',
                 ]);
             DB::table('banners')->insert([
                     'tipo'=>'autor',
@@ -34,7 +34,7 @@ class bannersTable extends Seeder
                     'imagenCell'=>'Jordán-vertical.jpg',
                     'boton'=>'',
                     'link'=>'http://uno4cinco.com/registro',
-                    'idRelacion'=>'3',
+                    'author_id'=>'3',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'autor',
@@ -42,7 +42,7 @@ class bannersTable extends Seeder
                 'imagenCell'=>'José-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
-                'idRelacion'=>'4',
+                'author_id'=>'4',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -50,7 +50,7 @@ class bannersTable extends Seeder
                 'imagenCell'=>'Aless-libro-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
-                'idRelacion'=>'1',
+                'book_id'=>'1',
                 ]);
             DB::table('banners')->insert([
                     'tipo'=>'libro',
@@ -58,7 +58,7 @@ class bannersTable extends Seeder
                     'imagenCell'=>'Estefania-libro-vertical.jpg',
                     'boton'=>'',
                     'link'=>'http://uno4cinco.com/registro',
-                    'idRelacion'=>'2',
+                    'book_id'=>'2',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -66,7 +66,7 @@ class bannersTable extends Seeder
                 'imagenCell'=>'Jordán-libro-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
-                'idRelacion'=>'3',
+                'book_id'=>'3',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -74,7 +74,7 @@ class bannersTable extends Seeder
                 'imagenCell'=>'José-libro-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
-                'idRelacion'=>'4',
+                'book_id'=>'4',
                 ]);
            
     }

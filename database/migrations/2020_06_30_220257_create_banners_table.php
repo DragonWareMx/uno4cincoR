@@ -20,7 +20,21 @@ class CreateBannersTable extends Migration
             $table->text('imagenCell');
             $table->string('boton',50)->nullable();
             $table->text('link');
-            $table->integer('idRelacion');
+            $table->unsignedBigInteger('book_id')->nullable();
+            $table->foreign('book_id')
+                ->references('id')
+                ->on('books')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')
+                ->references('id')
+                ->on('authors')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('blog_id')->nullable();
+            $table->foreign('blog_id')
+                ->references('id')
+                ->on('blogs')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
