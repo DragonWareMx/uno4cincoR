@@ -15,12 +15,13 @@ class paginaInicioController extends Controller
         
         $BannerLibros=Banner::where('tipo','libro')->get();
         $BannerAutores=Banner::where('tipo','autor')->get();
+        $BannerBlogs=Banner::where('tipo','blog')->get();
         $Libros=Book::get();
         $Autores=Author::get();
         $Imagenes=Image::get();
         //dd($BannerLibros,$BannerAutores,$Libros,$Autores);
         return view('publicitaria.index',['bannerLibros'=>$BannerLibros, 'bannerAutores'=>$BannerAutores, 
-        'libros'=>$Libros, 'autores'=>$Autores, 'imagenes'=>$Imagenes]);
+        'libros'=>$Libros, 'autores'=>$Autores, 'imagenes'=>$Imagenes,'bannerBlogs'=>$BannerBlogs]);
     }
 
     public function contacto(){

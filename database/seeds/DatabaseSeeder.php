@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
         $this->call(sellosTable::class);
         $this->call(booksTable::class);
         $this->call(authorsTable::class);
+        $this->call(blogsTable::class);
+        $this->call(tagsTable::class);
+        $this->call(blog_tagTable::class);
         $this->call(bannersTable::class);
         $this->call(imagesTable::class);
         $this->call(genresTable::class);

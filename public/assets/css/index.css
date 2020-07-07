@@ -75,6 +75,13 @@
 .details_content{
     width: 458px; height: 129px; margin-left:5%; margin-right:5%; margin-top:20px;
 }
+.details_tags{
+    color: white;
+    font-family: "Karla";
+    font-size: 18px;
+    font: lighter;
+    font-style: oblique;
+}
 .details_txt{
     font-family: Karla;
     font-style: normal;
@@ -135,6 +142,10 @@
     width: 90%; 
     background: transparent;
 }
+#carruselBlogs{
+    width:90%;
+    background: transparent;
+}
 .details_autor{
     width: 100%;
     height: 152px;
@@ -143,8 +154,20 @@
     box-sizing: border-box; padding-bottom:5px; padding-left:10px; padding-right:10px; padding-top:5px;
     display:none;
 }
+.details_blog{
+    width: 100%;
+    height: 100px;
+    background: #717171;
+    box-sizing: border-box; padding-bottom:5px; padding-left:10px; padding-right:10px; padding-top:5px;
+    display:none;
+}
 .pestana_details_autor{
     background: #29b390; width:8%; height:8%; margin-left:auto; padding-left: 3px;scroll-padding-right: 3px; padding-bottom: 5px;
+    margin-right: auto;
+    cursor:pointer; cursor: hand;
+}
+.pestana_details_blog{
+    background: #717171; width:8%; height:8%; margin-left:auto; padding-left: 3px;scroll-padding-right: 3px; padding-bottom: 5px;
     margin-right: auto;
     cursor:pointer; cursor: hand;
 }
@@ -197,7 +220,49 @@
 .mesita_escondida{
     display:none;
 }
+.banner_blog_fecha{
+    width: 100%;
+    text-align: right;
+    color: white;
+    font-size: 24px;
+    margin: auto;
+    font-family: "Karla";
+}
+.banner_blog_titulo{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 26px;
+    margin: auto;
+    margin-bottom:40px;
+    font-family: "Karla";
+}
+.banner_blog_contenido{
+    width: 60%;
+    color: white;
+    font-family: "Karla";
+    font-size: 24px;
+    text-align:center;
+    margin-bottom: 20px;
+}
 
+.div_width_100{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.banner_blog_boton{
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    width: 15%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 #clocki{
     width: 50%;
 }

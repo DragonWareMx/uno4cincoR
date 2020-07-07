@@ -362,6 +362,101 @@
         </div>
 
         {{-- Slider de Blogs --}}
+        <div id="carruselBlogs" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @php
+                    $i=0; 
+                @endphp
+                @foreach ($bannerBlogs as $banner)
+                    @if ($i==0)
+                        <div class="carousel-item active" >
+                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
+                                background-size: cover;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                -webkit-background-size: cover;">
+
+                                <div class="banner_blog_fecha">
+                                    {{$banner->blog->fecha}}
+                                </div>
+                                <div class="banner_blog_titulo">
+                                    {{$banner->blog->titulo}}
+                                </div>
+                                {{-- Este de abajo lo metí en dos divs para centrarlo, ya tengo sueño perdón :C --}}
+                                <div class="div_width_100">
+                                    <div class="banner_blog_contenido">
+                                        {{Str::limit($banner->blog->contenido,350)}}
+                                    </div>
+                                </div>
+                                <div class="div_width_100">
+                                    <div class="banner_blog_boton">
+                                        <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--div pestaña detalles autor-->
+                            <div class="details_blog" style=" ">
+                                @foreach ($banner->blog->tags as $tag)
+                                   <span class="details_tags" style="color:white;" name="details_title_blog">#{{$tag->nombre}}&nbsp;</span>
+                                @endforeach     
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details_blog" style= "display:flex; justify-content:center" name="details_blog">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                           </div>
+                        </div>
+                    @else
+                        <div class="carousel-item" >
+                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
+                                background-size: cover;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                -webkit-background-size: cover;">
+
+                                <div class="banner_blog_fecha">
+                                    {{$banner->blog->fecha}}
+                                </div>
+                                <div class="banner_blog_titulo">
+                                    {{$banner->blog->titulo}}
+                                </div>
+                                {{-- Este de abajo lo metí en dos divs para centrarlo, ya tengo sueño perdón :C --}}
+                                <div class="div_width_100">
+                                    <div class="banner_blog_contenido">
+                                        {{Str::limit($banner->blog->contenido,350)}}
+                                    </div>
+                                </div>
+                                <div class="div_width_100">
+                                    <div class="banner_blog_boton">
+                                        <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--div pestaña detalles autor-->
+                            <div class="details_blog" style=" ">
+                                @foreach ($banner->blog->tags as $tag)
+                                   <span class="details_tags" style="color:white;" name="details_title_blog">#{{$tag->nombre}}&nbsp;</span>
+                                @endforeach     
+                            </div> 
+                            <!--pestaña click-->
+                            <div class="pestana_details_blog" style= "display:flex; justify-content:center" name="details_blog">
+                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
+                           </div>
+                        </div>      
+                    @endif
+                    @php
+                        $i++;
+                    @endphp
+                @endforeach
+                <a class="carousel-control-prev flechasPosicion" data-target="#carruselBlogs" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next flechasPosicion" data-target="#carruselBlogs" data-slide="next" style="cursor: pointer; cursor:hand;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
 
     </div>
 
@@ -370,6 +465,7 @@
     <script type="text/javascript">
         var clickLibro=false;
         var clickAutor=false;
+        var clickBlog=false;
         $(document).ready(function() {
         
         
@@ -408,6 +504,25 @@
                     $('.cajaBannerAutoresHide').css({'margin-bottom':'250px','height':''});
                     $('.details_autor').css({ "display": "flex", "flex-direction": "row", "justify-content":"center",});
                     $('.details_autor').show();
+                    
+                }      
+            });
+
+            $('[name=details_blog]').on('click', function () {
+                
+                if(clickAutor){  
+                    clickBlog=false;
+                    $('.details_blog').hide();
+                    $('.cajaBannerAutores').css({'margin-bottom':'75px', 'height':''});
+                    $('.cajaBannerAutoresHide').css({'margin-bottom':'75px', 'height':''});
+                }   
+                else{
+                   
+                    clickBlog=true;
+                    $('.cajaBannerAutores').css({'margin-bottom':'250px','height':''});
+                    $('.cajaBannerAutoresHide').css({'margin-bottom':'250px','height':''});
+                    $('.details_blog').css({ "display": "flex", "flex-direction": "row", "justify-content":"space-around","align-items":"center"});
+                    $('.details_blog').show();
                     
                 }      
             });
