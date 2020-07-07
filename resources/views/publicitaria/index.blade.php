@@ -40,7 +40,7 @@
                             <div class="hero__title_inner" ><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
                                 <br>
                                 <br>
-                                <h4 id="viledruid" class="hero__text" style="color: #1D2120; font-family:Karla;">Los mejores libros, a la puerta de tu casa, siempre</h4>
+                                <h4 id="viledruid" class="hero__text" style="color: #1D2120; font-family:Karla;">Para todas, arte.</h4>
                                 <br>
                                 <div class="mesita_escondida" style=""> <img src="{{ asset('img/logos/escritorio.png') }}" style="width:100%"></div> 
                                 <h4 id="viledruid" class="hero__text" style="color:white; font-family:Karla">Pronto estaremos contigo</h4>
