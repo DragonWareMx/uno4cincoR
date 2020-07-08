@@ -7,8 +7,39 @@
      align-items:center;
      padding:10px;
 }
+.detailsAutor_content::-webkit-scrollbar{
+    display: none;
+}
+.details_autor::-webkit-scrollbar{
+    display:  none;
+}
+.details_libro::-webkit-scrollbar{
+    display: none;
+}
+.details_blog::-webkit-scrollbar{
+    display:none;
+}
+
+#carruselLibros:hover{
+    width: 95%;  
+}
+#carruselLibrosHide:hover{
+    width: 95%;
+}
+
+#carruselAutores:hover{
+    width: 95%;
+}
+#carruselAutoresHide:hover{
+    width: 95%;
+}
+
+#carruselBlogs:hover{
+    width: 95%; 
+}
+
 .img_carrusel{
-    height: 356px;
+    height: 400px;
 }
 .title_index{
     width: 270px; line-height: 49px; margin:10px; text-align:left; margin-right: auto; margin-left: 5%;
@@ -18,7 +49,7 @@
 }
 .cajaBannerLibros{
     width: 90%;
-    height: 352px;
+    height: 358px;
     left: 21px; 
     top: 780px; 
     border: 1px solid #303030; 
@@ -47,14 +78,12 @@
    width: 90%
 }
 #carruselLibrosHide{
-   width: 100%;
    display:none; 
    background: transparent;
+   width: 90%;
 }   
 
-.img_carrusel{
-    height:356px;
-}
+
 #carrusel_indic{
     width:10px; height:10px; border-radius:100%;
 }
@@ -142,6 +171,11 @@
     width: 90%; 
     background: transparent;
 }
+#carruselAutoresHide{
+    width: 90%;
+    background: transparent;
+    display:none;
+}
 #carruselBlogs{
     width:90%;
     background: transparent;
@@ -156,7 +190,7 @@
 }
 .details_blog{
     width: 100%;
-    height: 100px;
+    height: 50px;
     background: #717171;
     box-sizing: border-box; padding-bottom:5px; padding-left:10px; padding-right:10px; padding-top:5px;
     display:none;
@@ -306,6 +340,8 @@
         height: 30%;
     }
 }
+
+
 @media (max-width: 1200px){
     .row{
         display:flex; justify-content:center
@@ -315,18 +351,15 @@
         height: 23%;
         padding-top: 5px;
     }
-}
-
-@media (max-width: 1130px){
- 
-    .details_txt{
+    .banner_blog_titulo{
+        font-size: 22px;
+    }
+    .banner_blog_contenido{
+        font-size: 20px;
+        }
+    
+    .banner_blog_boton{
         font-size: 14px;
-    }
-    .details_data{
-        font-size:14px;
-    }
-    .btn_txt{
-        font-size:14px;
     }
 }
 
@@ -340,6 +373,17 @@
     .cajaBannerAutores{
         height: 300px;
     }
+    .banner_blog_titulo{
+        font-size: 18px;
+    }
+    .banner_blog_contenido{
+        font-size: 16px;
+        }
+    
+    .banner_blog_boton{
+        font-size: 10px;
+        height: 30px;
+    }
 }
 @media(max-width: 750px){
     .img_carrusel{
@@ -351,31 +395,26 @@
     .cajaBannerAutores{
         height: 200px;
     }
-}
-
-@media (max-width: 890px){
- 
-    .details_txt{
-        font-size: 12px;
+    .banner_blog_titulo{
+        font-size: 26px;
     }
-    .details_data{
-        font-size:12px;
+    .banner_blog_contenido{
+        display:none;
+        }
+    
+    .banner_blog_boton{
+        font-size: 10px;
+        height: 30px;
     }
-    .btn_txt{
-        font-size:14px;
-    }
-
 }
 
 @media (max-width: 780px){
-    .details_txt{
-        font-size: 10px;
-    }
-    .details_data{
-        font-size: 10px;
-    }
+   
     .btn_details{
         width: 35%;
+    }
+    .btn_txt{
+        font-size: 13px;
     }
 }
 
@@ -390,6 +429,10 @@
         width: 9%;
         height: 7%;
     }
+    .pestana_details_blog{
+        width: 9%;
+        height: 7%;
+    }
 }
 @media (max-width: 768px){
     #viledruid{
@@ -401,16 +444,12 @@
     
 }
 
-
 @media (max-width: 700px){
     .details_txt{
-        font-size: 14px;
+        font-size: 12px;
     }
     .details_data{
-        font-size:14px;
-    }
-    #details_content2{
-        display:none;
+        font-size:12px;
     }
     .pestana_details{
         width: 8%;
@@ -420,6 +459,51 @@
         
         width: 8%;
         height: 6%;
+    }
+    .pestana_details_blog{
+        width: 8%;
+        height: 6%;
+    }
+    .btn_txt{
+        font-size: 10px;
+    }
+    .banner_blog_boton{
+        font-size: 8px;
+        height: 20px;
+    }
+    .details_tags{
+        font-size: 15px;
+    }     
+}
+
+@media (max-width: 600px){
+  
+    #details_content2{
+        display:none;
+    }
+    .btn_details{
+        width: 30%;
+        height: 23%;
+        padding-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  
+    .pestana_details{
+        width: 12%;
+        height: 5%;
+    }
+    .pestana_details_autor{    
+        width: 12%;
+        height: 5%;
+    }
+    .pestana_details_blog{
+        width: 12%;
+        height: 5%;
+    }
+
+    .details_tags{
+        font-size: 12px;
     }
 }
 
@@ -436,7 +520,6 @@
     }
      #carruselLibrosHide{
         display:flex;
-        width: 100%;
      }    
      .cajaBannerAutores{
          display:none;
@@ -445,9 +528,26 @@
          display:flex;
          height:352px;
      }
+     #carruselAutores{
+         display:none;
+     }
      #carruselAutoresHide{
-        height: 382px;
-     }    
+        display:flex;
+       
+     } 
+     .banner_blog_contenido{
+         font-size: 12px;
+         display:flex;
+     } 
+     .banner_blog_boton{
+        font-size: 12px;
+        height: 23px;
+        width: 33%;
+    }
+    #portada_libro{
+        display:none;
+    }
+
 }
     
 @media (max-width: 500px){
@@ -458,48 +558,11 @@
         margin-left: auto;
         margin-right: auto;
     }
-
-    
-}
-
-@media (max-width: 600px){
-    #details_content3{
-        display:none;
-    }
-    #details_content1{
-        display:none;
-    }
-    #details_content2{
-        display:none;
-    }
-    .btn_details{
-        width: 30%;
-        height: 23%;
-        padding-top: 5px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .btn_details_autor{
-        width: 35%;
-        height: 30px;
-        margin-top: 30px;
-        margin-right: auto;
-        margin-left: auto;
-        padding:5px;
-    }
-    .btn_txt2{
-        font-size: 12px;
-    }
-    .pestana_details{
-        width: 12%;
-        height: 5%;
-    }
-    .pestana_details_autor{
-        
-        width: 12%;
-        height: 5%;
+    .details_tags{
+        font-size: 10px;
     }
 }
+
 @media (max-width:400px){
     .pestana_details{
         width: 15%;
@@ -510,4 +573,18 @@
         width: 15%;
         height: 4%;
     }
+    .pestana_details_blog{
+        width: 15%;
+        height: 4%;
+    }
+    .banner_blog_contenido{
+        font-size: 10px;
+        display:flex;
+    } 
+    .banner_blog_boton{
+       font-size: 10px;
+       height: 23px;
+       width: 35%;
+   }
+
 }
