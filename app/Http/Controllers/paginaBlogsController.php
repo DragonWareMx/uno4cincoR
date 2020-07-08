@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Author;
+use App\Tag;
+use App\Banner;
 
 class paginaBlogsController extends Controller
 {
     public function index(){
         
         $blogs=Blog::get();
+        $bannerBlogs=Banner::where('tipo','blog')->get();
+        $authors=Author::get();
+
         //dd($BannerLibros,$BannerAutores,$Libros,$Autores);
-        return view('publicitaria.blogs',['blogs'=>$blogs]);
+        return view('publicitaria.blogs',['blogs'=>$blogs,'authors'=>$author,'bannerBlogs'=>$bannerBlogs]);
     }
     public function show($id){
         $blog=Blog::findOrFail($id);

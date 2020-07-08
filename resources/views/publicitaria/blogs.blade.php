@@ -26,6 +26,9 @@
         <hr class="hr-Titulos-long">
         <hr class="hr-Titulos-small ">
         <br><br>
+
+
+        
         {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
 
         <div class="blog_encabezado">
