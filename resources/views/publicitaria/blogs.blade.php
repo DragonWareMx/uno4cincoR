@@ -62,16 +62,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--div pestaña detalles blog-->
-                            <div class="details_blog" style="overflow-x:scroll">
-                                @foreach ($banner->blog->tags as $tag)
-                                   <span class="details_tags" style="color:white;" name="details_title_blog">#{{$tag->nombre}}&nbsp;</span>
-                                @endforeach     
-                            </div> 
-                            <!--pestaña click-->
-                            <div class="pestana_details_blog" style= "display:flex; justify-content:center" name="details_blog">
-                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                           </div>
                         </div>
                     @else
                         <div class="carousel-item" >
@@ -99,16 +89,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--div pestaña detalles blog-->
-                            <div class="details_blog" style="overflow-x:scroll">
-                                @foreach ($banner->blog->tags as $tag)
-                                   <span class="details_tags" style="color:white;" name="details_title_blog">#{{$tag->nombre}}&nbsp;</span>
-                                @endforeach     
-                            </div> 
-                            <!--pestaña click-->
-                            <div class="pestana_details_blog" style= "display:flex; justify-content:center" name="details_blog">
-                                <img src="{{ asset('img/ico/menu.png') }}" style="width:30%;">
-                           </div>
                         </div>      
                     @endif
                     @php
