@@ -19,6 +19,12 @@ class CreateBlogsTable extends Migration
             $table->text('imagen')->nullable();
             $table->text('contenido');
             $table->date('fecha');
+            $table->text('autor')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')
+                ->references('id')
+                ->on('authors')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

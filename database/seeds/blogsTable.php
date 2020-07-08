@@ -19,7 +19,8 @@ class blogsTable extends Seeder
                         finibus ipsum condimentum. Vivamus nibh neque, faucibus id ante at, molestie tempus tellus. Donec non 
                         rhoncus metus. Fusce ornare urna sagittis, iaculis dui non, blandit dolor. Praesent neque ex, posuere at 
                         ultricies nec, mollis eget mauris.',
-            'fecha'=>'2020-07-06'
+            'fecha'=>'2020-07-06',
+            'autor'=>'Redacción',
         ]);
         DB::table('blogs')->insert([
             'titulo'=>'Suspendisse potenti',
@@ -28,7 +29,8 @@ class blogsTable extends Seeder
                         volutpat porttitor turpis. Aenean pulvinar laoreet erat volutpat hendrerit. Cras molestie varius feugiat. Praesent 
                         dictum vehicula purus, semper imperdiet arcu ultricies eget. Phasellus et arcu nisi. In hac habitasse platea dictumst. 
                         Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-            'fecha'=>'2020-07-05'
+            'fecha'=>'2020-07-05',
+            'author_id'=>'1',
         ]);
     }
 }

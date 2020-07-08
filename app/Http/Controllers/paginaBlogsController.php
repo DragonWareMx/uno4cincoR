@@ -13,4 +13,9 @@ class paginaBlogsController extends Controller
         //dd($BannerLibros,$BannerAutores,$Libros,$Autores);
         return view('publicitaria.blogs',['blogs'=>$blogs]);
     }
+    public function show($id){
+        $blog=Blog::findOrFail($id);
+        $blogAutor=Blog::where('author_id', $blog->author_id)->get();
+        return view('publicitaria.blog',['blog'=>$blog, 'blogAutor'=>$blogAutor]);
+    }
 }
