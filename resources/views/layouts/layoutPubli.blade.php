@@ -14,17 +14,17 @@
     @yield('header')
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-lava.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-lava.css') }}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-oscar.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-oscar.css') }}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl-carousel.css') }}">
 
-    <link rel="stylesheet" href="assets/css/footerR.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/footerR.css') }}">
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
@@ -131,21 +131,21 @@
     @include('subview.footer')
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
+    <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imgfix.min.js')}}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 
 </body>
 </html>
