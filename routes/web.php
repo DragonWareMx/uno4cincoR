@@ -25,3 +25,7 @@ Route::get('/blogs','paginaBlogsController@index')->name('blogs');
 Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
