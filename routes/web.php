@@ -23,5 +23,6 @@ Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobre
 Route::get('/registro','paginaInicioController@registro')->name('registro');
 Route::get('/blogs','paginaBlogsController@index')->name('blogs');
 Route::get('/blog/{blog_id}','paginaBlogsController@show')->name('blog');
+Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
 
 
