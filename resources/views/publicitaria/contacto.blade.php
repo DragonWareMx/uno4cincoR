@@ -68,12 +68,12 @@
                                 </a>
                                 <a href="https://www.facebook.com/uno4cinco/" target="_blank" class="sm-link sm-link_padding-bottom sm-link3" style="margin-left: 27px;">
                                     <span class="sm-link__label">
-                                        <img src="{{asset('img/ico/fb.png')}}" style="margin-bottom: 4px;">
+                                        <img src="{{asset('img/ico/fb.png')}}" style="padding-bottom: 4px;">
                                     </span>
                                 </a>
                                 <a href="https://www.instagram.com/uno4cinco/" target="_blank" class="sm-link sm-link_padding-bottom sm-link3" style="margin-left: 27px;">
                                     <span class="sm-link__label">
-                                        <img src="{{asset('img/ico/ig.png')}}" style="margin-bottom: 4px;">
+                                        <img src="{{asset('img/ico/ig.png')}}" style="padding-bottom: 4px;">
                                     </span>
                                 </a>
                             </div>
@@ -101,8 +101,10 @@
                                 </div>
                                 <p>
                                     Al correo
-                                        <a href="mailto: manuscritos@uno4cinco.com">
-                                            <b>manuscritos@uno4cinco.com</b>
+                                        <a href="mailto: manuscritos@uno4cinco.com" class="sm-link sm-link_padding-bottom sm-link3">
+                                            <span class="sm-link__label">
+                                                <b>manuscritos@uno4cinco.com</b>
+                                            </span>
                                         </a>
                                     <br>
                                 </p>
