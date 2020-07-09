@@ -204,3 +204,10 @@
         display:flex;
     } 
 }
+@media(max-width: 1000px){
+    .blog_barra_busqueda{
+        margin-top: 0px;
+        margin:auto;
+        margin-top: 5px;
+    }
+}

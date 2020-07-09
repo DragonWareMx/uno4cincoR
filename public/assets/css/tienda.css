@@ -1,0 +1,97 @@
+.producto-tienda{
+    width: 228px;
+    height: 327px;
+    margin:auto;
+    margin-top: 59px;
+}
+
+.producto-tienda .titulo{
+    height: 41.6px;
+}
+
+.producto-tienda .titulo h1{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: #1D2120;
+}
+
+.producto-tienda .contenido-producto{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    align-items: center;
+}
+
+.producto-tienda .precio{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+}
+
+.producto-tienda .oferta{
+    text-decoration: line-through;
+    color: #BA1F00;
+    margin:0px;
+    margin-right: 10px;
+}
+
+.producto-tienda .contenido-producto img{
+    width: 29px;
+    height: 29px;
+}
+
+.producto-tienda button{
+    width: 100%;
+    background-color: transparent;
+    margin-top: 11px;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.85);
+
+    padding-top: 9px;
+    padding-bottom: 9px;
+
+    border: 1px solid #1D2120;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.producto-tienda button img{
+    transform: scaleX(-1);
+    width: 21px;
+    height: 19px;
+}
+
+.shrink:hover
+{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.95);
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
