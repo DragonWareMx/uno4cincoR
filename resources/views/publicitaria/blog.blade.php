@@ -22,7 +22,7 @@
 @section('content')
     <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
         {{-- TITTLE --}}
-        <p class="txt-TitulosApartados">Blogs</p>
+        <p class="txt-TitulosApartados">UN CHINGO DE LETRAS</p>
         <hr class="hr-Titulos-long">
         <hr class="hr-Titulos-small ">
         <br><br>
@@ -44,6 +44,20 @@
         </div>
         <div class="blogs_barra">
             <div class="blogs_vista">
+        
+                    <div class="blog_item">
+                        <div class="blog_item_imagen" style="background: url('') center center no-repeat;
+                                background-size: cover;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                -webkit-background-size: cover;">
+                        </div>
+                        <div class="blog_info">
+                            <div class="blog_info_titulo"> </div>
+                            <br>
+                            
+                        </div>
+                    </div>
                 
             </div>
             <div class="barra_lateral_blogs">

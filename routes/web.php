@@ -22,7 +22,10 @@ Route::get('/contacto','paginaInicioController@contacto')->name('contacto');
 Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobreNosotros');
 Route::get('/registro','paginaInicioController@registro')->name('registro');
 Route::get('/blogs','paginaBlogsController@index')->name('blogs');
-Route::get('/blog/{blog_id}','paginaBlogsController@show')->name('blog');
+Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
 Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
