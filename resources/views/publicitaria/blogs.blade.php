@@ -130,11 +130,64 @@
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
                                 -webkit-background-size: cover;">
+                            <div class="hover_blog_item_imagen">
+                                <div class="leer_mas_boton_blog">
+                                <a href="#">Leer más</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="blog_info">
                             <div class="blog_info_titulo"> {{Str::limit($blog->titulo,44)}}</div>
-                            {{Str::limit('autor autor autor autor',44)}}<br>
-                            {{Str::limit($blog->fecha,44)}}
+                            {{Str::limit($blog->autor,44)}}<br>
+                            @php
+                                $separa=explode("-",$blog->fecha);
+                                $anio=$separa[0];
+                                $mes=$separa[1];
+                                $dia=$separa[2];
+                            @endphp
+                            {{$dia}}&nbsp;
+                            @switch($mes)
+                                @case('01')
+                                    Enero&nbsp;
+                                    @break
+                                @case('02')
+                                    Febrero&nbsp;
+                                    @break
+                                @case('03')
+                                    Marzo&nbsp;
+                                    @break
+                                @case('04')
+                                    Abril&nbsp;
+                                    @break
+                                @case('05')
+                                    Mayo&nbsp;
+                                    @break
+                                @case('06')
+                                    Junio&nbsp;
+                                    @break
+                                @case('07')
+                                    Julio&nbsp;
+                                    @break
+                                @case('08')
+                                    Agosto&nbsp;
+                                    @break
+                                @case('09')
+                                    Septiembre&nbsp;
+                                    @break
+                                @case('10')
+                                    Octubre&nbsp;
+                                    @break
+                                @case('11')
+                                    Noviembre&nbsp;
+                                    @break
+                                @case('12')
+                                    Diciembre&nbsp;
+                                    @break
+                            @endswitch
+                            {{$anio}}
+                        </div>
+                        <div class="blog_info_contenido">
+                            {{Str::limit($blog->contenido,176)}}
                         </div>
                     </div>
                 @endforeach
