@@ -22,6 +22,8 @@ class booksTable extends Seeder
             'stockFisico'=>'0',
             'stockDigital'=>'1',
             'linkDescarga'=>'desordenes.txt',
+            'bannerImagen'=>'aless.PNG',
+            'tiendaImagen'=>'alessC.JPG',
             'sello_id'=>'1'
 
         ]);
@@ -37,6 +39,8 @@ class booksTable extends Seeder
             'stockFisico'=>'0',
             'stockDigital'=>'1',
             'linkDescarga'=>'manicomio.txt',
+            'bannerImagen'=>'estefania.PNG',
+            'tiendaImagen'=>'estefaniaC.JPG',
             'sello_id'=>'1'
         ]);
         
@@ -51,6 +55,8 @@ class booksTable extends Seeder
             'stockFisico'=>'0',
             'stockDigital'=>'1',
             'linkDescarga'=>'jordan.txt',
+            'bannerImagen'=>'cesar.PNG',
+            'tiendaImagen'=>'cesarC.JPG',
             'sello_id'=>'1'
         ]);
         
@@ -65,6 +71,8 @@ class booksTable extends Seeder
             'stockFisico'=>'0',
             'stockDigital'=>'1',
             'linkDescarga'=>'agustin.txt',
+            'bannerImagen'=>'agustin.PNG',
+            'tiendaImagen'=>'agustinC.JPG',
             'sello_id'=>'1'
         ]);
     }
