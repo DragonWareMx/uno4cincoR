@@ -30,7 +30,7 @@
 
 
         {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
-        <div id="carruselBlogs" class="carousel slide" data-ride="carousel">
+        <div id="carruselBlogs_blogs" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @php
                     $i=0; 
@@ -38,26 +38,26 @@
                 @foreach ($bannerBlogs as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
-                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
+                            <div class="img_carrusel_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
                                 background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
                                 -webkit-background-size: cover;">
 
-                                <div class="banner_blog_fecha">
+                                <div class="banner_blog_fecha_blogs">
                                     {{$banner->blog->fecha}}
                                 </div>
-                                <div class="banner_blog_titulo">
+                                <div class="banner_blog_titulo_blogs">
                                     {{$banner->blog->titulo}}
                                 </div>
                                 {{-- Este de abajo lo metí en dos divs para centrarlo, ya tengo sueño perdón :C --}}
-                                <div class="div_width_100">
-                                    <div class="banner_blog_contenido">
+                                <div class="div_width_100_blogs">
+                                    <div class="banner_blog_contenido_blogs">
                                         {{Str::limit($banner->blog->contenido,350)}}
                                     </div>
                                 </div>
-                                <div class="div_width_100">
-                                    <div class="banner_blog_boton">
+                                <div class="div_width_100_blogs">
+                                    <div class="banner_blog_boton_blogs">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
                                     </div>
                                 </div>
@@ -65,26 +65,26 @@
                         </div>
                     @else
                         <div class="carousel-item" >
-                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
+                            <div class="img_carrusel_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
                                 background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
                                 -webkit-background-size: cover;">
 
-                                <div class="banner_blog_fecha">
+                                <div class="banner_blog_fecha_blogs">
                                     {{$banner->blog->fecha}}
                                 </div>
-                                <div class="banner_blog_titulo">
+                                <div class="banner_blog_titulo_blogs">
                                     {{$banner->blog->titulo}}
                                 </div>
                                 {{-- Este de abajo lo metí en dos divs para centrarlo, ya tengo sueño perdón :C --}}
-                                <div class="div_width_100">
-                                    <div class="banner_blog_contenido">
+                                <div class="div_width_100_blogs">
+                                    <div class="banner_blog_contenido_blogs">
                                         {{Str::limit($banner->blog->contenido,350)}}
                                     </div>
                                 </div>
-                                <div class="div_width_100">
-                                    <div class="banner_blog_boton">
+                                <div class="div_width_100_blogs">
+                                    <div class="banner_blog_boton_blogs">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
                                     </div>
                                 </div>
@@ -95,11 +95,11 @@
                         $i++;
                     @endphp
                 @endforeach
-                <a class="carousel-control-prev flechasPosicion" data-target="#carruselBlogs" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                <a class="carousel-control-prev flechasPosicion" data-target="#carruselBlogs_blogs" data-slide="prev" style="cursor: pointer; cursor:hand;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next flechasPosicion" data-target="#carruselBlogs" data-slide="next" style="cursor: pointer; cursor:hand;">
+                <a class="carousel-control-next flechasPosicion" data-target="#carruselBlogs_blogs" data-slide="next" style="cursor: pointer; cursor:hand;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -202,7 +202,18 @@
                 @endforeach
             </div>
             <div class="barra_lateral_blogs">
-                
+                <div class="barra_tags_principales">
+                    <div style="width:100%"><a href="#">Eventos</a></div>
+                    <div style="width:100%"> <a href="#">Artículos</a></div>
+                    <div style="width:100%"> <a href="#">Noticias</a></div>
+                    <div style="width:100%"><a href="#">Todo</a></div>
+                </div>
+                <div class="barra_autores">
+                    <p class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
+                    @foreach ($authors as $author)
+                        <div style="width:100%"><a href="#">{{$author->nombre}}</a></div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
