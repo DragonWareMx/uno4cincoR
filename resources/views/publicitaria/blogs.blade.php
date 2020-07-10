@@ -138,65 +138,68 @@
                         </div>
                         <div class="blog_info">
                             <div class="blog_info_titulo"> {{Str::limit($blog->titulo,44)}}</div>
-                            @if ($blog->author_id && !$blog->autor)
-                                {{Str::limit($blog->author->nombre,44)}}
-                            @endif
-                            @if (!$blog->author_id && $blog->autor)
-                                {{Str::limit($blog->autor,44)}}
-                            @endif
-                            @if ($blog->author_id && $blog->autor)
-                                {{Str::limit($blog->autor,21)}}&nbsp;/&nbsp;{{Str::limit($blog->author->nombre,21)}}
-                            @endif
-                            <br>
-                            @php
-                                $separa=explode("-",$blog->fecha);
-                                $anio=$separa[0];
-                                $mes=$separa[1];
-                                $dia=$separa[2];
-                            @endphp
-                            {{$dia}}&nbsp;
-                            @switch($mes)
-                                @case('01')
-                                    Enero&nbsp;
-                                    @break
-                                @case('02')
-                                    Febrero&nbsp;
-                                    @break
-                                @case('03')
-                                    Marzo&nbsp;
-                                    @break
-                                @case('04')
-                                    Abril&nbsp;
-                                    @break
-                                @case('05')
-                                    Mayo&nbsp;
-                                    @break
-                                @case('06')
-                                    Junio&nbsp;
-                                    @break
-                                @case('07')
-                                    Julio&nbsp;
-                                    @break
-                                @case('08')
-                                    Agosto&nbsp;
-                                    @break
-                                @case('09')
-                                    Septiembre&nbsp;
-                                    @break
-                                @case('10')
-                                    Octubre&nbsp;
-                                    @break
-                                @case('11')
-                                    Noviembre&nbsp;
-                                    @break
-                                @case('12')
-                                    Diciembre&nbsp;
-                                    @break
-                            @endswitch
-                            {{$anio}}
+                            <div class="blog_info_autor">
+                                @if ($blog->author_id && !$blog->autor)
+                                    {{Str::limit($blog->author->nombre,44)}}
+                                @endif
+                                @if (!$blog->author_id && $blog->autor)
+                                    {{Str::limit($blog->autor,44)}}
+                                @endif
+                                @if ($blog->author_id && $blog->autor)
+                                    {{Str::limit($blog->autor,21)}}&nbsp;/&nbsp;{{Str::limit($blog->author->nombre,21)}}
+                                @endif
+                            </div>
+                            <div class="blog_info_fecha">
+                                @php
+                                    $separa=explode("-",$blog->fecha);
+                                    $anio=$separa[0];
+                                    $mes=$separa[1];
+                                    $dia=$separa[2];
+                                @endphp
+                                {{$dia}}&nbsp;
+                                @switch($mes)
+                                    @case('01')
+                                        Enero&nbsp;
+                                        @break
+                                    @case('02')
+                                        Febrero&nbsp;
+                                        @break
+                                    @case('03')
+                                        Marzo&nbsp;
+                                        @break
+                                    @case('04')
+                                        Abril&nbsp;
+                                        @break
+                                    @case('05')
+                                        Mayo&nbsp;
+                                        @break
+                                    @case('06')
+                                        Junio&nbsp;
+                                        @break
+                                    @case('07')
+                                        Julio&nbsp;
+                                        @break
+                                    @case('08')
+                                        Agosto&nbsp;
+                                        @break
+                                    @case('09')
+                                        Septiembre&nbsp;
+                                        @break
+                                    @case('10')
+                                        Octubre&nbsp;
+                                        @break
+                                    @case('11')
+                                        Noviembre&nbsp;
+                                        @break
+                                    @case('12')
+                                        Diciembre&nbsp;
+                                        @break
+                                @endswitch
+                                {{$anio}}
+                            </div>
                         </div>
                         <div class="blog_info_contenido">
-                            {{Str::limit($blog->contenido,176)}}
+                            {{Str::limit($blog->contenido,158)}}
                         </div>
                     </div>
                 @endforeach
@@ -209,9 +212,17 @@
                     <div style="width:100%"><a href="#">Todo</a></div>
                 </div>
                 <div class="barra_autores">
-                    <p class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
+                    <p id="desaparecer" class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
                     @foreach ($authors as $author)
-                        <div style="width:100%"><a href="#">{{$author->nombre}}</a></div>
+                        <div style="width:100%; margin-bottom:15px;"><a href="#">{{$author->nombre}}</a></div>
+                    @endforeach
+                </div>
+                <div id ="desaparecer" class="barra_autores">
+                    <p class="barra_autores_titulo">TAGS<hr class="hr_barra_autores"></p>
+                </div>
+                <div class="barra_tags">
+                    @foreach ($tags as $tag)
+                        <div class="barra_tags_tags"><a href="#">#{{Str::limit($tag->nombre,21)}}</a></div>
                     @endforeach
                 </div>
             </div>
