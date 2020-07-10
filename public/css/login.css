@@ -37,92 +37,10 @@ html, body{
     border-radius: 2rem;
   }
   
-  .form-label-group {
-    position: relative;
-    margin-bottom: 1rem;
-  }
-  
-  .form-label-group>input,
-  .form-label-group>label {
-    padding: var(--input-padding-y) var(--input-padding-x);
-    height: auto;
-    border-radius: 2rem;
-  }
-  
-  .form-label-group>label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    margin-bottom: 0;
-    /* Override default `<label>` margin */
-    line-height: 1.5;
-    color: #29B390;
-    cursor: text;
-    /* Match the input under the label */
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    transition: all .1s ease-in-out;
-  }
-  
-  .form-label-group input::-webkit-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input:-ms-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::-ms-input-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::-moz-placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input::placeholder {
-    color: transparent;
-  }
-  
-  .form-label-group input:not(:placeholder-shown) {
-    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-    padding-bottom: calc(var(--input-padding-y) / 3);
-  }
-  
-  .form-label-group input:not(:placeholder-shown)~label {
-    padding-top: calc(var(--input-padding-y) / 3);
-    padding-bottom: calc(var(--input-padding-y) / 3);
-    font-size: 14px;
-    color: #29B390;
-  }
   
   /* Fallback for Edge
   -------------------------------------------------- */
   
-  @supports (-ms-ime-align: auto) {
-    .form-label-group>label {
-      display: none;
-    }
-    .form-label-group input::-ms-input-placeholder {
-      color: #777;
-    }
-  }
-  
-  /* Fallback for IE
-  -------------------------------------------------- */
-  
-  @media all and (-ms-high-contrast: none),
-  (-ms-high-contrast: active) {
-    .form-label-group>label {
-      display: none;
-    }
-    .form-label-group input:-ms-input-placeholder {
-      color: #777;
-    }
-  }
-
   .form-login{
     width: 814px;
     height: 532px;
@@ -266,11 +184,254 @@ html, body{
   }
 
     
-  input:-webkit-autofill,
+  /* input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus
   input:-webkit-autofill
   {
      -webkit-box-shadow: 0 0 0px 1000px #16192E inset!important;
      color: #FFFFFF !important;
+  } */
+
+  
+  .centered {
+    width: 100%;
+    height: 90px;
+    margin: auto;
   }
+  
+.group {
+  width: 100%;
+  height: 61.832px;
+  overflow: hidden;
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 20.6106666667px;
+  color: #29B390;
+  font: 400 20.6106666667px Karla;
+  cursor: text;
+  transition: .25s ease;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: 20.6106666667px;
+  border: none;
+  border-radius: 0;
+  color: white;
+  background: transparent;
+  font-size: 20.6106666667px;
+  transition: .3s ease;
+}
+input:valid ~ label {
+  top: 0;
+  font: 700 12.3664px Roboto;
+  color: #29B390;
+}
+input:focus {
+  outline: none;
+}
+input:focus ~ label {
+  top: 0;
+  font: 700 12.3664px Karla;
+  color: #29B390;
+}
+input:focus ~ .bar:before {
+  transform: translateX(0);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #16192E inset;
+  -webkit-text-fill-color: white !important;
+}
+
+.bar {
+  background: rgba(255, 255, 255, 0.5);
+  content: '';
+  width: 309.16px;
+  height: 2.0610666667px;
+  transition: .3s ease;
+  position: relative;
+}
+.bar:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: #29B390;
+  transform: translateX(-100%);
+}
+
+::selection {
+  background: rgba(33, 150, 243, 0.3);
+}
+
+.error-login{
+  font-family: Karla;
+  color: #29B390;
+  font-size: 12px;
+}
+
+.container-logo{
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.container-logo img{
+  width: 300px;
+}
+
+@media (max-width: 900px) {
+  .cont-der{
+    height: 100% !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .container-fluid{
+    height: 100% !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    position: relative !important;
+  }
+
+  .form-login,
+  .login{
+    height: 100% !important;
+  }
+  .no-gutter{
+    height: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+
+  }
+  .container{
+    padding-left: 30px !important;
+  }
+
+  .footer-login{
+    margin-bottom: 0px !important;
+  }
+  body,
+  .fondo-login{
+    background-color: #16192E !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .logo-login{
+    width: 200px !important;
+  }
+
+  .parrafo-login{
+    width: 200px !important;
+  }
+
+  .linea-login{
+    width: 250px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .container-logo{
+    display: flex !important;
+  }
+  .container{
+    width: 640px !important;
+  }
+  .login{
+    flex-wrap: wrap;
+  }
+  .footer-login{
+    width: 250px;
+  }
+  .centered,
+  .login-heading{
+    width: 380px;
+  }
+  .login-heading{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 579px) {
+  .container-logo{
+    display: flex !important;
+  }
+  .container{
+    width: 100% !important;
+  }
+  .login{
+    flex-wrap: wrap;
+  }
+  .footer-login{
+    width: auto;
+  }
+  .centered,
+  .login-heading{
+    width: 100% !important;
+  }
+  .group{
+    width: fit-content;
+  }
+  .centered{
+    width: 100% !important;
+    height: 90px !important;
+    margin: auto !important;
+  }
+  .login-heading{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .centered,
+  .login-heading,
+  .error-login{
+    padding-left: 15px !important;
+  }
+}
+
+@media (max-width: 414px) {
+  .centered,
+  .login-heading,
+  .error-login{
+    padding-left: 30px ;
+  }
+}
+
+@media (max-width: 321px) {
+  .centered,
+  .login-heading,
+  .error-login{
+    padding-left: 4px !important;
+  }
+  .container-logo img{
+    width: 200px !important;
+  }
+  .login-heading,
+  .centered{
+    width: 300px !important;
+  }
+  .group{
+    width: 290px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .centered,
+  .login-heading,
+  .error-login{
+    padding-left: 10px ;
+  }
+  .container-logo img{
+    width: 300px ;
+  }
+}
