@@ -366,29 +366,25 @@
     .barra_lateral_blogs{
         width: 100%;
         display: flex;
-        background-color: yellow;
     }
     .hr_barra_autores{
         display:none;
     }
     .barra_tags_principales{
         width: 20%;
-        background-color: tomato;
-        max-height: 300px;
+        max-height: 150px;
     }
     .barra_autores{
-        background-color: turquoise;
         width: 40%;
-        max-height: 300px;
+        max-height: 150px;
     }
     #desaparecer{
         display:none;
     }
     .barra_tags{
         width: 40%;
-        background-color: violet;
         overflow-y: scroll;
-        max-height: 300px;
+        max-height: 150px;
     }
 }
 @media(max-width: 950px){
