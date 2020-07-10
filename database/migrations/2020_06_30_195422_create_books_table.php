@@ -26,6 +26,8 @@ class CreateBooksTable extends Migration
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
             $table->text('linkDescarga');
+            $table->text('bannerImagen');
+            $table->text('tiendaImagen');
             $table->unsignedBigInteger('sello_id');
             $table->foreign('sello_id')
                 ->references('id')

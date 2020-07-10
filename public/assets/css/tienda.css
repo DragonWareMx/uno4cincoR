@@ -1,8 +1,84 @@
 .producto-tienda{
+    position: relative;
     width: 228px;
     height: 327px;
     margin:auto;
     margin-top: 59px;
+}
+
+.producto-tienda .imagen{
+    width: 228px;
+    height: 228px;
+    cursor: pointer;
+}
+
+.producto-tienda .imagen img{
+    width: 100%;
+    height: 100%;
+}
+
+.producto-tienda .info-libro{
+    position: absolute;
+    top: 0px;
+    width: 228px;
+    height: 228px;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.658); /* Black background with 0.5 opacity */
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+.producto-tienda .info-libro .info{
+    width: 90%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.producto-tienda .info-libro .info h1{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+    color: #f1f1f1;
+}
+
+.producto-tienda .info-libro .info h1 b{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    color: #ffe65b;
+}
+
+.producto-tienda .info-libro .info p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    color: #f1f1f1;
+
+    margin-bottom: 10px;
+}
+
+.producto-tienda .img-oferta{
+    position: absolute;
+    top: 0px;
+    right: -35px;
+}
+
+.producto-tienda .img-oferta img{
+    width: 53px;
+    height: 53px;
 }
 
 .producto-tienda .titulo{
@@ -95,3 +171,19 @@
     -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
 }
+
+.carrusel-tienda{
+    width: 100% !important;
+    margin-bottom: 33px;
+}
+
+.carrusel-tienda:hover{
+    width: 100% !important;
+}
+
+.non-selectable {
+    -moz-user-select: none; 
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+ }
