@@ -138,7 +138,16 @@
                         </div>
                         <div class="blog_info">
                             <div class="blog_info_titulo"> {{Str::limit($blog->titulo,44)}}</div>
-                            {{Str::limit($blog->autor,44)}}<br>
+                            @if ($blog->author_id && !$blog->autor)
+                                {{Str::limit($blog->author->nombre,44)}}
+                            @endif
+                            @if (!$blog->author_id && $blog->autor)
+                                {{Str::limit($blog->autor,44)}}
+                            @endif
+                            @if ($blog->author_id && $blog->autor)
+                                {{Str::limit($blog->autor,21)}}&nbsp;/&nbsp;{{Str::limit($blog->author->nombre,21)}}
+                            @endif
+                            <br>
                             @php
                                 $separa=explode("-",$blog->fecha);
                                 $anio=$separa[0];
