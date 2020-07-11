@@ -43,6 +43,12 @@
                     {{ $message }}
                   </div>
                     @enderror
+
+                  @if (session('status'))  
+                  <div class="error-login" role="alert">
+                      {{ session('status') }}
+                  </div>
+                  @endif
   
                   <div style="width: 100%;display:flex;justify-content:center;">
                     <button class="button-login" type="submit">Enviar correo</button>
