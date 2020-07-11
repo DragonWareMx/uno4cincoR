@@ -69,7 +69,7 @@
                                 echo 'ocultoIndex';
                             @endphp
                             " style=" height: 80px;display: flex;align-items: center;">
-                            <img class="" src="{{ asset('img/ico/puerta.png') }}" alt="" srcset="" height="40px" style="vertical-align: middle;margin: auto;">
+                            <img src="{{ asset('/img/ico/puerta.png') }}" alt="" srcset="" height="40px" style="vertical-align: middle;margin: auto;">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

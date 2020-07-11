@@ -10,15 +10,32 @@ use App\Banner;
 
 class paginaBlogsController extends Controller
 {
-    public function index(){
-        
-        $blogs=Blog::get();
-        $bannerBlogs=Banner::where('tipo','blog')->get();
-        $authors=Author::get();
-        $tags=Tag::get();
-
-        //dd($BannerLibros,$BannerAutores,$Libros,$Autores);
-        return view('publicitaria.blogs',['blogs'=>$blogs,'authors'=>$authors,'bannerBlogs'=>$bannerBlogs,'tags'=>$tags]);
+    public function index(Request $request){
+        $tipo=$request->tipo;
+        $id=$request->id;
+        if($tipo){
+            if($tipo=='autor'){
+                $blogs=Blog::where('author_id',$id)->paginate(10);
+                $bannerBlogs=Banner::where('tipo','blog')->get();
+                $authors=Author::get();
+                $tags=Tag::get();
+                return view('publicitaria.blogs',['blogs'=>$blogs,'authors'=>$authors,'bannerBlogs'=>$bannerBlogs,'tags'=>$tags]);
+            }
+            if($tipo=='tag'){
+                $blogs=Blog::where('author_id',$id)->paginate(10);
+                $bannerBlogs=Banner::where('tipo','blog')->get();
+                $authors=Author::get();
+                $tags=Tag::get();
+                return view('publicitaria.blogs',['blogs'=>$blogs,'authors'=>$authors,'bannerBlogs'=>$bannerBlogs,'tags'=>$tags]);
+            }
+        }
+        else{
+            $blogs=Blog::paginate(10);
+            $bannerBlogs=Banner::where('tipo','blog')->get();
+            $authors=Author::get();
+            $tags=Tag::get();
+            return view('publicitaria.blogs',['blogs'=>$blogs,'authors'=>$authors,'bannerBlogs'=>$bannerBlogs,'tags'=>$tags]);
+        }
     }
     public function show($id){
         $blog=Blog::findOrFail($id);

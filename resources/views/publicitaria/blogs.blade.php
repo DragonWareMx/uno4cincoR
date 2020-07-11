@@ -203,6 +203,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="blogs_paginacion">
+                    <div class="paginacion_css">{{ $blogs->links()}}</div>
+                </div>
             </div>
             <div class="barra_lateral_blogs">
                 <div class="barra_tags_principales">
@@ -214,7 +217,7 @@
                 <div class="barra_autores">
                     <p id="desaparecer" class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
                     @foreach ($authors as $author)
-                        <div style="width:100%; margin-bottom:15px;"><a href="#">{{$author->nombre}}</a></div>
+                        <div style="width:100%; margin-bottom:15px;"><a href="{{ route('blogs', ['id' => $author->id, 'tipo' => 'autor'])}}">{{$author->nombre}}</a></div>
                     @endforeach
                 </div>
                 <div id ="desaparecer" class="barra_autores">
@@ -222,7 +225,7 @@
                 </div>
                 <div class="barra_tags">
                     @foreach ($tags as $tag)
-                        <div class="barra_tags_tags"><a href="#">#{{Str::limit($tag->nombre,21)}}</a></div>
+                        <div class="barra_tags_tags"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">#{{Str::limit($tag->nombre,21)}}</a></div>
                     @endforeach
                 </div>
             </div>
