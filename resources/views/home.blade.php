@@ -15,6 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <form id="frm-logout" action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button>Cerrar sesion</button>
+                    </form>
                 </div>
             </div>
         </div>
