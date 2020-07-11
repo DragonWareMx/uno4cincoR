@@ -1,7 +1,7 @@
 .producto-tienda{
     position: relative;
     width: 228px;
-    height: 327px;
+    height: 354px;
     margin:auto;
     margin-top: 59px;
 }
@@ -187,3 +187,61 @@
     -ms-user-select: none;
     user-select: none; 
  }
+ 
+ .tooltip-inner {
+    max-width: 300px !important;
+    text-align: left !important;
+}
+
+.paginate-tienda{
+    width: 100%;
+    margin-top: 18px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: #4E5251;
+    background-color: transparent !important;
+    border: 0.5px solid #29B390;
+    border-radius: 0px !important;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    color: #4E5251 !important;
+    background-color: rgba(255, 255, 255, 0.11) !important;
+    border: 0.5px solid #29B390 !important;
+    border-radius: 0px !important;
+}
+
+.pagination .disabled span{
+    border-color: #29b3915b !important;
+}
+
+.pagination a:hover{
+    border-color: #0000005b !important;
+    color: #4E5251 !important;
+}
+
+.pagination .disabled span{
+    color: #29b3915b !important;
+}
+
+
+.prev-tienda{
+    font-family: sans-serif !important;
+    color: #29B390 !important;
+}
+
+.hr-tienda{
+    width: 90%;
+    max-width: 1169px;
+    border-top: 0.3px solid #1D2120;
+}

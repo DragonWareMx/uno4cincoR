@@ -131,7 +131,7 @@
                     </div>
 
                     <!--icono de oferta-->
-                    @if($book->descuentoFisico > 0 && $book->descuentoDigital > 0)
+                    @if($book->descuentoFisico > 0 || $book->descuentoDigital > 0)
                         <div class="img-oferta">
                             <img src="{{asset('img/ico/oferta.PNG')}}">
                         </div>
@@ -143,17 +143,61 @@
                     </div>
 
                     <!--precio e icono de nuevo-->
-                    <div class="contenido-producto">
-                        <div class="precio">
-                            @if($book->descuentoFisico > 0)
+                    <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="
+                    Precio Físico: ${{$book->precioFisico - $book->precioFisico*($book->descuentoFisico/100)}} @if($book->descuentoFisico > 0)(con descuento)@endif<br> Precio Digital: ${{$book->precioDigital - $book->precioDigital*($book->descuentoDigital/100)}} @if($book->descuentoDigital > 0)(con descuento)@endif">
+                        <div class="precio" style="cursor: default;">
+                            @php
+                                //SI EXISTE UN DESCUENTO FÍSICO Y DIGITAL MUESTRA EL RESULTADO CON MENOR COSTO
+                            @endphp
+                            @if($book->descuentoFisico > 0 && $book->descuentoDigital > 0)
+                            @php
+                                $precio1 = $book->precioFisico - $book->precioFisico*($book->descuentoFisico/100);
+                                $precio2 = $book->precioDigital - $book->precioDigital*($book->descuentoDigital/100);
+                            @endphp
+                                @if($precio1 < $precio2)
+                                    <div class="oferta">
+                                        ${{$book->precioFisico}}
+                                    </div>
+                                    @php
+                                        $precio = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico/100));
+                                    @endphp
+                                    ${{$precio}}
+                                @else
+                                    <div class="oferta">
+                                        ${{$book->precioDigital}}
+                                    </div>
+                                    @php
+                                        $precio = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital/100));
+                                    @endphp
+                                    ${{$precio}}
+                                @endif
+                            @elseif($book->descuentoFisico > 0)
                                 <div class="oferta">
                                     ${{$book->precioFisico}}
                                 </div>
+                                @php
+                                    $precio = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico/100));
+                                @endphp
+                                ${{$precio}}
+                            @elseif($book->descuentoDigital > 0)
+                                <div class="oferta">
+                                    ${{$book->precioDigital}}
+                                </div>
+                                @php
+                                    $precio = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital/100));
+                                @endphp
+                                ${{$precio}}
+                            @else
+                                @php
+                                    $precio1 = $book->precioFisico;
+                                    $precio2 = $book->precioDigital;
+                                @endphp
+                                @if ($precio1 < $precio2)
+                                    ${{$precio1}}
+                                @else
+                                    ${{$precio2}}
+                                @endif
                             @endif
-                            @php
-                                $precio = $book->precioFisico - ($book->precioFisco*$book->descuentoFisico);
-                            @endphp
-                            ${{$precio}}
                         </div>
                         <img src="{{asset('img/ico/signo!.PNG')}}">
                     </div>
@@ -171,6 +215,14 @@
             </div>
         @endif
     @endforeach
+
+    <div class="paginate-tienda">
+        <div style="width: fit-content; margin:auto;">
+        {{ $books->links() }}
+        </div>
+    </div>
+
+    <hr class="hr-tienda">
 </div>
 
 <!--Muestra la info de los libros-->
@@ -183,5 +235,11 @@
             x.style.opacity = "0";
         }
     }
+</script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 @endsection
