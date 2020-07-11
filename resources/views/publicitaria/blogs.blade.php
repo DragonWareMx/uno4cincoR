@@ -126,6 +126,7 @@
                 @foreach ($blogs as $blog)
                     <div class="blog_item">
                         <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;
+                                background-color:#717171;
                                 background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
@@ -209,13 +210,31 @@
             </div>
             <div class="barra_lateral_blogs">
                 <div class="barra_tags_principales">
-                    <div style="width:100%"><a href="#">Eventos</a></div>
-                    <div style="width:100%"> <a href="#">Artículos</a></div>
-                    <div style="width:100%"> <a href="#">Noticias</a></div>
-                    <div style="width:100%"><a href="#">Todo</a></div>
+                    @foreach ($tags as $tag)
+                        @if ($tag->nombre=='Eventos')
+                            <div style="width:100%"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Eventos</a></div>
+                        @endif
+                        @if ($tag->nombre=='Artículos')
+                            <div style="width:100%"> <a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Artículos</a></div>
+                        @endif
+                        @if ($tag->nombre=="Noticias")
+                            <div style="width:100%"> <a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Noticias</a></div>
+                        @endif
+                    @endforeach
+                    <div style="width:100%"><a href="{{ route('blogs', ['id' => 0])}}">Todo</a></div>
                 </div>
                 <div class="barra_autores">
                     <p id="desaparecer" class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
+                    @foreach ($authors2 as $author2)
+                        @if ($author2->autor == 'Redacción')
+                            <div style="width:100%; margin-bottom:15px;"><a href="{{ route('blogs', ['id'=>0 ,'nombre' => $author2->autor, 'tipo' => 'autor2'])}}">{{$author2->autor}}</a></div>
+                        @endif
+                    @endforeach
+                    @foreach ($authors2 as $author2)
+                        @if ($author2->autor != 'Redacción')
+                            <div style="width:100%; margin-bottom:15px;"><a href="{{ route('blogs', ['id'=>0 ,'nombre' => $author2->autor, 'tipo' => 'autor2'])}}">{{$author2->autor}}</a></div>
+                        @endif
+                    @endforeach
                     @foreach ($authors as $author)
                         <div style="width:100%; margin-bottom:15px;"><a href="{{ route('blogs', ['id' => $author->id, 'tipo' => 'autor'])}}">{{$author->nombre}}</a></div>
                     @endforeach

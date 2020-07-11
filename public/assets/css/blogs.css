@@ -186,7 +186,6 @@
 }
 .blog_item:hover{
     cursor: pointer;
-    box-shadow: 9px 7px 21px -9px rgba(0,0,0,0.75);
     transition: ease-in 0.3s;
 }
 .blog_item:hover .hover_blog_item_imagen{
@@ -230,7 +229,7 @@
 .barra_tags_principales{
     width: 80%;
     height: 150px;
-    margin-bottom: 0px;
+    margin-bottom: 7.5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -278,6 +277,7 @@
 }
 .barra_tags{
     width: 100%;
+    max-height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
