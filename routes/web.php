@@ -24,6 +24,7 @@ Route::get('/registro','paginaInicioController@registro')->name('registro');
 Route::get('/blogs','paginaBlogsController@index')->name('blogs');
 Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
 Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
+Route::get('/autores-uno4cinco','paginaAutoresController@uno4cinco')->name('autoresUno4cinco');
 
 
 Auth::routes();

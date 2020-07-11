@@ -1,0 +1,98 @@
+.txt-descripApartado{
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;        
+    font-size: 20px;
+    line-height: 23px;
+    color: #1D2120;
+    
+}
+.OPbusqueda_clasificacion{
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;        
+    font-size: 14px;
+    line-height: 23px;
+    color: rgba(29, 33, 32, 0.63);
+}
+
+.div_ContenedorAutores{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.div_autoresTotal{
+    width: 305px;
+    height: 231px;
+    background: #1D2120;
+    text-align: center;
+    margin-bottom: 4%;
+}
+.txt_nombreAutor{
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    padding: 4%;
+}
+.img_autoresGral{
+    width: 100%; 
+    height:80%;
+    display: flex;
+}
+.hover_autores_item_imagen{
+    transition: all 0.3s !important;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(29, 33, 32, 0.64);
+}
+.img_autoresGral:hover .hover_autores_item_imagen {
+    transition: all 0.3s !important;
+    cursor: pointer;
+    display: flex;
+}
+.leer_mas_boton_autores{
+    transition: all 0.3s !important;
+    color: white;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 38px;
+    padding: auto;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.leer_mas_boton_autores a{
+    color: white !important;
+    text-emphasis: none;
+    text-decoration: none;
+    text-transform: none;
+}
+.leer_mas_boton_autores:hover{
+    width: 55%;
+    transition: all 0.3s !important;
+}
