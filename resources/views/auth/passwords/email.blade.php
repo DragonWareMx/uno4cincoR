@@ -26,7 +26,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-10 mx-auto">
-                <h3 class="login-heading mb-4">Recuperar contraseña</h3>
+                <h3 class="login-heading mb-4" style="font-size: 20px">Recuperar contraseña</h3>
                 <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                   <div class="centered">
