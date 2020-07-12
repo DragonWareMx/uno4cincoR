@@ -14,7 +14,7 @@
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
     {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Tienda | Estos poemas culeros que son lo menos culero que tengo</p>
+    <p class="txt-TitulosApartados">Tienda | {{ $book->titulo }}</p>
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     
@@ -24,31 +24,85 @@
             <div class="libro-tabla">
                 <div class="libro-cell libro-cell-md libro-cell-head">
                     <div class="libro-fotos">
-                        <img src="{{asset('storage/libros/agustinC.JPG')}}">
+                        <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
                         {{-- Aqui debe ir el slider --}}
                     </div>
                 </div>
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
                     <div class="libro-info">
-                        <p><b>Autor: </b>José Agustín Solórzano</p>
-                        <p><b>Género: </b>Comedia :v</p>
+                        @if (count($book->authors) > 1)
+                            <p><b>Autores: </b>
+                        @else
+                            <p><b>Autor: </b>
+                        @endif
+                            @php
+                                $contador = 1;
+                                $cantAutores = count($book->authors);
+                            @endphp
+                            @foreach ($book->authors as $author)
+                                @if ($contador == 1)
+                                    {{$author->nombre}}
+                                @elseif($contador == $cantAutores)
+                                    y {{$author->nombre}}
+                                @else
+                                    , {{$author->nombre}}
+                                @endif
+                                @php
+                                    $contador++;
+                                @endphp
+                            @endforeach
+                        </p>
+                        @if (count($book->genres) > 1)
+                            <p><b>Géneros: </b>
+                        @else
+                            <p><b>Género: </b>
+                        @endif
+                            @php
+                                $contador = 1;
+                                $cantGeneros = count($book->genres);
+                            @endphp
+                            @foreach ($book->genres as $genre)
+                                @if ($contador == 1)
+                                    {{$genre->nombre}}
+                                @elseif($contador == $cantGeneros)
+                                    y {{$genre->nombre}}
+                                @else
+                                    , {{$genre->nombre}}
+                                @endif
+                                @php
+                                    $contador++;
+                                @endphp
+                            @endforeach
+                        </p>
                         <p><b>Fecha de publicación: </b>2 de Agoso de 2019</p>
                         <p><b>Número de páginas: </b>523</p>
-                        <p><b>Editorial: </b>uno4cinco</p>
-                        <p><b>Formato: </b>Físico</p>
+                        <p><b>Editorial: </b>{{ $book->sello->nombre }}</p>
+                        <p><b>Formato: </b>
+                            @if ($book->stockFisico > 0 && $book->stockDigital > 0)
+                                Físico y Digital
+                            @elseif($book->stockFisico > 0)
+                                Físico
+                            @elseif($book->stockDigital > 0)
+                                Digital
+                            @else
+                                No disponible en ningún formato
+                            @endif
+                        </p>
+
+                        <h4>Sinposis</h4>
 
                         {{-- Contenido del libro --}}
                         <p>
-                            << Lorem ipsum dolor sit amet consectetur adipiscing elit, 
-                            quis at sollicitudin magna phasellus lacus tempus hac, primis ad morbi tortor interdum placerat. 
-                            Tellus platea eros dictum maecenas cubilia cursus pellentesque dictumst at, sagittis ad tortor 
-                            massa torquent tincidunt ante ultrices fringilla vitae, per pharetra rhoncus congue gravida 
-                            feugiat laoreet nisl. Fames congue rutrum montes velit imperdiet euismod neque mollis, vehicula 
-                            convallis aptent massa >>
+                            @if (strlen($book->sinopsis) > 460)
+                                <span id="dots1"><< </span>
+                            @endif
+                            {{-- DISCULPEN LA BASURA DE IDENTACION EN ESTA PARTE PERO ES NECESARIO QUE ESTE EN UNA SOLA LINEA XD --}}
+                            {{ Str::limit($book->sinopsis, 460, '') }}@if (strlen($book->sinopsis) > 460)<span id="dots2"> >></span><span id="more">{{ substr($book->sinopsis, 460) }}</span>
+                            @endif
                         </p>
-                        <p class="leer-mas">
-                            Leer más
-                        </p>
+                        @if (strlen($book->sinopsis) > 460)
+                            <button onclick="myFunction()" id="myBtn" class="leer-mas">Leer más</button>
+                        @endif
                     </div>
                 </div>
                 <div class="libro-cell libro-cell-md libro-cell-middle">
@@ -56,7 +110,31 @@
                         <div class="comprar">
                             {{-- PRECIOS --}}
                             {{-- FISICO --}}
+                            <div class="formato">
+                                <p style="padding-top: 20px;">Formato Físico:</p>
+                            </div>
+                            <div class="precio">
+                                <div class="oferta">
+                                    $278.57
+                                </div>
 
+                                $240.00
+                            </div>
+
+                            {{-- AHORRO (EN CASO DE OFERTA) --}}
+                            <div class="ahorro">
+                                <p>Ahorras: $38.57</p>
+                            </div>
+
+                            {{-- DISPONIBILIDAD --}}
+                            <div class="disponibilidad">
+                                <p style="color: #29B390;">Disponible</p>
+                            </div>
+
+                            {{-- DIGITAL --}}
+                            <div class="formato">
+                                <p style="padding-top: 7px;">Formato Digital:</p>
+                            </div>
                             <div class="precio">
                                 <div class="oferta">
                                     $278.57
@@ -97,4 +175,25 @@
     
 
 </section>
+
+<script>
+    function myFunction() {
+        var dots1 = document.getElementById("dots1");
+        var dots2 = document.getElementById("dots2");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots1.style.display === "none") {
+            dots1.style.display = "inline";
+            dots2.style.display = "inline";
+            btnText.innerHTML = "Leer más";
+            moreText.style.display = "none";
+        } else {
+            dots1.style.display = "none";
+            dots2.style.display = "none";
+            btnText.innerHTML = "Leer menos";
+            moreText.style.display = "inline";
+        }
+    }
+</script>
 @endsection

@@ -64,6 +64,10 @@
 .libro-info .leer-mas{
     color: #29B390;
     text-decoration: underline;
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+    outline: none;
 }
 
 .libro-comprar{
@@ -80,6 +84,22 @@
     text-align: center;
 }
 
+.libro-comprar .formato p{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+
+    width: fit-content;
+    margin: auto;
+}
+
 .libro-comprar .comprar .precio{
     display: flex;
     font-family: Karla;
@@ -92,7 +112,7 @@
 
     color: rgba(29, 33, 32, 0.81);
 
-    padding-top: 20px;
+    padding-top: 7px;
     width: fit-content;
     margin: auto;
 }
@@ -117,7 +137,7 @@
 
     color: #1D2120;
 
-    margin-top: 16px;
+    margin-top: 7px;
 }
 
 .libro-comprar .disponibilidad{
@@ -231,6 +251,21 @@
     transition-duration: .1s, .1s;
     -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+#more  {
+    display:  none;
+    -webkit-animation: slide-down 1s ease-out;
+    -moz-animation: slide-down 1s ease-out;
+}
+
+@-webkit-keyframes slide-down {
+      0% { opacity: 0; -webkit-transform: translateY(-100%); }   
+    100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@-moz-keyframes slide-down {
+      0% { opacity: 0; -moz-transform: translateY(-100%); }   
+    100% { opacity: 1; -moz-transform: translateY(0); }
 }
 
 @media(max-width: 1200px){

@@ -14,7 +14,8 @@ class paginaTiendaController extends Controller
         return view('publicitaria.tiendaNovedades', ['banners'=>$banners, 'books'=>$books]);
     }
 
-    public function libro(){
-        return view('publicitaria.libro');
+    public function libro($id){
+        $book = Book::find($id);
+        return view('publicitaria.libro', ['book' => $book]);
     }
 }
