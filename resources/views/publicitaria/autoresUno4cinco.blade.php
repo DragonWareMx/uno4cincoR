@@ -95,9 +95,12 @@
         </form>
     </div>
     
+
+    
     <div class="div_ContenedorAutores">
+        @foreach($autoruno4cinco as $uno4cinco)
         <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
+            <div  class="img_autoresGral" style="background: url('{{asset('storage/autores/'.$uno4cinco->foto)}}') center center no-repeat;
             background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -109,83 +112,9 @@
                 </div>
             </div> 
             {{-- {{Str::limit($blog->titulo,44)}} --}}
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
+            <p class="txt_nombreAutor">{{Str::limit($uno4cinco->nombre,30)}}<p>
         </div>
-
-        <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
-            background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="hover_autores_item_imagen">
-                    <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
-                    </div>
-                </div>
-            </div> 
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
-        </div>
-
-        <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
-            background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="hover_autores_item_imagen">
-                    <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
-                    </div>
-                </div>
-            </div> 
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
-        </div>
-
-        <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
-            background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="hover_autores_item_imagen">
-                    <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
-                    </div>
-                </div>
-            </div> 
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
-        </div>
-
-        <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
-            background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="hover_autores_item_imagen">
-                    <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
-                    </div>
-                </div>
-            </div> 
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
-        </div>
-
-        <div class="div_autoresTotal">
-            <div  class="img_autoresGral" style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
-            background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -webkit-background-size: cover;">
-                <div class="hover_autores_item_imagen">
-                    <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
-                    </div>
-                </div>
-            </div> 
-            <p class="txt_nombreAutor">José Agustín Solórzano<p>
-        </div>
+        @endforeach
     </div>
     
     
