@@ -13,4 +13,8 @@ class paginaTiendaController extends Controller
         $books = Book::paginate(12);
         return view('publicitaria.tiendaNovedades', ['banners'=>$banners, 'books'=>$books]);
     }
+
+    public function libro(){
+        return view('publicitaria.libro');
+    }
 }

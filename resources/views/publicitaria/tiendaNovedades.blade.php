@@ -146,9 +146,7 @@
                     <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="
                     Precio Físico: ${{$book->precioFisico - $book->precioFisico*($book->descuentoFisico/100)}} @if($book->descuentoFisico > 0)(con descuento)@endif<br> Precio Digital: ${{$book->precioDigital - $book->precioDigital*($book->descuentoDigital/100)}} @if($book->descuentoDigital > 0)(con descuento)@endif">
                         <div class="precio" style="cursor: default;">
-                            @php
-                                //SI EXISTE UN DESCUENTO FÍSICO Y DIGITAL MUESTRA EL RESULTADO CON MENOR COSTO
-                            @endphp
+                            {{-- SI EXISTE UN DESCUENTO FÍSICO Y DIGITAL MUESTRA EL RESULTADO CON MENOR COSTO --}}
                             @if($book->descuentoFisico > 0 && $book->descuentoDigital > 0)
                             @php
                                 $precio1 = $book->precioFisico - $book->precioFisico*($book->descuentoFisico/100);

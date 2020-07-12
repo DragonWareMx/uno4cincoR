@@ -1,0 +1,255 @@
+.libro-tabla{
+    width: 90%;
+    max-width: 1440px;
+    margin: auto;
+    display: table;
+    margin-top: 30px;
+}
+
+.libro-tabla .libro-cell{
+    width: fit-content;
+    vertical-align: top;
+}
+
+.libro-cell-head{
+    display: table-cell;
+}
+
+.libro-cell-middle{
+    display: table-cell;
+}
+
+.libro-cell-footer{
+    display: table-cell;
+}
+
+.libro-cell-md{
+    width: 25% !important;
+}
+
+.libro-cell-lg{
+    width: 50% !important;
+}
+
+.libro-fotos{
+    width: 100%;
+    height: fit-content;
+}
+
+.libro-fotos img{
+    width: 288px;
+    height: 306px;
+}
+
+.libro-info{
+    width: 100%;
+    height: fit-content;
+}
+
+.libro-info p{
+    width: 100%;
+    padding-right: 29px;
+    text-align: justify;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+    margin-bottom: 14px;
+}
+
+.libro-info .leer-mas{
+    color: #29B390;
+    text-decoration: underline;
+}
+
+.libro-comprar{
+    width: 100%;
+    height: fit-content;
+    border: 1px solid #29B390;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.libro-comprar .comprar{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.libro-comprar .comprar .precio{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+
+    padding-top: 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+.libro-comprar .comprar .oferta{
+    text-decoration: line-through;
+    color: #BA1F00;
+    margin:0px;
+    margin-right: 10px;
+}
+
+.libro-comprar .ahorro{
+    width: 100%;
+}
+
+.libro-comprar .ahorro p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #1D2120;
+
+    margin-top: 16px;
+}
+
+.libro-comprar .disponibilidad{
+    width: 100%;
+}
+
+.libro-comprar .disponibilidad p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.libro-comprar .mensaje{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.libro-comprar .mensaje p,
+.libro-comprar .mensaje a{
+    font-family: Karla;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.libro-comprar .mensaje p{
+    color: #1D2120;
+    font-weight: normal;
+}
+
+.libro-comprar .mensaje a{
+    color: #29B390;
+    font-weight: bold;
+}
+
+.libro-comprar .carrito-button {
+    width: 226px;
+    background-color: transparent;
+    margin-bottom: 12px;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.85);
+
+    padding-top: 9px;
+    padding-bottom: 9px;
+
+    border: 1px solid #1D2120;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    outline: none;
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.libro-comprar .carrito-button img{
+    transform: scaleX(-1);
+    width: 21px;
+    height: 19px;
+}
+
+.libro-comprar .comprar-button {
+    width: 226px;
+    background-color: transparent;
+    margin-bottom: 22px;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: rgba(255, 255, 255, 0.85);
+
+    padding-top: 9px;
+    padding-bottom: 9px;
+    
+    background: #1D2120;
+    border-radius: 5px;
+    border: 1px solid #1D2120;
+    box-sizing: border-box;
+
+    outline: none;
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.shrink:hover
+{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.95);
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+@media(max-width: 1200px){
+    .libro-cell-head{
+        display: table-header-group;
+    }
+    
+    .libro-cell-middle{
+        display: table-row;
+    }
+    
+    .libro-cell-footer{
+        display: table-footer-group;
+    }
+    .libro-cell-md{
+        width: 100% !important;
+    }
+    
+    .libro-cell-lg{
+        width: 100% !important;
+    }
+}
