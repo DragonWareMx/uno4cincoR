@@ -25,7 +25,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-10 mx-auto">
-                <h3 class="login-heading mb-4">Restablecer contraseña</h3>
+                <h3 class="login-heading mb-4" style="font-size: 20px">Restablecer contraseña</h3>
                 <form method="POST" action="{{ route('password.update') }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
@@ -64,7 +64,7 @@
                 @enderror
   
                   <div style="width: 100%;display:flex;justify-content:center;">
-                    <button class="button-login" type="submit">Restablecer contraseña</button>
+                    <button class="button-login" type="submit">Aceptar</button>
                   </div>
                 </form>
               </div>

@@ -100,6 +100,7 @@
     margin-bottom: 50px;
     display:flex;
     flex-direction: column;
+    transition: ease-in 0.5s;
 }
 .blog_item_imagen{
     width: 100%;
@@ -143,7 +144,10 @@
     text-align: center;
     padding-bottom: 15px;
     color: rgba(29, 33, 32, 0.81);
-    display: none;
+    display: flex;
+    z-index: -1;
+    margin-top:-106px;
+    transition: ease-in 0.5s;
 }
 .leer_mas_boton_blog a{
     color: white;
@@ -161,6 +165,8 @@
     color: rgba(29, 33, 32, 0.81);
     line-height: 21px;
     padding-left: 5px;
+    background-color: #F2ECD5;
+    transition: ease-in 0.8s;
 }
 .blog_info_titulo{
     font-family: Karla;
@@ -180,16 +186,18 @@
 }
 .blog_item:hover{
     cursor: pointer;
-    transition: ease-in 2s;
+    transition: ease-in 0.3s;
 }
 .blog_item:hover .hover_blog_item_imagen{
     display:flex;
 }
 .blog_item:hover .blog_info{
     background: white;
+    transition: ease-in 0.3s;
 }
 .blog_item:hover .blog_info_contenido{
-    display: flex;
+    margin-top: 0px;
+    transition: ease-in 0.5s;
 }
 
 .div_width_100_blogs{
@@ -221,7 +229,7 @@
 .barra_tags_principales{
     width: 80%;
     height: 150px;
-    margin-bottom: 0px;
+    margin-bottom: 7.5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -269,6 +277,7 @@
 }
 .barra_tags{
     width: 100%;
+    max-height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -316,6 +325,14 @@
 .barra_tags_tags{
     width:45%; 
     margin-bottom:15px;
+}
+.blogs_paginacion{
+    width: 100%;
+    display: flex;
+}
+.paginacion_css{
+    width: auto;
+    margin-left: auto;
 }
 
 @media(max-width: 1500px){

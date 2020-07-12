@@ -229,7 +229,7 @@ input {
 }
 input:valid ~ label {
   top: 0;
-  font: 700 12.3664px Roboto;
+  font: 700 12.3664px Karla;
   color: #29B390;
 }
 input:focus {
