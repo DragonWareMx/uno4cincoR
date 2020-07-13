@@ -107,7 +107,7 @@
             -webkit-background-size: cover;">
                 <div class="hover_autores_item_imagen">
                     <div class="leer_mas_boton_autores">
-                    <a href="#">Leer más</a>
+                    <a href="{{ route('autor', ['id'=>$uno4cinco->id])}}">Leer más</a>
                     </div>
                 </div>
             </div> 
@@ -115,6 +115,10 @@
             <p class="txt_nombreAutor">{{Str::limit($uno4cinco->nombre,30)}}<p>
         </div>
         @endforeach
+        
+    </div>
+    <div class="paginacion_css">
+        {{$autoruno4cinco->links()}}
     </div>
     
     

@@ -26,7 +26,7 @@ Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
 Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
 Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/autores-uno4cinco','paginaAutoresController@uno4cinco')->name('autoresUno4cinco');
-Route::get('/autor-leer','paginaAutoresController@index')->name('autor');
+Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
 
 
 Auth::routes();

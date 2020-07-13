@@ -19,12 +19,14 @@
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     
+    @foreach ($autor as $author)
+
     <div class="div_contenidoAutor">
         <div class="div_imagenAutor">
             <div class="div_apartadoimgAutor">
                 <div class="div_marcoimgAutor">
                 </div>
-                <div class="imagenAutor"  style="background: url('/storage/autores/aguscolores.jpg')center center no-repeat;
+                <div class="imagenAutor"  style="background: url('{{asset('storage/autores/'.$author->foto)}}') center center no-repeat;
                 background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
@@ -35,30 +37,115 @@
                 
             </div>
             <p class="div_fechaNacAutor">
-                31 de enero de 1978
+                @php
+                    $separa=explode("-",$author->fechaNac);
+                    $anio=$separa[0];
+                    $mes=$separa[1];
+                    $dia=$separa[2];
+                @endphp
+                {{$dia}}-
+                @switch($mes)
+                    @case('01')
+                        Enero-
+                        @break
+                    @case('02')
+                        Febrero-
+                        @break
+                    @case('03')
+                        Marzo-
+                        @break
+                    @case('04')
+                        Abril-
+                        @break
+                    @case('05')
+                        Mayo-
+                        @break
+                    @case('06')
+                        Junio-
+                        @break
+                    @case('07')
+                        Julio-
+                        @break
+                    @case('08')
+                        Agosto-
+                        @break
+                    @case('09')
+                        Septiembre-
+                        @break
+                    @case('10')
+                        Octubre-
+                        @break
+                    @case('11')
+                        Noviembre-
+                        @break
+                    @case('12')
+                        Diciembre-
+                        @break
+                @endswitch
+                {{$anio}}
+
+                al<br>
+
+                @php
+                    $separa2=explode("-",$author->fechaMuerte);
+                    $anio=$separa2[0];
+                    $mes=$separa2[1];
+                    $dia=$separa2[2];
+                @endphp
+                {{$dia}}-
+                @switch($mes)
+                    @case('01')
+                        Enero-
+                        @break
+                    @case('02')
+                        Febrero-
+                        @break
+                    @case('03')
+                        Marzo-
+                        @break
+                    @case('04')
+                        Abril-
+                        @break
+                    @case('05')
+                        Mayo-
+                        @break
+                    @case('06')
+                        Junio-
+                        @break
+                    @case('07')
+                        Julio-
+                        @break
+                    @case('08')
+                        Agosto-
+                        @break
+                    @case('09')
+                        Septiembre-
+                        @break
+                    @case('10')
+                        Octubre-
+                        @break
+                    @case('11')
+                        Noviembre-
+                        @break
+                    @case('12')
+                        Diciembre-
+                        @break
+                @endswitch
+                {{$anio}}
+
             </p>
             
         </div>
         <div class="div_infoAutor">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit, proin vestibulum justo curae litora 
-            ad risus maecenas, nostra conubia sem cursus nulla mi. Non donec rutrum nec mollis scelerisque 
-            arcu morbi posuere bibendum, velit justo potenti tortor hendrerit aliquam auctor congue ad, 
-            praesent dignissim vulputate ultricies lectus tempus enim feugiat. Interdum placerat litora 
-            eleifend vestibulum neque montes velit aliquet tellus lectus enim magnis, elementum varius 
-            inceptos eu est et metus habitasse phasellus sem congue curabitur morbi, arcu aptent parturient 
-            penatibus duis dictumst aliquam ut at diam ante.
-            <br><br>
-            Natoque litora venenatis suspendisse dapibus massa himenaeos placerat aliquet turpis, class arcu 
-            penatibus aptent faucibus enim duis gravida, quisque vehicula condimentum sed blandit tellus sociis 
-            risus.
-            <br><br>
-            Imperdiet habitasse in interdum diam tellus nec convallis sem, luctus massa dapibus cum condimentum 
-            eget fames, est sed curae nibh tincidunt sagittis fusce. Sociis eleifend dui vulputate velit 
-            fringilla ad odio mauris justo, aliquet conubia ante volutpat nisl nullam malesuada nibh mus, 
-            proin pellentesque condimentum rutrum metus parturient vitae faucibus.            
+            {{$author->descripcion}}     
+            {{$author->descripcion}}    
+            {{$author->descripcion}}    
         </div>
     </div>
     <p class="txt_obrasAutor">Obras</p>
     <hr class="hr_finalPag">
+
+
+    @endforeach
 </section>
 @endsection

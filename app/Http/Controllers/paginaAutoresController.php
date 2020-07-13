@@ -10,8 +10,9 @@ use App\Book;
 
 class paginaAutoresController extends Controller
 {
-    public function index(){
-        return view('publicitaria.autor');
+    public function index($id){
+        $autor=Author::where('id',$id)->distinct()->get();
+        return view('publicitaria.autor',['autor'=>$autor]);
     }
 
     public function uno4cinco(){
@@ -27,7 +28,7 @@ class paginaAutoresController extends Controller
                 $cont++;
             }
         }
-        $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->get();
+        $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
         $BannerAutores=Banner::wherein('id',$uno4cinco)->get();
         
         return view('publicitaria.autoresUno4cinco',['bannerAutores'=>$BannerAutores, 'autoruno4cinco'=>$autoruno4cinco]);
