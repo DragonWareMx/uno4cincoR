@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
 @endsection
 
 @section('content')
@@ -28,15 +31,18 @@
                     <div class="libro-fotos">
                         <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
                         {{-- Aqui debe ir el slider --}}
-                        <div class="owl-carousel">
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                            <div> Your Content </div>
-                        </div>
+                        @if (count($book->images) > 0)
+                            <div class="owl-carousel">
+                                <div class="imagen-carrusel">
+                                    <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
+                                </div>
+                                @foreach($book->images as $imagen)
+                                <div class="imagen-carrusel">
+                                    <img src="{{asset('storage/libros/'.$imagen->imagen)}}">
+                                </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
@@ -207,5 +213,23 @@
             moreText.style.display = "inline";
         }
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+  
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:2.5,
+            nav:true,
+            autoPlay: 1000,
+            responsive:{
+                0:{
+                    items:3
+                }
+            },
+            navText : ['<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>','<i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>']
+        })
+    });
 </script>
 @endsection
