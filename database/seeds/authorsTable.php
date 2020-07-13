@@ -14,25 +14,29 @@ class authorsTable extends Seeder
         DB::table('authors')->insert([
             'nombre'=>'Aless Segovia',
             'descripcion'=>'Autor de campeche',
-            'foto'=>'autor.jpg'
+            'foto'=>'autor.jpg',
+            'fechaNac'=>'1990-01-01'
 
             ]);
         DB::table('authors')->insert([
                 'nombre'=>'Estefanía Licea',
                 'descripcion'=>'Autora de Toluca',
-                'foto'=>'autor.jpg'
+                'foto'=>'autor.jpg',
+                'fechaNac'=>'1990-01-01'
                 
         ]);
         DB::table('authors')->insert([
             'nombre'=>'César Jordán',
             'descripcion'=>'Autor de Nayarit',
-            'foto'=>'autor.jpg'
+            'foto'=>'autor.jpg',
+            'fechaNac'=>'1990-01-01'
            
         ]);
         DB::table('authors')->insert([
             'nombre'=>'José Agustín Solórzano',
             'descripcion'=>'Autor de Michoacán',
-            'foto'=>'autor.jpg'
+            'foto'=>'autor.jpg',
+            'fechaNac'=>'1990-01-01'
             
             ]);
     }

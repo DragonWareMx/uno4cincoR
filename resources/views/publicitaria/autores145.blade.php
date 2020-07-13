@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Autores | uno4cinco</title>
+<title>Autores | 145</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
@@ -34,7 +34,7 @@
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
     {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Autores | uno4cinco</p>
+    <p class="txt-TitulosApartados">Autores | 145</p>
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     <!--SLIDER AUTORES-->
@@ -81,7 +81,7 @@
     </div>
 
     <div class="blog_encabezado">
-        <p class="txt-descripApartado">Autores que han publicado en uno4cinco<p>
+        <p class="txt-descripApartado">Autores de 145<p>
         <form class="" action="" method="GET" enctype="multipart/form-data">
             <div class="blog_barra_busqueda">
                 <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">

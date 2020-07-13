@@ -170,14 +170,55 @@
     vertical-align: middle;
 }
 
-
-.hr_finalPag{
-    width: 80%;
+/* CAROUSEEEEL---- */
+.MultiCarousel { 
+    float: left; 
+    overflow: hidden; 
+    padding: 15px; 
+    width: 90%; 
+    position:relative; 
     margin-left: auto;
     margin-right: auto;
-    height: 0px;
-    border: 0.5px solid #c9c9c9;
 }
+.pad15{
+    width: 80%;
+}
+.MultiCarousel .MultiCarousel-inner { 
+    transition: 1s ease all; 
+    float: left; 
+}
+.MultiCarousel .MultiCarousel-inner .item { 
+    float: left;
+}
+.MultiCarousel .MultiCarousel-inner .item > div { 
+    text-align: center; 
+    padding:10px; 
+    margin:10px; 
+    background:#1D2120;
+}
+.MultiCarousel .leftLst, .MultiCarousel .rightLst { 
+    position:absolute; 
+    border-radius:50%;
+    top:calc(50% - 20px); 
+    background:white; 
+}
+.MultiCarousel .leftLst { 
+    left:0px; 
+}
+.MultiCarousel .rightLst { 
+    right:0; 
+}
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { 
+    pointer-events: none; 
+    background:white; 
+    border:none;
+}
+.leftLst:focus{ 
+    border: none;
+}
+
+
+
 
 
 
