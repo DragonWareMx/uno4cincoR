@@ -8,6 +8,11 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
 @endsection
 
 @section('content')
@@ -26,6 +31,18 @@
                     <div class="libro-fotos">
                         <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
                         {{-- Aqui debe ir el slider --}}
+                        @if (count($book->images) > 0)
+                            <div class="owl-carousel">
+                                <div class="imagen-carrusel">
+                                    <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
+                                </div>
+                                @foreach($book->images as $imagen)
+                                <div class="imagen-carrusel">
+                                    <img src="{{asset('storage/libros/'.$imagen->imagen)}}">
+                                </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
@@ -77,6 +94,7 @@
                         <p><b>Fecha de publicación: </b>2 de Agoso de 2019</p>
                         <p><b>Número de páginas: </b>523</p>
                         <p><b>Editorial: </b>{{ $book->sello->nombre }}</p>
+                        <p><b>Edición: </b>{{ $book->numEdicion }}</p>
                         <p><b>Formato: </b>
                             @if ($book->stockFisico > 0 && $book->stockDigital > 0)
                                 Físico y Digital
@@ -89,7 +107,7 @@
                             @endif
                         </p>
 
-                        <h4>Sinposis</h4>
+                        <p><b>Sinopsis</b></p>
 
                         {{-- Contenido del libro --}}
                         <p>
@@ -195,5 +213,23 @@
             moreText.style.display = "inline";
         }
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+  
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:2.5,
+            nav:true,
+            autoPlay: 1000,
+            responsive:{
+                0:{
+                    items:3
+                }
+            },
+            navText : ['<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>','<i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>']
+        })
+    });
 </script>
 @endsection

@@ -134,9 +134,11 @@
                 @endif
 
                 <!--titulo del libro-->
-                <div class="titulo">
-                    <a href="{{ route('libro', ['id' => $book->id])}}">{{Str::limit($book->titulo,49)}}</a>
-                </div>
+                    <a href="{{ route('libro', ['id' => $book->id])}}">
+                        <div class="titulo">
+                            <p>{{Str::limit($book->titulo,49)}}</p>
+                        </div>
+                    </a>
 
                 <!--precio e icono de nuevo-->
                 <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="
