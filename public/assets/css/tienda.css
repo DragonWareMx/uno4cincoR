@@ -85,7 +85,7 @@
     height: 41.6px;
 }
 
-.producto-tienda .titulo a{
+.producto-tienda .titulo p{
     font-family: Karla;
     font-style: normal;
     font-weight: bold;
@@ -226,8 +226,8 @@
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-    color: #4E5251 !important;
-    background-color: rgba(255, 255, 255, 0.11) !important;
+    color: #ffffff !important;
+    background-color: #29B390 !important;
     border: 0.5px solid #29B390 !important;
     border-radius: 0px !important;
 }
@@ -237,8 +237,10 @@
 }
 
 .pagination a:hover{
-    border-color: #0000005b !important;
-    color: #4E5251 !important;
+    color: #ffffff !important;
+    background-color: #29b39198 !important;
+    border: 0.5px solid #29B390 !important;
+    border-radius: 0px !important;
 }
 
 .pagination .disabled span{
