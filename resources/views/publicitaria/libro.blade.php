@@ -8,6 +8,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
 @endsection
 
 @section('content')
@@ -26,6 +28,15 @@
                     <div class="libro-fotos">
                         <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
                         {{-- Aqui debe ir el slider --}}
+                        <div class="owl-carousel">
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                            <div> Your Content </div>
+                        </div>
                     </div>
                 </div>
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
@@ -77,6 +88,7 @@
                         <p><b>Fecha de publicación: </b>2 de Agoso de 2019</p>
                         <p><b>Número de páginas: </b>523</p>
                         <p><b>Editorial: </b>{{ $book->sello->nombre }}</p>
+                        <p><b>Edición: </b>{{ $book->numEdicion }}</p>
                         <p><b>Formato: </b>
                             @if ($book->stockFisico > 0 && $book->stockDigital > 0)
                                 Físico y Digital
@@ -89,7 +101,7 @@
                             @endif
                         </p>
 
-                        <h4>Sinposis</h4>
+                        <p><b>Sinopsis</b></p>
 
                         {{-- Contenido del libro --}}
                         <p>
