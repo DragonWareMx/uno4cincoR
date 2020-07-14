@@ -57,7 +57,7 @@ class paginaBlogsController extends Controller
                 $blogs=Blog::whereIn('titulo',$arregloBlogs)->paginate(10);
             }
             else{
-                $blogs=Blog::groupBy('id')->orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
             }
         }
         $bannerBlogs=Banner::where('tipo','blog')->get();
