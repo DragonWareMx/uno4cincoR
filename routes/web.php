@@ -36,4 +36,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminuno4cinco',function(){
     return view('gestor.inicio'); 
-})->middleware('auth');
+})->name('gestorInicio')->middleware('auth');
