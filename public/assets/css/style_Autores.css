@@ -180,9 +180,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-.pad15{
-    width: 80%;
-}
 .MultiCarousel .MultiCarousel-inner { 
     transition: 1s ease all; 
     float: left; 
@@ -190,17 +187,20 @@
 .MultiCarousel .MultiCarousel-inner .item { 
     float: left;
 }
-.MultiCarousel .MultiCarousel-inner .item > div { 
+.pad15{ 
+    width: 100%;
     text-align: center; 
-    padding:10px; 
+    height: 90%;
     margin:10px; 
-    background:#1D2120;
+    background-color: #1d2120;
+    display: flex;
 }
 .MultiCarousel .leftLst, .MultiCarousel .rightLst { 
     position:absolute; 
     border-radius:50%;
     top:calc(50% - 20px); 
-    background:white; 
+    background:rgba(255, 255, 255, 0.8); 
+    border-color: none;
 }
 .MultiCarousel .leftLst { 
     left:0px; 
@@ -213,10 +213,41 @@
     background:white; 
     border:none;
 }
-.leftLst:focus{ 
+.leftLst:enabled{
     border: none;
+    text-emphasis: none;
+    text-transform: none;
 }
-
+.item{
+    display: flex;
+}
+.div_portadapad15{
+    width: 32%;
+    height: 170px;
+}
+.div_portadapad15 img{
+    background-size: cover; 
+    width:100%;
+    height: 100%;
+}
+.div_infoCarrusel{
+    width: 63%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.txt-infoCarrusel{
+    font-family: 'Karla';
+    font-style: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    text-align: left;
+    margin-left: 5%;
+}
 
 
 

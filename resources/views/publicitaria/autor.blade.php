@@ -158,38 +158,81 @@
         <div class="row">
             <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
                 <div class="MultiCarousel-inner">
+
                     <div class="item">
                         <div class="pad15">
-                            <p class="lead">Multi Item Carousel 1</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
+                            <div class="div_portadapad15">
+                                <img src="/storage/libros/ejemplo.jpg">
+                            </div>
+                            <div class="div_infoCarrusel">
+                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
+                                </p>
+                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor</i>
+                                </p>
+                                
+                            </div>
+
                         </div>
                     </div>
+
                     <div class="item">
                         <div class="pad15">
-                            <p class="lead">Multi Item Carousel 2</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
+                            <div class="div_portadapad15">
+                                <img src="/storage/libros/ejemplo2.jpg">
+                            </div>
+                            <div class="div_infoCarrusel">
+                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
+                                </p>
+                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor</i>
+                                </p>
+                                
+                            </div>
+
                         </div>
                     </div>
+
                     <div class="item">
                         <div class="pad15">
-                            <p class="lead">Multi Item Carousel 3</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
+                            <div class="div_portadapad15">
+                                <img src="/storage/libros/ejemplo4.jpg">
+                            </div>
+                            <div class="div_infoCarrusel">
+                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
+                                </p>
+                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor</i>
+                                </p>
+                                
+                            </div>
+
                         </div>
                     </div>
+
                     <div class="item">
                         <div class="pad15">
-                            <p class="lead">Multi Item Carousel 4</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
+                            <div class="div_portadapad15">
+                                <img src="/storage/libros/ejemplo.jpg">
+                            </div>
+                            <div class="div_infoCarrusel">
+                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
+                                </p>
+                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
+                                    <i>Lorem, ipsum dolor</i>
+                                </p>
+                                
+                            </div>
+
                         </div>
                     </div>
+
+                    
+                    
                 </div>
                 <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
                 <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
