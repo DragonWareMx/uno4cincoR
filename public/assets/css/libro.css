@@ -32,13 +32,22 @@
 }
 
 .libro-fotos{
-    width: 100%;
+    width: fit-content;
     height: fit-content;
+    margin-right: 0px;
+    margin-left: auto;
 }
 
 .libro-fotos img{
     width: 288px;
     height: 306px;
+}
+
+#imagen-seleccionada{
+	margin-top: 10px;
+	background-repeat: no-repeat;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .libro-info{
@@ -49,6 +58,7 @@
 .libro-info p{
     width: 100%;
     padding-right: 29px;
+    padding-left: 29px;
     text-align: justify;
 
     font-family: Karla;
@@ -76,6 +86,7 @@
 
 .libro-comprar{
     width: 100%;
+    max-width: 360px;
     height: fit-content;
     border: 1px solid #29B390;
     box-sizing: border-box;
@@ -294,6 +305,10 @@
     outline: none;
 }
 
+.owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
+    display: block !important;
+}
+
 .owl-next {
     width: 15px;
     height: 100px;
@@ -304,7 +319,7 @@
     border:0px solid black;
 }
 .owl-prev i, .owl-next i { 
-    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 0.466);
     width: 26px;
     height: 26px;
 }
@@ -317,6 +332,59 @@
 .libro-fotos .imagen-carrusel img{
     width: 75px;
     height: 80px;
+}
+
+.hr-tienda{
+    width: 90%;
+    max-width: 1169px;
+    border-top: 0.3px solid #1D2120;
+}
+
+.libro-info-res{
+    text-align: justify;
+}
+
+.libro-regresar{
+    width: 90%;
+    max-width: 1169px;
+    margin: auto;
+    align-items: flex-end;
+}
+
+.libro-regresar .boton{
+    width: fit-content;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.libro-regresar .boton button{
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    /* identical to box height */
+
+
+    color: #1D2120;
+
+    outline: none;
+    background-color: transparent;
+    border: 0px;
+}
+
+.libro-regresar .boton button .row img{
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 39px;
+    height: 25px;
+}
+
+.libro-regresar .row{
+    width: fit-content;
 }
 
 @media(max-width: 1200px){
@@ -337,5 +405,28 @@
     
     .libro-cell-lg{
         width: 100% !important;
+    }
+    .libro-fotos{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .libro-comprar{
+        margin:auto;
+        margin-top: 10px;
+    }
+    .libro-info-res{
+        text-align: center !important;
+    }
+    .libro-info .leer-mas{
+        padding-left: 29px;
+    }
+    .libro-info {
+        padding-top: 29px;
+    }
+}
+
+@media(max-width: 520px){
+    .libro-info-res{
+        text-align: justify !important;
     }
 }

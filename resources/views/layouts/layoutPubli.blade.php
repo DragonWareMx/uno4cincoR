@@ -49,8 +49,8 @@
     <header class="header-area header-sticky background-header">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
+                <div class="col-12" >
+                    <nav class="main-nav nav-space-between">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo" style="
                             @php
@@ -64,8 +64,8 @@
                             <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
                         </a>
 
-                        <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php
-                                if(strpos(Request::path(),'/') !== false )
+                        <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php 
+                                if(Request::path() == '/' )
                                 echo 'ocultoIndex';
                             @endphp
                             " style=" height: 80px;display: flex;align-items: center;">
@@ -94,9 +94,9 @@
                             <li class="submenu">
                                 <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="{{ route('registro') }}" class="">EVENTOS</a></li>
-                                    <li><a href="{{ route('registro') }}" class="">ARTÍCULOS</a></li>
-                                    <li><a href="{{ route('registro') }}" class="">VER TODO</a></li>
+                                    <li><a href="{{ route('blogs', ['id' => '1', 'tipo' => 'tag'])}}" class="">EVENTOS</a></li>
+                                    <li><a href="{{ route('blogs', ['id' =>'4', 'tipo' => 'tag'])}}" class="">ARTÍCULOS</a></li>
+                                    <li><a href="{{ route('blogs', ['id' => 0])}}" class="">VER TODO</a></li>
                                 </ul>
                             </li>
                             <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>

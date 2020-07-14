@@ -322,7 +322,7 @@ header
 .header-area .main-nav .nav {
   float: left;
   margin-top: 27px;
-  margin-left: 15%;
+  padding-left: auto;
   margin-right: 0px;
   background-color: transparent;
   padding: 0px 20px;
@@ -332,6 +332,11 @@ header
   transition: all 0.3s ease 0s;
   position: relative;
   z-index: 999;
+}
+
+.nav-space-between{
+  display:flex;
+  justify-content:space-between;
 }
 
 .header-area .main-nav .nav li {
@@ -713,6 +718,11 @@ header
   }
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
+  }
+
+  .nav-space-between{
+    display:flex;
+    justify-content:space-around;
   }
 }
 
