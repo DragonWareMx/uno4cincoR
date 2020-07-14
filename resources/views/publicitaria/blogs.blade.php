@@ -109,20 +109,24 @@
 
         <div class="blog_encabezado">
             Todas las entradas
-            <form class="" action="" method="GET" enctype="multipart/form-data">
+            <form class="" action="{{ route('blogs', ['id' => 0])}}" method="GET" enctype="multipart/form-data">
                 <div class="blog_barra_busqueda">
                     <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                        <option value="contenido">Contenido</option>
+                        <option value="titulo">Titulo</option>
                         <option value="autor">Autor</option>
-                        <option value="tag">Tag</option>
+                        <option value="contenido">Contenido</option>
+                        <option value="tags">Tags</option>
                     </select>
-                    <input type="text" id="busqueda_busqueda" class ="" name="busqueda">
+                    <input type="text" required id="busqueda_busqueda" class ="" name="busqueda">
                     <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
                 </div>
             </form>
         </div>
         <div class="blogs_barra">
             <div class="blogs_vista">
+                @if (sizeOf($blogs)==0)
+                    <div>No se encontraron resultados&nbsp;<i class="far fa-sad-cry"></i>&nbsp;<i class="fas fa-heart-broken"></i></div>
+                @endif
                 @foreach ($blogs as $blog)
                     <div class="blog_item">
                         <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;
