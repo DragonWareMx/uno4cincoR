@@ -2,9 +2,9 @@
 
 @section('header')
 <title>Tienda | Editorial uno4cinco</title>
-<link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/tienda.css">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
