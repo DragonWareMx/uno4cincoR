@@ -79,7 +79,7 @@
                             <li class="submenu">
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="{{ route('registro') }}" class="">NOVEDADES</a></li>
+                                    <li><a href="{{ route('tiendaNovedades') }}" class="">NOVEDADES</a></li>
                                     <li><a href="{{ route('registro') }}" class="">CATÁLOGO</a></li>
                                     <li><a href="{{ route('registro') }}" class="">145</a></li>
                                 </ul>
@@ -100,7 +100,7 @@
                                 </ul>
                             </li>
                             <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>
-                            <li class="carritoli"><a href="#contact-us" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
+                            <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
