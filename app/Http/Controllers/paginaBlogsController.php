@@ -28,7 +28,18 @@ class paginaBlogsController extends Controller
             }
         }
         else{
-            $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
+            if(request('clasificacion')=='titulo'){
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('titulo','rlike',request('busqueda'))->paginate(10);
+            }
+            else if(request('clasificacion')=='tags'){
+                dd('tags');
+            }
+            else if(request('clasificacion')=='autor'){
+                dd('áutor');
+            }
+            else{
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
+            }
         }
         $bannerBlogs=Banner::where('tipo','blog')->get();
         $blogAutores=Blog::select('author_id')->groupBy('author_id')->get();
