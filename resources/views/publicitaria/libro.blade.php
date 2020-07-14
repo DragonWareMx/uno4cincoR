@@ -254,7 +254,6 @@
     var pre = document.getElementById("imagen-seleccionada");
     var imagen = pre.src;
 
-    alert({{ url()->previous() }});
     function myFunction() {
         var dots1 = document.getElementById("dots1");
         var dots2 = document.getElementById("dots2");
