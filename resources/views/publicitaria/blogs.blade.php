@@ -137,7 +137,7 @@
                                 -webkit-background-size: cover;">
                             <div class="hover_blog_item_imagen">
                                 <div class="leer_mas_boton_blog">
-                                <a href="#">Leer más</a>
+                                <a href="{{ route('blog', ['id' => $blog->id])}}">Leer más</a>
                                 </div>
                             </div>
                         </div>

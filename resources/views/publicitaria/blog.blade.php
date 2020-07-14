@@ -15,6 +15,9 @@
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
 		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <div id="fb-root"></div>
+            <!--sdk facebook-->
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v7.0" nonce="sLvp9Nel"></script>
             
         
 @endsection
@@ -136,8 +139,22 @@
                 <div id ="desaparecer" class="barra_autores">
                     <p class="barra_autores_titulo">COMPARTIR<hr class="hr_barra_autores"></p>
                 </div>
-                <a href="https://www.facebook.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
-                <a href="https://www.facebook.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/twt.png') }}" width="22px"></a>
+                
+                <div class="div_compartir_volver">
+                
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}};src=sdkpreparse" target="_blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="blank"><img src="{{ asset('img/ico/twt.png') }}" width="22px"></a>
+                
+                
+                
+                <a class="btn_regresar" href="{{ route('blogs', ['id' => 0])}}">
+                        <i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
+                        <br>
+                        Regresar
+                    </a>
+                
+                </div>
+            
             </div>
         </div>
     </section>
