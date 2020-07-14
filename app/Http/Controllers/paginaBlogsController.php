@@ -39,7 +39,8 @@ class paginaBlogsController extends Controller
     }
     public function show($id){
         $blog=Blog::findOrFail($id);
-        $blogAutor=Blog::where('author_id', $blog->author_id)->get();
-        return view('publicitaria.blog',['blog'=>$blog, 'blogAutor'=>$blogAutor]);
+        $blogAutor=Blog::where('author_id', $blog->author_id)->get();  
+        $tags=Tag::get();
+        return view('publicitaria.blog',['blog'=>$blog, 'blogAutor'=>$blogAutor, 'tags'=>$tags]);
     }
 }

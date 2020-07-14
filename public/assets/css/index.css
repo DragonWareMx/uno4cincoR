@@ -22,20 +22,25 @@
 
 #carruselLibros:hover{
     width: 95%;  
+    transition: all 0.5s;
 }
 #carruselLibrosHide:hover{
     width: 95%;
+    transition: all 0.5s;
 }
 
 #carruselAutores:hover{
     width: 95%;
+    transition: all 0.5s;
 }
 #carruselAutoresHide:hover{
     width: 95%;
+    transition: all 0.5s;
 }
 
 #carruselBlogs:hover{
     width: 95%; 
+    transition: all 0.5s;
 }
 
 .img_carrusel{
@@ -75,12 +80,14 @@
 }
 #carruselLibros{
    background:transparent;
-   width: 90%
+   width: 90%;
+   transition: all 0.5s;
 }
 #carruselLibrosHide{
    display:none; 
    background: transparent;
    width: 90%;
+   transition: all 0.5s;
 }   
 
 
@@ -100,6 +107,8 @@
     border: 1px solid #BA1F00;
     box-sizing: border-box; padding-bottom:5px; padding-left:2.5%; padding-right:2.5%; padding-top:5px;
     display:none;
+    scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .details_content{
     width: 458px; height: 129px; margin-left:5%; margin-right:5%; margin-top:20px;
@@ -170,15 +179,18 @@
 #carruselAutores{
     width: 90%; 
     background: transparent;
+    transition: all 0.5s;
 }
 #carruselAutoresHide{
     width: 90%;
     background: transparent;
     display:none;
+    transition: all 0.5s;
 }
 #carruselBlogs{
     width:90%;
     background: transparent;
+    transition: all 0.5s;
 } 
 .details_autor{
     width: 100%;
@@ -187,6 +199,9 @@
     border: 1px solid #29b390;
     box-sizing: border-box; padding-bottom:5px; padding-left:10px; padding-right:10px; padding-top:5px;
     display:none;
+    scrollbar-width: none;
+    /*IE10+*/
+     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .details_blog{
     width: 100%;
@@ -194,6 +209,9 @@
     background: #717171;
     box-sizing: border-box; padding-bottom:5px; padding-left:10px; padding-right:10px; padding-top:5px;
     display:none;
+    scrollbar-width: none;
+    /*IE10+*/
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .pestana_details_autor{
     background: #29b390; width:8%; height:8%; margin-left:auto; padding-left: 3px;scroll-padding-right: 3px; padding-bottom: 5px;
@@ -217,6 +235,9 @@
     box-sizing: border-box;
     display:flex;
     flex-direction: row;
+    scrollbar-width: none;
+  /*IE10+*/
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .detailsAutor_txt{
     display: flex;
