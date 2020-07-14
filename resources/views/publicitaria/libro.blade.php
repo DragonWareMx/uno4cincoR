@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" href="{{asset('/css/owl.theme.default.min.css')}}">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 
@@ -303,12 +303,7 @@
             loop:true,
             margin:2.5,
             nav:true,
-            autoPlay: 1000,
-            responsive:{
-                0:{
-                    items:3
-                }
-            },
+            items:3,
             navText : ['<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>','<i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>']
         })
     });

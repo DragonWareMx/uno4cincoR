@@ -305,6 +305,10 @@
     outline: none;
 }
 
+.owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
+    display: block !important;
+}
+
 .owl-next {
     width: 15px;
     height: 100px;
