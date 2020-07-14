@@ -114,6 +114,7 @@
                     <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
                         <option value="titulo">Titulo</option>
                         <option value="autor">Autor</option>
+                        <option value="contenido">Contenido</option>
                         <option value="tags">Tags</option>
                     </select>
                     <input type="text" required id="busqueda_busqueda" class ="" name="busqueda">
@@ -123,6 +124,9 @@
         </div>
         <div class="blogs_barra">
             <div class="blogs_vista">
+                @if (sizeOf($blogs)==0)
+                    <div>No se encontraron resultados&nbsp;<i class="far fa-sad-cry"></i>&nbsp;<i class="fas fa-heart-broken"></i></div>
+                @endif
                 @foreach ($blogs as $blog)
                     <div class="blog_item">
                         <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;

@@ -29,13 +29,16 @@ class paginaBlogsController extends Controller
         }
         else{
             if(request('clasificacion')=='titulo'){
-                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('titulo','rlike',request('busqueda'))->paginate(10);
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('titulo','like',"%".request('busqueda')."%")->paginate(10);
+            }
+            else if(request('clasificacion')=='autor'){
+                
+            }
+            else if(request('clasificacion')=='contenido'){
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('contenido','like',"%".request('busqueda')."%")->paginate(10);
             }
             else if(request('clasificacion')=='tags'){
                 dd('tags');
-            }
-            else if(request('clasificacion')=='autor'){
-                dd('áutor');
             }
             else{
                 $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
@@ -50,7 +53,8 @@ class paginaBlogsController extends Controller
     }
     public function show($id){
         $blog=Blog::findOrFail($id);
-        $blogAutor=Blog::where('author_id', $blog->author_id)->get();
-        return view('publicitaria.blog',['blog'=>$blog, 'blogAutor'=>$blogAutor]);
+        $blogAutor=Blog::where('author_id', $blog->author_id)->get();  
+        $tags=Tag::get();
+        return view('publicitaria.blog',['blog'=>$blog, 'blogAutor'=>$blogAutor, 'tags'=>$tags]);
     }
 }

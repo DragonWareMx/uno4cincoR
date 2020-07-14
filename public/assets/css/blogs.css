@@ -334,6 +334,51 @@
     width: auto;
     margin-left: auto;
 }
+.titulo_blog_txt{
+    font-family: Karla;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1D2120;
+    margin: 28px;
+    }
+.autor_blog_txt{
+    font-family: Karla;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #1D2120;
+    float: left;
+    margin:10px;
+}
+.fecha_blog_txt{
+    font-family: Karla;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #1D2120;
+    float: right;
+    margin:10px;
+}
+.contenido_blog_txt{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #000000;
+    margin-top: 10px;
+}
 
 @media(max-width: 1500px){
     .blog_item{
