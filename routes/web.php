@@ -33,3 +33,7 @@ Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/adminuno4cinco',function(){
+    return view('gestor.inicio'); 
+})->middleware('auth');
