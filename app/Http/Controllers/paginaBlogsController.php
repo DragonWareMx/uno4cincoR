@@ -32,16 +32,32 @@ class paginaBlogsController extends Controller
                 $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('titulo','like',"%".request('busqueda')."%")->paginate(10);
             }
             else if(request('clasificacion')=='autor'){
-                
+                $blogs=Blog::orderBy('fecha','desc')->orderBy('blogs.id','desc')->leftJoin('authors', 'blogs.author_id', '=', 'authors.id')
+                ->where('blogs.autor','like',"%".request('busqueda')."%")
+                ->orWhere('authors.nombre','like',"%".request('busqueda')."%")
+                ->paginate(10);
             }
             else if(request('clasificacion')=='contenido'){
                 $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->where('contenido','like',"%".request('busqueda')."%")->paginate(10);
             }
             else if(request('clasificacion')=='tags'){
-                dd('tags');
+                $busquedaTags = str_replace("#", "", request('busqueda'));
+                $separaTags=explode(" ",$busquedaTags);
+                $blogsTotales=Blog::orderBy('fecha','desc')->orderBy('blogs.id','desc')
+                    ->leftJoin('blog_tag','blogs.id','=','blog_tag.blog_id')
+                    ->leftJoin('tags','blog_tag.tag_id','=','tags.id')
+                    ->whereIn('tags.nombre',$separaTags)
+                    ->get();
+                $arregloBlogs=[];
+                $i=0;
+                foreach ($blogsTotales as $totales) {
+                   $arregloBlogs[$i]=$blogsTotales[$i]['titulo']; 
+                   $i++;
+                }
+                $blogs=Blog::whereIn('titulo',$arregloBlogs)->paginate(10);
             }
             else{
-                $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
+                $blogs=Blog::groupBy('id')->orderBy('fecha','desc')->orderBy('id','desc')->paginate(10);
             }
         }
         $bannerBlogs=Banner::where('tipo','blog')->get();
