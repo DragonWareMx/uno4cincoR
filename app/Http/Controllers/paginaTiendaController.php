@@ -18,4 +18,8 @@ class paginaTiendaController extends Controller
         $book = Book::find($id);
         return view('publicitaria.libro', ['book' => $book]);
     }
+
+    public function carrito(){
+        return view('publicitaria.carrito');
+    }
 }

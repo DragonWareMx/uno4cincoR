@@ -23,11 +23,14 @@ Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobre
 Route::get('/registro','paginaInicioController@registro')->name('registro');
 Route::get('/blogs/{id}','paginaBlogsController@index')->name('blogs'); 
 Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
-Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
-Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/autores-uno4cinco','paginaAutoresController@uno4cinco')->name('autoresUno4cinco');
 Route::get('/autores-145','paginaAutoresController@autores145')->name('autores145');
 Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
+
+/* RUTAS DE LA TIENDA Y EL CARRITO */
+Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
+Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
+Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
 
 
 Auth::routes();
