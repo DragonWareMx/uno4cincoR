@@ -49,8 +49,8 @@
     <header class="header-area header-sticky background-header">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
+                <div class="col-12" >
+                    <nav class="main-nav nav-space-between">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo" style="
                             @php
@@ -65,7 +65,7 @@
                         </a>
 
                         <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php 
-                                if(strpos(Request::path(),'/') !== false )
+                                if(Request::path() == '/' )
                                 echo 'ocultoIndex';
                             @endphp
                             " style=" height: 80px;display: flex;align-items: center;">
