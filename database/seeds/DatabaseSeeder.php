@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(book_genreTable::class);
         $this->call(book_imageTable::class);
         $this->call(author_bookTable::class);
+        $this->call(userTable::class);
 
         // $this->call(UserSeeder::class);
     }

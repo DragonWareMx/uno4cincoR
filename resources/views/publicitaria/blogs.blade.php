@@ -57,9 +57,9 @@
                                     </div>
                                 </div>
                                 <div class="div_width_100_blogs">
-                                    <div class="banner_blog_boton_blogs">
+                                    <a href="{{ route('blog', ['id' => $banner->blog_id])}}" class="banner_blog_boton_blogs">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -84,9 +84,9 @@
                                     </div>
                                 </div>
                                 <div class="div_width_100_blogs">
-                                    <div class="banner_blog_boton_blogs">
+                                    <a href="{{ route('blog', ['id' => $banner->blog_id])}}" class="banner_blog_boton_blogs">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>      
@@ -128,7 +128,7 @@
                     <div>No se encontraron resultados&nbsp;<i class="far fa-sad-cry"></i>&nbsp;<i class="fas fa-heart-broken"></i></div>
                 @endif
                 @foreach ($blogs as $blog)
-                    <div class="blog_item">
+                    <a href="{{ route('blog', ['id' => $blog->id])}}" class="blog_item">
                         <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;
                                 background-color:#717171;
                                 background-size: cover;
@@ -137,7 +137,7 @@
                                 -webkit-background-size: cover;">
                             <div class="hover_blog_item_imagen">
                                 <div class="leer_mas_boton_blog">
-                                <a href="{{ route('blog', ['id' => $blog->id])}}">Leer más</a>
+                                    Leer más
                                 </div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                         <div class="blog_info_contenido">
                             {{Str::limit($blog->contenido,158)}}
                         </div>
-                    </div>
+                    </a>
                 @endforeach
                 <div class="blogs_paginacion">
                     <div class="paginacion_css">{{ $blogs->links()}}</div>

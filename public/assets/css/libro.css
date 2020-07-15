@@ -308,6 +308,9 @@
 .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
     display: block !important;
 }
+.owl-carousel.owl-grab {
+    cursor: pointer !important;
+}
 
 .owl-next {
     width: 15px;
