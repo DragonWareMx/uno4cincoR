@@ -74,12 +74,13 @@
                 @foreach ($bannerLibros as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
-                            <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                            <a href="{{ route('libro', ['id' => $banner->book->id])}}"><div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
                                 <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
@@ -134,7 +135,7 @@
                                     </p>
                                 </div>
                                 <div class="btn_details" >
-                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                    <a href="{{ route('libro', ['id' => $banner->book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                 </div>
                             </div> 
                             <!--pestaña click-->
@@ -146,12 +147,14 @@
                         </div>
                     @else
                         <div class="carousel-item " >
+                            <a href="{{ route('libro', ['id' => $banner->book->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
                                 <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
@@ -206,7 +209,7 @@
                                     </p>
                                 </div>
                                 <div class="btn_details" >
-                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                    <a href="{{ route('libro', ['id' => $banner->book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                 </div>
                             </div> 
                             <!--pestaña click-->
@@ -242,12 +245,14 @@
                 @foreach ($bannerLibros as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
+                            <a href="{{ route('libro', ['id' => $banner->book->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
                                 <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
@@ -302,7 +307,7 @@
                                     </p>
                                 </div>
                                 <div class="btn_details" >
-                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                    <a href="{{ route('libro', ['id' => $banner->book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                 </div>
                             </div> 
                             <!--pestaña click-->
@@ -314,12 +319,14 @@
                         </div>
                     @else
                         <div class="carousel-item " >
+                            <a href="{{ route('libro', ['id' => $banner->book->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
                                 <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
@@ -374,7 +381,7 @@
                                     </p>
                                 </div>
                                 <div class="btn_details" >
-                                    <a href="#"><p class="btn_txt" style="">Comprar</p></a>
+                                    <a href="{{ route('libro', ['id' => $banner->book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                 </div>
                             </div> 
                             <!--pestaña click-->
@@ -414,12 +421,14 @@
                 @foreach ($bannerAutores as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
+                            <a href="{{ route('autor', ['id' => $banner->author->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles autor-->
                             <div class="details_autor" style="overflow-x:scroll">
                                 @php
@@ -447,7 +456,7 @@
                                             
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -497,7 +506,7 @@
                                             </p>
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -572,7 +581,7 @@
                                             
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -622,7 +631,7 @@
                                             </p>
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="#"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -669,6 +678,7 @@
                 @foreach ($bannerBlogs as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
+                            
                             <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
                                 background-size: cover;
                                 -moz-background-size: cover;
@@ -687,11 +697,15 @@
                                         {{Str::limit($banner->blog->contenido,350)}}
                                     </div>
                                 </div>
+                                <a href="{{ route('blog', ['id' => $banner->blog->id])}}">
                                 <div class="div_width_100">
+                                   
                                     <div class="banner_blog_boton">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
                                     </div>
+                                    
                                 </div>
+                                </a>
                             </div>
                             <!--div pestaña detalles blog-->
                             <div class="details_blog" style="overflow-x:scroll">
@@ -724,11 +738,13 @@
                                         {{Str::limit($banner->blog->contenido,350)}}
                                     </div>
                                 </div>
+                                <a href="{{ route('blog', ['id' => $banner->blog->id])}}">
                                 <div class="div_width_100">
                                     <div class="banner_blog_boton">
                                         <div>Seguir leyendo &nbsp;<i class="fas fa-long-arrow-alt-right"></i></div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                             <!--div pestaña detalles blog-->
                             <div class="details_blog" style="overflow-x:scroll">
