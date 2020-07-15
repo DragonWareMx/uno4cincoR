@@ -85,9 +85,11 @@
                 
             </form>
         </div>
-        <div id="preview_imagen" class="gestor_blog_mostrar_imagen">
-            <img src="" alt="Imagen" class="preview_imagen_imagen">
-            <span class="preview_imagen_default">Imagen</span>
+        <div class="preview_imagen_blog">
+            <div id="preview_imagen" class="gestor_blog_mostrar_imagen">
+                <img src="" alt="Imagen" class="preview_imagen_imagen">
+                <span class="preview_imagen_default">Imagen</span>
+            </div>
         </div>
     </div>
 
@@ -98,7 +100,23 @@
         const previewDefaultText = previewContainer.querySelector(".preview_imagen_default");
 
         inpFile.addEventListener("change", function(){
-            
+            const file = this.files[0];
+
+            if(file){
+                const reader = new FileReader();
+
+                previewDefaultText.style.display="none";
+                previewImage.style.display="block";
+
+                reader.addEventListener("load", function(){
+                    previewImage.setAttribute("src", this.result);
+                    previewContainer.style.width="auto";
+                    previewContainer.style.height="auto";
+                    previewContainer.style.border="none";
+
+                });
+                reader.readAsDataURL(file);
+            }
         });
     </script>
 @endsection
