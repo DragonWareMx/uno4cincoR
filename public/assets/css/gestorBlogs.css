@@ -215,4 +215,7 @@
 }
 .preview_imagen_blog{
     width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
