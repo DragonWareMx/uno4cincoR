@@ -11,7 +11,21 @@ use App\Book;
 class paginaAutoresController extends Controller
 {
     public function index($id){
-        $autor=Author::where('id',$id)->distinct()->get();
+        $autor=Author::findOrFail($id);
+        // dd($autor);
+        // $idLibro=Book::with('authors')->get();
+        // $cont=0;
+        // $libros=[];
+        // foreach($idLibro as $idLibro)
+        // {
+        //     if($idLibro->id==$id){
+
+        //     }
+        // }
+        // // $libros=$idLibro->select('book_id')->where('book_id',$id)->get();
+        
+        // dd($idLibro);
+
         return view('publicitaria.autor',['autor'=>$autor]);
     }
 

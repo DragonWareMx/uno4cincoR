@@ -24,21 +24,19 @@
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     
-    @foreach ($autor as $author)
+
 
     <div class="div_contenidoAutor">
         <div class="div_imagenAutor">
             <div class="div_apartadoimgAutor">
                 <div class="div_marcoimgAutor">
                 </div>
-                <div class="imagenAutor"  style="background: url('{{asset('storage/autores/'.$author->foto)}}') center center no-repeat;
+                <div class="imagenAutor"  style="background: url('{{asset('storage/autores/'.$autor->foto)}}') center center no-repeat;
                 background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
                 -webkit-background-size: cover;">
-                    
                 </div>
-                {{-- <img src="/storage/autores/aguscolores.jpg"> --}}
                 
             </div>
             <p class="div_fechaNacAutor">
@@ -46,7 +44,7 @@
                 
 
                 
-                    $separa=explode("-",$author->fechaNac);
+                    $separa=explode("-",$autor->fechaNac);
                     $anio=$separa[0];
                     $mes=$separa[1];
                     $dia=$separa[2];
@@ -146,38 +144,40 @@
             
         </div>
         <div class="div_infoAutor">
-            {{$author->descripcion}}     
-            {{$author->descripcion}}    
-            {{$author->descripcion}}    
+            {{-- Autor de uno4cinco <br><br> --}}
+            {{$autor->descripcion}}       
         </div>
     </div>
     <p class="txt_obrasAutor">Obras</p>
-    @endforeach
+
 
     {{-- <div class="container"> --}}
         <div class="row">
             <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
                 <div class="MultiCarousel-inner">
-
+                    @foreach ($autor->books as $book)
                     <div class="item">
                         <div class="pad15">
                             <div class="div_portadapad15">
-                                <img src="/storage/libros/ejemplo.jpg">
+                            <img alt="{{$book->images[0]->imagen}}" src="{{asset('storage/libros/'.$book->images[0]->imagen)}}">
                             </div>
                             <div class="div_infoCarrusel">
                                 <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
+                                    <i>{{$book->titulo}}</i>
                                 </p>
                                 <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor</i>
+                                    
+                                    <i>{{$book->genres[0]->nombre}}</i>
                                 </p>
                                 
                             </div>
 
                         </div>
                     </div>
+                    @endforeach
+                    
 
-                    <div class="item">
+                    {{-- <div class="item">
                         <div class="pad15">
                             <div class="div_portadapad15">
                                 <img src="/storage/libros/ejemplo2.jpg">
@@ -229,7 +229,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     
                     

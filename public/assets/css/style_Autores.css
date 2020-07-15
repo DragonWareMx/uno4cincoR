@@ -235,7 +235,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -276,6 +275,9 @@
     .txt_obrasAutor{
         font-size: 22px;
     }
+    .txt-infoCarrusel{
+        font-size: 16px;
+    }
  }
 
  @media(max-width: 850px){
@@ -286,6 +288,18 @@
     .txt_nombreAutor{
         font-size: 14px;
     }
+}
+@media(max-width: 800px){
+    .txt-infoCarrusel{
+        font-size: 14px;
+    }
+}
+@media(max-width: 767px){
+    .txt-infoCarrusel{
+        font-size: 16px;
+    }
+    .pad15{ 
+        width: 70%;
 }
 @media(max-width: 650px){
     .div_infoAutor{
@@ -326,3 +340,8 @@
         height: 231px;
     }
 } 
+@media(max-width: 4200px){
+    .txt-infoCarrusel{
+        font-size: 14px;
+    }
+}
