@@ -474,12 +474,14 @@
                         </div>
                     @else
                         <div class="carousel-item" >
+                            <a href="{{ route('autor', ['id' => $banner->author->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles autor-->
                             <div class="details_autor" style="overflow-x:scroll">
                                 @php
@@ -548,12 +550,14 @@
                 @foreach ($bannerAutores as $banner)
                     @if ($i==0)
                         <div class="carousel-item active" >
+                            <a href="{{ route('autor', ['id' => $banner->author->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles autor-->
                             <div class="details_autor" style="overflow-x:scroll">
                                 @php
@@ -599,12 +603,14 @@
                         </div>
                     @else
                         <div class="carousel-item" >
+                            <a href="{{ route('autor', ['id' => $banner->author->id])}}">
                             <div class="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
                                 background-size: 100% 100%;
                                 -moz-background-size: 100% 100%;
                                 -o-background-size: 100% 100%;
                                 -webkit-background-size: 100% 100%;">
                             </div>
+                            </a>
                             <!--div pestaña detalles autor-->
                             <div class="details_autor" style="overflow-x:scroll">
                                 @php
