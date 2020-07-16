@@ -15,6 +15,12 @@ class gestorBlogsController extends Controller
         return view ('gestor.blogs.crearBlog',['autoresLibro'=>$autoresLibro,'autoresBlog'=>$autoresBlog]);
     }
 
+    public function storeBlog(Request $request)
+    {
+        dd($request);
+        
+    }
+
     public function editBlog($id){
 
         $blog=Blog::findOrFail($id);

@@ -3,6 +3,17 @@
 @section('importOwl')
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tags.css')}}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src='/assets/js/tags.js'></script>
+    <script>
+        $(function() {
+            $("#testInput_tags_blog").tags({
+                unique: true,
+                maxTags: 5
+            });
+        });
+    </script>
 @endsection
 
 @section('menu')
@@ -59,7 +70,7 @@
                     </div>
                     <div class="elementos_blog_50">
                         <p class="elementos_blog">Tags:</p>
-                        <input type="text" class="input_blog_tag" name="tags" >
+                        <input type="text"  id="testInput_tags_blog" class="input_blog_tag" name="tags" >
                     </div>
                 </div>
 
