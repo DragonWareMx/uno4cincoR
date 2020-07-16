@@ -6,7 +6,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| nuevo blog
+    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| Editar
 @endsection
 
 @section('contenido')
@@ -27,7 +27,7 @@
 
                 <div class="elementos_blog_100">
                     <p class="elementos_blog">Título:</p>
-                    <input name="titulo" class="input_blog_titulo" type="text" value="{{old('titulo')}}" required autofocus>
+                    <input name="titulo" class="input_blog_titulo" type="text" value="{{$blog->titulo}}" required autofocus>
                 </div>
 
                 <div class="div_empareja_elementos">
@@ -36,7 +36,11 @@
                         <select class="select_blog" name="autorBlog">
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de blog</option>
                             @foreach ($autoresBlog as $autor)
+                                @if ($blog->autor == $autor->autor)
+                                <option selected>{{$autor->autor}}</option>        
+                                @else
                                 <option>{{$autor->autor}}</option>
+                                @endif
                             @endforeach
                         </select>
                         <div class="div_nuevo_autor_blog">
@@ -57,6 +61,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="elementos_blog_50">
+                        <p class="elementos_blog">Tags:</p>
+                        <input type="text" class="input_blog_tag" name="tags" >
+                    </div>
                 </div>
 
                 <div class="elementos_blog_100">
@@ -64,7 +72,7 @@
                 </div>
                 <div class="elementos_blog_100">
                     <div class="contenido_gestor_blog">
-                        <textarea class="blog_text_area"type="text" name="contenido" value="" required >{{old('contenido')}}</textarea>
+                        <textarea class="blog_text_area"type="text" name="contenido" value="" required >{{$blog->contenido}}</textarea>
                         <script>
                                 CKEDITOR.replace( 'contenido' );
                         </script>
@@ -74,7 +82,7 @@
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
                         <p class="elementos_blog">Imagen:</p>
-                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>{{-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --}}
+                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>
                     </div>
                 </div>
 
