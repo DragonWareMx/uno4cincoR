@@ -57,6 +57,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="elementos_blog_50">
+                        <p class="elementos_blog">Tags:</p>
+                        <input type="text" class="input_blog_tag" name="tags" >
+                    </div>
                 </div>
 
                 <div class="elementos_blog_100">
@@ -74,7 +78,7 @@
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
                         <p class="elementos_blog">Imagen:</p>
-                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>{{-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --}}
+                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>
                     </div>
                 </div>
 

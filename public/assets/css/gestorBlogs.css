@@ -49,7 +49,8 @@
 }
 .input_blog_titulo:focus, 
 .select_blog:focus, 
-.input_blog_autor:focus{
+.input_blog_autor:focus,
+.input_blog_tag{
     outline:none ;
     outline-width: 0;
     border-bottom: 0.5px solid #BA1F00; 
@@ -114,6 +115,20 @@
     margin-left: 5px;
     margin-top: -18px;
     width: 70%;
+}
+.input_blog_tag{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    border: none;
+    border-bottom: 0.4px solid #29B390;
+    background-color: transparent;
+    margin-left: 5px;
+    margin-top: -18px;
+    width: 75%;
 }
 .gestor_blog_imagen{
     margin-left: 5px;
