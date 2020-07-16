@@ -4,7 +4,6 @@
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tags.css')}}">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script type="text/javascript" src='/assets/js/tags.js'></script>
     <script>
         $(function() {

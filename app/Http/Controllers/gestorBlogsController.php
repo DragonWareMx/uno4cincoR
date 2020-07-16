@@ -25,7 +25,7 @@ class gestorBlogsController extends Controller
 
         $blog=Blog::findOrFail($id);
         $autoresLibro=Author::get();
-        $autoresBlog=Blog::groupBy('autor')->get('autor');
+        $autoresBlog=Blog::groupBy('autor')->whereNotNull('autor')->get('autor');
         return view ('gestor.blogs.editarBlog',['autoresLibro'=>$autoresLibro,'autoresBlog'=>$autoresBlog,'blog'=>$blog]);
     }
 }

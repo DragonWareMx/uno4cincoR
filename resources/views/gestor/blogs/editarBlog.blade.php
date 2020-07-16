@@ -57,7 +57,16 @@
                         <select class="select_blog" name="autorLibro" >
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de libro</option>
                             @foreach ($autoresLibro as $autor)
-                                <option>{{$autor->nombre}}</option>
+                                @if ($blog->author_id)
+                                    @if ($blog->author->nombre == $autor->nombre)
+                                    <option value="{{$autor->id}}" selected>{{$autor->nombre}}</option>        
+                                    @else
+                                    <option value="{{$autor->id}}">{{$autor->nombre}}</option>
+                                    @endif
+                                @else
+                                <option value="{{$autor->id}}">{{$autor->nombre}}</option>
+                                @endif
+
                             @endforeach
                         </select>
                     </div>
@@ -96,7 +105,8 @@
         <div class="preview_imagen_blog">
             <div id="preview_imagen" class="gestor_blog_mostrar_imagen">
                 <img src="" alt="Imagen" class="preview_imagen_imagen">
-                <span class="preview_imagen_default">Imagen</span>
+                <span class="preview_imagen_default" style="display: none">Imagen</span>
+                <img src="{{asset('/storage/blogs/'.$blog->imagen)}}" alt="Imagen" class="imagen_actual">
             </div>
         </div>
     </div>
@@ -105,6 +115,7 @@
         const inpFile = document.getElementById("imagen");
         const previewContainer= document.getElementById("preview_imagen");
         const previewImage = previewContainer.querySelector(".preview_imagen_imagen");
+        const previewImageAnterior = previewContainer.querySelector(".imagen_actual");
         const previewDefaultText = previewContainer.querySelector(".preview_imagen_default");
 
         inpFile.addEventListener("change", function(){
@@ -114,6 +125,7 @@
                 const reader = new FileReader();
 
                 previewDefaultText.style.display="none";
+                previewImageAnterior.style.display="none";
                 previewImage.style.display="block";
 
                 reader.addEventListener("load", function(){

@@ -21,6 +21,8 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('temaGestor/css/app.css')}}" rel="stylesheet">
 
+   {{-- JQuery bugeado --}}
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   @yield('importOwl')
 
 </head>

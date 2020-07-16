@@ -228,9 +228,15 @@
     display: none;
     width: 100%;
 }
+
 .preview_imagen_blog{
     width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.imagen_actual{
+    width: 100%;
+    display: block;
 }
