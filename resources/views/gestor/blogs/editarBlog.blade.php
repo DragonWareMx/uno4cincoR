@@ -1,9 +1,18 @@
 @extends('layouts.menuGestor')
 
 @section('importOwl')
-    {{-- <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tags.css')}}">
+    <script type="text/javascript" src='/assets/js/tags.js'></script>
+    <script>
+        $(function() {
+            $("#testInput_tags_blog").tags({
+                unique: true,
+                maxTags: 5
+            });
+        });
+    </script>
 @endsection
 
 @section('menu')
@@ -23,8 +32,9 @@
     <div class="contenido_blogs">
         
          <div class="datos_blog">
-            <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('editarBlog', ['id'=>$blog->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('patch')
 
                 <div class="elementos_blog_100">
                     <p class="elementos_blog">Título:</p>
@@ -73,7 +83,7 @@
                     </div>
                     <div class="elementos_blog_50">
                         <p class="elementos_blog">Tags:</p>
-                        <input type="text" class="input_blog_tag" name="tags" >
+                        <input type="text"  id="testInput_tags_blog" class="input_blog_tag" name="tags" >
                     </div>
                 </div>
 
@@ -82,14 +92,9 @@
                 </div>
                 <div class="elementos_blog_100">
                     <div class="contenido_gestor_blog">
-                        <textarea class="blog_text_area"type="" id="prueba" name="contenido" value="" required >{{$blog->contenido}}</textarea>
+                        <textarea class="blog_text_area"type="text" name="contenido" value="" required >{{$blog->contenido}}</textarea>
                         <script>
-                                ClassicEditor
-                                .create( document.querySelector( '#prueba' ) )
-                                .catch( error => {
-                                    console.error( error );
-                                } );
- 
+                                CKEDITOR.replace( 'contenido' );
                         </script>
                     </div>
                 </div>
@@ -97,12 +102,12 @@
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
                         <p class="elementos_blog">Imagen:</p>
-                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>
+                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen">
                     </div>
                 </div>
 
                 <div class="botones_blog_100">
-                    <a class="gestor_blog_cancelar" href="#">Cancelar</a>
+                <a class="gestor_blog_cancelar" href="{{url()->previous()}}">Cancelar</a>
                     <input class="gestor_blog_guardar" type="submit" value="Guardar">	
                 </div>
                 
