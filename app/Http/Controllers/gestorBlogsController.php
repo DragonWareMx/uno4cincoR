@@ -7,6 +7,7 @@ use App\Author;
 use App\Blog;
 use App\Tag;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class gestorBlogsController extends Controller
 {
@@ -30,9 +31,18 @@ class gestorBlogsController extends Controller
     public function editBlog($id){
 
         $blog=Blog::findOrFail($id);
+        $tags=DB::table('blog_tag')
+        ->select(DB::raw('*'))
+        ->where('blog_id', '=', $blog->id)
+        ->get();
+        $tagsActuales="";
+        foreach($tags as $tag){
+            $tagName=Tag::findOrFail($tag->tag_id);
+            $tagsActuales=$tagsActuales.$tagName->nombre.",";
+        }
         $autoresLibro=Author::get();
         $autoresBlog=Blog::groupBy('autor')->whereNotNull('autor')->get('autor');
-        return view ('gestor.blogs.editarBlog',['autoresLibro'=>$autoresLibro,'autoresBlog'=>$autoresBlog,'blog'=>$blog]);
+        return view ('gestor.blogs.editarBlog',['autoresLibro'=>$autoresLibro,'autoresBlog'=>$autoresBlog,'blog'=>$blog,'tagsActuales'=>$tagsActuales]);
     }
 
     public function updateBlog($id){
