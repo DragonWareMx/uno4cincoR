@@ -21,6 +21,8 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('temaGestor/css/app.css')}}" rel="stylesheet">
 
+   {{-- JQuery bugeado --}}
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   @yield('importOwl')
 
 </head>
@@ -101,11 +103,10 @@
         </a>
         <div id="collapseBitacora" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Bitácora</a>
-            <a class="collapse-item" href="/sgtepetate/gestionTareasPendientes">Ver Tareas Pendientes</a>
+            <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Blogs</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="/sgtepetate/gestionBitacora/nuevaBitacora">Registrar Bitácora</a>
+            <a class="collapse-item" href="{{ route('nuevoBlog')}}">Nuevo Blog</a>
           </div>
         </div>
       </li>
@@ -308,7 +309,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{asset('temaGestor/vendor/jquery/jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('temaGestor/vendor/jquery/jquery.min.js')}}"></script> --}}
   <script src="{{asset('temaGestor/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->

@@ -50,7 +50,13 @@
     width: 270px; line-height: 49px; margin:10px; text-align:left; margin-right: auto; margin-left: 5%;
 }
 .text_title{
-    font-family: Karla; font-style: normal; font-weight: normal; font-size: 36px; color: #1D2120;
+    font-family: Abril Fatface;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1D2120;
+    
 }
 .cajaBannerLibros{
     width: 90%;
