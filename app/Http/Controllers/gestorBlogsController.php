@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Author;
 use App\Blog;
+use App\Tag;
+use Carbon\Carbon;
 
 class gestorBlogsController extends Controller
 {
@@ -44,7 +46,60 @@ class gestorBlogsController extends Controller
             'imagen'=>'nullable|image',
         ]);
         //dd(request());
-        $str_arr = explode (",", request('tags'));  
-        dd($str_arr); 
+        //Esta parte de aqui es para sacar los tags, primero descompone los tags en un arreglo, despues 
+        //se recorre ese arreglo y se revisa si existen o no en la tabla Tags, en caso de que no existan se guardan ahi
+        $arrTags = explode (",", request('tags'));  
+        foreach($arrTags as $tagsNuevos){
+            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+            if(!$tagActual){
+                $tagNew=new Tag();
+                $tagNew->nombre=$tagsNuevos;
+                $tagNew->save();
+            }
+        }
+        //después se crea otro array para almacenar los ID's que tiene cada tag
+        $arrTagsID=$arrTags;
+        $contador=0;
+        foreach($arrTags as $tagsNuevos){
+            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+            $arrTagsID[$contador]=$tagActual->id;
+            $contador++;
+        }
+        
+        //aquí instanciamos el blog para ya updatear su información;
+        $blog=Blog::findOrFail($id);
+        $blog->titulo=request('titulo');
+        $blog->contenido=request('contenido');
+        $mytime = Carbon::now();
+        $blog->fecha=$mytime->toDateString();
+        if(request('autorBlogNuevo')!=NULL){
+            $blog->autor=request('autorBlogNuevo');
+        }
+        else{
+            $blog->autor=request('autorBlog');
+        }
+        $blog->author_id=request('autorLibro');
+        //esta es la parte para guardar la imagen
+        if(request('imagen')==null){
+            $newFileName=$blog->imagen;
+        }
+        else{
+        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+        $extension = request('imagen')->getClientOriginalExtension();
+        $newFileName=$fileName.'_'.time().'.'.$extension;
+        $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
+
+        $oldImage=public_path().'/storage/blogs/'.$blog->imagen;
+            if(file_exists($oldImage)){
+                unlink($oldImage);
+            }
+        }
+        $blog->imagen=$newFileName;
+        //aqui termina la parte de las imagenes
+        $blog->save();
+
+        //Ahora falta asignarle los tags al blog recien guardado
+        $blog->tags()->sync($arrTagsID);
     }
 }
