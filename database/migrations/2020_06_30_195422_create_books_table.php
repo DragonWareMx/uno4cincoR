@@ -28,6 +28,8 @@ class CreateBooksTable extends Migration
             $table->text('linkDescarga');
             $table->text('bannerImagen');
             $table->text('tiendaImagen');
+            $table->boolean('nuevo')->default(0);
+            $table->date('fechaPublicacion');
             $table->unsignedBigInteger('sello_id');
             $table->foreign('sello_id')
                 ->references('id')
