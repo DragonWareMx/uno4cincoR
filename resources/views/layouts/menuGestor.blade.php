@@ -101,11 +101,10 @@
         </a>
         <div id="collapseBitacora" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Bitácora</a>
-            <a class="collapse-item" href="/sgtepetate/gestionTareasPendientes">Ver Tareas Pendientes</a>
+            <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Blogs</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Acceso directo:</h6>
-            <a class="collapse-item" href="/sgtepetate/gestionBitacora/nuevaBitacora">Registrar Bitácora</a>
+            <a class="collapse-item" href="{{ route('nuevoBlog')}}">Nuevo Blog</a>
           </div>
         </div>
       </li>
