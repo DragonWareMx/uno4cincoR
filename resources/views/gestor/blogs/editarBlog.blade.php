@@ -1,7 +1,8 @@
 @extends('layouts.menuGestor')
 
 @section('importOwl')
-    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
 @endsection
 
@@ -81,9 +82,14 @@
                 </div>
                 <div class="elementos_blog_100">
                     <div class="contenido_gestor_blog">
-                        <textarea class="blog_text_area"type="text" name="contenido" value="" required >{{$blog->contenido}}</textarea>
+                        <textarea class="blog_text_area"type="" id="prueba" name="contenido" value="" required >{{$blog->contenido}}</textarea>
                         <script>
-                                CKEDITOR.replace( 'contenido' );
+                                ClassicEditor
+                                .create( document.querySelector( '#prueba' ) )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+ 
                         </script>
                     </div>
                 </div>
