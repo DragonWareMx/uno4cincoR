@@ -24,6 +24,8 @@ class booksTable extends Seeder
             'linkDescarga'=>'desordenes.txt',
             'bannerImagen'=>'aless.PNG',
             'tiendaImagen'=>'alessC.JPG',
+            'fechaPublicacion'=>'2020-07-06',
+            'nuevo'=>1,
             'sello_id'=>'1'
 
         ]);
@@ -41,6 +43,8 @@ class booksTable extends Seeder
             'linkDescarga'=>'manicomio.txt',
             'bannerImagen'=>'estefania.PNG',
             'tiendaImagen'=>'estefaniaC.JPG',
+            'fechaPublicacion'=>'2020-07-05',
+            'nuevo'=>1,
             'sello_id'=>'1'
         ]);
         
@@ -57,6 +61,8 @@ class booksTable extends Seeder
             'linkDescarga'=>'jordan.txt',
             'bannerImagen'=>'cesar.PNG',
             'tiendaImagen'=>'cesarC.JPG',
+            'fechaPublicacion'=>'2020-07-07',
+            'nuevo'=>1,
             'sello_id'=>'1'
         ]);
         
@@ -73,6 +79,8 @@ class booksTable extends Seeder
             'linkDescarga'=>'agustin.txt',
             'bannerImagen'=>'agustin.PNG',
             'tiendaImagen'=>'agustinC.JPG',
+            'fechaPublicacion'=>'2020-07-08',
+            'nuevo'=>1,
             'sello_id'=>'1'
         ]);
     }
