@@ -272,3 +272,121 @@
     max-width: 1169px;
     border-top: 0.3px solid #1D2120;
 }
+
+.modal-content{
+    background-color: #FAFAFA !important;
+}
+
+.formato-comprar{
+    display: table-cell;
+    width: 50%;
+    text-align: center;
+}
+
+.formato-comprar .formato-container{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    box-shadow: 4px 4px 8px rgba(187, 187, 187, 0.25);
+    cursor: pointer;
+    transition-duration: .1s, .1s;
+}
+
+.formato-comprar .formato p{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+
+    width: fit-content;
+    margin: auto;
+}
+
+.formato-comprar .precio{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+
+    padding-top: 7px;
+    width: fit-content;
+    margin: auto;
+}
+
+.formato-comprar .precio .oferta{
+    text-decoration: line-through;
+    color: #BA1F00;
+    margin:0px;
+    margin-right: 10px;
+}
+
+.formato-comprar .ahorro{
+    width: 100%;
+    height: 16px;
+}
+
+.formato-comprar .ahorro p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #1D2120;
+
+    margin-top: 7px;
+}
+
+.formato-comprar .disponibilidad{
+    width: 100%;
+}
+
+.formato-comprar .disponibilidad p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.formato-comprar .cantidad{
+    width: 100%;
+    display: inline-block;
+    color: #000;
+}
+
+.formato-comprar .cantidad a,
+.formato-comprar .cantidad p{
+    color: #000;
+}
+
+.formato-comprar .cantidad input{
+    width: 25%;
+    height: 24.8px;
+    border: 0px !important;
+    outline: none;
+    text-align: center;
+}
+
+.boton-formato{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
