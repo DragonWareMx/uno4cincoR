@@ -129,7 +129,7 @@
     margin-top: 5%;
     margin-bottom: 5%;
     position: relative;
-    top: -92%;
+    top: -92.5%;
 }
 .div_fechaNacAutor{
     width: 100%;
@@ -188,12 +188,19 @@
     float: left;
 }
 .pad15{ 
+    border: none;
     width: 100%;
     text-align: center; 
     height: 90%;
     margin:10px; 
     background-color: #1d2120;
     display: flex;
+    transition: all 0.2s;
+}
+.pad15:hover{
+    cursor: pointer;
+    padding: 1%;
+    transition: all 0.2s;
 }
 .MultiCarousel .leftLst, .MultiCarousel .rightLst { 
     position:absolute; 
@@ -223,7 +230,7 @@
 }
 .div_portadapad15{
     width: 32%;
-    height: 170px;
+    height: 150px;
 }
 .div_portadapad15 img{
     background-size: cover; 
