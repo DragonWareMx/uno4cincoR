@@ -15,6 +15,11 @@ class gestorBlogsController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(8);
+        return view('gestor.blogs',['blogs'=>$blogs]);
+    }
+
     public function addBlog()
     {
         $autoresLibro=Author::get();
