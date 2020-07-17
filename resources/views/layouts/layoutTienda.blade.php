@@ -125,12 +125,17 @@
     <script>
         var libros = @json($books);
 
-        function comprarCarrito(){            
-            alert(JSON.stringify(libros));
+        function comprarCarrito(id){   
+            var libro;
 
-            var libro = libros[id];
-            
-            alert(libro.getAttribute('precioFisico'));
+            for (var i = 0; i < libros.data.length; i++){
+                var a = libros.data[i];
+                if(a['id']==id){
+                    libro = a;
+                }
+            }
+
+            alert(libro['id']);
 
             //se pone el precio en el modal
             //FORMATO FISICO
