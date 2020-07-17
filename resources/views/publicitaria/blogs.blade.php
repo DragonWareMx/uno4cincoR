@@ -129,7 +129,7 @@
                 @endif
                 @foreach ($blogs as $blog)
                     <a href="{{ route('blog', ['id' => $blog->id])}}" class="blog_item">
-                        <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;
+                        <div class="blog_item_imagen" style="background: url('{{asset('storage/blogs/'.$blog->imagen)}}') center center no-repeat;
                                 background-color:#717171;
                                 background-size: cover;
                                 -moz-background-size: cover;
@@ -204,7 +204,7 @@
                             </div>
                         </div>
                         <div class="blog_info_contenido">
-                            {{Str::limit($blog->contenido,158)}}
+                            {!!Str::limit($blog->contenido,158)!!}
                         </div>
                     </a>
                 @endforeach

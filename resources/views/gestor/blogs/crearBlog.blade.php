@@ -63,7 +63,7 @@
                         <select class="select_blog" name="autorLibro" >
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de libro</option>
                             @foreach ($autoresLibro as $autor)
-                                <option>{{$autor->nombre}}</option>
+                                <option value="{{$autor->id}}">{{$autor->nombre}}</option>
                             @endforeach
                         </select>
                     </div>

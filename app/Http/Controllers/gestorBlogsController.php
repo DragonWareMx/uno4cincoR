@@ -18,14 +18,67 @@ class gestorBlogsController extends Controller
     public function addBlog()
     {
         $autoresLibro=Author::get();
-        $autoresBlog=Blog::groupBy('autor')->get('autor');
+        $autoresBlog=Blog::groupBy('autor')->whereNotNull('autor')->get('autor');
         return view ('gestor.blogs.crearBlog',['autoresLibro'=>$autoresLibro,'autoresBlog'=>$autoresBlog]);
     }
 
-    public function storeBlog(Request $request)
+    public function storeBlog()
     {
-        dd($request);
-        
+        $data=request()->validate([
+            'titulo'=>'required|max:250',
+            'autorBlog'=>'nullable',
+            'autorBlogNuevo'=>'nullable',
+            'autorLibro'=>'nullable',
+            'tags'=>'required|max:250',
+            'contenido'=>'required|max:2500', 
+            'imagen'=>'nullable|image',
+        ]);
+        // $blog=new Blog();
+        $arrTags = explode (",", request('tags'));  
+        foreach($arrTags as $tagsNuevos){
+            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+            if(!$tagActual){
+                $tagNew=new Tag();
+                $tagNew->nombre=$tagsNuevos;
+                $tagNew->save();
+            }
+        }
+        $arrTagsID=$arrTags;
+        $contador=0;
+        foreach($arrTags as $tagsNuevos){
+            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+            $arrTagsID[$contador]=$tagActual->id;
+            $contador++;
+        }
+        $blog=new Blog();
+        $blog->titulo=request('titulo');
+        $blog->contenido=request('contenido');
+        $mytime = Carbon::now();
+        $blog->fecha=$mytime->toDateString();
+        if(request('autorBlogNuevo')!=NULL){
+            $blog->autor=request('autorBlogNuevo');
+        }
+        else{
+            $blog->autor=request('autorBlog');
+        }
+        $blog->author_id=request('autorLibro');
+        //esta es la parte para guardar la imagen
+        if(request('imagen')==null){
+            $newFileName='default.jpg';
+        }
+        else{
+        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+        $extension = request('imagen')->getClientOriginalExtension();
+        $newFileName=$fileName.'_'.time().'.'.$extension;
+        $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
+        }
+        $blog->imagen=$newFileName;
+        //aqui termina la parte de las imagenes
+        $blog->save();
+
+        //Ahora falta asignarle los tags al blog recien guardado
+        $blog->tags()->sync($arrTagsID);
     }
 
     public function editBlog($id){
@@ -52,7 +105,7 @@ class gestorBlogsController extends Controller
             'autorBlogNuevo'=>'nullable',
             'autorLibro'=>'nullable',
             'tags'=>'required|max:250',
-            'contenido'=>'required|max:2500',
+            'contenido'=>'required|max:2500', 
             'imagen'=>'nullable|image',
         ]);
         //dd(request());
