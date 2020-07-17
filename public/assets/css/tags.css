@@ -5,11 +5,20 @@
 	http://youtube.com/optikalefxx
 */
 .tags-wrapper {
-	background:white;
+	background:transparent;
 	overflow:hidden;
-	width:300px;
-	background-image: -webkit-linear-gradient(top, rgb(238, 238, 238) 1%, white 15%);
-	box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+	border: none;
+	border-bottom: 0.4px solid #909090;
+    width: 100%;
+    margin-left: 5px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #717171;
+    margin-top: -25px;
+    width: 100%;
 }
 .tags-wrapper ul {
 	margin:0px;
@@ -19,20 +28,21 @@
 	float:left;
 }
 .tags-wrapper li.tag {
-	font-family:verdana;
-	font-size:11px;
-	
-	border-radius:3px;
+	font-family:"Nunito";
+	font-size:14px;
+	/* border-radius:3px; */
 	list-style: none;
-	background-clip: padding-box;
-	background-color: rgb(228, 228, 228);
-	background-image:-webkit-linear-gradient(top, rgb(244, 244, 244) 20%, rgb(240, 240, 240) 50%, rgb(232, 232, 232) 52%, rgb(238, 238, 238) 100%);
-	box-shadow: 0 0 2px white inset, 0 1px 0 rgba(0, 0, 0, 0.05);
-	color: rgb(51, 51, 51);
-	border: 1px solid rgb(170, 170, 170);
+	border-radius: 10px;
+	color: #ffffff;
+	background-color: #29b390;
 	line-height: 13px;
+	height: 18px;
 	padding: 1px 3px 3px 5px;
-	margin: 3px 0 3px 5px;
+	margin: 0px 0 3px 5px;
+}
+.centrar_texto_blog{
+	margin-top: auto;
+	margin-bottom: auto;
 }
 .tags-wrapper li a {
 	text-decoration:none;
@@ -40,10 +50,9 @@
 	padding:2px;
 	display:inline-block;
 	margin-left:6px;
-	color: rgb(51, 51, 51);
 }
 .tags-wrapper li a:hover {
-	color:#222;
+	color:rgb(95, 95, 95);
 }
 .tags-wrapper input {
 	display:none;
@@ -58,10 +67,12 @@
 	background:trasparent;
 	outline:none;
 	border:none;
-	font-size:11px;
-	height: auto;
-	width:30px;
-	margin: 4px;
+	font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #717171;
 }
 .tags-wrapper .autofill-bg {
 	position:relative;

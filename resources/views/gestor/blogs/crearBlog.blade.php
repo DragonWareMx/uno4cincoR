@@ -9,14 +9,14 @@
         $(function() {
             $("#testInput_tags_blog").tags({
                 unique: true,
-                maxTags: 5
+                max:10
             });
         });
     </script>
 @endsection
 
 @section('menu')
-    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| nuevo blog
+    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| Nuevo blog
 @endsection
 
 @section('contenido')
@@ -63,13 +63,13 @@
                         <select class="select_blog" name="autorLibro" >
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de libro</option>
                             @foreach ($autoresLibro as $autor)
-                                <option>{{$autor->nombre}}</option>
+                                <option value="{{$autor->id}}">{{$autor->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="elementos_blog_50">
                         <p class="elementos_blog">Tags:</p>
-                        <input type="text"  id="testInput_tags_blog" class="input_blog_tag" name="tags" >
+                        <input type="text" id="testInput_tags_blog" class="input_blog_tag" name="tags" >
                     </div>
                 </div>
 
@@ -87,14 +87,16 @@
 
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
-                        <p class="elementos_blog">Imagen:</p>
+                        <p class="elementos_blog centrar_texto_blog">Imagen:</p>
                         <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>
                     </div>
                 </div>
 
                 <div class="botones_blog_100">
-                    <a class="gestor_blog_cancelar" href="#">Cancelar</a>
-                    <input class="gestor_blog_guardar" type="submit" value="Guardar">	
+                    <div class="botones_blog_derecha">
+                        <a class="gestor_blog_cancelar" href="#">Cancelar</a>
+                        <input class="gestor_blog_guardar" type="submit" value="Guardar">	
+                    </div>
                 </div>
                 
             </form>

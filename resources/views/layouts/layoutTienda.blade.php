@@ -54,4 +54,94 @@
 
         @yield('contenidoTienda')
     </section>
+
+    <div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle" style="text-align:center;">Estos poemas culeros que son lo menos culero que tengo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div style="display: table; width:100%;">
+                    <div class="formato-comprar">
+                        <div class="formato-container shrink">
+                            <div class="boton-formato" data-toggle="modal" data-target="#comprarFormato">
+                                <div class="formato">
+                                    <p style="padding-top: 20px;">Formato Físico:</p>
+                                </div>
+                                <div class="precio">
+                                    <div class="oferta">
+                                        $200
+                                    </div>
+                                    $100
+                                </div>
+                                <div class="ahorro">
+                                    <p>Ahorras: $100</p>
+                                </div>
+                                <div class="disponibilidad">
+                                    <p style="color: #29B390;">Disponible</p>
+                                </div>
+                            </div>
+                            <div class="cantidad" style="padding-bottom: 20px;">
+                                <p>Cantidad: </p>
+                                <a href="#" class="qty qty-minus">-</a>
+                                    <input type="numeric" value="1" />
+                                <a href="#" class="qty qty-plus">+</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formato-comprar" data-toggle="modal" data-target="#comprarFormato">
+                        <div class="formato-container shrink">
+                            <div class="formato">
+                                <p style="padding-top: 20px;">Formato Digital:</p>
+                            </div>
+                            <div class="precio" id="precio">
+                                <div class="oferta">
+                                    $200
+                                </div>
+                                $100
+                            </div>
+                            <div class="ahorro">
+                                <p>Ahorras: $100</p>
+                            </div>
+                            <div class="disponibilidad">
+                                <p style="color: #29B390;">Disponible</p>
+                            </div>
+                            <div class="cantidad" style="padding-bottom: 20px;">
+                                <p>Cantidad: </p>
+                                <p>1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        var libros = @json($books);
+
+        function comprarCarrito(){            
+            alert(JSON.stringify(libros));
+
+            var libro = libros[id];
+            
+            alert(libro.getAttribute('precioFisico'));
+
+            //se pone el precio en el modal
+            //FORMATO FISICO
+            if(libro['descuentoFisico'] > 0){
+                //precio con descuento
+                var descuento = libro['precioFisico'] - libro['precioFisico']*(libro['descuentoFisico']/100);
+                document.getElementById("precio").innerHTML = "<p></p>";
+            }
+            else{
+                //sad
+            }
+        }
+    </script>
 @endsection

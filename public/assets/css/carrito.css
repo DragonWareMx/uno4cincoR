@@ -30,7 +30,7 @@
     display: table;
     padding: 7px 10px;
 
-    border: 1px solid #FFFFFF;
+    border: 1.5px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 5px;
 
@@ -96,6 +96,9 @@
     align-items: center;
 
     color: #29B390;
+    vertical-align: top;
+    height: fit-content;
+    padding-left: 5px;
 }
 
 .carrito-table .carrito-cell .productos-container .producto .totales{
@@ -250,4 +253,50 @@
     padding: 8px 0px;
     margin-bottom: 57px;
     outline: none;
+}
+
+@media(max-width: 1200px){
+    
+    .carrito-table .carrito-cell{
+        display: table-row;
+    }
+
+    .carrito-table .carrito-cell .productos-container{
+        width: 100%;
+    }
+
+    .carrito-table .carrito-cell .compra-container{
+        width: 100%;
+        margin-right: 0px;
+        margin-left: auto;
+    }
+
+    .carrito-table .carrito-cell .productos-container .producto .datos p{
+        font-size: 14px;
+    }
+
+    .carrito-table .carrito-cell .productos-container .producto .datos a{
+        font-size: 14px;
+    }
+    
+}
+
+@media(min-width: 540px){
+    .carrito-table .carrito-cell .compra-container{
+        max-width: 350px;
+    }
+}
+
+@media(max-width: 340px){
+    .carrito-table .carrito-cell .productos-container .producto .totales .cantidades a{
+        display: block;
+    
+    }
+    
+    .carrito-table .carrito-cell .productos-container .producto .totales .cantidades input{
+        display: block;
+    }
+    .cell-div{
+        vertical-align: middle;
+    }
 }

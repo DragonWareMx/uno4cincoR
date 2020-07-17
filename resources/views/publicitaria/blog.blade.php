@@ -48,7 +48,7 @@
             <div class="blogs_vista">
             <div class="titulo_blog_txt">{{$blog->titulo}}</div>
                 
-                <div class="blog_item_imagen" style="background: url('{{asset('storage/banners/'.$blog->imagen)}}') center center no-repeat;
+                <div class="blog_item_imagen" style="background: url('{{asset('storage/blogs/'.$blog->imagen)}}') center center no-repeat;
                     background-size: cover;
                     -moz-background-size: cover;
                     -o-background-size: cover;
@@ -104,7 +104,7 @@
                 {{$anio}}                    
                 </div>
                 <div class="contenido_blog_txt">
-                {{$blog->contenido}}
+                {!!$blog->contenido!!}
                 </div>
             </div>
             <div class="barra_lateral_blogs">

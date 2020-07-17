@@ -8,9 +8,10 @@ use App\Book;
 
 class paginaTiendaController extends Controller
 {
+    //NOVEDADES
     public function index(){
         $banners=Banner::where('tipo','libro')->get();
-        $books = Book::paginate(12);
+        $books = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->paginate(12);
         return view('publicitaria.tiendaNovedades', ['banners'=>$banners, 'books'=>$books]);
     }
 

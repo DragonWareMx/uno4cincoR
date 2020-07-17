@@ -3,13 +3,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 40px;
 }
 .datos_blog{
     width: 65%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    box-shadow: 2.5px 2.5px 5px;
+    box-shadow: 4px 4px 8px rgba(187, 187, 187, 0.25);
     padding: 40px;
     padding-bottom: 10px;
     background-color: white;
@@ -17,7 +18,6 @@
 .elementos_blog_100{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     margin-bottom: 5px;
@@ -40,11 +40,11 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 0.4px solid #29B390;
+    border-bottom: 0.4px solid #909090;
     background-color: transparent;
     height: 25px;
     margin-top: -18px;
-    width: 80%;
+    width: 100%;
     margin-left: 5px;
 }
 .input_blog_titulo:focus, 
@@ -53,7 +53,7 @@
 .input_blog_tag{
     outline:none ;
     outline-width: 0;
-    border-bottom: 0.5px solid #BA1F00; 
+    border-bottom: 0.5px solid #29B390; 
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -61,7 +61,6 @@
 .elementos_blog_50{
     width: 50%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     margin-bottom: 5px;
@@ -74,7 +73,7 @@
 .select_blog{
     background-color: transparent;
     border: none;
-    border-bottom: 0.4px solid #29B390;
+    border-bottom: 0.4px solid #909090;
     width: auto;
     margin-left: 5px;
     font-family: Nunito;
@@ -91,7 +90,9 @@
     font-family: Nunito;
     font-style: normal;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #717171;
     color :#29B390;
     margin-left: 10px;
     margin-top: -16px;
@@ -110,11 +111,11 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 0.4px solid #29B390;
+    border-bottom: 0.4px solid #909090;
     background-color: transparent;
     margin-left: 5px;
     margin-top: -18px;
-    width: 70%;
+    width: 100%;
 }
 .input_blog_tag{
     font-family: Nunito;
@@ -124,7 +125,7 @@
     line-height: 22px;
     color: #000000;
     border: none;
-    border-bottom: 0.4px solid #29B390;
+    border-bottom: 0.4px solid #909090;
     background-color: transparent;
     margin-left: 5px;
     margin-top: -18px;
@@ -142,19 +143,10 @@
 .contenido_gestor_blog{
     width: 100%;
 }
-.botones_blog_100{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-top:20px;
-}
+
 .elementos_blog_imagen{
     margin-top: 20px;
     display: flex;
-    margin-left: auto;
-    justify-content: right;
 }
 .gestor_blog_cancelar{
     font-family: Nunito;
@@ -170,18 +162,13 @@
     box-sizing: border-box;
     border-radius: 5px;
     width: 151px;
-    height: 32px;
-    transition: ease-in 0.3s;
+    height: 40px;
+    transition: all 0.3s;
 }
 .gestor_blog_cancelar:hover{
-    width: 155px;
-    height: 37px;
-    margin-left: 5px;
-    transition: ease-in 0.3s;
+    width: 156px;
+    transition: all 0.3s;
     text-decoration: none;
-    border: 1px solid  white;
-    color:  white;
-    background-color: #BA1F00;
 }
 .gestor_blog_guardar{
     font-family: "Nunito";
@@ -197,31 +184,26 @@
     box-sizing: border-box;
     border-radius: 5px;
     width: 151px;
-    height: 32px;
-    transition: ease-in 0.3s;
+    height: 40px;
+    transition: all 0.3s;
     background-color: transparent;
 }
 .gestor_blog_guardar:hover{
-    width: 155px;
-    height: 37px;
-    margin-right: 5px;
-    transition: ease-in 0.3s;
+    width: 156px;
+    transition: all 0.3s;
     text-decoration: none;
-    border: 1px solid  white;
-    color:  white;
-    background-color: #248470;
 }
 .gestor_blog_mostrar_imagen{
-    width: 100%;
+    width: 80%;
     height: 300px;
-    border: 1.5px solid #717171;
+    border: 1.5px solid #909090;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Nunito";
     font-style: bold;
     font-weight: 600;
-    color: #717171;
+    color: #909090;
     font-size: 18px;
 }
 .preview_imagen_imagen{
@@ -230,7 +212,7 @@
 }
 
 .preview_imagen_blog{
-    width: 30%;
+    width: 33%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,4 +221,17 @@
 .imagen_actual{
     width: 100%;
     display: block;
+}
+.botones_blog_100{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top:35px;
+    margin-bottom: 20px;
+}
+.botones_blog_derecha{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
 }
