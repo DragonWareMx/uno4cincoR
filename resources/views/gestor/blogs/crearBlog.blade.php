@@ -69,7 +69,7 @@
                     </div>
                     <div class="elementos_blog_50">
                         <p class="elementos_blog">Tags:</p>
-                        <input type="text"  value="josué,nunito,dulcecitaDeLimón,noEraPenal,"id="testInput_tags_blog" class="input_blog_tag" name="tags" >
+                        <input type="text" id="testInput_tags_blog" class="input_blog_tag" name="tags" >
                     </div>
                 </div>
 
