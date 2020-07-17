@@ -59,60 +59,60 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle" style="text-align:center;">Estos poemas culeros que son lo menos culero que tengo</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
+                <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
                 <div style="display: table; width:100%;">
                     <div class="formato-comprar">
                         <div class="formato-container shrink">
-                            <div class="boton-formato" data-toggle="modal" data-target="#comprarFormato">
+                            <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target="">
                                 <div class="formato">
                                     <p style="padding-top: 20px;">Formato Físico:</p>
                                 </div>
-                                <div class="precio">
+                                <div class="precio" id="precioFisico">
                                     <div class="oferta">
-                                        $200
+                                        
                                     </div>
-                                    $100
+                                    
                                 </div>
-                                <div class="ahorro">
-                                    <p>Ahorras: $100</p>
+                                <div class="ahorro" id="ahorroFisico">
+                                    
                                 </div>
-                                <div class="disponibilidad">
-                                    <p style="color: #29B390;">Disponible</p>
+                                <div class="disponibilidad" id="disponibleFisico">
+                                    
                                 </div>
                             </div>
                             <div class="cantidad" style="padding-bottom: 20px;">
                                 <p>Cantidad: </p>
-                                <a href="#" class="qty qty-minus">-</a>
-                                    <input type="numeric" value="1" />
-                                <a href="#" class="qty qty-plus">+</a>
+                                <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
+                                    <input type="numeric" id="cantidadFisico" value="1" />
+                                <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
                             </div>
                         </div>
                     </div>
-                    <div class="formato-comprar" data-toggle="modal" data-target="#comprarFormato">
+                    <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target="">
                         <div class="formato-container shrink">
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Digital:</p>
                             </div>
-                            <div class="precio" id="precio">
+                            <div class="precio" id="precioDigital">
                                 <div class="oferta">
                                     $200
                                 </div>
                                 $100
                             </div>
-                            <div class="ahorro">
-                                <p>Ahorras: $100</p>
+                            <div class="ahorro" id="ahorroDigital">
+                                
                             </div>
-                            <div class="disponibilidad">
-                                <p style="color: #29B390;">Disponible</p>
+                            <div class="disponibilidad" id="disponibleDigital">
+                                
                             </div>
-                            <div class="cantidad" style="padding-bottom: 20px;">
-                                <p>Cantidad: </p>
-                                <p>1</p>
+                            <div class="cantidad" style="padding-bottom: 20px;" id="cantidadDigital">
+                                
                             </div>
                         </div>
                     </div>
@@ -124,29 +124,161 @@
 
     <script>
         var libros = @json($books);
+        var seleccionado;
 
-        function comprarCarrito(id){   
+        //obtiene los datos del libro en base al id
+        function getLibro(id){
             var libro;
 
             for (var i = 0; i < libros.data.length; i++){
                 var a = libros.data[i];
                 if(a['id']==id){
                     libro = a;
+                    break;
                 }
             }
 
-            alert(libro['id']);
+            return libro;
+        }
 
-            //se pone el precio en el modal
-            //FORMATO FISICO
+        //ABRE EL MODAL PARA ELEGIR EL FORMATO
+        function comprarCarrito(id){   
+            var libro = getLibro(id);
+
+            //SE OBTIENE EL ID DEL LIBRO SELECCIONADO
+            seleccionado = id;
+
+            //SE PONE EL NOMBRE DEL LIBRO EN EL MODAL
+            document.getElementById("exampleModalLongTitle").innerHTML = libro['titulo'];
+
+            //SE PONE EL PRECIO EN EL MODAL
+
+                //FORMATO FISICO
             if(libro['descuentoFisico'] > 0){
                 //precio con descuento
-                var descuento = libro['precioFisico'] - libro['precioFisico']*(libro['descuentoFisico']/100);
-                document.getElementById("precio").innerHTML = "<p></p>";
+                var oferta = libro['precioFisico']*(libro['descuentoFisico']/100);
+                var descuento = libro['precioFisico'] - oferta;
+
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + libro['precioFisico'] + "</div>$"+descuento;
+                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
             }
             else{
-                //sad
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+libro['precioFisico'];
+                document.getElementById("ahorroFisico").innerHTML = "";
+            }
+
+                //FORMATO DIGITAL
+            if(libro['descuentoDigital'] > 0){
+                //precio con descuento
+                var oferta = libro['precioDigital']*(libro['descuentoDigital']/100);
+                var descuento = libro['precioDigital'] - libro['precioDigital']*(libro['descuentoDigital']/100);
+
+                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + libro['precioDigital']+ "</div>$"+descuento;
+                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
+            }
+            else{
+                document.getElementById("precioDigital").innerHTML = "$"+libro['precioDigital'];
+                document.getElementById("ahorroDigital").innerHTML = "";
+            }
+
+            //CHECA DISPONIBILIDAD
+                //FORMATO FISICO
+            if(libro['stockFisico'] > 0){
+                document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
+                //el modal se puede cerrar al seleccionar el formato
+                document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");
+                //El valor de la cantidad se establece como 1
+                document.getElementById("cantidadFisico").value = 1;
+                //los botones de la cantidad son visibles
+                document.getElementById("menosCarrito").style.display = "inline-block";
+                document.getElementById("masCarrito").style.display = "inline-block";
+                document.getElementById("cantidadFisico").readOnly = false;
+            }
+            else{
+                document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #BA1F00;\">No Disponible</p>";
+                //El modal ya no puede cerrarse al seleccionar el formato
+                document.getElementById("botonFisico").setAttribute("data-target", "");
+                //El valor de la cantidad se establece como 0
+                document.getElementById("cantidadFisico").value = 0;
+                //los botones de la cantidad son visibles
+                document.getElementById("menosCarrito").style.display = "none";
+                document.getElementById("masCarrito").style.display = "none";
+                document.getElementById("cantidadFisico").readOnly = true;
+            }
+
+                //FORMATO DIGITAL
+            if(libro['stockDigital'] > 0){
+                document.getElementById("disponibleDigital").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
+                //el modal se puede cerrar al seleccionar el formato
+                document.getElementById("botonDigital").setAttribute("data-target", "#comprarFormato");
+                //la cantidad es 1
+                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p>1</p>";
+            }
+            else{
+                document.getElementById("disponibleDigital").innerHTML = "<p style=\"color: #BA1F00;\">No Disponible</p>";
+                //El modal ya no puede cerrarse al seleccionar el formato
+                document.getElementById("botonDigital").setAttribute("data-target", "");
+                //la cantidad es 0
+                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p>0</p>";
             }
         }
+
+        //CANTIDAD, BOTON MENOS
+        $('#menosCarrito').click(function(){            
+            //se obtiene el numero del input y se hace la resta
+            var number = document.getElementById("cantidadFisico").value;
+            
+            number--;
+            
+            //no se deja que la cantidad sea menor a 0
+            if(number < 1){
+                number = 1;
+            }
+
+            document.getElementById("cantidadFisico").value = number;
+        });
+
+        //CANTIDAD, BOTON MAS
+        $('#masCarrito').click(function(){
+            var libro = getLibro(seleccionado);
+            var max = libro['stockFisico'];
+
+            //se obtiene el numero del input y se hace la resta
+            var number = document.getElementById("cantidadFisico").value;
+            
+            number++;
+            
+            //no se deja que la cantidad sea menor a 0
+            if(number > max){
+                number = max;
+            }
+
+            document.getElementById("cantidadFisico").value = number;
+        });
+
+        //CANTIDAD, INPUT ENTER
+        $("#cantidadFisico").keypress(function(event) { 
+            // Only ASCII charactar in that range allowed 
+            var ASCIICode = (event.which) ? event.which : event.keyCode 
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+                return false;
+
+            if (event.keyCode === 13) { 
+                var libro = getLibro(seleccionado);
+                var max = libro['stockFisico'];
+
+                //se obtiene el numero del input
+                var number = document.getElementById("cantidadFisico").value;
+
+                if(number > max){
+                    number = max;
+                }
+                else if(number < 1){
+                    number = 1;
+                }
+
+                document.getElementById("cantidadFisico").value = number;
+            } 
+        }); 
     </script>
 @endsection
