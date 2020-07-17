@@ -23,6 +23,9 @@
 
    {{-- JQuery bugeado --}}
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   {{-- Fuentes--}}
+   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
   @yield('importOwl')
 
 </head>
