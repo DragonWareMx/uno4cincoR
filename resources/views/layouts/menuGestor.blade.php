@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dashboard | Editorial uno4cinco</title>
+  <title>Inicio | Editorial uno4cinco</title>
 
   <link rel="icon" href="{{asset('/img/ico/puerta.png')}}" type="image/icon type">
 
@@ -23,6 +23,9 @@
 
    {{-- JQuery bugeado --}}
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   {{-- Fuentes--}}
+   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
   @yield('importOwl')
 
 </head>
@@ -86,16 +89,16 @@
         </a>
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Autores</a>
-              <a class="collapse-item" href="/sgtepetate/gestionTareasPendientes">Ver Tareas Pendientes</a>
+              <a class="collapse-item" href="#">uno4cinco</a>
+              <a class="collapse-item" href="#">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="/sgtepetate/gestionBitacora/nuevaBitacora">Registrar Bitácora</a>
+              <a class="collapse-item" href="#">Agregar autor</a>
             </div>
           </div>
       </li>
 
-      <!-- Nav Item - Bitacora Collapse Menu -->
+      <!-- Nav Item - Bitacora Collapse blog -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-pencil-alt"></i>
@@ -111,7 +114,15 @@
         </div>
       </li>
 
-      <!-- Nav Item - Inventario Collapse Menu -->
+      <!-- Nav Item - Bitacora Collapse sliders -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#"  aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-clone"></i>
+          <span>Sliders</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - Inventario Collapse ventas -->
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventario" aria-expanded="true" aria-controls="collapsePages">
@@ -184,8 +195,8 @@
                 @endif --}}
               </a>
               <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px">
-                <h6 class="dropdown-header">
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
+                <h6 class="dropdown-header" style="background-color:#181A2C">
                   Notificaciones
                 </h6>
                 
@@ -227,13 +238,10 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/sgtepetate/perfil">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="/sgtepetate/gestionBitacora">
+                
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-clipboard-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Bitacora
+                  Resumen
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

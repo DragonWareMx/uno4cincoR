@@ -41,9 +41,6 @@
             </div>
             <p class="div_fechaNacAutor">
                 @php
-                
-
-                
                     $separa=explode("-",$autor->fechaNac);
                     $anio=$separa[0];
                     $mes=$separa[1];
@@ -90,56 +87,6 @@
                         @break
                 @endswitch
                 {{$anio}}
-                
-                {{-- al<br>
-
-                @php
-                    $separa2=explode("-",$author->fechaMuerte);
-                    $anio=$separa2[0];
-                    $mes=$separa2[1];
-                    $dia=$separa2[2];
-                @endphp
-                {{$dia}}-
-                @switch($mes)
-                    @case('01')
-                        Enero-
-                        @break
-                    @case('02')
-                        Febrero-
-                        @break
-                    @case('03')
-                        Marzo-
-                        @break
-                    @case('04')
-                        Abril-
-                        @break
-                    @case('05')
-                        Mayo-
-                        @break
-                    @case('06')
-                        Junio-
-                        @break
-                    @case('07')
-                        Julio-
-                        @break
-                    @case('08')
-                        Agosto-
-                        @break
-                    @case('09')
-                        Septiembre-
-                        @break
-                    @case('10')
-                        Octubre-
-                        @break
-                    @case('11')
-                        Noviembre-
-                        @break
-                    @case('12')
-                        Diciembre-
-                        @break
-                @endswitch
-                {{$anio}} --}}
-
             </p>
             
         </div>
@@ -154,8 +101,7 @@
     {{-- <div class="container"> --}}
         <div class="row">
             <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                <div class="MultiCarousel-inner">
-                    @foreach ($autor->books as $book)
+                <div class="MultiCarousel-inner">@foreach ($autor->books as $book)
                     <div class="item">
                         <div class="pad15">
                             <div class="div_portadapad15">
@@ -175,63 +121,7 @@
                         </div>
                     </div>
                     @endforeach
-                    
-
-                    {{-- <div class="item">
-                        <div class="pad15">
-                            <div class="div_portadapad15">
-                                <img src="/storage/libros/ejemplo2.jpg">
-                            </div>
-                            <div class="div_infoCarrusel">
-                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
-                                </p>
-                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor</i>
-                                </p>
-                                
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="div_portadapad15">
-                                <img src="/storage/libros/ejemplo4.jpg">
-                            </div>
-                            <div class="div_infoCarrusel">
-                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
-                                </p>
-                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor</i>
-                                </p>
-                                
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="div_portadapad15">
-                                <img src="/storage/libros/ejemplo.jpg">
-                            </div>
-                            <div class="div_infoCarrusel">
-                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor sit amet consectetur</i>
-                                </p>
-                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                    <i>Lorem, ipsum dolor</i>
-                                </p>
-                                
-                            </div>
-
-                        </div>
-                    </div> --}}
-
-                    
+                                    
                     
                 </div>
                 <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
