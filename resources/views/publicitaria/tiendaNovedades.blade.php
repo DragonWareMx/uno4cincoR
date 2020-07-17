@@ -222,7 +222,7 @@
                     </div>
 
                     <!--boton de carrito-->
-                    <button class="shrink">
+                    <button class="shrink" onclick="comprarCarrito({{ $book->id }})" data-toggle="modal" data-target="#comprarFormato">
                         <img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito
                     </button>
                 </div>
