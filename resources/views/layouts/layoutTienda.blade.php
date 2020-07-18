@@ -226,14 +226,14 @@
                 //el modal se puede cerrar al seleccionar el formato
                 document.getElementById("botonDigital").setAttribute("data-target", "#comprarFormato");
                 //la cantidad es 1
-                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p>1</p>";
+                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p id=\"cantidadDigitalValue\">1</p>";
             }
             else{
                 document.getElementById("disponibleDigital").innerHTML = "<p style=\"color: #BA1F00;\">No Disponible</p>";
                 //El modal ya no puede cerrarse al seleccionar el formato
                 document.getElementById("botonDigital").setAttribute("data-target", "");
                 //la cantidad es 0
-                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p>0</p>";
+                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p id=\"cantidadDigitalValue\">0</p>";
             }
         }
 
@@ -300,24 +300,34 @@
            e.preventDefault();
            
            //SE OBTIENE LA CANTIDAD
-           var cantudad = $("#cantidadFisico").val();
+           var cantidad = $("#cantidadFisico").val();
 
-            $.ajax({
-               /*url: '{{ url('update-cart') }}',
-               method: "patch",
-               data: {_token: '{{ csrf_token() }}', id: seleccionado, quantity: $("#cantidadFisico").val()},
-               success: function (response) {
-                   alert('hola');
-               },
-               error: function(){
-                   alert(seleccionado);
-               }*/
-               url: 'add-to-cart/'+seleccionado+'/'+cantidad+'/fisico',
-               method: "get",
-               success: function (response) {
-                   alert('hola');
-               },
-            });
+           if(cantidad > 0){
+                $.ajax({
+                    url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
+                    method: "get",
+                    success: function (response) {
+                        $(".main-nav").load(" .main-nav");
+                    },
+                });
+            }
+        });
+
+        $("#botonDigital").click(function (e) {
+           e.preventDefault();
+           
+           //SE OBTIENE LA CANTIDAD
+           var cantidad = $("#cantidadDigitalValue").html();
+
+           if(cantidad > 0){
+                $.ajax({
+                    url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/digital',
+                    method: "get",
+                    success: function (response) {
+                        $(".main-nav").load(" .main-nav");
+                    },
+                });
+            }
         });
     </script>
 @endsection

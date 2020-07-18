@@ -24,7 +24,7 @@ class paginaTiendaController extends Controller
         return view('publicitaria.carrito');
     }
 
-    //Agrega un producto al carrito
+    //Agrega un producto al carrito y lo actualiza
     public function addToCart($id, $cant, $formato)
     {
         //obtenemos el libro
@@ -61,31 +61,46 @@ class paginaTiendaController extends Controller
             //se guarda el carrito en la cookie
             session()->put('cart', $cart);
  
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return;
         }
  
-        // if cart not empty then check if this product exist then increment quantity
+        // si el carrito no esta vacio entonces checa la cantidad y la actualiza
         if(isset($cart[$id])) {
- 
-            $cart[$id]['quantity']++;
- 
-            session()->put('cart', $cart);
- 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            //checa si se quiere actualizar la version fisica o digital
+            if($formato == 'fisico'){
+                $cart[$id]['cantidadFisico'] = $cant;
+    
+                session()->put('cart', $cart);
+    
+                return;
+            }
+            else{
+                $cart[$id]['cantidadDigital'] = 1;
+    
+                session()->put('cart', $cart);
+    
+                return;
+            }
  
         }
  
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $libro->name,
-            "quantity" => 1,
-            "price" => $libro->precioFisico,
-            "photo" => $libro->tiendaImagen
-        ];
+        // Si el producto no existe en el carrito entonces se crea
+        if($formato == 'fisico'){
+            $cart[$id] = [
+                        "cantidadFisico" => $cant,
+                        "cantidadDigital" => 0
+                        ];
+        }
+        else{
+            $cart[$id] = [
+                    "cantidadFisico" => 0,
+                    "cantidadDigital" => 1
+            ];
+        }
  
         session()->put('cart', $cart);
  
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return;
     }
 
     public function update(Request $request)
