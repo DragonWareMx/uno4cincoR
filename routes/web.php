@@ -33,6 +33,10 @@ Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
 
 /*RUTAS DE GESTIÓN DE BLOGS*/
+Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco')->middleware('auth');
+Route::get('/adminuno4cinco/autores-145', 'gestorAutoresController@index145')->name('autores-145')->middleware('auth');
+
+/*RUTAS DE GESTIÓN DE BLOGS*/
 Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog')->middleware('auth');
 Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog')->middleware('auth');
 Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog')->middleware('auth');
