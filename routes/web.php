@@ -32,6 +32,10 @@ Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNove
 Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
 
+Route::get('agregar-a-carrito/{id}/{cant}/{formato}', 'paginaTiendaController@addToCart')->name('agregarCarrito');
+Route::patch('update-cart', 'paginaTiendaController@update')->name('actualizarCarrito');
+Route::delete('remove-from-cart', 'paginaTiendaController@remove')->name('eliminarCarrito');
+
 /*RUTAS DE GESTIÓN DE BLOGS*/
 Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog')->middleware('auth');
 Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog')->middleware('auth');

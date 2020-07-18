@@ -159,6 +159,9 @@
                 var oferta = libro['precioFisico']*(libro['descuentoFisico']/100);
                 var descuento = libro['precioFisico'] - oferta;
 
+                if(descuento < 0)
+                    descuento = 0;
+
                 document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + libro['precioFisico'] + "</div>$"+descuento;
                 document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
             }
@@ -172,6 +175,9 @@
                 //precio con descuento
                 var oferta = libro['precioDigital']*(libro['descuentoDigital']/100);
                 var descuento = libro['precioDigital'] - libro['precioDigital']*(libro['descuentoDigital']/100);
+
+                if(descuento < 0)
+                    descuento = 0;
 
                 document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + libro['precioDigital']+ "</div>$"+descuento;
                 document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
@@ -189,10 +195,18 @@
                 document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");
                 //El valor de la cantidad se establece como 1
                 document.getElementById("cantidadFisico").value = 1;
-                //los botones de la cantidad son visibles
-                document.getElementById("menosCarrito").style.display = "inline-block";
-                document.getElementById("masCarrito").style.display = "inline-block";
-                document.getElementById("cantidadFisico").readOnly = false;
+                if(libro['stockFisico'] == 1){
+                    //los botones de la cantidad son visibles
+                    document.getElementById("menosCarrito").style.display = "none";
+                    document.getElementById("masCarrito").style.display = "none";
+                    document.getElementById("cantidadFisico").readOnly = true;
+                }
+                else{
+                    //los botones de la cantidad son visibles
+                    document.getElementById("menosCarrito").style.display = "inline-block";
+                    document.getElementById("masCarrito").style.display = "inline-block";
+                    document.getElementById("cantidadFisico").readOnly = false;
+                }
             }
             else{
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #BA1F00;\">No Disponible</p>";
@@ -279,6 +293,31 @@
 
                 document.getElementById("cantidadFisico").value = number;
             } 
-        }); 
+        });
+
+        //CUANDO SE SELECCIONA EL FORMATO SE GUARDA EN LA COOKIE
+        $("#botonFisico").click(function (e) {
+           e.preventDefault();
+           
+           //SE OBTIENE LA CANTIDAD
+           var cantudad = $("#cantidadFisico").val();
+
+            $.ajax({
+               /*url: '{{ url('update-cart') }}',
+               method: "patch",
+               data: {_token: '{{ csrf_token() }}', id: seleccionado, quantity: $("#cantidadFisico").val()},
+               success: function (response) {
+                   alert('hola');
+               },
+               error: function(){
+                   alert(seleccionado);
+               }*/
+               url: 'add-to-cart/'+seleccionado+'/'+cantidad+'/fisico',
+               method: "get",
+               success: function (response) {
+                   alert('hola');
+               },
+            });
+        });
     </script>
 @endsection
