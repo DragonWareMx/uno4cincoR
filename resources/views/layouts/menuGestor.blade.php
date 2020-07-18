@@ -50,7 +50,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
-        <a class="nav-link" href="/sgtepetate">
+        <a class="nav-link" href="{{ route('gestorInicio') }}">
             <i class="fas fa-home"></i>
           <span>Inicio</span></a>
       </li>
@@ -102,11 +102,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-pencil-alt"></i>
-          <span>Blog</span>
+          <span>Blogs</span>
         </a>
         <div id="collapseBitacora" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/sgtepetate/gestionBitacora">Ver Blogs</a>
+            <a class="collapse-item" href="{{ route('verBlogs') }}">Ver Blogs</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Acceso directo:</h6>
             <a class="collapse-item" href="{{ route('nuevoBlog')}}">Nuevo Blog</a>
@@ -116,10 +116,18 @@
 
       <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#"  aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-clone"></i>
           <span>Sliders</span>
         </a>
+        <div id="collapseSliders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="#">Ver Sliders</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Categorías:</h6>
+            <a class="collapse-item" href="#">Agregar Sliders</a>
+          </div>
+        </div>
       </li>
 
       <!-- Nav Item - Inventario Collapse ventas -->

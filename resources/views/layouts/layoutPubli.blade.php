@@ -100,7 +100,20 @@
                                 </ul>
                             </li>
                             <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>
-                            <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO</a></li>
+                            <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
+                                @if(session('cart'))
+                                    @php
+                                        $contador = 0;
+                                    @endphp
+                                    @foreach(session('cart') as $id => $details)
+                                        @php
+                                            $contador += $details['cantidadFisico'];
+                                            $contador += $details['cantidadDigital'];
+                                        @endphp
+                                    @endforeach
+                                    {{ $contador }}
+                                @endif
+                                </a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

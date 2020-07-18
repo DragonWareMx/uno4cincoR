@@ -106,7 +106,7 @@
                     </div>
                 </div>
 
-                <<div class="botones_blog_100">
+                <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
                         <a class="gestor_blog_cancelar" href="#">Cancelar</a>
                         <input class="gestor_blog_guardar" type="submit" value="Guardar">	
