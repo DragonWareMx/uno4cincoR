@@ -15,8 +15,21 @@ class gestorBlogsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(8);
+    public function index(Request $request){
+        $busqueda=$request->busqueda;
+        if($busqueda){
+            $blogs=Blog::orderBy('fecha','desc')->orderBy('blogs.id','desc')->leftJoin('authors', 'blogs.author_id', '=', 'authors.id')
+            ->where('titulo','LIKE',"%$busqueda%")
+            ->orWhere('contenido','LIKE',"%$busqueda%")
+            ->orWhere('fecha','LIKE',"%$busqueda%")
+            ->orWhere('autor','LIKE',"%$busqueda%")
+            ->orWhere('authors.nombre','LIKE',"%$busqueda%")
+            ->select('blogs.id as id','titulo','imagen','contenido','fecha','autor','blogs.author_id as author_id')
+            ->paginate(8);
+        }
+        else{
+            $blogs=Blog::orderBy('fecha','desc')->orderBy('id','desc')->paginate(8);
+        }
         return view('gestor.blogs',['blogs'=>$blogs]);
     }
 
@@ -84,6 +97,8 @@ class gestorBlogsController extends Controller
 
         //Ahora falta asignarle los tags al blog recien guardado
         $blog->tags()->sync($arrTagsID);
+
+        return redirect()->route('verBlogs');
     }
 
     public function editBlog($id){
@@ -169,5 +184,7 @@ class gestorBlogsController extends Controller
 
         //Ahora falta asignarle los tags al blog recien guardado
         $blog->tags()->sync($arrTagsID);
+
+        return redirect()->route('verBlogs');
     }
 }

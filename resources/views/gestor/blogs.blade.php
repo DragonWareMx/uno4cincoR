@@ -10,7 +10,7 @@
     <div class="all_blogs_80">
         <div class="all_blogs_menu_busqueda">
             <div class="h3 mb-0 text-gray-800">Blog</div>
-            <form class="" action="" method="GET" enctype="multipart/form-data">
+            <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
                 <div class="all_blogs_busqueda">
                     <input type="text" required id="" class ="all_blogs_input_busqueda" name="busqueda">
                     <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search"></i></button>
@@ -91,7 +91,7 @@
                     @endswitch
                     {{$anio}}                
                 </h2>
-                <a href="#"class="all_blogs_item_boton">
+                <a href="{{ route('editarBlog', ['id'=>$blog->id]) }}"class="all_blogs_item_boton">
                     <div class="all_blogs_mueve"><i class="fas fa-pencil-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Editar</div>
                 </a>
             </div>
