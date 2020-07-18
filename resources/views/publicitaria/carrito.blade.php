@@ -28,53 +28,131 @@
             <div class="carrito-table">
                 <div class="carrito-cell cell-80">
                     <div class="productos-container">
-                        <div class="producto">
-                            <div class="imagen">
-                                <img src="{{ asset('/storage/libros/agustinC.jpg') }}">
-                            </div>
-                            <div class="producto-cell">
-                                <div style="display:table; width:100%;">
-                                    <div class="datos">
-                                        <div class="titulo">
-                                            <p><b>Título: </b><a href="#">Estos poemas culeros que son lo menos culero que tengo</a></p>
-                                            <a href="#" style="margin-left: auto" class="eliminar">Eliminar</a>
-                                        </div>
-                                        <p><b>Autor: </b><a href="#">José Agustín Solórzano</a></p>
-                                        <p><b>Formato: </b>Físico</p>
-                                    </div>
-                                    <div class="totales">
-                                        <div class="table-div">
-                                            <div class="row-div">
-                                                <div class="cell-div">
-                                                    Precio
+                        @if (session('cart'))
+                            @foreach(session('cart') as $id => $details)
+                                @foreach ($books as $libro)
+                                    @if ($libro->id == $id)
+                                        @if ($details['cantidadFisico'] > 0)
+                                            <div class="producto">
+                                                <div class="imagen">
+                                                    <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
                                                 </div>
-                                                <div class="cell-div">
-                                                    Cantidad
-                                                </div>
-                                                <div class="cell-div">
-                                                    <b>Subtotal</b>
-                                                </div>
-                                            </div>
-                                            <div class="row-div">
-                                                <div class="cell-div">
-                                                    $1
-                                                </div>
-                                                <div class="cell-div">
-                                                    <div class="cantidades">
-                                                        <a href="#" class="qty qty-minus">-</a>
-                                                          <input type="numeric" value="3" />
-                                                        <a href="#" class="qty qty-plus">+</a>
+                                                <div class="producto-cell">
+                                                    <div style="display:table; width:100%;">
+                                                        <div class="datos">
+                                                            <div class="titulo">
+                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
+                                                                <a href="#" style="margin-left: auto" class="eliminar">Eliminar</a>
+                                                            </div>
+                                                            @if (count($libro->authors) > 1)
+                                                                <p><b>Autores: </b>
+                                                            @else
+                                                                <p><b>Autor: </b>
+                                                            @endif
+                                                                @php
+                                                                    $contador = 1;
+                                                                    $cantAutores = count($libro->authors);
+                                                                @endphp
+                                                                @foreach ($libro->authors as $author)
+                                                                    @if ($contador == 1)
+                                                                    <a href="#">{{$author->nombre}}</a>
+                                                                    @elseif($contador == $cantAutores)
+                                                                        y <a href="#">{{$author->nombre}}</a>
+                                                                    @else
+                                                                        , <a href="#">{{$author->nombre}}</a>
+                                                                    @endif
+                                                                    @php
+                                                                        $contador++;
+                                                                    @endphp
+                                                                @endforeach
+                                                            </p>
+                                                            <p><b>Formato: </b>Físico</p>
+                                                        </div>
+                                                        <div class="totales">
+                                                            <div class="table-div">
+                                                                <div class="row-div">
+                                                                    <div class="cell-div">
+                                                                        Precio
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        Cantidad
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <b>Subtotal</b>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row-div">
+                                                                    <div class="cell-div">
+                                                                        $1
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <div class="cantidades">
+                                                                            <a href="#" class="qty qty-minus">-</a>
+                                                                            <input type="numeric" value="3" />
+                                                                            <a href="#" class="qty qty-plus">+</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <b>$3</b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="cell-div">
-                                                    <b>$3</b>
+                                            </div>
+                                        @endif
+                                        @if ($details['cantidadDigital'] > 0)
+                                            <div class="producto">
+                                                <div class="imagen">
+                                                    <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
+                                                </div>
+                                                <div class="producto-cell">
+                                                    <div style="display:table; width:100%;">
+                                                        <div class="datos">
+                                                            <div class="titulo">
+                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
+                                                                <a href="#" style="margin-left: auto" class="eliminar">Eliminar</a>
+                                                            </div>
+                                                            <p><b>Autor: </b><a href="#">{{ $libro->authors[0]->nombre }}</a></p>
+                                                            <p><b>Formato: </b>Digital</p>
+                                                        </div>
+                                                        <div class="totales">
+                                                            <div class="table-div">
+                                                                <div class="row-div">
+                                                                    <div class="cell-div">
+                                                                        Precio
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        Cantidad
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <b>Subtotal</b>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row-div">
+                                                                    <div class="cell-div">
+                                                                        $1
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <div class="cantidades">
+                                                                            1
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="cell-div">
+                                                                        <b>$3</b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="carrito-cell cell-20">

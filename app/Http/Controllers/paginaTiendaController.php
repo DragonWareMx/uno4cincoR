@@ -21,7 +21,8 @@ class paginaTiendaController extends Controller
     }
 
     public function carrito(){
-        return view('publicitaria.carrito');
+        $books = Book::all();
+        return view('publicitaria.carrito',['books' => $books]);
     }
 
     //Agrega un producto al carrito y lo actualiza

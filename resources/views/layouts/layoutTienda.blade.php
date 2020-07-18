@@ -125,6 +125,8 @@
     <script>
         var libros = @json($books);
         var seleccionado;
+        //cada vez que se recarga la página obtenemos el carrito
+        var carrito = @json(session()->get('cart'));
 
         //obtiene los datos del libro en base al id
         function getLibro(id){
@@ -142,11 +144,25 @@
         }
 
         //ABRE EL MODAL PARA ELEGIR EL FORMATO
-        function comprarCarrito(id){   
+        function comprarCarrito(id){ 
+            var minFisico;
+            var minDigital;  
             var libro = getLibro(id);
 
-            //SE OBTIENE EL ID DEL LIBRO SELECCIONADO
+            console.log(carrito);
+
+            //SE OBTIENE EL ID DEL LIBRO SELECCIONADO Y SE GUARDA EN UNA VARIABLE GLOBAL
             seleccionado = id;
+
+            //si el producto está en el carrito se obtiene su cantidad en fisico en digital
+            if(carrito && carrito[id]){
+                minFisico = carrito[id]['cantidadFisico'];
+                minDigital = carrito[id]['cantidadDigital'];
+            }
+            else{
+                minFisico = 0;
+                minDigital = 0;
+            }
 
             //SE PONE EL NOMBRE DEL LIBRO EN EL MODAL
             document.getElementById("exampleModalLongTitle").innerHTML = libro['titulo'];
@@ -187,15 +203,24 @@
                 document.getElementById("ahorroDigital").innerHTML = "";
             }
 
-            //CHECA DISPONIBILIDAD
+            //CHECA DISPONIBILIDAD Y MUESTRA LAS CANTIDADES
                 //FORMATO FISICO
             if(libro['stockFisico'] > 0){
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
                 //el modal se puede cerrar al seleccionar el formato
                 document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");
-                //El valor de la cantidad se establece como 1
-                document.getElementById("cantidadFisico").value = 1;
-                if(libro['stockFisico'] == 1){
+
+                //EL PRODUCTO YA ESTA EN EL CARRITO
+                if(minFisico > 0){
+                    //El valor de la cantidad se establece como 1
+                    document.getElementById("cantidadFisico").value = minFisico;
+                }
+                else{
+                    //El valor de la cantidad se establece como 1
+                    document.getElementById("cantidadFisico").value = 1;
+                }
+
+                if(libro['stockFisico'] == 1 && minFisico <= 1){
                     //los botones de la cantidad son visibles
                     document.getElementById("menosCarrito").style.display = "none";
                     document.getElementById("masCarrito").style.display = "none";
@@ -307,7 +332,24 @@
                     url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
                     method: "get",
                     success: function (response) {
-                        $(".main-nav").load(" .main-nav");
+                        if(carrito){
+                            if(carrito[seleccionado]){
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                                $(".main-nav").load(" .main-nav");
+                                return;
+                            }
+                            else{
+                                carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
+                                $(".main-nav").load(" .main-nav");
+                                return;
+                            }
+                        }
+                        else{
+                            var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
+                            carrito = JSON.parse(jsonSt);
+                            $(".main-nav").load(" .main-nav");
+                            return;
+                        }
                     },
                 });
             }
@@ -324,7 +366,24 @@
                     url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/digital',
                     method: "get",
                     success: function (response) {
-                        $(".main-nav").load(" .main-nav");
+                        if(carrito){
+                            if(carrito[seleccionado]){
+                                carrito[seleccionado]['cantidadDigital'] = cantidad;
+                                $(".main-nav").load(" .main-nav");
+                                return;
+                            }
+                            else{
+                                carrito[seleccionado] = {"cantidadFisico": 0, "cantidadDigital": cantidad};
+                                $(".main-nav").load(" .main-nav");
+                                return;
+                            }
+                        }
+                        else{
+                            var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "0","cantidadDigital": "'+cantidad+'"}}';
+                            carrito = JSON.parse(jsonSt);
+                            $(".main-nav").load(" .main-nav");
+                            return;
+                        }
                     },
                 });
             }
