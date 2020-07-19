@@ -63,11 +63,11 @@
                             @endphp
                             @foreach ($book->authors as $author)
                                 @if ($contador == 1)
-                                    {{$author->nombre}}
+                                    <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @elseif($contador == $cantAutores)
-                                    y {{$author->nombre}}
+                                    y <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @else
-                                    , {{$author->nombre}}
+                                    , <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @endif
                                 @php
                                     $contador++;

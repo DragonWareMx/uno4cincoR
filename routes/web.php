@@ -29,6 +29,8 @@ Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
 
 /* RUTAS DE LA TIENDA Y EL CARRITO */
 Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
+Route::get('/tienda-catalogo','paginaTiendaController@catalogo')->name('tiendaCatalogo');
+Route::get('/tienda-145','paginaTiendaController@tienda145')->name('tienda145');
 Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
 

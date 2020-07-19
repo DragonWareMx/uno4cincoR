@@ -30,6 +30,7 @@ class CreateBooksTable extends Migration
             $table->text('tiendaImagen');
             $table->boolean('nuevo')->default(0);
             $table->date('fechaPublicacion');
+            $table->integer('ventas')->default(0);
             $table->unsignedBigInteger('sello_id');
             $table->foreign('sello_id')
                 ->references('id')
