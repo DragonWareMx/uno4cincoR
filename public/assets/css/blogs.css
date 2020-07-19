@@ -132,6 +132,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     text-decoration: none;
+    transition: all 0.3s;
 }
 .blog_info_contenido{
     width: 100%;
@@ -155,6 +156,10 @@
 .leer_mas_boton_blog a:hover{
     color: #29B390;
     border-color: #29B390;
+}
+.leer_mas_boton_blog:hover{
+    width: 52%;
+    transition: all 0.3s;;
 }
 .blog_info{
     width: 100%;
@@ -249,6 +254,7 @@
     justify-content: left;
     text-align: left;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 .barra_autores::-webkit-scrollbar{
     display:none;
@@ -283,6 +289,7 @@
     justify-content: space-between;
     overflow-y: scroll;
     overflow-x: scroll;
+    scrollbar-width: none;
 }
 .barra_tags::-webkit-scrollbar{
     display:none;
@@ -312,6 +319,12 @@
     display:none;
 }
 .barra_tags::-moz-scrollbar{
+    display:none;
+}
+.blog_info_autor::-webkit-scrollbar{
+    display:none;
+}
+.blog_info_autor::-moz-scrollbar{
     display:none;
 }
 .barra_tags a{
@@ -458,6 +471,7 @@
     .barra_tags{
         width: 40%;
         overflow-y: scroll;
+        scrollbar-width: none;
         max-height: 150px;
     }
     .div_compartir_volver{
@@ -560,8 +574,9 @@
         width: 50%;
         height: 20px;
         text-align: left;
-        overflow-x: scroll !important;
-        overflow-y: scroll !important;
+        overflow-x: scroll ;
+        overflow-y: scroll ;
+        scrollbar-width: none;
     }
     .blog_info_fecha{
         width: 50%;
@@ -570,5 +585,19 @@
     .blog_info_contenido{
         font-size: 14px;
         height: 96px;
+    }
+}
+@media(max-width:360px){
+    .blog_barra_busqueda{
+        width: 100%;
+    }
+    .busqueda_clasificacion{
+        width:25%;
+    }
+    #busqueda_busqueda{
+        width: 70%;
+    }
+    .busqueda_boton{
+        width: 5%;
     }
 }

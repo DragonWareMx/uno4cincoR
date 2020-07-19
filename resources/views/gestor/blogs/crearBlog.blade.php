@@ -53,7 +53,7 @@
                             ¿Nuevo autor?
                         </div>
                     </div>
-                    <div {{-- id="DESAPARECER"--}} class="elementos_blog_50" {{--style="display:none;"--}}> 
+                    <div {{-- id="DESAPARECER"--}} class="elementos_blog_50" style="display:none;"> 
                         <p class="elementos_blog">Nuevo autor:</p>
                         <input type="text" class="input_blog_autor" name="autorBlogNuevo" >
                     </div>
