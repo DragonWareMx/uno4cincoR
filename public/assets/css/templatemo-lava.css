@@ -724,6 +724,11 @@ header
     display:flex;
     justify-content:space-around;
   }
+
+  .contador-carrito{
+    top: -20px !important;
+    right: -25px !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -1270,4 +1275,27 @@ preloader
 
 .ocultoIndex{
   display: none !important;
+}
+
+.contador-carrito{
+  display: block !important;
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+
+  background-color: #F9C56A;
+  top: -34px;
+  right: -90px;
+}
+
+.contador-carrito p{
+  text-align: center;
+  vertical-align: middle;
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: bold;
 }

@@ -25,10 +25,13 @@
     
     <div class="container-fluid">
         <div class="row">
-            <div class="carrito-table">
-                <div class="carrito-cell cell-80">
-                    <div class="productos-container">
-                        @if (session('cart'))
+            @if (session('cart'))
+                @php
+                    $total = 0; 
+                @endphp
+                <div class="carrito-table">
+                    <div class="carrito-cell cell-80">
+                        <div class="productos-container">
                             @foreach(session('cart') as $id => $details)
                                 @foreach ($books as $libro)
                                     @if ($libro->id == $id)
@@ -83,17 +86,30 @@
                                                                 </div>
                                                                 <div class="row-div">
                                                                     <div class="cell-div">
-                                                                        $1
+                                                                        <div class="precio">
+                                                                            @if($libro->descuentoFisico > 0)
+                                                                                <div class="oferta">
+                                                                                    ${{ $libro->precioFisico }}
+                                                                                </div>
+                                    
+                                                                                ${{ $libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100) }}
+                                                                            @else
+                                                                                ${{ $libro->precioFisico }}
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
                                                                             <a href="#" class="qty qty-minus">-</a>
-                                                                            <input type="numeric" value="3" />
+                                                                            <input type="numeric" value="{{ $details['cantidadFisico'] }}" />
                                                                             <a href="#" class="qty qty-plus">+</a>
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
-                                                                        <b>$3</b>
+                                                                        <b id="{{ $libro->id }}fisico">${{ ($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'] }}</b>
+                                                                        @php
+                                                                            $total += ($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'];
+                                                                        @endphp
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -132,7 +148,17 @@
                                                                 </div>
                                                                 <div class="row-div">
                                                                     <div class="cell-div">
-                                                                        $1
+                                                                        <div class="precio">
+                                                                            @if($libro->descuentoDigital > 0)
+                                                                                <div class="oferta">
+                                                                                    ${{ $libro->precioDigital }}
+                                                                                </div>
+                                    
+                                                                                ${{ $libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100) }}
+                                                                            @else
+                                                                                ${{ $libro->precioDigital }}
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
@@ -140,7 +166,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
-                                                                        <b>$3</b>
+                                                                        <b id="{{ $libro->id }}digital">${{ ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)) }}</b>
+                                                                        @php
+                                                                            $total += ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100));
+                                                                        @endphp
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -152,21 +181,21 @@
                                     @endif
                                 @endforeach
                             @endforeach
-                        @endif
+                        </div>
                     </div>
-                </div>
-                <div class="carrito-cell cell-20">
-                    <div class="compra-container">
-                        <div style="width: 225px; margin:auto;">
-                            <h1>Total : $600</h1>
-                            <p>Pueden aplicarse gastos de envío,</p>
-                            <a href="#">detalles</a>
-                            <button class="tienda">Volver a la tienda</button>
-                            <button class="comprar">Comprar ahora</button>
+                    <div class="carrito-cell cell-20">
+                        <div class="compra-container">
+                            <div style="width: 225px; margin:auto;">
+                                <h1>Total : ${{ $total }}</h1>
+                                <p>Pueden aplicarse gastos de envío,</p>
+                                <a href="#">detalles</a>
+                                <button class="tienda shrink" onclick="location.href='{{ route('tiendaNovedades') }}'">Volver a la tienda</button>
+                                <button class="comprar shrink">Comprar ahora</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
     

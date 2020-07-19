@@ -398,3 +398,65 @@
 .botonCantidad{
     width: 50px !important;
 }
+
+.tooltip-carrito
+{
+    display: block;
+    position: absolute;
+    width: fit-content;
+    background-color: #29B390;
+    padding: 15px;
+
+    font-size: 20px;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 600;
+    color: white;
+
+    top: -80px;
+    right: -70px;
+    text-align: center;
+
+    border-radius: 5px;
+
+    -webkit-box-shadow: 1px 40px 51px -27px rgba(0,0,0,0.74);
+    -moz-box-shadow: 1px 40px 51px -27px rgba(0,0,0,0.74);
+    box-shadow: 1px 40px 51px -27px rgba(0,0,0,0.74);
+
+    transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out, top 0.5s ease-out;
+}
+
+@media(max-width: 1245px) and (min-width: 1200px){
+    .tooltip-carrito
+    {
+        right: -10px;
+    }
+}
+
+@media(max-width: 1074px) and (min-width: 1029px){
+    .tooltip-carrito
+    {
+        right: -50px;
+    }
+}
+
+@media(max-width: 1029px) and (min-width: 990px){
+    .tooltip-carrito
+    {
+        right: -10px;
+    }
+}
+
+@media(max-width: 810px) and (min-width: 770px){
+    .tooltip-carrito
+    {
+        right: -50px;
+    }
+}
+
+@media(max-width: 620px){
+    .tooltip-carrito
+    {
+        right: -50px;
+    }
+}

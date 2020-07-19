@@ -233,6 +233,10 @@
     margin-top: 22px;
     margin-bottom: 13px;
     outline: none;
+
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
 }
 
 .carrito-table .carrito-cell .compra-container .comprar{
@@ -253,6 +257,43 @@
     padding: 8px 0px;
     margin-bottom: 57px;
     outline: none;
+
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.precio{
+    display: flex;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: rgba(29, 33, 32, 0.81);
+
+    padding-top: 7px;
+    width: fit-content;
+    margin: auto;
+}
+
+.precio .oferta{
+    text-decoration: line-through;
+    color: #BA1F00;
+    margin:0px;
+    margin-right: 10px;
+}
+.shrink:hover
+{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.95);
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
 }
 
 @media(max-width: 1200px){

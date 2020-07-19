@@ -127,6 +127,7 @@
         var seleccionado;
         //cada vez que se recarga la página obtenemos el carrito
         var carrito = @json(session()->get('cart'));
+        var tooltipTimeout;
 
         //obtiene los datos del libro en base al id
         function getLibro(id){
@@ -148,8 +149,6 @@
             var minFisico;
             var minDigital;  
             var libro = getLibro(id);
-
-            console.log(carrito);
 
             //SE OBTIENE EL ID DEL LIBRO SELECCIONADO Y SE GUARDA EN UNA VARIABLE GLOBAL
             seleccionado = id;
@@ -327,30 +326,45 @@
            //SE OBTIENE LA CANTIDAD
            var cantidad = $("#cantidadFisico").val();
 
+           var libro = getLibro(seleccionado);
+            var max = libro['stockFisico'];
+
+            if(cantidad > max)
+                cantidad = max;
+
            if(cantidad > 0){
+                var x = window.matchMedia("(max-width: 991px)");
                 $.ajax({
                     url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
                     method: "get",
                     success: function (response) {
                         if(carrito){
                             if(carrito[seleccionado]){
+                                if(carrito[seleccionado]['cantidadFisico'] > 0){
+                                    if(carrito[seleccionado]['cantidadFisico'] != cantidad)
+                                        showTooltip("Producto actualizado");
+                                    else
+                                        showTooltip("Producto ya en el carrito");
+                                }
+                                else{
+                                    showTooltip("Producto agregado");
+                                }
                                 carrito[seleccionado]['cantidadFisico'] = cantidad;
-                                $(".main-nav").load(" .main-nav");
-                                return;
                             }
                             else{
                                 carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
-                                $(".main-nav").load(" .main-nav");
-                                return;
+                                showTooltip("Producto agregado");
                             }
                         }
                         else{
                             var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
                             carrito = JSON.parse(jsonSt);
-                            $(".main-nav").load(" .main-nav");
-                            return;
+                            showTooltip("Producto agregado");
                         }
-                    },
+                        carritoCant(x);
+                        setTimeout(hideTooltip, 2000);
+                        return;
+                    }
                 });
             }
         });
@@ -362,31 +376,91 @@
            var cantidad = $("#cantidadDigitalValue").html();
 
            if(cantidad > 0){
+                var x = window.matchMedia("(max-width: 991px)");
                 $.ajax({
                     url: 'agregar-a-carrito/'+seleccionado+'/'+cantidad+'/digital',
                     method: "get",
                     success: function (response) {
                         if(carrito){
                             if(carrito[seleccionado]){
+                                if(carrito[seleccionado]['cantidadDigital'] > 0){
+                                    if(carrito[seleccionado]['cantidadDigital'] != cantidad)
+                                        showTooltip("Producto actualizado");
+                                    else
+                                        showTooltip("Producto ya en el carrito");
+                                }
+                                else{
+                                    showTooltip("Producto agregado");
+                                }
                                 carrito[seleccionado]['cantidadDigital'] = cantidad;
-                                $(".main-nav").load(" .main-nav");
-                                return;
                             }
                             else{
                                 carrito[seleccionado] = {"cantidadFisico": 0, "cantidadDigital": cantidad};
-                                $(".main-nav").load(" .main-nav");
-                                return;
+                                showTooltip("Producto agregado");
                             }
                         }
                         else{
                             var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "0","cantidadDigital": "'+cantidad+'"}}';
                             carrito = JSON.parse(jsonSt);
-                            $(".main-nav").load(" .main-nav");
-                            return;
+                            showTooltip("Producto agregado");
                         }
+                        carritoCant(x);
+                        setTimeout(hideTooltip, 2000);
+                        return;
                     },
                 });
             }
         });
+
+        function carritoCant(x1) {
+            $(".cargar-info").load(" .cargar-info");
+            $(".cargar-info2").load(" .cargar-info2");
+            if (x1.matches) { // If media query matches
+                $(".contador-carrito-value2").load(" .contador-carrito-value2");
+            } else {
+                $(".contador-carrito-value").load(" .contador-carrito-value");
+            }
+        }
+
+        var x1 = window.matchMedia("(max-width: 991px)");
+        carritoCant(x1); // Call listener function at run time
+        x1.addListener(carritoCant); // Attach listener function on state changes
+
+        function showTooltip(mensaje)
+        {
+            var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
+            var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
+            tooltip.appendTo($(".menu-carrito"));
+            tooltip2.appendTo($(".carritoli"));
+
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+            var height = tooltipC.clientHeight;
+            var width = tooltipC.clientWidth;
+
+            tooltipC.style.visibility = 'visible';
+            tooltipC2.style.visibility = 'visible';
+            //hint.style.opacity = '1';
+            tooltipC.style.top = "45px";
+            tooltipC2.style.top = "60px";
+        }
+
+        function hideTooltip()
+        {
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+            var height = tooltipC.clientHeight;
+            var width = tooltipC.clientWidth;
+
+            tooltipC.style.visibility = 'visible';
+            tooltipC2.style.visibility = 'visible';
+            //hint.style.opacity = '1';
+            tooltipC.style.top = "-80px";
+            tooltipC2.style.top = "-80px";
+            setTimeout(function () {
+                $("#tooltip-carrito").fadeOut().remove();
+                $("#tooltip-carrito2").fadeOut().remove();
+            }, 500);
+        }
     </script>
 @endsection
