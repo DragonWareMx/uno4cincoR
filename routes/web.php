@@ -40,6 +40,11 @@ Route::delete('remove-from-cart', 'paginaTiendaController@remove')->name('elimin
 // Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco')->middleware('auth');
 Route::get('/adminuno4cinco/autores-145', 'gestorAutoresController@index145')->name('autores-145')->middleware('auth');
 Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco')->middleware('auth');
+Route::get('/adminuno4cinco/autores-nuevo', 'gestorAutoresController@addAuthor')->name('nuevoAutor')->middleware('auth');
+Route::post('/adminuno4cinco/autores-nuevo', 'gestorAutoresController@storeAuthor')->name('nuevoAutor')->middleware('auth');
+
+
+
 
 /*RUTAS DE GESTIÓN DE BLOGS*/
 Route::get('/adminuno4cinco/blogs', 'gestorBlogsController@index')->name('verBlogs')->middleware('auth');

@@ -93,7 +93,7 @@
               <a class="collapse-item" href="/adminuno4cinco/autores-145">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="#">Agregar autor</a>
+              <a class="collapse-item" href="/adminuno4cinco/autores-nuevo">Agregar autor</a>
             </div>
           </div>
       </li>

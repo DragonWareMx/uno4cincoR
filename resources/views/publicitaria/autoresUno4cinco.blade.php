@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div> 
-            <p class="txt_nombreAutor">{{Str::limit($uno4cinco->nombre,30)}}<p>
+            <p class="txt_nombreAutor">{{Str::limit($uno4cinco->nombre,25)}}<p>
         </div>
         @endforeach
         

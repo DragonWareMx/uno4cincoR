@@ -90,8 +90,114 @@
 }
 
 
+/* -----------------------------AGREGAR AUTOR------------------------------ */
+.div_containerAuthor{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.div_datosAuthor{
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 4px 4px 8px rgba(187, 187, 187, 0.25);
+    padding: 40px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+.div_elementosAuthor{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.txt_datosAuthor{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1D2120;
+}
+.input_datosAuthor{
+    transition: ease 0.3s;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1D2120;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.4px solid #909090;
+    background-color: transparent;
+    height: 25px;
+    margin-top: -18px;
+    width: 100%;
+    margin-left: 15px;
+}
+.dateAuthor{
+    width: 40%;
+}
+.dateMuerteAuthor{
+    margin-left: 45px;
+}
+.input_datosAuthor:focus, .textarea_biografia:focus{
+    outline:none ;
+    outline-width: 0;
+    border-bottom: 0.5px solid #29B390; 
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    transition: ease 0.3s;
+}
+.textarea_biografia:focus{
+    border: 0.5px solid #29B390;
+}
+.textarea_biografia{
+    transition: ease 0.3s;
+    margin-left: 5px;
+    width: 100%;
+    resize: none;
+    border-radius: 5px;
+    border: 0.4px solid #909090;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1D2120;
+}
+.img_datosAuthor{
+    margin-left: 5px;
+    color: #717171;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: -16px;
+}
+
+
+
+
+
+
+
+
 
 /* ------------------------RESPONSIVE-------------------- */
+@media (max-width:1150px){
+    .div_datosAuthor{
+        width: 100%;
+    }
+}
 @media(max-width: 1070px){
     .div_infoAutorG{
         font-size: 14px;
@@ -112,6 +218,21 @@
     .div_ItemAutorG{
         width: 45%;
     }
+}
+@media(max-width: 540px){
+    .txt_datosAuthor  { 
+        font-size: 14px;
+    }
+    .input_datosAuthor{
+        font-size: 14px;
+    }
+    .textarea_biografia{
+        font-size: 14px;
+    }
+    .img_datosAuthor{
+        font-size: 14px;
+    }
+
 }
 @media(max-width: 500px){
     .div_ItemAutorG{
