@@ -9,7 +9,7 @@
 @section('contenido')
     <div class="all_blogs_80">
         <div class="all_blogs_menu_busqueda">
-            <div class="h3 mb-0 text-gray-800">Blog</div>
+            <div class="h3 mb-0 text-gray-800"><a href="{{ route('verBlogs') }}"> Blog</a></div>
             <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
                 <div class="all_blogs_busqueda">
                     <input type="text" required id="" class ="all_blogs_input_busqueda" name="busqueda">
@@ -21,7 +21,7 @@
    <div class="all_blogs_contenido">
         <div class="all_blogs_80">
             <div class="all_blogs_100">
-                <a href="#">Agregar entrada</a>
+                <a href="{{ route('nuevoBlog') }}">Agregar entrada</a>
             </div>  
         </div>
         @foreach ($blogs as $blog)

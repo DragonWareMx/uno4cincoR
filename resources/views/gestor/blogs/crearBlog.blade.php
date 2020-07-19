@@ -16,7 +16,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| Nuevo blog
+    <a href="{{route('verBlogs')}}">Blog</a>&nbsp;| Nuevo blog
 @endsection
 
 @section('contenido')
