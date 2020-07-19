@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Banner;
 use App\Book;
+use App\Author;
 
 class paginaTiendaController extends Controller
 {
@@ -17,7 +18,8 @@ class paginaTiendaController extends Controller
 
     public function libro($id){
         $book = Book::find($id);
-        return view('publicitaria.libro', ['book' => $book]);
+        $autor=Author::findOrFail($id);
+        return view('publicitaria.libro', ['book' => $book, 'autor'=>$autor]);
     }
 
     public function carrito(){
