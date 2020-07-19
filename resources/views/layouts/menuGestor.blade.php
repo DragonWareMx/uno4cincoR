@@ -156,7 +156,7 @@
       <hr class="sidebar-divider my-0">
 
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
-        <a class="nav-link" href="/sgtepetate">
+        <a class="nav-link" href="{{ route('resumen') }}">
             <i class="fas fa-chart-pie"></i>
           <span>Resumen</span></a>
       </li>
