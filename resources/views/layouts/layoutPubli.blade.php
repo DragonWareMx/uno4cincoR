@@ -101,6 +101,7 @@
                             </li>
                             <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>
                             <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
+                                <div class="cargar-info">
                                 @if(session('cart'))
                                     @php
                                         $contador = 0;
@@ -111,8 +112,9 @@
                                             $contador += $details['cantidadDigital'];
                                         @endphp
                                     @endforeach
-                                    {{ $contador }}
+                                    <div class="contador-carrito"><p class="contador-carrito-value">{{ $contador }}</p></div>
                                 @endif
+                                </div>
                                 </a></li>
                         </ul>
                         <a class='menu-trigger'>
@@ -121,6 +123,11 @@
 
                         <a class='menu-carrito'>
                             <img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" height="30px">
+                            <div class="cargar-info2">
+                            @if(session('cart'))
+                                <div class="contador-carrito"><p class="contador-carrito-value2">{{ $contador }}</p></div>
+                            @endif
+                            </div>
                         </a>
                         <!-- ***** Menu End ***** -->
                     </nav>
