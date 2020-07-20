@@ -80,8 +80,8 @@
                                 <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="{{ route('tiendaNovedades') }}" class="">NOVEDADES</a></li>
-                                    <li><a href="{{ route('registro') }}" class="">CATÁLOGO</a></li>
-                                    <li><a href="{{ route('registro') }}" class="">145</a></li>
+                                    <li><a href="{{ route('tiendaCatalogo') }}" class="">CATÁLOGO</a></li>
+                                    <li><a href="{{ route('tienda145') }}" class="">145</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">

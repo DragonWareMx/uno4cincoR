@@ -14,8 +14,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 
 {{-- Carrusel --}}
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
 @endsection
@@ -52,6 +50,7 @@
                 </div>
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
                     <div class="libro-info">
+                        {{-- AUTORES --}}
                         @if (count($book->authors) > 1)
                             <p class="libro-info-res"><b>Autores: </b>
                         @else
@@ -63,17 +62,19 @@
                             @endphp
                             @foreach ($book->authors as $author)
                                 @if ($contador == 1)
-                                    {{$author->nombre}}
+                                    <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @elseif($contador == $cantAutores)
-                                    y {{$author->nombre}}
+                                    y <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @else
-                                    , {{$author->nombre}}
+                                    , <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
                                 @endif
                                 @php
                                     $contador++;
                                 @endphp
                             @endforeach
                         </p>
+
+                        {{-- GENEROS --}}
                         @if (count($book->genres) > 1)
                             <p class="libro-info-res"><b>Géneros: </b>
                         @else
@@ -96,10 +97,67 @@
                                 @endphp
                             @endforeach
                         </p>
-                        <p class="libro-info-res"><b>Fecha de publicación: </b>2 de Agoso de 2019</p>
+
+                        {{-- FECHA --}}
+                        <p class="libro-info-res"><b>Fecha de publicación: </b>
+                            @php
+                                    $separa=explode("-",$book->fechaPublicacion);
+                                    $anio=$separa[0];
+                                    $mes=$separa[1];
+                                    $dia=$separa[2];
+                                @endphp
+                                {{$dia}}&nbsp;de
+                                @switch($mes)
+                                    @case('01')
+                                        Enero&nbsp;de
+                                        @break
+                                    @case('02')
+                                        Febrero&nbsp;de
+                                        @break
+                                    @case('03')
+                                        Marzo&nbsp;de
+                                        @break
+                                    @case('04')
+                                        Abril&nbsp;de
+                                        @break
+                                    @case('05')
+                                        Mayo&nbsp;de
+                                        @break
+                                    @case('06')
+                                        Junio&nbsp;de
+                                        @break
+                                    @case('07')
+                                        Julio&nbsp;de
+                                        @break
+                                    @case('08')
+                                        Agosto&nbsp;de
+                                        @break
+                                    @case('09')
+                                        Septiembre&nbsp;de
+                                        @break
+                                    @case('10')
+                                        Octubre&nbsp;de
+                                        @break
+                                    @case('11')
+                                        Noviembre&nbsp;de
+                                        @break
+                                    @case('12')
+                                        Diciembre&nbsp;de
+                                        @break
+                                @endswitch
+                                {{$anio}}
+                        </p>
+
+                        {{-- PAGAINAS --}}
                         <p class="libro-info-res"><b>Número de páginas: </b>523</p>
+
+                        {{-- EDITORIAL --}}
                         <p class="libro-info-res"><b>Editorial: </b>{{ $book->sello->nombre }}</p>
+
+                        {{-- EDICION --}}
                         <p class="libro-info-res"><b>Edición: </b>{{ $book->numEdicion }}</p>
+
+                        {{-- FORMATO --}}
                         <p class="libro-info-res"><b>Formato: </b>
                             @if ($book->stockFisico > 0 && $book->stockDigital > 0)
                                 Físico y Digital
@@ -220,7 +278,7 @@
                                     </div>
 
                                     {{-- BOTONES DE COMPRA --}}
-                                    <button class="carrito-button shrink"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
+                                    <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
                                     <button class="comprar-button shrink">Comprar ahora</button>
                                 @endif
                             @else
@@ -282,9 +340,122 @@
             </div>
         </div>
     </div>
-    
-
 </section>
+
+<div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;">{{ $book->titulo }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+            <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
+            <div style="display: table; width:100%;">
+                <div class="formato-comprar">
+                    <div class="formato-container shrink" style="height: 213.8px">
+                        <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target="">
+                            <div class="formato">
+                                <p style="padding-top: 20px;">Formato Físico:</p>
+                            </div>
+                            <div class="precio" id="precioFisico">
+                                @if($book->descuentoFisico > 0)
+                                    <div class="oferta">
+                                        ${{ $book->precioFisico }}
+                                    </div>
+
+                                    ${{ $book->precioFisico - $book->precioFisico*($book->descuentoFisico/100) }}
+                                @else
+                                    ${{ $book->precioFisico }}
+                                @endif
+                            </div>
+                            <div class="ahorro" id="ahorroFisico">
+                                @if ($book->descuentoFisico > 0)
+                                    <p>Ahorras: ${{ $book->precioFisico*($book->descuentoFisico/100) }}</p>
+                                @endif
+                            </div>
+                            <div class="disponibilidad" id="disponibleFisico">
+                                @if ($book->stockFisico > 0)
+                                    <p style="color: #29B390;">Disponible</p>
+                                @else
+                                    <p style="color: #BA1F00;">No Disponible</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
+                            @if ($book->stockFisico > 0)
+                                <p id="cantidad-p">Cantidad: </p>
+                                @php
+                                    $min = 0;
+                                @endphp
+                                @if (session('cart'))
+                                    @foreach(session('cart') as $id => $details)
+                                        @if ($id == $book->id && $details['cantidadFisico'] > 0)
+                                            @php
+                                                $min = $details['cantidadFisico'];
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    @if ($min == 0)
+                                        @php
+                                            $min = 1;
+                                        @endphp
+                                    @endif
+                                @endif
+                                @if ($book->stockFisico > 1)
+                                    <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
+                                    <input type="numeric" id="cantidadFisico" value="{{ $min }}" />
+                                    <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
+                                @else
+                                    <input type="numeric" id="cantidadFisico" value="1" />
+                                @endif
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target="">
+                    <div class="formato-container shrink" style="height: 213.8px">
+                        <div class="formato">
+                            <p style="padding-top: 20px;">Formato Digital:</p>
+                        </div>
+                        <div class="precio" id="precioDigital">
+                            @if($book->descuentoDigital > 0)
+                                <div class="oferta">
+                                    ${{ $book->precioDigital }}
+                                </div>
+
+                                ${{ $book->precioDigital - $book->precioDigital*($book->descuentoDigital/100) }}
+                            @else
+                                ${{ $book->precioDigital }}
+                            @endif
+                        </div>
+                        <div class="ahorro" id="ahorroDigital">
+                            @if ($book->descuentoDigital > 0)
+                                <p>Ahorras: ${{ $book->precioDigital*($book->descuentoDigital/100) }}</p>
+                            @endif
+                        </div>
+                        <div class="disponibilidad" id="disponibleDigital">
+                            @if ($book->stockDigital > 0)
+                                <p style="color: #29B390;">Disponible</p>
+                            @else
+                                <p style="color: #BA1F00;">No Disponible</p>
+                            @endif
+                        </div>
+                        <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
+                            @if ($book->stockDigital > 0)
+                                <p id="cantidad-p">Cantidad: </p>
+                                <p>1</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 
 <script>
     var pre = document.getElementById("imagen-seleccionada");
@@ -449,6 +620,213 @@
         ResCarousel(ell, Parent, slide);
     }
 
-});
+    });
+
+    var seleccionado = {{ $book->id }};
+    //cada vez que se recarga la página obtenemos el carrito
+    var carrito = @json(session()->get('cart'));
+    var tooltipTimeout;
+
+    //CANTIDAD, BOTON MENOS
+    $('#menosCarrito').click(function(){            
+        //se obtiene el numero del input y se hace la resta
+        var number = document.getElementById("cantidadFisico").value;
+        
+        number--;
+        
+        //no se deja que la cantidad sea menor a 0
+        if(number < 1){
+            number = 1;
+        }
+
+        document.getElementById("cantidadFisico").value = number;
+    });
+
+    //CANTIDAD, BOTON MAS
+    $('#masCarrito').click(function(){
+        var libro = @json($book);
+        var max = libro['stockFisico'];
+
+        //se obtiene el numero del input y se hace la resta
+        var number = document.getElementById("cantidadFisico").value;
+        
+        number++;
+        
+        //no se deja que la cantidad sea menor a 0
+        if(number > max){
+            number = max;
+        }
+
+        document.getElementById("cantidadFisico").value = number;
+    });
+
+    //CANTIDAD, INPUT ENTER
+    $("#cantidadFisico").keypress(function(event) { 
+        // Only ASCII charactar in that range allowed 
+        var ASCIICode = (event.which) ? event.which : event.keyCode 
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+            return false;
+
+        if (event.keyCode === 13) { 
+            var libro = @json($book);
+            var max = libro['stockFisico'];
+
+            //se obtiene el numero del input
+            var number = document.getElementById("cantidadFisico").value;
+
+            if(number > max){
+                number = max;
+            }
+            else if(number < 1){
+                number = 1;
+            }
+
+            document.getElementById("cantidadFisico").value = number;
+        } 
+    });
+
+    //CUANDO SE SELECCIONA EL FORMATO SE GUARDA EN LA COOKIE
+    $("#botonFisico").click(function (e) {
+        e.preventDefault();
+        
+        //SE OBTIENE LA CANTIDAD
+        var cantidad = $("#cantidadFisico").val();
+
+        var libro = @json($book);
+        var max = libro['stockFisico'];
+
+        if(cantidad > max)
+            cantidad = max;
+
+        if(cantidad > 0){
+            var x = window.matchMedia("(max-width: 991px)");
+            $.ajax({
+                url: '/agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
+                method: "get",
+                success: function (response) {
+                    if(carrito){
+                        if(carrito[seleccionado]){
+                            if(carrito[seleccionado]['cantidadFisico'] > 0){
+                                if(carrito[seleccionado]['cantidadFisico'] != cantidad)
+                                    showTooltip("Producto actualizado");
+                                else
+                                    showTooltip("Producto ya en el carrito");
+                            }
+                            else{
+                                showTooltip("Producto agregado");
+                            }
+                            carrito[seleccionado]['cantidadFisico'] = cantidad;
+                        }
+                        else{
+                            carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
+                            showTooltip("Producto agregado");
+                        }
+                    }
+                    else{
+                        var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
+                        carrito = JSON.parse(jsonSt);
+                        showTooltip("Producto agregado");
+                    }
+                    carritoCant(x);
+                    setTimeout(hideTooltip, 2000);
+                    return;
+                }
+            });
+        }
+    });
+
+    $("#botonDigital").click(function (e) {
+        e.preventDefault();
+
+        var libro = @json($book);
+        var cantidad = libro['stockDigital'];
+
+        if(cantidad > 0){
+            var x = window.matchMedia("(max-width: 991px)");
+            $.ajax({
+                url: '/agregar-a-carrito/'+seleccionado+'/1/digital',
+                method: "get",
+                success: function (response) {
+                    if(carrito){
+                        if(carrito[seleccionado]){
+                            if(carrito[seleccionado]['cantidadDigital'] > 0){
+                                if(carrito[seleccionado]['cantidadDigital'] != cantidad)
+                                    showTooltip("Producto actualizado");
+                                else
+                                    showTooltip("Producto ya en el carrito");
+                            }
+                            else{
+                                showTooltip("Producto agregado");
+                            }
+                            carrito[seleccionado]['cantidadDigital'] = cantidad;
+                        }
+                        else{
+                            carrito[seleccionado] = {"cantidadFisico": 0, "cantidadDigital": cantidad};
+                            showTooltip("Producto agregado");
+                        }
+                    }
+                    else{
+                        var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "0","cantidadDigital": "'+cantidad+'"}}';
+                        carrito = JSON.parse(jsonSt);
+                        showTooltip("Producto agregado");
+                    }
+                    carritoCant(x);
+                    setTimeout(hideTooltip, 2000);
+                    return;
+                },
+            });
+        }
+    });
+
+    function carritoCant(x1) {
+        $(".cargar-info").load(" .cargar-info");
+        $(".cargar-info2").load(" .cargar-info2");
+        if (x1.matches) { // If media query matches
+            $(".contador-carrito-value2").load(" .contador-carrito-value2");
+        } else {
+            $(".contador-carrito-value").load(" .contador-carrito-value");
+        }
+    }
+
+    var x1 = window.matchMedia("(max-width: 991px)");
+    carritoCant(x1); // Call listener function at run time
+    x1.addListener(carritoCant); // Attach listener function on state changes
+
+    function showTooltip(mensaje)
+    {
+        var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
+        var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
+        tooltip.appendTo($(".menu-carrito"));
+        tooltip2.appendTo($(".carritoli"));
+
+        var tooltipC = document.getElementById('tooltip-carrito');
+        var tooltipC2 = document.getElementById('tooltip-carrito2');
+        var height = tooltipC.clientHeight;
+        var width = tooltipC.clientWidth;
+
+        tooltipC.style.visibility = 'visible';
+        tooltipC2.style.visibility = 'visible';
+        //hint.style.opacity = '1';
+        tooltipC.style.top = "45px";
+        tooltipC2.style.top = "60px";
+    }
+
+    function hideTooltip()
+    {
+        var tooltipC = document.getElementById('tooltip-carrito');
+        var tooltipC2 = document.getElementById('tooltip-carrito2');
+        var height = tooltipC.clientHeight;
+        var width = tooltipC.clientWidth;
+
+        tooltipC.style.visibility = 'visible';
+        tooltipC2.style.visibility = 'visible';
+        //hint.style.opacity = '1';
+        tooltipC.style.top = "-80px";
+        tooltipC2.style.top = "-80px";
+        setTimeout(function () {
+            $("#tooltip-carrito").fadeOut().remove();
+            $("#tooltip-carrito2").fadeOut().remove();
+        }, 500);
+    }
 </script>
 @endsection

@@ -86,8 +86,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="cantidad" style="padding-bottom: 20px;">
-                                <p>Cantidad: </p>
+                            <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
+                                <p id="cantidad-p">Cantidad: </p>
                                 <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
                                     <input type="numeric" id="cantidadFisico" value="1" />
                                 <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target="">
-                        <div class="formato-container shrink">
+                        <div class="formato-container shrink" style="height: 213.8px">
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Digital:</p>
                             </div>
@@ -111,7 +111,7 @@
                             <div class="disponibilidad" id="disponibleDigital">
                                 
                             </div>
-                            <div class="cantidad" style="padding-bottom: 20px;" id="cantidadDigital">
+                            <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
                                 
                             </div>
                         </div>
@@ -208,10 +208,13 @@
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
                 //el modal se puede cerrar al seleccionar el formato
                 document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");
+                //cantidades
+                document.getElementById("cantidad-p").style.display = "block";
+                document.getElementById("cantidadFisico").style.display = "inline-block";
 
                 //EL PRODUCTO YA ESTA EN EL CARRITO
                 if(minFisico > 0){
-                    //El valor de la cantidad se establece como 1
+                    //El valor de la cantidad se establece como el que ya esta en el carrito
                     document.getElementById("cantidadFisico").value = minFisico;
                 }
                 else{
@@ -236,12 +239,14 @@
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #BA1F00;\">No Disponible</p>";
                 //El modal ya no puede cerrarse al seleccionar el formato
                 document.getElementById("botonFisico").setAttribute("data-target", "");
+                document.getElementById("cantidad-p").style.display = "none";
                 //El valor de la cantidad se establece como 0
                 document.getElementById("cantidadFisico").value = 0;
                 //los botones de la cantidad son visibles
                 document.getElementById("menosCarrito").style.display = "none";
                 document.getElementById("masCarrito").style.display = "none";
                 document.getElementById("cantidadFisico").readOnly = true;
+                document.getElementById("cantidadFisico").style.display = "none";
             }
 
                 //FORMATO DIGITAL
@@ -257,7 +262,7 @@
                 //El modal ya no puede cerrarse al seleccionar el formato
                 document.getElementById("botonDigital").setAttribute("data-target", "");
                 //la cantidad es 0
-                document.getElementById("cantidadDigital").innerHTML = "<p>Cantidad: </p><p id=\"cantidadDigitalValue\">0</p>";
+                document.getElementById("cantidadDigital").innerHTML = "";
             }
         }
 
