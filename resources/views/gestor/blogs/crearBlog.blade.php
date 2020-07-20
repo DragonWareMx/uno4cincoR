@@ -53,9 +53,9 @@
                             ¿Nuevo autor?
                         </div>
                     </div>
-                    <div {{-- id="DESAPARECER"--}} class="elementos_blog_50" style="display:none;"> 
+                    <div id="nvo_autor" class="elementos_blog_50" style="display:none;"> 
                         <p class="elementos_blog">Nuevo autor:</p>
-                        <input type="text" class="input_blog_autor" name="autorBlogNuevo" >
+                        <input type="text" id="nvoAutor_blog" class="input_blog_autor" name="autorBlogNuevo" >
                     </div>
     
                     <div class="elementos_blog_50">
@@ -94,7 +94,7 @@
 
                 <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
-                        <a class="gestor_blog_cancelar" href="#">Cancelar</a>
+                        <a class="gestor_blog_cancelar" href="{{ route('verBlogs')}}">Cancelar</a>
                         <input class="gestor_blog_guardar" type="submit" value="Guardar">	
                     </div>
                 </div>
@@ -134,5 +134,26 @@
                 reader.readAsDataURL(file);
             }
         });
+    </script>
+    {{--script ocultar y mostrar input nuevo autor--}}
+    <script>
+        var clickNvoAutor=false;
+        var valor="";
+         $(document).ready(function() {
+
+            $('.div_nuevo_autor_blog').on('click', function () {
+                if(clickNvoAutor){
+                    $('#nvo_autor').hide();
+                    document.getElementById('nvoAutor_blog').value= valor;
+                    clickNvoAutor=false;
+                }
+                else{
+                    $('#nvo_autor').show();
+                    clickNvoAutor=true;
+                }
+                
+            });
+
+         });
     </script>
 @endsection
