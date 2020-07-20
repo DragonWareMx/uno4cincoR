@@ -31,6 +31,7 @@ class CreateBooksTable extends Migration
             $table->boolean('nuevo')->default(0);
             $table->date('fechaPublicacion');
             $table->integer('ventas')->default(0);
+            $table->integer('paginas');
             $table->unsignedBigInteger('sello_id');
             $table->foreign('sello_id')
                 ->references('id')

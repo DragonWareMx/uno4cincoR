@@ -26,7 +26,8 @@ class booksTable extends Seeder
             'tiendaImagen'=>'alessC.JPG',
             'fechaPublicacion'=>'2020-07-06',
             'nuevo'=>1,
-            'sello_id'=>'1'
+            'sello_id'=>'1',
+            'paginas'=>'415'
 
         ]);
         
@@ -45,7 +46,8 @@ class booksTable extends Seeder
             'tiendaImagen'=>'estefaniaC.JPG',
             'fechaPublicacion'=>'2020-07-05',
             'nuevo'=>1,
-            'sello_id'=>'1'
+            'sello_id'=>'1',
+            'paginas'=>'145'
         ]);
         
         DB::table('books')->insert([
@@ -63,7 +65,8 @@ class booksTable extends Seeder
             'tiendaImagen'=>'cesarC.JPG',
             'fechaPublicacion'=>'2020-07-07',
             'nuevo'=>1,
-            'sello_id'=>'1'
+            'sello_id'=>'1',
+            'paginas'=>'541'
         ]);
         
         DB::table('books')->insert([
@@ -81,7 +84,8 @@ class booksTable extends Seeder
             'tiendaImagen'=>'agustinC.JPG',
             'fechaPublicacion'=>'2020-07-08',
             'nuevo'=>1,
-            'sello_id'=>'1'
+            'sello_id'=>'1',
+            'paginas'=>'514'
         ]);
     }
 }
