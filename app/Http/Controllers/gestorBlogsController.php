@@ -187,4 +187,20 @@ class gestorBlogsController extends Controller
 
         return redirect()->route('verBlogs');
     }
+
+    public function deleteBlog($id){
+
+        $blog=Blog::findOrFail($id);
+
+        $oldImage=public_path().'/storage/blog/'.$blog->imagen;
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+
+        $blog->delete();
+
+        return redirect()->route('verBlogs');
+        
+    }
 }

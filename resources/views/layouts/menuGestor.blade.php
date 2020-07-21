@@ -89,11 +89,11 @@
         </a>
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/adminuno4cinco/autores-uno4cinco">uno4cinco</a>
-              <a class="collapse-item" href="/adminuno4cinco/autores-145">145</a>
+              <a class="collapse-item" href="{{route('autores-uno4cinco')}}">uno4cinco</a>
+              <a class="collapse-item" href="{{route('autores-145')}}">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="/adminuno4cinco/autores-nuevo">Agregar autor</a>
+              <a class="collapse-item" href="{{route('autores-nuevo')}}">Agregar autor</a>
             </div>
           </div>
       </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Author;
 use App\Book;
+use App\Blog;
 
 class gestorAutoresController extends Controller
 {
@@ -26,8 +27,10 @@ class gestorAutoresController extends Controller
                 $cont++;
             }
         }
+
+        $blog=Blog::whereNotNull('author_id')->get();
         $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
-        return view ('gestor.autores.autores-uno4cinco',['autoruno4cinco'=>$autoruno4cinco]);
+        return view ('gestor.autores.autores-uno4cinco',['autoruno4cinco'=>$autoruno4cinco, 'blogs'=>$blog]);
     }
 
     public function index145(){
@@ -38,22 +41,122 @@ class gestorAutoresController extends Controller
         foreach($autor as $autor)
         {
             foreach($autor->books as $libro){
-                if($libro->sello_id!=1){
+                if($libro->sello_id==1){
                     $a145[$cont]=$autor->id;
                 }
                 $cont++;
             }
         }
-        $autor145=Author::whereIn('id',$a145)->distinct()->paginate(9);
-        return view ('gestor.autores.autores-145',['autor145'=>$autor145]);
+        $blog=Blog::whereNotNull('author_id')->get();
+        $autor145=Author::whereNotIn('id',$a145)->distinct()->paginate(9); 
+        return view ('gestor.autores.autores-145',['autor145'=>$autor145, 'blogs'=>$blog]);
     }
 
     public function addAuthor(){
-        return view ('gestor.autores.nuevoAutor');
+        
+        return view ('gestor.autores.autores-nuevo');
     }
-    public function storeAuthor(){
 
+    public function editAuthor($id){
+        $break=explode(',',$id);
+        $number=$break[0];
+        $autor=Author::findOrFail($number);
+        return view ('gestor.autores.autores-editar',['autor'=>$autor, 'id'=>$id]);
+    }
+
+    public function updateAuthor($id){
+        $break=explode(',',$id);
+        $id=$break[0];
+        $ruta=$break[1];
+        $data=request()->validate([
+            'nombre'=>'required|max:191',
+            'biografia'=>'required|max:65535',
+            'nacimiento'=>'required|date',
+            'muerte'=>'nullable|date',
+            'imagen'=>'nullable|image'
+        ]);
+
+        $autor=Author::findOrFail($id);
+        $autor->nombre=request('nombre');
+        $autor->descripcion=request('biografia');
+        $autor->fechaNac=request('nacimiento');
+        $autor->fechaMuerte=request('muerte');
+
+        if(request('imagen')==null){
+            $newFileName=$autor->foto;
+        }
+        else{
+        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+        $extension = request('imagen')->getClientOriginalExtension();
+        $newFileName=$fileName.'_'.time().'.'.$extension;
+        $path = request('imagen')->storeAs('/public/autores/',$newFileName);
+
+        $oldImage=public_path().'/storage/autores/'.$autor->foto;
+            if(file_exists($oldImage)){
+                unlink($oldImage);
+            }
+        }
+        $autor->foto=$newFileName;
+        $autor->save();
+
+        if($ruta==1){
+            return redirect()->route('autores-uno4cinco');
+        }
+        else{
+            return redirect()->route('autores-145');
+        }
+        
+    }
+
+    public function storeAuthor(){
+        $data=request()->validate([
+            'nombre'=>'required|max:191',
+            'biografia'=>'required|max:65535',
+            'nacimiento'=>'required|date',
+            'muerte'=>'nullable|date',
+            'imagen'=>'required|image'
+        ]);
+        $autor=new Author();
+        $autor->nombre=request('nombre');
+        $autor->descripcion=request('biografia');
+        $autor->fechaNac=request('nacimiento');
+        $autor->fechaMuerte=request('muerte');
+
+        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+        $extension = request('imagen')->getClientOriginalExtension();
+        $newFileName=$fileName.'_'.time().'.'.$extension;
+        $path = request('imagen')->storeAs('/public/autores/',$newFileName);
+
+        $autor->foto=$newFileName;
+        // dd($autor);
+        $autor->save();
 
         return redirect()->route('autores-145');
+    }
+
+    public function deleteAuthor($id){
+        $break=explode(',',$id);
+        $id=$break[0];
+        $ruta=$break[1];
+
+        $autor=Author::findOrFail($id);
+
+        $oldImage=public_path().'/storage/autores/'.$autor->foto;
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+
+        $autor->delete();
+
+
+        if($ruta==1){
+            return redirect()->route('autores-uno4cinco');
+        }
+        else{
+            return redirect()->route('autores-145');
+        }
     }
 }

@@ -32,7 +32,7 @@
     <div class="contenido_blogs">
         
          <div class="datos_blog">
-            <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('nuevoBlog') }}" style="width:100%;" method="POST" enctype="multipart/form-data">
             @csrf
 
                 <div class="elementos_blog_100">
@@ -108,7 +108,8 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <script>
         const inpFile = document.getElementById("imagen");
         const previewContainer= document.getElementById("preview_imagen");
