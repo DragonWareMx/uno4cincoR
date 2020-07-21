@@ -15,22 +15,38 @@
 <div class="div_contenedorgral">
     <div class="div_AutoresContainerG">
         @foreach ($autor145 as $autor)
+            @php
+                $i=0;
+                $o=0;
+            @endphp
+            @foreach ($autor->books as $book)
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+            @foreach ($blogs as $blog)
+                @php
+                    if($blog->author_id==$autor->id)
+                        $o++;
+                @endphp
+            @endforeach
         <div class="div_ItemAutorG">
             <div class="div_imagAutorG">
                 <img src="{{asset('storage/autores/'.$autor->foto)}}">
-                <div class="div_infoAutorG">
-                    {{Str::limit($autor->nombre,24)}}
+                <div class="div_infoAutorG txt-nombreAutorG" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$autor->nombre}}">
+                    {{Str::limit($autor->nombre,22)}}
+                    
                 </div>
                 <div class="div_DatosAutorG">
                     <div class="div_librosAutorG">
-                        Libros: 2
+                        Libros:&nbsp;{{$i}}
                     </div>
                     <div class="div_entradasAutorG" style="color:#29B390">
-                        Entradas:4
+                        Entradas:&nbsp;{{$o}}
                     </div>
                 </div>
-                <div class="btn_editarAutorG">
-                    <i class="fas fa-pencil-alt" style="font-size: 14px"></i> &nbsp;Editar
+                <div class="btn_editarAutorG" >
+                    <a href="{{ route('autores-editar', ['id'=>$autor->id.',2']) }}"><i class="fas fa-pencil-alt" style="font-size: 14px"></i> &nbsp;Editar</a>
                 </div>
             </div> 
         </div>

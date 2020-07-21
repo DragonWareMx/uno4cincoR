@@ -64,11 +64,11 @@
     color: #BA1F00;
 }
 .btn_editarAutorG{
+    margin-top:2px;
     transition: all 0.3s;
     width: 100%;
     text-align: center;
-    padding: 3%;
-    vertical-align: middle;
+    align-items: center;
     border: 1px solid #1D2120;
     box-sizing: border-box;
     border-radius: 5px;
@@ -80,8 +80,29 @@
     font-size: 16px;
     line-height: 19px;
     color: #1D2120;
+    display: flex;
+}
+.txt-nombreAutorG:hover{
+    cursor: default;
+}
+.btn_editarAutorG a{
+    text-decoration: none;
+    color: #1D2120;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn_editarAutorG a:hover{
+    text-decoration: none;
+    color: #1D2120;
+    text-emphasis: none;
+    text-transform: none;
+    text-decoration: none;
 }
 .btn_editarAutorG:hover{
+    color: #1D2120;
     transition: all 0.3s;
     margin-left: 2.5%;
     margin-right: 2.5%;
@@ -147,7 +168,7 @@
 .dateMuerteAuthor{
     margin-left: 45px;
 }
-.input_datosAuthor:focus, .textarea_biografia:focus{
+.input_datosAuthor:focus{
     outline:none ;
     outline-width: 0;
     border-bottom: 0.5px solid #29B390; 
@@ -174,6 +195,7 @@
     color: #1D2120;
 }
 .img_datosAuthor{
+    width: 100%;
     margin-left: 5px;
     color: #717171;
     font-family: 'Nunito';
@@ -198,7 +220,7 @@
         width: 100%;
     }
 }
-@media(max-width: 1070px){
+@media(max-width: 1115px){
     .div_infoAutorG{
         font-size: 14px;
     }
@@ -242,5 +264,24 @@
     }
     .a_agregarAutor{
         font-size: 14px;
+    }
+    .div_elementosAuthor{
+        flex-wrap: wrap;
+    }
+    .img_datosAuthor{
+        margin-left: 0px;
+    }
+    .dateAuthor{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .dateMuerteAuthor{
+        margin-left: 0px;
+    }
+    .input_datosAuthor{
+        margin-left: 0px;
+    }
+    .textarea_biografia{
+        margin-left: 0px;
     }
 }

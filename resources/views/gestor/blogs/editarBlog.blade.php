@@ -29,7 +29,7 @@
         </ul>
     </div>
     @endif
-    <div class="contenido_blogs">
+    <div class="contenido_blogs"> 
         
          <div class="datos_blog">
             <form action="{{ route('editarBlog', ['id'=>$blog->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
@@ -58,9 +58,9 @@
                             ¿Nuevo autor?
                         </div>
                     </div>
-                    <div {{-- id="DESAPARECER"--}} class="elementos_blog_50" {{--style="display:none;"--}}> 
+                    <div id="nvo_autor" class="elementos_blog_50" style="display:none;"> 
                         <p class="elementos_blog">Nuevo autor:</p>
-                        <input type="text" class="input_blog_autor" name="autorBlogNuevo" >
+                        <input type="text" id="nvoAutor_blog" class="input_blog_autor" name="autorBlogNuevo" >
                     </div>
     
                     <div class="elementos_blog_50">
@@ -108,11 +108,11 @@
 
                 <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
-                        <a class="gestor_blog_cancelar" href="#">Cancelar</a>
+                        <a class="gestor_blog_cancelar" href="{{ route('verBlogs')}}">Cancelar</a>
                         <input class="gestor_blog_guardar" type="submit" value="Guardar">	
                     </div>
                 </div>
-                
+                <a href="#" data-toggle="modal" data-target="#logoutModal"  style="color: #b30000">Eliminar</a>
             </form>
         </div>
         <div class="preview_imagen_blog">
@@ -123,7 +123,29 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar entrada</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"><p style="text-align:center">¿Estás seguro de que deseas eliminar esta entrada?</p></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <form action="{{ route('eliminarBlog', ['id'=>$blog->id]) }}" method="POST">
+                    {{csrf_field()}}
+                    @method('DELETE')
+                    <button class="btn bg-danger text-white">Eliminar</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
         const inpFile = document.getElementById("imagen");
         const previewContainer= document.getElementById("preview_imagen");
@@ -151,5 +173,25 @@
                 reader.readAsDataURL(file);
             }
         });
+    </script>
+    <script>
+        var clickNvoAutor=false;
+        var valor="";
+         $(document).ready(function() {
+
+            $('.div_nuevo_autor_blog').on('click', function () {
+                if(clickNvoAutor){
+                    $('#nvo_autor').hide();
+                    document.getElementById('nvoAutor_blog').value= valor;
+                    clickNvoAutor=false;
+                }
+                else{
+                    $('#nvo_autor').show();
+                    clickNvoAutor=true;
+                }
+                
+            });
+
+         });
     </script>
 @endsection
