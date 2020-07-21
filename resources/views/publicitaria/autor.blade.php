@@ -19,7 +19,7 @@
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
     {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Autores | José Agustín Aguilar Solórzano</p>
+    <p class="txt-TitulosApartados">Autores | {{$autor->nombre}}</p>
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     

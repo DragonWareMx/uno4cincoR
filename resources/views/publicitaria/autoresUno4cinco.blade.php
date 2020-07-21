@@ -82,15 +82,17 @@
 
     <div class="blog_encabezado">
         <p class="txt-descripApartado">Autores que han publicado en uno4cinco<p>
-        <form class="" action="" method="GET" enctype="multipart/form-data">
+        <form class="" action="{{ route('autoresUno4cinco')}}" method="GET" enctype="multipart/form-data">
             <div class="blog_barra_busqueda">
                 <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                    <option class="OPbusqueda_clasificacion" value="contenido">Nombre</option>
-                    <option class="OPbusqueda_clasificacion" value="autor">Descripción</option>
-                    <option class="OPbusqueda_clasificacion" value="tag">Obras</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="descripcion">Descripción</option>
+                    <option value="obras">Obras</option>
                 </select>
-                <input type="text" id="busqueda_busqueda" class ="" name="busqueda">
-                <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+                <input type="text" required id="busqueda_busqueda" class ="" name="busqueda">
+                <button type="submit" class="busqueda_boton">
+                    <img class="imagen_busqueda_boton" src="{{asset('img/ico/search.png')}}" alt="">
+                </button>
             </div>
         </form>
     </div>

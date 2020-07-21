@@ -42,7 +42,25 @@ class paginaAutoresController extends Controller
                 $cont++;
             }
         }
-        $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+
+        if(request('clasificacion')=='nombre'){
+            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
+        else if(request('clasificacion')=='descripcion'){
+            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
+        else if(request('clasificacion')=='obras'){
+            $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
+                    ->leftJoin('books','author_book.book_id','=','books.id')
+                    ->where('books.titulo','like',"%".request('busqueda')."%")
+                    ->whereIn('authors.id',$uno4cinco)
+                    ->distinct()
+                    ->paginate(9);
+        }
+        else{
+            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
+
         $BannerAutores=Banner::wherein('id',$uno4cinco)->get();
         
         return view('publicitaria.autoresUno4cinco',['bannerAutores'=>$BannerAutores, 'autoruno4cinco'=>$autoruno4cinco]);
@@ -61,7 +79,24 @@ class paginaAutoresController extends Controller
                 $cont++;
             }
         }
-        $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+
+        if(request('clasificacion')=='nombre'){
+            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
+        else if(request('clasificacion')=='descripcion'){
+            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
+        else if(request('clasificacion')=='obras'){
+            $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
+                    ->leftJoin('books','author_book.book_id','=','books.id')
+                    ->where('books.titulo','like',"%".request('busqueda')."%")
+                    ->whereIn('authors.id',$uno4cinco)
+                    ->distinct()
+                    ->paginate(9);
+        }
+        else{
+            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+        }
         $BannerAutores=Banner::wherein('id',$uno4cinco)->get();
         
         return view('publicitaria.autores145',['bannerAutores'=>$BannerAutores, 'autoruno4cinco'=>$autoruno4cinco]);
