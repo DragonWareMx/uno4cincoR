@@ -1,29 +1,34 @@
 @extends('layouts.menuGestor')
-
+ 
 @section('importOwl')
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
     <script type="text/javascript" src='/assets/js/tags.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 @endsection
 
+@section('menu')
+    <a href="{{ route('verBlogs') }}" class="txt-titulosGestor">Blogs</a>
+@endsection
+
 @section('contenido')
     <div class="all_blogs_80">
+        <a href="{{ route('nuevoBlog') }}" class="a_agregarAutor" >Agregar entrada</a>
         <div class="all_blogs_menu_busqueda">
-            <div class="h3 mb-0 text-gray-800"><a href="{{ route('verBlogs') }}"> Blog</a></div>
             <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
                 <div class="all_blogs_busqueda">
                     <input type="text" required id="" class ="all_blogs_input_busqueda" name="busqueda">
-                    <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search" style="font-size: 14px; color:#909090;"></i></button>
                 </div>
             </form>
-        </div>
+        </div> 
     </div>
    <div class="all_blogs_contenido">
-        <div class="all_blogs_80">
+        {{-- <div class="all_blogs_80">
             <div class="all_blogs_100">
                 <a href="{{ route('nuevoBlog') }}">Agregar entrada</a>
             </div>  
-        </div>
+        </div> --}}
         @foreach ($blogs as $blog)
             <div class="all_blogs_item">
                 <div class="all_blogs_item_imagen">

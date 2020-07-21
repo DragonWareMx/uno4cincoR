@@ -168,7 +168,7 @@
 .dateMuerteAuthor{
     margin-left: 45px;
 }
-.input_datosAuthor:focus, .textarea_biografia:focus{
+.input_datosAuthor:focus{
     outline:none ;
     outline-width: 0;
     border-bottom: 0.5px solid #29B390; 

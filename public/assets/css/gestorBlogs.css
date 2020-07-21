@@ -96,14 +96,14 @@
     color: #717171;
     color :#29B390;
     margin-left: 10px;
-    margin-top: -16px;
+    margin-top: -16px; 
 }
 .div_nuevo_autor_blog:hover,
 .select_blog:hover{
     cursor: pointer;
 }
 .input_blog_autor{
-    font-family: Nunito;
+    font-family: 'Nunito';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -247,6 +247,14 @@
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------PARA LA PÁGINA PRINCIPAL---------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.txt-titulosGestor{
+    text-decoration: none;
+    color: #5a5c69;
+}
+.txt-titulosGestor:hover{
+    text-decoration: none;
+    color: #3e3f47;
+}
 .all_blogs_item{
     width: 253px;
     height: 296px;
@@ -292,10 +300,11 @@
     border: 1px solid #1D2120;
     box-sizing: border-box;
     border-radius: 5px;
+    font-family: 'Nunito';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 16px;
-    line-height: 19px;
+    line-height: 22px;
     color: #1D2120;
     margin-top: 7px;
     transition: all 0.3s;
@@ -338,33 +347,52 @@
 
 
 .all_blogs_menu_busqueda{
-    width: 95%;
-    margin-bottom: 20px;
+    width: 25%;
+    /* margin-bottom: 20px; */
+    margin-left: -10%;
     display: flex;
     justify-content: space-between;
+    
 }
 .all_blogs_busqueda{
     display: flex;
     align-items: center;
     width: 192px;
     height: 23px;
+    /* background-color: springgreen; */
 }
 .all_blogs_input_busqueda{
-    margin: 0px;
+    margin: 0px; 
     border: none;
-    border-bottom: 0.4px solid #29B390; 
+    border-bottom: 0.4px solid #909090;
     border-radius: 0px;
     background-color: transparent;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+}
+.all_blogs_input_busqueda:focus{
+    border-bottom: 0.4px solid #29B390; 
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    transition: ease 0.3s;
+
 }
 .all_blogs_search_busqueda{
     background-color: transparent;
     border: none;
-    border-bottom:0.4px solid #29B390;
+    border-bottom:0.4px solid #909090;
+    margin-bottom: 0px;
 }
 .all_blogs_80{
     width: 100%;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: slateblue; */
 }
 .all_blogs_90{
     width: 100%;
