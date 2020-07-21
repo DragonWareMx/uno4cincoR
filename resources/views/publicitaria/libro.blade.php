@@ -149,7 +149,7 @@
                         </p>
 
                         {{-- PAGAINAS --}}
-                        <p class="libro-info-res"><b>Número de páginas: </b>523</p>
+                        <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p>
 
                         {{-- EDITORIAL --}}
                         <p class="libro-info-res"><b>Editorial: </b>{{ $book->sello->nombre }}</p>
@@ -297,6 +297,7 @@
         {{-- <div class="container"> --}}
             <div class="row">
                 <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                    <p class="mas-autor-libro">Más de este autor</p>
                     <div class="MultiCarousel-inner">@foreach ($autor->books as $book)
                         <div class="item">
                             <div class="pad15">
@@ -329,7 +330,7 @@
 
         <div class="libro-regresar">
             <div class="boton">
-            <button onclick="location.href='{{ route('tiendaNovedades') }}'">
+            <button onclick="location.href='{{ route('tiendaCatalogo') }}'">
                 <div class="row" style="margin-right:0px; margin-left: auto;">
                     <img src="{{ asset('img/ico/blackarrow.png') }}">
                 </div>
@@ -356,7 +357,10 @@
             <div style="display: table; width:100%;">
                 <div class="formato-comprar">
                     <div class="formato-container shrink" style="height: 213.8px">
-                        <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target="">
+                        <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target=
+                        @if ($book->stockFisico > 0)
+                            {!!"#comprarFormato"!!}
+                        @endif>
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Físico:</p>
                             </div>
@@ -398,11 +402,11 @@
                                             @endphp
                                         @endif
                                     @endforeach
-                                    @if ($min == 0)
-                                        @php
-                                            $min = 1;
-                                        @endphp
-                                    @endif
+                                @endif
+                                @if ($min == 0)
+                                    @php
+                                        $min = 1;
+                                    @endphp
                                 @endif
                                 @if ($book->stockFisico > 1)
                                     <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
@@ -415,7 +419,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target="">
+                <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target=
+                @if ($book->stockDigital > 0)
+                    {!!"#comprarFormato"!!}
+                @endif>
                     <div class="formato-container shrink" style="height: 213.8px">
                         <div class="formato">
                             <p style="padding-top: 20px;">Formato Digital:</p>

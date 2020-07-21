@@ -100,9 +100,9 @@
                                                                     </div>
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
-                                                                            <a href="#" class="qty qty-minus">-</a>
+                                                                            <div role="button" tabindex="0" class="qty qty-minus" onclick="menosCantidad()">-</div>
                                                                             <input type="numeric" value="{{ $details['cantidadFisico'] }}" />
-                                                                            <a href="#" class="qty qty-plus">+</a>
+                                                                            <div role="button" tabindex="0" class="qty qty-plus" onclick="masCantidad()">+</div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
@@ -189,7 +189,7 @@
                                 <h1>Total : ${{ $total }}</h1>
                                 <p>Pueden aplicarse gastos de envío,</p>
                                 <a href="#">detalles</a>
-                                <button class="tienda shrink" onclick="location.href='{{ route('tiendaNovedades') }}'">Volver a la tienda</button>
+                                <button class="tienda shrink" onclick="location.href='{{ route('tiendaCatalogo') }}'">Volver a la tienda</button>
                                 <button class="comprar shrink">Comprar ahora</button>
                             </div>
                         </div>
@@ -201,4 +201,36 @@
     
 
 </section>
+
+<script>
+    var libros = @json($books);
+    var carrito = @json(session()->get('cart'));
+
+    //obtiene los datos del libro en base al id
+    function getLibro(id){
+        var libro;
+
+        for (var i = 0; i < libros.data.length; i++){
+            var a = libros.data[i];
+            if(a['id']==id){
+                libro = a;
+                break;
+            }
+        }
+
+        return libro;
+    }
+
+    function masCantidad(){
+        alert("mas")
+    }
+
+    function menosCantidad(){
+        alert("menos");
+    }
+
+    function actualizarCarrito(){
+        
+    }
+</script>
 @endsection
