@@ -8,6 +8,7 @@ use App\Blog;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class gestorBlogsController extends Controller
 {
@@ -51,53 +52,61 @@ class gestorBlogsController extends Controller
             'contenido'=>'required|max:2500', 
             'imagen'=>'nullable|image',
         ]);
-        // $blog=new Blog();
-        $arrTags = explode (",", request('tags'));  
-        foreach($arrTags as $tagsNuevos){
-            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
-            if(!$tagActual){
-                $tagNew=new Tag();
-                $tagNew->nombre=$tagsNuevos;
-                $tagNew->save();
-            }
-        }
-        $arrTagsID=$arrTags;
-        $contador=0;
-        foreach($arrTags as $tagsNuevos){
-            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
-            $arrTagsID[$contador]=$tagActual->id;
-            $contador++;
-        }
-        $blog=new Blog();
-        $blog->titulo=request('titulo');
-        $blog->contenido=request('contenido');
-        $mytime = Carbon::now();
-        $blog->fecha=$mytime->toDateString();
-        if(request('autorBlogNuevo')!=NULL){
-            $blog->autor=request('autorBlogNuevo');
-        }
-        else{
-            $blog->autor=request('autorBlog');
-        }
-        $blog->author_id=request('autorLibro');
-        //esta es la parte para guardar la imagen
-        if(request('imagen')==null){
-            $newFileName='default.jpg';
-        }
-        else{
-        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
-        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-        $extension = request('imagen')->getClientOriginalExtension();
-        $newFileName=$fileName.'_'.time().'.'.$extension;
-        $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
-        }
-        $blog->imagen=$newFileName;
-        //aqui termina la parte de las imagenes
-        $blog->save();
 
-        //Ahora falta asignarle los tags al blog recien guardado
-        $blog->tags()->sync($arrTagsID);
+        try{
+            DB::transaction(function()
+            {
+                // $blog=new Blog();
+                $arrTags = explode (",", request('tags'));  
+                foreach($arrTags as $tagsNuevos){
+                    $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+                    if(!$tagActual){
+                        $tagNew=new Tag();
+                        $tagNew->nombre=$tagsNuevos;
+                        $tagNew->save();
+                    }
+                }
+                $arrTagsID=$arrTags;
+                $contador=0;
+                foreach($arrTags as $tagsNuevos){
+                    $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+                    $arrTagsID[$contador]=$tagActual->id;
+                    $contador++;
+                }
+                $blog=new Blog();
+                $blog->titulo=request('titulo');
+                $blog->contenido=request('contenido');
+                $mytime = Carbon::now();
+                $blog->fecha=$mytime->toDateString();
+                if(request('autorBlogNuevo')!=NULL){
+                    $blog->autor=request('autorBlogNuevo');
+                }
+                else{
+                    $blog->autor=request('autorBlog');
+                }
+                $blog->author_id=request('autorLibro');
+                //esta es la parte para guardar la imagen
+                if(request('imagen')==null){
+                    $newFileName='default.jpg';
+                }
+                else{
+                $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('imagen')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
+                }
+                $blog->imagen=$newFileName;
+                //aqui termina la parte de las imagenes
+                $blog->save();
 
+                //Ahora falta asignarle los tags al blog recien guardado
+                $blog->tags()->sync($arrTagsID);
+            });
+        }
+        catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo guardar el blog!']);
+        }
         return redirect()->route('verBlogs');
     }
 
@@ -128,62 +137,82 @@ class gestorBlogsController extends Controller
             'contenido'=>'required|max:2500', 
             'imagen'=>'nullable|image',
         ]);
-        //dd(request());
-        //Esta parte de aqui es para sacar los tags, primero descompone los tags en un arreglo, despues 
-        //se recorre ese arreglo y se revisa si existen o no en la tabla Tags, en caso de que no existan se guardan ahi
-        $arrTags = explode (",", request('tags'));  
-        foreach($arrTags as $tagsNuevos){
-            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
-            if(!$tagActual){
-                $tagNew=new Tag();
-                $tagNew->nombre=$tagsNuevos;
-                $tagNew->save();
-            }
-        }
-        //después se crea otro array para almacenar los ID's que tiene cada tag
-        $arrTagsID=$arrTags;
-        $contador=0;
-        foreach($arrTags as $tagsNuevos){
-            $tagActual=Tag::where('nombre',$tagsNuevos)->first();
-            $arrTagsID[$contador]=$tagActual->id;
-            $contador++;
-        }
-        
-        //aquí instanciamos el blog para ya updatear su información;
-        $blog=Blog::findOrFail($id);
-        $blog->titulo=request('titulo');
-        $blog->contenido=request('contenido');
-        $mytime = Carbon::now();
-        $blog->fecha=$mytime->toDateString();
-        if(request('autorBlogNuevo')!=NULL){
-            $blog->autor=request('autorBlogNuevo');
-        }
-        else{
-            $blog->autor=request('autorBlog');
-        }
-        $blog->author_id=request('autorLibro');
-        //esta es la parte para guardar la imagen
-        if(request('imagen')==null){
-            $newFileName=$blog->imagen;
-        }
-        else{
-        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
-        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-        $extension = request('imagen')->getClientOriginalExtension();
-        $newFileName=$fileName.'_'.time().'.'.$extension;
-        $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
 
-        $oldImage=public_path().'/storage/blogs/'.$blog->imagen;
-            if(file_exists($oldImage)){
-                unlink($oldImage);
-            }
-        }
-        $blog->imagen=$newFileName;
-        //aqui termina la parte de las imagenes
-        $blog->save();
+        try{
+            DB::transaction(function() use  ($id)
+            {
+                //dd(request());
+                //Esta parte de aqui es para sacar los tags, primero descompone los tags en un arreglo, despues 
+                //se recorre ese arreglo y se revisa si existen o no en la tabla Tags, en caso de que no existan se guardan ahi
+                $arrTags = explode (",", request('tags'));  
+                foreach($arrTags as $tagsNuevos){
+                    $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+                    if(!$tagActual){
+                        $tagNew=new Tag();
+                        $tagNew->nombre=$tagsNuevos;
+                        $tagNew->save();
+                    }
+                }
+                //después se crea otro array para almacenar los ID's que tiene cada tag
+                $arrTagsID=$arrTags;
+                $contador=0;
+                foreach($arrTags as $tagsNuevos){
+                    $tagActual=Tag::where('nombre',$tagsNuevos)->first();
+                    $arrTagsID[$contador]=$tagActual->id;
+                    $contador++;
+                }
+                
+                //aquí instanciamos el blog para ya updatear su información;
+                $blog=Blog::findOrFail($id);
+                $blog->titulo=request('titulo');
+                $blog->contenido=request('contenido');
+                $mytime = Carbon::now();
+                $blog->fecha=$mytime->toDateString();
+                if(request('autorBlogNuevo')!=NULL){
+                    $blog->autor=request('autorBlogNuevo');
+                }
+                else{
+                    $blog->autor=request('autorBlog');
+                }
+                $blog->author_id=request('autorLibro');
+                //esta es la parte para guardar la imagen
+                if(request('imagen')==null){
+                    $newFileName=$blog->imagen;
+                }
+                else{
+                $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('imagen')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('imagen')->storeAs('/public/blogs/',$newFileName);
 
-        //Ahora falta asignarle los tags al blog recien guardado
-        $blog->tags()->sync($arrTagsID);
+                $oldImage=public_path().'/storage/blogs/'.$blog->imagen;
+                    if(file_exists($oldImage)){
+                        unlink($oldImage);
+                    }
+                }
+                $blog->imagen=$newFileName;
+                //aqui termina la parte de las imagenes
+                $blog->save();
+
+                //Ahora falta asignarle los tags al blog recien guardado
+                $blog->tags()->sync($arrTagsID);     
+            });
+        }
+        catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo actualizar el blog!']);
+        }
+
+        // try{
+        //     DB::transaction(function()
+        //     {
+                
+        //      $popo=Blog::where('popo','popo')->get();
+        //     });
+        // }
+        // catch(QueryException $ex){
+        //     return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo guardar el blog!']);
+        // }
 
         return redirect()->route('verBlogs');
     }

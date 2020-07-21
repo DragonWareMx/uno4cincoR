@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Author;
 use App\Book;
 use App\Blog;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class gestorAutoresController extends Controller
 {
@@ -65,9 +67,6 @@ class gestorAutoresController extends Controller
     }
 
     public function updateAuthor($id){
-        $break=explode(',',$id);
-        $id=$break[0];
-        $ruta=$break[1];
         $data=request()->validate([
             'nombre'=>'required|max:191',
             'biografia'=>'required|max:65535',
@@ -76,29 +75,41 @@ class gestorAutoresController extends Controller
             'imagen'=>'nullable|image'
         ]);
 
-        $autor=Author::findOrFail($id);
-        $autor->nombre=request('nombre');
-        $autor->descripcion=request('biografia');
-        $autor->fechaNac=request('nacimiento');
-        $autor->fechaMuerte=request('muerte');
+        $break=explode(',',$id);
+        $id=$break[0];
+        $ruta=$break[1];
 
-        if(request('imagen')==null){
-            $newFileName=$autor->foto;
+        try{
+            DB::transaction(function() use ($id)
+            {
+                $autor=Author::findOrFail($id);
+                $autor->nombre=request('nombre');
+                $autor->descripcion=request('biografia');
+                $autor->fechaNac=request('nacimiento');
+                $autor->fechaMuerte=request('muerte');
+        
+                if(request('imagen')==null){
+                    $newFileName=$autor->foto;
+                }
+                else{
+                $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('imagen')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('imagen')->storeAs('/public/autores/',$newFileName);
+        
+                $oldImage=public_path().'/storage/autores/'.$autor->foto;
+                    if(file_exists($oldImage)){
+                        unlink($oldImage);
+                    }
+                }
+                $autor->foto=$newFileName;
+                $autor->save();
+            });
         }
-        else{
-        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
-        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-        $extension = request('imagen')->getClientOriginalExtension();
-        $newFileName=$fileName.'_'.time().'.'.$extension;
-        $path = request('imagen')->storeAs('/public/autores/',$newFileName);
-
-        $oldImage=public_path().'/storage/autores/'.$autor->foto;
-            if(file_exists($oldImage)){
-                unlink($oldImage);
-            }
+        catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudieron actualizar los datos del autor!']);
         }
-        $autor->foto=$newFileName;
-        $autor->save();
 
         if($ruta==1){
             return redirect()->route('autores-uno4cinco');
@@ -117,22 +128,30 @@ class gestorAutoresController extends Controller
             'muerte'=>'nullable|date',
             'imagen'=>'required|image'
         ]);
-        $autor=new Author();
-        $autor->nombre=request('nombre');
-        $autor->descripcion=request('biografia');
-        $autor->fechaNac=request('nacimiento');
-        $autor->fechaMuerte=request('muerte');
-
-        $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
-        $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-        $extension = request('imagen')->getClientOriginalExtension();
-        $newFileName=$fileName.'_'.time().'.'.$extension;
-        $path = request('imagen')->storeAs('/public/autores/',$newFileName);
-
-        $autor->foto=$newFileName;
-        // dd($autor);
-        $autor->save();
-
+        
+        try{
+            DB::transaction(function()
+            {
+                $autor=new Author();
+                $autor->nombre=request('nombre');
+                $autor->descripcion=request('biografia');
+                $autor->fechaNac=request('nacimiento');
+                $autor->fechaMuerte=request('muerte');
+        
+                $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('imagen')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('imagen')->storeAs('/public/autores/',$newFileName);
+        
+                $autor->foto=$newFileName;
+                // dd($autor);
+                $autor->save();
+            });
+        }
+        catch(QueryException $ex){
+            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo guardar el autor!']);
+        }
         return redirect()->route('autores-145');
     }
 
