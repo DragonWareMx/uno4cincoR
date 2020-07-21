@@ -26,7 +26,7 @@
     width:130px;
     color: rgba(29, 33, 32, 0.63);
     background: #EBEBEB;
-    font-family: Karla;
+    font-family: "Karla";
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -35,6 +35,10 @@
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
     border:0;
+
+}
+.busqueda_clasificacion option{
+    font-family: Karla;
 }
 #busqueda_busqueda{
     border-radius: 0px;
@@ -402,7 +406,9 @@
     color: #1D2120;
     margin-top: 50px;
 }
-
+.imagen_busqueda_boton{
+    width: 100%;
+}
 
 
 @media(max-width: 1500px){
@@ -436,6 +442,12 @@
         padding-left: 5%;
         padding-right: 5%;
     }
+    .blog_barra_busqueda{
+        margin-top: 0px;
+        margin:auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 @media(max-width: 1000px){
     .blogs_barra{
@@ -444,11 +456,6 @@
     .blogs_vista{
         width: 100%;
         margin-top:50px;
-    }
-    .blog_barra_busqueda{
-        margin-top: 0px;
-        margin:auto;
-        margin-top: 10px;
     }
     .barra_lateral_blogs{
         width: 100%;
