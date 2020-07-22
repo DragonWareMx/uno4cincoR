@@ -27,11 +27,21 @@ class paginaTiendaController extends Controller
         $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc')->paginate(12);
         return view('publicitaria.tienda145', ['books'=>$books]);
     }
+    
     //libro
     public function libro($id){
         $book = Book::find($id);
-        $autor=Author::findOrFail($id);
-        return view('publicitaria.libro', ['book' => $book, 'autor'=>$autor]);
+
+        //se obtienen los autores
+        $idsAutores = $book->authors->pluck('id')->toArray();
+
+        //encuentra los libros que coincidan con los autores
+        $books = Book::whereHas('authors', function ($query) use($idsAutores) {
+            $query->whereIn('author_book.author_id', $idsAutores);
+        })->orderBy('ventas','Desc')->take(5)->get();
+
+        //$books= Book::whereIn('id', $book->authors)->get();
+        return view('publicitaria.libro', ['book' => $book, 'books'=>$books]);
     }
 
     //carrito :v

@@ -293,39 +293,48 @@
             </div>
         </div>
 
-        <hr class="hr-tienda">
-        {{-- <div class="container"> --}}
-            <div class="row">
-                <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                    <p class="mas-autor-libro">Más de este autor</p>
-                    <div class="MultiCarousel-inner">@foreach ($autor->books as $book)
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="div_portadapad15">
-                                <img alt="{{$book->images[0]->imagen}}" src="{{asset('storage/libros/'.$book->images[0]->imagen)}}">
+        @if(count($books) > 1)
+            <hr class="hr-tienda">
+            {{-- <div class="container"> --}}
+                <div class="row">
+                    <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                        @if (count($book->authors) > 1)
+                            <p class="mas-autor-libro">Más de estos autores</p>
+                        @else
+                            <p class="mas-autor-libro">Más de este autor</p>
+                        @endif
+                        <div class="MultiCarousel-inner">
+                            @foreach ($books as $bookBanner)
+                            @if($book->id != $bookBanner->id)
+                                <div class="item" onclick="window.location.href='{{ route('libro',['id' => $bookBanner->id]) }}'">
+                                    <div class="pad15">
+                                        <div class="div_portadapad15">
+                                        <img alt="{{$bookBanner->images[0]->imagen}}" src="{{asset('storage/libros/'.$bookBanner->images[0]->imagen)}}">
+                                        </div>
+                                        <div class="div_infoCarrusel">
+                                            <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                                <i>{{$bookBanner->titulo}}</i>
+                                            </p>
+                                            <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
+                                                
+                                                <i>{{$bookBanner->genres[0]->nombre}}</i>
+                                            </p>
+                                            
+                                        </div>
+            
+                                    </div>
                                 </div>
-                                <div class="div_infoCarrusel">
-                                    <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                        <i>{{$book->titulo}}</i>
-                                    </p>
-                                    <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                        
-                                        <i>{{$book->genres[0]->nombre}}</i>
-                                    </p>
-                                    
-                                </div>
-    
-                            </div>
+                            @endif
+                            @endforeach
+                                            
+                            
                         </div>
-                        @endforeach
-                                        
-                        
+                        <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
+                        <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
                     </div>
-                    <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
-                    <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
                 </div>
-            </div>
-        {{-- </div> --}}
+            {{-- </div> --}}
+        @endif
         <hr class="hr-tienda">
 
         <div class="libro-regresar">
@@ -511,6 +520,9 @@
 </script>
 
 <script>
+    var animacion;
+    var animacion2;
+
     $(document).ready(function(){
   
         $('.owl-carousel').owlCarousel({
@@ -735,7 +747,6 @@
                         showTooltip("Producto agregado");
                     }
                     carritoCant(x);
-                    setTimeout(hideTooltip, 2000);
                     return;
                 }
             });
@@ -778,7 +789,6 @@
                         showTooltip("Producto agregado");
                     }
                     carritoCant(x);
-                    setTimeout(hideTooltip, 2000);
                     return;
                 },
             });
@@ -801,21 +811,34 @@
 
     function showTooltip(mensaje)
     {
+        var tooltipC = document.getElementById('tooltip-carrito');
+        var tooltipC2 = document.getElementById('tooltip-carrito2');
+
+        //verifica que no exista ya los tooltips
+        if(tooltipC && tooltipC2)
+        {
+            //si existen se elimina la animacion y los elementos
+            clearTimeout(animacion);
+            clearTimeout(animacion2);
+            $("#tooltip-carrito").fadeOut().remove();
+            $("#tooltip-carrito2").fadeOut().remove();
+        }
+
         var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
         var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
         tooltip.appendTo($(".menu-carrito"));
         tooltip2.appendTo($(".carritoli"));
 
-        var tooltipC = document.getElementById('tooltip-carrito');
-        var tooltipC2 = document.getElementById('tooltip-carrito2');
+        tooltipC = document.getElementById('tooltip-carrito');
+        tooltipC2 = document.getElementById('tooltip-carrito2');
         var height = tooltipC.clientHeight;
         var width = tooltipC.clientWidth;
 
-        tooltipC.style.visibility = 'visible';
-        tooltipC2.style.visibility = 'visible';
         //hint.style.opacity = '1';
         tooltipC.style.top = "45px";
         tooltipC2.style.top = "60px";
+
+        animacion = setTimeout(hideTooltip, 2000);
     }
 
     function hideTooltip()
@@ -825,12 +848,10 @@
         var height = tooltipC.clientHeight;
         var width = tooltipC.clientWidth;
 
-        tooltipC.style.visibility = 'visible';
-        tooltipC2.style.visibility = 'visible';
         //hint.style.opacity = '1';
         tooltipC.style.top = "-80px";
         tooltipC2.style.top = "-80px";
-        setTimeout(function () {
+        animacion2 = setTimeout(function () {
             $("#tooltip-carrito").fadeOut().remove();
             $("#tooltip-carrito2").fadeOut().remove();
         }, 500);
