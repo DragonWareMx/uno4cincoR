@@ -128,6 +128,8 @@
         //cada vez que se recarga la página obtenemos el carrito
         var carrito = @json(session()->get('cart'));
         var tooltipTimeout;
+        var animacion;
+        var animacion2;
 
         //obtiene los datos del libro en base al id
         function getLibro(id){
@@ -367,7 +369,6 @@
                             showTooltip("Producto agregado");
                         }
                         carritoCant(x);
-                        setTimeout(hideTooltip, 2000);
                         return;
                     }
                 });
@@ -410,7 +411,6 @@
                             showTooltip("Producto agregado");
                         }
                         carritoCant(x);
-                        setTimeout(hideTooltip, 2000);
                         return;
                     },
                 });
@@ -433,21 +433,34 @@
 
         function showTooltip(mensaje)
         {
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+
+            //verifica que no exista ya los tooltips
+            if(tooltipC && tooltipC2)
+            {
+                //si existen se elimina la animacion y los elementos
+                clearTimeout(animacion);
+                clearTimeout(animacion2);
+                $("#tooltip-carrito").fadeOut().remove();
+                $("#tooltip-carrito2").fadeOut().remove();
+            }
+
             var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
             var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
             tooltip.appendTo($(".menu-carrito"));
             tooltip2.appendTo($(".carritoli"));
 
-            var tooltipC = document.getElementById('tooltip-carrito');
-            var tooltipC2 = document.getElementById('tooltip-carrito2');
+            tooltipC = document.getElementById('tooltip-carrito');
+            tooltipC2 = document.getElementById('tooltip-carrito2');
             var height = tooltipC.clientHeight;
             var width = tooltipC.clientWidth;
 
-            tooltipC.style.visibility = 'visible';
-            tooltipC2.style.visibility = 'visible';
             //hint.style.opacity = '1';
             tooltipC.style.top = "45px";
             tooltipC2.style.top = "60px";
+
+            animacion = setTimeout(hideTooltip, 2000);
         }
 
         function hideTooltip()
@@ -457,12 +470,10 @@
             var height = tooltipC.clientHeight;
             var width = tooltipC.clientWidth;
 
-            tooltipC.style.visibility = 'visible';
-            tooltipC2.style.visibility = 'visible';
             //hint.style.opacity = '1';
             tooltipC.style.top = "-80px";
             tooltipC2.style.top = "-80px";
-            setTimeout(function () {
+            animacion2 = setTimeout(function () {
                 $("#tooltip-carrito").fadeOut().remove();
                 $("#tooltip-carrito2").fadeOut().remove();
             }, 500);
