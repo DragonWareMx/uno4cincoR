@@ -101,7 +101,7 @@
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
                                                                             <div role="button" tabindex="0" class="qty qty-minus" onclick="menosCantidad({{ $libro->id }})">-</div>
-                                                                            <input type="numeric" id="cantidadFisico{{ $libro->id }}" value="{{ $details['cantidadFisico'] }}" />
+                                                                            <input type="numeric" id="cantidadFisico{{ $libro->id }}" value="{{ $details['cantidadFisico'] }}" onfocus="this.oldvalue = this.value;" onkeypress="cantidadInput(event, {{ $libro->id }}, this)" />
                                                                             <div role="button" tabindex="0" class="qty qty-plus" onclick="masCantidad({{ $libro->id }})">+</div>
                                                                         </div>
                                                                     </div>
@@ -287,13 +287,13 @@
         });
     }
 
+    //actualiza los totales del carrito
     function actualizarCarrito(){
         var totalDiv = document.getElementById("total-carrito");
         var total = 0;
 
         for(var id in carrito){
             var libro = getLibro(id);
-            console.log(id);
             if(carrito[id]['cantidadFisico'] > 0){
                 total += (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*document.getElementById("cantidadFisico"+id).value;
             }
@@ -302,7 +302,56 @@
             }
         }
 
-        document.getElementById("total-carrito").innerHTML = "Total : $"+total;
+        var parts = total.toFixed(2).split(".");
+        var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+            (parts[1] ? "." + parts[1] : "");
+        document.getElementById("total-carrito").innerHTML = "Total : $"+num;
     }
+
+    function cantidadInput(event, id, input) { 
+        // Only ASCII charactar in that range allowed 
+        var ASCIICode = (event.which) ? event.which : event.keyCode 
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+            return false;
+
+        //se presiona la tecla Enter
+        if (event.keyCode === 13) { 
+            var libro = getLibro(id);
+            var max = libro['stockFisico'];
+
+            //se obtiene el numero del input
+            var number = document.getElementById("cantidadFisico"+id).value;
+
+            if(number > max){
+                number = max;
+            }
+            else if(number < 1){
+                number = 1;
+            }
+
+            console.log(input.oldvalue);
+
+            $.ajax({
+                url: 'agregar-a-carrito/'+id+'/'+number+'/fisico',
+                method: "get",
+                success: function (){
+                    //se actualiza la cantidad en el input
+                    document.getElementById("cantidadFisico"+id).value = number;
+
+                    //se calula el subtotal del producto actual y se actualiza
+                    subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*number;
+                    document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+
+                    //se actualiza el total en el carrito
+                    actualizarCarrito(id);
+
+                    input.oldvalue = input.value;
+                },
+                error: function (){
+                    document.getElementById("cantidadFisico"+id).value = input.oldvalue;
+                }
+            });
+        }
+    } 
 </script>
 @endsection
