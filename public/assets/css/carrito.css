@@ -120,6 +120,11 @@
 
 .carrito-table .carrito-cell .productos-container .producto .totales .cantidades{
     display: inline-block;
+    user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
 }
 
 .carrito-table .carrito-cell .productos-container .producto .totales .cantidades .qty{
@@ -293,6 +298,50 @@
     -webkit-transform: scale(0.8);
     -ms-transform: scale(0.8);
     transform: scale(0.95);
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.carrito-vacio{
+    width: 100%;
+    text-align: center;
+}
+
+.carrito-vacio p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+
+    color: #000000;
+
+    padding: 0px 30px;
+    margin-bottom: 50px;
+}
+
+.carrito-vacio a{
+    background: black;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 50px;
+    
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+
+    margin-bottom: 50px;
+
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+.carrito-vacio a:hover{
+    color: white;
+    font-size: 18px;
     transition-duration: .1s, .1s;
     -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);

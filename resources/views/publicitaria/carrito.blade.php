@@ -100,9 +100,9 @@
                                                                     </div>
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
-                                                                            <div role="button" tabindex="0" class="qty qty-minus" onclick="menosCantidad()">-</div>
-                                                                            <input type="numeric" value="{{ $details['cantidadFisico'] }}" />
-                                                                            <div role="button" tabindex="0" class="qty qty-plus" onclick="masCantidad()">+</div>
+                                                                            <div role="button" tabindex="0" class="qty qty-minus" onclick="menosCantidad({{ $libro->id }})">-</div>
+                                                                            <input type="numeric" id="cantidadFisico{{ $libro->id }}" value="{{ $details['cantidadFisico'] }}" />
+                                                                            <div role="button" tabindex="0" class="qty qty-plus" onclick="masCantidad({{ $libro->id }})">+</div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
@@ -166,7 +166,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
-                                                                        <b id="{{ $libro->id }}digital">${{ ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)) }}</b>
+                                                                        <b>${{ ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)) }}</b>
                                                                         @php
                                                                             $total += ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100));
                                                                         @endphp
@@ -186,7 +186,7 @@
                     <div class="carrito-cell cell-20">
                         <div class="compra-container">
                             <div style="width: 225px; margin:auto;">
-                                <h1>Total : ${{ $total }}</h1>
+                                <h1 id="total-carrito">Total : ${{ $total }}</h1>
                                 <p>Pueden aplicarse gastos de envío,</p>
                                 <a href="#">detalles</a>
                                 <button class="tienda shrink" onclick="location.href='{{ route('tiendaCatalogo') }}'">Volver a la tienda</button>
@@ -194,6 +194,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            @else
+                <div class="carrito-vacio">
+                    <p>No tienes productos en tu carrito</p>
+                    <a href="{{ route('tiendaCatalogo') }}" class="shrink">Ir a la tienda</a>
                 </div>
             @endif
         </div>
@@ -210,8 +215,8 @@
     function getLibro(id){
         var libro;
 
-        for (var i = 0; i < libros.data.length; i++){
-            var a = libros.data[i];
+        for (var i = 0; i < libros.length; i++){
+            var a = libros[i];
             if(a['id']==id){
                 libro = a;
                 break;
@@ -221,16 +226,83 @@
         return libro;
     }
 
-    function masCantidad(){
-        alert("mas")
+    //suma la cantidad de un producto en el carrito
+    function masCantidad(id){
+        //cantidad actual en el carrito
+        var cantidad = document.getElementById("cantidadFisico"+id).value;
+        //obtiene los datos del libro
+        var libro = getLibro(id);
+        //cantidad maxima posible del producto
+        var max = libro['stockFisico'];
+        var subtotal = 0;
+
+        cantidad++;
+
+        if(cantidad > max)
+            cantidad = max;
+
+        $.ajax({
+                url: 'agregar-a-carrito/'+id+'/'+cantidad+'/fisico',
+                method: "get",
+                success: function (){
+                    //se actualiza la cantidad en el input
+                    document.getElementById("cantidadFisico"+id).value = cantidad;
+
+                    //se calula el subtotal del producto actual y se actualiza
+                    subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*cantidad;
+                    document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+
+                    //se actualiza el total en el carrito
+                    actualizarCarrito(id);
+                }
+        });
     }
 
-    function menosCantidad(){
-        alert("menos");
+    //resta la cantidad de un producto en el carrito
+    function menosCantidad(id){
+        //cantidad actual en el carrito
+        var cantidad = document.getElementById("cantidadFisico"+id).value;
+        //obtiene los datos del libro
+        var libro = getLibro(id);
+
+        cantidad--;
+
+        if(cantidad < 1)
+            cantidad = 1;
+
+        $.ajax({
+            url: 'agregar-a-carrito/'+id+'/'+cantidad+'/fisico',
+            method: "get",
+            success: function (){
+                //se actualiza la cantidad en el input
+                document.getElementById("cantidadFisico"+id).value = cantidad;
+
+                //se calula el subtotal del producto actual y se actualiza
+                subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*cantidad;
+                document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+
+                //se actualiza el total en el carrito
+                actualizarCarrito(id);
+            }
+        });
     }
 
     function actualizarCarrito(){
-        
+        var totalDiv = document.getElementById("total-carrito");
+        var total = 0;
+
+        for(var id in carrito){
+            var libro = getLibro(id);
+            console.log(id);
+            if(carrito[id]['cantidadFisico'] > 0){
+                total += (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*document.getElementById("cantidadFisico"+id).value;
+            }
+            if(carrito[id]['cantidadDigital'] > 0){
+                total += libro['precioDigital']-libro['precioDigital']*(libro['descuentoDigital']/100);
+            }
+        }
+
+        document.getElementById("total-carrito").innerHTML = "Total : $"+total;
     }
 </script>
 @endsection
