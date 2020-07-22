@@ -54,6 +54,9 @@ Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('
 Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog')->middleware('auth');
 Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog')->middleware('auth');
 Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog')->middleware('auth');
+
+/*RUTAS DE GESTION DE SLIDERS*/
+Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders')->middleware('auth');
 /*RUTAS DE GESTIÓN DE RESUMEN*/
 Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('resumen');
 
