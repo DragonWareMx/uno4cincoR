@@ -99,6 +99,8 @@
     vertical-align: top;
     height: fit-content;
     padding-left: 5px;
+
+    cursor: pointer;
 }
 
 .carrito-table .carrito-cell .productos-container .producto .totales{

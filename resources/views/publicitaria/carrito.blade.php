@@ -45,7 +45,7 @@
                                                         <div class="datos">
                                                             <div class="titulo">
                                                                 <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
-                                                                <a href="#" style="margin-left: auto" class="eliminar">Eliminar</a>
+                                                                <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'fisico')" class="eliminar">Eliminar</div>
                                                             </div>
                                                             @if (count($libro->authors) > 1)
                                                                 <p><b>Autores: </b>
@@ -58,11 +58,11 @@
                                                                 @endphp
                                                                 @foreach ($libro->authors as $author)
                                                                     @if ($contador == 1)
-                                                                    <a href="#">{{$author->nombre}}</a>
+                                                                    <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
                                                                     @elseif($contador == $cantAutores)
-                                                                        y <a href="#">{{$author->nombre}}</a>
+                                                                        y <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
                                                                     @else
-                                                                        , <a href="#">{{$author->nombre}}</a>
+                                                                        , <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
                                                                     @endif
                                                                     @php
                                                                         $contador++;
@@ -89,12 +89,12 @@
                                                                         <div class="precio">
                                                                             @if($libro->descuentoFisico > 0)
                                                                                 <div class="oferta">
-                                                                                    ${{ $libro->precioFisico }}
+                                                                                    ${{ number_format($libro->precioFisico, 2 , ".", "," ) }}
                                                                                 </div>
                                     
-                                                                                ${{ $libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100) }}
+                                                                                ${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "," ) }}
                                                                             @else
-                                                                                ${{ $libro->precioFisico }}
+                                                                                ${{ number_format($libro->precioFisico, 2 , ".", "," ) }}
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -106,7 +106,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
-                                                                        <b id="{{ $libro->id }}fisico">${{ ($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'] }}</b>
+                                                                        <b id="{{ $libro->id }}fisico">${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "," ) }}</b>
                                                                         @php
                                                                             $total += ($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'];
                                                                         @endphp
@@ -128,9 +128,30 @@
                                                         <div class="datos">
                                                             <div class="titulo">
                                                                 <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
-                                                                <a href="#" style="margin-left: auto" class="eliminar">Eliminar</a>
+                                                                <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'digital')" class="eliminar">Eliminar</div>
                                                             </div>
-                                                            <p><b>Autor: </b><a href="#">{{ $libro->authors[0]->nombre }}</a></p>
+                                                            @if (count($libro->authors) > 1)
+                                                                <p><b>Autores: </b>
+                                                            @else
+                                                                <p><b>Autor: </b>
+                                                            @endif
+                                                                @php
+                                                                    $contador = 1;
+                                                                    $cantAutores = count($libro->authors);
+                                                                @endphp
+                                                                @foreach ($libro->authors as $author)
+                                                                    @if ($contador == 1)
+                                                                    <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                    @elseif($contador == $cantAutores)
+                                                                        y <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                    @else
+                                                                        , <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                    @endif
+                                                                    @php
+                                                                        $contador++;
+                                                                    @endphp
+                                                                @endforeach
+                                                            </p>
                                                             <p><b>Formato: </b>Digital</p>
                                                         </div>
                                                         <div class="totales">
@@ -151,12 +172,12 @@
                                                                         <div class="precio">
                                                                             @if($libro->descuentoDigital > 0)
                                                                                 <div class="oferta">
-                                                                                    ${{ $libro->precioDigital }}
+                                                                                    ${{  number_format($libro->precioDigital, 2 , ".", "," ) }}
                                                                                 </div>
                                     
-                                                                                ${{ $libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100) }}
+                                                                                ${{ number_format( ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}
                                                                             @else
-                                                                                ${{ $libro->precioDigital }}
+                                                                                ${{  number_format($libro->precioDigital, 2 , ".", "," ) }}
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -166,7 +187,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="cell-div">
-                                                                        <b>${{ ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)) }}</b>
+                                                                        <b>${{ number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}</b>
                                                                         @php
                                                                             $total += ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100));
                                                                         @endphp
@@ -186,7 +207,7 @@
                     <div class="carrito-cell cell-20">
                         <div class="compra-container">
                             <div style="width: 225px; margin:auto;">
-                                <h1 id="total-carrito">Total : ${{ $total }}</h1>
+                                <h1 id="total-carrito">Total : ${{ number_format($total, 2 , ".", "," ) }}</h1>
                                 <p>Pueden aplicarse gastos de envío,</p>
                                 <a href="#">detalles</a>
                                 <button class="tienda shrink" onclick="location.href='{{ route('tiendaCatalogo') }}'">Volver a la tienda</button>
@@ -226,6 +247,15 @@
         return libro;
     }
 
+    //separa los numeros por coma y pone dos decimales
+    function formatearNumero(numero){
+        var parts = numero.toFixed(2).split(".");
+        var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+            (parts[1] ? "." + parts[1] : "");
+
+        return num;
+    }
+
     //suma la cantidad de un producto en el carrito
     function masCantidad(id){
         //cantidad actual en el carrito
@@ -250,7 +280,8 @@
 
                     //se calula el subtotal del producto actual y se actualiza
                     subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*cantidad;
-                    document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+                    var num = formatearNumero(subtotal);
+                    document.getElementById(id+"fisico").innerHTML = "$"+num;
 
                     //se actualiza el total en el carrito
                     actualizarCarrito(id);
@@ -279,7 +310,8 @@
 
                 //se calula el subtotal del producto actual y se actualiza
                 subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*cantidad;
-                document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+                var num = formatearNumero(subtotal);
+                document.getElementById(id+"fisico").innerHTML = "$"+num;
 
                 //se actualiza el total en el carrito
                 actualizarCarrito(id);
@@ -302,9 +334,7 @@
             }
         }
 
-        var parts = total.toFixed(2).split(".");
-        var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
-            (parts[1] ? "." + parts[1] : "");
+        var num = formatearNumero(total);
         document.getElementById("total-carrito").innerHTML = "Total : $"+num;
     }
 
@@ -329,8 +359,6 @@
                 number = 1;
             }
 
-            console.log(input.oldvalue);
-
             $.ajax({
                 url: 'agregar-a-carrito/'+id+'/'+number+'/fisico',
                 method: "get",
@@ -340,7 +368,8 @@
 
                     //se calula el subtotal del producto actual y se actualiza
                     subtotal = (libro['precioFisico']-libro['precioFisico']*(libro['descuentoFisico']/100))*number;
-                    document.getElementById(id+"fisico").innerHTML = "$"+subtotal;
+                    var num = formatearNumero(subtotal);
+                    document.getElementById(id+"fisico").innerHTML = "$"+num;
 
                     //se actualiza el total en el carrito
                     actualizarCarrito(id);
@@ -352,6 +381,19 @@
                 }
             });
         }
-    } 
+    }
+
+    function eliminarProducto(idLibro, formatoLibro) {
+        if(confirm("¿Estás seguro?")) {
+            $.ajax({
+                url: '{{ route('eliminarCarrito') }}',
+                method: "DELETE",
+                data: {_token: '{{ csrf_token() }}', id: idLibro, formato: formatoLibro},
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    }
 </script>
 @endsection

@@ -120,30 +120,31 @@ class paginaTiendaController extends Controller
  
         return;
     }
-
-    public function update(Request $request)
-    {
-        if($request->id and $request->quantity)
-        {
-            $cart = session()->get('cart');
  
-            $cart[$request->id]["quantity"] = $request->quantity;
- 
-            session()->put('cart', $cart);
- 
-            session()->flash('success', 'Cart updated successfully');
-        }
-    }
- 
+    //elimina un producto del carrito
     public function remove(Request $request)
     {
-        if($request->id) {
- 
+        //se verifica que se obtengan los datos
+        if($request->id && $request->formato) {
+
+            //se obtiene el carrito de la cookie
             $cart = session()->get('cart');
- 
+            
+            //se verifica que el producto exista en el carrito
             if(isset($cart[$request->id])) {
- 
-                unset($cart[$request->id]);
+
+                //se baja la cantidad dependiendo del formato
+                if($request->formato == "fisico"){
+                    $cart[$request->id]['cantidadFisico'] = 0;
+                }
+                else if($request->formato == "digital"){
+                    $cart[$request->id]['cantidadDigital'] = 0;
+                }
+
+                //si el producto tiene ambas cantidades como 0 se elimina del carrito
+                if($cart[$request->id]['cantidadDigital'] == 0 && $cart[$request->id]['cantidadFisico'] == 0){
+                    unset($cart[$request->id]);
+                }
  
                 session()->put('cart', $cart);
             }
