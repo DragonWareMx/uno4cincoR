@@ -34,7 +34,7 @@
             <div class="div_imagAutorG">
                 <img src="{{asset('storage/autores/'.$autor->foto)}}">
                 <div class="div_infoAutorG txt-nombreAutorG" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$autor->nombre}}">
-                    {{Str::limit($autor->nombre,22)}}
+                    {{Str::limit($autor->nombre,20)}}
                 </div>
                 <div class="div_DatosAutorG">
                     <div class="div_librosAutorG">

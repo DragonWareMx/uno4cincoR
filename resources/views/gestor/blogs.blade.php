@@ -12,7 +12,7 @@
 @endsection
 
 @section('contenido')
-    <div class="all_blogs_80">
+    <div class="all_blogs_80" style="margin-bottom: 15px">
         <a href="{{ route('nuevoBlog') }}" class="a_agregarAutor" >Agregar entrada</a>
         <div class="all_blogs_menu_busqueda">
             <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
@@ -23,33 +23,30 @@
             </form>
         </div> 
     </div>
-   <div class="all_blogs_contenido">
-        {{-- <div class="all_blogs_80">
-            <div class="all_blogs_100">
-                <a href="{{ route('nuevoBlog') }}">Agregar entrada</a>
-            </div>  
-        </div> --}}
+<div class="div_contenedorgral">
+    <div class="div_AutoresContainerG">
+        <div class="div_AutoresContainerG" >
         @foreach ($blogs as $blog)
-            <div class="all_blogs_item">
-                <div class="all_blogs_item_imagen">
-                    <img src="{{asset('storage/blogs/'.$blog->imagen)}}">
+        <div class="div_ItemAutorG" style="margin-bottom: 25px;">
+            <div class="div_imagAutorG">
+                <img src="{{asset('storage/blogs/'.$blog->imagen)}}">
+                <div class="div_infoAutorG txt-nombreAutorG" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$blog->titulo}}">
+                    {{Str::limit($blog->titulo,18)}}
                 </div>
-                <h1>
-                    {{Str::limit($blog->titulo,26)}}
-                </h1>
-                <h2>
-                    @if ($blog->author_id && !$blog->autor)
-                        {{Str::limit($blog->author->nombre,26)}}
-                    @endif
-                    @if (!$blog->author_id && $blog->autor)
-                        {{Str::limit($blog->autor,26)}}
-                    @endif
-                    @if ($blog->author_id && $blog->autor)
-                        {{Str::limit($blog->autor,12)}}&nbsp;/&nbsp;{{Str::limit($blog->author->nombre,12)}}
-                    @endif
-                </h2>
-                <h2>
-                    @php
+                <div class="div_DatosAutorG">
+                    <div class="div_librosAutorG" style="width: 100%">
+                        @if ($blog->author_id && !$blog->autor)
+                            {{Str::limit($blog->author->nombre,18)}}
+                        @endif
+                        @if (!$blog->author_id && $blog->autor)
+                            {{Str::limit($blog->autor,18)}}
+                        @endif
+                        @if ($blog->author_id && $blog->autor)
+                            {{Str::limit($blog->autor,9)}}&nbsp;/&nbsp;{{Str::limit($blog->author->nombre,9)}}
+                        @endif
+                    </div>
+                    <div class="div_entradasAutorG" style="width: 100%; color:#29B390">
+                        @php
                         $separa=explode("-",$blog->fecha);
                         $anio=$separa[0];
                         $mes=$separa[1];
@@ -94,12 +91,14 @@
                             Diciembre&nbsp;
                             @break
                     @endswitch
-                    {{$anio}}                
-                </h2>
-                <a href="{{ route('editarBlog', ['id'=>$blog->id]) }}"class="all_blogs_item_boton">
-                    <div class="all_blogs_mueve"><i class="fas fa-pencil-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Editar</div>
-                </a>
-            </div>
+                    {{$anio}}  
+                    </div>
+                </div>
+                <div class="btn_editarAutorG" >
+                    <a href="{{ route('editarBlog', ['id'=>$blog->id]) }}"><i class="fas fa-pencil-alt" style="font-size: 14px"></i> &nbsp;Editar</a>
+                </div>
+            </div> 
+        </div>
         @endforeach
     </div>
     <div class="all_blogs_derecha">
@@ -107,4 +106,5 @@
             {{ $blogs->links()}} 
         </div>
     </div>
+</div>
 @endsection
