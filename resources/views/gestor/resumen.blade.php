@@ -121,10 +121,8 @@
 
         <div class="cuadro-resumen">
             <p class="titulo-resumen">Ventas por edades</p>
-            <div class="grafica-resumen2">
-                <div class="graficadona-resumen">
-                    <canvas id="doughnut-chart2"></canvas>
-                </div>
+            <div class="grafica-resumen">
+                <canvas id="line-chart2"></canvas>
             </div>
         </div>
 
@@ -190,6 +188,14 @@
       'mujer'=>0,
       'otros'=>0,
     ];
+    $sumaEdades=[
+        0=>0,
+        1=>0,
+        2=>0,
+        3=>0,
+        4=>0,
+        6=>0
+    ]
 @endphp
 @foreach ($ventas as $venta)
     @php
@@ -219,12 +225,39 @@
     @endif    
 @endforeach
 
-
+@foreach ($ventas as $venta)
+    @if ($venta->edad > 9 && $venta->edad < 21)
+        @php
+            $sumaEdades[0]++; 
+        @endphp
+    @elseif($venta->edad > 20 && $venta->edad < 31)
+        @php
+            $sumaEdades[1]++;   
+        @endphp
+    @elseif($venta->edad > 30 && $venta->edad < 41)
+        @php
+            $sumaEdades[2]++;   
+        @endphp
+    @elseif($venta->edad > 40 && $venta->edad < 51)
+        @php
+            $sumaEdades[3]++;   
+        @endphp
+    @elseif($venta->edad > 50 && $venta->edad < 61)
+        @php
+            $sumaEdades[4]++;   
+        @endphp
+    @elseif($venta->edad > 60)
+        @php
+            $sumaEdades[5]++;   
+        @endphp    
+    @endif    
+@endforeach
 
 
     <script>
         var sumaVentasTotales=<?php echo json_encode($sumaVentasTotales); ?>;
         var sumaGeneros=<?php echo json_encode($sumaGeneros); ?>;
+        var sumaEdades=<?php echo json_encode($sumaEdades); ?>;
         var arregloCiudades=<?php echo json_encode($arregloCiudades); ?>;
         var ano=<?php echo $añoSelec ?>;
         new Chart(document.getElementById("line-chart"), {
@@ -272,25 +305,26 @@
         responsive:true
         }
         });
-        new Chart(document.getElementById("doughnut-chart2"), {
-        type: 'doughnut',
+        new Chart(document.getElementById("line-chart2"), {
+        type: 'line',
         data: {
-        labels: ["Ingresos", "Egresos"],
-        datasets: [
-            {
-            label: "$",
-            backgroundColor: ["#1cc88a", "#e74a3b"],
-            data: [35,15]
+            labels: ['10-20 años','21-30 años','31-40 años','41-50 años','51-60 años','60 o más años'],
+            datasets: [{ 
+                data: [sumaEdades[0],sumaEdades[1],sumaEdades[2],sumaEdades[3],sumaEdades[4],sumaEdades[5]
+                ],
+                label: "Ventas",
+                borderColor: "#f2c763",
+                fill: false
             }
-        ]
+            ]
         },
         options: {
-        title: {
+            title: {
             display: false,
-            text: 'Ingresos y Egresos del mes de ' + 'mayo' + ' de ' + '2020'
-        },
-        maintainAspectRatio:false,
-        responsive:true
+            text: 'Ingresos por ventas de ' + ano
+            },
+            maintainAspectRatio:false,
+            responsive:true
         }
         });
         new Chart(document.getElementById("doughnut-chart3"), {
