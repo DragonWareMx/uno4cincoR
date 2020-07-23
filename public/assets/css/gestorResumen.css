@@ -94,3 +94,55 @@
     font-size: 12px;
     color: rgba(29, 33, 32, 0.81);
 }
+
+.formContainer{
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    flex-wrap: wrap;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.form-anio{
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.tituloResumen2{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.boton-resumen{
+    margin-top: 0 !important;
+    margin-bottom: 0    !important;
+}
+
+.select-resumen{
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.4px solid #909090;
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: #717171;
+    width: 20%;
+}
+.select-resumen:hover{
+    cursor: pointer;
+}
+.select-resumen:focus{
+    outline:none ;
+    outline-width: 0;
+    border-bottom: 0.5px solid #29B390; 
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
