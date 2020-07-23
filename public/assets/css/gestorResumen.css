@@ -146,3 +146,27 @@
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+@media (max-width:885px){
+    .cuadro-resumen{
+        width: 98% !important;
+    }
+    .grafica-resumen{
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .grafica-resumen2{
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    .cuadro-ultimos{
+        overflow-x: auto;
+    }
+    .gestor_blog_guardar{
+        margin-top: 10px;
+    }
+    .select-resumen{
+        width: 40% !important;
+    }
+}
