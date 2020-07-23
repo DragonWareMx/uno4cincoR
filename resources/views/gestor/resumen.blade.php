@@ -113,9 +113,7 @@
         <div class="cuadro-resumen">
             <p class="titulo-resumen">Ventas por género</p>
             <div class="grafica-resumen2">
-                <div class="graficadona-resumen">
-                    <canvas id="doughnut-chart"></canvas>
-                </div>
+                    <canvas id="doughnut-chart"></canvas>            
             </div>
         </div>
 
@@ -128,21 +126,19 @@
 
         <div class="cuadro-resumen">
             <p class="titulo-resumen">Ventas por Ciudad</p>
-            <div class="grafica-resumen">
-                <div class="graficadona-resumen">
-                    <canvas id="doughnut-chart3"></canvas>
-                </div>
+            <div class="grafica-resumen">   
+                    <canvas id="doughnut-chart3"></canvas>       
             </div>
         </div>
 
-        <div class="cuadro-resumen">
+        <div class="cuadro-resumen cuadro-ultimos">
             <p class="titulo-resumen">Libros más vendidos</p>
             <div class="ultimos-resumen">
                 <table class="tabla-resumen">
                     <tr>
                         <td class="left-tabla-resumen">{{$arregloLibros[0][0]}}</td>
                         <td><div class="center-tabla-resumen" style="background-color: #FFEC40;">{{$arregloLibros[0][1]}}</div></td>
-                        <td class="right-tabla-resumen">{{$arregloLibros[0][2]}}</td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[0][2]}}en oferta !</td>
                     </tr>
                     <tr>
                         <td class="left-tabla-resumen">{{$arregloLibros[1][0]}}</td>
