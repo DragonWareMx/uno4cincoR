@@ -18,7 +18,7 @@
     <div class="title_index" style="">
         <h2 class="text_title_slider" style="">LIBROS</h2>
     </div>
-    <a class="text_agregar" href="#">Agregar</a>
+    <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
     
     <!--slider LIBROS-->
     <div id="carruselLibros" class="carousel slide" data-ride="carousel">
@@ -82,7 +82,7 @@
     <div class="title_index" style="">
         <h2 class="text_title_slider" style="">AUTORES</h2>
     </div>
-    <a class="text_agregar" href="#">Agregar</a>
+    <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'autor'])}}">Agregar</a>
     
     <!--SLIDER AUTORES-->
     <div id="carruselAutores" class="carousel slide" data-ride="carousel">
@@ -143,7 +143,7 @@
     <div class="title_index" style="">
         <h2 class="text_title_slider" style="">BLOGS</h2>
     </div>
-    <a class="text_agregar" href="#">Agregar</a>
+    <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'blog'])}}">Agregar</a>
 
     {{-- Slider de Blogs --}}
     <div id="carruselBlogs" class="carousel slide" data-ride="carousel">
