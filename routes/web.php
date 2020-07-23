@@ -49,12 +49,16 @@ Route::patch('/adminuno4cinco/autores-editar/{id}', 'gestorAutoresController@upd
 Route::delete('/adminuno4cinco/autores-eliminar/{id}', 'gestorAutoresController@deleteAuthor')->name('autores-delete');
 
 /*RUTAS DE GESTIÓN DE BLOGS*/
-Route::get('/adminuno4cinco/blogs', 'gestorBlogsController@index')->name('verBlogs');
-Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog');
-Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog');
-Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog');
-Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog');
-Route::delete('/adminuno4cinco/eliminarblog/{id}', 'gestorBlogsController@deleteBlog')->name('eliminarBlog');
+Route::get('/adminuno4cinco/blogs', 'gestorBlogsController@index')->name('verBlogs')->middleware('auth');
+Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog')->middleware('auth');
+Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog')->middleware('auth');
+Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog')->middleware('auth');
+Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog')->middleware('auth');
+
+/*RUTAS DE GESTION DE SLIDERS*/
+Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders')->middleware('auth');
+Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSlider')->name('nuevoSlider')->middleware('auth');
+
 /*RUTAS DE GESTIÓN DE RESUMEN*/
 Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('resumen');
 

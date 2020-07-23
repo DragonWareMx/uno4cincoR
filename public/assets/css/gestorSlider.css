@@ -1,0 +1,86 @@
+.all_sliders_80{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.all_sliders_menu_busqueda{
+    width: 95%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.all_sliders_contenido{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.title_index{
+    width: 270px; line-height: 49px; margin:10px; text-align:left; margin-right: auto; margin-left: 5%;
+}
+.text_title_slider{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #1D2120;
+}
+.text_agregar{
+    font-family: Nunito;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #29B390;
+    margin:10px;
+    margin-right: 5%;
+}
+
+.img_carrusel:hover{
+    width: 95%;  
+    transition: all 0.5s;
+}
+.all_sliders_mueve{
+    margin:10px;
+}
+#carruselLibros{
+    display:inline-block;
+    position: relative;
+    background:transparent;
+    width: 90%;
+    transition: all 0.5s;
+ }
+
+#boton_delete{
+    width: 10%;
+    height: 38px;
+    z-index: 0;
+    position: absolute;
+    align-items: center;
+    border: 1px solid white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+    background-color:#BA1F00;
+    top: 162px;
+    right: 45%;
+    transition: all 0.3s;
+    display: none;
+}
+#boton_delete:hover{
+    text-decoration: none;
+    height: 43px;
+    transition: all 0.3s;
+    color:white;
+}
+#img_carrusel{
+    height: 400px;
+}
