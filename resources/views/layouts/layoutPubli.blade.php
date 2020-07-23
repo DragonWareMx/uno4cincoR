@@ -87,8 +87,8 @@
                             <li class="submenu">
                                 <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="{{ route('registro') }}" class="">UNO4CINCO</a></li>
-                                    <li><a href="{{ route('registro') }}" class="">145</a></li>
+                                    <li><a href="{{ route('autoresUno4cinco') }}" class="">UNO4CINCO</a></li>
+                                    <li><a href="{{ route('autores145') }}" class="">145</a></li>
                                 </ul>
                             </li> 
                             <li class="submenu">
@@ -121,7 +121,7 @@
                             <span>Menu</span>
                         </a>
 
-                        <a class='menu-carrito'>
+                        <a class='menu-carrito' href="{{ route('carrito') }}">
                             <img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" height="30px">
                             <div class="cargar-info2">
                             @if(session('cart'))

@@ -128,6 +128,8 @@
         //cada vez que se recarga la página obtenemos el carrito
         var carrito = @json(session()->get('cart'));
         var tooltipTimeout;
+        var animacion;
+        var animacion2;
 
         //obtiene los datos del libro en base al id
         function getLibro(id){
@@ -142,6 +144,15 @@
             }
 
             return libro;
+        }
+
+        //separa los numeros por coma y pone dos decimales
+        function formatearNumero(numero){
+            var parts = numero.toFixed(2).split(".");
+            var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+                (parts[1] ? "." + parts[1] : "");
+
+            return num;
         }
 
         //ABRE EL MODAL PARA ELEGIR EL FORMATO
@@ -177,11 +188,11 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + libro['precioFisico'] + "</div>$"+descuento;
-                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
+                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
             }
             else{
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+libro['precioFisico'];
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
                 document.getElementById("ahorroFisico").innerHTML = "";
             }
 
@@ -194,11 +205,11 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + libro['precioDigital']+ "</div>$"+descuento;
-                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
+                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
+                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
             }
             else{
-                document.getElementById("precioDigital").innerHTML = "$"+libro['precioDigital'];
+                document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
                 document.getElementById("ahorroDigital").innerHTML = "";
             }
 
@@ -302,7 +313,7 @@
         //CANTIDAD, INPUT ENTER
         $("#cantidadFisico").keypress(function(event) { 
             // Only ASCII charactar in that range allowed 
-            var ASCIICode = (event.which) ? event.which : event.keyCode 
+            var ASCIICode = (event.which) ? event.which : event.keyCode ;
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
                 return false;
 
@@ -337,6 +348,11 @@
             if(cantidad > max)
                 cantidad = max;
 
+            //verificar que la cantidad sea numerica
+           if(isNaN(cantidad)){
+                return;
+           }
+
            if(cantidad > 0){
                 var x = window.matchMedia("(max-width: 991px)");
                 $.ajax({
@@ -367,7 +383,6 @@
                             showTooltip("Producto agregado");
                         }
                         carritoCant(x);
-                        setTimeout(hideTooltip, 2000);
                         return;
                     }
                 });
@@ -379,6 +394,11 @@
            
            //SE OBTIENE LA CANTIDAD
            var cantidad = $("#cantidadDigitalValue").html();
+
+            //verificar que la cantidad sea numerica
+           if(isNaN(cantidad)){
+                return;
+           }
 
            if(cantidad > 0){
                 var x = window.matchMedia("(max-width: 991px)");
@@ -410,16 +430,18 @@
                             showTooltip("Producto agregado");
                         }
                         carritoCant(x);
-                        setTimeout(hideTooltip, 2000);
                         return;
                     },
                 });
             }
         });
 
+        //busca los divs que se deben cargar de nuevo y los carga
         function carritoCant(x1) {
             $(".cargar-info").load(" .cargar-info");
             $(".cargar-info2").load(" .cargar-info2");
+
+            //dependiendo del tamaño de la pantalla carga un div u el otro
             if (x1.matches) { // If media query matches
                 $(".contador-carrito-value2").load(" .contador-carrito-value2");
             } else {
@@ -433,21 +455,34 @@
 
         function showTooltip(mensaje)
         {
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+
+            //verifica que no exista ya los tooltips
+            if(tooltipC && tooltipC2)
+            {
+                //si existen se elimina la animacion y los elementos
+                clearTimeout(animacion);
+                clearTimeout(animacion2);
+                $("#tooltip-carrito").fadeOut().remove();
+                $("#tooltip-carrito2").fadeOut().remove();
+            }
+
             var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
             var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
             tooltip.appendTo($(".menu-carrito"));
             tooltip2.appendTo($(".carritoli"));
 
-            var tooltipC = document.getElementById('tooltip-carrito');
-            var tooltipC2 = document.getElementById('tooltip-carrito2');
+            tooltipC = document.getElementById('tooltip-carrito');
+            tooltipC2 = document.getElementById('tooltip-carrito2');
             var height = tooltipC.clientHeight;
             var width = tooltipC.clientWidth;
 
-            tooltipC.style.visibility = 'visible';
-            tooltipC2.style.visibility = 'visible';
             //hint.style.opacity = '1';
             tooltipC.style.top = "45px";
             tooltipC2.style.top = "60px";
+
+            animacion = setTimeout(hideTooltip, 2000);
         }
 
         function hideTooltip()
@@ -457,12 +492,10 @@
             var height = tooltipC.clientHeight;
             var width = tooltipC.clientWidth;
 
-            tooltipC.style.visibility = 'visible';
-            tooltipC2.style.visibility = 'visible';
             //hint.style.opacity = '1';
             tooltipC.style.top = "-80px";
             tooltipC2.style.top = "-80px";
-            setTimeout(function () {
+            animacion2 = setTimeout(function () {
                 $("#tooltip-carrito").fadeOut().remove();
                 $("#tooltip-carrito2").fadeOut().remove();
             }, 500);

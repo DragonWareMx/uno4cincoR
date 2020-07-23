@@ -62,9 +62,9 @@
 
                     <!--precio e icono de nuevo-->
                     <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="
-                    Precio Físico: ${{$book->precioFisico - $book->precioFisico*($book->descuentoFisico/100)}} @if($book->descuentoFisico > 0)(con descuento)@endif
+                    Precio Físico: ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }} @if($book->descuentoFisico > 0)(con descuento)@endif
                     <br>
-                    Precio Digital: ${{$book->precioDigital - $book->precioDigital*($book->descuentoDigital/100)}} @if($book->descuentoDigital > 0)(con descuento)@endif
+                    Precio Digital: ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }} @if($book->descuentoDigital > 0)(con descuento)@endif
                     <br>
                     @if($book->nuevo == 1)
                         @if($book->sello->nombre == 'uno4cinco')
@@ -82,46 +82,46 @@
                             @endphp
                                 @if($precio1 < $precio2)
                                     <div class="oferta">
-                                        ${{$book->precioFisico}}
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                     </div>
                                     @php
                                         $precio = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico/100));
                                     @endphp
-                                    ${{$precio}}
+                                    ${{ number_format($precio, 2 , ".", "," ) }}
                                 @else
                                     <div class="oferta">
-                                        ${{$book->precioDigital}}
+                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                     </div>
                                     @php
                                         $precio = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital/100));
                                     @endphp
-                                    ${{$precio}}
+                                    ${{ number_format($precio, 2 , ".", "," ) }}
                                 @endif
                             @elseif($book->descuentoFisico > 0)
                                 <div class="oferta">
-                                    ${{$book->precioFisico}}
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                 </div>
                                 @php
                                     $precio = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico/100));
                                 @endphp
-                                ${{$precio}}
+                                ${{ number_format($precio, 2 , ".", "," ) }}
                             @elseif($book->descuentoDigital > 0)
                                 <div class="oferta">
-                                    ${{$book->precioDigital}}
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                 </div>
                                 @php
                                     $precio = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital/100));
                                 @endphp
-                                ${{$precio}}
+                                ${{ number_format($precio, 2 , ".", "," ) }}
                             @else
                                 @php
                                     $precio1 = $book->precioFisico;
                                     $precio2 = $book->precioDigital;
                                 @endphp
                                 @if ($precio1 < $precio2)
-                                    ${{$precio1}}
+                                    ${{ number_format($precio1, 2 , ".", "," ) }}
                                 @else
-                                    ${{$precio2}}
+                                    ${{ number_format($precio2, 2 , ".", "," ) }}
                                 @endif
                             @endif
                         </div>

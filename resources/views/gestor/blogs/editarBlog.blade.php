@@ -3,6 +3,7 @@
 @section('importOwl')
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tags.css')}}">
     <script type="text/javascript" src='/assets/js/tags.js'></script>
     <script>
@@ -11,12 +12,12 @@
                 unique: true,
                 maxTags: 5
             });
-        });
+        }); 
     </script>
 @endsection
 
 @section('menu')
-    <a href="{{route('gestorInicio')}}">Blog</a>&nbsp;| Editar
+<a href="{{ route('verBlogs') }}" class="txt-titulosGestor">Blogs</a> | Editar
 @endsection
 
 @section('contenido')
@@ -29,7 +30,7 @@
         </ul>
     </div>
     @endif
-    <div class="contenido_blogs">
+    <div class="contenido_blogs"> 
         
          <div class="datos_blog">
             <form action="{{ route('editarBlog', ['id'=>$blog->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
@@ -37,8 +38,8 @@
             @method('patch')
 
                 <div class="elementos_blog_100">
-                    <p class="elementos_blog">Título:</p>
-                    <input name="titulo" class="input_blog_titulo" type="text" value="{{$blog->titulo}}" required autofocus>
+                    <p class="elementos_blog" >Título:</p>
+                    <input name="titulo" class="input_blog_titulo"  type="text" value="{{$blog->titulo}}" required autofocus>
                 </div>
 
                 <div class="div_empareja_elementos">
@@ -63,9 +64,9 @@
                         <input type="text" id="nvoAutor_blog" class="input_blog_autor" name="autorBlogNuevo" >
                     </div>
     
-                    <div class="elementos_blog_50">
-                        <p class="elementos_blog">Autor libro:</p>
-                        <select class="select_blog" name="autorLibro" >
+                    <div class="elementos_blog_50" >
+                        <p class="elementos_blog txt-AutorLibroBlog">Autor libro:</p>
+                        <select class="select_blog" name="autorLibro" style="margin-left: 0px">
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de libro</option>
                             @foreach ($autoresLibro as $autor)
                                 @if ($blog->author_id)
@@ -82,7 +83,7 @@
                         </select>
                     </div>
                     <div class="elementos_blog_50">
-                        <p class="elementos_blog">Tags:</p>
+                        <p class="elementos_blog txt-TagsBlog" >Tags:</p>
                         <input type="text"  id="testInput_tags_blog" class="input_blog_tag" name="tags" value="{{$tagsActuales}}">
                     </div>
                 </div>
@@ -101,8 +102,8 @@
 
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
-                        <p class="elementos_blog">Imagen:</p>
-                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen">
+                        <p class="txt_datosAuthor">Imagen:</p>
+                        <input id="imagen" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen">
                     </div>
                 </div>
 
@@ -112,7 +113,7 @@
                         <input class="gestor_blog_guardar" type="submit" value="Guardar">	
                     </div>
                 </div>
-                
+                <a href="#" data-toggle="modal" data-target="#logoutModal"  style="color: #b30000">Eliminar</a>
             </form>
         </div>
         <div class="preview_imagen_blog">
@@ -123,7 +124,29 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar entrada</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"><p style="text-align:center">¿Estás seguro de que deseas eliminar esta entrada?</p></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <form action="{{ route('eliminarBlog', ['id'=>$blog->id]) }}" method="POST">
+                    {{csrf_field()}}
+                    @method('DELETE')
+                    <button class="btn bg-danger text-white">Eliminar</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
         const inpFile = document.getElementById("imagen");
         const previewContainer= document.getElementById("preview_imagen");

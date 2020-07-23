@@ -17,6 +17,9 @@ class CreateBookSellTable extends Migration
             $table->id();
             $table->foreignId('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreignId('sell_id')->references('id')->on('sells')->onDelete('cascade');
+            $table->float('precio');
+            $table->tinyInteger('digital');
+            $table->integer('cantidad')->nullable();
             $table->timestamps();
         });
     }

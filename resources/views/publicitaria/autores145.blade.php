@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Autores | 145</title>
+<title>Autores | 145</title> 
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
@@ -82,15 +82,17 @@
 
     <div class="blog_encabezado">
         <p class="txt-descripApartado">Autores de 145<p>
-        <form class="" action="" method="GET" enctype="multipart/form-data">
+        <form class="" action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
             <div class="blog_barra_busqueda">
                 <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                    <option class="OPbusqueda_clasificacion" value="contenido">Nombre</option>
-                    <option class="OPbusqueda_clasificacion" value="autor">Descripción</option>
-                    <option class="OPbusqueda_clasificacion" value="tag">Obras</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="descripcion">Descripción</option>
+                    <option value="obras">Obras</option>
                 </select>
-                <input type="text" id="busqueda_busqueda" class ="" name="busqueda">
-                <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+                <input type="text" required id="busqueda_busqueda" class ="" name="busqueda">
+                <button type="submit" class="busqueda_boton">
+                    <img class="imagen_busqueda_boton" src="{{asset('img/ico/search.png')}}" alt="">
+                </button>
             </div>
         </form>
     </div>
@@ -114,7 +116,6 @@
             <p class="txt_nombreAutor">{{Str::limit($uno4cinco->nombre,30)}}<p>
         </div>
         @endforeach
-        
     </div>
     <div class="paginacion_css">
         {{$autoruno4cinco->links()}}

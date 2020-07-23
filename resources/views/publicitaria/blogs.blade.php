@@ -118,7 +118,9 @@
                         <option value="tags">Tags</option>
                     </select>
                     <input type="text" required id="busqueda_busqueda" class ="" name="busqueda">
-                    <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="busqueda_boton">
+                        <img class="imagen_busqueda_boton" src="{{asset('img/ico/search.png')}}" alt="">
+                    </button>
                 </div>
             </form>
         </div>

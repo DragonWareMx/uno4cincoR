@@ -11,8 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
 {{-- Carrusel --}}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 @endsection
 
@@ -20,7 +19,7 @@
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
     {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Autores | José Agustín Aguilar Solórzano</p>
+    <p class="txt-TitulosApartados">Autores | {{$autor->nombre}}</p>
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     

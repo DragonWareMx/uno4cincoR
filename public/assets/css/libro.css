@@ -606,6 +606,20 @@ a.sm-link{
     transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out, top 0.5s ease-out;
 }
 
+.mas-autor-libro{
+    font-family: Karla;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    color: #1D2120;
+
+    margin-left: 10px;
+}
+
 @media(max-width: 1245px) and (min-width: 1200px){
     .tooltip-carrito
     {

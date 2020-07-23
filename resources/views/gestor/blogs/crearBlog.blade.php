@@ -3,6 +3,7 @@
 @section('importOwl')
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tags.css')}}">
     <script type="text/javascript" src='/assets/js/tags.js'></script>
     <script>
@@ -16,7 +17,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{route('verBlogs')}}">Blog</a>&nbsp;| Nuevo blog
+    <a href="{{ route('verBlogs') }}" class="txt-titulosGestor">Blogs</a> | Nuevo blog
 @endsection
 
 @section('contenido')
@@ -32,7 +33,7 @@
     <div class="contenido_blogs">
         
          <div class="datos_blog">
-            <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('nuevoBlog') }}" style="width:100%;" method="POST" enctype="multipart/form-data">
             @csrf
 
                 <div class="elementos_blog_100">
@@ -59,8 +60,8 @@
                     </div>
     
                     <div class="elementos_blog_50">
-                        <p class="elementos_blog">Autor libro:</p>
-                        <select class="select_blog" name="autorLibro" >
+                        <p class="elementos_blog txt-AutorLibroBlog">Autor libro:</p>
+                        <select class="select_blog" name="autorLibro" style="margin-left: 0px">
                             <option disable selected="selected" value="" hidden> &nbsp; Autor de libro</option>
                             @foreach ($autoresLibro as $autor)
                                 <option value="{{$autor->id}}">{{$autor->nombre}}</option>
@@ -68,7 +69,7 @@
                         </select>
                     </div>
                     <div class="elementos_blog_50">
-                        <p class="elementos_blog">Tags:</p>
+                        <p class="elementos_blog txt-TagsBlog">Tags:</p>
                         <input type="text" id="testInput_tags_blog" class="input_blog_tag" name="tags" >
                     </div>
                 </div>
@@ -87,8 +88,8 @@
 
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
-                        <p class="elementos_blog centrar_texto_blog">Imagen:</p>
-                        <input id="imagen" class="gestor_blog_imagen" type="file" name="imagen" required>
+                        <p class="txt_datosAuthor">Imagen:</p>
+                        <input id="imagen" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen" required>
                     </div>
                 </div>
 
@@ -108,7 +109,8 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <script>
         const inpFile = document.getElementById("imagen");
         const previewContainer= document.getElementById("preview_imagen");
