@@ -121,7 +121,7 @@
                             <span>Menu</span>
                         </a>
 
-                        <a class='menu-carrito'>
+                        <a class='menu-carrito' href="{{ route('carrito') }}">
                             <img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" height="30px">
                             <div class="cargar-info2">
                             @if(session('cart'))

@@ -33,6 +33,7 @@ Route::get('/tienda-catalogo','paginaTiendaController@catalogo')->name('tiendaCa
 Route::get('/tienda-145','paginaTiendaController@tienda145')->name('tienda145');
 Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
+Route::get('/compra','paginaTiendaController@compra')->name('compra');
 
 Route::get('agregar-a-carrito/{id}/{cant}/{formato}', 'paginaTiendaController@addToCart')->name('agregarCarrito');
 Route::delete('eliminar-del-carrito', 'paginaTiendaController@remove')->name('eliminarCarrito');
