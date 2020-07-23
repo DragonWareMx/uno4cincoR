@@ -273,6 +273,12 @@
         if(cantidad > max)
             cantidad = max;
 
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            document.getElementById("cantidadFisico"+id).value = document.getElementById("cantidadFisico"+id).oldvalue;
+            return;
+        }
+
         $.ajax({
                 url: 'agregar-a-carrito/'+id+'/'+cantidad+'/fisico',
                 method: "get",
@@ -307,6 +313,12 @@
 
         if(cantidad < 1)
             cantidad = 1;
+
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            document.getElementById("cantidadFisico"+id).value = document.getElementById("cantidadFisico"+id).oldvalue;
+            return;
+        }
 
         $.ajax({
             url: 'agregar-a-carrito/'+id+'/'+cantidad+'/fisico',
@@ -350,11 +362,13 @@
         document.getElementById("total-carrito").innerHTML = "Total : $"+num;
     }
 
-    function cantidadInput(event, id, input) { 
+    function cantidadInput(event, id, input) {
         // Only ASCII charactar in that range allowed 
-        var ASCIICode = (event.which) ? event.which : event.keyCode 
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
-            return false;
+        var ASCIICode = (event.which) ? event.which : event.keyCode ;
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
+            input.value = input.oldvalue;
+            return;
+        }
 
         //se presiona la tecla Enter
         if (event.keyCode === 13) { 
@@ -370,6 +384,12 @@
             else if(number < 1){
                 number = 1;
             }
+
+            //verificar que la cantidad sea numerica
+           if(isNaN(number)){
+                document.getElementById("cantidadFisico"+id).value = input.oldvalue;
+                return;
+           }
 
             $.ajax({
                 url: 'agregar-a-carrito/'+id+'/'+number+'/fisico',
@@ -432,51 +452,51 @@
     x1.addListener(carritoCant); // Attach listener function on state changes
 
     function showTooltip(mensaje)
+    {
+        var tooltipC = document.getElementById('tooltip-carrito');
+        var tooltipC2 = document.getElementById('tooltip-carrito2');
+
+        //verifica que no exista ya los tooltips
+        if(tooltipC && tooltipC2)
         {
-            var tooltipC = document.getElementById('tooltip-carrito');
-            var tooltipC2 = document.getElementById('tooltip-carrito2');
-
-            //verifica que no exista ya los tooltips
-            if(tooltipC && tooltipC2)
-            {
-                //si existen se elimina la animacion y los elementos
-                clearTimeout(animacion);
-                clearTimeout(animacion2);
-                $("#tooltip-carrito").fadeOut().remove();
-                $("#tooltip-carrito2").fadeOut().remove();
-            }
-
-            var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
-            var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
-            tooltip.appendTo($(".menu-carrito"));
-            tooltip2.appendTo($(".carritoli"));
-
-            tooltipC = document.getElementById('tooltip-carrito');
-            tooltipC2 = document.getElementById('tooltip-carrito2');
-            var height = tooltipC.clientHeight;
-            var width = tooltipC.clientWidth;
-
-            //hint.style.opacity = '1';
-            tooltipC.style.top = "45px";
-            tooltipC2.style.top = "60px";
-
-            animacion = setTimeout(hideTooltip, 2000);
+            //si existen se elimina la animacion y los elementos
+            clearTimeout(animacion);
+            clearTimeout(animacion2);
+            $("#tooltip-carrito").fadeOut().remove();
+            $("#tooltip-carrito2").fadeOut().remove();
         }
 
-        function hideTooltip()
-        {
-            var tooltipC = document.getElementById('tooltip-carrito');
-            var tooltipC2 = document.getElementById('tooltip-carrito2');
-            var height = tooltipC.clientHeight;
-            var width = tooltipC.clientWidth;
+        var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
+        var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
+        tooltip.appendTo($(".menu-carrito"));
+        tooltip2.appendTo($(".carritoli"));
 
-            //hint.style.opacity = '1';
-            tooltipC.style.top = "-80px";
-            tooltipC2.style.top = "-80px";
-            animacion2 = setTimeout(function () {
-                $("#tooltip-carrito").fadeOut().remove();
-                $("#tooltip-carrito2").fadeOut().remove();
-            }, 500);
-        }
+        tooltipC = document.getElementById('tooltip-carrito');
+        tooltipC2 = document.getElementById('tooltip-carrito2');
+        var height = tooltipC.clientHeight;
+        var width = tooltipC.clientWidth;
+
+        //hint.style.opacity = '1';
+        tooltipC.style.top = "45px";
+        tooltipC2.style.top = "60px";
+
+        animacion = setTimeout(hideTooltip, 2000);
+    }
+
+    function hideTooltip()
+    {
+        var tooltipC = document.getElementById('tooltip-carrito');
+        var tooltipC2 = document.getElementById('tooltip-carrito2');
+        var height = tooltipC.clientHeight;
+        var width = tooltipC.clientWidth;
+
+        //hint.style.opacity = '1';
+        tooltipC.style.top = "-80px";
+        tooltipC2.style.top = "-80px";
+        animacion2 = setTimeout(function () {
+            $("#tooltip-carrito").fadeOut().remove();
+            $("#tooltip-carrito2").fadeOut().remove();
+        }, 500);
+    }
 </script>
 @endsection

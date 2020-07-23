@@ -146,6 +146,15 @@
             return libro;
         }
 
+        //separa los numeros por coma y pone dos decimales
+        function formatearNumero(numero){
+            var parts = numero.toFixed(2).split(".");
+            var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+                (parts[1] ? "." + parts[1] : "");
+
+            return num;
+        }
+
         //ABRE EL MODAL PARA ELEGIR EL FORMATO
         function comprarCarrito(id){ 
             var minFisico;
@@ -179,11 +188,11 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + libro['precioFisico'] + "</div>$"+descuento;
-                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
+                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
             }
             else{
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+libro['precioFisico'];
+                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
                 document.getElementById("ahorroFisico").innerHTML = "";
             }
 
@@ -196,11 +205,11 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + libro['precioDigital']+ "</div>$"+descuento;
-                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ oferta +"</p>";
+                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
+                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
             }
             else{
-                document.getElementById("precioDigital").innerHTML = "$"+libro['precioDigital'];
+                document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
                 document.getElementById("ahorroDigital").innerHTML = "";
             }
 
@@ -304,7 +313,7 @@
         //CANTIDAD, INPUT ENTER
         $("#cantidadFisico").keypress(function(event) { 
             // Only ASCII charactar in that range allowed 
-            var ASCIICode = (event.which) ? event.which : event.keyCode 
+            var ASCIICode = (event.which) ? event.which : event.keyCode ;
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
                 return false;
 
@@ -338,6 +347,11 @@
 
             if(cantidad > max)
                 cantidad = max;
+
+            //verificar que la cantidad sea numerica
+           if(isNaN(cantidad)){
+                return;
+           }
 
            if(cantidad > 0){
                 var x = window.matchMedia("(max-width: 991px)");
@@ -380,6 +394,11 @@
            
            //SE OBTIENE LA CANTIDAD
            var cantidad = $("#cantidadDigitalValue").html();
+
+            //verificar que la cantidad sea numerica
+           if(isNaN(cantidad)){
+                return;
+           }
 
            if(cantidad > 0){
                 var x = window.matchMedia("(max-width: 991px)");

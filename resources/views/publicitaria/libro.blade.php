@@ -201,19 +201,19 @@
                                     <div class="precio">
                                         @if($book->descuentoFisico > 0)
                                             <div class="oferta">
-                                                ${{ $book->precioFisico }}
+                                                ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                             </div>
 
-                                            ${{ $book->precioFisico - $book->precioFisico*($book->descuentoFisico/100) }}
+                                            ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
                                         @else
-                                            ${{ $book->precioFisico }}
+                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                         @endif
                                     </div>
 
                                     {{-- AHORRO (EN CASO DE OFERTA) --}}
                                     @if ($book->descuentoFisico > 0)
                                         <div class="ahorro">
-                                            <p>Ahorras: ${{ $book->precioFisico*($book->descuentoFisico/100) }}</p>
+                                            <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                         </div>
                                     @endif
 
@@ -238,19 +238,19 @@
                                     <div class="precio">
                                         @if($book->descuentoDigital > 0)
                                             <div class="oferta">
-                                                ${{ $book->precioDigital }}
+                                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                             </div>
 
-                                            ${{ $book->precioDigital - $book->precioDigital*($book->descuentoDigital/100) }}
+                                            ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
                                         @else
-                                            ${{ $book->precioDigital }}
+                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                         @endif
                                     </div>
 
                                     {{-- AHORRO (EN CASO DE OFERTA) --}}
                                     @if ($book->descuentoDigital > 0)
                                         <div class="ahorro">
-                                            <p>Ahorras: ${{ $book->precioDigital*($book->descuentoDigital/100) }}</p>
+                                            <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                                         </div>
                                     @endif
 
@@ -376,17 +376,17 @@
                             <div class="precio" id="precioFisico">
                                 @if($book->descuentoFisico > 0)
                                     <div class="oferta">
-                                        ${{ $book->precioFisico }}
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                     </div>
 
-                                    ${{ $book->precioFisico - $book->precioFisico*($book->descuentoFisico/100) }}
+                                    ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
                                 @else
-                                    ${{ $book->precioFisico }}
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                 @endif
                             </div>
                             <div class="ahorro" id="ahorroFisico">
                                 @if ($book->descuentoFisico > 0)
-                                    <p>Ahorras: ${{ $book->precioFisico*($book->descuentoFisico/100) }}</p>
+                                    <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 @endif
                             </div>
                             <div class="disponibilidad" id="disponibleFisico">
@@ -439,17 +439,17 @@
                         <div class="precio" id="precioDigital">
                             @if($book->descuentoDigital > 0)
                                 <div class="oferta">
-                                    ${{ $book->precioDigital }}
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                 </div>
 
-                                ${{ $book->precioDigital - $book->precioDigital*($book->descuentoDigital/100) }}
+                                ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
                             @else
-                                ${{ $book->precioDigital }}
+                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                             @endif
                         </div>
                         <div class="ahorro" id="ahorroDigital">
                             @if ($book->descuentoDigital > 0)
-                                <p>Ahorras: ${{ $book->precioDigital*($book->descuentoDigital/100) }}</p>
+                                <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                             @endif
                         </div>
                         <div class="disponibilidad" id="disponibleDigital">
@@ -717,6 +717,11 @@
         if(cantidad > max)
             cantidad = max;
 
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            return;
+        }
+
         if(cantidad > 0){
             var x = window.matchMedia("(max-width: 991px)");
             $.ajax({
@@ -758,6 +763,11 @@
 
         var libro = @json($book);
         var cantidad = libro['stockDigital'];
+
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            return;
+        }
 
         if(cantidad > 0){
             var x = window.matchMedia("(max-width: 991px)");
