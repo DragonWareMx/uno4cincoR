@@ -417,9 +417,12 @@
             }
         });
 
+        //busca los divs que se deben cargar de nuevo y los carga
         function carritoCant(x1) {
             $(".cargar-info").load(" .cargar-info");
             $(".cargar-info2").load(" .cargar-info2");
+
+            //dependiendo del tamaño de la pantalla carga un div u el otro
             if (x1.matches) { // If media query matches
                 $(".contador-carrito-value2").load(" .contador-carrito-value2");
             } else {

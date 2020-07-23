@@ -92,9 +92,9 @@
                                                                                     ${{ number_format($libro->precioFisico, 2 , ".", "," ) }}
                                                                                 </div>
                                     
-                                                                                ${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "," ) }}
+                                                                                <p>${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "," ) }}</p>
                                                                             @else
-                                                                                ${{ number_format($libro->precioFisico, 2 , ".", "," ) }}
+                                                                                <p>${{ number_format($libro->precioFisico, 2 , ".", "," ) }}</p>
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -172,12 +172,12 @@
                                                                         <div class="precio">
                                                                             @if($libro->descuentoDigital > 0)
                                                                                 <div class="oferta">
-                                                                                    ${{  number_format($libro->precioDigital, 2 , ".", "," ) }}
+                                                                                    <p>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</p>
                                                                                 </div>
                                     
-                                                                                ${{ number_format( ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}
+                                                                                <P>${{ number_format( ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}</P>
                                                                             @else
-                                                                                ${{  number_format($libro->precioDigital, 2 , ".", "," ) }}
+                                                                                <P>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</P>
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -231,6 +231,8 @@
 <script>
     var libros = @json($books);
     var carrito = @json(session()->get('cart'));
+    var animacion;
+    var animacion2;
 
     //obtiene los datos del libro en base al id
     function getLibro(id){
@@ -285,6 +287,11 @@
 
                     //se actualiza el total en el carrito
                     actualizarCarrito(id);
+
+                    var x = window.matchMedia("(max-width: 991px)");
+                    carritoCant(x);
+
+                    showTooltip("Producto actualizado");
                 }
         });
     }
@@ -315,6 +322,11 @@
 
                 //se actualiza el total en el carrito
                 actualizarCarrito(id);
+
+                var x = window.matchMedia("(max-width: 991px)");
+                carritoCant(x);
+
+                showTooltip("Producto actualizado");
             }
         });
     }
@@ -375,9 +387,16 @@
                     actualizarCarrito(id);
 
                     input.oldvalue = input.value;
+
+                    var x = window.matchMedia("(max-width: 991px)");
+                    carritoCant(x);
+
+                    showTooltip("Producto actualizado");
                 },
                 error: function (){
                     document.getElementById("cantidadFisico"+id).value = input.oldvalue;
+                    var x = window.matchMedia("(max-width: 991px)");
+                    carritoCant(x);
                 }
             });
         }
@@ -395,5 +414,69 @@
             });
         }
     }
+    //busca los divs que se deben cargar de nuevo y los carga
+    function carritoCant(x1) {
+        $(".cargar-info").load(" .cargar-info");
+        $(".cargar-info2").load(" .cargar-info2");
+
+        //dependiendo del tamaño de la pantalla carga un div u el otro
+        if (x1.matches) { // If media query matches
+            $(".contador-carrito-value2").load(" .contador-carrito-value2");
+        } else {
+            $(".contador-carrito-value").load(" .contador-carrito-value");
+        }
+    }
+
+    var x1 = window.matchMedia("(max-width: 991px)");
+    carritoCant(x1); // Call listener function at run time
+    x1.addListener(carritoCant); // Attach listener function on state changes
+
+    function showTooltip(mensaje)
+        {
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+
+            //verifica que no exista ya los tooltips
+            if(tooltipC && tooltipC2)
+            {
+                //si existen se elimina la animacion y los elementos
+                clearTimeout(animacion);
+                clearTimeout(animacion2);
+                $("#tooltip-carrito").fadeOut().remove();
+                $("#tooltip-carrito2").fadeOut().remove();
+            }
+
+            var tooltip = $("<div id='tooltip-carrito2' class='tooltip-carrito'>"+mensaje+"</div>");
+            var tooltip2 = $("<div id='tooltip-carrito' class='tooltip-carrito'>"+mensaje+"</div>");
+            tooltip.appendTo($(".menu-carrito"));
+            tooltip2.appendTo($(".carritoli"));
+
+            tooltipC = document.getElementById('tooltip-carrito');
+            tooltipC2 = document.getElementById('tooltip-carrito2');
+            var height = tooltipC.clientHeight;
+            var width = tooltipC.clientWidth;
+
+            //hint.style.opacity = '1';
+            tooltipC.style.top = "45px";
+            tooltipC2.style.top = "60px";
+
+            animacion = setTimeout(hideTooltip, 2000);
+        }
+
+        function hideTooltip()
+        {
+            var tooltipC = document.getElementById('tooltip-carrito');
+            var tooltipC2 = document.getElementById('tooltip-carrito2');
+            var height = tooltipC.clientHeight;
+            var width = tooltipC.clientWidth;
+
+            //hint.style.opacity = '1';
+            tooltipC.style.top = "-80px";
+            tooltipC2.style.top = "-80px";
+            animacion2 = setTimeout(function () {
+                $("#tooltip-carrito").fadeOut().remove();
+                $("#tooltip-carrito2").fadeOut().remove();
+            }, 500);
+        }
 </script>
 @endsection
