@@ -7,6 +7,74 @@
 @endsection
 
 @section('contenido')
+{{-- php para sacar las ciudades de donde se vende mas y los libros mas vendidos--}}
+@php
+    $arregloCiudades=array(
+        0=> array(
+            0=>'-',
+            1=>0
+        ),
+        1=> array(
+            0=>'-',
+            1=>0
+        ),
+        2=> array(
+            0=>'-',
+            1=>0
+        ),
+        3=> array(
+            0=>'-',
+            1=>0
+        ),
+        4=> array(
+            0=>'-',
+            1=>0
+        )
+    );
+    $arregloLibros=array(
+        0=> array(
+            0=>'-',
+            1=>0,
+            2=>''
+        ),
+        1=> array(
+            0=>'-',
+            1=>0,
+            2=>''
+        ),
+        2=> array(
+            0=>'-',
+            1=>0,
+            2=>''
+        ),
+        3=> array(
+            0=>'-',
+            1=>0,
+            2=>''
+        ),
+        4=> array(
+            0=>'-',
+            1=>0,
+            2=>''
+        )
+    );
+    $contador=0;
+    foreach ($ciudadesVenta as $ciudad) {
+        $arregloCiudades[$contador][0]=$ciudad->ciudad;
+        $arregloCiudades[$contador][1]=$ciudad->cantidadN;
+        $contador++;
+    }
+    $contador=0;
+    foreach ($librosVenta as $libros) {
+        $arregloLibros[$contador][0]=$libros->titulo;
+        $arregloLibros[$contador][1]=$libros->cantidadN;
+        if($libros->descuentoFisico > 0 || $libros->descuentoDigital > 0){
+            $arregloLibros[$contador][2]='¡En oferta!';
+        }
+        $contador++;
+    }
+@endphp
+{{-- Esta parte es para el selector de años --}}
     @php
         $añoSelec=$today->year;
         if (isset($_GET['añoSelec']) ) {
@@ -74,29 +142,29 @@
             <div class="ultimos-resumen">
                 <table class="tabla-resumen">
                     <tr>
-                        <td class="left-tabla-resumen">Lorem ipsum dolor sit amet consectetur adipiscing</td>
-                        <td><div class="center-tabla-resumen" style="background-color: #FFEC40;">50</div></td>
-                        <td class="right-tabla-resumen">¡En oferta!</td>
+                        <td class="left-tabla-resumen">{{$arregloLibros[0][0]}}</td>
+                        <td><div class="center-tabla-resumen" style="background-color: #FFEC40;">{{$arregloLibros[0][1]}}</div></td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[0][2]}}</td>
                     </tr>
                     <tr>
-                        <td class="left-tabla-resumen">Lorem ipsum dolor sit amet consectetur</td>
-                        <td><div class="center-tabla-resumen" style="background-color: #1CC98A;">50</div></td>
-                        <td class="right-tabla-resumen"></td>
+                        <td class="left-tabla-resumen">{{$arregloLibros[1][0]}}</td>
+                        <td><div class="center-tabla-resumen" style="background-color: #1CC98A;">{{$arregloLibros[1][1]}}</div></td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[1][2]}}</td>
                     </tr>
                     <tr>
-                        <td class="left-tabla-resumen">Lorem ipsum dolor sit amet consectetur adipiscing</td>
-                        <td><div class="center-tabla-resumen" style="background-color: #FF4040;">50</div></td>
-                        <td class="right-tabla-resumen"></td>
+                        <td class="left-tabla-resumen">{{$arregloLibros[2][0]}}</td>
+                        <td><div class="center-tabla-resumen" style="background-color: #FF4040;">{{$arregloLibros[2][1]}}</div></td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[2][2]}}</td>
                     </tr>
                     <tr>
-                        <td class="left-tabla-resumen">Lorem ipsum dolor sit amet</td>
-                        <td><div class="center-tabla-resumen" style="background-color: #5F72A4;">50</div></td>
-                        <td class="right-tabla-resumen"></td>
+                        <td class="left-tabla-resumen">{{$arregloLibros[3][0]}}</td>
+                        <td><div class="center-tabla-resumen" style="background-color: #5F72A4;">{{$arregloLibros[3][1]}}</div></td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[3][2]}}</td>
                     </tr>
                     <tr>
-                        <td class="left-tabla-resumen">Lorem ipsum dolor</td>
-                        <td><div class="center-tabla-resumen" style="background-color: #40DDFF;">50</div></td>
-                        <td class="right-tabla-resumen"></td>
+                        <td class="left-tabla-resumen">{{$arregloLibros[4][0]}}</td>
+                        <td><div class="center-tabla-resumen" style="background-color: #40DDFF;">{{$arregloLibros[4][1]}}</div></td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[4][2]}}</td>
                     </tr>
                 </table>
             </div>
@@ -151,9 +219,13 @@
     @endif    
 @endforeach
 
+
+
+
     <script>
         var sumaVentasTotales=<?php echo json_encode($sumaVentasTotales); ?>;
         var sumaGeneros=<?php echo json_encode($sumaGeneros); ?>;
+        var arregloCiudades=<?php echo json_encode($arregloCiudades); ?>;
         var ano=<?php echo $añoSelec ?>;
         new Chart(document.getElementById("line-chart"), {
         type: 'line',
@@ -224,12 +296,12 @@
         new Chart(document.getElementById("doughnut-chart3"), {
         type: 'doughnut',
         data: {
-        labels: ["Ingresos", "Egresos"],
+        labels: [arregloCiudades[0][0],arregloCiudades[1][0],arregloCiudades[2][0],arregloCiudades[3][0],arregloCiudades[4][0] ],
         datasets: [
             {
             label: "$",
-            backgroundColor: ["#1cc88a", "#e74a3b"],
-            data: [35,35]
+            backgroundColor: ["#5F72A4", "#40DDFF",'#FFEC40','#1CC98A','#FF4040'],
+            data:[arregloCiudades[0][1],arregloCiudades[1][1],arregloCiudades[2][1],arregloCiudades[3][1],arregloCiudades[4][1] ]
             }
         ]
         },

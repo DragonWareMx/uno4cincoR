@@ -22,13 +22,14 @@ class gestorResumenController extends Controller
                     ->leftJoin('books','books.id','=','book_sell.book_id')
                     ->get();
         //dd($ventas);
-        $librosVenta=DB::select('SELECT titulo,COUNT(*) as cantidadN
+        $librosVenta=DB::select('SELECT titulo,COUNT(*) as cantidadN, descuentoFisico, descuentoDigital 
         from (sells cross join book_sell on sells.id=book_sell.sell_id ) left join books on books.id=book_sell.book_id 
-        group by titulo order by cantidadN desc');
+        group by titulo,descuentoFisico,descuentoDigital order by cantidadN desc');
         $ciudadesVenta=DB::select('SELECT ciudad,COUNT(*) as cantidadN
         from (sells cross join book_sell on sells.id=book_sell.sell_id ) left join books on books.id=book_sell.book_id 
         group by ciudad order by cantidadN desc');
                     
-        return view('gestor.resumen',['ventas'=>$ventas,'today'=>$today]);
+        return view('gestor.resumen',['ventas'=>$ventas,'today'=>$today,
+        'librosVenta'=>$librosVenta,'ciudadesVenta'=>$ciudadesVenta]);
     }
 }
