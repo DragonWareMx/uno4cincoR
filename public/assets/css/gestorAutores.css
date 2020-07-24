@@ -136,6 +136,12 @@
     align-items: center;
     margin-bottom: 10px;
 }
+.div_elementosAuthor50{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    
+}
 .txt_datosAuthor{
     font-family: 'Nunito';
     font-style: normal;
@@ -143,8 +149,12 @@
     font-size: 16px;
     line-height: 22px;
     color: #1D2120;
+    width: 95px !important;
 }
-.input_datosAuthor{
+.txt_datosAuthorFECHA{
+    width: auto !important;
+}
+.input_datosAuthor, .input_datosAuthor50{
     transition: ease 0.3s;
     font-family: 'Nunito';
     font-style: normal;
@@ -161,6 +171,10 @@
     margin-top: -18px;
     width: 100%;
     margin-left: 15px;
+}
+.input_datosAuthor50{
+    margin-top: 0px;
+    width: 84%;
 }
 .dateAuthor{
     width: 40%;

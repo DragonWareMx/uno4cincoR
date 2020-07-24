@@ -12,8 +12,8 @@ class gestorLibrosController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-
-
+    
+    
     public function index(){
         if(request('clasificacion')=='Catalogo'){
             if(request('busqueda')){
@@ -79,5 +79,9 @@ class gestorLibrosController extends Controller
             $clasificacion='todos';
         }
         return view('gestor.libros',['books'=>$books,'clasificacion'=>$clasificacion]);
+    }
+
+    public function editBook(){
+        return view('gestor.libros-editar');
     }
 }
