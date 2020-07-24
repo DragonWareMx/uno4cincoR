@@ -160,7 +160,7 @@
                                         <div class="field">
                                             <select name="envio" id="envio" value="" onchange="envioSelect()" required>
                                                 @if($envios)
-                                                    <option value="NA" id="NA">Elegir opción</option>
+                                                    <option value="" id="NA">Elegir opción</option>
                                                     @foreach ($envios as $envio)
                                                         <option value="{{ $envio->id }}" id="{{ $envio->id }}">${{ number_format($envio->costo, 2 , ".", "," ) }} {{ $envio->nombre }} @if($envio->descripcion)- {{ $envio->descripcion }}@endif</option>
                                                     @endforeach
@@ -313,7 +313,7 @@
                 var total = document.getElementById("total");
 
                 //verifica que el tipo de envio exista
-                if(envio.value != "NA"){
+                if(envio.value != ""){
                     //se obtiene el envio de la BD
                     envioData = getEnvio(envio.value);
 
