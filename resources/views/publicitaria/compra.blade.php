@@ -31,7 +31,8 @@
             @endforeach
         @endforeach
 
-        <form>
+        <form action="{{ route('pagoPayPal') }}" method="POST">
+            @csrf
             <div class="container-fluid">
                 <div class="row">
                     <div class="compra-header">
@@ -40,6 +41,15 @@
                         </a>
                         <hr>
                     </div>
+                </div>
+                <div class="row">
+                    @if(session('status'))
+                    <div class="alert alert-danger" role="alert" style="width: 100%">
+                        <ul>
+                            <li>{{session('status')}}</li>
+                        </ul>
+                    </div>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="compra-table">
@@ -261,6 +271,7 @@
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
+                                                <input type="hidden" name="total" value="{{ number_format($total, 2 , ".", "," ) }}">
                                             </div>
                                         </div>
                                     </div>
