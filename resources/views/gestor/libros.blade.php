@@ -11,16 +11,17 @@
 @endsection
 
 @section('menu')
-    Libros | Catalogo
+    Libros | {{$clasificacion}}
 @endsection
 
 @section('contenido')
 <div class="all_blogs_80" style="margin-bottom: 15px">
-    <a href="{{ route('nuevoBlog') }}" class="a_agregarAutor" >Agregar entrada</a>
+<a href="#" class="a_agregarAutor" >Agregar libro </a>
     <div class="all_blogs_menu_busqueda">
-        <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
+        <form class="" action="{{ route('verLibros')}}" method="GET" enctype="multipart/form-data">
             <div class="all_blogs_busqueda">
                 <input type="text" required id="" class ="all_blogs_input_busqueda" name="busqueda">
+                <input type="text" name="clasificacion" value="{{$clasificacion}}" style="display: none;">
                 <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search" style="font-size: 14px; color:#909090;"></i></button>
             </div>
         </form>
