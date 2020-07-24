@@ -50,16 +50,19 @@ Route::patch('/adminuno4cinco/autores-editar/{id}', 'gestorAutoresController@upd
 Route::delete('/adminuno4cinco/autores-eliminar/{id}', 'gestorAutoresController@deleteAuthor')->name('autores-delete');
 
 /*RUTAS DE GESTIÓN DE BLOGS*/
-Route::get('/adminuno4cinco/blogs', 'gestorBlogsController@index')->name('verBlogs')->middleware('auth');
-Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog')->middleware('auth');
-Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog')->middleware('auth');
-Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog')->middleware('auth');
-Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog')->middleware('auth');
+Route::get('/adminuno4cinco/blogs', 'gestorBlogsController@index')->name('verBlogs');
+Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('nuevoBlog');
+Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog');
+Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog');
+Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog');
 
 // /GESTIÓN DE LIBROS/
 Route::get('/adminuno4cinco/libros','gestorLibrosController@index')->name('verLibros');
-Route::get('/adminuno4cinco/libros-editar','gestorLibrosController@editBook')->name('libros-editar');
+Route::get('/adminuno4cinco/libros-editar/{id}','gestorLibrosController@editBook')->name('libros-editar');
+Route::patch('/adminuno4cinco/libros-editar/{id}','gestorLibrosController@updateBook')->name('libros-editar');
 Route::get('/adminuno4cinco/libros-nuevo','gestorLibrosController@newBook')->name('libros-crear');
+Route::post('/adminuno4cinco/libros-nuevo','gestorLibrosController@storeBook')->name('libros-crear');
+Route::delete('/adminuno4cinco/libros-borrar/{id}','gestorLibrosController@deleteBook')->name('libros-borrar');
 /*RUTAS DE GESTION DE SLIDERS*/
 Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders')->middleware('auth');
 Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSlider')->name('nuevoSlider')->middleware('auth');

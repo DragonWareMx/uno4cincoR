@@ -76,15 +76,32 @@ class gestorLibrosController extends Controller
             else{
                 $books=Book::paginate(15);
             }
-            $clasificacion='todos';
+            $clasificacion='Todos';
         }
         return view('gestor.libros',['books'=>$books,'clasificacion'=>$clasificacion]);
     }
 
-    public function editBook(){
-        return view('gestor.libros-editar');
+    public function editBook($id){
+        $book=Book::findOrFail($id);
+        return view('gestor.libros-editar',['book'=>$book]);
     }
+
+
+
+    
     public function newBook(){
         return view('gestor.libros-crear');
+    }
+    public function storeBook(){
+        $data=request()->validate([
+            'titulo'=>'required|max:65535',
+            'biografia'=>'required|max:65535',
+            'nacimiento'=>'required|date',
+            'muerte'=>'nullable|date',
+            'imagen'=>'required|image'
+        ]);
+
+        
+        return view('gestor.libros');
     }
 }

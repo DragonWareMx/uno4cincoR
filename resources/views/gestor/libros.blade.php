@@ -18,7 +18,7 @@
 
 @section('contenido')
 <div class="all_blogs_80" style="margin-bottom: 15px">
-<a href="#" class="a_agregarAutor" >Agregar libro </a>
+<a href="{{route('libros-crear')}}" class="a_agregarAutor" >Agregar libro </a>
     <div class="all_blogs_menu_busqueda">
         <form class="" action="{{ route('verLibros')}}" method="GET" enctype="multipart/form-data">
             <div class="all_blogs_busqueda">
@@ -156,7 +156,7 @@
 
                     <!--boton de editar-->
                     <div class="btn_editarAutorG" >
-                        <a href="#"><i class="fas fa-pencil-alt" style="font-size: 14px"></i> &nbsp;Editar</a>
+                        <a href="{{Route('libros-editar',['id'=>$book->id])}}"><i class="fas fa-pencil-alt" style="font-size: 14px"></i> &nbsp;Editar</a>
                     </div>
                 </div>
             </div>

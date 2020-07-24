@@ -73,8 +73,8 @@
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{route('verLibros')}}">Ver todo</a> 
-              <a class="collapse-item" href="#">Uno4cinco</a>
-              <a class="collapse-item" href="#">145</a>
+              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catalogo</a>
+              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=145">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
               <a class="collapse-item" href="{{route('libros-crear')}}">Agregar libro</a>
