@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
+    
 @endsection
 
 @section('menu')
@@ -71,7 +73,7 @@
 
                     <!--titulo del libro-->
                         <a href="{{ route('libro', ['id' => $book->id])}}">
-                            <div class="titulo">
+                            <div class="titulo" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$book->titulo}}">
                                 <p>{{Str::limit($book->titulo,49)}}</p>
                             </div>
                         </a>
@@ -164,4 +166,20 @@
         {{$books->links()}}
     </div>
 </div>
+<script>
+    function clickLibro(id) {
+        var x = document.getElementById(id);
+        if (x.style.opacity === "0") {
+            x.style.opacity = "1";
+        } else {
+            x.style.opacity = "0";
+        }
+    }
+</script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 @endsection
