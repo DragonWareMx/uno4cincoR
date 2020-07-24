@@ -50,7 +50,7 @@ class paginaTiendaController extends Controller
         return view('publicitaria.carrito',['books' => $books]);
     }
 
-    //carrito :v
+    //compra
     public function compra(){
         $books = Book::all();
         return view('publicitaria.compra',['books' => $books]);
