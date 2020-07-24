@@ -283,10 +283,18 @@
             var number = document.getElementById("cantidadFisico").value;
             
             number--;
+
+            var libro = getLibro(seleccionado);
+            var max = libro['stockFisico'];
             
             //no se deja que la cantidad sea menor a 0
             if(number < 1){
                 number = 1;
+            }
+
+            //no se deja que la cantidad sea menor a 0
+            if(number > max){
+                number = max;
             }
 
             document.getElementById("cantidadFisico").value = number;
@@ -305,6 +313,11 @@
             //no se deja que la cantidad sea menor a 0
             if(number > max){
                 number = max;
+            }
+
+            //no se deja que la cantidad sea menor a 0
+            if(number < 1){
+                number = 1;
             }
 
             document.getElementById("cantidadFisico").value = number;

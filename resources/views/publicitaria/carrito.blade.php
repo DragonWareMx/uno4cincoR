@@ -270,6 +270,9 @@
 
         cantidad++;
 
+        if(cantidad < 1)
+            cantidad = 1;
+
         if(cantidad > max)
             cantidad = max;
 
@@ -308,8 +311,13 @@
         var cantidad = document.getElementById("cantidadFisico"+id).value;
         //obtiene los datos del libro
         var libro = getLibro(id);
+        //cantidad maxima posible del producto
+        var max = libro['stockFisico'];
 
         cantidad--;
+
+        if(cantidad > max)
+            cantidad = max;
 
         if(cantidad < 1)
             cantidad = 1;
