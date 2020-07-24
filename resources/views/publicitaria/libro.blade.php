@@ -650,12 +650,20 @@
     $('#menosCarrito').click(function(){            
         //se obtiene el numero del input y se hace la resta
         var number = document.getElementById("cantidadFisico").value;
+
+        var libro = @json($book);
+        var max = libro['stockFisico'];
         
         number--;
         
         //no se deja que la cantidad sea menor a 0
         if(number < 1){
             number = 1;
+        }
+
+        //no se deja que la cantidad sea menor a 0
+        if(number > max){
+            number = max;
         }
 
         document.getElementById("cantidadFisico").value = number;
@@ -674,6 +682,11 @@
         //no se deja que la cantidad sea menor a 0
         if(number > max){
             number = max;
+        }
+
+        //no se deja que la cantidad sea menor a 0
+        if(number < 1){
+            number = 1;
         }
 
         document.getElementById("cantidadFisico").value = number;
