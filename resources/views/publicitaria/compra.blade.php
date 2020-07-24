@@ -15,6 +15,22 @@
         <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
     </head>
     <body>
+        @php
+            $fisico = false;
+        @endphp
+        @foreach(session('cart') as $id => $details)
+            @foreach ($books as $libro)
+                @if ($libro->id == $id)
+                    @if ($details['cantidadFisico'] > 0)
+                        @php
+                            $fisico = true;
+                            break;
+                        @endphp
+                    @endif
+                @endif
+            @endforeach
+        @endforeach
+
         <form>
             <div class="container-fluid">
                 <div class="row">
@@ -137,31 +153,26 @@
                                     </div>
                                 </div>
 
+                                @if($fisico)
                                 {{--METODO ENVIO--}}
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="envio" id="envio" value="" required>
-                                                @if()
-                                                <option value="Elegir" id="AF">Elegir opción</option>
-                                                <option value="Hombre" id="H">Hombre</option>
-                                                <option value="Mujer" id="M">Mujer</option>
-                                                <option value="Otro" id="0">Otro</option>
+                                            <select name="envio" id="envio" value="" onchange="envioSelect()" required>
+                                                @if($envios)
+                                                    <option value="NA" id="NA">Elegir opción</option>
+                                                    @foreach ($envios as $envio)
+                                                        <option value="{{ $envio->id }}" id="{{ $envio->id }}">${{ number_format($envio->costo, 2 , ".", "," ) }} {{ $envio->nombre }} @if($envio->descripcion)- {{ $envio->descripcion }}@endif</option>
+                                                    @endforeach
                                                 @else
+                                                    <option value="Elegir" id="NA">Lo sentimos, no hay envíos disponibles</option>
                                                 @endif
                                             </select>
                                             <label for="envio" title="Tipo de envío" data-title="Tipo de envío"></label>
                                         </div>
                                     </div>
                                 </div>
-
-                                <label for="envio">Método de envío:</label><br>
-                                <select id="envio" name="envio" form="envioForm"><br>
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                </select><br>
+                                @endif
                             </div>
                         </div>
 
@@ -171,7 +182,6 @@
                                 @if (session('cart'))
                                     @php
                                         $total = 0;
-                                        $fisico = false;
                                     @endphp
                                     {{-- HEADER TABLA --}}
                                     <div class="productos-compra">
@@ -195,9 +205,6 @@
                                                 @foreach ($books as $libro)
                                                     @if ($libro->id == $id)
                                                         @if ($details['cantidadFisico'] > 0)
-                                                            @php
-                                                                $fisico = true;
-                                                            @endphp
                                                             <div class="producto-row">
                                                                 <div class="producto-cell imagen-producto">
                                                                     <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
@@ -252,7 +259,7 @@
                                                     </div>
                                                 @endif
                                                 <div class="totales">
-                                                    <p>Total</p><p>${{ number_format($total, 2 , ".", "," ) }}</p>
+                                                    <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +280,66 @@
         <script src="//geodata.solutions/includes/countrystatecity.js"></script>
 
         <script>
-            
+            //se guarda el total
+            var totalCosto = {{ $total }};
+            var envios = @json($envios);
+
+            function getEnvio(id){
+                var envio;
+
+                for (var i = 0; i < envios.length; i++){
+                    var a = envios[i];
+                    if(a['id']==id){
+                        envio = a;
+                        break;
+                    }
+                }
+
+                return envio;
+            }
+
+            function formatearNumero(numero){
+                var parts = numero.toFixed(2).split(".");
+                var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+                    (parts[1] ? "." + parts[1] : "");
+
+                return num;
+            }
+
+            function envioSelect(){
+                //obtenemos el envio
+                var envio = document.getElementById("envio");
+                var totalEnvio = document.getElementById("envio-totales");
+                var total = document.getElementById("total");
+
+                //verifica que el tipo de envio exista
+                if(envio.value != "NA"){
+                    //se obtiene el envio de la BD
+                    envioData = getEnvio(envio.value);
+
+                    //verifica que el envio exista en la BD
+                    if(envioData["costo"]){
+                        //se agrega el costo a los totales
+                        totalEnvio.innerHTML = "$"+formatearNumero(envioData["costo"]);
+
+                        //se elimina la clase de "envio-totales"
+                        totalEnvio.classList.remove("envio-totales");
+
+                        //se actualiza el total
+                        total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"]);
+                    }
+                }
+                else{
+                    //se pide al usuario que seleccione el tipo
+                    totalEnvio.innerHTML = "Selecciona el tipo de envío";
+
+                    //se agrega la clase de "envio-totales"
+                    totalEnvio.classList.add("envio-totales");
+
+                    //se actualiza el total
+                    total.innerHTML = "$"+formatearNumero(totalCosto);
+                }
+            }
         </script>
     </body>
 </html>

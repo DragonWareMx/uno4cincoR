@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Banner;
 use App\Book;
 use App\Author;
+use App\Tipoenvio;
 
 class paginaTiendaController extends Controller
 {
@@ -53,7 +54,8 @@ class paginaTiendaController extends Controller
     //compra
     public function compra(){
         $books = Book::all();
-        return view('publicitaria.compra',['books' => $books]);
+        $envios = Tipoenvio::all();
+        return view('publicitaria.compra',['books' => $books, 'envios' => $envios]);
     }
 
     //Agrega un producto al carrito o lo actualiza
