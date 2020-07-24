@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,11 @@ Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSli
 
 /*RUTAS DE GESTIÓN DE RESUMEN*/
 Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('resumen');
+
+
+/*RUTAS DE PAYPAL*/
+Route::post('/paypal/pay','PaymentController@payWithPayPal')->name('pagoPayPal');
+Route::get('/paypal/status','PaymentController@payPalStatus')->name('statusPayPal');
 
 Auth::routes();
 
