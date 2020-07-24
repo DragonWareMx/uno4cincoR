@@ -84,4 +84,7 @@ class gestorLibrosController extends Controller
     public function editBook(){
         return view('gestor.libros-editar');
     }
+    public function newBook(){
+        return view('gestor.libros-crear');
+    }
 }
