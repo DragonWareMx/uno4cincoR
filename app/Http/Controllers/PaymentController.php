@@ -14,6 +14,9 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Exception\PayPalConnectionException;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use App\Book;
 
 
 class PaymentController extends Controller
@@ -38,6 +41,36 @@ class PaymentController extends Controller
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
+        //Parte para sacar los items del carrito y meterlos a paypal
+        $books=Book::get();
+        $contador=0;
+        $items=[];
+        foreach (session('cart') as $id => $details) {
+            foreach ($books as $libro) {
+                if ($libro->id == $id) {
+                    if ($details['cantidadFisico'] > 0) {
+                        $items[$contador] = new Item();
+                        $items[$contador]->setName($libro->titulo.' (Físico)') /** item name **/
+                                    ->setCurrency('MXN')
+                                    ->setQuantity($details['cantidadFisico'])
+                                    ->setPrice( number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "," ) ); 
+                        $contador++;
+                    }
+                    if ($details['cantidadDigital'] > 0) {
+                        $items[$contador] = new Item();
+                        $items[$contador]->setName($libro->titulo.' (Digital)') /** item name **/
+                                    ->setCurrency('MXN')
+                                    ->setQuantity($details['cantidadDigital'])
+                                    ->setPrice(number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," )); 
+                    }
+                }
+            }
+            $contador++;
+        }
+        $item_list = new ItemList();
+        $item_list->setItems($items);
+        
+
         $amount = new Amount();
         $amount->setTotal($request->total);
         $amount->setCurrency('MXN');
@@ -45,6 +78,7 @@ class PaymentController extends Controller
         $transaction = new Transaction();
         $transaction->setAmount($amount);
         $transaction->setDescription('Compra en uno4cinco.com');
+        $transaction->setItemList($item_list);
 
         $callbackurl=route('statusPayPal');
         $redirectUrls = new RedirectUrls();
