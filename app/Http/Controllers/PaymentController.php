@@ -85,8 +85,9 @@ class PaymentController extends Controller
         $result= $payment->execute($execution,$this->apiContext);
 
         if($result->getState()=='approved'){
+            session()->forget('cart');
             $status="Gracias! El pago a través de PayPal se ha procesado correctamente.";
-            return redirect()->route('carrito')->with(compact('status'));
+            return redirect()->route('tiendaCatalogo')->with(compact('status'));
         }
             $status="Lo sentimos! El pago a través de PayPal no se pudo realizar.";
             return redirect()->route('carrito')->with(compact('status'));
