@@ -36,9 +36,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="compra-header">
-                        <a href="{{ route('inicio') }}" class="logo">
-                            <img class="logonovedades" src="{{ asset('img/logos/logo.png') }}">
-                        </a>
+                        <div style="width: 100%">
+                            <a href="{{ route('inicio') }}" class="logo">
+                                <img src="{{ asset('img/logos/logo.png') }}">
+                            </a>
+                        </div>
                         <hr>
                     </div>
                 </div>
@@ -55,11 +57,11 @@
                     <div class="compra-table">
                         <div class="compra-cell cell-80">
                             <div class="formulario-container">
-                                <h1>Información del pedido:</h1>
+                                <h1 class="row-m">Información del cliente:</h1>
                             </div>
                             <div class="formulario-container">
                                 {{-- NOMBRE --}}
-                                <div class="row row-m">
+                                <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
                                             <input type="text" autocomplete="on" id="fname"  name="fname" value="" onchange="this.setAttribute('value', this.value);" required>
@@ -83,7 +85,7 @@
                                 </div>
 
                                 {{--EDAD Y GENERO--}}
-                                <div class="row">
+                                <div class="row" style="margin-bottom: 16px">
                                     <div class="col-sm">
                                         <div class="field">
                                             <input type="number" autocomplete="on" id="age"  name="age" value="" onchange="this.setAttribute('value', this.value);" min="10" required>
@@ -102,6 +104,12 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                @if ($fisico)
+                                    <h1 class="row-m">Dirección de envío:</h1>
+                                @else
+                                    <h1 class="row-m">Dirección de facturación:</h1>
+                                @endif
 
                                 {{-- PAIS Y ESTADO --}}
                                 <div class="row">
@@ -220,7 +228,7 @@
                                                                     <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
                                                                 </div>
                                                                 <div class="producto-cell contenido-producto">
-                                                                    <p>{{ $libro->titulo }} (Físico)</p>
+                                                                    <p>{{ $libro->titulo }} <b>(Físico)</b></p>
                                                                 </div>
                                                                 <div class="producto-cell contenido-producto">
                                                                     <p>{{ $details['cantidadFisico'] }}</p>
@@ -239,7 +247,7 @@
                                                                     <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
                                                                 </div>
                                                                 <div class="producto-cell contenido-producto">
-                                                                    <p>{{ $libro->titulo }} (Digital)</p>
+                                                                    <p>{{ $libro->titulo }} <b>(Digital)</b></p>
                                                                 </div>
                                                                 <div class="producto-cell contenido-producto">
                                                                     <p>{{ $details['cantidadDigital'] }}</p>
@@ -285,8 +293,24 @@
                     </div>
                 </div>
             </div>
+
+            <hr>
+
+            <div class="libro-regresar">
+                <div class="boton">
+                <button onclick="location.href='{{ route('carrito') }}'">
+                    <div class="row" style="margin-right:0px; margin-left: auto;">
+                        <img src="{{ asset('img/ico/blackarrow.png') }}">
+                    </div>
+                    <div class="row" style="margin-right:0px; margin-left: auto;">
+                        Regresar al carrito
+                    </div>
+                </button>
+                </div>
+            </div>
         </form>
 
+        {{-- SCRIPT PARA LOS SELECT DE LOS PAISES Y ESTADO --}}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
         <script src="//geodata.solutions/includes/countrystatecity.js"></script>
 
