@@ -3,6 +3,7 @@
 @section('importOwl')
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/tags.css">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
     <script type="text/javascript" src='/assets/js/tags.js'></script>
@@ -37,11 +38,7 @@
                 <div class="div_elementosAuthor">
                     {{-- .--------------------------------------------....................-------------------.................. --}}
                     <p class="txt_datosAuthor" >Autor:</p>
-                    <select name="autor" class="input_datosAuthor">
-                        <option value="value1">Value 1</option> 
-                        <option value="value2" selected>Value 2</option>
-                        <option value="value3">Value 3</option>
-                    </select>
+                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags">
                 </div>
 
                 <div class="div_elementosAuthor">
@@ -91,7 +88,8 @@
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Físico%:</p>
                         <input name="ofertafisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off value=""  >
+                        onpaste="return false;" onDrop="return false;" autocomplete=off
+                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
                     </div>
                 </div>
 
@@ -99,13 +97,15 @@
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Precio Digital:</p>
                         <input name="preciodigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off value=""  >
+                        onpaste="return false;" onDrop="return false;" autocomplete=off
+                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Digital%:</p>
                         <input name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off value=""  >
+                        onpaste="return false;" onDrop="return false;" autocomplete=off
+                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
                     </div>
                 </div>
 
@@ -113,13 +113,15 @@
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Páginas:</p>
                         <input name="paginas" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off step="1" required>
+                        onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
+                        onkeypress="return solonumeros(event)" required>
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Edición:</p>
                         <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off  step="1" required >
+                        onpaste="return false;" onDrop="return false;" autocomplete=off  step="1" 
+                        onkeypress="return solonumeros(event)" required >
                     </div>
                 </div>
 
@@ -152,7 +154,7 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Imagen:</p>
-                    <input id="imagen" class="img_datosAuthor" type="file"  name="imagen" >
+                    <input id="imagen" class="img_datosAuthor" type="file"  name="imagen" multiple="multiple" >
                 </div>
 
                 <div class="botones_blog_100">
@@ -211,7 +213,7 @@
             key=e.keyCode || e.which;
             teclado=String.fromCharCode(key);
             numeros="0123456789";
-            especiales="8-37-38";
+            especiales=[8];
             teclado_especial=false;
 
             for(var i in especiales){
@@ -229,25 +231,12 @@
             key=e.keyCode || e.which;
             teclado=String.fromCharCode(key);
             numeros="0123456789";
-            especiales=['8','46'];
+            especiales=[8,46];
             teclado_especial=false;
-            decimal=false;
+
             for(var i in especiales){
                 if(key==especiales[i]){
-                    // teclado_especial=true;
-                    if(key=='46' && decimal==false){
-                        alert("1");
-                        decimal=true;
-                        teclado_especial=true;
-                    }
-                    else if(key=='46' && decimal==true){
-                        alert("2");
-                        teclado_especial=false;
-                    }
-                    else{
-                        alert("3");
-                        teclado_especial=true;
-                    }
+                    teclado_especial=true;
                 }
             }
             if(numeros.indexOf(teclado)==-1 && !teclado_especial){
@@ -255,5 +244,19 @@
             }
         }
     </script>
+    <script>
+        $(function() {
+            const author = @json($authors);    
+            var autores = {!! json_encode($authors->toArray()) !!};
+            alert(autores);      
+            $("#AutoresTags").tags({
+                requireData:true,
+                unique:true
+            }).autofill({
+                data: ["javascript","jquery","mysql","sean","clark"]
+            });
+        });
+    </script>
+    
 
 @endsection

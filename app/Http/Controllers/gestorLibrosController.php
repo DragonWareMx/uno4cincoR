@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Book;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
-
+use App\Author;
 class gestorLibrosController extends Controller
 {
     public function __construct(){
@@ -86,11 +86,9 @@ class gestorLibrosController extends Controller
         return view('gestor.libros-editar',['book'=>$book]);
     }
 
-
-
-    
     public function newBook(){
-        return view('gestor.libros-crear');
+        $authors=Author::get();
+        return view('gestor.libros-crear',['authors'=>$authors]);
     }
     public function storeBook(){
         $data=request()->validate([
