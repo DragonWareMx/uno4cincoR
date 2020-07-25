@@ -64,13 +64,13 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <input type="text" autocomplete="on" id="fname"  name="fname" value="" onchange="this.setAttribute('value', this.value);" required>
+                                            <input type="text" autocomplete="given-name" id="fname"  name="fname" value="" onchange="this.setAttribute('value', this.value);" required>
 	                                        <label for="fname" title="Nombre" data-title="Nombre"></label>
                                         </div>
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <input type="text" autocomplete="off" id="lname" name="lname" value="" onchange="this.setAttribute('value', this.value);" required>
+                                            <input type="text" autocomplete="family-name" id="lname" name="lname" value="" onchange="this.setAttribute('value', this.value);" required>
 	                                        <label for="lname" title="Apellidos" data-title="Apellidos"></label>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                 {{-- CORREO --}}
                                 <div class="row row-p">
                                     <div class="field">
-                                        <input type="email" autocomplete="on" id="email" name="email" value="" onchange="this.setAttribute('value', this.value);" required>
+                                        <input type="email" autocomplete="email" id="email" name="email" value="" onchange="this.setAttribute('value', this.value);" required>
                                         <label for="email" title="Correo electrónico" data-title="Correo electrónico"></label>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="genero" id="genero" value="">
+                                            <select name="genero" id="genero" value="" autocomplete="sex">
                                                 <option value="Elegir" id="AF">Elegir opción</option>
                                                 <option value="Hombre" id="H">Hombre</option>
                                                 <option value="Mujer" id="M">Mujer</option>
@@ -102,6 +102,14 @@
                                             </select>
                                             <label for="genero" title="Género" data-title="Género"></label>
                                         </div>
+                                    </div>
+                                </div>
+
+                                {{-- TEL --}}
+                                <div class="row row-p">
+                                    <div class="field">
+                                        <input type="tel" autocomplete="tel" id="tel" name="tel" value="" onchange="this.setAttribute('value', this.value);" required>
+                                        <label for="tel" title="Teléfono" data-title="Teléfono"></label>
                                     </div>
                                 </div>
 
@@ -115,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="country" class="countries" id="countryId">
+                                            <select name="country" class="countries" id="countryId" autocomplete="country-name">
                                                 <option value="">Select Country</option>
                                             </select>
                                             <label for="countryId" title="País" data-title="País"></label>
@@ -147,11 +155,11 @@
                                     </div>
                                 </div>
 
-                                {{-- COLONIA --}}
+                                {{-- CALLE --}}
                                 <div class="row row-p">
                                     <div class="field">
-                                        <input type="text" autocomplete="on" id="calle" name="calle" value="" onchange="this.setAttribute('value', this.value);" required>
-                                        <label for="calle" title="Calle" data-title="Calle"></label>
+                                        <input type="text" autocomplete="street-address" id="calle" name="calle" value="" onchange="this.setAttribute('value', this.value);" required>
+                                        <label for="calle" title="Calle y número de casa" data-title="Calle y número de casa"></label>
                                     </div>
                                 </div>
 
@@ -160,18 +168,27 @@
                                     <div class="col-sm">
                                         <div class="field">
                                             <input type="number" autocomplete="on" id="numCasa" name="numCasa" value="" onchange="this.setAttribute('value', this.value);" min="0" required>
-                                            <label for="numCasa" title="Número de casa" data-title="Número de casa"></label>
+                                            <label for="numCasa" title="Número interior (opcional)" data-title="Número interior (opcional)"></label>
                                         </div>
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <input type="text" pattern="[0-9]*" autocomplete="on" id="cp"  name="cp" value="" onchange="this.setAttribute('value', this.value);" required>
+                                            <input type="text" pattern="[0-9]*" autocomplete="postal-code" id="cp"  name="cp" value="" onchange="this.setAttribute('value', this.value);" required>
 	                                        <label for="cp" title="Código Postal" data-title="Código Postal"></label>
                                         </div>
                                     </div>
                                 </div>
 
                                 @if($fisico)
+
+                                {{-- REFERENCUAS --}}
+                                <div class="row row-p">
+                                    <div class="field">
+                                        <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);" required>
+                                        <label for="referencias" title="Referencias" data-title="Referencias"></label>
+                                    </div>
+                                </div>
+
                                 {{--METODO ENVIO--}}
                                 <div class="row">
                                     <div class="col-sm">
