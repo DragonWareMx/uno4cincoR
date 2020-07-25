@@ -28,7 +28,7 @@
 
     <div class="div_containerAuthor">
         <div class="div_datosAuthor">
-            <form action="" style="width:100%;" method="POST" enctype="multipart/form-data">
+            <form action="{{Route('libros-crear')}}" style="width:100%;" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Título:</p>
@@ -38,21 +38,21 @@
                 <div class="div_elementosAuthor">
                     {{-- .--------------------------------------------....................-------------------.................. --}}
                     <p class="txt_datosAuthor" >Autor:</p>
-                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags">
+                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags" required>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Sello:</p>
-                        <select name="sello" class="input_datosAuthor50">
-                            <option value="1">uno4cinco</option> 
-                            <option value="2" selected>145</option>
+                        <select name="sello" class="input_datosAuthor50" required>
+                            <option selected    value="1">uno4cinco</option> 
+                            <option value="2">145</option>
                         </select>
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Formato:</p>
-                        <select name="formato" class="input_datosAuthor50">
+                        <select name="formato" class="input_datosAuthor50" required>
                             <option value="fisico">Físico</option> 
                             <option value="fisico/digital" selected>Físico/Digital</option>
                             <option value="digital">Digital</option>
@@ -63,9 +63,9 @@
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
-                        <select name="estatus" class="input_datosAuthor50">
-                            <option value="1">Disponible</option> 
-                            <option value="0" selected>No disponible</option>
+                        <select name="estatus" class="input_datosAuthor50" required >
+                            <option selected value="1">Disponible</option> 
+                            <option value="0" >No disponible</option>
                         </select>
                     </div>
                     <div class="div_elementosAuthor50">
@@ -73,7 +73,7 @@
                         <p class="txt_datosAuthor">Ejemplares:</p>
                         <input name="ejemplares" class="input_datosAuthor input_datosAuthor50" type="number"  min="0" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1" value="" 
-                            onkeypress="return solonumeros(event)" required >
+                            onkeypress="return solonumeros(event)" >
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Edición:</p>
-                        <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                        <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="1" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off  step="1" 
                         onkeypress="return solonumeros(event)" required >
                     </div>
@@ -129,16 +129,16 @@
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Género:</p>
                         <select name="genero" class="input_datosAuthor50">
-                            <option value="poesía">Poesía</option> 
-                            <option value="cuento" selected>Cuento</option>
-                            <option value="ensayo">Ensayo</option>
-                            <option value="novela">Novela</option>
+                            <option selected value="poesía">Cuento</option> 
+                            <option value="cuento">Ensayo</option>
+                            <option value="ensayo">Novela</option>
+                            <option value="novela">Poesía</option>
                         </select>
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">ISBN:</p>
-                        <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text" value="" required >
+                        <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text" value="" >
                     </div>
                 </div>
 
@@ -153,9 +153,25 @@
                 </div>
 
                 <div class="div_elementosAuthor">
-                    <p class="txt_datosAuthor">Imagen:</p>
-                    <input id="imagen" class="img_datosAuthor" type="file"  name="imagen" multiple="multiple" >
+                    <p class="txt_datosAuthor">Portada:</p>
+                    <input id="imagenPortada" class="img_datosAuthor" type="file"  name="imagenPortada" required>
                 </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Imagen en Tienda:</p>
+                    <input id="imagenTienda" class="img_datosAuthor" type="file"  name="imagenTienda" required>
+                </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Imagen en banner:</p>
+                    <input id="imagenBanner" class="img_datosAuthor" type="file"  name="imagenBanner" required>
+                </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Imágenes extra:</p>
+                    <input id="imagenExtra" class="img_datosAuthor" type="file"  multiple="multiple" name="imagenExtra[]">
+                </div>
+
 
                 <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
@@ -246,14 +262,18 @@
     </script>
     <script>
         $(function() {
-            const author = @json($authors);    
-            var autores = {!! json_encode($authors->toArray()) !!};
-            alert(autores);      
+            const authors = @json($authors); 
+            var i =0;   
+            var datos=[];
+            authors.forEach(element => {
+                datos[i]=authors[i]['nombre']; 
+                i++;
+            });  
             $("#AutoresTags").tags({
                 requireData:true,
                 unique:true
             }).autofill({
-                data: ["javascript","jquery","mysql","sean","clark"]
+                data: datos
             });
         });
     </script>

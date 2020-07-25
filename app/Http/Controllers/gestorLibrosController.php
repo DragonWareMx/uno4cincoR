@@ -87,17 +87,33 @@ class gestorLibrosController extends Controller
     }
 
     public function newBook(){
-        $authors=Author::get();
+        $authors=Author::orderBy('nombre','desc')->get('nombre');
         return view('gestor.libros-crear',['authors'=>$authors]);
     }
     public function storeBook(){
         $data=request()->validate([
             'titulo'=>'required|max:65535',
-            'biografia'=>'required|max:65535',
-            'nacimiento'=>'required|date',
-            'muerte'=>'nullable|date',
-            'imagen'=>'required|image'
+            'autor'=>'required',
+            'sello'=>'required',
+            'formato'=>'required',
+            'estatus'=>'required',
+            'ejemplares'=>'required|numeric',
+            'preciofisico'=>'nullable|numeric',
+            'ofertafisico'=>'nullable|numeric',
+            'preciodigital'=>'nullable|numeric',
+            'ofertadigital'=>'nullable|numeric',
+            'paginas'=>'required|numeric',
+            'edicion'=>'required|numeric',
+            'genero'=>'required',
+            'isbn'=>'nullable',
+            'publicacion'=>'required|date',
+            'sinopsis'=>'required|max:65535',
+            'imagenPortada'=>'required|image',
+            'imagenTienda'=>'required|image',
+            'imagenBanner'=>'required|image',
+            // 'imagenExtra'=>'required|image'
         ]);
+        dd(request());
 
         
         return view('gestor.libros');

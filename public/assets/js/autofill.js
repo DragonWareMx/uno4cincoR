@@ -31,8 +31,8 @@
 			// reset wrapper cuz now its doc fragment?
 			$wrapper = $(self).parent();
 			// make the bg input
-			var color = opts.color || "rgba(214,215,220,1)";
-			var top = opts.top || -4;
+			var color = opts.color || "#32b695";
+			var top = opts.top || 0;
 			var $bg = $("<input type='text' class='autofill-bg' disabled/>").css({
 				"color":color,
 				"top": top,
@@ -40,7 +40,7 @@
 			});
 			
 			
-			
+	
 			// set data
 			$bg.data("data",opts.data);
 		
