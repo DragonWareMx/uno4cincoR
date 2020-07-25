@@ -508,4 +508,15 @@
         }, 500);
     }
 </script>
+
+@if(session('status'))
+<script>
+    $( document ).ready(function() {
+        bootbox.dialog({ 
+            message: '<div class="text-center" style="padding:10px><i class="fas fa-check"></i>&nbsp {{session('status')}} </div>', 
+            closeButton: true 
+        })
+    });
+</script>
+@endif
 @endsection
