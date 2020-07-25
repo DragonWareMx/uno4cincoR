@@ -123,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="country" class="countries" id="countryId" autocomplete="country-name">
+                                            <select name="country" class="countries order-alpha presel-MX" id="countryId" autocomplete="country-name">
                                                 <option value="">Select Country</option>
                                             </select>
                                             <label for="countryId" title="País" data-title="País"></label>
@@ -167,7 +167,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <input type="number" autocomplete="on" id="numCasa" name="numCasa" value="" onchange="this.setAttribute('value', this.value);" min="0" required>
+                                            <input type="number" autocomplete="on" id="numCasa" name="numCasa" value="" onchange="this.setAttribute('value', this.value);" min="0">
                                             <label for="numCasa" title="Número interior (opcional)" data-title="Número interior (opcional)"></label>
                                         </div>
                                     </div>
