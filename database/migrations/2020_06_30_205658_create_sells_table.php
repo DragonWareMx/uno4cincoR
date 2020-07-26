@@ -15,12 +15,13 @@ class CreateSellsTable extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['pendiente', 'completado','terminado']);
             $table->string('nombreCliente',191);
+            $table->enum('status', ['pendiente', 'completado','terminado']);
             $table->string('edad',2)->nullable();
             $table->string('pais',100);
             $table->enum('genero',['Hombre','Mujer','Otros'])->nullable();
             $table->string('ciudad',100);
+            $table->string('estado',100);
             $table->string('correo',191);
             $table->enum('formaPago',['1','2']);
             $table->tinyInteger('comprobantePago')->nullable();
