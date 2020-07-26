@@ -32,19 +32,19 @@
                 @csrf
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Título:</p>
-                    <input name="titulo" class="input_datosAuthor" type="text" value="" required autofocus>
+                <input name="titulo" class="input_datosAuthor" type="text" value="{{old('titulo')}}" required autofocus>
                 </div>
 
                 <div class="div_elementosAuthor">
                     {{-- .--------------------------------------------....................-------------------.................. --}}
                     <p class="txt_datosAuthor" >Autor:</p>
-                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags" required>
+                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags" value=""required>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Sello:</p>
-                        <select name="sello" class="input_datosAuthor50" required>
+                        <select name="sello" class="input_datosAuthor50" value="{{old('sello')}}"required>
                             <option selected    value="1">uno4cinco</option> 
                             <option value="2">145</option>
                         </select>
@@ -52,7 +52,7 @@
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Formato:</p>
-                        <select name="formato" class="input_datosAuthor50" required>
+                        <select name="formato" class="input_datosAuthor50" value="{{old('formato')}}" required>
                             <option value="fisico">Físico</option> 
                             <option value="fisico/digital" selected>Físico/Digital</option>
                             <option value="digital">Digital</option>
@@ -63,7 +63,7 @@
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
-                        <select name="estatus" class="input_datosAuthor50" required >
+                        <select name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"required >
                             <option selected value="1">Disponible</option> 
                             <option value="0" >No disponible</option>
                         </select>
@@ -72,7 +72,7 @@
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Ejemplares:</p>
                         <input name="ejemplares" class="input_datosAuthor input_datosAuthor50" type="number"  min="0" pattern="^[0-9]+" 
-                            onpaste="return false;" onDrop="return false;" autocomplete=off step="1" value="" 
+                            onpaste="return false;" onDrop="return false;" autocomplete=off step="1" value="{{old('ejemplares')}}" 
                             onkeypress="return solonumeros(event)" >
                     </div>
                 </div>
@@ -82,14 +82,14 @@
                         <p class="txt_datosAuthor" style="width:auto">Precio Físico:</p>
                         <input name="preciofisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off 
-                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('preciofisico')}}"  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Físico%:</p>
                         <input name="ofertafisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertafisico')}}"  >
                     </div>
                 </div>
 
@@ -98,29 +98,29 @@
                         <p class="txt_datosAuthor" style="width:auto">Precio Digital:</p>
                         <input name="preciodigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('preciodigital')}}"  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Digital%:</p>
                         <input name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value=""  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertadigital')}}"  >
                     </div>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Páginas:</p>
-                        <input name="paginas" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                        <input name="paginas" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('paginas')}}" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                         onkeypress="return solonumeros(event)" required>
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Edición:</p>
-                        <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="1" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off  step="1" 
+                        <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="1" value="{{old('edicion')}}" 
+                        pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off  step="1" 
                         onkeypress="return solonumeros(event)" required >
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                 <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Género:</p>
-                        <select name="genero" class="input_datosAuthor50">
+                        <select name="genero" class="input_datosAuthor50" value="{{old('genero')}}">
                             <option selected value="poesía">Cuento</option> 
                             <option value="cuento">Ensayo</option>
                             <option value="ensayo">Novela</option>
@@ -138,38 +138,38 @@
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">ISBN:</p>
-                        <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text" value="" >
+                        <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text" value="{{old('isbn')}}" >
                     </div>
                 </div>
 
                 <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
                     <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
-                    <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="" required >
+                    <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
                 </div>
 
                 <div class="div_elementosAuthor" style="margin-bottom: 25px">
                     <p class="txt_datosAuthor">Sinopsis:</p>
-                    <textarea style="height:200px;resize:vertical" class="textarea_biografia"type="text" name="sinopsis" value="" required ></textarea>
+                    <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Portada:</p>
-                    <input id="imagenPortada" class="img_datosAuthor" type="file"  name="imagenPortada" required>
+                    <input id="imagenPortada" class="img_datosAuthor" type="file"  name="imagenPortada" value="{{old('imagenPortada')}}" required>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Imagen en Tienda:</p>
-                    <input id="imagenTienda" class="img_datosAuthor" type="file"  name="imagenTienda" required>
+                    <input id="imagenTienda" class="img_datosAuthor" type="file"  name="imagenTienda" value="{{old('imagenTienda')}}" required>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Imagen en banner:</p>
-                    <input id="imagenBanner" class="img_datosAuthor" type="file"  name="imagenBanner" required>
+                    <input id="imagenBanner" class="img_datosAuthor" type="file"  name="imagenBanner" value="{{old('imagenBanner')}}" required>
                 </div>
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Imágenes extra:</p>
-                    <input id="imagenExtra" class="img_datosAuthor" type="file"  multiple="multiple" name="imagenExtra[]">
+                    <input id="imagenExtra" class="img_datosAuthor" type="file"  multiple="multiple" name="imagenExtra[]" value="{{old('imagenExtra[]')}}">
                 </div>
 
 

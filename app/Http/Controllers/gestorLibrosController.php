@@ -97,7 +97,7 @@ class gestorLibrosController extends Controller
             'sello'=>'required',
             'formato'=>'required',
             'estatus'=>'required',
-            'ejemplares'=>'required|numeric',
+            'ejemplares'=>'nullable|numeric',
             'preciofisico'=>'nullable|numeric',
             'ofertafisico'=>'nullable|numeric',
             'preciodigital'=>'nullable|numeric',
@@ -111,11 +111,10 @@ class gestorLibrosController extends Controller
             'imagenPortada'=>'required|image',
             'imagenTienda'=>'required|image',
             'imagenBanner'=>'required|image',
-            // 'imagenExtra'=>'required|image'
+            'imagenExtra.*'=>'image'
         ]);
-        dd(request());
-
         
+        dd(request());
         return view('gestor.libros');
     }
 }

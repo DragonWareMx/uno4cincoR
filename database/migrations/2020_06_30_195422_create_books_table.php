@@ -26,6 +26,7 @@ class CreateBooksTable extends Migration
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
             $table->text('linkDescarga');
+            $table->text('portadaImagen');
             $table->text('bannerImagen');
             $table->text('tiendaImagen');
             $table->boolean('nuevo')->default(0);
@@ -34,7 +35,7 @@ class CreateBooksTable extends Migration
             $table->integer('paginas');
             $table->unsignedBigInteger('sello_id');
             $table->foreign('sello_id')
-                ->references('id')
+                ->references('id') 
                 ->on('sellos')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('collection_id')->nullable();
