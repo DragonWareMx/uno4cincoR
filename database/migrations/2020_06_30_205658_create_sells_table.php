@@ -23,6 +23,7 @@ class CreateSellsTable extends Migration
             $table->string('ciudad',100);
             $table->string('estado',100);
             $table->string('correo',191);
+            $table->string('telefono',15);
             $table->enum('formaPago',['1','2']);
             $table->tinyInteger('comprobantePago')->nullable();
             $table->string('direccion',191)->nullable();

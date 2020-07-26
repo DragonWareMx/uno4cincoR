@@ -52,6 +52,15 @@
                         </ul>
                     </div>
                     @endif
+                    @if($errors->any())
+                    <div class="alert alert-danger" role="alert" style="width: 100%">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="compra-table">
@@ -95,7 +104,7 @@
                                     <div class="col-sm">
                                         <div class="field">
                                             <select name="genero" id="genero" value="" autocomplete="sex">
-                                                <option value="Elegir" id="AF">Elegir opción</option>
+                                                <option value="" id="AF">Elegir opción</option>
                                                 <option value="Hombre" id="H">Hombre</option>
                                                 <option value="Mujer" id="M">Mujer</option>
                                                 <option value="Otro" id="0">Otro</option>
