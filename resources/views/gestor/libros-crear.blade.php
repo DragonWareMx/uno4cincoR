@@ -129,10 +129,10 @@
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Género:</p>
                         <select name="genero" class="input_datosAuthor50" value="{{old('genero')}}">
-                            <option selected value="poesía">Cuento</option> 
-                            <option value="cuento">Ensayo</option>
-                            <option value="ensayo">Novela</option>
-                            <option value="novela">Poesía</option>
+                            <option selected value="2">Cuento</option> 
+                            <option value="3">Ensayo</option>
+                            <option value="4">Novela</option>
+                            <option value="1">Poesía</option>
                         </select>
                     </div>
                     <div class="div_elementosAuthor50">
@@ -142,14 +142,36 @@
                     </div>
                 </div>
 
-                <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
-                    <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
-                    <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
-                </div>
-
+                @if(sizeOf($collections)>0)
+                    <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
+                        <div class="div_elementosAuthor50">
+                            <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
+                            <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
+                        </div>
+                        <div class="div_elementosAuthor50">
+                            <p class="txt_datosAuthor txt_datosAuthorFECHA">Colección:</p>
+                            <select name="coleccion" class="input_datosAuthor50" value="{{old('coleccion')}}">
+                                <option value="" selected>Selecciona una colección</option>
+                                @foreach ($collections as $collection)
+                                    <option value="{{$collection->id}}">{{$collection->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                @else
+                    <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
+                        <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
+                        <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
+                    </div>
+                @endif
                 <div class="div_elementosAuthor" style="margin-bottom: 25px">
                     <p class="txt_datosAuthor">Sinopsis:</p>
                     <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
+                </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Archivo de libro:</p>
+                    <input id="archivoLibro" class="img_datosAuthor" type="file"  name="archivoLibro" value="{{old('archivoLibro')}}" required>
                 </div>
 
                 <div class="div_elementosAuthor">
