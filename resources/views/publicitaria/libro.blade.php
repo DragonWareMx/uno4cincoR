@@ -714,6 +714,7 @@
             document.getElementById("cantidadFisico").value = number;
         } 
     });
+    
 
     //CUANDO SE SELECCIONA EL FORMATO SE GUARDA EN LA COOKIE
     $("#botonFisico").click(function (e) {
