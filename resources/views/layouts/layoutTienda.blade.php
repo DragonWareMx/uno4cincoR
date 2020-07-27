@@ -214,7 +214,7 @@
 
             //CHECA DISPONIBILIDAD Y MUESTRA LAS CANTIDADES
                 //FORMATO FISICO
-            if(libro['stockFisico'] > 0){
+            if(libro['stockFisico'] > 0 && libro['precioFisico'] > 0){
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
                 //el modal se puede cerrar al seleccionar el formato
                 document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");
