@@ -30,15 +30,24 @@
         {{-- INFORMACIÓN DEL LIBRO --}}
         <div class="row">
             <div class="libro-tabla">
+                {{-- IMAGENES --}}
                 <div class="libro-cell libro-cell-md libro-cell-head">
                     <div class="libro-fotos">
                         <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onmousemove="zoomIn(event)" onmouseout="zoomOut()">
-                        {{-- Aqui debe ir el slider --}}
+                        {{-- SLIDER --}}
                         @if (count($book->images) > 0)
                             <div class="owl-carousel">
+                                {{-- IMAGEN DE LA TIENDA --}}
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}')">
                                 </div>
+
+                                {{-- IMAGEN DE LA PORTADA --}}
+                                <div class="imagen-carrusel">
+                                    <img src="{{asset('storage/libros/'.$book->portadaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->portadaImagen)}}')">
+                                </div>
+
+                                {{-- IMAGENES EXTRA --}}
                                 @foreach($book->images as $imagen)
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
@@ -48,6 +57,8 @@
                         @endif
                     </div>
                 </div>
+
+                {{-- INFO --}}
                 <div class="libro-cell libro-cell-lg libro-cell-footer">
                     <div class="libro-info">
                         {{-- AUTORES --}}
@@ -182,41 +193,46 @@
                             @endif
                         </p>
                         @if (strlen($book->sinopsis) > 460)
-                            <button onclick="myFunction()" id="myBtn" class="leer-mas">Leer más</button>
+                            <button onclick="leerMas()" id="myBtn" class="leer-mas">Leer más</button>
                         @endif
                     </div>
                 </div>
+
+                {{-- PRECIOS --}}
                 <div class="libro-cell libro-cell-md libro-cell-middle">
                     <div class="libro-comprar">
                         <div class="comprar">
-                            {{-- PRECIOS --}}
-                            {{-- SI LOS PRECIOS SON MAYORES A CERO SE MUESTRAN, SI NO SE MUESTRA EL MENSAJE "NO DISPONIBLE" --}}
                             {{-- FISICO --}}
-                            {{-- SI EL PRECIO DEL FORMATO FÍSICO ES MAYOR A CERO SE MUESTRA--}}
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Físico:</p>
                             </div>
                             <div class="precio">
-                                @if($book->descuentoFisico > 0)
-                                    <div class="oferta">
-                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                    </div>
-
-                                    ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioFisico <= 0)
+                                    Gratis
                                 @else
-                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                {{-- Si no entonces se muestra el precio --}}
+                                    @if($book->descuentoFisico > 0)
+                                        <div class="oferta">
+                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                        </div>
+
+                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                    @else
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    @endif
                                 @endif
                             </div>
 
-                            {{-- AHORRO (EN CASO DE OFERTA) --}}
-                            @if ($book->descuentoFisico > 0)
+                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis --}}
+                            @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
                                 <div class="ahorro">
                                     <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 </div>
                             @endif
 
                             {{-- DISPONIBILIDAD --}}
-                            @if ($book->stockFisico > 0 && $book->precioFisico > 0)
+                            @if ($book->stockFisico > 0)
                                 <div class="disponibilidad">
                                     <p style="color: #29B390;">Disponible</p>
                                 </div>
@@ -228,11 +244,13 @@
 
                             {{-- DIGITAL --}}
                             {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA--}}
-                            @if($book->precioDigital > 0)
-                                <div class="formato">
-                                    <p style="padding-top: 7px;">Formato Digital:</p>
-                                </div>
-                                <div class="precio">
+                            <div class="formato">
+                                <p style="padding-top: 7px;">Formato Digital:</p>
+                            </div>
+                            <div class="precio">
+                                @if($book->precioDigital <= 0)
+                                    Gratis
+                                @else
                                     @if($book->descuentoDigital > 0)
                                         <div class="oferta">
                                             ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
@@ -242,25 +260,25 @@
                                     @else
                                         ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                     @endif
+                                @endif
+                            </div>
+
+                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis --}}
+                            @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
+                                <div class="ahorro">
+                                    <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                                 </div>
+                            @endif
 
-                                {{-- AHORRO (EN CASO DE OFERTA) --}}
-                                @if ($book->descuentoDigital > 0)
-                                    <div class="ahorro">
-                                        <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
-                                    </div>
-                                @endif
-
-                                {{-- DISPONIBILIDAD --}}
-                                @if ($book->stockDigital > 0)
-                                    <div class="disponibilidad">
-                                        <p style="color: #29B390;">Disponible</p>
-                                    </div>
-                                @else
-                                    <div class="disponibilidad">
-                                        <p style="color: #BA1F00;">No Disponible</p>
-                                    </div>
-                                @endif
+                            {{-- DISPONIBILIDAD --}}
+                            @if ($book->stockDigital > 0)
+                                <div class="disponibilidad">
+                                    <p style="color: #29B390;">Disponible</p>
+                                </div>
+                            @else
+                                <div class="disponibilidad">
+                                    <p style="color: #BA1F00;">No Disponible</p>
+                                </div>
                             @endif
 
                             @if($book->stockFisico > 0 || $book->stockDigital > 0)
@@ -282,6 +300,7 @@
             </div>
         </div>
 
+        {{-- CARRUSEL DE LIBROS DE LOS AUTORES --}}
         @if(count($books) > 1)
             <hr class="hr-tienda">
             {{-- <div class="container"> --}}
@@ -324,8 +343,10 @@
                 </div>
             {{-- </div> --}}
         @endif
+
         <hr class="hr-tienda">
 
+        {{-- BOTON REGRESAR --}}
         <div class="libro-regresar">
             <div class="boton">
             <button onclick="location.href='{{ route('tiendaCatalogo') }}'">
@@ -341,6 +362,7 @@
     </div>
 </section>
 
+{{-- MODAL DE COMPRA --}}
 <div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -353,6 +375,7 @@
         <div class="modal-body">
             <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
             <div style="display: table; width:100%;">
+                {{-- FORMATO FISICO --}}
                 <div class="formato-comprar">
                     <div class="formato-container shrink" style="height: 213.8px">
                         <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target=
@@ -362,22 +385,33 @@
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Físico:</p>
                             </div>
+                            {{-- PRECIO --}}
                             <div class="precio" id="precioFisico">
-                                @if($book->descuentoFisico > 0)
-                                    <div class="oferta">
-                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                    </div>
-
-                                    ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                            {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioFisico <= 0)
+                                    Gratis
                                 @else
-                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                {{-- Si no entonces se muestra el precio --}}
+                                    @if($book->descuentoFisico > 0)
+                                        <div class="oferta">
+                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                        </div>
+
+                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                    @else
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    @endif
                                 @endif
                             </div>
+
+                            {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
                             <div class="ahorro" id="ahorroFisico">
-                                @if ($book->descuentoFisico > 0)
+                                @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
                                     <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 @endif
                             </div>
+
+                            {{-- DISPONIBILIDAD --}}
                             <div class="disponibilidad" id="disponibleFisico">
                                 @if ($book->stockFisico > 0)
                                     <p style="color: #29B390;">Disponible</p>
@@ -386,12 +420,17 @@
                                 @endif
                             </div>
                         </div>
+
+                        {{-- CANTIDAD --}}
                         <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
+                            {{-- si hay libros disponibles se muestra la cantidad que puede pedir --}}
                             @if ($book->stockFisico > 0)
                                 <p id="cantidad-p">Cantidad: </p>
+                                {{-- se establece un minimo como cero --}}
                                 @php
                                     $min = 0;
                                 @endphp
+                                {{-- en caso que el producto se encuentre en el carrito se establece el minimo como la cantidad que ya está en el carrito --}}
                                 @if (session('cart'))
                                     @foreach(session('cart') as $id => $details)
                                         @if ($id == $book->id && $details['cantidadFisico'] > 0)
@@ -401,22 +440,27 @@
                                         @endif
                                     @endforeach
                                 @endif
+                                {{-- si el producto no se encontraba en el carrito entonces el minimo se establece como 1 --}}
                                 @if ($min == 0)
                                     @php
                                         $min = 1;
                                     @endphp
                                 @endif
+                                {{-- si hay mas de un libro en stock entonces se pone el minimo como cantidad --}}
                                 @if ($book->stockFisico > 1)
                                     <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
                                     <input type="numeric" id="cantidadFisico" value="{{ $min }}" />
                                     <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
                                 @else
+                                    {{-- si solo hay un libro disponible entonces solamente se podra seleccionar un libro como maximo --}}
                                     <input type="numeric" id="cantidadFisico" value="1" />
                                 @endif
                             @endif
                         </div>
                     </div>
                 </div>
+
+                {{-- FORMATO DIGITAL --}}
                 <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target=
                 @if ($book->stockDigital > 0)
                     {!!"#comprarFormato"!!}
@@ -425,22 +469,34 @@
                         <div class="formato">
                             <p style="padding-top: 20px;">Formato Digital:</p>
                         </div>
-                        <div class="precio" id="precioDigital">
-                            @if($book->descuentoDigital > 0)
-                                <div class="oferta">
-                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                </div>
 
-                                ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                        {{-- PRECIO --}}
+                        <div class="precio" id="precioDigital">
+                            {{-- Si el precio es 0 se muestra Gratis--}}
+                            @if($book->precioDigital <= 0)
+                                Gratis
                             @else
-                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                            {{-- Si no entonces se muestra el precio --}}
+                                @if($book->descuentoDigital > 0)
+                                    <div class="oferta">
+                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    </div>
+
+                                    ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                @else
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                @endif
                             @endif
                         </div>
+
+                        {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
                         <div class="ahorro" id="ahorroDigital">
-                            @if ($book->descuentoDigital > 0)
+                            @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
                                 <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                             @endif
                         </div>
+
+                        {{-- DISPONIBILIDAD --}}
                         <div class="disponibilidad" id="disponibleDigital">
                             @if ($book->stockDigital > 0)
                                 <p style="color: #29B390;">Disponible</p>
@@ -448,6 +504,8 @@
                                 <p style="color: #BA1F00;">No Disponible</p>
                             @endif
                         </div>
+
+                        {{-- LA CANTIDAD EN DIGITAL SIEMPRE SERÁ UNO --}}
                         <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
                             @if ($book->stockDigital > 0)
                                 <p id="cantidad-p">Cantidad: </p>
@@ -462,11 +520,16 @@
     </div>
 </div>
 
+{{-- ESTE SCRIPT CONTROLA EL ZOOM DE LA IMAGEN Y EL LEER MAS --}}
 <script>
+    //pre es el elemento donde se muestra la previsualizacion de la imagen seleccionada
+    //"imagen-seleccionada" es el visualizador de la imagen
     var pre = document.getElementById("imagen-seleccionada");
+    //imagen es la imagen que se ha seleccionado
     var imagen = pre.src;
 
-    function myFunction() {
+    //Controla el boton de leer mas
+    function leerMas() {
         var dots1 = document.getElementById("dots1");
         var dots2 = document.getElementById("dots2");
         var moreText = document.getElementById("more");
@@ -485,29 +548,33 @@
         }
     }
 
+    //controla cuando se selecciona una imagen
     function clickImagen(nuevaImagen){
-        var imagen2 = document.getElementById("imagen-seleccionada");
-        imagen2.src = nuevaImagen;
-        imagen = imagen2.src;
+        //hace que se muestre la nueva imagen en el visualizador
+        pre.src = nuevaImagen;
+        //obtiene la imagen para el zoom
+        imagen = nuevaImagen;
     }
 
-     function zoomIn(event) {
+    //controla el zoom en el hover
+    function zoomIn(event) {
         if ($('#imagen-seleccionada').is(':hover')) {
-                var img = document.getElementById("imagen-seleccionada");
-                pre.style.backgroundImage = "url('" + imagen + "')";
-                pre.src = "{{asset('img/ico/invisible.png')}}";
-            }
+            pre.style.backgroundImage = "url('" + imagen + "')";
+            pre.src = "{{asset('img/ico/invisible.png')}}";
+        }
+        
         var posX = event.offsetX;
         var posY = event.offsetY;
         pre.style.backgroundPosition=(-posX*2.5)+"px "+(-posY*2.5)+"px";
-
     }
+
     function zoomOut() {
         pre.src = imagen;
         pre.style.backgroundImage = "";
     }
 </script>
 
+{{-- ESTE SCRIPT CONTROLA LA ANIMACION DE COMPRA Y EL CARRITO --}}
 <script>
     var animacion;
     var animacion2;
