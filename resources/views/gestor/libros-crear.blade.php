@@ -106,7 +106,7 @@
                         <p class="txt_datosAuthor">Oferta Digital%:</p>
                         <input id="ofertadigital" name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertadigital')}}"  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertadigital')}}" >
                     </div>
                 </div>
 
@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="div_elementosAuthor">
-                    <p class="txt_datosAuthor">Portada:</p>
+                    <p class="txt_datosAuthor">Portada (png):</p>
                     <input id="imagenPortada" class="img_datosAuthor" type="file"  name="imagenPortada" value="{{old('imagenPortada')}}" required>
                 </div>
 
@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="div_elementosAuthor">
-                    <p class="txt_datosAuthor">Imagen en banner:</p>
+                    <p class="txt_datosAuthor">Imagen pestaña banner:</p>
                     <input id="imagenBanner" class="img_datosAuthor" type="file"  name="imagenBanner" value="{{old('imagenBanner')}}" required>
                 </div>
 
