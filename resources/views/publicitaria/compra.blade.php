@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="genero" id="genero" value="" autocomplete="sex">
+                                            <select name="genero" id="genero" value="" autocomplete="sex" required>
                                                 <option value="" id="AF">Elegir opción</option>
                                                 <option value="Hombre" id="H">Hombre</option>
                                                 <option value="Mujer" id="M">Mujer</option>
@@ -132,7 +132,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="country" class="countries order-alpha presel-MX" id="countryId" autocomplete="country-name">
+                                            <select name="country" class="countries order-alpha presel-MX" id="countryId" autocomplete="country-name" required>
                                                 <option value="">Select Country</option>
                                             </select>
                                             <label for="countryId" title="País" data-title="País"></label>
@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="state" class="states" id="stateId">
+                                            <select name="state" class="states" id="stateId" required>
                                                 <option value="">Select State</option>
                                             </select>
                                             <label for="stateId" title="Estado" data-title="Estado"></label>
@@ -193,7 +193,7 @@
                                 {{-- REFERENCUAS --}}
                                 <div class="row row-p">
                                     <div class="field">
-                                        <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);" required>
+                                        <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);">
                                         <label for="referencias" title="Referencias" data-title="Referencias"></label>
                                     </div>
                                 </div>

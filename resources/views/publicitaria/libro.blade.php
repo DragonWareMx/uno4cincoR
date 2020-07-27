@@ -191,101 +191,90 @@
                         <div class="comprar">
                             {{-- PRECIOS --}}
                             {{-- SI LOS PRECIOS SON MAYORES A CERO SE MUESTRAN, SI NO SE MUESTRA EL MENSAJE "NO DISPONIBLE" --}}
-                            @if($book->precioFisico > 0 || $book->precioDigital > 0)
-                                {{-- FISICO --}}
-                                {{-- SI EL PRECIO DEL FORMATO FÍSICO ES MAYOR A CERO SE MUESTRA--}}
-                                @if($book->precioFisico > 0)
-                                    <div class="formato">
-                                        <p style="padding-top: 20px;">Formato Físico:</p>
-                                    </div>
-                                    <div class="precio">
-                                        @if($book->descuentoFisico > 0)
-                                            <div class="oferta">
-                                                ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                            </div>
-
-                                            ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
-                                        @else
-                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                        @endif
+                            {{-- FISICO --}}
+                            {{-- SI EL PRECIO DEL FORMATO FÍSICO ES MAYOR A CERO SE MUESTRA--}}
+                            <div class="formato">
+                                <p style="padding-top: 20px;">Formato Físico:</p>
+                            </div>
+                            <div class="precio">
+                                @if($book->descuentoFisico > 0)
+                                    <div class="oferta">
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                     </div>
 
-                                    {{-- AHORRO (EN CASO DE OFERTA) --}}
-                                    @if ($book->descuentoFisico > 0)
-                                        <div class="ahorro">
-                                            <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
-                                        </div>
-                                    @endif
-
-                                    {{-- DISPONIBILIDAD --}}
-                                    @if ($book->stockFisico > 0)
-                                        <div class="disponibilidad">
-                                            <p style="color: #29B390;">Disponible</p>
-                                        </div>
-                                    @else
-                                        <div class="disponibilidad">
-                                            <p style="color: #BA1F00;">No Disponible</p>
-                                        </div>
-                                    @endif
+                                    ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                @else
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                 @endif
+                            </div>
 
-                                {{-- DIGITAL --}}
-                                {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA--}}
-                                @if($book->precioDigital > 0)
-                                    <div class="formato">
-                                        <p style="padding-top: 7px;">Formato Digital:</p>
-                                    </div>
-                                    <div class="precio">
-                                        @if($book->descuentoDigital > 0)
-                                            <div class="oferta">
-                                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                            </div>
-
-                                            ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
-                                        @else
-                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                        @endif
-                                    </div>
-
-                                    {{-- AHORRO (EN CASO DE OFERTA) --}}
-                                    @if ($book->descuentoDigital > 0)
-                                        <div class="ahorro">
-                                            <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
-                                        </div>
-                                    @endif
-
-                                    {{-- DISPONIBILIDAD --}}
-                                    @if ($book->stockDigital > 0)
-                                        <div class="disponibilidad">
-                                            <p style="color: #29B390;">Disponible</p>
-                                        </div>
-                                    @else
-                                        <div class="disponibilidad">
-                                            <p style="color: #BA1F00;">No Disponible</p>
-                                        </div>
-                                    @endif
-                                @endif
-
-                                @if($book->stockFisico > 0 || $book->stockDigital > 0)
-                                    {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
-                                    <div class="mensaje">
-                                        <p>
-                                            Pueden aplicarse gastos de envío,
-                                        </p>
-                                        <a href="#">
-                                            detalles
-                                        </a>
-                                    </div>
-
-                                    {{-- BOTONES DE COMPRA --}}
-                                    <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
-                                    <button class="comprar-button shrink">Comprar ahora</button>
-                                @endif
-                            @else
-                                {{-- DISPONIBILIDAD --}}
-                                <div class="disponibilidad">
-                                    <p style="color: #BA1F00;">Producto No Disponible</p>
+                            {{-- AHORRO (EN CASO DE OFERTA) --}}
+                            @if ($book->descuentoFisico > 0)
+                                <div class="ahorro">
+                                    <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 </div>
+                            @endif
+
+                            {{-- DISPONIBILIDAD --}}
+                            @if ($book->stockFisico > 0 && $book->precioFisico > 0)
+                                <div class="disponibilidad">
+                                    <p style="color: #29B390;">Disponible</p>
+                                </div>
+                            @else
+                                <div class="disponibilidad">
+                                    <p style="color: #BA1F00;">No Disponible</p>
+                                </div>
+                            @endif
+
+                            {{-- DIGITAL --}}
+                            {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA--}}
+                            @if($book->precioDigital > 0)
+                                <div class="formato">
+                                    <p style="padding-top: 7px;">Formato Digital:</p>
+                                </div>
+                                <div class="precio">
+                                    @if($book->descuentoDigital > 0)
+                                        <div class="oferta">
+                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                        </div>
+
+                                        ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
+                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                </div>
+
+                                {{-- AHORRO (EN CASO DE OFERTA) --}}
+                                @if ($book->descuentoDigital > 0)
+                                    <div class="ahorro">
+                                        <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
+                                    </div>
+                                @endif
+
+                                {{-- DISPONIBILIDAD --}}
+                                @if ($book->stockDigital > 0)
+                                    <div class="disponibilidad">
+                                        <p style="color: #29B390;">Disponible</p>
+                                    </div>
+                                @else
+                                    <div class="disponibilidad">
+                                        <p style="color: #BA1F00;">No Disponible</p>
+                                    </div>
+                                @endif
+                            @endif
+
+                            @if($book->stockFisico > 0 || $book->stockDigital > 0)
+                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                                <div class="mensaje">
+                                    <p>
+                                        Pueden aplicarse gastos de envío,
+                                    </p>
+                                    <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
+                                </div>
+
+                                {{-- BOTONES DE COMPRA --}}
+                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
+                                <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
                             @endif
                         </div>
                     </div>
@@ -522,6 +511,15 @@
 <script>
     var animacion;
     var animacion2;
+    var comraA = false;
+
+    function comprarAhora(){
+        comraA = true;
+    }
+
+    function comprarCarrito(){
+        comraA = false;
+    }
 
     $(document).ready(function(){
   
@@ -765,6 +763,9 @@
                         showTooltip("Producto agregado");
                     }
                     carritoCant(x);
+
+                    if(comraA)
+                        window.location.replace('{{ route('carrito') }}');
                     return;
                 }
             });
@@ -787,7 +788,7 @@
             $.ajax({
                 url: '/agregar-a-carrito/'+seleccionado+'/1/digital',
                 method: "get",
-                success: function (response) {
+                success: function (response) { 
                     if(carrito){
                         if(carrito[seleccionado]){
                             if(carrito[seleccionado]['cantidadDigital'] > 0){
@@ -812,6 +813,10 @@
                         showTooltip("Producto agregado");
                     }
                     carritoCant(x);
+
+                    if(comraA)
+                        window.location.replace('{{ route('carrito') }}');
+
                     return;
                 },
             });
