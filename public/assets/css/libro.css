@@ -94,6 +94,8 @@
     text-decoration: underline;
     background-color: transparent;
     padding: 0px;
+    padding-right: 29px;
+    padding-left: 29px;
     border: 0px;
     outline: none;
 }
