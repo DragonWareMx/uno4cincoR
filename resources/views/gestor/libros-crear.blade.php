@@ -52,58 +52,59 @@
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Formato:</p>
-                        <select name="formato" class="input_datosAuthor50" value="{{old('formato')}}" required>
+                        <select id="formatoSelect" name="formato" class="input_datosAuthor50" value="{{old('formato')}}" required>
                             <option value="fisico">Físico</option> 
-                            <option value="fisico/digital" selected>Físico/Digital</option>
+                            <option value="fisico/digital">Físico/Digital</option>
                             <option value="digital">Digital</option>
+                            <option value="" selected="selected" disable hidden>Selecciona el formato</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="div_elementosAuthor">
-                    <div class="div_elementosAuthor50">
+                    <div class="div_elementosAuthor50" id="estatus" style="display:none;">
                         <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
-                        <select name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"required >
-                            <option selected value="1">Disponible</option> 
-                            <option value="0" >No disponible</option>
+                        <select id="estatusValor" name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"required >
+                            <option value="1">Disponible</option> 
+                            <option selected value="0" >No disponible</option>
                         </select>
                     </div>
-                    <div class="div_elementosAuthor50">
+                    <div id="ejemplares" class="div_elementosAuthor50" style="display:none;">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Ejemplares:</p>
-                        <input name="ejemplares" class="input_datosAuthor input_datosAuthor50" type="number"  min="0" pattern="^[0-9]+" 
+                        <input id="ejemplaresValor" name="ejemplares" class="input_datosAuthor input_datosAuthor50" type="number"  min="0" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1" value="{{old('ejemplares')}}" 
                             onkeypress="return solonumeros(event)" >
                     </div>
                 </div>
 
-                <div class="div_elementosAuthor">
+                <div class="div_elementosAuthor" id="fisico" style="display:none;">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Precio Físico:</p>
-                        <input name="preciofisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
+                        <input id ="preciofisico" name="preciofisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off 
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('preciofisico')}}"  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Físico%:</p>
-                        <input name="ofertafisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
+                        <input id ="ofertafisico" name="ofertafisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertafisico')}}"  >
                     </div>
                 </div>
 
-                <div class="div_elementosAuthor">
+                <div class="div_elementosAuthor" style="display:none;" id="digital">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Precio Digital:</p>
-                        <input name="preciodigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
+                        <input id="preciodigital" name="preciodigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('preciodigital')}}"  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Digital%:</p>
-                        <input name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
+                        <input id="ofertadigital" name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertadigital')}}"  >
                     </div>
@@ -169,9 +170,9 @@
                     <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
                 </div>
 
-                <div class="div_elementosAuthor">
+                <div class="div_elementosAuthor" id="archivoLibroDiv" style="display:none;">
                     <p class="txt_datosAuthor">Archivo de libro:</p>
-                    <input id="archivoLibro" class="img_datosAuthor" type="file"  name="archivoLibro" value="{{old('archivoLibro')}}" required>
+                    <input id="archivoLibro" class="img_datosAuthor" type="file"  name="archivoLibro" value="{{old('archivoLibro')}}">
                 </div>
 
                 <div class="div_elementosAuthor">
@@ -300,5 +301,40 @@
         });
     </script>
     
+    <script>
+        var valor="";
+         $(document).ready(function() {
+            $('#formatoSelect').change(function () {
+                if(this.value=='fisico'){
+                    $('#ejemplares').show();
+                    $('#fisico').show();
+                    $('#estatus').hide();
+                    $('#digital').hide();
+                    $('#archivoLibroDiv').hide();
+                    document.getElementById('preciodigital').value=valor;
+                    document.getElementById('ofertadigital').value=valor;
+                    document.getElementById('estatusValor').value=0;
+
+                }
+                else if(this.value=='digital'){
+                    $('#estatus').show();
+                    $('#digital').show();
+                    $('#archivoLibroDiv').show();
+                    $('#ejemplares').hide();
+                    $('#fisico').hide();
+                    document.getElementById('preciofisico').value=valor;
+                    document.getElementById('ofertafisico').value=valor;
+                    document.getElementById('ejemplaresValor').value=valor;
+                }
+                else if(this.value=='fisico/digital'){
+                    $('#estatus').show();
+                    $('#ejemplares').show();
+                    $('#archivoLibroDiv').show();
+                    $('#fisico').show();
+                    $('#digital').show();
+                }
+            });
+        });
+    </script>
 
 @endsection
