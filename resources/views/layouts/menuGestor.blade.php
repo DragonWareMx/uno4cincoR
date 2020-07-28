@@ -73,7 +73,7 @@
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{route('verLibros')}}">Ver todo</a> 
-              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catalogo</a>
+              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catálogo</a>
               <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=145">145</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
@@ -140,13 +140,8 @@
         </a>
         <div id="collapseInventario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/sgtepetate/inventario">Gestión de Inventario</a>
-            <a class="collapse-item" href="/sgtepetate/inventario/todo">Ver todo el Inventario</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Categorías:</h6>
-            <a class="collapse-item" href="/sgtepetate/inventario/categoria/1">Alimento</a>
-            <a class="collapse-item" href="/sgtepetate/inventario/categoria/2">Medicina</a>
-            <a class="collapse-item" href="/sgtepetate/inventario/categoria/3">Productos</a>
+            <a class="collapse-item" href="{{route('historial')}}">Historial de ventas</a>
+            <a class="collapse-item" href="{{route('estadisticas')}}">Estadísticas de público</a>
           </div>
         </div>
       </li>

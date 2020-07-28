@@ -56,7 +56,7 @@
                             <option value="fisico">Físico</option> 
                             <option value="fisico/digital">Físico/Digital</option>
                             <option value="digital">Digital</option>
-                            <option value="" selected="selected" disable hidden>Selecciona el formato</option>
+                            <option value="" selected="selected" hidden>Selecciona el formato</option>
                         </select>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         </select>
                     </div>
                     <div id="ejemplares" class="div_elementosAuthor50" style="display:none;">
-                        <div class="div_space">&nbsp;&nbsp;</div>
+                        <div class="div_space" id="espacio">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Ejemplares:</p>
                         <input id="ejemplaresValor" name="ejemplares" class="input_datosAuthor input_datosAuthor50" type="number"  min="0" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1" value="{{old('ejemplares')}}" 
@@ -87,7 +87,7 @@
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
-                        <p class="txt_datosAuthor">Oferta Físico%:</p>
+                        <p class="txt_datosAuthor">Oferta Físico %:</p>
                         <input id ="ofertafisico" name="ofertafisico" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertafisico')}}"  >
@@ -103,7 +103,7 @@
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
-                        <p class="txt_datosAuthor">Oferta Digital%:</p>
+                        <p class="txt_datosAuthor">Oferta Digital %:</p>
                         <input id="ofertadigital" name="ofertadigital" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
                         onkeypress="return solonumerosdecimales(event)" step="any" value="{{old('ofertadigital')}}" >
@@ -220,7 +220,7 @@
     <br>
     
     <script>
-        const inpFile = document.getElementById("imagen");
+        const inpFile = document.getElementById("imagenTienda");
         const previewContainer= document.getElementById("preview_imagen");
         const previewImage = previewContainer.querySelector(".preview_imagen_imagen");
         const previewImageAnterior = previewContainer.querySelector(".imagen_actual");
@@ -284,7 +284,7 @@
         }
     </script>
     <script>
-        $(function() {
+        $(function() { 
             const authors = @json($authors); 
             var i =0;   
             var datos=[];
@@ -315,6 +315,12 @@
                     document.getElementById('ofertadigital').value=valor;
                     document.getElementById('estatusValor').value=0;
 
+                        $('#ejemplaresValor').prop("required", true);
+                        document.getElementById("espacio").style.display = "none";
+                        $('#preciofisico').prop("required", true);
+                        $('#preciodigital').prop("required", false);
+                        $('#estatusValor').prop("required", false);
+
                 }
                 else if(this.value=='digital'){
                     $('#estatus').show();
@@ -325,6 +331,11 @@
                     document.getElementById('preciofisico').value=valor;
                     document.getElementById('ofertafisico').value=valor;
                     document.getElementById('ejemplaresValor').value=valor;
+
+                    $('#ejemplaresValor').prop("required", false);
+                    $('#preciofisico').prop("required", false);
+                    $('#preciodigital').prop("required", true);
+                    $('#estatusValor').prop("required", true);
                 }
                 else if(this.value=='fisico/digital'){
                     $('#estatus').show();
@@ -332,6 +343,11 @@
                     $('#archivoLibroDiv').show();
                     $('#fisico').show();
                     $('#digital').show();
+                    document.getElementById("espacio").style.display = "flex";
+                    $('#ejemplaresValor').prop("required", true);
+                    $('#preciofisico').prop("required", true);
+                    $('#preciodigital').prop("required", true);
+                    $('#estatusValor').prop("required", true);
                 }
             });
         });

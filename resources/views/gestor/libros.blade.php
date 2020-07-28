@@ -13,7 +13,7 @@
 @endsection
 
 @section('menu')
-    Libros | {{$clasificacion}}
+    Libros | {{$clasificacion}} 
 @endsection
 
 @section('contenido')
@@ -72,11 +72,10 @@
                     @endif
 
                     <!--titulo del libro-->
-                        <a href="{{ route('libro', ['id' => $book->id])}}">
-                            <div class="titulo" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$book->titulo}}">
-                                <p>{{Str::limit($book->titulo,49)}}</p>
-                            </div>
-                        </a>
+                    <div class="titulo" data-toggle="tooltip" data-placement="top" data-html="true" title="{{$book->titulo}}">
+                        <p>{{Str::limit($book->titulo,49)}}</p>
+                    </div>
+                        
 
                     <!--precio e icono de nuevo-->
                     <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="

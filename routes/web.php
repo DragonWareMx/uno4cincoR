@@ -70,6 +70,11 @@ Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSli
 /*RUTAS DE GESTIÓN DE RESUMEN*/
 Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('resumen');
 
+// RUTAS DE VENTAS
+Route::get('/adminuno4cinco/historial', 'gestorVentasController@index')->name('historial');
+Route::get('/adminuno4cinco/estadisticas', 'gestorVentasController@estadisticas')->name('estadisticas');
+// Route::get('/adminuno4cinco/estadisticas-público', 'gestorVentasController@estadisticas')->name('estadisticas');
+
 
 /*RUTAS DE PAYPAL*/
 Route::post('/paypal/pay','PaymentController@payWithPayPal')->name('pagoPayPal');
