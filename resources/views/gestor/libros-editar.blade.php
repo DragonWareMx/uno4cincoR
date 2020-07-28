@@ -227,7 +227,7 @@
                         <input class="gestor_blog_guardar" type="submit" value="Actualizar">	
                     </div>
                 </div>
-                <a href="#" data-toggle="modal" data-target="#logoutModal"  style="color: #b30000">Eliminar</a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal"  style="color: #b30000">Eliminar</a>
             </form>
         </div>
         <div class="preview_imagen_blog">
@@ -255,7 +255,7 @@
             <div class="modal-body"><p style="text-align:center">¿Estás seguro de que deseas eliminar este título?</p></div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <form action="#" method="POST">
+                <form action="{{Route('libros-borrar',['id'=>$book->id])}}" method="POST">
                     {{csrf_field()}}
                     @method('DELETE')
                     <button class="btn bg-danger text-white">Eliminar</button>

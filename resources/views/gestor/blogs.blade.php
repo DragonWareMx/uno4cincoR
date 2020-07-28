@@ -11,14 +11,14 @@
     <a href="{{ route('verBlogs') }}" class="txt-titulosGestor">Blogs</a>
 @endsection
 
-@section('contenido')
+@section('contenido') 
     <div class="all_blogs_80" style="margin-bottom: 15px">
         <a href="{{ route('nuevoBlog') }}" class="a_agregarAutor" >Agregar entrada</a>
         <div class="all_blogs_menu_busqueda">
             <form class="" action="{{ route('verBlogs') }}" method="GET" enctype="multipart/form-data">
                 <div class="all_blogs_busqueda">
                     <input type="text" required id="" class ="all_blogs_input_busqueda" name="busqueda">
-                    <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search" style="font-size: 14px; color:#909090;"></i></button>
+                    <button type="submit" class="all_blogs_search_busqueda"><i class="fas fa-search" style="font-size: 14px; color:#909090; margin-bottom:0px"></i></button>
                 </div>
             </form>
         </div> 

@@ -63,6 +63,7 @@ Route::patch('/adminuno4cinco/libros-editar/{id}','gestorLibrosController@update
 Route::get('/adminuno4cinco/libros-nuevo','gestorLibrosController@newBook')->name('libros-crear');
 Route::post('/adminuno4cinco/libros-nuevo','gestorLibrosController@storeBook')->name('libros-crear');
 Route::delete('/adminuno4cinco/libros-borrar/{id}','gestorLibrosController@deleteBook')->name('libros-borrar');
+
 /*RUTAS DE GESTION DE SLIDERS*/
 Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders')->middleware('auth');
 Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSlider')->name('nuevoSlider')->middleware('auth');
