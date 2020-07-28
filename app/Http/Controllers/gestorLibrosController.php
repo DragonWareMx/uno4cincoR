@@ -94,7 +94,7 @@ class gestorLibrosController extends Controller
 
         $autoresActuales="";
         foreach($autorLibro as $autorL){
-            $autorNombre=Author::findOrFail($autorL->id);
+            $autorNombre=Author::findOrFail($autorL->author_id);
             $autoresActuales=$autoresActuales.$autorNombre->nombre.",";
         }
 
@@ -157,7 +157,6 @@ class gestorLibrosController extends Controller
             
         }
 
-
         if (request('preciofisico')){   $book->precioFisico=request('preciofisico'); }
         else{   $book->precioFisico=0;}
         if (request('preciodigital')){  $book->precioDigital=request('preciodigital');}
@@ -188,7 +187,7 @@ class gestorLibrosController extends Controller
             }
         }
         $book->linkDescarga=$newFileName;
-
+ 
         // LINK IMAGEN PORTADA---------------------------------------------------
         if(request('imagenPortada')==null){  
             $newFileName=$book->portadaImagen;
@@ -200,7 +199,7 @@ class gestorLibrosController extends Controller
             $newFileName=$fileName.'_'.time().'.'.$extension;
             $path = request('imagenPortada')->storeAs('/public/libros/',$newFileName);
             
-            $oldFile=public_path().'/public/libros/'.$book->portadaImagen;
+            $oldFile=public_path().'/storage/libros/'.$book->portadaImagen;
             if(file_exists($oldFile)){
                 unlink($oldFile);
             }
@@ -218,7 +217,7 @@ class gestorLibrosController extends Controller
             $newFileName=$fileName.'_'.time().'.'.$extension;
             $path = request('imagenTienda')->storeAs('/public/libros/',$newFileName);
             
-            $oldFile=public_path().'/public/libros/'.$book->tiendaImagen;
+            $oldFile=public_path().'/storage/libros/'.$book->tiendaImagen;
             if(file_exists($oldFile)){
                 unlink($oldFile);
             }
@@ -236,7 +235,7 @@ class gestorLibrosController extends Controller
             $newFileName=$fileName.'_'.time().'.'.$extension;
             $path = request('imagenBanner')->storeAs('/public/libros/',$newFileName);
             
-            $oldFile=public_path().'/public/libros/'.$book->bannerImagen;
+            $oldFile=public_path().'/storage/libros/'.$book->bannerImagen;
             if(file_exists($oldFile)){
                 unlink($oldFile);
             }
@@ -266,7 +265,7 @@ class gestorLibrosController extends Controller
             }
             //borrar imgs-------------------------------
             foreach($book->images as $extras){
-                $oldFile=public_path().'/public/libros/'.$extras->imagen;
+                $oldFile=public_path().'/storage/libros/'.$extras->imagen;
                 if(file_exists($oldFile)){
                     unlink($oldFile);
                 }
@@ -406,6 +405,42 @@ class gestorLibrosController extends Controller
         $book->genres()->sync(request('genero'));
         $book->images()->sync($idImagenes);
         $book->authors()->sync($idAutores);
+
+        return redirect()->route('verLibros');
+    }
+
+    public function deleteBook($id){
+        $book=Book::findOrFail($id);
+
+        $oldFile=public_path().'/public/descargas/'.$book->linkDescarga;
+            if(file_exists($oldFile)){
+                unlink($oldFile);
+            }
+
+        $oldFile=public_path().'/storage/libros/'.$book->portadaImagen;
+            if(file_exists($oldFile)){
+                unlink($oldFile);
+            }
+
+        $oldFile=public_path().'/storage/libros/'.$book->tiendaImagen;
+            if(file_exists($oldFile)){
+                unlink($oldFile);
+            }
+
+        $oldFile=public_path().'/storage/libros/'.$book->bannerImagen;
+            if(file_exists($oldFile)){
+                unlink($oldFile);
+            }
+
+        foreach($book->images as $extras){
+            $oldFile=public_path().'/storage/libros/'.$extras->imagen;
+            if(file_exists($oldFile)){
+                unlink($oldFile);
+            }
+            $extras->delete();
+        }
+
+        $book->delete();
 
         return redirect()->route('verLibros');
     }

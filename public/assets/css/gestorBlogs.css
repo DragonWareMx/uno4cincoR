@@ -363,6 +363,7 @@
     height: 23px;
 }
 .all_blogs_input_busqueda{
+    height: 20px !important;
     margin: 0px; 
     border: none;
     border-bottom: 0.4px solid #909090;
@@ -383,6 +384,7 @@
 
 }
 .all_blogs_search_busqueda{
+    height: 20px !important;
     background-color: transparent;
     border: none;
     border-bottom:0.4px solid #909090;
