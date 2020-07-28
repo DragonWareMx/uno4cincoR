@@ -57,9 +57,9 @@
 
                         <!--precio e icono de nuevo-->
                         <div class="contenido-producto"  data-toggle="tooltip" data-placement="top" data-html="true" title="
-                        Precio Físico: @if($book->precioFisico > 0) ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }} @if($book->descuentoFisico > 0)(con descuento)@endif @else Gratis  @endif
+                        Precio Físico: @if($book->precioFisico > 0) ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }} @if($book->descuentoFisico > 0)(con descuento)@endif @else @if($book->stockFisico > 0)  Gratis @else No disponible @endif @endif
                         <br>
-                        Precio Digital: @if($book->precioDigital > 0) ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }} @if($book->descuentoDigital > 0)(con descuento)@endif @else Gratis @endif
+                        Precio Digital: @if($book->precioDigital > 0) ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }} @if($book->descuentoDigital > 0)(con descuento)@endif @else @if($book->stockDigital > 0) Gratis @else No disponible @endif @endif
                         <br>
                         @if($book->nuevo == 1)
                             @if($book->sello->nombre == 'uno4cinco')
@@ -85,7 +85,23 @@
                                             @endphp
                                             ${{ number_format($precio, 2 , ".", "," ) }}
                                         @else
-                                            Gratis
+                                            @if($book->stockFisico > 0)
+                                                Gratis
+                                            @elseif($book->stockDigital > 0)
+                                                @if($book->precioDigital > 0)
+                                                    <div class="oferta">
+                                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                                    </div>
+                                                    @php
+                                                        $precio = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital/100));
+                                                    @endphp
+                                                    ${{ number_format($precio, 2 , ".", "," ) }}
+                                                @else
+                                                    Gratis
+                                                @endif
+                                            @else
+                                                No disponible
+                                            @endif
                                         @endif
                                     @else
                                         @if($precio2 > 0)
@@ -97,7 +113,23 @@
                                             @endphp
                                             ${{ number_format($precio, 2 , ".", "," ) }}
                                         @else
-                                            Gratis
+                                            @if($book->stockDigital > 0)
+                                                Gratis
+                                            @elseif($book->stockFisico > 0)
+                                                @if($book->precioFisico > 0)
+                                                    <div class="oferta">
+                                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                                    </div>
+                                                    @php
+                                                        $precio = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico/100));
+                                                    @endphp
+                                                    ${{ number_format($precio, 2 , ".", "," ) }}
+                                                @else
+                                                    Gratis
+                                                @endif
+                                            @else
+                                                No disponible
+                                            @endif
                                         @endif
                                     @endif
                                 @elseif($book->descuentoFisico > 0)
@@ -110,7 +142,17 @@
                                         @endphp
                                         ${{ number_format($precio, 2 , ".", "," ) }}
                                     @else
-                                        Gratis
+                                        @if($book->stockFisico > 0)
+                                            Gratis
+                                        @elseif($book->stockDigital > 0)
+                                            @if($book->precioDigital > 0)
+                                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                            @else
+                                                Gratis
+                                            @endif
+                                        @else
+                                            No disponible
+                                        @endif
                                     @endif
                                 @elseif($book->descuentoDigital > 0)
                                     @if($book->precioDigital)
@@ -122,7 +164,17 @@
                                         @endphp
                                         ${{ number_format($precio, 2 , ".", "," ) }}
                                     @else
-                                        Gratis
+                                        @if($book->stockDigital > 0)
+                                            Gratis
+                                        @elseif($book->stockFisico > 0)
+                                            @if($book->precioFisico > 0)
+                                                ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                            @else
+                                                Gratis
+                                            @endif
+                                        @else
+                                            No disponible
+                                        @endif
                                     @endif
                                 @else
                                     @php
@@ -133,13 +185,33 @@
                                         @if($precio1 > 0)
                                             ${{ number_format($precio1, 2 , ".", "," ) }}
                                         @else
-                                            Gratis
+                                            @if($book->stockFisico > 0)
+                                                Gratis
+                                            @elseif($book->stockDigital > 0)
+                                                @if($precio2 > 0)
+                                                    ${{ number_format($precio2, 2 , ".", "," ) }}
+                                                @else
+                                                    Gratis
+                                                @endif
+                                            @else
+                                                No disponible
+                                            @endif
                                         @endif
                                     @else
                                         @if($precio2 > 0)
                                             ${{ number_format($precio2, 2 , ".", "," ) }}
                                         @else
-                                            Gratis
+                                            @if($book->stockDigital > 0)
+                                                Gratis
+                                            @elseif($book->stockFisico > 0)
+                                                @if($precio1 > 0)
+                                                    ${{ number_format($precio1, 2 , ".", "," ) }}
+                                                @else
+                                                    Gratis
+                                                @endif
+                                            @else
+                                                No disponible
+                                            @endif
                                         @endif
                                     @endif
                                 @endif
