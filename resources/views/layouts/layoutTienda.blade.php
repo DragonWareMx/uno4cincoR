@@ -39,16 +39,23 @@
 
         <div class="blog_encabezado">
 
-            @yield('encabezadoTienda')
+            @if(!request('clasificacion') || !request('busqueda'))
+                @yield('encabezadoTienda')
+            @else
+                Resultados de búsqueda
+            @endif
             
             <form class="" action="" method="GET" enctype="multipart/form-data">
                 <div class="blog_barra_busqueda">
                     <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                        <option value="contenido">Contenido</option>
-                        <option value="autor">Autor</option>
-                        <option value="tag">Tag</option>
+                        <option value="titulo" @if(request('clasificacion') == "titulo") selected @endif>Título</option>
+                        <option value="autor" @if(request('clasificacion') == "autor") selected @endif>Autor</option>
+                        <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
+                        <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
+                        <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
+                        <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
                     </select>
-                    <input type="text" id="busqueda_busqueda" class ="" name="busqueda">
+                <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
                     <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
                 </div>
             </form>

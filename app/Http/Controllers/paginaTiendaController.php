@@ -10,22 +10,94 @@ use App\Tipoenvio;
 
 class paginaTiendaController extends Controller
 {
+    //busqueda
+    public function busqueda($tipo){
+        $resultado = null;
+
+        switch($tipo){
+            case 'index':
+                $resultado = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->with("collection");
+                break;
+            case 'catalogo':
+                $resultado = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc');
+                break;
+            case '145':
+                $resultado = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc');
+                break;
+        }
+
+
+        switch(request('clasificacion')){
+            case 'titulo':
+                $resultado = $resultado->where('titulo','like',"%".request('busqueda')."%")->paginate(12);
+                break;
+            case 'autor':
+                $resultado = $resultado->leftJoin('author_book', 'books.id', '=', 'author_book.book_id')
+                                        ->leftJoin('authors','author_book.author_id','=','authors.id')
+                                        ->where('authors.nombre','LIKE',"%".request('busqueda')."%")->paginate(12);
+                break;
+            case 'precio':
+                if(strcasecmp(request('busqueda'),'gratis') == 0){
+                    $request = '0.00';
+                    $resultado = $resultado->where('books.precioFisico','LIKE',"".$request."")
+                                            ->orWhere('books.precioDigital','LIKE',"".$request."")->paginate(12);
+                }
+                else{
+                    $request = request('busqueda');
+                    $resultado = $resultado->where('books.precioFisico','LIKE',"%".$request."%")
+                                            ->orWhere('books.precioDigital','LIKE',"%".$request."%")->paginate(12);
+                }
+                break;
+            case 'contenido':
+                $resultado = $resultado->where('sinopsis','like',"%".request('busqueda')."%")->paginate(12);
+                break;
+            case 'genero':
+                $resultado = $resultado->leftJoin('book_genre', 'books.id', '=', 'book_genre.book_id')
+                                        ->leftJoin('genres','book_genre.genre_id','=','genres.id')
+                                        ->where('genres.nombre','LIKE',"%".request('busqueda')."%")->paginate(12);
+                break;
+            case 'collecion':
+                $resultado = $resultado->join('collections', 'books.collection_id', '=', 'collections.id')
+                                        ->select('books.*','collections.nombre')
+                                        ->where('collections.nombre','like',"%".request('busqueda')."%")->paginate(12);
+                break;
+            default:
+                $resultado = $resultado->paginate(12);
+        }
+
+        return $resultado;
+    }
+
     //NOVEDADES
     public function index(){
         $banners=Banner::where('tipo','libro')->get();
-        $books = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->paginate(12);
-        return view('publicitaria.tiendaNovedades', ['banners'=>$banners, 'books'=>$books]);
+
+        $books = $this->busqueda("index");
+
+        if(!$books)
+            $books = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->paginate(12);
+
+        $request = request("clasificacion");
+        
+        return view('publicitaria.tiendaNovedades', ['banners'=>$banners, 'books'=>$books, 'request'=>$request]);
     }
 
     //CATALOGO
     public function catalogo(){
-        $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc')->paginate(12);
+        $books = $this->busqueda("catalogo");
+
+        if(!$books)
+            $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc')->paginate(12);
         return view('publicitaria.tiendaCatalogo', ['books'=>$books]);
     }
 
     //145
     public function tienda145(){
-        $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc')->paginate(12);
+        $books = $this->busqueda("145");
+
+        if(!$books)
+            $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc')->paginate(12);
+
         return view('publicitaria.tienda145', ['books'=>$books]);
     }
     
