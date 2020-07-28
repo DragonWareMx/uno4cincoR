@@ -70,7 +70,7 @@
                 <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
                 <div style="display: table; width:100%;">
                     <div class="formato-comprar">
-                        <div class="formato-container shrink">
+                        <div class="formato-container shrink" style="height: 213.8px">
                             <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target="">
                                 <div class="formato">
                                     <p style="padding-top: 20px;">Formato Físico:</p>

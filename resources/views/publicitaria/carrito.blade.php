@@ -31,22 +31,31 @@
                 @endphp
                 <div class="carrito-table">
                     <div class="carrito-cell cell-80">
+                        {{-- PRODUCTO --}}
                         <div class="productos-container">
                             @foreach(session('cart') as $id => $details)
                                 @foreach ($books as $libro)
                                     @if ($libro->id == $id)
+                                        {{-- FORMATO FISICO --}}
                                         @if ($details['cantidadFisico'] > 0)
                                             <div class="producto">
+                                                {{-- IMAGEN --}}
                                                 <div class="imagen">
                                                     <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
                                                 </div>
+
+                                                {{-- DATOS DEL LIBRO --}}
                                                 <div class="producto-cell">
                                                     <div style="display:table; width:100%;">
                                                         <div class="datos">
+
+                                                            {{-- TITULO --}}
                                                             <div class="titulo">
                                                                 <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
                                                                 <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'fisico')" class="eliminar">Eliminar</div>
                                                             </div>
+
+                                                            {{-- AUTORES --}}
                                                             @if (count($libro->authors) > 1)
                                                                 <p><b>Autores: </b>
                                                             @else
@@ -69,8 +78,12 @@
                                                                     @endphp
                                                                 @endforeach
                                                             </p>
+
+                                                            {{-- FORMATO --}}
                                                             <p><b>Formato: </b>Físico</p>
                                                         </div>
+
+                                                        {{-- TOTALES --}}
                                                         <div class="totales">
                                                             <div class="table-div">
                                                                 <div class="row-div">
@@ -86,18 +99,25 @@
                                                                 </div>
                                                                 <div class="row-div">
                                                                     <div class="cell-div">
+                                                                        {{-- PRECIO --}}
                                                                         <div class="precio">
-                                                                            @if($libro->descuentoFisico > 0)
-                                                                                <div class="oferta">
+                                                                            @if($libro->precioFisico > 0)
+                                                                                @if($libro->descuentoFisico > 0)
+                                                                                    <div class="oferta">
+                                                                                        <p>${{ number_format($libro->precioFisico, 2 , ".", "," ) }}</p>
+                                                                                    </div>
+                                        
+                                                                                    <p>${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "," ) }}</p>
+                                                                                @else
                                                                                     <p>${{ number_format($libro->precioFisico, 2 , ".", "," ) }}</p>
-                                                                                </div>
-                                    
-                                                                                <p>${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "," ) }}</p>
+                                                                                @endif
                                                                             @else
-                                                                                <p>${{ number_format($libro->precioFisico, 2 , ".", "," ) }}</p>
+                                                                                    <p>Gratis</p>
                                                                             @endif
                                                                         </div>
                                                                     </div>
+
+                                                                    {{-- CANTIDAD --}}
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
                                                                             <div role="button" tabindex="0" class="qty qty-minus" onclick="menosCantidad({{ $libro->id }})">-</div>
@@ -105,6 +125,8 @@
                                                                             <div role="button" tabindex="0" class="qty qty-plus" onclick="masCantidad({{ $libro->id }})">+</div>
                                                                         </div>
                                                                     </div>
+
+                                                                    {{-- SUBTOTAL --}}
                                                                     <div class="cell-div">
                                                                         <b id="{{ $libro->id }}fisico">${{ number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "," ) }}</b>
                                                                         @php
@@ -118,18 +140,27 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        {{-- FORMATO DIGITAL --}}
                                         @if ($details['cantidadDigital'] > 0)
                                             <div class="producto">
+                                                {{-- IMAGEN --}}
                                                 <div class="imagen">
                                                     <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
                                                 </div>
+
+                                                {{-- DATOS --}}
                                                 <div class="producto-cell">
                                                     <div style="display:table; width:100%;">
                                                         <div class="datos">
+
+                                                            {{-- TITULO --}}
                                                             <div class="titulo">
                                                                 <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
                                                                 <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'digital')" class="eliminar">Eliminar</div>
                                                             </div>
+
+                                                            {{-- AUTORES --}}
                                                             @if (count($libro->authors) > 1)
                                                                 <p><b>Autores: </b>
                                                             @else
@@ -152,8 +183,12 @@
                                                                     @endphp
                                                                 @endforeach
                                                             </p>
+
+                                                            {{-- FORMATO --}}
                                                             <p><b>Formato: </b>Digital</p>
                                                         </div>
+
+                                                        {{-- TOTALES --}}
                                                         <div class="totales">
                                                             <div class="table-div">
                                                                 <div class="row-div">
@@ -168,24 +203,33 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row-div">
+                                                                    {{-- PRECIO --}}
                                                                     <div class="cell-div">
                                                                         <div class="precio">
-                                                                            @if($libro->descuentoDigital > 0)
-                                                                                <div class="oferta">
-                                                                                    <p>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</p>
-                                                                                </div>
-                                    
-                                                                                <P>${{ number_format( ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}</P>
+                                                                            @if($libro->precioDigital > 0)
+                                                                                @if($libro->descuentoDigital > 0)
+                                                                                    <div class="oferta">
+                                                                                        <p>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</p>
+                                                                                    </div>
+                                        
+                                                                                    <P>${{ number_format( ($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}</P>
+                                                                                @else
+                                                                                    <P>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</P>
+                                                                                @endif
                                                                             @else
-                                                                                <P>${{  number_format($libro->precioDigital, 2 , ".", "," ) }}</P>
+                                                                                    <p>Gratis</p>
                                                                             @endif
                                                                         </div>
                                                                     </div>
+
+                                                                    {{-- CANTIDAD --}}
                                                                     <div class="cell-div">
                                                                         <div class="cantidades">
                                                                             1
                                                                         </div>
                                                                     </div>
+
+                                                                    {{-- SUBTOTAL --}}
                                                                     <div class="cell-div">
                                                                         <b>${{ number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," ) }}</b>
                                                                         @php
