@@ -1,25 +1,28 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Tienda | Editorial uno4cinco</title>
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
-		<!-- Vendors-->
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
-		<!-- App & fonts-->
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<!--hoja de estilos-->
-<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Tienda | Editorial uno4cinco</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
+
+            <!-- Vendors-->
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
+            <!-- App & fonts-->
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
+            <link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+
+    <!--hoja de estilos-->
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                     
 @endsection
 
@@ -187,12 +190,25 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
-                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                if(descuento > 0)
+                {
+                    document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
+                    document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                }
+                else{
+                    document.getElementById("precioFisico").innerHTML = "Gratis";
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
             }
             else{
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
-                document.getElementById("ahorroFisico").innerHTML = "";
+                if(libro['precioFisico'] > 0){
+                    document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
+                else{
+                    document.getElementById("precioFisico").innerHTML = "Gratis";
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
             }
 
                 //FORMATO DIGITAL
@@ -204,17 +220,30 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
-                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                if(descuento > 0)
+                {
+                    document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
+                    document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                }
+                else{
+                    document.getElementById("precioDigital").innerHTML = "Gratis";
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
             }
             else{
-                document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
-                document.getElementById("ahorroDigital").innerHTML = "";
+                if(libro['precioDigital'] > 0){
+                    document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
+                else{
+                    document.getElementById("precioDigital").innerHTML = "Gratis";
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
             }
 
             //CHECA DISPONIBILIDAD Y MUESTRA LAS CANTIDADES
                 //FORMATO FISICO
-            if(libro['stockFisico'] > 0 && libro['precioFisico'] > 0){
+            if(libro['stockFisico'] > 0){
                 document.getElementById("disponibleFisico").innerHTML = "<p style=\"color: #29B390;\">Disponible</p>";
                 //el modal se puede cerrar al seleccionar el formato
                 document.getElementById("botonFisico").setAttribute("data-target", "#comprarFormato");

@@ -1,20 +1,21 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Libro | Editorial uno4cinco</title>
 
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
+    <title>Libro | Editorial uno4cinco</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
 
-<link rel="stylesheet" href="{{asset('/css/owl.theme.default.min.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{asset('/css/owl.theme.default.min.css')}}">
 
-{{-- Carrusel --}}
-<link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
+    {{-- Carrusel --}}
+    <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
 @endsection
 
@@ -49,9 +50,9 @@
 
                                 {{-- IMAGENES EXTRA --}}
                                 @foreach($book->images as $imagen)
-                                <div class="imagen-carrusel">
-                                    <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
-                                </div>
+                                    <div class="imagen-carrusel">
+                                        <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
+                                    </div>
                                 @endforeach
                             </div>
                         @endif
@@ -168,6 +169,11 @@
                         {{-- EDICION --}}
                         <p class="libro-info-res"><b>Edición: </b>{{ $book->numEdicion }}</p>
 
+                        {{-- COLECCION --}}
+                        @if($book->collection)
+                            <p class="libro-info-res"><b>Colección: </b>{{ $book->collection->nombre }}</p>
+                        @endif
+                        
                         {{-- FORMATO --}}
                         <p class="libro-info-res"><b>Formato: </b>
                             @if ($book->stockFisico > 0 && $book->stockDigital > 0)
