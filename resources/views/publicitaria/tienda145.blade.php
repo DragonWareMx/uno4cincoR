@@ -5,7 +5,7 @@
 @endsection
 
 @section('encabezadoTienda')
-    Que debe decir? :v
+    Libros de otros autores
 @endsection
 
 @section('contenidoTienda')

@@ -188,8 +188,9 @@
     }
 </script>
 
+{{-- TOOLTIP QUE MUESTRA LOS PRECIOS --}}
 <script>
     $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
