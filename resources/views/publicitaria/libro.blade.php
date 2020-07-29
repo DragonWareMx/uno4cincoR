@@ -171,7 +171,7 @@
 
                         {{-- COLECCION --}}
                         @if($book->collection)
-                            <p class="libro-info-res"><b>Colección: </b>{{ $book->collection->nombre }}</p>
+                            <p class="libro-info-res"><b>Colección: </b><a href="{{ route('coleccion', ['id'=>$book->collection->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{ $book->collection->nombre }}</span></a></p>
                         @endif
                         
                         {{-- FORMATO --}}
@@ -323,7 +323,7 @@
                                 <div class="item" onclick="window.location.href='{{ route('libro',['id' => $bookBanner->id]) }}'">
                                     <div class="pad15">
                                         <div class="div_portadapad15">
-                                        <img alt="{{$bookBanner->images[0]->imagen}}" src="{{asset('storage/libros/'.$bookBanner->images[0]->imagen)}}">
+                                            <img alt="{{$bookBanner->bannerImagen}}" src="{{asset('storage/libros/'.$bookBanner->bannerImagen)}}">
                                         </div>
                                         <div class="div_infoCarrusel">
                                             <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;

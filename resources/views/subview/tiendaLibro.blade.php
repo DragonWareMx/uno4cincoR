@@ -236,9 +236,9 @@
                 </div>
             @endforeach
         @else
-        <div style="min-height: 413px; text-align: center; width:100%; font-weight: 500;">
-            <h5 style="padding-top:200px">No hay libros que mostrar</h5>
-        </div>
+            <div style="min-height: 413px; text-align: center; width:100%; font-weight: 500;">
+                <h5 style="padding-top:200px">No hay libros que mostrar</h5>
+            </div>
         @endif
     </div>
 
