@@ -460,3 +460,49 @@
         right: -50px;
     }
 }
+
+/* Colecciones */
+
+.collection-container{
+    border: 1px dotted blue;
+    height: 380px;
+    padding: 0px !important;
+    position: relative;
+}
+
+.collection-container img{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    position: absolute;
+}
+
+.collection-container .name{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    padding: 15px;
+
+    background-color: rgba(0, 0, 0, 0.185);
+    background-clip: content-box;
+}
+
+.collection-container .name p{
+    margin: 0;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: white;
+}

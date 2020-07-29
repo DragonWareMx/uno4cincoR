@@ -7,6 +7,7 @@ use App\Banner;
 use App\Book;
 use App\Author;
 use App\Tipoenvio;
+use App\Collection;
 
 class paginaTiendaController extends Controller
 {
@@ -99,6 +100,13 @@ class paginaTiendaController extends Controller
             $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc')->paginate(12);
 
         return view('publicitaria.tienda145', ['books'=>$books]);
+    }
+
+    //COLECCIONES
+    public function colecciones(){
+        $collections = Collection::join('books', 'books.collection_id', '=', 'collections.id')->select('books.tiendaImagen','collections.*')->paginate(12);
+
+        return view('publicitaria.colecciones', ['collections'=>$collections, 'books'=>null]);
     }
     
     //libro

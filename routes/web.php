@@ -39,6 +39,10 @@ Route::get('/compra','paginaTiendaController@compra')->name('compra');
 Route::get('agregar-a-carrito/{id}/{cant}/{formato}', 'paginaTiendaController@addToCart')->name('agregarCarrito');
 Route::delete('eliminar-del-carrito', 'paginaTiendaController@remove')->name('eliminarCarrito');
 
+// RUTAS DE COLECCIONES
+Route::get('/colecciones','paginaTiendaController@colecciones')->name('colecciones');
+Route::get('/coleccion/{id}','paginaTiendaController@coleccion')->name('coleccion');
+
 /*RUTAS DE GESTIÓN DE BLOGS*/
 // Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco')->middleware('auth');
 Route::get('/adminuno4cinco/autores-145', 'gestorAutoresController@index145')->name('autores-145');

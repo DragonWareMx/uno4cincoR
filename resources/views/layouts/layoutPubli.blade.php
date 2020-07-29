@@ -82,6 +82,7 @@
                                     <li><a href="{{ route('tiendaNovedades') }}" class="">NOVEDADES</a></li>
                                     <li><a href="{{ route('tiendaCatalogo') }}" class="">CATÁLOGO</a></li>
                                     <li><a href="{{ route('tienda145') }}" class="">145</a></li>
+                                    <li><a href="{{ route('colecciones') }}" class="">COLECCIONES</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">

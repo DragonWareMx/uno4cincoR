@@ -1,14 +1,15 @@
 @extends('layouts.layoutTienda')
 
 @section('seccionTienda')
-    Catálogo
+    Colección
 @endsection
 
 @section('encabezadoTienda')
-    Nuestros libros
+    Colección
 @endsection
 
 @section('contenidoTienda')
+<div class="container">
 
     @include('subview.tiendaLibro')
     

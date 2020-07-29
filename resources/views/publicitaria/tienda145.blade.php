@@ -9,7 +9,6 @@
 @endsection
 
 @section('contenidoTienda')
-<div class="container">
 
     @include('subview.tiendaLibro')
     
