@@ -60,6 +60,11 @@ class gestorLibrosController extends Controller
             }
             $clasificacion='145';
         }
+        else if(request('clasificacion')=='coleccion'){
+            $busqueda=request('busqueda');
+            $books=Book::where('collection_id',$busqueda)->paginate(15);
+            $clasificacion='Todos';
+        }
         else{
             if(request('busqueda')){
                 $busqueda=request('busqueda');
