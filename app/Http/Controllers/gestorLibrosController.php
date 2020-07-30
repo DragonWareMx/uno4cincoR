@@ -400,6 +400,22 @@ class gestorLibrosController extends Controller
                 $cont++;
             }
         }
+
+        //SE OBTIENEN TODOS LOS LIBROS NUEVOS
+        $books = Book::where('nuevo', '=', '1')->orderBy('fechaPublicacion','asc')->get();
+
+        //elimina los libros nuevos mas viejos en caso que haya mas de 8
+        while(count($books) >= 9){
+            $books = Book::where('nuevo', '=', '1')->orderBy('fechaPublicacion','asc')->get();
+
+            //se elimina el libro nuevo mas viejo
+            $bookND = Book::find($books[0]->id);
+            $bookND->nuevo = 0;
+            $bookND->save();
+        }
+
+        //AQUI SE GUARDA COMO NUEVO LIBRO
+        $book->nuevo = 1;
        
         $book->save();
         $book->genres()->sync(request('genero'));
