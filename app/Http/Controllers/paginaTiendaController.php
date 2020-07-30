@@ -28,8 +28,17 @@ class paginaTiendaController extends Controller
             case 'coleccion':
                 $resultado = Book::where('collection_id',$id)->orderBy('ventas','Desc');
                 break;
+            case 'colecciones':
+                //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+                //esto se hace porque usar paginate con select distinct causa problemas
+                $collectionsIds = Collection::select('collections.id')
+                                            ->join('books', 'books.collection_id', '=', 'collections.id')
+                                            ->distinct()
+                                            ->pluck('id')->toArray();
+                //obtiene las colecciones
+                $resultado = Collection::whereIn('id', $collectionsIds)->orderBy('created_at','Desc');
+                break;
         }
-
 
         switch(request('clasificacion')){
             case 'titulo':
@@ -64,6 +73,9 @@ class paginaTiendaController extends Controller
                 $resultado = $resultado->join('collections', 'books.collection_id', '=', 'collections.id')
                                         ->select('books.*','collections.nombre')
                                         ->where('collections.nombre','like',"%".request('busqueda')."%")->paginate(12);
+                break;
+            case 'colecciones':
+                $resultado = $resultado->where('nombre','LIKE',"%".request('busqueda')."%")->paginate(12);
                 break;
             default:
                 $resultado = $resultado->paginate(12);
@@ -107,16 +119,19 @@ class paginaTiendaController extends Controller
 
     //COLECCIONES
     public function colecciones(){
-        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro
-        $collections = Collection::select('collections.*')
-                                    ->join('books', 'books.collection_id', '=', 'collections.id')
-                                    ->distinct()
-                                    ->orderBy('created_at','Desc')
-                                    ->paginate(12, ["collections.*"]);
-        
-        //se obtienen todos los libros
-        $books = Book::all();
+        $collections = $this->busqueda("colecciones", 0);
 
+        if(!$collections){
+            //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+            //esto se hace porque usar paginate con select distinct causa problemas
+            $collectionsIds = Collection::select('collections.id')
+                                        ->join('books', 'books.collection_id', '=', 'collections.id')
+                                        ->distinct()
+                                        ->pluck('id')->toArray();
+            //obtiene las colecciones
+            $collections = Collection::whereIn('id', $collectionsIds)->orderBy('created_at','Desc')->paginate(12);
+        }
+        
         return view('publicitaria.colecciones', ['collections'=>$collections, 'books'=>null]);
     }
 

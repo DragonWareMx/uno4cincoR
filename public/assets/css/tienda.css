@@ -605,3 +605,46 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
         top: 78%;
     }
 }
+
+.libro-regresar{
+    width: 90%;
+    max-width: 1169px;
+    margin: auto;
+    align-items: flex-end;
+}
+
+.libro-regresar .boton{
+    width: fit-content;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.libro-regresar .boton button{
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    /* identical to box height */
+
+
+    color: #1D2120;
+
+    outline: none;
+    background-color: transparent;
+    border: 0px;
+}
+
+.libro-regresar .boton button .row img{
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    width: 39px;
+    height: 25px;
+}
+
+.libro-regresar .row{
+    width: fit-content;
+}
