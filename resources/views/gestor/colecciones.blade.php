@@ -1,16 +1,18 @@
-@extends('layouts.layoutTienda')
-
-@section('seccionTienda')
-    Colecciones
+@extends('layouts.menuGestor')
+ 
+@section('importOwl')
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
 @endsection
 
-@section('encabezadoTienda')
-    Colecciones
+@section('menu')
+    <a href="{{ route('verColecciones') }}" class="txt-titulosGestor">Colecciones</a>
 @endsection
 
-@section('contenidoTienda')
-
-    <div class="container">
+@section('contenido') 
+    <div class="all_blogs_80" style="margin-bottom: 15px">
+        <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" >Agregar colección</a>
+     </div>
+     <div class="container">
         @if (count($collections) > 0)
             {{-- Coleccion --}}
 
@@ -27,11 +29,14 @@
 
                 <div class="col-lg-4 col-md-4  col-sm-4 collection-container shrink">
                     <img src="{{asset('storage/libros/'.$collection->books[0]->tiendaImagen)}}">
-                    <a href="{{ route('coleccion', ['id'=>$collection->id]) }}"><div class="name">
+                    <a href="{{route('verLibros')}}?clasificacion=coleccion&busqueda={{$collection->id}}"><div class="name">
                         <p>{{ Str::limit($collection->nombre,49) }}</p>
                     </div></a>
                 </div>
-
+                <div class="all_blogs_80" style="margin-bottom: 15px">
+                    <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" ><i class="far fa-trash-alt"></i></a>
+                    <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" ><i class="far fa-edit"></i></a>
+                 </div>
 
                 @php
                     $contador++;
@@ -63,6 +68,4 @@
         {{ $collections->links() }}
         </div>
     </div>
-
-    <hr class="hr-tienda">
 @endsection

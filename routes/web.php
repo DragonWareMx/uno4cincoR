@@ -92,3 +92,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/adminuno4cinco',function(){
     return view('gestor.inicio'); 
 })->name('gestorInicio')->middleware('auth');
+
+// GESTION COLECCIONES ----------------------------------------------------------------
+Route::get('/adminuno4cinco/colecciones', 'gestorColeccionesController@index')->name('verColecciones');
+Route::get('/adminuno4cinco/coleccion-nueva', 'gestorColeccionesController@addCollection')->name('nuevaColeccion');
+Route::post('/adminuno4cinco/coleccion-nueva','gestorColeccionesController@storeCollection')->name('nuevaColeccion');
+Route::get('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@editCollection')->name('editarColeccion');
+Route::patch('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@updateCollection')->name('editarColeccion');

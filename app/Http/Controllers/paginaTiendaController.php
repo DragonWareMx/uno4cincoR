@@ -12,7 +12,7 @@ use App\Collection;
 class paginaTiendaController extends Controller
 {
     //busqueda
-    public function busqueda($tipo){
+    public function busqueda($tipo, $id){
         $resultado = null;
 
         switch($tipo){
@@ -25,8 +25,20 @@ class paginaTiendaController extends Controller
             case '145':
                 $resultado = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc');
                 break;
+            case 'coleccion':
+                $resultado = Book::where('collection_id',$id)->orderBy('ventas','Desc');
+                break;
+            case 'colecciones':
+                //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+                //esto se hace porque usar paginate con select distinct causa problemas
+                $collectionsIds = Collection::select('collections.id')
+                                            ->join('books', 'books.collection_id', '=', 'collections.id')
+                                            ->distinct()
+                                            ->pluck('id')->toArray();
+                //obtiene las colecciones
+                $resultado = Collection::whereIn('id', $collectionsIds)->orderBy('created_at','Desc');
+                break;
         }
-
 
         switch(request('clasificacion')){
             case 'titulo':
@@ -62,6 +74,9 @@ class paginaTiendaController extends Controller
                                         ->select('books.*','collections.nombre')
                                         ->where('collections.nombre','like',"%".request('busqueda')."%")->paginate(12);
                 break;
+            case 'colecciones':
+                $resultado = $resultado->where('nombre','LIKE',"%".request('busqueda')."%")->paginate(12);
+                break;
             default:
                 $resultado = $resultado->paginate(12);
         }
@@ -73,7 +88,7 @@ class paginaTiendaController extends Controller
     public function index(){
         $banners=Banner::where('tipo','libro')->get();
 
-        $books = $this->busqueda("index");
+        $books = $this->busqueda("index",0);
 
         if(!$books)
             $books = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->paginate(12);
@@ -85,7 +100,7 @@ class paginaTiendaController extends Controller
 
     //CATALOGO
     public function catalogo(){
-        $books = $this->busqueda("catalogo");
+        $books = $this->busqueda("catalogo",0);
 
         if(!$books)
             $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc')->paginate(12);
@@ -94,7 +109,7 @@ class paginaTiendaController extends Controller
 
     //145
     public function tienda145(){
-        $books = $this->busqueda("145");
+        $books = $this->busqueda("145",0);
 
         if(!$books)
             $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc')->paginate(12);
@@ -104,9 +119,34 @@ class paginaTiendaController extends Controller
 
     //COLECCIONES
     public function colecciones(){
-        $collections = Collection::join('books', 'books.collection_id', '=', 'collections.id')->select('books.tiendaImagen','collections.*')->paginate(12);
+        $collections = $this->busqueda("colecciones", 0);
 
+        if(!$collections){
+            //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+            //esto se hace porque usar paginate con select distinct causa problemas
+            $collectionsIds = Collection::select('collections.id')
+                                        ->join('books', 'books.collection_id', '=', 'collections.id')
+                                        ->distinct()
+                                        ->pluck('id')->toArray();
+            //obtiene las colecciones
+            $collections = Collection::whereIn('id', $collectionsIds)->orderBy('created_at','Desc')->paginate(12);
+        }
+        
         return view('publicitaria.colecciones', ['collections'=>$collections, 'books'=>null]);
+    }
+
+    //COLECCION
+    public function coleccion($id){
+        $books = $this->busqueda("coleccion", $id);
+
+        if(!$books)
+            $books = Book::where('collection_id',$id)->orderBy('ventas','Desc')->paginate(12);
+
+        $request = request("clasificacion");
+
+        $collection = Collection::find($id);
+        
+        return view('publicitaria.collectionBook', ['books'=>$books, 'request'=>$request, 'collection'=>$collection]);
     }
     
     //libro
