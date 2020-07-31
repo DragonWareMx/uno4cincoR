@@ -9,8 +9,8 @@
 @endsection
 
 @section('contenido') 
-    <div class="all_blogs_80" style="margin-bottom: 15px">
-        <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" >Agregar colección</a>
+    <div class="all_blogs_80" style="margin-bottom: 15p">
+        <a href="{{ route('nuevaColeccion') }}" style="color:#ba1f00;" class="a_agregarAutor" >Agregar colección</a>
      </div>
      <div class="container">
         @if (count($collections) > 0)
@@ -34,8 +34,10 @@
                     </div></a>
                 </div>
                 <div class="all_blogs_80" style="margin-bottom: 15px">
-                    <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" ><i class="far fa-trash-alt"></i></a>
-                    <a href="{{ route('nuevaColeccion') }}" class="a_agregarAutor" ><i class="far fa-edit"></i></a>
+                    <a href="#" data-toggle="modal" data-target={{"#logoutModal".$collection->id}} class="a_agregarAutor" style="color:#ba1f00;">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                    <a href="{{ route('editarColeccion',['id'=>$collection->id]) }}" class="a_agregarAutor"><i class="far fa-edit"></i></a>
                  </div>
 
                 @php
@@ -49,8 +51,27 @@
                         $contador = 0;
                     @endphp
                 @endif
-
-
+                <div class="modal fade" id={{"logoutModal".$collection->id}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar coleccion : {{$collection->nombre}}</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body"><p style="text-align:center">¿Estás seguro de que deseas eliminar esta colección?</p></div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <form action="{{ route('borrarColeccion', ['id'=>$collection->id]) }}" method="POST">
+                                {{csrf_field()}}
+                                @method('DELETE')
+                                <button class="btn bg-danger text-white">Eliminar</button>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             @endforeach
 
             @if ($contador < 2)

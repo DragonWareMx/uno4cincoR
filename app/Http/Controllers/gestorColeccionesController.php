@@ -50,4 +50,25 @@ class gestorColeccionesController extends Controller
         }
         return redirect()->route('verLibros');
     }
+
+    public function editCollection($id){
+        $coleccion=Collection::findOrFail($id);
+        return view('gestor.colecciones.editarColeccion',['coleccion'=>$coleccion]);
+    }
+    public function updateCollection($id){
+        $data=request()->validate([
+            'nombre'=>'required|max:191',
+            'descripcion'=>'required|max:65535'
+        ]);
+        $coleccion=Collection::findOrFail($id);
+        $coleccion->nombre=request('nombre');
+        $coleccion->descripcion=request('descripcion');
+        $coleccion->save();
+        return redirect()->route('verColecciones');
+    }
+    public function deleteCollection($id){
+        $coleccion=Collection::findOrFail($id);
+        $coleccion->delete();
+        return redirect()->route('verColecciones');
+    }
 }

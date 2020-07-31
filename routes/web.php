@@ -99,3 +99,4 @@ Route::get('/adminuno4cinco/coleccion-nueva', 'gestorColeccionesController@addCo
 Route::post('/adminuno4cinco/coleccion-nueva','gestorColeccionesController@storeCollection')->name('nuevaColeccion');
 Route::get('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@editCollection')->name('editarColeccion');
 Route::patch('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@updateCollection')->name('editarColeccion');
+Route::delete('/adminuno4cinco/coleccion-borrar/{id}','gestorColeccionesController@deleteCollection')->name('borrarColeccion');

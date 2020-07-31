@@ -42,7 +42,7 @@ class CreateBooksTable extends Migration
             $table->foreign('collection_id')
                 ->references('id')
                 ->on('collections')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->timestamps();
         });
     }
