@@ -146,10 +146,6 @@
                 @if(sizeOf($collections)>0)
                     <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
                         <div class="div_elementosAuthor50">
-                            <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
-                            <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
-                        </div>
-                        <div class="div_elementosAuthor50">
                             <p class="txt_datosAuthor txt_datosAuthorFECHA">Colección:</p>
                             <select name="coleccion" class="input_datosAuthor50" value="{{old('coleccion')}}">
                                 <option value="" selected>Selecciona una colección</option>
@@ -159,12 +155,12 @@
                             </select>
                         </div>
                     </div>
-                @else
-                    <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
-                        <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
-                        <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
-                    </div>
                 @endif
+                <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
+                    <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
+                    <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
+                </div>
+                
                 <div class="div_elementosAuthor" style="margin-bottom: 25px">
                     <p class="txt_datosAuthor">Sinopsis:</p>
                     <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
