@@ -20,6 +20,7 @@ class CreateBannersTable extends Migration
             $table->text('imagenCell');
             $table->string('boton',50)->nullable();
             $table->text('link');
+            $table->enum('active',['activo','inactivo']);
             $table->unsignedBigInteger('book_id')->nullable();
             $table->foreign('book_id')
                 ->references('id')

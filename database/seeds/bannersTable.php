@@ -18,6 +18,7 @@ class bannersTable extends Seeder
             'boton'=>'',
             'link'=>'http://uno4cinco.com/registro',
             'author_id'=>'1',
+            'active'=>'activo',
             ]);
             
             DB::table('banners')->insert([
@@ -27,6 +28,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'author_id'=>'2',
+                'active'=>'activo',
                 ]);
             DB::table('banners')->insert([
                     'tipo'=>'autor',
@@ -35,6 +37,7 @@ class bannersTable extends Seeder
                     'boton'=>'',
                     'link'=>'http://uno4cinco.com/registro',
                     'author_id'=>'3',
+                    'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'autor',
@@ -43,6 +46,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'author_id'=>'4',
+                'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -51,6 +55,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'book_id'=>'1',
+                'active'=>'activo',
                 ]);
             DB::table('banners')->insert([
                     'tipo'=>'libro',
@@ -59,6 +64,7 @@ class bannersTable extends Seeder
                     'boton'=>'',
                     'link'=>'http://uno4cinco.com/registro',
                     'book_id'=>'2',
+                    'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -67,6 +73,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'book_id'=>'3',
+                'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
@@ -75,6 +82,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'book_id'=>'4',
+                'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'blog',
@@ -83,6 +91,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'blog_id'=>'1',
+                'active'=>'activo',
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'blog',
@@ -91,6 +100,7 @@ class bannersTable extends Seeder
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'blog_id'=>'2',
+                'active'=>'activo',
             ]);
            
     }

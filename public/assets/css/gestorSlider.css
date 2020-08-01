@@ -1,3 +1,101 @@
+.contenido_sliders{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.datos_slider{
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 4px 4px 8px rgba(187, 187, 187, 0.25);
+    padding: 40px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+
+.txt-titulosGestor{
+    text-decoration: none;
+    color: #5a5c69;
+}
+.txt-titulosGestor:hover{
+    text-decoration: none;
+    color: #3e3f47;
+}
+.elementos_slider_100{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.elementos_slider_imagen{
+    margin-top: 20px;
+    display: flex;
+}
+
+.botones_slider_100{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top:35px;
+    margin-bottom: 20px;
+}
+.botones_slider_derecha{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+.gestor_slider_cancelar{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 19px;
+    color: #1D2120;
+    border: 1px solid #1D2120;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 151px;
+    height: 40px;
+    transition: all 0.3s;
+}
+.gestor_slider_cancelar:hover{
+    width: 156px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+.gestor_slider_guardar{
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 19px;
+    color: #29B390;
+    border: 1px solid #29B390;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 151px;
+    height: 40px;
+    transition: all 0.3s;
+    background-color: transparent;
+}
+.gestor_slider_guardar:hover{
+    width: 156px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
 .all_sliders_80{
     width: 100%;
     display: flex;
