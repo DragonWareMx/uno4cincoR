@@ -1,26 +1,28 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Tienda | Editorial uno4cinco</title>
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
-		<!-- Vendors-->
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
-		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
-		<!-- App & fonts-->
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
+
+    <title>Tienda | Editorial uno4cinco</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
+
+            <!-- Vendors-->
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
+            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
+            <!-- App & fonts-->
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
+            <link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 
-<!--hoja de estilos-->
-<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
+    <!--hoja de estilos-->
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                     
 @endsection
 
@@ -37,16 +39,29 @@
 
         <div class="blog_encabezado">
 
-            @yield('encabezadoTienda')
+            @if(!request('clasificacion') || !request('busqueda'))
+                @yield('encabezadoTienda')
+            @else
+                Resultados de búsqueda
+            @endif
             
             <form class="" action="" method="GET" enctype="multipart/form-data">
                 <div class="blog_barra_busqueda">
-                    <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                        <option value="contenido">Contenido</option>
-                        <option value="autor">Autor</option>
-                        <option value="tag">Tag</option>
-                    </select>
-                    <input type="text" id="busqueda_busqueda" class ="" name="busqueda">
+                    @if(!Route::is('colecciones'))
+                        <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                            <option value="titulo" @if(request('clasificacion') == "titulo") selected @endif>Título</option>
+                            <option value="autor" @if(request('clasificacion') == "autor") selected @endif>Autor</option>
+                            <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
+                            <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
+                            <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
+                            <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
+                        </select>
+                    @else
+                        <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                            <option value="colecciones" @if(request('clasificacion') == "colecciones") selected @endif>Colección</option>
+                        </select>
+                    @endif
+                <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
                     <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -68,7 +83,7 @@
                 <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
                 <div style="display: table; width:100%;">
                     <div class="formato-comprar">
-                        <div class="formato-container shrink">
+                        <div class="formato-container shrink" style="height: 213.8px">
                             <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target="">
                                 <div class="formato">
                                     <p style="padding-top: 20px;">Formato Físico:</p>
@@ -188,12 +203,25 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
-                document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                if(descuento > 0)
+                {
+                    document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioFisico']) + "</div>$" + formatearNumero(descuento);
+                    document.getElementById("ahorroFisico").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                }
+                else{
+                    document.getElementById("precioFisico").innerHTML = "Gratis";
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
             }
             else{
-                document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
-                document.getElementById("ahorroFisico").innerHTML = "";
+                if(libro['precioFisico'] > 0){
+                    document.getElementById("precioFisico").innerHTML = "<div class=\"oferta\"></div>$"+formatearNumero(libro['precioFisico']);
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
+                else{
+                    document.getElementById("precioFisico").innerHTML = "Gratis";
+                    document.getElementById("ahorroFisico").innerHTML = "";
+                }
             }
 
                 //FORMATO DIGITAL
@@ -205,12 +233,25 @@
                 if(descuento < 0)
                     descuento = 0;
 
-                document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
-                document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                if(descuento > 0)
+                {
+                    document.getElementById("precioDigital").innerHTML = "<div class=\"oferta\">$" + formatearNumero(libro['precioDigital']) + "</div>$"+formatearNumero(descuento);
+                    document.getElementById("ahorroDigital").innerHTML = "<p>Ahorras: $"+ formatearNumero(oferta) +"</p>";
+                }
+                else{
+                    document.getElementById("precioDigital").innerHTML = "Gratis";
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
             }
             else{
-                document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
-                document.getElementById("ahorroDigital").innerHTML = "";
+                if(libro['precioDigital'] > 0){
+                    document.getElementById("precioDigital").innerHTML = "$"+formatearNumero(libro['precioDigital']);
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
+                else{
+                    document.getElementById("precioDigital").innerHTML = "Gratis";
+                    document.getElementById("ahorroDigital").innerHTML = "";
+                }
             }
 
             //CHECA DISPONIBILIDAD Y MUESTRA LAS CANTIDADES
@@ -283,10 +324,18 @@
             var number = document.getElementById("cantidadFisico").value;
             
             number--;
+
+            var libro = getLibro(seleccionado);
+            var max = libro['stockFisico'];
             
             //no se deja que la cantidad sea menor a 0
             if(number < 1){
                 number = 1;
+            }
+
+            //no se deja que la cantidad sea menor a 0
+            if(number > max){
+                number = max;
             }
 
             document.getElementById("cantidadFisico").value = number;
@@ -305,6 +354,11 @@
             //no se deja que la cantidad sea menor a 0
             if(number > max){
                 number = max;
+            }
+
+            //no se deja que la cantidad sea menor a 0
+            if(number < 1){
+                number = 1;
             }
 
             document.getElementById("cantidadFisico").value = number;

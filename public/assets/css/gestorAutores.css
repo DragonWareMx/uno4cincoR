@@ -136,6 +136,12 @@
     align-items: center;
     margin-bottom: 10px;
 }
+.div_elementosAuthor50{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    
+}
 .txt_datosAuthor{
     font-family: 'Nunito';
     font-style: normal;
@@ -143,8 +149,12 @@
     font-size: 16px;
     line-height: 22px;
     color: #1D2120;
+    width: 95px !important;
 }
-.input_datosAuthor{
+.txt_datosAuthorFECHA{
+    width: auto !important;
+}
+.input_datosAuthor, .input_datosAuthor50{
     transition: ease 0.3s;
     font-family: 'Nunito';
     font-style: normal;
@@ -161,6 +171,10 @@
     margin-top: -18px;
     width: 100%;
     margin-left: 15px;
+}
+.input_datosAuthor50{
+    margin-top: 0px;
+    width: 84%;
 }
 .dateAuthor{
     width: 40%;
@@ -236,6 +250,24 @@
         width: 30%;
     }
 }
+@media(max-width: 970px){
+    .div_elementosAuthor50{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .input_datosAuthor50{
+        margin-left: 0px;
+        width: 100%;
+        margin-right: 30px;
+    }
+    .txt_datosAuthor{
+        width: 100% !important;
+        margin-top: 0px;
+    }
+    .div_space{
+        display: none;
+    }
+}
 @media(max-width: 820px){
     .div_ItemAutorG{
         width: 45%;
@@ -252,6 +284,9 @@
         font-size: 14px;
     }
     .img_datosAuthor{
+        font-size: 14px;
+    }
+    .input_datosAuthor, .input_datosAuthor50{
         font-size: 14px;
     }
 

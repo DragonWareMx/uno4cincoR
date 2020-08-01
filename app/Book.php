@@ -31,4 +31,8 @@ class Book extends Model
     public function sello(){
         return $this->belongsTo('App\Sello');
     }
+
+    public function collection(){
+        return $this->belongsTo('App\Collection');
+    }
 }

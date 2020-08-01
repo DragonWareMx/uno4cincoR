@@ -138,7 +138,7 @@
                     <tr>
                         <td class="left-tabla-resumen">{{$arregloLibros[0][0]}}</td>
                         <td><div class="center-tabla-resumen" style="background-color: #FFEC40;">{{$arregloLibros[0][1]}}</div></td>
-                        <td class="right-tabla-resumen">{{$arregloLibros[0][2]}}en oferta !</td>
+                        <td class="right-tabla-resumen">{{$arregloLibros[0][2]}}</td>
                     </tr>
                     <tr>
                         <td class="left-tabla-resumen">{{$arregloLibros[1][0]}}</td>
@@ -200,7 +200,7 @@
     @endphp
     @if ($yearf==$añoSelec)
         @php
-            $sumaVentasTotales[$monthf]+=$venta->precio;
+            $sumaVentasTotales[$monthf]+=($venta->precio * $venta->cantidad);
         @endphp
   @endif
 @endforeach

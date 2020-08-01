@@ -1,0 +1,230 @@
+body {
+    font-family: Karla;
+}
+
+label{
+    display: inherit;
+}
+
+.label-before, .field input:not([value=""]) + label::before, .field input:focus + label::before {
+    line-height: 20px;
+    font-size: 12px;
+    top: -10px;
+    background: #fff;
+    padding: 0 6px;
+    left: 9px;
+}
+
+.field {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+.field label::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 15px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #777;
+    transition: 300ms all;
+}
+.field input {
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.field input:focus {
+    outline: 0;
+    border-color: blue;
+}
+.field input:not([value=""]) + label::before {
+    content: attr(data-title);
+}
+.field input:focus + label::before {
+    color: blue;
+}
+
+.field select{
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 42px;
+}
+
+.field select + label::before{
+    line-height: 20px;
+    font-size: 12px;
+    top: -10px;
+    background: #fff;
+    padding: 0 6px;
+    left: 9px;
+}
+  
+
+
+/*-- COMPRA --*/
+
+.Input-50{
+    width: 50%;
+}
+
+.row-p{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.row-m{
+    margin-top: 36px;
+}
+
+.compra-header{
+    width: 90%;
+    max-width: 1440px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.compra-header .logo img{
+    width: 200px;
+    height: auto;
+}
+
+.compra-table{
+    width: 90%;
+    max-width: 1440px;
+    margin: auto;
+    display: table;
+    margin-top: 30px;
+}
+
+.compra-table .compra-cell{
+    display: table-cell;
+    width: fit-content;
+    vertical-align: top;
+}
+
+.cell-80{
+    width: 60% !important;
+}
+
+.cell-20{
+    width: 40% !important;
+}
+
+.formulario-container{
+    width: 50%;
+    margin: auto;
+}
+
+.compra-container{
+    width: 100%;
+    border: 1px solid #29B390;
+    box-sizing: border-box;
+    border-radius: 5px;
+    
+    text-align: center;
+}
+
+.productos-compra{
+    width: 90%;
+    margin: auto;
+}
+
+.compra-container h1{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    
+    color: #000000;
+}
+
+.compra-container p b{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    
+    color: #000000;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.compra-container p{
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 21px;
+    
+    color: #000000;
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.producto-table{
+    width: 100%;
+    display: table;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.producto-cell{
+    display: table-cell;
+    width: fit-content;
+    border-bottom: 1px solid black;
+}
+
+.producto-row{
+    display: table-row;
+    width: 100%;
+}
+
+.imagen-producto{
+    width: 10%;
+    height: auto;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+.imagen-producto img{
+    width: 100%;
+    height: auto;
+}
+
+.contenido-producto{
+    width: 40%;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+.contenido-producto-sm{
+    width: 10%;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media(max-width: 1100px){
+    .compra-table .compra-cell{
+        display: table-row;
+        width: fit-content;
+        vertical-align: top;
+    }
+}

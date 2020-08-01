@@ -40,12 +40,12 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Fecha Nacimiento:</p>
-                    <input name="nacimiento" class="input_datosAuthor dateAuthor" type="date" value="{{$autor->fechaNac}}" required autofocus>
+                    <input name="nacimiento" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{$autor->fechaNac}}" required autofocus>
                 </div>
 
                 <div class="div_elementosAuthor" style="margin-bottom: 25px">
                     <p class="txt_datosAuthor">Fecha Muerte:</p>
-                    <input name="muerte" class="input_datosAuthor dateAuthor dateMuerteAuthor" type="date" value="{{$autor->fechaMuerte}}"  autofocus>
+                    <input name="muerte" style="margin-left: 0px" class="input_datosAuthor dateAuthor dateMuerteAuthor" type="date" value="{{$autor->fechaMuerte}}"  autofocus>
                 </div>
 
                 <div class="div_elementosAuthor">
