@@ -19,6 +19,16 @@ class gestorSlidersController extends Controller
     }
     public function addSlider($tipo){
         $Banners=Banner::where('tipo',$tipo)->get();
-        return view('gestor.addSlider', ['banners'=>$Banners]);
+
+        if($tipo=='libro'){
+            $Relaciones=Book::get();
+            $aux=true;
+        }
+        else{
+            $Relaciones=Author::get();
+            $aux=false;
+        }
+        
+        return view('gestor.addSlider', ['banners'=>$Banners, 'relaciones'=>$Relaciones, 'aux'=>$aux]);
     }
 }

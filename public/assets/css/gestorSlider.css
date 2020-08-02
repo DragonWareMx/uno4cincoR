@@ -16,6 +16,20 @@
     padding-bottom: 10px;
     background-color: white;
 }
+.elementos_slider{
+    font-family: "Nunito";
+    font-style: bold;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1D2120;
+}
+
+.div_empareja_elementos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
 .txt-titulosGestor{
     text-decoration: none;
@@ -31,6 +45,24 @@
     align-items: center;
     margin-bottom: 5px;
 }
+.elementos_slider_50{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+
+.imagenes_slider_100{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    margin-bottom: 5px;
+    flex-direction: row;
+}
+
 .elementos_slider_imagen{
     margin-top: 20px;
     display: flex;
@@ -43,6 +75,7 @@
     margin-top:35px;
     margin-bottom: 20px;
 }
+
 .botones_slider_derecha{
     width: 40%;
     display: flex;
@@ -72,6 +105,7 @@
     transition: all 0.3s;
     text-decoration: none;
 }
+
 .gestor_slider_guardar{
     font-family: "Nunito";
     font-style: normal;
@@ -118,6 +152,50 @@
 .title_index{
     width: 270px; line-height: 49px; margin:10px; text-align:left; margin-right: auto; margin-left: 5%;
 }
+
+.txt-AutorLibroBlog{
+    margin-left: 40px;
+}
+.select_slider{
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.4px solid #909090;
+    width: auto;
+    margin-left: 5px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    height: 25px;
+    line-height: 22px;
+    color: #717171;
+    margin-top: -18px;
+    width: 60%;
+}
+.select_slider:focus {
+    outline:none ;
+    outline-width: 0;
+    border-bottom: 0.5px solid #29B390; 
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.select_slider:hover{
+    cursor: pointer;
+}
+
+#banner_existente:hover{
+    cursor: pointer;
+}
+
+.img_banner{
+    width: 40%;
+    margin: 10px;
+}
+.img_banner:hover{
+    cursor: pointer;
+}
+
 .text_title_slider{
     font-family: Nunito;
     font-style: normal;
