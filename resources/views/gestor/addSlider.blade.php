@@ -25,18 +25,24 @@
 <div class="contenido_sliders">
         
     <div class="datos_slider">
-       <form action="##" style="width:100%;" method="POST" enctype="multipart/form-data">
+        
+        @if ($aux)
+        <form action="{{ route('nuevoSlider', ['tipo' => 'libro'])}}" style="width:100%;" method="POST" enctype="multipart/form-data">
+        @else
+        <form action="{{ route('nuevoSlider', ['tipo' => 'autor'])}}" style="width:100%;" method="POST" enctype="multipart/form-data">  
+        @endif
+        
        @csrf
        <div class="elementos_slider_100">
         <div class="elementos_slider_imagen">
             <p class="txt_datosAuthor">Imagen PC (horizontal):</p>
-            <input id="imagenPC" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen" required>
+            <input id="imagenPC" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagenPC" required>
         </div>
         </div>
         <div class="elementos_slider_100">
             <div class="elementos_slider_imagen">
                 <p class="txt_datosAuthor">Imagen celular (vertical):</p>
-                <input id="imagenCell" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen" required>
+                <input id="imagenCell" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagenCell" required>
             </div>
         </div>
         <div class="div_empareja_elementos">
@@ -66,6 +72,7 @@
                     <img src="{{asset('storage/banners/'.$banner->imagenPC)}}" style="width: 100%">
                 </div>
                 @endforeach
+                <input class="input_invisible" name="imgSelected" style="display: none" value="">
         </div>
 
         <div class="botones_slider_100">
@@ -100,7 +107,6 @@
                 //previewContainer.style.width="auto";
                 //previewContainer.style.height="auto";
                 //previewContainer.style.border="none";
-
             });
             reader.readAsDataURL(file);
         }
@@ -124,6 +130,7 @@
                 $('#imagenPC').prop('required', true);
                 $('#imagenCell').prop('required', true); 
                 $('.select_slider').prop('required', true); 
+                $('.input_invisible').removeAttr('required');
                 $('#'+control+"").css({'opacity':'1','border':'none'}); 
                 clickBanner=false;
                 clickSelect=false;
@@ -137,6 +144,7 @@
                 $('#imagenPC').removeAttr('required');
                 $('#imagenCell').removeAttr('required'); 
                 $('.select_slider').removeAttr('required'); 
+                $('.input_invisible').prop('required', true);
                 clickBanner=true;
             }
         });
@@ -146,18 +154,21 @@
             if(clickSelect){
                 if (control==this.id){
                     $('#'+this.id+"").css({'opacity':'1','border':'none'});
+                    $('.input_invisible').val(null);
                     control=0;
                     clickSelect=false;
                 }
                 else{
                     $('#'+control+"").css({'opacity':'1','border':'none'});
                     $('#'+this.id+"").css({'opacity':'0.6','border':'solid blue'});
+                    $('.input_invisible').val(this.id);
                     control=this.id;
                     clickSelect=true;
                 }
             }
             else{
                 $('#'+this.id+"").css({'opacity':'0.6','border':'solid blue'});
+                $('.input_invisible').val(this.id);
                 control=this.id;
                 clickSelect=true;
             }   

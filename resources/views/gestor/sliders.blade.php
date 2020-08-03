@@ -36,12 +36,13 @@
                             -o-background-size: 100% 100%;
                             -webkit-background-size: 100% 100%;">
                         </div>
+
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                        </form>
                     
-                    <a href="" id="boton_delete" class="boton_delete_libros">
-                        <div class="all_sliders_mueve" style="">
-                            <i class="fas fa-trash-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Eliminar
-                        </div>
-                    </a>
                     </div>
                     </div>
                 @else
@@ -53,12 +54,11 @@
                             -o-background-size: 100% 100%;
                             -webkit-background-size: 100% 100%;">
                         </div>
-                        
-                        <a href="" id="boton_delete" class="boton_delete_libros">
-                            <div class="all_sliders_mueve" style="">
-                                <i class="fas fa-trash-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Eliminar
-                            </div>
-                        </a>
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                        </form>  
                     </div>
 
                     </div>  
@@ -101,11 +101,11 @@
                             -o-background-size: 100% 100%;
                             -webkit-background-size: 100% 100%;">
                         </div>
-                        <a href="" id="boton_delete" class="boton_delete_autores">
-                            <div class="all_sliders_mueve" style="">
-                                <i class="fas fa-trash-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Eliminar
-                            </div>
-                        </a>
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                        </form>
                     </div>    
                     </div>
                 @else
@@ -117,11 +117,11 @@
                             -o-background-size: 100% 100%;
                             -webkit-background-size: 100% 100%;">
                         </div>
-                        <a href="" id="boton_delete" class="boton_delete_autores">
-                            <div class="all_sliders_mueve" style="">
-                                <i class="fas fa-trash-alt icono_small_blogs"></i>&nbsp;&nbsp;&nbsp;Eliminar
-                            </div>
-                        </a>
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                        </form>
                         </div>
                     </div>      
                 @endif

@@ -13,8 +13,8 @@ class paginaInicioController extends Controller
     //
     public function index(){
         
-        $BannerLibros=Banner::where('tipo','libro')->get();
-        $BannerAutores=Banner::where('tipo','autor')->get();
+        $BannerLibros=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
+        $BannerAutores=Banner::where('tipo','autor')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
         $BannerBlogs=Banner::where('tipo','blog')->get();
         $Libros=Book::get();
         $Autores=Author::get();

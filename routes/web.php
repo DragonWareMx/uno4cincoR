@@ -69,8 +69,10 @@ Route::post('/adminuno4cinco/libros-nuevo','gestorLibrosController@storeBook')->
 Route::delete('/adminuno4cinco/libros-borrar/{id}','gestorLibrosController@deleteBook')->name('libros-borrar');
 
 /*RUTAS DE GESTION DE SLIDERS*/
-Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders')->middleware('auth');
-Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSlider')->name('nuevoSlider')->middleware('auth');
+Route::get('/adminuno4cinco/sliders', 'gestorSlidersController@index')->name('verSliders');
+Route::get('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@addSlider')->name('nuevoSlider');
+Route::post('/adminuno4cinco/crearSlider/{tipo}', 'gestorSlidersController@storeSlider')->name('nuevoSlider');
+Route::patch('/adminuno4cinco/editarSlider/{id}', 'gestorSlidersController@updateSlider')->name('editarSlider');
 
 /*RUTAS DE GESTIÓN DE RESUMEN*/
 Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('resumen');
