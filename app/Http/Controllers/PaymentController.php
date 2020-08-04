@@ -173,15 +173,18 @@ class PaymentController extends Controller
         $item_list->setShippingAddress($shippingAddress);
 
         $envio=Tipoenvio::findOrFail($request->envio);
-        $details = new Details();
-        $details->setSubtotal($request->subtotal)
-                ->setShipping($envio->costo);
+        if($request->envio){
+            $details = new Details();
+            $details->setSubtotal($request->subtotal)
+                    ->setShipping($envio->costo);
+        }
 
         $amount = new Amount();
         $amount->setTotal($request->total);
         $amount->setCurrency('MXN');
-        $amount->setDetails($details);
-
+        if($request->envio){
+            $amount->setDetails($details);
+        }
         $transaction = new Transaction();
         $transaction->setAmount($amount);
         $transaction->setDescription('Compra en uno4cinco.com');
