@@ -9,6 +9,17 @@
 @endsection
 
 @section('contenido')
+@if (session()->has('success'))
+    <script>
+        alert('Ya hay 5 banners en este carrusel. Elimina uno e intenta de nuevo');
+    </script>
+@endif
+@if (session()->has('success2'))
+    <script>
+        alert('No puedes eliminar más banners. Debe haber al menos 2 en cada carrusel');
+    </script>
+@endif
+    
     <div class="all_sliders_80">
         <div class="all_sliders_menu_busqueda">
             <div class="h3 mb-0 text-gray-800"><a href="{{ route('verSliders') }}"> Sliders</a></div>
@@ -104,7 +115,7 @@
                         <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
                             @csrf
                             @method('patch')
-                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
                         </form>
                     </div>    
                     </div>
@@ -120,7 +131,7 @@
                         <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
                             @csrf
                             @method('patch')
-                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
                         </form>
                         </div>
                     </div>      

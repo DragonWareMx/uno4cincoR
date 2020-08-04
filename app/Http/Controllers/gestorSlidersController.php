@@ -19,18 +19,29 @@ class gestorSlidersController extends Controller
     }
 
     public function addSlider($tipo){
-        $Banners=Banner::where('tipo',$tipo)->where('active','inactivo')->get();
 
-        if($tipo=='libro'){
-            $Relaciones=Book::get();
-            $aux=true;
+        $Banners=Banner::where('tipo',$tipo)->where('active','inactivo')->get();
+        $Activos=Banner::where('tipo',$tipo)->where('active','activo')->count();
+
+        if($Activos<5){
+            if($tipo=='libro'){
+                $Relaciones=Book::get();
+                $aux=true;
+            }
+            else{
+                $Relaciones=Author::get();
+                $aux=false;
+            }
+            
+            return view('gestor.addSlider', ['banners'=>$Banners, 'relaciones'=>$Relaciones, 'aux'=>$aux]);
         }
         else{
-            $Relaciones=Author::get();
-            $aux=false;
+
+            return redirect()->route('verSliders')->with('success',true);
+
         }
-        
-        return view('gestor.addSlider', ['banners'=>$Banners, 'relaciones'=>$Relaciones, 'aux'=>$aux]);
+
+       
     }
 
     public function storeSlider($tipo)
@@ -94,18 +105,25 @@ class gestorSlidersController extends Controller
     }
 
     public function updateSlider($id){
-  
-        try{
-                $banner=Banner::findOrFail($id);
+        $banner=Banner::findOrFail($id);
+        $Activos=Banner::where('tipo',$banner->tipo)->where('active','activo')->count();
+
+        if($Activos>2){
+            try{
+                
                 $banner->active='inactivo';
-
                 $banner->save();
-        }
-        catch(QueryException $ex){
-            return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo actualizar el slider!']);
-        }
+            }
+            catch(QueryException $ex){
+                return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo actualizar el slider!']);
+            }
 
-        return redirect()->route('verSliders');
+            return redirect()->route('verSliders');
+        }
+        else{
+            return redirect()->route('verSliders')->with('success2',true);
+        }
+        
     }
 
 }

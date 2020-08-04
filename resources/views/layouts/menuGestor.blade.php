@@ -123,10 +123,11 @@
         </a>
         <div id="collapseSliders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Ver Sliders</a>
+          <a class="collapse-item" href="{{ route('verSliders') }}">Ver Sliders</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Categorías:</h6>
-            <a class="collapse-item" href="#">Agregar Sliders</a>
+            <a class="collapse-item" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar Banner Libro</a>
+            <a class="collapse-item" href="{{ route('nuevoSlider', ['tipo' => 'autor'])}}">Agregar Banner Autor</a>
           </div>
         </div>
       </li>
