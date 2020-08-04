@@ -310,8 +310,8 @@
                                         </div>
                                     </div>
                                     {{-- <input type="submit" value="Realizar compra" class="shrink"> --}}
-                                    <button type="submit" class="shrink" name="action" value="paypal">Pago con Paypal</button>
-                                    <button type="submit" class="shrink" name="action" value="bancaria">Pago con transferencia o deposito bancario</button>
+                                    <button type="submit" class="boton_compra shrink" name="action" value="paypal">Pago con Paypal</button>
+                                    <button type="submit" class="boton_compra shrink" name="action" value="bancaria">Pago con transferencia o deposito bancario</button>
                                 @else
                                     <h1>No hay productos en su carrito</h1>
                                     <button onclick="location.href='{{ route('tiendaCatalogo') }}'">Regresar a la tienda</button>
