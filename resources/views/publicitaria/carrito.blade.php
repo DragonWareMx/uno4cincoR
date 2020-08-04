@@ -262,8 +262,8 @@
                     </div>
                 </div>
             @else
-                <div class="carrito-vacio">
-                    <p>No tienes productos en tu carrito</p>
+                <div class="carrito-vacio" style="min-height: 413px; text-align: center; width:100%;">
+                    <p style="padding-top:200px">No tienes productos en tu carrito</p>
                     <a href="{{ route('tiendaCatalogo') }}" class="shrink">Ir a la tienda</a>
                 </div>
             @endif
