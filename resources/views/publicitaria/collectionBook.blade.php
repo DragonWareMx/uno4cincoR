@@ -9,6 +9,11 @@
 @endsection
 
 @section('contenidoTienda')
+    <div class="container">
+        <div class="row">
+            <p style="text-align: justify; text-align-last: center; width:100%;">{{ $collection->descripcion }}</p>
+        </div>
+    </div>
 
     @include('subview.tiendaLibro')
 
