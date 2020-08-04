@@ -15,10 +15,13 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Exception\PayPalConnectionException;
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
+use PayPal\Api\Details;
 use App\Book;
 use App\Sell;
 use App\Book_Sell;
 use App\Mail\SendMailable;
+use App\Mail\SendMailableTransfer;
+use App\Tipoenvio;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -45,7 +48,7 @@ class PaymentController extends Controller
             'fname'=>'required|max:200',
             'lname'=>'required|max:200',
             'email'=>'required|email',
-            'age'=>'required|numeric|min:5',
+            'age'=>'required|numeric|min:5|max:105',
             'genero'=>'required',
             'tel'=>'required|numeric',
             'country'=>'required',
@@ -56,6 +59,60 @@ class PaymentController extends Controller
             'numCasa'=>'nullable|numeric',
             'cp'=>'required|numeric',
         ]);
+        if($request->action=='bancaria'){
+            $sell=new Sell();
+            $mytime = Carbon::now();
+            $sell->status='pendiente';
+            $sell->nombreCliente=trim($request->fname)." ".trim($request->lname);
+            $sell->edad=$request->age;
+            $sell->pais=$request->country;
+            $sell->genero=$request->genero;                                               
+            $sell->ciudad=$request->ciudad;
+            $sell->estado=$request->state;
+            $sell->correo=$request->email;
+            $sell->formaPago="2";
+            $sell->comprobantePago="0";
+            $sell->telefono=$request->tel;
+            $sell->direccion=$request->calle." ".$request->numCasa." ".$request->colonia;
+            $sell->fecha=$mytime->toDateString();
+            if($request->envio){
+                $envio=Tipoenvio::findOrFail($request->envio);    
+                $sell->precio_envio=$envio->costo;
+                $sell->nombre_envio=$envio->nombre.' - '.$envio->descripcion;
+            }
+            $sell->save();
+
+            
+
+            foreach (session('cart') as $id => $details) {
+                $libro=Book::findOrFail($id);
+                if ($details['cantidadFisico'] > 0) {
+                    $compra=new Book_Sell();
+                    $compra->book_id=$libro->id;
+                    $compra->sell_id=$sell->id;
+                    $compra->precio=number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "" );
+                    $compra->digital="0";
+                    $compra->cantidad=$details['cantidadFisico'];
+                    $compra->save();
+                    $libro->stockFisico=$libro->stockFisico-$details['cantidadFisico'];
+                    $libro->save();
+                }
+                if ($details['cantidadDigital'] > 0) {
+                    $compra=new Book_Sell();
+                    $compra->book_id=$libro->id;
+                    $compra->sell_id=$sell->id;
+                    $compra->precio=number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "" );
+                    $compra->digital="1";
+                    $compra->cantidad=$details['cantidadDigital'];
+                    $compra->save();
+                }
+            }
+
+            Mail::to($sell->correo)->send(new SendMailableTransfer($sell->id));
+            session()->forget('cart');
+            $status="Gracias!  Se te enviará un correo electrónico con los pasos a seguir.";
+            return redirect()->route('tiendaCatalogo')->with(compact('status'));
+        }
         // After Step 2
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
@@ -72,7 +129,7 @@ class PaymentController extends Controller
                         $items[$contador]->setName($libro->titulo.' (Físico - Preventa)') /** item name **/
                                     ->setCurrency('MXN')
                                     ->setQuantity($details['cantidadFisico'])
-                                    ->setPrice( number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "," ) ); 
+                                    ->setPrice( number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100)), 2 , ".", "" ) ); 
                         $contador++;
                     }
                     if ($details['cantidadDigital'] > 0) {
@@ -80,7 +137,7 @@ class PaymentController extends Controller
                         $items[$contador]->setName($libro->titulo.' (Digital - Preventa)') /** item name **/
                                     ->setCurrency('MXN')
                                     ->setQuantity($details['cantidadDigital'])
-                                    ->setPrice(number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," )); 
+                                    ->setPrice(number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "" )); 
                     }
                 }
             }
@@ -94,6 +151,7 @@ class PaymentController extends Controller
         Session::put('age', $request->age);
         Session::put('genero', $request->genero);
         Session::put('telefono', $request->tel);
+        Session::put('envio', $request->envio);
         //lista de paises
         $country=[["AF","Afghanistan"],["AL","Albania"],["DZ","Algeria"],["DS","American Samoa"],["AD","Andorra"],["AO","Angola"],["AI","Anguilla"],["AQ","Antarctica"],["AG","Antigua and Barbuda"],["AR","Argentina"],["AM","Armenia"],["AW","Aruba"],["AU","Australia"],["AT","Austria"],["AZ","Azerbaijan"],["BS","Bahamas"],["BH","Bahrain"],["BD","Bangladesh"],["BB","Barbados"],["BY","Belarus"],["BE","Belgium"],["BZ","Belize"],["BJ","Benin"],["BM","Bermuda"],["BT","Bhutan"],["BO","Bolivia"],["BA","Bosnia and Herzegovina"],["BW","Botswana"],["BV","Bouvet Island"],["BR","Brazil"],["IO","British Indian Ocean Territory"],["BN","Brunei Darussalam"],["BG","Bulgaria"],["BF","Burkina Faso"],["BI","Burundi"],["KH","Cambodia"],["CM","Cameroon"],["CA","Canada"],["CV","Cape Verde"],["KY","Cayman Islands"],["CF","Central African Republic"],["TD","Chad"],["CL","Chile"],["CN","China"],["CX","Christmas Island"],["CC","Cocos (Keeling) Islands"],["CO","Colombia"],["KM","Comoros"],["CG","Congo"],["CK","Cook Islands"],["CR","Costa Rica"],["HR","Croatia (Hrvatska)"],["CU","Cuba"],["CY","Cyprus"],["CZ","Czech Republic"],["DK","Denmark"],["DJ","Djibouti"],["DM","Dominica"],["DO","Dominican Republic"],["TP","East Timor"],["EC","Ecuador"],["EG","Egypt"],["SV","El Salvador"],["GQ","Equatorial Guinea"],["ER","Eritrea"],["EE","Estonia"],["ET","Ethiopia"],["FK","Falkland Islands (Malvinas)"],["FO","Faroe Islands"],["FJ","Fiji"],["FI","Finland"],["FR","France"],["FX","France, Metropolitan"],["GF","French Guiana"],["PF","French Polynesia"],["TF","French Southern Territories"],["GA","Gabon"],["GM","Gambia"],["GE","Georgia"],["DE","Germany"],["GH","Ghana"],["GI","Gibraltar"],["GK","Guernsey"],["GR","Greece"],["GL","Greenland"],["GD","Grenada"],["GP","Guadeloupe"],["GU","Guam"],["GT","Guatemala"],["GN","Guinea"],["GW","Guinea-Bissau"],["GY","Guyana"],["HT","Haiti"],["HM","Heard and Mc Donald Islands"],["HN","Honduras"],["HK","Hong Kong"],["HU","Hungary"],["IS","Iceland"],["IN","India"],["IM","Isle of Man"],["ID","Indonesia"],["IR","Iran"],["IQ","Iraq"],["IE","Ireland"],["IL","Israel"],["IT","Italy"],["CI","Ivory Coast"],["JE","Jersey"],["JM","Jamaica"],["JP","Japan"],["JO","Jordan"],["KZ","Kazakhstan"],["KE","Kenya"],["KI","Kiribati"],["KP","North Korea"],["KR","South Korea"],["XK","Kosovo"],["KW","Kuwait"],["KG","Kyrgyzstan"],["LA","Lao"],["LV","Latvia"],["LB","Lebanon"],["LS","Lesotho"],["LR","Liberia"],["LY","Libyan Arab Jamahiriya"],["LI","Liechtenstein"],["LT","Lithuania"],["LU","Luxembourg"],["MO","Macau"],["MK","Macedonia"],["MG","Madagascar"],["MW","Malawi"],["MY","Malaysia"],["MV","Maldives"],["ML","Mali"],["MT","Malta"],["MH","Marshall Islands"],["MQ","Martinique"],["MR","Mauritania"],["MU","Mauritius"],["TY","Mayotte"],["MX","Mexico"],["FM","Micronesia, Federated States of"],["MD","Moldova, Republic of"],["MC","Monaco"],["MN","Mongolia"],["ME","Montenegro"],["MS","Montserrat"],["MA","Morocco"],["MZ","Mozambique"],["MM","Myanmar"],["NA","Namibia"],["NR","Nauru"],["NP","Nepal"],["NL","Netherlands"],["AN","Netherlands Antilles"],["NC","New Caledonia"],["NZ","New Zealand"],["NI","Nicaragua"],["NE","Niger"],["NG","Nigeria"],["NU","Niue"],["NF","Norfolk Island"],["MP","Northern Mariana Islands"],["NO","Norway"],["OM","Oman"],["PK","Pakistan"],["PW","Palau"],["PS","Palestine"],["PA","Panama"],["PG","Papua New Guinea"],["PY","Paraguay"],["PE","Peru"],["PH","Philippines"],["PN","Pitcairn"],["PL","Poland"],["PT","Portugal"],["PR","Puerto Rico"],["QA","Qatar"],["RE","Reunion"],["RO","Romania"],["RU","Russian Federation"],["RW","Rwanda"],["KN","Saint Kitts and Nevis"],["LC","Saint Lucia"],["VC","Saint Vincent and the Grenadines"],["WS","Samoa"],["SM","San Marino"],["ST","Sao Tome and Principe"],["SA","Saudi Arabia"],["SN","Senegal"],["RS","Serbia"],["SC","Seychelles"],["SL","Sierra Leone"],["SG","Singapore"],["SK","Slovakia"],["SI","Slovenia"],["SB","Solomon Islands"],["SO","Somalia"],["ZA","South Africa"],["GS","South Georgia South Sandwich Islands"],["ES","Spain"],["LK","Sri Lanka"],["SH","St. Helena"],["PM","St. Pierre and Miquelon"],["SD","Sudan"],["SR","Suriname"],["SJ","Svalbard and Jan Mayen Islands"],["SZ","Swaziland"],["SE","Sweden"],["CH","Switzerland"],["SY","Syrian Arab Republic"],["TW","Taiwan"],["TJ","Tajikistan"],["TZ","Tanzania"],["TH","Thailand"],["TG","Togo"],["TK","Tokelau"],["TO","Tonga"],["TT","Trinidad and Tobago"],["TN","Tunisia"],["TR","Turkey"],["TM","Turkmenistan"],["TC","Turks and Caicos Islands"],["TV","Tuvalu"],["UG","Uganda"],["UA","Ukraine"],["AE","United Arab Emirates"],["GB","United Kingdom"],["US","United States"],["UM","United States minor outlying islands"],["UY","Uruguay"],["UZ","Uzbekistan"],["VU","Vanuatu"],["VA","Vatican City State"],["VE","Venezuela"],["VN","Vietnam"],["VG","Virgin Islands (British)"],["VI","Virgin Islands (U.S.)"],["WF","Wallis and Futuna Islands"],["EH","Western Sahara"],["YE","Yemen"],["ZR","Zaire"],["ZM","Zambia"],["ZW","Zimbabwe"]];
         $country_code="";
@@ -114,9 +172,15 @@ class PaymentController extends Controller
         ];
         $item_list->setShippingAddress($shippingAddress);
 
+        $envio=Tipoenvio::findOrFail($request->envio);
+        $details = new Details();
+        $details->setSubtotal($request->subtotal)
+                ->setShipping($envio->costo);
+
         $amount = new Amount();
         $amount->setTotal($request->total);
         $amount->setCurrency('MXN');
+        $amount->setDetails($details);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount);
@@ -178,7 +242,12 @@ class PaymentController extends Controller
             $sell->telefono=Session::get('telefono');
             $sell->direccion=$result->getPayer()->getPayerInfo()->getShippingAddress()->getLine1()." ".
             $result->getPayer()->getPayerInfo()->getShippingAddress()->getLine2();
-            $sell->fecha=$mytime->toDateString();    
+            $sell->fecha=$mytime->toDateString(); 
+            if(Session::get('envio')!=null){
+                $envio=Tipoenvio::findOrFail(Session::get('envio'));    
+                $sell->precio_envio=$envio->costo;
+                $sell->nombre_envio=$envio->nombre.' - '.$envio->descripcion;
+            }   
             $sell->save();
 
             foreach (session('cart') as $id => $details) {
@@ -187,16 +256,18 @@ class PaymentController extends Controller
                     $compra=new Book_Sell();
                     $compra->book_id=$libro->id;
                     $compra->sell_id=$sell->id;
-                    $compra->precio=number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "," );
+                    $compra->precio=number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "" );
                     $compra->digital="0";
                     $compra->cantidad=$details['cantidadFisico'];
                     $compra->save();
+                    $libro->stockFisico=$libro->stockFisico-$details['cantidadFisico'];
+                    $libro->save();
                 }
                 if ($details['cantidadDigital'] > 0) {
                     $compra=new Book_Sell();
                     $compra->book_id=$libro->id;
                     $compra->sell_id=$sell->id;
-                    $compra->precio=number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "," );
+                    $compra->precio=number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "" );
                     $compra->digital="1";
                     $compra->cantidad=$details['cantidadDigital'];
                     $compra->save();

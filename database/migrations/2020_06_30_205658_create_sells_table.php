@@ -28,11 +28,8 @@ class CreateSellsTable extends Migration
             $table->tinyInteger('comprobantePago')->nullable();
             $table->string('direccion',191)->nullable();
             $table->date('fecha');
-            $table->unsignedBigInteger('tipoEnvio_id')->nullable();
-            $table->foreign('tipoEnvio_id')
-                ->references('id')
-                ->on('tipoEnvios')
-                ->onDelete('cascade');
+            $table->float('precio_envio')->nullable();
+            $table->string('nombre_envio')->nullable();
             $table->unsignedBigInteger('promocion_id')->nullable();
             $table->foreign('promocion_id')
                 ->references('id')

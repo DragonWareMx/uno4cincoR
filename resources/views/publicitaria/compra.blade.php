@@ -305,7 +305,8 @@
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
-                                                <input type="hidden" name="total" value="{{ number_format($total, 2 , ".", "," ) }}">
+                                                <input type="hidden"  name="subtotal" value="{{ number_format($total, 2 , ".", "" ) }}">
+                                                <input type="hidden" id="totalHidden" name="total" value="{{ number_format($total, 2 , ".", "" ) }}">
                                             </div>
                                         </div>
                                     </div>
@@ -390,6 +391,8 @@
 
                         //se actualiza el total
                         total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"]);
+
+                        $('#totalHidden').val(totalCosto + envioData["costo"]);
                     }
                 }
                 else{

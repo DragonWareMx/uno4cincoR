@@ -176,7 +176,7 @@
           <!-- start copy -->
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-            <p style="margin: 0;">Hola {{$sell->nombreCliente}}. Gracias por tu compra en uno4cinco realizada el {{date('d-m-Y', strtotime($sell->fecha))}}. <br><br> <strong>Este es tu pedido</strong></p>
+            <p style="margin: 0;">Hola {{$sell->nombreCliente}}. Estás a 2 pasos de completar tu compra en uno4cinco realizada el {{date('d-m-Y', strtotime($sell->fecha))}}. <br><br> <strong>Este es tu pedido</strong></p>
             </td>
           </tr>
           <!-- end copy -->
@@ -229,6 +229,15 @@
             </td>
           </tr>
           <!-- end reeipt table -->
+
+          <tr>
+            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+            <p style="margin: 0;"><strong>Sigue estos para completar tu compra:</strong> <br>   
+                Realiza un depósito/transferencia a la siguiente tarjeta (HSBC): <br> 4213 1693 0270 0925 <br>
+                En cuanto hayas realizado el pago, envíanos tu comprobante al siguiente correo: ventas@uno4cinco.com 
+            </p>
+            </td>
+          </tr>
 
         </table>
         <!--[if (gte mso 9)|(IE)]>
