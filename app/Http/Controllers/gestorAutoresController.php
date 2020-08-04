@@ -70,7 +70,7 @@ class gestorAutoresController extends Controller
         $data=request()->validate([
             'nombre'=>'required|max:191',
             'biografia'=>'required|max:65535',
-            'nacimiento'=>'required|date',
+            'nacimiento'=>'date',
             'muerte'=>'nullable|date',
             'imagen'=>'nullable|image'
         ]);
@@ -124,7 +124,7 @@ class gestorAutoresController extends Controller
         $data=request()->validate([
             'nombre'=>'required|max:191',
             'biografia'=>'required|max:65535',
-            'nacimiento'=>'required|date',
+            'nacimiento'=>'date',
             'muerte'=>'nullable|date',
             'imagen'=>'required|image'
         ]);

@@ -31,7 +31,7 @@
 } 
 .div_autoresTotal{
     width: 305px;
-    height: 231px;
+    height: 380px;
     background: #1D2120;
     text-align: center;
     margin-bottom: 4%;
@@ -54,7 +54,7 @@
 }
 .img_autoresGral{
     width: 100%; 
-    height:80%;
+    height:90%;
     display: flex;
 }
 .hover_autores_item_imagen{
@@ -115,7 +115,7 @@
 }
 .div_apartadoimgAutor{
     width: 100%;
-    height: 300px;
+    height: 450px;
 }
 .div_marcoimgAutor{
     border: solid 1px #1D2120;
@@ -260,47 +260,60 @@
 
 
 /* ------------------------RESPONSIVE-------------------- */
-@media(max-width: 1030px){
-    .div_autoresTotal{
-        width: 250px;
-        height: 180px;
-    }
-    .txt_nombreAutor{
-        font-size: 16px;
+@media(max-width:1280px){
+    .div_apartadoimgAutor{
+        height: 330px;
     }
 }
- @media(max-width: 950px){
-    .div_infoAutor{
-        font-size: 16px;
-    }
-    .div_fechaNacAutor{
-        font-size: 16px;
-    }
+@media(max-width:1170){
     .div_apartadoimgAutor{
-        height: 200px;
+        height: 300px;
     }
-    .txt_obrasAutor{
-        font-size: 22px;
+}
+@media(max-width: 1030px){
+        .div_autoresTotal{
+            width: 250px;
+            height: 335px;
+        }
+        .txt_nombreAutor{
+            font-size: 16px;
+        }
     }
-    .txt-infoCarrusel{
-        font-size: 16px;
+    @media(max-width: 950px){
+        .div_infoAutor{
+            font-size: 16px;
+        }
+        .div_fechaNacAutor{
+            font-size: 16px;
+        }
+        .div_apartadoimgAutor{
+            height: 270px;
+        }
+        .txt_obrasAutor{
+            font-size: 22px;
+        }
+        .txt-infoCarrusel{
+            font-size: 16px;
+        }
     }
- }
 
  @media(max-width: 850px){
-    .div_autoresTotal{
-        width: 220px;
-        height: 160px;
+        .div_autoresTotal{
+            width: 220px;
+            height: 305px;
+        }
+        .txt_nombreAutor{
+            font-size: 14px;
+        }
     }
-    .txt_nombreAutor{
-        font-size: 14px;
+    @media(max-width: 800px){
+        .txt-infoCarrusel{
+            font-size: 14px;
+        }
+        .div_apartadoimgAutor{
+            height: 230px;
+        }
     }
-}
-@media(max-width: 800px){
-    .txt-infoCarrusel{
-        font-size: 14px;
-    }
-}
 @media(max-width: 767px){
     .txt-infoCarrusel{
         font-size: 16px;
@@ -316,7 +329,7 @@
         font-size: 14px;
     }
     .div_apartadoimgAutor{
-        height: 150px;
+        height: 200px;
     }
     .txt_obrasAutor{
         font-size: 20px;
@@ -339,16 +352,38 @@
     .div_contenidoAutor{
         margin-top: 30px;
     }
+    .div_apartadoimgAutor{
+        height: 300px;
+    }
 }
 
 @media(max-width: 490px){
     .div_autoresTotal{
         width: 85%;
-        height: 231px;
+        height: 331px;
+    }
+    .div_apartadoimgAutor{
+        height: 270px;
     }
 } 
-@media(max-width: 4200px){
+@media(max-width: 420px){
     .txt-infoCarrusel{
         font-size: 14px;
+    }
+}
+@media(max-width: 400px){
+    .div_apartadoimgAutor{
+        height: 240px;
+    }
+}
+    @media(max-width: 370px){
+        .div_apartadoimgAutor{
+            height: 200px;
+        }
+    }
+    @media(max-width: 330px){
+        .div_apartadoimgAutor{
+            height: 170px;
+        }
     }
 }

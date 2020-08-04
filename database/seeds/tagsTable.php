@@ -12,25 +12,13 @@ class tagsTable extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'nombre'=>'Cuarentena'
+            'nombre'=>'Eventos'
         ]);
         DB::table('tags')->insert([
-            'nombre'=>'Covid-19'
+            'nombre'=>'Articulos'
         ]);
         DB::table('tags')->insert([
-            'nombre'=>'NoEraPenal'
-        ]);
-        DB::table('tags')->insert([
-            'nombre'=>'AgustínAguilar'
-        ]);
-        DB::table('tags')->insert([
-            'nombre'=>'uno4cinco'
-        ]);
-        DB::table('tags')->insert([
-            'nombre'=>'Tecnología'
-        ]);
-        DB::table('tags')->insert([
-            'nombre'=>'Viledruid'
+            'nombre'=>'Noticias'
         ]);
     }
 }

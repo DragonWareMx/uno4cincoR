@@ -18,17 +18,17 @@ class booksTable extends Seeder
             'precioDigital'=>'100',
             'descuentoFisico'=>'0',
             'descuentoDigital'=>'0',
-            'sinopsis'=>'***',
-            'stockFisico'=>'0',
+            'sinopsis'=>'**',
+            'stockFisico'=>'100',
             'stockDigital'=>'1',
             'linkDescarga'=>'desordenes.txt',
             'portadaImagen'=>'alessC.JPG',
             'bannerImagen'=>'aless.PNG',
             'tiendaImagen'=>'alessC.JPG',
-            'fechaPublicacion'=>'2020-07-06',
+            'fechaPublicacion'=>'2020-08-06',
             'nuevo'=>1,
             'sello_id'=>'1',
-            'paginas'=>'415'
+            'paginas'=>'100'
 
         ]);
         
@@ -40,16 +40,16 @@ class booksTable extends Seeder
             'descuentoFisico'=>'0',
             'descuentoDigital'=>'0',
             'sinopsis'=>'***',
-            'stockFisico'=>'0',
+            'stockFisico'=>'100',
             'stockDigital'=>'1',
             'linkDescarga'=>'manicomio.txt',
             'portadaImagen'=>'estefaniaC.JPG',
             'bannerImagen'=>'estefania.PNG',
             'tiendaImagen'=>'estefaniaC.JPG',
-            'fechaPublicacion'=>'2020-07-05',
+            'fechaPublicacion'=>'2020-08-05',
             'nuevo'=>1,
             'sello_id'=>'1',
-            'paginas'=>'145'
+            'paginas'=>'100'
         ]);
         
         DB::table('books')->insert([
@@ -60,16 +60,16 @@ class booksTable extends Seeder
             'descuentoFisico'=>'0',
             'descuentoDigital'=>'0',
             'sinopsis'=>'***',
-            'stockFisico'=>'0',
+            'stockFisico'=>'100',
             'stockDigital'=>'1',
             'linkDescarga'=>'jordan.txt',
             'portadaImagen'=>'cesarC.JPG',
             'bannerImagen'=>'cesar.PNG',
             'tiendaImagen'=>'cesarC.JPG',
-            'fechaPublicacion'=>'2020-07-07',
+            'fechaPublicacion'=>'2020-08-07',
             'nuevo'=>1,
             'sello_id'=>'1',
-            'paginas'=>'541'
+            'paginas'=>'100'
         ]);
         
         DB::table('books')->insert([
@@ -79,17 +79,19 @@ class booksTable extends Seeder
             'precioDigital'=>'100',
             'descuentoFisico'=>'0',
             'descuentoDigital'=>'0',
-            'sinopsis'=>'***',
-            'stockFisico'=>'0',
+            'sinopsis'=>'Solórzano propone una colección de poemas que no tienen compromiso con nadie, 
+                        que nacieron en una brillante y oscura libertad al mismo tiempo. Quien se asoma a  
+                        su literatura lo hace buscando todo, menos salir ileso.',
+            'stockFisico'=>'79',
             'stockDigital'=>'1',
             'linkDescarga'=>'agustin.txt',
             'portadaImagen'=>'agustinC.JPG',
             'bannerImagen'=>'agustin.PNG',
             'tiendaImagen'=>'agustinC.JPG',
-            'fechaPublicacion'=>'2020-07-08',
+            'fechaPublicacion'=>'2020-08-08',
             'nuevo'=>1,
             'sello_id'=>'1',
-            'paginas'=>'514'
+            'paginas'=>'100'
         ]);
     }
 }

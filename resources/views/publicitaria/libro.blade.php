@@ -118,7 +118,7 @@
                                     $mes=$separa[1];
                                     $dia=$separa[2];
                                 @endphp
-                                {{$dia}}&nbsp;de
+                                {{-- {{$dia}}&nbsp;de --}}
                                 @switch($mes)
                                     @case('01')
                                         Enero&nbsp;de
@@ -161,7 +161,7 @@
                         </p>
 
                         {{-- PAGAINAS --}}
-                        <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p>
+                        {{-- <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p> --}}
 
                         {{-- EDITORIAL --}}
                         <p class="libro-info-res"><b>Editorial: </b>{{ $book->sello->nombre }}</p>
