@@ -194,7 +194,7 @@
                                 <div class="row row-p">
                                     <div class="field">
                                         <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);">
-                                        <label for="referencias" title="Referencias" data-title="Referencias"></label>
+                                        <label for="referencias" title="Referencias (opcional)" data-title="Referencias (opcional)"></label>
                                     </div>
                                 </div>
 
@@ -347,6 +347,8 @@
             //se guarda el total
             var totalCosto = {{ $total }};
             var envios = @json($envios);
+            
+            window.onload = envioSelect;
 
             function getEnvio(id){
                 var envio;
