@@ -7,7 +7,7 @@ use App\Banner;
 use App\Author;
 use App\Book;
 use App\Image;
-use App\BLog;
+use App\Blog;
 
 class paginaInicioController extends Controller
 {
