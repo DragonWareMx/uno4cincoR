@@ -172,8 +172,8 @@ class PaymentController extends Controller
         ];
         $item_list->setShippingAddress($shippingAddress);
 
-        $envio=Tipoenvio::findOrFail($request->envio);
         if($request->envio){
+            $envio=Tipoenvio::findOrFail($request->envio);
             $details = new Details();
             $details->setSubtotal($request->subtotal)
                     ->setShipping($envio->costo);
