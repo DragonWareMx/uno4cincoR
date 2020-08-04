@@ -294,6 +294,32 @@ input[type=submit]{
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
 }
 
+.boton_compra{
+    background: #1D2120;
+    border-radius: 5px;
+    border: 0px;
+
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(255, 255, 255, 0.85);
+
+    width: 90%;
+    margin: auto;
+    padding: 8px 0px;
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+    outline: none;
+
+    transition-duration: .1s, .1s;
+    -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+
+}
+
 .libro-regresar{
     width: 90%;
     max-width: 1169px;

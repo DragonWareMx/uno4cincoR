@@ -726,7 +726,7 @@
                         </div>
                     @else
                         <div class="carousel-item" >
-                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}') center center no-repeat;
+                            <div class="img_carrusel banner_blogs" style="background: url('{{asset('storage/banners/'.$banner->blog->imagen)}}') center center no-repeat;
                                 background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
