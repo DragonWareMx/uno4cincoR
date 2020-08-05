@@ -297,7 +297,7 @@
                                 </div>
 
                                 {{-- BOTONES DE COMPRA --}}
-                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
+                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito</button>
                                 <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
                             @endif
                         </div>
