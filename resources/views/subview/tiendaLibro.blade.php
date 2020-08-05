@@ -42,9 +42,9 @@
                         @if($book->descuentoFisico > 0 || $book->descuentoDigital > 0)
                             <div class="img-oferta">
                                 @if ($book->sello->nombre == 'uno4cinco')
-                                    <img src="{{asset('img/ico/oferta.PNG')}}">
+                                    <img src="{{asset('img/ico/oferta.png')}}">
                                 @else
-                                    <img src="{{asset('img/ico/oferta2.PNG')}}">
+                                    <img src="{{asset('img/ico/oferta2.png')}}">
                                 @endif
                             </div>
                         @endif
@@ -221,16 +221,16 @@
                             {{-- Muestra sello --}}
                             @if ($book->nuevo == 1)
                                 @if ($book->sello->nombre == 'uno4cinco')
-                                    <img src="{{asset('img/ico/signo!.PNG')}}">
+                                    <img src="{{asset('img/ico/signo!.png')}}">
                                 @else
-                                    <img src="{{asset('img/ico/signo2.PNG')}}">
+                                    <img src="{{asset('img/ico/signo2.png')}}">
                                 @endif
                             @endif
                         </div>
 
                         <!--boton de carrito-->
                         <button class="shrink" onclick="comprarCarrito({{ $book->id }})" data-toggle="modal" data-target="#comprarFormato">
-                            <img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito
+                            <img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito
                         </button>
                     </div>
                 </div>
