@@ -7,6 +7,7 @@ use App\Banner;
 use App\Author;
 use App\Book;
 use App\Image;
+use App\Blog;
 
 class paginaInicioController extends Controller
 {
@@ -15,7 +16,7 @@ class paginaInicioController extends Controller
         
         $BannerLibros=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
         $BannerAutores=Banner::where('tipo','autor')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
-        $BannerBlogs=Banner::where('tipo','blog')->get();
+        $BannerBlogs=Blog::orderBy('id', 'desc')->limit(5)->get();
         $Libros=Book::get();
         $Autores=Author::get();
         $Imagenes=Image::get();

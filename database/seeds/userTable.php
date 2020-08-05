@@ -17,5 +17,10 @@ class userTable extends Seeder
             'email'=>'DragonWareOficial@hotmail.com',
             'password'=>bcrypt('viledruid9000')
         ]);
+        DB::table('users')->insert([
+            'name'=>'Cesar Jordán',
+            'email'=>'cesar.jordan@uno4cinco.com',
+            'password'=>bcrypt('L12@16b2@16')
+        ]);
     }
 }

@@ -84,25 +84,6 @@ class bannersTable extends Seeder
                 'book_id'=>'4',
                 'active'=>'activo',
             ]);
-            DB::table('banners')->insert([
-                'tipo'=>'blog',
-                'imagenPC'=>'banner_blogs.jpg',
-                'imagenCell'=>'banner_blogs.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'blog_id'=>'1',
-                'active'=>'activo',
-            ]);
-            DB::table('banners')->insert([
-                'tipo'=>'blog',
-                'imagenPC'=>'banner_blogs.jpg',
-                'imagenCell'=>'banner_blogs.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'blog_id'=>'2',
-                'active'=>'activo',
-            ]);
-           
     }
 
 }

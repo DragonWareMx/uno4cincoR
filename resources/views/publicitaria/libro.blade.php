@@ -118,7 +118,7 @@
                                     $mes=$separa[1];
                                     $dia=$separa[2];
                                 @endphp
-                                {{$dia}}&nbsp;de
+                                {{-- {{$dia}}&nbsp;de --}}
                                 @switch($mes)
                                     @case('01')
                                         Enero&nbsp;de
@@ -161,7 +161,7 @@
                         </p>
 
                         {{-- PAGAINAS --}}
-                        <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p>
+                        {{-- <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p> --}}
 
                         {{-- EDITORIAL --}}
                         <p class="libro-info-res"><b>Editorial: </b>{{ $book->sello->nombre }}</p>
@@ -297,7 +297,7 @@
                                 </div>
 
                                 {{-- BOTONES DE COMPRA --}}
-                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.PNG')}}"> Agregar al carrito</button>
+                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito</button>
                                 <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
                             @endif
                         </div>

@@ -40,7 +40,7 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Fecha Nacimiento:</p>
-                    <input name="nacimiento" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{$autor->fechaNac}}" required autofocus>
+                    <input name="nacimiento" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{$autor->fechaNac}}" autofocus>
                 </div>
 
                 <div class="div_elementosAuthor" style="margin-bottom: 25px">
