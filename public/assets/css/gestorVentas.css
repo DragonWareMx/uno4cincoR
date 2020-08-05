@@ -49,6 +49,7 @@
     font-weight: 300;
     font-size: 14px;
     line-height: 19px;
+    margin-right: 8px;
     color: #000000;
 }
 .grafica-resumenHV{
@@ -63,7 +64,20 @@
     flex-wrap: wrap;
     width: 100%;
 }
-
+.txt-updateVenta{
+    color: #29B390;
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+    float: right;
+}
+.txt-updateVenta:hover{
+    color: #12745b;
+}
+.select_estatusVentas{
+    border: none;
+    background-color: transparent;
+    height: 20px;
+}
 
 @media(max-width:1050px){
     .div_GeneralHV{

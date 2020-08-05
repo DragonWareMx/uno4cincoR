@@ -22,57 +22,106 @@
         </div>
 
         <div class="div_detallesVentas">
-          <p class="txt-titulosHV" style="text-align: center;">ID de venta:&nbsp;540</p> <p>
+          <p class="txt-titulosHV" style="text-align: center; margin-top:10px" id="id">ID de venta:&nbsp;540</p> <p>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Estatus:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <select class="txt-informacionHV select_estatusVentas">
+              <option value="fisico">En espera de pago</option> 
+              <option value="fisico/digital">Envío pendiente</option>
+              <option value="digital">Envío en camino</option>
+              <option value="digital">Completado</option>
+              <option value="" selected="selected" id="estatus" hidden></option>
+            </select>
           </div>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Fecha:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <p class="txt-informacionHV" id="fecha"></p>
           </div>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Total:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <p class="txt-informacionHV" id="total"></p>
           </div>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Descripción:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <p class="txt-informacionHV" id="desc"></p>
           </div>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Tipo de pago:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <p class="txt-informacionHV" id="tipo"></p>
           </div>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
-            <p class="txt-informacionHV">Envío en camino</p>
+            <p class="txt-informacionHV" id="detalles"></p>
           </div>
-          <div class="div_registroVentas">
-            <a class="txt-titulosHV" href="" style="float: right">Actualizar</a>
-          </div>
+          
+            <a class="txt-titulosHV txt-updateVenta" href="" >Actualizar</a>
+          <br>
         </div>
     </div>
-
-    <div class="table-responsive div_tablaHV" style="height: 380px; overflow-y:scroll; ">
+    
+    <div class="table-responsive div_tablaHV" style="height: auto; overflow-y:scroll; ">
       <table class="table table-bordered table-hover tbody tr:hover" id="dataTable" width="100%" cellspacing="0">
           <thead>
               <tr>
-              <th style="background-color: #8b8b8b; color:white">ID</th>
-              <th style="background-color: #8b8b8b; color:white">Total de muertes</th> 
+              <th>ID</th>
+              <th>Estatus</th> 
+              <th>Fecha</th> 
+              <th>Total</th> 
+              <th>Descripción</th> 
+              <th>Tipo de pago</th> 
+              <th>Detalles del comprador</th> 
               </tr>
           </thead>
           <tbody>
                   <tr>
-                  <td>cvcv</td>
-                  <td>fvccv</td>
-                  </tr>    
-              
+                    <td id="idPedido">5</td>
+                    <td >Completado</td>
+                    <td >05/08/2020</td> 
+                    <td >850</td> 
+                    <td >Lorem ipsum dolor sit amet consectetur adipisicing elit. A hic consequatur numquam. Quasi voluptate vel, ad incidunt maxime, assumenda ut, debitis eum mollitia dolorum eius ullam ex sit sequi quaerat.</td> 
+                    <td >Paypal</td> 
+                    <td >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quibusdam dolorem dicta voluptate voluptatum ut laborum illum beatae atque tempore minima, doloribus nemo a reiciendis? Atque voluptatum dicta hic necessitatibus!</td> 
+                  </tr>                   
           </tbody>
       </table>
     </div>
 
-
+    {{-- PEDIDO --}}
     <script>
+      $(document).ready(function() {
+          var table= $('#dataTable').DataTable();   
+  
+          setTimeout(function(){
+                  document.getElementById('idPedido').click();
+              },10);
+     
+      $('#dataTable tbody').on('click', 'tr', function () {
+          var data = table.row( this ).data();
+          $("#id").html("ID de venta: "+data[0]);
+          $("#estatus").html(data[1]);
+          $("#fecha").html(data[2]);
+          $("#total").html(data[3]);
+          $("#desc").html(data[4]);
+          $("#tipo").html(data[5]);
+          $("#detalles").html(data[6]);
+
+          // $(".city").html("Ciudad: "+data[5]);
+          // $(".phone").html("Teléfono: "+data[3]);
+          // $(".mail").html("Correo: "+data[4]);
+          // $(".status").html("Precio: "+data[6]);
+          // $(".date").html("Fecha: "+data[2] +"<a href='/sgtepetate/revisarpedido/"+data[0]+"'>"+
+          //                                     "<input type='button' value='&#x2713; &nbsp;&nbsp;&nbsp;Revisar&nbsp;' class='btn-pedidoRevisado' style='background-color:#207558; border:none; color:white; float:right; width:130px; height:35px; border-radius:4%'';></a>");
+  
+      $(".container-fluid_datosl").show();  
+      $('html, body').animate({ scrollTop: 80 }, 500);
+      });
+  } );
+  </script>
+
+
+
+    {{-- GRAFICA --}}
+    <script>  
       new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
