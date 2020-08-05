@@ -41,6 +41,13 @@ class PaymentController extends Controller
                 $payPalConfig['secret']      // ClientSecret
             )
         );
+
+        $this->apiContext->setConfig([
+            'mode' => 'live',
+                'log.LogEnabled' => true,
+                'log.FileName' => 'PayPal.log',
+                'log.LogLevel' => 'FINE'
+        ]);
     }
 
     public function payWithPayPal(Request $request){
