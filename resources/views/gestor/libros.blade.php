@@ -64,9 +64,9 @@
                     @if($book->descuentoFisico > 0 || $book->descuentoDigital > 0)
                         <div class="img-oferta">
                             @if ($book->sello->nombre == 'uno4cinco')
-                                <img src="{{asset('img/ico/oferta.PNG')}}">
+                                <img src="{{asset('img/ico/oferta.png')}}">
                             @else
-                                <img src="{{asset('img/ico/oferta2.PNG')}}">
+                                <img src="{{asset('img/ico/oferta2.png')}}">
                             @endif
                         </div>
                     @endif
@@ -146,9 +146,9 @@
                         {{-- Muestra sello --}}
                         @if ($book->nuevo == 1)
                             @if ($book->sello->nombre == 'uno4cinco')
-                                <img src="{{asset('img/ico/signo!.PNG')}}">
+                                <img src="{{asset('img/ico/signo!.png')}}">
                             @else
-                                <img src="{{asset('img/ico/signo2.PNG')}}">
+                                <img src="{{asset('img/ico/signo2.png')}}">
                             @endif
                         @endif
                     </div>
