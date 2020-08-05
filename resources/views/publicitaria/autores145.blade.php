@@ -109,7 +109,7 @@
             -webkit-background-size: cover;">
                 <div class="hover_autores_item_imagen">
                     <div class="leer_mas_boton_autores">
-                    <a href="{{ route('autor', ['id'=>$uno4cinco->id])}}">Leer más</a>
+                    <a href="{{ route('autor', ['id'=>$uno4cinco->id])}}" style="width: 100%">Leer más</a>
                     </div>
                 </div>
             </div> 

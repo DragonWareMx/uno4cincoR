@@ -400,14 +400,23 @@
     font-family: Karla;
     font-style: normal;
     font-weight: normal;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 13px;
-    float: right;
-    color: #1D2120;
+    float: left; 
+    color: #2f3131;
     margin-top: 50px;
+}
+.btn_regresar:hover{
+    color: #29B390;
 }
 .imagen_busqueda_boton{
     width: 100%;
+}
+.div_contenidoBack2{
+    margin-top: 0px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -543,6 +552,9 @@
 @media(max-width:570px){
     .blog_item{
         width: 85%;
+    }
+    .btn_regresar{
+        font-size: 12px;
     }
 }
 @media (max-width: 550px){

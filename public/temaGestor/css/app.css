@@ -3154,7 +3154,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #207558;
+  color: #181A2B;
   text-decoration: none;
 }
 
@@ -5068,8 +5068,8 @@ input[type=button].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #207558;
-  border-color: #207558;
+  background-color: #181A2B;
+  border-color: #181A2B;
 }
 
 .page-item.disabled .page-link {

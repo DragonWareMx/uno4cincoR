@@ -3,6 +3,7 @@
 @section('header')
 <title>Blogs | Editorial uno4cinco</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
@@ -145,17 +146,17 @@
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}};src=sdkpreparse" target="_blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="blank"><img src="{{ asset('img/ico/twt.png') }}" width="22px"></a>
                 
-                
-                
-                <a class="btn_regresar" href="{{ route('blogs', ['id' => 0])}}">
-                        <i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
-                        <br>
-                        Regresar
-                    </a>
-                
                 </div>
             
             </div>
         </div>
+        <div class="div_contenidoBack2">
+            <a class="btn_regresar" href="{{ route('blogs', ['id' => 0])}}">
+                &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
+                <br>
+                Regresar
+            </a>
+        </div>
+        <br>
     </section>
 @endsection

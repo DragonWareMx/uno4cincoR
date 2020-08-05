@@ -23,8 +23,6 @@
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     
-
-
     <div class="div_contenidoAutor">
         <div class="div_imagenAutor">
             <div class="div_apartadoimgAutor">
@@ -94,46 +92,55 @@
             {{$autor->descripcion}}       
         </div>
     </div>
-    <p class="txt_obrasAutor">Obras</p>
-
-
+    
     {{-- <div class="container"> --}}
-        <div class="row">
-            <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                <div class="MultiCarousel-inner">@foreach ($autor->books as $book)
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="div_portadapad15">
+    @if(count($autor->books) !=0)
+    <p class="txt_obrasAutor">Obras</p>
+    <div class="row">
+        <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+                @foreach ($autor->books as $book)
+                <div class="item" onclick="window.location.href='{{ route('libro',['id' => $book->id]) }}'"> 
+                    <div class="pad15">
+                        <div class="div_portadapad15">
                             <img alt="{{$book->images[0]->imagen}}" src="{{asset('storage/libros/'.$book->images[0]->imagen)}}">
-                            </div>
-                            <div class="div_infoCarrusel">
-                                <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                    <i>{{$book->titulo}}</i>
-                                </p>
-                                <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                    
-                                    <i>{{$book->genres[0]->nombre}}</i>
-                                </p>
+                        </div>
+                        <div class="div_infoCarrusel">
+                            <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                <i>{{$book->titulo}}</i>
+                            </p>
+                            <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
                                 
-                            </div>
-
+                                <i>{{$book->genres[0]->nombre}}</i>
+                            </p>
+                            
                         </div>
                     </div>
-                    @endforeach
-                                    
-                    
                 </div>
-                <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
-                <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
+                
+                @endforeach
+                                
+                
             </div>
+            <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
+            <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <hr style="width: 90%">
-            </div>
+    </div>
+    <div class="row" style="margin-bottom:0px">
+        <div class="col-md-12 text-center">
+            <hr style="width: 90%">
         </div>
-    {{-- </div> --}}
+    </div>
+    @endif
 
+        <div class="div_contenidoBack">
+        <a class="btn_regresar" href="javascript:history.back(-1);">
+            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
+            <br>
+            Regresar
+        </a>
+        </div>
+        <br>
 
 </section>
 
@@ -152,8 +159,6 @@ $(document).ready(function () {
     });
 
     ResCarouselSize();
-
-
 
 
     $(window).resize(function () {
@@ -179,7 +184,7 @@ $(document).ready(function () {
 
 
             if (bodyWidth >= 1200) {
-                incno = itemsSplit[3];
+                incno = itemsSplit[1];
                 itemWidth = sampwidth / incno;
             }
             else if (bodyWidth >= 992) {
@@ -245,8 +250,4 @@ $(document).ready(function () {
 
 });
 </script>
-
-
-
-
 @endsection

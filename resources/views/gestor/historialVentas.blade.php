@@ -23,16 +23,55 @@
 
         <div class="div_detallesVentas">
           <p class="txt-titulosHV" style="text-align: center;">ID de venta:&nbsp;540</p> <p>
-          <p class="txt-titulosHV">Estatus:&nbsp;</p>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Estatus:&nbsp;</p>
             <p class="txt-informacionHV">Envío en camino</p>
-          <p class="txt-titulosHV">Fecha:&nbsp;</p>
-          <p class="txt-titulosHV">Total:&nbsp;</p>
-          <p class="txt-titulosHV">Descripción:&nbsp;</p>
-          <p class="txt-titulosHV">Tipo de pago:&nbsp;</p>
-          <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
-          
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Fecha:&nbsp;</p>
+            <p class="txt-informacionHV">Envío en camino</p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Total:&nbsp;</p>
+            <p class="txt-informacionHV">Envío en camino</p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Descripción:&nbsp;</p>
+            <p class="txt-informacionHV">Envío en camino</p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Tipo de pago:&nbsp;</p>
+            <p class="txt-informacionHV">Envío en camino</p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
+            <p class="txt-informacionHV">Envío en camino</p>
+          </div>
+          <div class="div_registroVentas">
+            <a class="txt-titulosHV" href="" style="float: right">Actualizar</a>
+          </div>
         </div>
     </div>
+
+    <div class="table-responsive div_tablaHV" style="height: 380px; overflow-y:scroll; ">
+      <table class="table table-bordered table-hover tbody tr:hover" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+              <tr>
+              <th style="background-color: #8b8b8b; color:white">ID</th>
+              <th style="background-color: #8b8b8b; color:white">Total de muertes</th> 
+              </tr>
+          </thead>
+          <tbody>
+                  <tr>
+                  <td>cvcv</td>
+                  <td>fvccv</td>
+                  </tr>    
+              
+          </tbody>
+      </table>
+    </div>
+
+
     <script>
       new Chart(document.getElementById("line-chart"), {
         type: 'line',
@@ -59,57 +98,6 @@
         }
       });
     </script>
-
-
-
-
-
-    <div class="div_tablaHV">
-        <div class="table-responsive-xl">
-            <table class="table">
-                <thead>
-                    <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Estatus</th>
-                      <th scope="col">Fecha</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                      <th scope="col">Heading</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                  </tbody>
-            </table>
-          </div>
-    </div>
 </div>
 <br>
 <br>
