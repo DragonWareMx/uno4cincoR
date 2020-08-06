@@ -75,6 +75,7 @@
               <a class="collapse-item" href="{{route('verLibros')}}">Ver todo</a> 
               <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catálogo</a>
               <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=145">145</a>
+              <a class="collapse-item" href="{{route('verColecciones')}}">Colecciones</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Acceso directo:</h6>
               <a class="collapse-item" href="{{route('libros-crear')}}">Agregar libro</a>
@@ -143,6 +144,23 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{route('historial')}}">Historial de ventas</a>
             <a class="collapse-item" href="{{route('estadisticas')}}">Estadísticas de público</a>
+          </div>
+        </div>
+      </li>
+
+       <!-- Nav Item - Inventario Collapse cupones -->
+      
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCupones" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-percentage"></i>
+          <span>Cupones</span>
+        </a>
+        <div id="collapseCupones" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('verCupones')}}">Ver Cupones</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('nuevoCupon')}}">Agregar Cupón</a>
           </div>
         </div>
       </li>

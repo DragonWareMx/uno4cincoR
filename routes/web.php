@@ -102,3 +102,11 @@ Route::post('/adminuno4cinco/coleccion-nueva','gestorColeccionesController@store
 Route::get('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@editCollection')->name('editarColeccion');
 Route::patch('/adminuno4cinco/coleccion-editar/{id}','gestorColeccionesController@updateCollection')->name('editarColeccion');
 Route::delete('/adminuno4cinco/coleccion-borrar/{id}','gestorColeccionesController@deleteCollection')->name('borrarColeccion');
+
+// GESTION DE CUPONES----------------------------------------------------------------------------------------------------------
+Route::get('/adminuno4cinco/cupones', 'gestionCuponesController@index')->name('verCupones');
+Route::get('/adminuno4cinco/cupon-nuevo', 'gestionCuponesController@addcupon')->name('nuevoCupon');
+Route::post('/adminuno4cinco/cupon-nuevo','gestionCuponesController@storeCupon')->name('nuevoCupon');
+Route::get('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@editCupon')->name('editarCupon');
+Route::patch('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@updateCupon')->name('editarCupon');
+Route::delete('/adminuno4cinco/cupon-borrar/{id}','gestionCuponesController@deleteCupon')->name('borrarCupon');
