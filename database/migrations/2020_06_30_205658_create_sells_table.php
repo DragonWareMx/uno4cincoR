@@ -31,7 +31,7 @@ class CreateSellsTable extends Migration
             $table->float('precio_envio')->nullable();
             $table->string('nombre_envio')->nullable();
             $table->unsignedBigInteger('promocion_id')->nullable();
-            $table->foreign('promocion_id')
+            $table->foreign('promotion_id')
                 ->references('id')
                 ->on('promotions')
                 ->onDelete('cascade');

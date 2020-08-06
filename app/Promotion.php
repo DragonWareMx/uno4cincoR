@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cupon extends Model
+class Promotion extends Model
 {
     public function sells(){
         return $this->hasMany('App\Sell');
