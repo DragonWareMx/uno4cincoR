@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="field">
-                                            <select name="genero" id="genero" value="" autocomplete="sex" required>
+                                            <select name="genero" autocomplete="on" id="genero" value="" autocomplete="sex" required>
                                                 <option value="" id="AF">Elegir opción</option>
                                                 <option value="Hombre" id="H">Hombre</option>
                                                 <option value="Mujer" id="M">Mujer</option>
@@ -217,7 +217,20 @@
                                     </div>
                                 </div>
                                 @endif
+
+                                <h1 class="row-m">¿Desea utilizar un cupón?</h1>
+                            
+                                {{-- CUPON --}}
+                                <div class="row row-p">
+                                    <div class="field">
+                                        <input type="text" autocomplete="off" id="cupon" name="cupon" value="" onchange="this.setAttribute('value', this.value);">
+                                        <label for="cupon" title="Ingresar cupón (opcional)" data-title="Ingresar cupón (opcional)"></label>
+                                    </div>
+                                </div>
+
                             </div>
+                            
+
                         </div>
 
                         <div class="compra-cell cell-20">

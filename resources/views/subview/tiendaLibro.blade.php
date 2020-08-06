@@ -3,7 +3,7 @@
         @if (count($books) > 0)
             {{-- LIBRO --}}
             @foreach ($books as $book)
-                <div class="col-sm-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                     <div class="producto-tienda">
                         <!--imagen del producto-->
                         <div class="imagen">

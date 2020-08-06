@@ -4,6 +4,7 @@
     height: 354px;
     margin:auto;
     margin-top: 59px;
+    z-index: -1;
 }
 
 .producto-tienda .imagen{
@@ -74,11 +75,12 @@
     position: absolute;
     top: 0px;
     right: -35px;
+    z-index: 9999;
 }
 
 .producto-tienda .img-oferta img{
     width: 53px;
-    height: 53px;
+    height: 53px; 
 }
 
 .producto-tienda .titulo{
@@ -647,4 +649,130 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
 
 .libro-regresar .row{
     width: fit-content;
+}
+
+@media(max-width: 512px){
+    .producto-tienda{
+        width: 160px;
+        height: 280px;
+    }
+
+    .producto-tienda .imagen{
+        width: 160px;
+        height: 160px;
+    }
+
+    .producto-tienda .titulo p{
+        font-size: 14px;
+        line-height: 18px;
+        /* identical to box height */
+    }
+
+    .producto-tienda .precio{
+        margin-top: 11px;
+        font-size: 14px;
+        line-height: 18px;
+        /* identical to box height */
+    }
+
+    .producto-tienda button{
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .producto-tienda .info-libro{
+        width: 160px;
+        height: 160px;
+    }
+
+    .producto-tienda .info-libro .info h1{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .producto-tienda .info-libro .info h1 b{
+        font-size: 10px;
+        line-height: 12px;
+    }
+    
+    .producto-tienda .info-libro .info p{
+        font-size: 10px;
+        line-height: 14px;
+    
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 319px){
+    .producto-tienda{
+        width: 130px;
+        height: 260px;
+    }
+
+    .producto-tienda .imagen{
+        width: 130px;
+        height: 130px;
+    }
+
+    .producto-tienda .titulo p{
+        font-size: 14px;
+        line-height: 18px;
+        /* identical to box height */
+    }
+
+    .producto-tienda .precio{
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 18px;
+        /* identical to box height */
+    }
+
+    .producto-tienda .contenido-producto img {
+        width: 20px;
+        height: 20px;
+        margin-top: 20px;
+    }
+
+    .producto-tienda button{
+        font-size: 10px;
+        line-height: 18px;
+    }
+
+    .producto-tienda .info-libro{
+        display: none;
+    }
+
+    .producto-tienda .info-libro .info h1{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .producto-tienda .info-libro .info h1 b{
+        font-size: 10px;
+        line-height: 12px;
+    }
+    
+    .producto-tienda .info-libro .info p{
+        font-size: 10px;
+        line-height: 14px;
+    
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 466px){
+    .formato-comprar {
+        display: table-row;
+        width: 100%;
+        text-align: center;
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+    }
+    
+    .formato-comprar .formato-container {
+        margin-bottom: 10px;
+    }
 }
