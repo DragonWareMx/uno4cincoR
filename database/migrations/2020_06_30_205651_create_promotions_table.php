@@ -22,6 +22,9 @@ class CreatePromotionsTable extends Migration
             $table->tinyInteger('reusable')->nullable();
             $table->tinyInteger('nuevos')->nullable();
             $table->tinyInteger('downloads')->nullable();
+            $table->float('porcentajeDesc')->nullable();
+            $table->float('valorDesc')->nullable();
+            $table->enum('tipo',['compra','envio','total']);
             $table->timestamps();
         });
     }
