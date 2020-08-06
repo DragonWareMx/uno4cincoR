@@ -73,15 +73,35 @@
               </tr>
           </thead>
           <tbody>
+                  @foreach($ventas as $venta)
+                  {{-- Sacando total de la venta --}}
+                    @foreach ($book_sell as $item)   
+                      @php
+                          $total=0;
+                          if($item->sell_id == $venta->id){
+                            $total+=$item->precio;
+                          }
+                      @endphp
+                        
+                            
+                    @endforeach
                   <tr>
-                    <td id="idPedido">5</td>
-                    <td >Completado</td>
-                    <td >05/08/2020</td> 
-                    <td >850</td> 
-                    <td >Lorem ipsum dolor sit amet consectetur adipisicing elit. A hic consequatur numquam. Quasi voluptate vel, ad incidunt maxime, assumenda ut, debitis eum mollitia dolorum eius ullam ex sit sequi quaerat.</td> 
-                    <td >Paypal</td> 
-                    <td >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quibusdam dolorem dicta voluptate voluptatum ut laborum illum beatae atque tempore minima, doloribus nemo a reiciendis? Atque voluptatum dicta hic necessitatibus!</td> 
-                  </tr>                   
+                  <td id="idPedido">{{$venta->id}}</td>
+                    <td >{{$venta->status}}</td> 
+                    <td >{{$venta->fecha}}</td>
+                    <td >
+                     {{$total}}
+                    </td>
+                    <td >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda earum fuga iste necessitatibus. Praesentium delectus, quasi iste excepturi accusantium nihil vitae sit perspiciatis, esse odit, pariatur nobis vero qui quis?</td> 
+                    <td >{{$venta->formaPago}}</td> 
+                    <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
+                      <br>
+                      {{$venta->pais}},&nbsp;{{$venta->estado}},&nbsp;{{$venta->ciudad}},&nbsp;{{$venta->direccion}}.
+                      <br>
+                      {{$venta->correo}},&nbsp;{{$venta->telefono}}
+                    </td> 
+                  </tr>   
+                  @endforeach                
           </tbody>
       </table>
     </div>
