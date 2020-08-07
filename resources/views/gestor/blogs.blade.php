@@ -25,7 +25,6 @@
     </div>
 <div class="div_contenedorgral">
     <div class="div_AutoresContainerG">
-        <div class="div_AutoresContainerG" >
         @foreach ($blogs as $blog)
         <div class="div_ItemAutorG" style="margin-bottom: 25px;">
             <div class="div_imagAutorG">

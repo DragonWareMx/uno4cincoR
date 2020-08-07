@@ -13,4 +13,7 @@ class gestionCuponesController extends Controller
         $cupones=Promotion::paginate(20);
         return view('gestor.cupones', ['cupones'=>$cupones]);
     }
+    public function addCupon(){
+        return view('gestor.cupones.nuevoCupon');
+    }
 }

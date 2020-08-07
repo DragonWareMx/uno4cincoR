@@ -13885,12 +13885,6 @@ a:focus * {
   border-bottom: solid #7cccc3 0.1rem;
 }
 
-/* Hidding the radiobuttons &amp; checkboxes */
-
-input[type=checkbox] {
-  display: none;
-}
-
 /* Estado inicial, caja no marcada */
 
 input[type=checkbox] + label .fa-check {

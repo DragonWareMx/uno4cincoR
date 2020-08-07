@@ -33,7 +33,7 @@
     <div class="div_AutoresContainerG">
         @foreach ($books as $book)
             <div class="col-sm">
-                <div class="producto-tienda">
+                <div class="producto-tienda" style="z-index:9999">
                     <!--imagen del producto-->
                     <div class="imagen">
                         <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
