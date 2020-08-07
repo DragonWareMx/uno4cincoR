@@ -29,23 +29,31 @@
                     <p class="txt_datosAuthor">Código:</p>
                     <input name="codigo" class="input_datosAuthor" type="text" value="{{old('codigo')}}" required autofocus>
                 </div>
-                <input type="radio" id="fecha" name="expira" value="fecha">
+                <p class="txt_datosAuthor">Tipo:</p>
+                <select id="tipoSelect" name="tipo" class="" value="{{old('tipo')}}" required>
+                    <option value="" disabled selected>Selecciona un tipo</option>
+                    <option value="compra">Compra</option>
+                    <option value="envio">Envío</option>
+                    <option value="total">Total</option>
+                    <option value="descargas">Descargas Ilimitadas</option>
+                </select>
+                <input type="radio" id="fecha" name="expira" value="fecha" onclick="checkFecha()" required>
                 <label for="fecha">Fecha</label>
-                <input type="radio" id="usos" name="expira" value="usos">
+                <input type="radio" id="usos" name="expira" value="usos" onclick="checkUsos()" required>
                 <label for="usos">Usos</label>
-                <div class="div_elementosAuthor">
-                    <p class="txt_datosAuthor">Fecha Nacimiento:</p>
-                    <input name="limiteFecha" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{old('limiteFecha')}}">
+                <div id="div_fechaVencimiento" style="display:none;" class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Fecha Vencinciento:</p>
+                    <input id="limiteFecha" name="limiteFecha" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{old('limiteFecha')}}">
                 </div>
-                <div class="div_elementosAuthor50">
+                <div id="div_limiteUsos" style="display:none;" class="div_elementosAuthor50">
                     <p class="txt_datosAuthor">Número de usos:</p>
-                    <input name="limiteUsos" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('paginas')}}" pattern="^[0-9]+" 
+                    <input id="limiteUsos" name="limiteUsos" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('limiteUsos')}}" pattern="^[0-9]+" 
                     onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                     onkeypress="return solonumeros(event)">
                 </div>
                 <div class="div_elementosAuthor50">
                     <p class="txt_datosAuthor">Mínimo de compra:</p>
-                    <input name="limiteUsos" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('paginas')}}" pattern="^[0-9]+" 
+                    <input name="minimoCompra" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('minimoCompra')}}" pattern="^[0-9]+" 
                     onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                     onkeypress="return solonumerosdecimales(event)">
                 </div> 
@@ -53,6 +61,26 @@
                 <input name="reusable" value="reusable" id="reusable" type="checkbox" class="switch"><br>
                 <label class= "txt_datosAuthor" for="nuevos">¿Solo aplica en nuevos?</label>
                 <input name="nuevos" value="nuevos" id="nuevos" type="checkbox" class="switch">
+                <br>
+
+                <input type="radio" style="display:none;" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
+                <label  style="display:none;" id="labelPorcentaje" for="porcentaje">Porcentaje</label>
+
+                <input type="radio"  style="display:none;" id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
+                <label  style="display:none;" id="labelValor" for="valor">Valor</label>
+
+                <div id="div_porcentajeDescuento" style="display:none;" class="div_elementosAuthor50">
+                    <p id="pPorcentajeDesc" class="txt_datosAuthor">Porcentaje Descuento:</p>
+                    <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('porcentajeDescuento')}}" pattern="^[0-9]+" 
+                    onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
+                    onkeypress="return solonumerosdecimales(event)">
+                </div> 
+                <div id="div_valorDescuento" style="display:none;" class="div_elementosAuthor50">
+                    <p id="pValorDesc" class="txt_datosAuthor">Valor Descuento:</p>
+                    <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{old('valorDescuento')}}" pattern="^[0-9]+" 
+                    onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
+                    onkeypress="return solonumerosdecimales(event)">
+                </div> 
 
                 <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
@@ -98,6 +126,70 @@
             if(numeros.indexOf(teclado)==-1 && !teclado_especial){
                 return false;
             }
+        }
+    </script>
+    <script>
+        var valor="";
+         $(document).ready(function() {
+            $('#tipoSelect').change(function () {
+                if(this.value!='descargas'){
+                    $('#porcentaje').show();
+                    $('#valor').show();
+                    $('#labelPorcentaje').show();
+                    $('#labelValor').show();
+                    $('#porcentaje').prop("required", true);
+                    $('#valor').prop("required", true);
+                }
+                else{
+                    $('#porcentaje').hide();
+                    $('#valor').hide();
+                    $('#labelPorcentaje').hide();
+                    $('#labelValor').hide();
+                    $('#div_valorDescuento').hide();
+                    $('#div_porcentajeDescuento').hide();
+                    $('#porcentaje').prop("checked", false);
+                    $('#valor').prop("checked", false);
+                    $('#porcentaje').prop("required", false);
+                    $('#valor').prop("required", false);
+                    $('#porcentajeDescuento').prop("required", false);
+                    $('#valorDescuento').prop("required", false);
+                    document.getElementById('valorDescuento').value=valor;
+                    document.getElementById('porcentajeDescuento').value=valor;
+
+                }
+            });
+        });
+        function checkFecha() {
+            var valor="";
+            $('#div_fechaVencimiento').show();
+            $('#div_limiteUsos').hide();
+            document.getElementById('limiteUsos').value=valor;
+            $('#limiteFecha').prop("required", true);
+            $('#limiteUsos').prop("required", false);
+        }
+        function checkUsos() {
+            var valor="";
+            $('#div_fechaVencimiento').hide();
+            $('#div_limiteUsos').show();
+            document.getElementById('limiteFecha').value=valor;
+            $('#limiteFecha').prop("required", false);
+            $('#limiteUsos').prop("required", true);
+        }
+        function checkPorcentaje() {
+            var valor="";
+            $('#div_porcentajeDescuento').show();
+            $('#div_valorDescuento').hide();
+            document.getElementById('valorDescuento').value=valor;
+            $('#porcentajeDescuento').prop("required", true);
+            $('#valorDescuento').prop("required", false);
+        }
+        function checkValor() {
+            var valor="";
+            $('#div_porcentajeDescuento').hide();
+            $('#div_valorDescuento').show();
+            document.getElementById('porcentajeDescuento').value=valor;
+            $('#porcentajeDescuento').prop("required", false);
+            $('#valorDescuento').prop("required", true);
         }
     </script>
 @endsection
