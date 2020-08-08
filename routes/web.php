@@ -59,6 +59,7 @@ Route::get('/adminuno4cinco/crearblog', 'gestorBlogsController@addBlog')->name('
 Route::post('/adminuno4cinco/crearblog', 'gestorBlogsController@storeBlog')->name('nuevoBlog');
 Route::get('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@editBlog')->name('editarBlog');
 Route::patch('/adminuno4cinco/editarblog/{id}', 'gestorBlogsController@updateBlog')->name('editarBlog');
+Route::delete('/adminuno4cinco/eliminarBlogs/{id}', 'gestorBlogsController@deleteBlog')->name('eliminarBlog');
 
 // /GESTIÓN DE LIBROS/
 Route::get('/adminuno4cinco/libros','gestorLibrosController@index')->name('verLibros');
@@ -109,4 +110,4 @@ Route::get('/adminuno4cinco/cupon-nuevo', 'gestionCuponesController@addcupon')->
 Route::post('/adminuno4cinco/cupon-nuevo','gestionCuponesController@storeCupon')->name('nuevoCupon');
 Route::get('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@editCupon')->name('editarCupon');
 Route::patch('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@updateCupon')->name('editarCupon');
-Route::delete('/adminuno4cinco/cupon-borrar/{id}','gestionCuponesController@deleteCupon')->name('borrarCupon');
+Route::delete('/adminuno4cinco/cupon-borrar/{id}','gestionCuponesController@deleteCupon')->name('eliminarCupon');

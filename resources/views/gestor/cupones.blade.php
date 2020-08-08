@@ -14,7 +14,7 @@
     <a href="{{Route('nuevoCupon')}}" class="a_agregarAutor" style="color:#29B390">Agregar cupón</a>
     <div class="div_contenedorgral">
         @foreach ($cupones as $cupon)
-            <a class="a_cupones" href="#">
+        <a class="a_cupones" href="{{Route('editarCupon',['id'=>$cupon->id])}}">
                 <div class="div_encabezadoCupon">
                     Cupón: {{$cupon->codigo}} 
                 </div>
