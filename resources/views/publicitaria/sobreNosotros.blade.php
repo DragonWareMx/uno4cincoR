@@ -48,9 +48,9 @@
         </div>
     </div>
 
-    <p class="txt-SubtitulosApartados" style="margin-top: 10px">Visión</p>
+    <p class="txt-SubtitulosApartados" style="margin-top: 20px">Visión</p>
 
-    <div class="div-mision-vision" style="margin-top:25px">
+    <div class="div-mision-vision">
         <div class="div-txt-quienessomos" style="padding-right: 2%; border-right: 4px solid #29B390;">
             <p class="p-txt-mision-vision" >Sentar las bases necesarias para la creación de una nueva forma 
                 de entender el concepto de consumo de literatura, teniendo siempre en cuenta a la ser humano 

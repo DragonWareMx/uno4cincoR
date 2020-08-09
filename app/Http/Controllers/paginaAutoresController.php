@@ -44,10 +44,10 @@ class paginaAutoresController extends Controller
         }
 
         if(request('clasificacion')=='nombre'){
-            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
         else if(request('clasificacion')=='descripcion'){
-            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
         else if(request('clasificacion')=='obras'){
             $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
@@ -55,10 +55,10 @@ class paginaAutoresController extends Controller
                     ->where('books.titulo','like',"%".request('busqueda')."%")
                     ->whereIn('authors.id',$uno4cinco)
                     ->distinct()
-                    ->paginate(9);
+                    ->paginate(4);
         }
         else{
-            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
 
         $BannerAutores=Banner::wherein('id',$uno4cinco)->get();
@@ -81,10 +81,10 @@ class paginaAutoresController extends Controller
         }
 
         if(request('clasificacion')=='nombre'){
-            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
         else if(request('clasificacion')=='descripcion'){
-            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
         else if(request('clasificacion')=='obras'){
             $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
@@ -92,10 +92,10 @@ class paginaAutoresController extends Controller
                     ->where('books.titulo','like',"%".request('busqueda')."%")
                     ->whereIn('authors.id',$uno4cinco)
                     ->distinct()
-                    ->paginate(9);
+                    ->paginate(4);
         }
         else{
-            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(9);
+            $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
         }
         $BannerAutores=Banner::wherein('id',$uno4cinco)->get();
         
