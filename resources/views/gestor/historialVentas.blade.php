@@ -50,6 +50,14 @@
             <p class="txt-informacionHV" id="tipo"></p>
           </div>
           <div class="div_registroVentas">
+            <p class="txt-titulosHV">Comprobante de pago:&nbsp;</p>
+            <p class="txt-informacionHV" id="comprobante"></p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Tipo de envío:&nbsp;</p>
+            <p class="txt-informacionHV" id="tipoEnvio"></p>
+          </div>
+          <div class="div_registroVentas">
             <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
             <p class="txt-informacionHV" id="detalles"></p>
           </div>
@@ -69,6 +77,8 @@
               <th>Total</th> 
               <th>Descripción</th> 
               <th>Tipo de pago</th> 
+              <th>Comprobante de pago</th> 
+              <th>Tipo de envío</th> 
               <th>Detalles del comprador</th> 
               </tr>
           </thead>
@@ -86,14 +96,30 @@
                             
                     @endforeach
                   <tr>
-                  <td id="idPedido">{{$venta->id}}</td>
+                  <td id="idPedido" class="sorting_desc">{{$venta->id}}</td>
                     <td >{{$venta->status}}</td> 
                     <td >{{$venta->fecha}}</td>
                     <td >
                      {{$total}}
                     </td>
                     <td >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda earum fuga iste necessitatibus. Praesentium delectus, quasi iste excepturi accusantium nihil vitae sit perspiciatis, esse odit, pariatur nobis vero qui quis?</td> 
-                    <td >{{$venta->formaPago}}</td> 
+                    <td >
+                      @php
+                          $forma="Transferencia";
+                          if($venta->formaPago == 1){
+                            $forma="Paypal";
+                          }
+                      @endphp
+                      {{$forma}}</td> 
+                    <td >
+                      @php
+                          $comp="Sin comprobante de pago";
+                          if($venta->comprobantePago == 1){
+                            $comp="Con comprobante de pago";
+                          }
+                      @endphp
+                      {{$comp}}</td>
+                    <td >{{$venta->nombre_envio}}&nbsp;$&nbsp;{{$venta->precio_envio}}</td> 
                     <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
                       <br>
                       {{$venta->pais}},&nbsp;{{$venta->estado}},&nbsp;{{$venta->ciudad}},&nbsp;{{$venta->direccion}}.
@@ -123,7 +149,9 @@
           $("#total").html(data[3]);
           $("#desc").html(data[4]);
           $("#tipo").html(data[5]);
-          $("#detalles").html(data[6]);
+          $("#comprobante").html(data[6]);
+          $("#tipoEnvio").html(data[7]);
+          $("#detalles").html(data[8]);
 
           // $(".city").html("Ciudad: "+data[5]);
           // $(".phone").html("Teléfono: "+data[3]);

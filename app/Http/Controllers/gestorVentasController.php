@@ -14,9 +14,9 @@ class gestorVentasController extends Controller
     
     
     public function index(){
-        $ventas=Sell::get();
+        $ventas=Sell::orderBy('id','desc')->get();
         $book_sell=Book_Sell::get();
-        //  dd($book_sell);
+        // dd($ventas);
         return view ('gestor.historialVentas',['ventas'=>$ventas,'book_sell'=>$book_sell]);
     }
     public function estadisticas(){
