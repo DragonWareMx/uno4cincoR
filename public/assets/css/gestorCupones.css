@@ -1,12 +1,17 @@
+.div_cuponesTodos{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
 .div_cupon{
     background-color: #ffffff;
-    width: 1000px;
-    height: 50px;
+    width: 500px;
+    height: 170px;
     padding-bottom: 5px;
     padding-top: 5´x;
     display: flex;
-    justify-content: space-around;
-    text-align: center;
+    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
     border-radius: 7px;
@@ -25,16 +30,21 @@
     background-color: #29b18f;
     font-family: "Karla";
     padding-left: 15px;
-    width: 1000px;
+    width: 500px;
     color: #ffffff;
     margin-left: auto;
     margin-right: auto;
     margin-top:15px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+    transition: ease-in-out 0.2s;
+}
+.div_elementoCupon{
+  width: 100%;
 }
 .a_cupones{
     text-decoration: none;
+    margin: 10px;
 }
 .a_cupones:hover{
     text-decoration: none;
@@ -46,7 +56,50 @@
     transition: ease-in-out 0.2s;
     text-decoration: none;
     color: #29b390;
+}
+.div_radioCupones{
+  margin-top: 10px;
+}
+.margin_cupones{
+  margin-top: 0px;
+}
+.margin_cupones10{
+  margin-top: 10px;
 }  
+
+@media (max-width:970px){
+  .margin_cupones{
+    margin-top: none;
+  }
+  .margin_cupones10{
+    margin-top: none;
+  }  
+}
+@media (max-width:650px){
+  .div_encabezadoCupon{
+    width: 240px;
+  }
+    .div_cupon{
+      width: 240px;
+  }
+}
+@media (max-width:400px){
+  .div_encabezadoCupon{
+    width: 180px;
+    font-size: 14px;
+  }
+    .div_cupon{
+      width: 180px;
+      font-size: 14px;
+  }
+  .div_cuponesTodos{
+    justify-content: center;
+  }
+  .select_tipoCupon{
+    font-size: 12px;
+    width: 100px;
+  }
+}
 
 
 
