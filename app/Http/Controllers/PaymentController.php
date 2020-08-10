@@ -43,10 +43,10 @@ class PaymentController extends Controller
         );
 
         $this->apiContext->setConfig([
-            'mode' => 'live',
-                'log.LogEnabled' => true,
-                'log.FileName' => 'PayPal.log',
-                'log.LogLevel' => 'FINE'
+            'mode' => 'sandbox',
+            'log.LogEnabled' => true,
+            'log.FileName' => 'PayPal.log',
+            'log.LogLevel' => 'FINE'
         ]);
     }
 

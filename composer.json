@@ -15,7 +15,9 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "paypal/rest-api-sdk-php": "^1.14"
+        "linkeys/signed-url": "^2.0",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "ramsey/uuid": "4.0.1 as 3.9.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
