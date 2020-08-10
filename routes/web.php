@@ -111,3 +111,5 @@ Route::post('/adminuno4cinco/cupon-nuevo','gestionCuponesController@storeCupon')
 Route::get('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@editCupon')->name('editarCupon');
 Route::patch('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@updateCupon')->name('editarCupon');
 Route::delete('/adminuno4cinco/cupon-borrar/{id}','gestionCuponesController@deleteCupon')->name('eliminarCupon');
+
+Route::get('/descarga','DescargasController@descargar')->name('descargar')->middleware('link');
