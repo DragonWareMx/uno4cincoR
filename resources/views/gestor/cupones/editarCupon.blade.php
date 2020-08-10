@@ -26,13 +26,13 @@
             <form action="{{ route('editarCupon',['id'=>$cupon->id]) }}" style="width:100%;" method="POST" enctype="multipart/form-data">
                 @method("PATCH")
                 @csrf
-                <div class="div_elementosAuthor">
+                <div class="div_elementosAuthor50">
                     <p class="txt_datosAuthor">Código:</p>
-                    <input name="codigo" class="input_datosAuthor" type="text" value="{{$cupon->codigo}}" required autofocus>
+                    <input name="codigo" class="input_datosAuthor margin_cupones" type="text" value="{{$cupon->codigo}}" required autofocus>
                 </div>
 
                 <p class="txt_datosAuthor">Tipo:</p>
-                <select id="tipoSelect" name="tipo" class="" value="{{old('tipo')}}" required>
+                <select id="tipoSelect" name="tipo" class="select_tipoCupon" value="{{old('tipo')}}" required>
                     @if ($cupon->tipo == 'compra')
                         <option selected value="compra">Compra</option>
                         <option value="envio">Envío</option>
@@ -60,40 +60,52 @@
                 </select>
 
                 @if ($cupon->limiteFecha)
-                    <input checked type="radio" id="fecha" name="expira" value="fecha" onclick="checkFecha()" required>
-                    <label for="fecha">Fecha</label>
-                    <input type="radio" id="usos" name="expira" value="usos" onclick="checkUsos()" required>
-                    <label for="usos">Usos</label>
-                    <div id="div_fechaVencimiento" class="div_elementosAuthor">
+                    <div class="div_radioCupones">
+                        <div class="">
+                            <input checked type="radio" id="fecha" name="expira" value="fecha" onclick="checkFecha()" required>
+                            <label for="fecha">Fecha</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" id="usos" name="expira" value="usos" onclick="checkUsos()" required>
+                            <label for="usos">Usos</label>
+                        </div>
+                    </div>
+                    <div id="div_fechaVencimiento" class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Fecha Vencinciento:</p>
-                        <input id="limiteFecha" name="limiteFecha" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{$cupon->limiteFecha}}">
+                        <input id="limiteFecha" name="limiteFecha" style="margin-left: 0px" required class="input_datosAuthor margin_cupones10" type="date" value="{{$cupon->limiteFecha}}">
                     </div>
                     <div id="div_limiteUsos" style="display:none;" class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Número de usos:</p>
-                        <input id="limiteUsos" name="limiteUsos" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                        <input id="limiteUsos" name="limiteUsos" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                         onkeypress="return solonumeros(event)">
                     </div>
                 @else 
-                    <input type="radio" id="fecha" name="expira" value="fecha" onclick="checkFecha()" required>
-                    <label for="fecha">Fecha</label>
-                    <input checked type="radio" id="usos" name="expira" value="usos" onclick="checkUsos()" required>
-                    <label for="usos">Usos</label>
-                    <div id="div_fechaVencimiento" style="display:none;" class="div_elementosAuthor">
+                    <div class="div_radioCupones">
+                        <div class="">
+                            <input type="radio" id="fecha" name="expira" value="fecha" onclick="checkFecha()" required>
+                            <label for="fecha">Fecha</label>
+                        </div>
+                        <div class="">
+                            <input checked type="radio" id="usos" name="expira" value="usos" onclick="checkUsos()" required>
+                            <label for="usos">Usos</label>
+                        </div>
+                    </div>
+                    <div id="div_fechaVencimiento" style="display:none;" class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Fecha Vencinciento:</p>
-                        <input id="limiteFecha" name="limiteFecha" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="">
+                        <input id="limiteFecha" name="limiteFecha" style="margin-left: 0px" class="input_datosAuthor margin_cupones10" type="date" value="">
                     </div>
                     <div id="div_limiteUsos" class="div_elementosAuthor50">
                         <p class="txt_datosAuthor">Número de usos:</p>
-                        <input id="limiteUsos" name="limiteUsos" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{$cupon->numUsos}}" pattern="^[0-9]+" 
-                        onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
+                        <input id="limiteUsos" name="limiteUsos" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="{{$cupon->numUsos}}" pattern="^[0-9]+" 
+                        onpaste="return false;" onDrop="return false;" required autocomplete=off step="1"
                         onkeypress="return solonumeros(event)">
                     </div>
                 @endif
                 
                 <div class="div_elementosAuthor50">
                     <p class="txt_datosAuthor">Mínimo de compra:</p>
-                    <input name="minimoCompra" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="{{$cupon->minimoCompra}}" pattern="^[0-9]+" 
+                    <input name="minimoCompra" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="{{$cupon->minimoCompra}}" pattern="^[0-9]+" 
                     onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                     onkeypress="return solonumerosdecimales(event)">
                 </div> 
@@ -114,63 +126,76 @@
                 <br>
 
                 @if ($cupon->tipo=='descargas')
-                    <input type="radio" style="display:none;" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
-                    <label  style="display:none;" id="labelPorcentaje" for="porcentaje">Porcentaje</label>
-
-                    <input type="radio"  style="display:none;" id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
-                    <label  style="display:none;" id="labelValor" for="valor">Valor</label>
+                    <div class="div_radioCupones">
+                        <div class="">
+                            <input type="radio" style="display:none;" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
+                            <label  style="display:none;" id="labelPorcentaje" for="porcentaje">Porcentaje</label>
+                        </div>
+                        <div class="">
+                            <input type="radio"  style="display:none;" id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
+                            <label  style="display:none;" id="labelValor" for="valor">Valor</label>
+                        </div>
+                    </div>
 
                     <div id="div_porcentajeDescuento" style="display:none;" class="div_elementosAuthor50">
                         <p id="pPorcentajeDesc" class="txt_datosAuthor">Porcentaje Descuento:</p>
-                        <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                        <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                         onkeypress="return solonumerosdecimales(event)">
                     </div> 
                     <div id="div_valorDescuento" style="display:none;" class="div_elementosAuthor50">
                         <p id="pValorDesc" class="txt_datosAuthor">Valor Descuento:</p>
-                        <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                        <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                         onkeypress="return solonumerosdecimales(event)">
                     </div> 
 
                 @else 
                     @if ($cupon->porcentajeDesc)
-                        <input checked type="radio" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
-                        <label id="labelPorcentaje" for="porcentaje">Porcentaje</label>
-
-                        <input type="radio"  id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
-                        <label id="labelValor" for="valor">Valor</label>
-
+                        <div class="div_radioCupones">
+                            <div class="">
+                                <input checked type="radio" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
+                                <label id="labelPorcentaje" for="porcentaje">Porcentaje</label>
+                            </div>
+                            <div class="">
+                                <input type="radio"  id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
+                                <label id="labelValor" for="valor">Valor</label>
+                            </div>
+                        </div>
                         <div id="div_porcentajeDescuento" class="div_elementosAuthor50">
                             <p id="pPorcentajeDesc" class="txt_datosAuthor">Porcentaje Descuento:</p>
-                            <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" 
+                            <input id="porcentajeDescuento" name="porcentajeDescuento" required class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" 
                             value="{{$cupon->porcentajeDesc}}" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                             onkeypress="return solonumerosdecimales(event)">
                         </div> 
                         <div id="div_valorDescuento" style="display:none;" class="div_elementosAuthor50">
                             <p id="pValorDesc" class="txt_datosAuthor">Valor Descuento:</p>
-                            <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                            <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                             onkeypress="return solonumerosdecimales(event)">
                         </div> 
 
                     @else 
-                        <input type="radio" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
-                        <label id="labelPorcentaje" for="porcentaje">Porcentaje</label>
-
-                        <input checked type="radio"  id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
-                        <label id="labelValor" for="valor">Valor</label>
-
+                        <div class="">
+                            <div class="">
+                                <input type="radio" id="porcentaje" name="tipoCantidad" value="porcentaje" onclick="checkPorcentaje()">
+                                <label id="labelPorcentaje" for="porcentaje">Porcentaje</label>
+                            </div>
+                            <div class="">
+                                <input checked type="radio"  id="valor" name="tipoCantidad" value="valor" onclick="checkValor()">
+                                <label id="labelValor" for="valor">Valor</label>
+                            </div>
+                        </div>
                         <div id="div_porcentajeDescuento" style="display:none;" class="div_elementosAuthor50">
                             <p id="pPorcentajeDesc" class="txt_datosAuthor">Porcentaje Descuento:</p>
-                            <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="" pattern="^[0-9]+" 
+                            <input id="porcentajeDescuento" name="porcentajeDescuento" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                             onkeypress="return solonumerosdecimales(event)">
                         </div> 
                         <div id="div_valorDescuento" class="div_elementosAuthor50">
                             <p id="pValorDesc" class="txt_datosAuthor">Valor Descuento:</p>
-                            <input id="valorDescuento" name="valorDescuento" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
+                            <input id="valorDescuento" name="valorDescuento" required  class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1"
                             value="{{$cupon->valorDesc}}" pattern="^[0-9]+" 
                             onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
                             onkeypress="return solonumerosdecimales(event)">

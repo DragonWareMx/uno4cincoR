@@ -83,7 +83,7 @@
                             </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
-                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->portadaImagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                                 <div id="details_content1" class="details_content" style="">
                                     <p id="titulo_txt" class="details_txt" style="">Título: 
                                         <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
@@ -157,7 +157,7 @@
                             </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
-                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->portadaImagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                                 <div id="details_content1" class="details_content" style="">
                                     <p id="titulo_txt" class="details_txt" style="">Título: 
                                         <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
@@ -255,7 +255,7 @@
                             </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
-                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->portadaImagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                                 <div id="details_content1" class="details_content" style="">
                                     <p id="titulo_txt" class="details_txt" style="">Título: 
                                         <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
@@ -329,7 +329,7 @@
                             </a>
                             <!--div pestaña detalles libro-->
                             <div class="details_libro" style="overflow:scroll">
-                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->images[0]->imagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
+                                <img id="portada_libro" src="{{asset('storage/libros/'.$banner->book->portadaImagen)}}" alt="" srcset="" style="width:140px; height:138px; margin-left:10px; margin-right:10px">
                                 <div id="details_content1" class="details_content" style="">
                                     <p id="titulo_txt" class="details_txt" style="">Título: 
                                         <span class="details_data" style="" name="details_title_libro">{{$banner->book->titulo}}</span>
@@ -436,7 +436,7 @@
                                 @endphp
                                 @foreach ($banner->author->books as $book)
                                     <div class="detailsAutor_content" style="overflow-y:scroll">
-                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->portadaImagen) }}" alt="" srcset="" style="">
                                         <div id="details_content3" class=detailsAutor_txt>
                                             <p class="details_txt" >Título:
                                                 <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>
@@ -489,7 +489,7 @@
                                 @endphp
                                 @foreach ($banner->author->books as $book)
                                     <div class="detailsAutor_content" style="overflow-y:scroll">
-                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->portadaImagen) }}" alt="" srcset="" style="">
                                         <div id="details_content3" class=detailsAutor_txt>
                                             <p class="details_txt" >Título:
                                                 <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>
@@ -565,7 +565,7 @@
                                 @endphp
                                 @foreach ($banner->author->books as $book)
                                     <div class="detailsAutor_content" style="overflow-y:scroll">
-                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->portadaImagen) }}" alt="" srcset="" style="">
                                         <div id="details_content3" class=detailsAutor_txt>
                                             <p class="details_txt" >Título:
                                                 <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>
@@ -618,7 +618,7 @@
                                 @endphp
                                 @foreach ($banner->author->books as $book)
                                     <div class="detailsAutor_content" style="overflow-y:scroll">
-                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->images[0]->imagen) }}" alt="" srcset="" style="">
+                                        <img id="portada_libro_autor" class="img_libro_aut" src="{{ asset('storage/libros/'.$book->portadaImagen) }}" alt="" srcset="" style="">
                                         <div id="details_content3" class=detailsAutor_txt>
                                             <p class="details_txt" >Título:
                                                 <span class="details_data" style="" name="details_title_autor">{{$book->titulo}}</span>

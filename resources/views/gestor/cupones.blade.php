@@ -11,43 +11,45 @@
 @endsection
 
 @section('contenido') 
-    <a href="{{Route('nuevoCupon')}}" class="a_agregarAutor" style="color:#29B390">Agregar cupón</a>
-    <div class="div_contenedorgral">
+    <a href="{{Route('nuevoCupon')}}" class="a_agregarAutor" style="color:#ba1f00">Agregar cupón</a>
+    <div class="div_cuponesTodos">
         @foreach ($cupones as $cupon)
         <a class="a_cupones" href="{{Route('editarCupon',['id'=>$cupon->id])}}">
                 <div class="div_encabezadoCupon">
-                    Cupón: {{$cupon->codigo}} 
+                    Cupón:  {{Str::limit($cupon->codigo,18)}}
                 </div>
                 <div class="div_cupon">
                     @if ($cupon->limiteFecha)
-                        fecha limite: {{$cupon->limiteFecha}} &nbsp;
+                        <div class="div_elementoCupon">Fecha limite: {{$cupon->limiteFecha}}</div>
                     @endif
                     @if ($cupon->numUsos)
-                        usos Restantes: {{$cupon->numUsos}} &nbsp;
+                        <div class="div_elementoCupon">Usos Restantes: {{$cupon->numUsos}}</div>
                     @endif
                     @if ($cupon->minimoCompra)
-                        mínimo de compra: {{$cupon->minimoCompra}} &nbsp;
+                        <div class="div_elementoCupon">Mínimo de compra: {{$cupon->minimoCompra}}</div>
                     @endif
                     @if ($cupon->reusable == 1)
-                        reusable &nbsp;
+                        <div class="div_elementoCupon">Reusable</div>
                     @else
-                        no reusable
+                        <div class="div_elementoCupon">No reusable</div>
                     @endif
                     @if ($cupon->nuevos == 1)
-                        solo aplica en nuevos  &nbsp;
+                        <div class="div_elementoCupon">Solo aplica en nuevos </div>
                     @endif
                     @if ($cupon->porcentajeDesc)
-                        porcentaje de descuento: {{$cupon->porcentajeDesc}} &nbsp;
+                        <div class="div_elementoCupon">Porcentaje de descuento: {{$cupon->porcentajeDesc}} </div>
                     @endif
                     @if ($cupon->valorDesc)
-                        valor de descuento: {{$cupon->valorDesc}} &nbsp;
+                        <div class="div_elementoCupon">Valor de descuento: {{$cupon->valorDesc}}</div>
                     @endif
-                    Tipo: {{$cupon->tipo}}
+                    <div class="div_elementoCupon">Tipo: {{$cupon->tipo}}</div>
                 </div>
             </a>
         @endforeach
-        <div class="paginacion_css" style="margin-top:30px;">
-            {{$cupones->links()}}
-        </div>
     </div>
+    <div class="paginacion_css" style="margin-top:30px;">
+        {{$cupones->links()}}
+    </div>
+    <br>
+    <br>
 @endsection
