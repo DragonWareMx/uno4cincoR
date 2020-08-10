@@ -22,14 +22,13 @@
         </div>
 
         <div class="div_detallesVentas">
-          <p class="txt-titulosHV" style="text-align: center; margin-top:10px" id="id">ID de venta:&nbsp;540</p> <p>
+          <p class="txt-titulosHV" style="text-align: center; margin-top:10px" id="id"></p> <p>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Estatus:&nbsp;</p>
             <select class="txt-informacionHV select_estatusVentas">
-              <option value="fisico">En espera de pago</option> 
-              <option value="fisico/digital">Envío pendiente</option>
-              <option value="digital">Envío en camino</option>
-              <option value="digital">Completado</option>
+              <option value="fisico">pendiente</option> 
+              <option value="fisico/digital">terminado</option>
+              <option value="digital">completado</option>
               <option value="" selected="selected" id="estatus" hidden></option>
             </select>
           </div>
@@ -85,24 +84,47 @@
           <tbody>
                   @foreach($ventas as $venta)
                   {{-- Sacando total de la venta --}}
+                  @php
+                    $total=0;
+                    $cantidad=0;
+                  @endphp
                     @foreach ($book_sell as $item)   
                       @php
-                          $total=0;
                           if($item->sell_id == $venta->id){
-                            $total+=$item->precio;
+                            $cantidad=$item->precio * $item->cantidad;
+                            $total+=$cantidad;
+                            $cantidad=0;
                           }
                       @endphp
-                        
-                            
                     @endforeach
                   <tr>
                   <td id="idPedido" class="sorting_desc">{{$venta->id}}</td>
                     <td >{{$venta->status}}</td> 
                     <td >{{$venta->fecha}}</td>
                     <td >
-                     {{$total}}
+                     ${{$total}},
+                     @if($venta->promotion_id != null)
+                     <b>ID de promoción:</b> {{$venta->promotion_id}}
+                     @endif
                     </td>
-                    <td >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda earum fuga iste necessitatibus. Praesentium delectus, quasi iste excepturi accusantium nihil vitae sit perspiciatis, esse odit, pariatur nobis vero qui quis?</td> 
+                    <td>
+                      @foreach ($book_sell as $item)   
+                          <b>*Titulo:</b> 
+                          @foreach($books as $bookU)
+                            @if($item->book_id == $bookU->id)
+                            {{$bookU->titulo}},
+                            @endif
+                          @endforeach
+                          <b>cantidad:</b> {{$item->cantidad}},
+                          <b>precio c/u:</b> ${{$item->precio}},
+                          @if($item->digital == 1)
+                          <b>versión:</b> digital.
+                          @else
+                          <b>versión:</b> físico.
+                          @endif
+                          <br>
+                      @endforeach
+                    </td> 
                     <td >
                       @php
                           $forma="Transferencia";
@@ -119,7 +141,7 @@
                           }
                       @endphp
                       {{$comp}}</td>
-                    <td >{{$venta->nombre_envio}}&nbsp;$&nbsp;{{$venta->precio_envio}}</td> 
+                    <td >{{$venta->nombre_envio}}&nbsp;${{$venta->precio_envio}}</td> 
                     <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
                       <br>
                       {{$venta->pais}},&nbsp;{{$venta->estado}},&nbsp;{{$venta->ciudad}},&nbsp;{{$venta->direccion}}.
@@ -152,33 +174,51 @@
           $("#comprobante").html(data[6]);
           $("#tipoEnvio").html(data[7]);
           $("#detalles").html(data[8]);
-
-          // $(".city").html("Ciudad: "+data[5]);
-          // $(".phone").html("Teléfono: "+data[3]);
-          // $(".mail").html("Correo: "+data[4]);
-          // $(".status").html("Precio: "+data[6]);
-          // $(".date").html("Fecha: "+data[2] +"<a href='/sgtepetate/revisarpedido/"+data[0]+"'>"+
-          //                                     "<input type='button' value='&#x2713; &nbsp;&nbsp;&nbsp;Revisar&nbsp;' class='btn-pedidoRevisado' style='background-color:#207558; border:none; color:white; float:right; width:130px; height:35px; border-radius:4%'';></a>");
-  
       $(".container-fluid_datosl").show();  
       $('html, body').animate({ scrollTop: 80 }, 500);
       });
   } );
   </script>
 
+  @php  //inicializar arreglo del año 
+        $sumaVentasAn=[
+            '01'=>0,
+            '02'=>0,
+            '03'=>0,
+            '04'=>0,
+            '05'=>0,
+            '06'=>0,
+            '07'=>0,
+            '08'=>0,
+            '09'=>0,
+            '10'=>0,
+            '11'=>0,
+            '12'=>0
+        ];
+  @endphp
 
+  @foreach ($ventas as $venta) 
+  {{-- sacar el mes del registro --}}
+    @php
+    $mes = date('m', strtotime($venta->fecha));
+    $year = date('Y', strtotime($venta->fecha));
+    // {{-- hacer suma total de ventas por mes --}}
+    if($year == date("Y"))
+    $sumaVentasAn[$mes]++;;
+    @endphp
+  @endforeach
 
     {{-- GRAFICA --}}
     <script>  
+    var sumaVentasAn=<?php echo json_encode($sumaVentasAn); ?>;
       new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
             labels: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
             datasets: [{ 
-                data: [0,0,5,0,
-                0,0,0,0,
-                0,0,0,0
-                ],
+                data: [sumaVentasAn['01'],sumaVentasAn['02'],sumaVentasAn['03'],sumaVentasAn['04'],sumaVentasAn['05'],sumaVentasAn['06'],
+                                            sumaVentasAn['07'],sumaVentasAn['08'],sumaVentasAn['09'],sumaVentasAn['10'],sumaVentasAn['11'],sumaVentasAn['12']
+                                    ],
                 label: "Ventas",
                 borderColor: "#1cc88a",
                 fill: false
@@ -188,7 +228,7 @@
         options: {
             title: {
             display: true,
-            text: 'Julio, 2020'
+            text: 'Año en curso'
             },
             maintainAspectRatio:false,
             responsive:true
