@@ -20,6 +20,7 @@ class CreateAuthorsTable extends Migration
             $table->date('fechaNac')->nullable();
             $table->date('fechaMuerte')->nullable();
             $table->text('foto')->nullable();
+            $table->text('fotoPerfil')->nullable();
             $table->timestamps();
         });
     }

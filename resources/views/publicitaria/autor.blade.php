@@ -28,7 +28,7 @@
             <div class="div_apartadoimgAutor">
                 <div class="div_marcoimgAutor">
                 </div>
-                <div class="imagenAutor"  style="background: url('{{asset('storage/autores/'.$autor->foto)}}') center center no-repeat;
+                <div class="imagenAutor"  style="background: url('{{asset('storage/autores/'.$autor->fotoPerfil)}}') center center no-repeat;
                 background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
