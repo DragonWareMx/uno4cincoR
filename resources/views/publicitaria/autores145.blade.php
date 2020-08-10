@@ -40,7 +40,7 @@
 
     <div class="blog_encabezado">
         <p class="txt-descripApartado">Autores de 145<p>
-        <form class="" action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
+        {{-- <form class="" action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
             <div class="blog_barra_busqueda">
                 <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
                     <option value="nombre">Nombre</option>
@@ -51,6 +51,44 @@
                 <button type="submit" class="busqueda_boton">
                     <img class="imagen_busqueda_boton" src="{{asset('img/ico/search.png')}}" alt="">
                 </button>
+            </div>
+        </form> --}}
+        <form action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
+            <div class="blog_barra_busqueda" style="border:none">
+            <select class="busqueda_clasificacion" name="filtro" id="tipos_blogs">
+                <option value="" disabled selected>Filtrar</option>
+                <option value="todos">Ver todos</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+                <option value="I">I</option>
+                <option value="J">J</option>
+                <option value="K">K</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="N">N</option>
+                <option value="Ñ">Ñ</option>
+                <option value="O">O</option>
+                <option value="P">P</option>
+                <option value="Q">Q</option>
+                <option value="R">R</option>
+                <option value="S">S</option>
+                <option value="T">T</option>
+                <option value="U">U</option>
+                <option value="V">V</option>
+                <option value="W">W</option>
+                <option value="X">X</option>
+                <option value="Y">Y</option>
+                <option value="Z">Z</option>
+            </select>
+            <button type="submit" class="busqueda_boton">
+                <img class="imagen_busqueda_boton" src="{{asset('img/ico/search.png')}}" alt=""> 
+            </button>
             </div>
         </form>
     </div>

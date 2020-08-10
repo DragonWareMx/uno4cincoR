@@ -199,13 +199,12 @@
     text-align: center; 
     height: 90%;
     margin:10px; 
-    background-color: #1d2120;
     display: flex;
     transition: all 0.2s;
 }
 .pad15:hover{
     cursor: pointer;
-    background-color: #2c302f;
+
 }
 .MultiCarousel .leftLst, .MultiCarousel .rightLst { 
     position:absolute; 
@@ -255,9 +254,15 @@
     font-style: normal;
     font-size: 18px;
     line-height: 21px;
-    color: #FFFFFF;
+    color: black;
     text-align: left;
     margin-left: 5%;
+    transition: ease-in-out 0.3s;
+}
+
+.pad15:hover .txt-infoCarrusel {
+    color:#83D7B5;
+    transition: ease-in-out 0.3s;
 }
 
 

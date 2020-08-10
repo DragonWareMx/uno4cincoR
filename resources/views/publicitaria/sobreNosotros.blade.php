@@ -17,7 +17,7 @@
     <hr class="hr-Titulos-long">
     <hr class="hr-Titulos-small">
     {{-- BANNER IMAGE --}}
-    <img src="/img/quienessomos/slogan.jpg" class="img-banne-quienessomos">
+    <img src="/img/quienessomos/slogan.png" class="img-banne-quienessomos">
 
     <p class="txt-SubtitulosApartados">Nosotros</p>
 

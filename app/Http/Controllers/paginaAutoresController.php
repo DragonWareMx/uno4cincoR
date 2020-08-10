@@ -42,20 +42,37 @@ class paginaAutoresController extends Controller
                 $cont++;
             }
         }
-
-        if(request('clasificacion')=='nombre'){
-            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
-        }
-        else if(request('clasificacion')=='descripcion'){
-            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
-        }
-        else if(request('clasificacion')=='obras'){
-            $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
-                    ->leftJoin('books','author_book.book_id','=','books.id')
-                    ->where('books.titulo','like',"%".request('busqueda')."%")
-                    ->whereIn('authors.id',$uno4cinco)
-                    ->distinct()
-                    ->paginate(4);
+        
+        // if(request('clasificacion')=='nombre'){
+        //     $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
+        // }
+        // else if(request('clasificacion')=='descripcion'){
+        //     $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
+        // }
+        // else if(request('clasificacion')=='obras'){
+        //     $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
+        //             ->leftJoin('books','author_book.book_id','=','books.id')
+        //             ->where('books.titulo','like',"%".request('busqueda')."%")
+        //             ->whereIn('authors.id',$uno4cinco)
+        //             ->distinct()
+        //             ->paginate(4);
+        // }
+        if(request('filtro')){
+            if(request('filtro')!='todos'){
+                $autores=Author::get();
+                $arr=[];
+                $i=0;
+                foreach($autores as $autor){
+                    if(substr($autor->nombre, 0, 1)==request('filtro')){
+                        $arr[$i]=$autor->id;
+                        $i++;
+                    }
+                }
+                $autoruno4cinco=Author::whereIn('id',$arr)->whereIn('id',$uno4cinco)->distinct()->paginate(4);      
+            }
+            else{
+                $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
+            }
         }
         else{
             $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
@@ -80,19 +97,36 @@ class paginaAutoresController extends Controller
             }
         }
 
-        if(request('clasificacion')=='nombre'){
-            $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
-        }
-        else if(request('clasificacion')=='descripcion'){
-            $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
-        }
-        else if(request('clasificacion')=='obras'){
-            $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
-                    ->leftJoin('books','author_book.book_id','=','books.id')
-                    ->where('books.titulo','like',"%".request('busqueda')."%")
-                    ->whereIn('authors.id',$uno4cinco)
-                    ->distinct()
-                    ->paginate(4);
+        // if(request('clasificacion')=='nombre'){
+        //     $autoruno4cinco=Author::where('nombre','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
+        // }
+        // else if(request('clasificacion')=='descripcion'){
+        //     $autoruno4cinco=Author::where('descripcion','like',"%".request('busqueda')."%")->whereIn('id',$uno4cinco)->distinct()->paginate(4);
+        // }
+        // else if(request('clasificacion')=='obras'){
+        //     $autoruno4cinco=Author::leftJoin('author_book','authors.id','=','author_book.author_id')
+        //             ->leftJoin('books','author_book.book_id','=','books.id')
+        //             ->where('books.titulo','like',"%".request('busqueda')."%")
+        //             ->whereIn('authors.id',$uno4cinco)
+        //             ->distinct()
+        //             ->paginate(4);
+        // }
+        if(request('filtro')){
+            if(request('filtro')!='todos'){
+                $autores=Author::get();
+                $arr=[];
+                $i=0;
+                foreach($autores as $autor){
+                    if(substr($autor->nombre, 0, 1)==request('filtro')){
+                        $arr[$i]=$autor->id;
+                        $i++;
+                    }
+                }
+                $autoruno4cinco=Author::whereIn('id',$arr)->whereIn('id',$uno4cinco)->distinct()->paginate(4);      
+            }
+            else{
+                $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
+            }
         }
         else{
             $autoruno4cinco=Author::whereIn('id',$uno4cinco)->distinct()->paginate(4);
