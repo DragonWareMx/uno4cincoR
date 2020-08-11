@@ -27,6 +27,20 @@
 @endsection
 
 @section('content')
+    {{-- Verifica que existan colecciones --}}
+    @php                           
+        use App\Collection;
+
+        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+        //esto se hace porque usar paginate con select distinct causa problemas
+        $collectionsIdsV2 = Collection::select('collections.id')
+                                    ->join('books', 'books.collection_id', '=', 'collections.id')
+                                    ->distinct()
+                                    ->pluck('id')->toArray();
+        //obtiene las colecciones
+        $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_at','Desc')->get();
+    @endphp
+
     <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
         {{-- TITTLE --}}
         <p class="txt-TitulosApartados">Tienda | @yield('seccionTienda')</p>
@@ -45,26 +59,31 @@
                 Resultados de búsqueda
             @endif
             
-            <form class="" action="" method="GET" enctype="multipart/form-data">
-                <div class="blog_barra_busqueda">
-                    @if(!Route::is('colecciones'))
-                        <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                            <option value="titulo" @if(request('clasificacion') == "titulo") selected @endif>Título</option>
-                            <option value="autor" @if(request('clasificacion') == "autor") selected @endif>Autor</option>
-                            <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
-                            <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
-                            <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
-                            <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
-                        </select>
-                    @else
-                        <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                            <option value="colecciones" @if(request('clasificacion') == "colecciones") selected @endif>Colección</option>
-                        </select>
-                    @endif
-                <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
-                    <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+            @if(!Route::is('tiendaNovedades'))
+                <form class="" action="" method="GET" enctype="multipart/form-data">
+                    <div class="blog_barra_busqueda">
+                        @if(!Route::is('colecciones'))
+                            <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                                <option value="titulo" @if(request('clasificacion') == "titulo") selected @endif>Título</option>
+                                <option value="autor" @if(request('clasificacion') == "autor") selected @endif>Autor</option>
+                                <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
+                                <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
+                                <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
+                                
+                                @if(count($collectionsV2) > 0)
+                                    <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
+                                @endif
+                            </select>
+                        @else
+                            <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                                <option value="colecciones" @if(request('clasificacion') == "colecciones") selected @endif>Colección</option>
+                            </select>
+                        @endif
+                    <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
+                        <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            @endif
         </div>
 
         @yield('contenidoTienda')

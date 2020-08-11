@@ -82,7 +82,22 @@
                                     <li><a href="{{ route('tiendaNovedades') }}" class="">NOVEDADES</a></li>
                                     <li><a href="{{ route('tiendaCatalogo') }}" class="">CATÁLOGO</a></li>
                                     <li><a href="{{ route('tienda145') }}" class="">145</a></li>
-                                    <li><a href="{{ route('colecciones') }}" class="">COLECCIONES</a></li>
+                                    {{-- Verifica que existan colecciones --}}
+                                    @php
+                                        use App\Collection;
+
+                                        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+                                        //esto se hace porque usar paginate con select distinct causa problemas
+                                        $collectionsIdsV = Collection::select('collections.id')
+                                                                    ->join('books', 'books.collection_id', '=', 'collections.id')
+                                                                    ->distinct()
+                                                                    ->pluck('id')->toArray();
+                                        //obtiene las colecciones
+                                        $collectionsV = Collection::whereIn('id', $collectionsIdsV)->orderBy('created_at','Desc')->get();
+                                    @endphp
+                                    @if(count($collectionsV) > 0)
+                                        <li><a href="{{ route('colecciones') }}" class="">COLECCIONES</a></li>
+                                    @endif
                                 </ul>
                             </li>
                             <li class="submenu">
