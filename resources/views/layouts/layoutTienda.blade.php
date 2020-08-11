@@ -27,6 +27,20 @@
 @endsection
 
 @section('content')
+    {{-- Verifica que existan colecciones --}}
+    @php                           
+        use App\Collection;
+
+        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+        //esto se hace porque usar paginate con select distinct causa problemas
+        $collectionsIdsV2 = Collection::select('collections.id')
+                                    ->join('books', 'books.collection_id', '=', 'collections.id')
+                                    ->distinct()
+                                    ->pluck('id')->toArray();
+        //obtiene las colecciones
+        $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_at','Desc')->get();
+    @endphp
+
     <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
         {{-- TITTLE --}}
         <p class="txt-TitulosApartados">Tienda | @yield('seccionTienda')</p>
@@ -54,7 +68,10 @@
                             <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
                             <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
                             <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
-                            <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
+                            
+                            @if(count($collectionsV2) > 0)
+                                <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
+                            @endif
                         </select>
                     @else
                         <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
