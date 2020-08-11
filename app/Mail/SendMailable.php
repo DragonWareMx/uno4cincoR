@@ -39,7 +39,7 @@ class SendMailable extends Mailable
         $cont=0;
         foreach ($librosVendidos as $libro) {
             if($libro->digital==1){
-                $link=\Linkeys\UrlSigner\Facade\UrlSigner::generate(route('descargar'), ['id_libro' => $libro->book_id], '+5040 hours', 3);
+                $link=\Linkeys\UrlSigner\Facade\UrlSigner::generate(route('descargar'), ['id_libro' => $libro->book_id], '+720 hours', 3);
                 $links[$cont]=$link->getFullUrl();
             }
             else{

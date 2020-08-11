@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if($exception->getMessage()=='Link clicked too many times' || $exception->getMessage()=='Link has expired'){
+        if($exception->getMessage()=='Link clicked too many times' || $exception->getMessage()=='Link Expired'){
             $messagi="El enlace al que intentas acceder ha expirado.";
             return response()->view('errors.clickedTooMany',['messagi'=>$messagi]);
         }
