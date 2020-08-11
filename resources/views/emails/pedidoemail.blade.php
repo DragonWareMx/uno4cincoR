@@ -230,6 +230,37 @@
           </tr>
           <!-- end reeipt table -->
 
+          <tr>
+            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+            @php
+                $i=0;
+                $j=0;
+            @endphp
+            @foreach ($links as $link)
+              @if ($i==0)
+              <p style="margin: 0;"><strong>Enlace(s) de descarga</strong></p>
+              @endif
+              @foreach ($librosVendidos as $libroV)
+                @foreach ($libros as $libro)
+                    @if ($libroV->book_id == $libro->id && $i==$j)
+                      @if ($link!=null)
+                        <p>{{$libro->titulo}} <br>
+                          <a href="{{$link}}">{{$link}}</a><br>
+                        </p>
+                      @endif
+                    @endif
+                @endforeach
+                @php
+                  $j++;
+                @endphp
+              @endforeach
+              @php
+                  $i++;
+                  $j=0;
+              @endphp
+            @endforeach
+            </td>
+          </tr>
         </table>
         <!--[if (gte mso 9)|(IE)]>
         </td>
