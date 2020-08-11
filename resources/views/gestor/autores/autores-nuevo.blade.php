@@ -48,8 +48,13 @@
                 </div>
 
                 <div class="div_elementosAuthor">
-                    <p class="txt_datosAuthor">Imagen:</p>
+                    <p class="txt_datosAuthor">Foto grupal:</p>
                     <input id="imagen" class="img_datosAuthor" type="file" name="imagen" required>
+                </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Foto perfil:</p>
+                    <input id="fotoPerfil" class="img_datosAuthor" type="file" name="fotoPerfil" required>
                 </div>
 
                 <div class="botones_blog_100">

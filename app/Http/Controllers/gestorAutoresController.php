@@ -72,7 +72,8 @@ class gestorAutoresController extends Controller
             'biografia'=>'required|max:65535',
             'nacimiento'=>'date',
             'muerte'=>'nullable|date',
-            'imagen'=>'nullable|image'
+            'imagen'=>'nullable|image',
+            'fotoPerfil'=>'nullable|image'
         ]);
 
         $break=explode(',',$id);
@@ -104,6 +105,23 @@ class gestorAutoresController extends Controller
                     }
                 }
                 $autor->foto=$newFileName;
+
+                if(request('fotoPerfil')==null){
+                    $newFileName=$autor->fotoPerfil;
+                }
+                else{
+                $fileNameWithTheExtension = request('fotoPerfil')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('fotoPerfil')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('fotoPerfil')->storeAs('/public/autores/',$newFileName);
+        
+                $oldImage=public_path().'/storage/autores/'.$autor->fotoPerfil;
+                    if(file_exists($oldImage)){
+                        unlink($oldImage);
+                    }
+                }
+                $autor->fotoPerfil=$newFileName;
                 $autor->save();
             });
         }
@@ -126,7 +144,8 @@ class gestorAutoresController extends Controller
             'biografia'=>'required|max:65535',
             'nacimiento'=>'date',
             'muerte'=>'nullable|date',
-            'imagen'=>'required|image'
+            'imagen'=>'required|image',
+            'fotoPerfil'=>'required|image'
         ]);
         
         try{
@@ -145,6 +164,14 @@ class gestorAutoresController extends Controller
                 $path = request('imagen')->storeAs('/public/autores/',$newFileName);
         
                 $autor->foto=$newFileName;
+                
+                $fileNameWithTheExtension = request('fotoPerfil')->getClientOriginalName();
+                $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
+                $extension = request('fotoPerfil')->getClientOriginalExtension();
+                $newFileName=$fileName.'_'.time().'.'.$extension;
+                $path = request('fotoPerfil')->storeAs('/public/autores/',$newFileName);
+        
+                $autor->fotoPerfil=$newFileName;
                 // dd($autor);
                 $autor->save();
             });
