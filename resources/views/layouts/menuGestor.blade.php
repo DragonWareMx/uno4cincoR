@@ -134,18 +134,10 @@
       </li>
 
       <!-- Nav Item - Inventario Collapse ventas -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventario" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-chart-line"></i>
-          <span>Ventas</span>
-        </a>
-        <div id="collapseInventario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{route('historial')}}">Historial de ventas</a>
-            <a class="collapse-item" href="{{route('estadisticas')}}">Estadísticas de público</a>
-          </div>
-        </div>
+      <li class="nav-item "">
+        <a class="nav-link" href="{{route('historial')}}">
+            <i class="fas fa-home"></i>
+          <span>Ventas</span></a>
       </li>
 
        <!-- Nav Item - Inventario Collapse cupones -->

@@ -25,11 +25,11 @@
           <p class="txt-titulosHV" style="text-align: center; margin-top:10px" id="id"></p> <p>
           <div class="div_registroVentas">
             <p class="txt-titulosHV">Estatus:&nbsp;</p>
-            <select class="txt-informacionHV select_estatusVentas">
+            <select id="estatusSelect" class="txt-informacionHV select_estatusVentas">
               <option value="fisico">pendiente</option> 
               <option value="fisico/digital">terminado</option>
               <option value="digital">completado</option>
-              <option value="" selected="selected" id="estatus" hidden></option>
+              <option value="" selected="selected" id="estatus" ></option>
             </select>
           </div>
           <div class="div_registroVentas">
@@ -49,10 +49,6 @@
             <p class="txt-informacionHV" id="tipo"></p>
           </div>
           <div class="div_registroVentas">
-            <p class="txt-titulosHV">Comprobante de pago:&nbsp;</p>
-            <p class="txt-informacionHV" id="comprobante"></p>
-          </div>
-          <div class="div_registroVentas">
             <p class="txt-titulosHV">Tipo de envío:&nbsp;</p>
             <p class="txt-informacionHV" id="tipoEnvio"></p>
           </div>
@@ -60,9 +56,7 @@
             <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
             <p class="txt-informacionHV" id="detalles"></p>
           </div>
-          
-            <a class="txt-titulosHV txt-updateVenta" href="" >Actualizar</a>
-          <br>
+          <div id="actualizar" class ="div_registroVentas"></div >
         </div>
     </div>
     
@@ -76,7 +70,6 @@
               <th>Total</th> 
               <th>Descripción</th> 
               <th>Tipo de pago</th> 
-              <th>Comprobante de pago</th> 
               <th>Tipo de envío</th> 
               <th>Detalles del comprador</th> 
               </tr>
@@ -109,6 +102,7 @@
                     </td>
                     <td>
                       @foreach ($book_sell as $item)   
+                      @if($item->sell_id == $venta->id)
                           <b>*Titulo:</b> 
                           @foreach($books as $bookU)
                             @if($item->book_id == $bookU->id)
@@ -123,6 +117,7 @@
                           <b>versión:</b> físico.
                           @endif
                           <br>
+                      @endif
                       @endforeach
                     </td> 
                     <td >
@@ -133,14 +128,6 @@
                           }
                       @endphp
                       {{$forma}}</td> 
-                    <td >
-                      @php
-                          $comp="Sin comprobante de pago";
-                          if($venta->comprobantePago == 1){
-                            $comp="Con comprobante de pago";
-                          }
-                      @endphp
-                      {{$comp}}</td>
                     <td >{{$venta->nombre_envio}}&nbsp;${{$venta->precio_envio}}</td> 
                     <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
                       <br>
@@ -156,6 +143,7 @@
 
     {{-- PEDIDO --}}
     <script>
+      var idCard;
       $(document).ready(function() {
           var table= $('#dataTable').DataTable();   
   
@@ -165,20 +153,32 @@
      
       $('#dataTable tbody').on('click', 'tr', function () {
           var data = table.row( this ).data();
+          var selector = document.getElementById("estatusSelect");
+          idCard=data[0];
           $("#id").html("ID de venta: "+data[0]);
           $("#estatus").html(data[1]);
           $("#fecha").html(data[2]);
           $("#total").html(data[3]);
           $("#desc").html(data[4]);
           $("#tipo").html(data[5]);
-          $("#comprobante").html(data[6]);
-          $("#tipoEnvio").html(data[7]);
-          $("#detalles").html(data[8]);
+          $("#tipoEnvio").html(data[6]);
+          $("#detalles").html(data[7] );
+
       $(".container-fluid_datosl").show();  
       $('html, body').animate({ scrollTop: 80 }, 500);
       });
+
   } );
   </script>
+  <script>
+    $('#estatusSelect').on('change', function () {
+      var selector = document.getElementById("estatusSelect");
+      var container = document.getElementById('actualizar');
+      container.innerHTML = "<br><br><a class='txt-titulosHV txt-updateVenta' href='/adminuno4cinco/historial/"+idCard+"?estatus="+selector.options[selector.selectedIndex].text+"'>Actualizar</a>";
+      });
+
+
+    </script>
 
   @php  //inicializar arreglo del año 
         $sumaVentasAn=[

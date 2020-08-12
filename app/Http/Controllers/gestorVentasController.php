@@ -18,10 +18,21 @@ class gestorVentasController extends Controller
         $ventas=Sell::orderBy('id','desc')->get();
         $book_sell=Book_Sell::get();
         $books=Book::get();
-        // dd($ventas);
         return view ('gestor.historialVentas',['ventas'=>$ventas,'book_sell'=>$book_sell,'books'=>$books]);
-    }
-    public function estadisticas(){
-        return view ('gestor.estadisticasPublico');
+    } 
+
+    public function editSell(Request $request){
+        $estatus = $request->estatus;
+        $id = $request->id;
+
+        $ventaUpdate=Sell::findOrFail($id);
+        $ventaUpdate->status=$estatus;
+        $ventaUpdate->save();
+
+        $ventas=Sell::orderBy('id','desc')->get();
+        $book_sell=Book_Sell::get();
+        $books=Book::get();
+        return view ('gestor.historialVentas',['ventas'=>$ventas,'book_sell'=>$book_sell,'books'=>$books]);
+        
     }
 }

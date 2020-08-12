@@ -80,9 +80,7 @@ Route::get('/adminuno4cinco/resumen', 'gestorResumenController@index')->name('re
 
 // RUTAS DE VENTAS
 Route::get('/adminuno4cinco/historial', 'gestorVentasController@index')->name('historial');
-Route::get('/adminuno4cinco/estadisticas', 'gestorVentasController@estadisticas')->name('estadisticas');
-// Route::get('/adminuno4cinco/estadisticas-público', 'gestorVentasController@estadisticas')->name('estadisticas');
-
+Route::get('/adminuno4cinco/historial/{id}', 'gestorVentasController@editSell')->name('editarVenta');
 
 /*RUTAS DE PAYPAL*/
 Route::post('/paypal/pay','PaymentController@payWithPayPal')->name('pagoPayPal');
