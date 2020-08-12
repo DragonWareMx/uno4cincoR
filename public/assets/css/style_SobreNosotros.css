@@ -25,7 +25,7 @@
 }
 .img-banne-quienessomos{
     width:100%;
-    margin-top:85px; 
+    /* margin-top:85px;  */
     opacity:0.9;
 }
 .txt-SubtitulosApartados{
@@ -101,9 +101,9 @@
 
 /* RESPONSIVE */
 @media(max-width: 1050px){
-    .img-banne-quienessomos{
+    /* .img-banne-quienessomos{
         margin-top: 40px;
-    }
+    } */
 }
 @media(max-width: 990px){
     .div-btn-registro{
@@ -123,9 +123,9 @@
     }
 }
 @media(max-width: 600px){
-    .img-banne-quienessomos{
+    /* .img-banne-quienessomos{
         margin-top: 30px;
-    }
+    } */
     .txt-TitulosApartados {
         font-size: 20px;
         margin-top: 10px;
@@ -157,9 +157,9 @@
 
 }
 @media(max-width: 400px){
-    .img-banne-quienessomos{
+    /* .img-banne-quienessomos{
         margin-top: 25px;
-    }
+    } */
     .p-txt-content{
         font-size: 14px;
     }

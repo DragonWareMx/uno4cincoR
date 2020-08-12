@@ -46,13 +46,18 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky background-header">
+    <header class="header-area header-sticky background-header" 
+    @php
+        if(Request::path() != '/' )
+        echo 'style="background-color: #83d7b5"';
+    @endphp
+    >
         <div class="container">
             <div class="row">
                 <div class="col-12" >
                     <nav class="main-nav nav-space-between">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo" style="
+                        <a href="{{ route('tiendaNovedades') }}" class="logo" style="
                             @php
                                 if(Request::path() != '/' )
                                 echo 'display:none';
