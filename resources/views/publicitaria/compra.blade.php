@@ -354,7 +354,7 @@
 
             <div class="libro-regresar">
                 <div class="boton">
-                <button onclick="location.href='{{ route('carrito') }}'">
+                <button onclick="location.href='{{ route('carrito') }}'" type="button">
                     <div class="row" style="margin-right:0px; margin-left: auto;">
                         <img src="{{ asset('img/ico/blackarrow.png') }}">
                     </div>
@@ -384,6 +384,8 @@
             window.onload = envioSelect;
 
             function validar() {
+                //------------------------PROCESO DE VALIDACIÓN------------------------
+                
                 //valida que hay ingresado un cupón
                 codigo = document.getElementById("cupon").value;
     
@@ -432,15 +434,31 @@
                             //aqui se verifica si aplica en nuevos
 
                             //---------------SI LLEGAMOS A ESTE PUNTO ENTONCES EL CUPON ES VALIDO-----------------------
+                            //------------------------PROCESO DE APLICACIÓN------------------------
 
-                            //se muestra el descuento en la compra
-                            cuponHTML = document.getElementById("cuponHTML");
-                            cuponHTML.style.display = "flex";
+                            //obtenemos el envio
+                            var envio = document.getElementById("envio");
+                            var totalEnvio = document.getElementById("envio-totales");
 
+                            //si no existe el subotal entonces se muestra
                             if(!hayFisico){
                                 cuponHTML = document.getElementById("subtotalHTML");
                                 cuponHTML.style.display = "flex";          
                             }
+                            else{
+                                if(envio){
+                                    //verifica que el tipo de envio exista
+                                    if(envio.value != ""){
+                                        //se obtiene el envio de la BD
+                                        envioData = getEnvio(envio.value);
+                                    }
+                                    else{
+                                        return alert('Cupón no válido: Para aplicar este cupón es necesario que selecciones un envío.');
+                                    }
+                                }
+                            }
+
+                            var total = document.getElementById("total");
 
                             //se realiza el descuento
                             switch(cupon['tipo']){
@@ -448,13 +466,127 @@
                                     //se realiza el descuento en el total...
                                     //si es porcentaje entonces se realiza el descuento con porcentaje
                                     if(cupon['porcentajeDesc']){
-                                        //se pone la cantidad a descontar
-                                        document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(subtotal*(cupon['porcentajeDesc']/100));
 
-                                        //se actualiza el total
-                                        total.innerHTML = "$"+formatearNumero(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+                                        if(!hayFisico){
+                                            //se pone la cantidad a descontar
+                                            document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(subtotal*(cupon['porcentajeDesc']/100));
 
-                                        alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
+                                            //se actualiza el total
+                                            total.innerHTML = "$"+formatearNumero(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+
+                                            //se actualiza el hidden
+                                            $('#totalHidden').val(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+
+                                            alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
+                                        }
+                                        else{
+                                            if(envioData["costo"]){
+                                                oldTotal = subtotal + envioData["costo"];
+
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(oldTotal - oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(oldTotal - oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        //si no entonces se descuenta una cierta cantidad
+                                        if(!hayFisico){
+                                            //se calcula el total
+                                            var nuevoTotal = totalCosto - cupon['valorDesc'];
+                                            //se verifica que el costo no sea cero
+                                            if(nuevoTotal > 0){
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(totalCosto - cupon['valorDesc']);
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(totalCosto - cupon['valorDesc']);
+
+                                                alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                            }
+                                            else{
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(totalCosto);
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(0);
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(0);
+
+                                                alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                            }
+                                        }
+                                        else{
+                                            if(envioData["costo"]){
+                                                oldTotal = subtotal + envioData["costo"];
+
+                                                //se calcula el total
+                                                var nuevoTotal = oldTotal - cupon['valorDesc'];
+
+                                               //se verifica que el costo no sea cero
+                                                if(nuevoTotal > 0){
+                                                    //se pone la cantidad a descontar
+                                                    document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
+
+                                                    //se actualiza el total
+                                                    total.innerHTML = "$"+formatearNumero(oldTotal - cupon['valorDesc']);
+
+                                                    //se actualiza el hidden
+                                                    $('#totalHidden').val(oldTotal - cupon['valorDesc']);
+
+                                                    alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                                }
+                                                else{
+                                                    //se pone la cantidad a descontar
+                                                    document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(oldTotal);
+
+                                                    //se actualiza el total
+                                                    total.innerHTML = "$"+formatearNumero(0);
+
+                                                    //se actualiza el hidden
+                                                    $('#totalHidden').val(0);
+
+                                                    alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break;
+                                case 'envio':
+                                    //se realiza el descuento en el envio...
+                                    //si es porcentaje entonces se realiza el descuento con porcentaje
+                                    if(cupon['porcentajeDesc']){
+
+                                        if(hayFisico){
+                                            if(envioData["costo"]){
+                                                oldTotal = subtotal + envioData["costo"];
+
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(oldTotal - oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(oldTotal - oldTotal*(cupon['porcentajeDesc']/100));
+
+                                                alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
+                                            }
+                                        }
+                                        else{
+                                            return alert("Cupón no válido: Para poder aplicar este cupón es necesario que tenga libros físicos en su carrito y que seleccione un tipo de envío.");
+                                        }
                                     }
                                     else{
                                         //si no entonces se descuenta una cierta cantidad
@@ -470,6 +602,9 @@
                                             //se actualiza el total
                                             total.innerHTML = "$"+formatearNumero(totalCosto - cupon['valorDesc']);
 
+                                            //se actualiza el hidden
+                                            $('#totalHidden').val(totalCosto - cupon['valorDesc']);
+
                                             alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                         }
                                         else{
@@ -479,19 +614,11 @@
                                             //se actualiza el total
                                             total.innerHTML = "$"+formatearNumero(0);
 
+                                            //se actualiza el hidden
+                                            $('#totalHidden').val(0);
+
                                             alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                         }
-                                    }
-                                    break;
-                                case 'envio':
-                                    //se realiza el descuento en el envio...
-                                    //si es porcentaje entonces se realiza el descuento con porcentaje
-                                    if(cupon['porcentajeDesc']){
-
-                                    }
-                                    else{
-                                        //si no entonces se descuenta una cierta cantidad
-                                        
                                     }
                                     break;
                                 case 'compra':
@@ -499,20 +626,90 @@
                                     //si es porcentaje entonces se realiza el descuento con porcentaje
                                     if(cupon['porcentajeDesc']){
 
+                                        //se pone la cantidad a descontar
+                                        document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(subtotal*(cupon['porcentajeDesc']/100));
+
+                                        //se actualiza el total
+                                        total.innerHTML = "$"+formatearNumero(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+
+                                        //se actualiza el hidden
+                                        $('#totalHidden').val(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+
+                                        alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
                                     }
                                     else{
-                                        //si no entonces se descuenta una cierta cantidad
-                                        
+                                    //si no entonces se descuenta una cierta cantidad
+                                        if(!hayFisico){
+                                            //se calcula el total
+                                            var nuevoTotal = totalCosto - cupon['valorDesc'];
+                                            //se verifica que el costo no sea cero
+                                            if(nuevoTotal > 0){
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(totalCosto - cupon['valorDesc']);
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(totalCosto - cupon['valorDesc']);
+
+                                                alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                            }
+                                            else{
+                                                //se pone la cantidad a descontar
+                                                document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(totalCosto);
+
+                                                //se actualiza el total
+                                                total.innerHTML = "$"+formatearNumero(0);
+
+                                                //se actualiza el hidden
+                                                $('#totalHidden').val(0);
+
+                                                alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                            }
+                                        }
+                                        else{
+                                            if(envioData["costo"]){
+                                                //se calcula el total
+                                                var nuevoTotal = subtotal - cupon['valorDesc'];
+                                                //se verifica que el costo no sea cero
+                                                if(nuevoTotal > 0){
+                                                    //se pone la cantidad a descontar
+                                                    document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
+
+                                                    //se actualiza el total
+                                                    total.innerHTML = "$"+formatearNumero(nuevoTotal);
+
+                                                    //se actualiza el hidden
+                                                    $('#totalHidden').val(nuevoTotal);
+
+                                                    alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                                }
+                                                else{
+                                                    //se pone la cantidad a descontar
+                                                    document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(totalCosto);
+
+                                                    //se actualiza el total
+                                                    total.innerHTML = "$"+formatearNumero(envioData["costo"]);
+
+                                                    //se actualiza el hidden
+                                                    $('#totalHidden').val(envioData["costo"]);
+
+                                                    alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                                }
+                                            }
+                                        }
                                     }
                                     break;
                             }
-                            
+
+                            //se muestra el descuento en la compra
+                            cuponHTML = document.getElementById("cuponHTML");
+                            cuponHTML.style.display = "flex";
+
                             return;
                         } 
                     }
-                    
-                    alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
-
                 }
             }
             
