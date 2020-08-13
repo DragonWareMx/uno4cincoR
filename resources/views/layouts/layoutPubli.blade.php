@@ -29,6 +29,8 @@
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -162,10 +164,35 @@
 
     <!-- ***** Features Big Item Start ***** -->
     @yield('content')
-    
+    <div id="cajacookies">
+        <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar este mensaje</button>
+        Este sitio web usa cookies, si permanece aquí acepta su uso.
+        Puede leer más sobre el uso de cookies en nuestra <a href="{{route('avisoPrivacidad')}}">política de privacidad</a>.
+        </p>
+    </div>
     <!-- ***** Features Big Item End ***** -->
 
-   
+    <script>
+    /* ésto comprueba la localStorage si ya tiene la variable guardada */
+        function compruebaAceptaCookies() {
+            if(localStorage.aceptaCookies == 'true'){
+                cajacookies.style.display = 'none';
+            }
+            }
+            
+            /* aquí guardamos la variable de que se ha
+            aceptado el uso de cookies así no mostraremos
+            el mensaje de nuevo */
+            function aceptarCookies() {
+            localStorage.aceptaCookies = 'true';
+            cajacookies.style.display = 'none';
+            }
+            
+            /* ésto se ejecuta cuando la web está cargada */
+            $(document).ready(function () {
+            compruebaAceptaCookies();
+        });
+    </script>
 
 
     <!-- ***** Footer Start ***** -->

@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
 		<!-- Vendors-->
 		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
 		<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
