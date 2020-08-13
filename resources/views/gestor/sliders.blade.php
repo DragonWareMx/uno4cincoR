@@ -23,8 +23,8 @@
 @endif
     
    <div class="all_sliders_contenido">
-    <div class="title_index" style="">
-        <h2 class="text_title_slider" style="">LIBROS</h2>
+    <div class="title_index" >
+        <h2 class="text_title_slider" >LIBROS</h2> 
     </div>
     <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
     

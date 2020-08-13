@@ -6,8 +6,9 @@
     margin-top: 40px;
 }
 
-.datos_slider{
-    width: 65%;
+.datos_slider{ 
+    width: 75%;
+    margin-left: 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -46,7 +47,8 @@
     margin-bottom: 5px;
 }
 .elementos_slider_50{
-    width: 50%;
+    margin-top: 15px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,11 +64,27 @@
     margin-bottom: 5px;
     flex-direction: row;
 }
+.slidertxt{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1D2120;
+    width: 300px !important;
+}
 
 .elementos_slider_imagen{
     margin-top: 20px;
     display: flex;
+    width: 100%;
 }
+
+.btn-sliderExistente{
+    color: #29B390; 
+    text-decoration: underline;
+}
+
 
 .botones_slider_100{
     width: 100%;
@@ -161,7 +179,6 @@
     border: none;
     border-bottom: 0.4px solid #909090;
     width: auto;
-    margin-left: 5px;
     font-family: Nunito;
     font-style: normal;
     font-weight: 300;
@@ -169,8 +186,7 @@
     height: 25px;
     line-height: 22px;
     color: #717171;
-    margin-top: -18px;
-    width: 60%;
+    margin-top: 0px !important;
 }
 .select_slider:focus {
     outline:none ;
@@ -202,14 +218,9 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
-    color: #1D2120;
+    color: #3e4140;
 }
 .text_agregar{
-    font-family: Nunito;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 25px;
     text-decoration-line: underline;
     color: #29B390;
     margin:10px;
@@ -229,7 +240,7 @@
     background:transparent;
     width: 90%;
     transition: all 0.5s;
- }
+}
 
 #boton_delete{
     width: 10%;
@@ -237,7 +248,7 @@
     z-index: 0;
     position: absolute;
     align-items: center;
-    border: 1px solid white;
+    border:none;
     box-sizing: border-box;
     border-radius: 5px;
     font-style: normal;
@@ -251,12 +262,23 @@
     transition: all 0.3s;
     display: none;
 }
-#boton_delete:hover{
-    text-decoration: none;
-    height: 43px;
-    transition: all 0.3s;
-    color:white;
-}
 #img_carrusel{
     height: 400px;
+}
+
+/* ------------------------RESPONSIVE-------------------- */
+@media (max-width:1130px){
+    .elementos_slider_imagen{
+        flex-wrap: wrap;
+    }
+}
+@media (max-width:700px){
+    .datos_slider{
+        width: 100%;
+    }
+}
+@media (max-width:500px){
+    #banner_existente{
+        font-size: 14px;
+    }
 }

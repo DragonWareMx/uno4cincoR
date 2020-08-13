@@ -35,35 +35,38 @@
        @csrf
        <div class="elementos_slider_100">
         <div class="elementos_slider_imagen">
-            <p class="txt_datosAuthor">Imagen PC (horizontal):</p>
-            <input id="imagenPC" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagenPC" required>
+            <p class="slidertxt">Imagen PC (horizontal):</p>
+            <input id="imagenPC" class="img_datosAuthor" style="margin-top:-1px" type="file" name="imagenPC" required>
         </div>
         </div>
         <div class="elementos_slider_100">
             <div class="elementos_slider_imagen">
-                <p class="txt_datosAuthor">Imagen celular (vertical):</p>
-                <input id="imagenCell" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagenCell" required>
+                <p class="slidertxt">Imagen celular (vertical):</p>
+                <input id="imagenCell" class="img_datosAuthor" style="margin-top:-1px" type="file" name="imagenCell" required>
             </div>
         </div>
         <div class="div_empareja_elementos">
-        <div id="select_relacion" class="elementos_slider_50">
-            <p class="elementos_slider txt-AutorLibroBlog">Relacionado con: </p>
-            <select class="select_slider" name="relacionBanner" style="margin-left: 0px" required>
-                <option disable selected="selected" value="" hidden> &nbsp; selecciona</option>
-                @foreach ($relaciones as $relacion)
-                    
-                    @if ($aux)
-                        <option value="{{$relacion->id}}">{{$relacion->titulo}}</option>
-                    @else
-                        <option value="{{$relacion->id}}">{{$relacion->nombre}}</option>
-                    @endif
-                    
-                @endforeach
-            </select>
+            
+        <div class="elementos_slider_100">
+            <div class="elementos_slider_imagen">
+                <p class="slidertxt" style="width: 120px">Relacionado con: </p>
+                <select class="select_slider img_datosAuthor" name="relacionBanner" style="margin-left: 0px" required>
+                    <option disable selected="selected" value="" hidden> &nbsp; Selecciona</option>
+                    @foreach ($relaciones as $relacion)
+                        
+                        @if ($aux)
+                            <option value="{{$relacion->id}}">{{$relacion->titulo}}</option>
+                        @else
+                            <option value="{{$relacion->id}}">{{$relacion->nombre}}</option>
+                        @endif
+                        
+                    @endforeach
+                </select>
+            </div>
         </div>
-        <div class="elementos_slider_50">
-            <div id="banner_existente" class="gestor_slider_cancelar">Elegir banner existente</div>
-        </div>
+
+        <a id="banner_existente" style="color: #29B390; text-decoration:underline">Elegir banner existente</a>
+        
         </div>
 
         <div id="div_existentes" class="imagenes_slider_100" style="display: none">    
@@ -75,12 +78,13 @@
                 <input class="input_invisible" name="imgSelected" style="display: none" value="">
         </div>
 
-        <div class="botones_slider_100">
-            <div class="botones_slider_derecha">
-                <a class="gestor_slider_cancelar" href="{{ route('verSliders')}}">Cancelar</a>
+        <div class="botones_blog_100">
+            <div class="botones_blog_derecha">
+                <a class="gestor_blog_cancelar" href="{{ route('verSliders')}}">Cancelar</a>
+                <input class="gestor_blog_guardar" type="submit" value="Guardar">	  
             </div>
-                <input class="gestor_slider_guardar" type="submit" value="Guardar">	    
-        </div>   
+        </div>
+        
        </form>
    </div>
    
