@@ -98,6 +98,9 @@
 
     
     <div class="div_ContenedorAutores">
+        @if (sizeOf($autoruno4cinco)==0)
+            No hay autores para mostrar
+        @endif
         @foreach($autoruno4cinco as $uno4cinco)
         <div class="div_autoresTotal">
             <div  class="img_autoresGral" style="background: url('{{asset('storage/autores/'.$uno4cinco->foto)}}') center center no-repeat;

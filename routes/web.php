@@ -111,3 +111,7 @@ Route::patch('/adminuno4cinco/cupon-editar/{id}','gestionCuponesController@updat
 Route::delete('/adminuno4cinco/cupon-borrar/{id}','gestionCuponesController@deleteCupon')->name('eliminarCupon');
 
 Route::get('/descarga','DescargasController@descargar')->name('descargar')->middleware('link');
+
+Route::get('/politica-privacidad',function(){
+    return view('publicitaria.privacidad');
+})->name('avisoPrivacidad');

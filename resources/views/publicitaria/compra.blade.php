@@ -31,7 +31,7 @@
             @endforeach
         @endforeach
 
-        <form action="{{ route('pagoPayPal') }}" method="POST">
+        <form action="{{ route('pagoPayPal') }}" method="POST" onsubmit="return validate(this);">
             @csrf
             <div class="container-fluid">
                 <div class="row">
@@ -190,41 +190,48 @@
 
                                 @if($fisico)
 
-                                {{-- REFERENCUAS --}}
-                                <div class="row row-p">
-                                    <div class="field">
-                                        <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);">
-                                        <label for="referencias" title="Referencias (opcional)" data-title="Referencias (opcional)"></label>
-                                    </div>
-                                </div>
-
-                                {{--METODO ENVIO--}}
-                                <div class="row">
-                                    <div class="col-sm">
+                                    {{-- REFERENCUAS --}}
+                                    <div class="row row-p">
                                         <div class="field">
-                                            <select name="envio" id="envio" value="" onchange="envioSelect()" required>
-                                                @if($envios)
-                                                    <option value="" id="NA">Elegir opción</option>
-                                                    @foreach ($envios as $envio)
-                                                        <option value="{{ $envio->id }}" id="{{ $envio->id }}">${{ number_format($envio->costo, 2 , ".", "," ) }} {{ $envio->nombre }} @if($envio->descripcion)- {{ $envio->descripcion }}@endif</option>
-                                                    @endforeach
-                                                @else
-                                                    <option value="Elegir" id="NA">Lo sentimos, no hay envíos disponibles</option>
-                                                @endif
-                                            </select>
-                                            <label for="envio" title="Tipo de envío" data-title="Tipo de envío"></label>
+                                            <input type="text" autocomplete="on" id="referencias" name="referencias" value="" onchange="this.setAttribute('value', this.value);">
+                                            <label for="referencias" title="Referencias (opcional)" data-title="Referencias (opcional)"></label>
                                         </div>
                                     </div>
-                                </div>
+
+                                    {{--METODO ENVIO--}}
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="field">
+                                                <select name="envio" id="envio" value="" onchange="envioSelect()" required>
+                                                    @if($envios)
+                                                        <option value="" id="NA">Elegir opción</option>
+                                                        @foreach ($envios as $envio)
+                                                            <option value="{{ $envio->id }}" id="{{ $envio->id }}">${{ number_format($envio->costo, 2 , ".", "," ) }} {{ $envio->nombre }} @if($envio->descripcion)- {{ $envio->descripcion }}@endif</option>
+                                                        @endforeach
+                                                    @else
+                                                        <option value="Elegir" id="NA">Lo sentimos, no hay envíos disponibles</option>
+                                                    @endif
+                                                </select>
+                                                <label for="envio" title="Tipo de envío" data-title="Tipo de envío"></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
 
                                 <h1 class="row-m">¿Desea utilizar un cupón?</h1>
                             
                                 {{-- CUPON --}}
                                 <div class="row row-p">
-                                    <div class="field">
-                                        <input type="text" autocomplete="off" id="cupon" name="cupon" value="" onchange="this.setAttribute('value', this.value);">
-                                        <label for="cupon" title="Ingresar cupón (opcional)" data-title="Ingresar cupón (opcional)"></label>
+                                    <div class="col-sm">
+                                        <div class="field">
+                                            <input type="text" autocomplete="off" id="cupon" name="cupon" value="" onchange="this.setAttribute('value', this.value);">
+                                            <label for="cupon" title="Ingresar cupón (opcional)" data-title="Ingresar cupón (opcional)"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="field">
+                                            <button onclick="validar()" type="button" class="boton_compra shrink" id="validarCupon" name="validarCupon" value="validarCupon" style="width: 100%; height: 42px; margin: 0px;">Validar cupón</button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -309,12 +316,19 @@
                                             <div class="producto-row">
                                                 @if($fisico)
                                                     <div class="totales">
-                                                        <p>Subtotal</p><p>${{ number_format($total, 2 , ".", "," ) }}</p>
+                                                        <p>Subtotal</p><p id="subtotal">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                     </div>
                                                     <div class="totales">
                                                         <p>Envío</p><p id="envio-totales" class="envio-totales">Selecciona el tipo de envío</p>
                                                     </div>
+                                                @else
+                                                    <div class="totales" id="subtotalHTML" style="display: none;">
+                                                        <p>Subtotal</p><p id="subtotal">${{ number_format($total, 2 , ".", "," ) }}</p>
+                                                    </div>
                                                 @endif
+                                                <div class="totales" id="cuponHTML" style="display: none;">
+                                                    <p>Cupón de descuento</p><p id="cuponDescuento">${{ number_format(0, 2 , ".", "," ) }}</p>
+                                                </div>
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
@@ -359,10 +373,149 @@
         <script>
             //se guarda el total
             var totalCosto = {{ $total }};
+            var subtotal = {{ $total }};
             var envios = @json($envios);
+
+            //obtenemos todos los cupones
+            var cupones = @json($cupones);
+
+            var hayFisico = {{ json_encode($fisico) }};
             
             window.onload = envioSelect;
 
+            function validar() {
+                //valida que hay ingresado un cupón
+                codigo = document.getElementById("cupon").value;
+    
+                //verifica que se haya ingresado un codigo
+                if(codigo.length > 0){
+                    
+                    // valida que existan cupones
+                    if(cupones.length > 0){
+                        var cupon = null;
+                        //busca el cupon
+                        cupones.forEach(cupon2 => {
+                            if(cupon2['codigo'] == codigo){
+                                cupon = cupon2;
+                            }
+                        });
+
+                        //si existe el cupon introducido...
+                        if(cupon){
+                            //si el cupon expira por la fecha se verifica que no haya expirado
+                            if(cupon['limiteFecha']){
+                                var today = Date.parse(new Date().toISOString().slice(0,10));
+                                var cuponDate = Date.parse(cupon['limiteFecha']);
+
+                                if(today > cuponDate){
+                                    alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
+                                    return;
+                                }
+                            }
+                            else if(cupon['numUsos'] <= 0){
+                                //sino entonces significa que expira por el numero de usos
+                                alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
+                                return;
+                            }
+
+                            //si existe un minimo de compra...
+                            if(cupon['minimoCompra']){
+                                //verifica que el total u el subtotal (en caso de que haya libros físicos) sea igual o mayor que el minimo de compra
+                                if(subtotal < cupon['minimoCompra']){
+                                    alert('Cupón no válido: Para aplicar este cupón es necesario que su compra sea de al menos $'+formatearNumero(cupon['minimoCompra']));
+                                    return;
+                                }
+                            }
+
+                            //aqui se verifica lo de si es reusable
+
+                            //aqui se verifica si aplica en nuevos
+
+                            //---------------SI LLEGAMOS A ESTE PUNTO ENTONCES EL CUPON ES VALIDO-----------------------
+
+                            //se muestra el descuento en la compra
+                            cuponHTML = document.getElementById("cuponHTML");
+                            cuponHTML.style.display = "flex";
+
+                            if(!hayFisico){
+                                cuponHTML = document.getElementById("subtotalHTML");
+                                cuponHTML.style.display = "flex";          
+                            }
+
+                            //se realiza el descuento
+                            switch(cupon['tipo']){
+                                case 'total':
+                                    //se realiza el descuento en el total...
+                                    //si es porcentaje entonces se realiza el descuento con porcentaje
+                                    if(cupon['porcentajeDesc']){
+                                        //se pone la cantidad a descontar
+                                        document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(subtotal*(cupon['porcentajeDesc']/100));
+
+                                        //se actualiza el total
+                                        total.innerHTML = "$"+formatearNumero(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
+
+                                        alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
+                                    }
+                                    else{
+                                        //si no entonces se descuenta una cierta cantidad
+
+                                        //se calcula el total
+                                        var nuevoTotal = totalCosto - cupon['valorDesc'];
+
+                                        //se verifica que el costo no sea cero
+                                        if(nuevoTotal > 0){
+                                            //se pone la cantidad a descontar
+                                            document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
+
+                                            //se actualiza el total
+                                            total.innerHTML = "$"+formatearNumero(totalCosto - cupon['valorDesc']);
+
+                                            alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                        }
+                                        else{
+                                            //se pone la cantidad a descontar
+                                            document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(totalCosto);
+
+                                            //se actualiza el total
+                                            total.innerHTML = "$"+formatearNumero(0);
+
+                                            alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
+                                        }
+                                    }
+                                    break;
+                                case 'envio':
+                                    //se realiza el descuento en el envio...
+                                    //si es porcentaje entonces se realiza el descuento con porcentaje
+                                    if(cupon['porcentajeDesc']){
+
+                                    }
+                                    else{
+                                        //si no entonces se descuenta una cierta cantidad
+                                        
+                                    }
+                                    break;
+                                case 'compra':
+                                    //se realiza el descuento en el total...
+                                    //si es porcentaje entonces se realiza el descuento con porcentaje
+                                    if(cupon['porcentajeDesc']){
+
+                                    }
+                                    else{
+                                        //si no entonces se descuenta una cierta cantidad
+                                        
+                                    }
+                                    break;
+                            }
+                            
+                            return;
+                        } 
+                    }
+                    
+                    alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
+
+                }
+            }
+            
             function getEnvio(id){
                 var envio;
 
@@ -390,35 +543,36 @@
                 var envio = document.getElementById("envio");
                 var totalEnvio = document.getElementById("envio-totales");
                 var total = document.getElementById("total");
+                if(envio){
+                    //verifica que el tipo de envio exista
+                    if(envio.value != ""){
+                        //se obtiene el envio de la BD
+                        envioData = getEnvio(envio.value);
 
-                //verifica que el tipo de envio exista
-                if(envio.value != ""){
-                    //se obtiene el envio de la BD
-                    envioData = getEnvio(envio.value);
+                        //verifica que el envio exista en la BD
+                        if(envioData["costo"]){
+                            //se agrega el costo a los totales
+                            totalEnvio.innerHTML = "$"+formatearNumero(envioData["costo"]);
 
-                    //verifica que el envio exista en la BD
-                    if(envioData["costo"]){
-                        //se agrega el costo a los totales
-                        totalEnvio.innerHTML = "$"+formatearNumero(envioData["costo"]);
+                            //se elimina la clase de "envio-totales"
+                            totalEnvio.classList.remove("envio-totales");
 
-                        //se elimina la clase de "envio-totales"
-                        totalEnvio.classList.remove("envio-totales");
+                            //se actualiza el total
+                            total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"]);
+
+                            $('#totalHidden').val(totalCosto + envioData["costo"]);
+                        }
+                    }
+                    else{
+                        //se pide al usuario que seleccione el tipo
+                        totalEnvio.innerHTML = "Selecciona el tipo de envío";
+
+                        //se agrega la clase de "envio-totales"
+                        totalEnvio.classList.add("envio-totales");
 
                         //se actualiza el total
-                        total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"]);
-
-                        $('#totalHidden').val(totalCosto + envioData["costo"]);
+                        total.innerHTML = "$"+formatearNumero(totalCosto);
                     }
-                }
-                else{
-                    //se pide al usuario que seleccione el tipo
-                    totalEnvio.innerHTML = "Selecciona el tipo de envío";
-
-                    //se agrega la clase de "envio-totales"
-                    totalEnvio.classList.add("envio-totales");
-
-                    //se actualiza el total
-                    total.innerHTML = "$"+formatearNumero(totalCosto);
                 }
             }
         </script>
