@@ -43,6 +43,9 @@
         <li>
           <a href="{{ route('contacto') }}">CONTACTO</a> <br>
       </li>
+      <li>
+        <a href="{{route('avisoPrivacidad')}}" >Política de privacidad y uso de cookies.</a>
+        </li>
       </ul>
       </div>
     </div>
@@ -69,6 +72,7 @@
                 <li>
                     <a href="mailto: contacto@uno4cinco.com"><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp;  contacto@uno4cinco.com</a> <br>
                 </li>
+                
             </ul>
           </div>
     </div>

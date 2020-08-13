@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
 @endsection
-
+@section('menu')
+    Sliders
+@endsection
 @section('contenido')
 @if (session()->has('success'))
     <script>
@@ -20,11 +22,6 @@
     </script>
 @endif
     
-    <div class="all_sliders_80">
-        <div class="all_sliders_menu_busqueda">
-            <div class="h3 mb-0 text-gray-800"><a href="{{ route('verSliders') }}"> Sliders</a></div>
-        </div>
-    </div>
    <div class="all_sliders_contenido">
     <div class="title_index" style="">
         <h2 class="text_title_slider" style="">LIBROS</h2>

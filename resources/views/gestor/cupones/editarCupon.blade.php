@@ -7,7 +7,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{Route('verCupones')}}">Cupones</a> | editar cupón {{$cupon->codigo}}
+    <a class="txt-titulosGestor" href="{{Route('verCupones')}}">Cupones</a> | Editar cupón {{$cupon->codigo}}
 @endsection
 
 @section('contenido')

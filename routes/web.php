@@ -43,7 +43,7 @@ Route::delete('eliminar-del-carrito', 'paginaTiendaController@remove')->name('el
 Route::get('/colecciones','paginaTiendaController@colecciones')->name('colecciones');
 Route::get('/coleccion/{id}','paginaTiendaController@coleccion')->name('coleccion');
 
-/*RUTAS DE GESTIÓN DE BLOGS*/
+/*RUTAS DE GESTIÓN DE AUTORES*/
 // Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco')->middleware('auth');
 Route::get('/adminuno4cinco/autores-145', 'gestorAutoresController@index145')->name('autores-145');
 Route::get('/adminuno4cinco/autores-uno4cinco', 'gestorAutoresController@indexuno4cinco')->name('autores-uno4cinco');

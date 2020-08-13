@@ -7,7 +7,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{ route('verCupones') }}" class="txt-titulosGestor">Cupones</a>
+    Cupones
 @endsection
 
 @section('contenido') 

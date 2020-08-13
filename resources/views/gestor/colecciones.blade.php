@@ -5,7 +5,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{ route('verColecciones') }}" class="txt-titulosGestor">Colecciones</a>
+    Colecciones
 @endsection
 
 @section('contenido') 

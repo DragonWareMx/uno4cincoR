@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/gestorResumen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 @endsection
-
+@section('menu')
+    Resumen
+@endsection
 @section('contenido')
 {{-- php para sacar las ciudades de donde se vende mas y los libros mas vendidos--}}
 @php

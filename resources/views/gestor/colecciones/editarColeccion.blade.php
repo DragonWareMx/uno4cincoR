@@ -8,7 +8,7 @@
 @endsection
 
 @section('menu')
-    <a href="{{ route('verColecciones')}}">Colecciones </a>| editar colección: {{$coleccion->nombre}}
+    <a href="{{ route('verColecciones')}}">Colecciones </a>| Editar colección: {{$coleccion->nombre}}
 @endsection
 
 @section('contenido')
