@@ -254,7 +254,7 @@
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('resumen') }}">
                   <i class="fas fa-clipboard-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Resumen
                 </a>
@@ -324,7 +324,7 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <form action="{{route('logout')}}" method="POST">
             {{csrf_field()}}
-            <button class="btn btn-primary"> Cerrar Sesión</button>
+            <button class="btn btn-primary "> Cerrar Sesión</button>
           </form>
         </div>
       </div>

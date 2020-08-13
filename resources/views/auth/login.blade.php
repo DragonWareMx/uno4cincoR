@@ -12,7 +12,7 @@
           <img src="{{ asset('img/logos/coloresuno4cinco.png') }}" class="logo-login">
           <div class="linea-login"></div>
           <p class="parrafo-login">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit massa dictum
+            Para todas, arte.
           </p>
           <img src="{{ asset('img/quienessomos/6007.png') }}" class="libro-login">
         </div>
