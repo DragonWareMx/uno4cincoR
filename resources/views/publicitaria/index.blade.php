@@ -784,8 +784,8 @@
     </div>
 
     <div id="cajacookies">
-        <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar éste mensaje</button>
-        Éste sitio web usa cookies, si permanece aquí acepta su uso.
+        <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar este mensaje</button>
+        Este sitio web usa cookies, si permanece aquí acepta su uso.
         Puede leer más sobre el uso de cookies en nuestra <a href="politica.html">política de privacidad</a>.
         </p>
     </div>
