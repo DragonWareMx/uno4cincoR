@@ -218,7 +218,18 @@
 		$('.submenu').on('click', function () {
 			if (width < 992) {
 				$('.submenu ul').removeClass('active');
-				$(this).find('ul').toggleClass('active');
+				if($(this).find('ul').hasClass('actual')){
+					$(this).find('ul').removeClass('active');
+					$(this).find('ul').removeClass('actual');
+				}
+				else{
+					$(this).find('ul').toggleClass('active');
+					$(this).find('ul').toggleClass('actual');
+				}
+				if($('.submenu ul').hasClass('actual')){
+					$('.submenu ul').removeClass('actual');
+					$(this).find('ul').toggleClass('actual');
+				}
 			}
 		});
 	}
