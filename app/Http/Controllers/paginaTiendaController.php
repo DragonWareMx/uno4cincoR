@@ -8,6 +8,7 @@ use App\Book;
 use App\Author;
 use App\Tipoenvio;
 use App\Collection;
+use App\Promotion;
 
 class paginaTiendaController extends Controller
 {
@@ -175,7 +176,9 @@ class paginaTiendaController extends Controller
     public function compra(){
         $books = Book::all();
         $envios = Tipoenvio::all();
-        return view('publicitaria.compra',['books' => $books, 'envios' => $envios]);
+        $cupones = Promotion::all();
+
+        return view('publicitaria.compra',['books' => $books, 'envios' => $envios, 'cupones' => $cupones]);
     }
 
     //Agrega un producto al carrito o lo actualiza
