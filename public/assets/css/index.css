@@ -634,3 +634,11 @@
     border-radius: 25px;
     border: 1px solid #29b390;
   }
+
+@media (max-width: 991px){
+    #cajacookies button {
+        width: 25%;
+        font-size: 14px;
+        border-radius: 15px;
+      }
+}
