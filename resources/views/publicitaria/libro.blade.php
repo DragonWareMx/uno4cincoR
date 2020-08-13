@@ -6,6 +6,9 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
+    
+<link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
@@ -353,18 +356,14 @@
         <hr class="hr-tienda">
 
         {{-- BOTON REGRESAR --}}
-        <div class="libro-regresar">
-            <div class="boton">
-            <button onclick="location.href='{{ route('tiendaCatalogo') }}'">
-                <div class="row" style="margin-right:0px; margin-left: auto;">
-                    <img src="{{ asset('img/ico/blackarrow.png') }}">
-                </div>
-                <div class="row" style="margin-right:0px; margin-left: auto;">
-                    Regresar
-                </div>
-            </button>
-            </div>
+        <div class="div_contenidoBack">
+            <a class="btn_regresar" href="javascript:history.back(-1);">
+                &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
+                <br>
+                Regresar
+            </a>
         </div>
+        <br>
     </div>
 </section>
 
