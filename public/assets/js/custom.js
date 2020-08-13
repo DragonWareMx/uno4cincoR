@@ -216,19 +216,20 @@
 	function mobileNav() {
 		var width = $(window).width();
 		$('.submenu').on('click', function () {
+			width = $(window).width();
 			if (width < 992) {
-				$('.submenu ul').removeClass('active');
-				if($(this).find('ul').hasClass('actual')){
-					$(this).find('ul').removeClass('active');
-					$(this).find('ul').removeClass('actual');
+				$('.submenu ul').removeClass('actual');
+				if($(this).find('ul').hasClass('active')){
+				  $(this).find('ul').removeClass('active');
+				  $(this).find('ul').removeClass('actual');
 				}
 				else{
 					$(this).find('ul').toggleClass('active');
-					$(this).find('ul').toggleClass('actual');
+				    $(this).find('ul').toggleClass('actual');
 				}
 				if($('.submenu ul').hasClass('actual')){
 					$('.submenu ul').removeClass('actual');
-					$(this).find('ul').toggleClass('actual');
+				  	$(this).find('ul').toggleClass('actual');
 				}
 			}
 		});
