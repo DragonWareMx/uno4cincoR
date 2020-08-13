@@ -107,20 +107,20 @@
                     <p class="txt_datosAuthor">Mínimo de compra:</p>
                     <input name="minimoCompra" class="input_datosAuthor input_datosAuthor50 margin_cupones10" type="number" min="1" value="{{$cupon->minimoCompra}}" pattern="^[0-9]+" 
                     onpaste="return false;" onDrop="return false;" autocomplete=off step="1"
-                    onkeypress="return solonumerosdecimales(event)">
+                    onkeypress="return solonumerosdecimales(event)" placeholder="(Opcional)">
                 </div> 
                 @if ($cupon->reusable==0)
-                    <label class= "txt_datosAuthor" for="reusable">Reusable</label>
+                    <label class= "txt_datosAuthor" for="reusable">Reusable (Opcional)</label>
                     <input name="reusable" value="reusable" id="reusable" type="checkbox" class="switch"><br>
                 @else 
-                    <label class= "txt_datosAuthor" for="reusable">Reusable</label>
+                    <label class= "txt_datosAuthor" for="reusable">Reusable (Opcional)</label>
                     <input checked name="reusable" value="reusable" id="reusable" type="checkbox" class="switch"><br>
                 @endif
                 @if ($cupon->nuevos==0)
-                    <label class= "txt_datosAuthor" for="nuevos">¿Solo aplica en nuevos?</label>
+                    <label class= "txt_datosAuthor" for="nuevos">¿Solo aplica en nuevos? (Opcional)</label>
                     <input name="nuevos" value="nuevos" id="nuevos" type="checkbox" class="switch">
                 @else 
-                    <label class= "txt_datosAuthor" for="nuevos">¿Solo aplica en nuevos?</label>
+                    <label class= "txt_datosAuthor" for="nuevos">¿Solo aplica en nuevos? (Opcional)</label>
                     <input checked name="nuevos" value="nuevos" id="nuevos" type="checkbox" class="switch">
                 @endif
                 <br>
