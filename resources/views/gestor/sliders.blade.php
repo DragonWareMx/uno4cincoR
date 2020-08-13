@@ -75,11 +75,11 @@
                     $i++;
                 @endphp
             @endforeach
-            <a class="carousel-control-prev flechasPosicion" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
+            <a class="carousel-control-prev flechasPosicion newPosition" data-target="#carruselLibros" data-slide="prev" style="cursor: pointer; cursor:hand;">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next flechasPosicion" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
+            <a class="carousel-control-next flechasPosicion newPosition" data-target="#carruselLibros" data-slide="next" style="cursor: pointer; cursor:hand;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
@@ -137,16 +137,74 @@
                     $i++;
                 @endphp
             @endforeach
-            <a class="carousel-control-prev flechasPosicion" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
+            <a class="carousel-control-prev flechasPosicion newPosition" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next flechasPosicion" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
+            <a class="carousel-control-next flechasPosicion newPosition" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
         </div>
     </div>
+
+
+    <!--SLIDER AUTORES ESCONDIDO-->
+    <div id="carruselAutoresHide" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @php
+                $i=0; 
+            @endphp
+            @foreach ($bannerAutores as $banner)
+                @if ($i==0)
+                    
+                    <div class="carousel-item active" >
+                        <div class="transparente_autores">
+                        <div class="img_autores" id="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                            background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            -webkit-background-size: 100% 100%;">
+                        </div>
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
+                        </form>
+                    </div>    
+                    </div>
+                @else
+                    <div class="carousel-item" >
+                        <div class="transparente_autores">
+                        <div class="img_autores" id="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
+                            background-size: 100% 100%;
+                            -moz-background-size: 100% 100%;
+                            -o-background-size: 100% 100%;
+                            -webkit-background-size: 100% 100%;">
+                        </div>
+                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
+                        </form>
+                        </div>
+                    </div>      
+                @endif
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+            <a class="carousel-control-prev flechasPosicion newPosition" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next flechasPosicion newPosition" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
 
 
 </div>

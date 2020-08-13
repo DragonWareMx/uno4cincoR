@@ -677,7 +677,7 @@
             </div>
 
             {{-- Slider de Blogs --}}
-            <div id="carruselBlogs" class="carousel slide" data-ride="carousel">
+            <div id="carruselBlogs" class="carousel slide" data-ride="carousel" style="margin-bottom: 30px">
                 <div class="carousel-inner">
                     @php
                         $i=0; 
@@ -778,7 +778,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-            </div>   
+            </div>  
         @endif
 
     </div>

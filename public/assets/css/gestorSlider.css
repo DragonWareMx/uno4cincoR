@@ -263,7 +263,10 @@
     display: none;
 }
 #img_carrusel{
-    height: 400px;
+    height: 300px;
+}
+.newPosition{
+    height: 300px !important;
 }
 
 /* ------------------------RESPONSIVE-------------------- */
@@ -272,13 +275,55 @@
         flex-wrap: wrap;
     }
 }
+@media (max-width:1000px){
+    #img_carrusel{
+        height: 200px;
+    }
+    #boton_delete{
+        top:100px;
+        width: 15%;
+    }
+    .newPosition{
+        height: 200px !important;
+    }
+}
 @media (max-width:700px){
     .datos_slider{
         width: 100%;
     }
 }
+@media (max-width:600px){
+    #img_carrusel{
+        height: 150px;
+    }
+    #boton_delete{
+        top:60px;
+        width: 20%;
+    }
+    .newPosition{
+        height: 150px !important;
+    }
+}
 @media (max-width:500px){
     #banner_existente{
         font-size: 14px;
+    }
+    #boton_delete{
+        top:60px;
+        width: 25%;
+        right: 38%;
+    }
+}
+@media (max-width:400px){
+    #img_carrusel{
+        height: 100px;
+    }
+    #boton_delete{
+        top:30px;
+        font-size: 14px;
+        right: 40%;
+    }
+    .newPosition{
+        height: 100px !important;
     }
 }
