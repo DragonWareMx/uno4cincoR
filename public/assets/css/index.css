@@ -627,12 +627,14 @@
     position: fixed;
     bottom: 0px;
     width: 100%;
+    z-index: 999999;
   }
   
   #cajacookies button {
     color: black;
     border-radius: 25px;
     border: 1px solid #29b390;
+    z-index: 999999;
   }
 
 @media (max-width: 991px){
