@@ -32,13 +32,13 @@
               <a href="{{ route('sobreNosotros') }}">¿QUIÉNES SOMOS?</a><br>
           </li>
           <li>
-              <a href="{{ route('registro') }}">TIENDA</a><br>
+              <a href="{{ route('tiendaCatalogo') }}">TIENDA</a><br>
           </li>
           <li>
-              <a href="{{ route('registro') }}">AUTORES</a> <br>
+              <a href="{{ route('autoresUno4cinco') }}">AUTORES</a> <br>
           </li>
           <li>
-            <a href="{{ route('registro') }}">BLOG</a> <br>
+            <a href="{{ route('blogs',0) }}">BLOG</a> <br>
         </li>
         <li>
           <a href="{{ route('contacto') }}">CONTACTO</a> <br>

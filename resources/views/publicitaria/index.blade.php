@@ -456,7 +456,7 @@
                                             
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -508,7 +508,7 @@
                                             </p>
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -585,7 +585,7 @@
                                             
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
@@ -637,7 +637,7 @@
                                             </p>
                                         </div>
                                         <div class="btn_details_autor" >
-                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt2" style="">Comprar</p></a>
+                                            <a href="{{ route('libro', ['id' => $book->id])}}"><p class="btn_txt" style="">Comprar</p></a>
                                         </div> 
                                     </div>
                                     @if($i==2)
