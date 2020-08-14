@@ -39,28 +39,28 @@
         Información que nos proporciona. Cuando llena el formulario previo a la realización de una compra, podemos recopilar y almacenar la Información personal que usted proporciona, que incluye:
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Identificadores personales<br>
+        <strong>Identificadores personales</strong> <br>
         Recibimos identificadores personales que usted proporciona (incluida, por ejemplo, información como su nombre, ciudad de residencia, dirección de correo electrónico, número de teléfono o identificadores similares) y los usamos para responder y completar sus solicitudes, proporcionar notificaciones y comunicarnos con usted para concretar la venta, el servicio al cliente y para fines informativos (incluido el envío de correos electrónicos de confirmación, avisos, actualizaciones, facturas y alertas de seguridad) y para fines de marketing (incluido el envío de noticias, promociones y otra información que nosotros y nuestros afiliados y los socios creen que pueden ser de su interés). También podemos crear códigos de identificación y referencia internos para identificarlo en nuestros sistemas electrónicos.
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Comunicaciones y envíos<br>
+        <strong>Comunicaciones y envíos</strong><br>
         Recopilamos la información y el contenido que envía cuando se realiza una compra. Utilizamos esta información para responder y cumplir con sus solicitudes, comunicarnos con usted sobre el Servicio, con fines promocionales / de marketing, para establecer y administrar nuestras relaciones con los clientes y el servicio al cliente, y para proporcionar y mejorar nuestros sitios web, productos y servicios.
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Información financiera<br>
+        <strong>Información financiera</strong><br>
         Recibimos información financiera, como tarjeta de pago, información bancaria o información de PayPal ™, y otra información relacionada para procesar los pagos de los productos que ha solicitado. 
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Información comercial<br>
+        <strong>Información comercial</strong><br>
         Recopilamos y generamos información comercial e información de transacciones (como registros de productos comprados en nuestros sitios web, preferencias de nuestros productos). Utilizamos esta información para responder y cumplir solicitudes, mejorar nuestras ofertas de productos y servicios, comunicarnos con usted, adaptar nuestros esfuerzos de marketing y para fines de informes internos.
         Utilizaremos la información enumerada anteriormente para hacer inferencias sobre sus preferencias para ayudarnos a desarrollar y proporcionar mejores productos y servicios.
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Redes sociales y datos disponibles al público<br>
+        <strong>Redes sociales y datos disponibles al público</strong><br>
         Nuestros sitios web incluyen funciones de redes sociales, como el botón “Me gusta” de Facebook y widgets como el botón “Compartir” y funciones similares. Estas funciones pueden recopilar su dirección IP, las páginas que está visitando en nuestros sitios web y pueden establecer cookies para que funcionen como usted lo solicitó. Las características y los widgets de las redes sociales son alojados por un tercero o directamente en nuestros sitios web. Usamos la información personal recopilada de esta manera para los mismos fines descritos anteriormente.
     </p>
     <p class="p-txt-content" style="text-align: justify">
-        Otra información que recopilamos<br>
+        <strong>Otra información que recopilamos</strong><br>
         También podemos recopilar otra información sobre usted, su dispositivo o su uso de los servicios de la manera que le describimos en el momento de la recopilación o de otra manera con su consentimiento. Puede optar por no proporcionarnos ciertos tipos de información, pero hacerlo puede afectar su capacidad de utilizar algunos de los servicios de nuestra plataforma. 
     </p>
     <p class="p-txt-content" style="text-align: justify">
