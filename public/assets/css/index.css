@@ -307,6 +307,15 @@
     margin-bottom: 20px;
 }
 
+.banner_blog_contenido p{
+    width: 60%;
+    color: white;
+    font-family: "Karla";
+    font-size: 24px;
+    text-align:center;
+    margin-bottom: 20px;
+}
+
 .div_width_100{
     width: 100%;
     display: flex;

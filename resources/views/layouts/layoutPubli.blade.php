@@ -175,9 +175,9 @@
     <script>
     /* ésto comprueba la localStorage si ya tiene la variable guardada */
         function compruebaAceptaCookies() {
-            if(localStorage.aceptaCookies == 'true'){
-                cajacookies.style.display = 'none';
-            }
+            if(localStorage.aceptaCookies == null){
+                cajacookies.style.display = 'block';
+                }
             }
             
             /* aquí guardamos la variable de que se ha

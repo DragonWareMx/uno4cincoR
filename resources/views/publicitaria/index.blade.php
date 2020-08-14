@@ -700,8 +700,8 @@
                                     </div>
                                     {{-- Este de abajo lo metí en dos divs para centrarlo, ya tengo sueño perdón :C --}}
                                     <div class="div_width_100">
-                                        <div class="banner_blog_contenido">
-                                            {{Str::limit($banner->contenido,350)}}
+                                        <div class="banner_blog_contenido" style="color:white !important">
+                                            {!!Str::limit($banner->contenido,350)!!}
                                         </div>
                                     </div>
                                     <a href="{{ route('blog', ['id' => $banner->id])}}">
