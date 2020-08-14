@@ -775,3 +775,42 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
         margin-bottom: 10px;
     }
 }
+
+.busquedaTienda{
+    border-radius: 5px !important;
+}
+
+.blog_barra_busqueda_tienda{
+    width: fit-content;
+    height: 40px;
+    border: solid 1px;
+    border-color:#29B390;
+    border-radius: 6px;
+    display: flex;
+    margin-top: -30px;
+    margin-right: 5%;
+    margin-left: auto;
+}
+
+.blog_barra_busqueda_tienda p{
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 50px;
+    margin-right: 10px;;
+    height: 40px !important;
+}
+
+@media(max-width: 1200px){
+    .blog_barra_busqueda_tienda{
+        margin-top: 0px;
+        margin:auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:360px){
+    .blog_barra_busqueda_tienda{
+        width: 100%;
+    }
+}
