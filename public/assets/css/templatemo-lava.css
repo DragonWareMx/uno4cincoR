@@ -100,7 +100,11 @@ ul {
   margin-bottom: 0px;
 }
 
-
+p {
+  font-size: 15px;
+  line-height: 25px;
+  color: #888;
+}
 
 /* 
 ---------------------------------------------
