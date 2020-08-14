@@ -60,7 +60,7 @@
             @endif
             
             @if(!Route::is('tiendaNovedades'))
-                <form class="" action="" method="GET" enctype="multipart/form-data">
+                {{-- <form class="" action="" method="GET" enctype="multipart/form-data">
                     <div class="blog_barra_busqueda">
                         @if(!Route::is('colecciones'))
                             <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
@@ -81,6 +81,26 @@
                         @endif
                     <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
                         <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+                    </div>
+                </form> --}}
+
+                <form action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
+                    <div class="blog_barra_busqueda_tienda" style="border:none">
+                        <p>Filtrar: </p>
+                        <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f">
+                            <option value="titulo" selected>Título</option>
+                            <option value="autor">Autor</option>
+                            <option value="genero">Género</option>
+                        </select>
+                        <p>Ordenar Por: </p>
+                        <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs">
+                            <option value="az" selected>A-Z</option>
+                            <option value="za">Z-A</option>
+                            <option value="maymen">Precio: Mayor a menor</option>
+                            <option value="menmay">Precio: Menor a mayor</option>
+                            <option value="ant">Más antiguos</option>
+                            <option value="nue">Más Nuevos</option>
+                        </select>
                     </div>
                 </form>
             @endif
