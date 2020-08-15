@@ -233,7 +233,7 @@
             </div>
         </div>
         {{-- Fin slider libros --}}
-    </section>
+   
         {{--INICIA SLIDER ESCONDIDO LIBROS--}}
         <div id="carruselLibrosHide" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
