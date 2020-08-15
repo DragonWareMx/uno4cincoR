@@ -220,7 +220,7 @@
                 <div class="barra_tags_principales">
                     @foreach ($tags as $tag)
                         @if ($tag->nombre=='Eventos')
-                            <div style="width:100%"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Eventos</a></div>
+                            <div style="height:25px;width:100%"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Eventos</a></div>
                         @endif
                         @if ($tag->nombre=='Artículos')
                             <div style="width:100%"> <a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Artículos</a></div>
@@ -229,7 +229,7 @@
                             <div style="width:100%"> <a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">Noticias</a></div>
                         @endif
                     @endforeach
-                    <div style="width:100%"><a href="{{ route('blogs', ['id' => 0])}}">Todo</a></div>
+                    <div style=" height:15px; width:100%"><a href="{{ route('blogs', ['id' => 0])}}">Todo</a></div>
                 </div>
                 <div class="barra_autores">
                     <p id="desaparecer" class="barra_autores_titulo">AUTORES<hr class="hr_barra_autores"></p>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="barra_tags">
                     @foreach ($tags as $tag)
-                        <div class="barra_tags_tags"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">#{{Str::limit($tag->nombre,21)}}</a></div>
+                        <div class="barra_tags_tags"><a href="{{ route('blogs', ['id' => $tag->id, 'tipo' => 'tag'])}}">#{{Str::limit($tag->nombre,11)}}</a></div>
                     @endforeach
                 </div>
             </div>
