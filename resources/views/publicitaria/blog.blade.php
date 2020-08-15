@@ -105,7 +105,7 @@
                 {{$anio}}                    
                 </div>
                 <div class="contenido_blog_txt">
-                {!!$blog->contenido!!}
+                    {!!$blog->contenido!!}
                 </div>
             </div>
             <div class="barra_lateral_blogs">
