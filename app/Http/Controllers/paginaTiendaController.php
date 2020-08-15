@@ -101,6 +101,11 @@ class paginaTiendaController extends Controller
 
     //CATALOGO
     public function catalogo(){
+        //se comprueba si se necesita un filtrado
+        if(isset($_REQUEST["filtro"]) && isset($_REQUEST["tipo"])){
+            //...
+        }
+
         $books = $this->busqueda("catalogo",0);
 
         if(!$books)
