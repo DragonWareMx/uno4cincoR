@@ -89,7 +89,7 @@
                 <div class="elementos_blog_100">
                     <div class="elementos_blog_imagen">
                         <p class="txt_datosAuthor">Imagen:</p>
-                        <input id="imagen" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen" required>
+                        <input id="imagen" class="img_datosAuthor" style="margin-top:0px" type="file" name="imagen">
                     </div>
                 </div>
 

@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/tienda.css">
 <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 <!--BOOTSTRAP-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -119,8 +120,10 @@
         @endforeach
         
     </div>
-    <div class="paginacion_css">
-        {{$autoruno4cinco->links()}}
+    <div class="paginate-tienda">
+        <div style="width: fit-content; margin:auto;">
+        {{ $autoruno4cinco->links() }}
+        </div>
     </div>
     
     

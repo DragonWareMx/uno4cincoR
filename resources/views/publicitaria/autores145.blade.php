@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/tienda.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 <!--BOOTSTRAP-->
@@ -116,10 +117,11 @@
         </div>
         @endforeach
     </div>
-    <div class="paginacion_css">
-        {{$autoruno4cinco->links()}}
+    <div class="paginate-tienda">
+        <div style="width: fit-content; margin:auto;">
+        {{ $autoruno4cinco->links() }}
+        </div>
     </div>
-    
     
 
 

@@ -4,6 +4,7 @@
 <title>Blogs | Editorial uno4cinco</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/tienda.css">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 		<!-- Vendors-->
@@ -209,8 +210,10 @@
                         </div>
                     </a>
                 @endforeach
-                <div class="blogs_paginacion">
-                    <div class="paginacion_css">{{ $blogs->links()}}</div>
+                <div class="paginate-tienda">
+                    <div style="width: fit-content; margin:auto;">
+                    {{ $blogs->links() }}
+                    </div>
                 </div>
             </div>
             <div class="barra_lateral_blogs">
