@@ -84,23 +84,104 @@
                     </div>
                 </form> --}}
 
-                <form action="{{ route('autores145')}}" method="GET" enctype="multipart/form-data">
+                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data">
                     <div class="blog_barra_busqueda_tienda" style="border:none">
                         <p>Filtrar: </p>
-                        <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f">
-                            <option value="titulo" selected>Título</option>
-                            <option value="autor">Autor</option>
-                            <option value="genero">Género</option>
+                        <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f" onchange="this.form.submit()">
+                            <option value="titulo"
+                            @if(isset($_REQUEST["filtro"]))
+                                @if($_REQUEST["filtro"] == "titulo" || ($_REQUEST["filtro"] != "titulo" && $_REQUEST["filtro"] != "autor" && $_REQUEST["filtro"] != "genero"))
+                                    selected
+                                @endif
+                            @else
+                                selected 
+                            @endif>Título</option>
+                            <option value="autor" 
+                            @if(isset($_REQUEST["filtro"]))
+                                @if($_REQUEST["filtro"] == "autor")
+                                    selected
+                                @endif
+                            @endif>Autor</option>
+                            <option value="genero"
+                            @if(isset($_REQUEST["filtro"]))
+                                @if($_REQUEST["filtro"] == "genero")
+                                    selected
+                                @endif
+                            @endif>Género</option>
                         </select>
-                        <p>Ordenar Por: </p>
-                        <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs">
-                            <option value="az" selected>A-Z</option>
-                            <option value="za">Z-A</option>
-                            <option value="maymen">Precio: Mayor a menor</option>
-                            <option value="menmay">Precio: Menor a mayor</option>
-                            <option value="ant">Más antiguos</option>
-                            <option value="nue">Más Nuevos</option>
-                        </select>
+
+                        @if(isset($_REQUEST["filtro"]))
+                            @if($_REQUEST["filtro"] == "genero")
+                                <p>Seleccionar género: </p>
+                                
+                                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
+                                    <option value="az">A-Z</option>
+                                    <option value="za">Z-A</option>
+                                    <option value="ant">Más antiguos</option>
+                                    <option value="nue">Más Nuevos</option>
+                                </select>
+                            @else
+                                <p>Ordenar Por: </p>
+                                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
+                                    <option value="az" 
+                                    @if(isset($_REQUEST["orden"]))
+                                        @if($_REQUEST["orden"] == "az" || ($_REQUEST["orden"] != "az" && $_REQUEST["orden"] != "za" && $_REQUEST["orden"] != "ant" && $_REQUEST["orden"] != "nue"))
+                                            selected
+                                        @endif
+                                    @else
+                                        selected
+                                    @endif>A-Z</option>
+                                    <option value="za"
+                                    @if(isset($_REQUEST["orden"]))
+                                        @if($_REQUEST["orden"] == "za")
+                                            selected
+                                        @endif
+                                    @endif>Z-A</option>
+                                    <option value="ant"
+                                    @if(isset($_REQUEST["orden"]))
+                                        @if($_REQUEST["orden"] == "ant")
+                                            selected
+                                        @endif
+                                    @endif>Más antiguos</option>
+                                    <option value="nue"
+                                    @if(isset($_REQUEST["orden"]))
+                                        @if($_REQUEST["orden"] == "nue")
+                                            selected
+                                        @endif
+                                    @endif>Más Nuevos</option>
+                                </select>
+                            @endif
+                        @else
+                            <p>Ordenar Por: </p>
+                            <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
+                                <option value="az" 
+                                @if(isset($_REQUEST["orden"]))
+                                    @if($_REQUEST["orden"] == "az" || ($_REQUEST["orden"] != "az" && $_REQUEST["orden"] != "za" && $_REQUEST["orden"] != "ant" && $_REQUEST["orden"] != "nue"))
+                                        selected
+                                    @endif
+                                @else
+                                    selected
+                                @endif>A-Z</option>
+                                <option value="za"
+                                @if(isset($_REQUEST["orden"]))
+                                    @if($_REQUEST["orden"] == "za")
+                                        selected
+                                    @endif
+                                @endif>Z-A</option>
+                                <option value="ant"
+                                @if(isset($_REQUEST["orden"]))
+                                    @if($_REQUEST["orden"] == "ant")
+                                        selected
+                                    @endif
+                                @endif>Más antiguos</option>
+                                <option value="nue"
+                                @if(isset($_REQUEST["orden"]))
+                                    @if($_REQUEST["orden"] == "nue")
+                                        selected
+                                    @endif
+                                @endif>Más Nuevos</option>
+                            </select>
+                        @endif
                     </div>
                 </form>
             @endif
@@ -592,6 +673,44 @@
                 $("#tooltip-carrito").fadeOut().remove();
                 $("#tooltip-carrito2").fadeOut().remove();
             }, 500);
+        }
+
+        function filtroAplicar(){
+            /*/SE OBTIENE LA BUSQUEDA SELECCIOANADA
+            var e = document.getElementById("f");
+            var opcionFiltro = e.options[e.selectedIndex].value;
+
+            //se obtiene la ruta
+            var route = "{{ Request::path() }}";
+            var routeName = 0;
+
+            switch(route){
+                case "tienda-novedades":
+                    routeName = "index";
+                    break;
+                case "tienda-catalogo":
+                    routeName = "catalogo";
+                    break;
+                case "tienda-145":
+                    routeName = "145";
+                    break;
+                case "coleccion":
+                    routeName = "coleccion";
+                    break;
+            }
+
+            alert(route);
+            $.ajax({
+                    type: "GET",
+                    data: {filtro: opcionFiltro, tipo: routeName},
+                    success: function (html) {
+                        $("#loadBooks").replaceWith($('#loadBooks',     $(html)));
+                    }
+                });*/
+        }
+
+        function ordenarFiltro(){
+            
         }
     </script>
 @endsection
