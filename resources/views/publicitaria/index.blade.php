@@ -43,23 +43,21 @@
                                 <h4 id="viledruid" class="hero__text" style="color: #1D2120; font-family:Karla;">para todas, arte.</h4>
                                 <br>
                                 <div class="mesita_escondida" style=""> <img src="{{ asset('img/logos/escritorio.png') }}" style="width:100%"></div> 
-                                <h4 id="viledruid" class="hero__text" style="color:white; font-family:Karla">Pronto estaremos contigo</h4>
-                                <div id="clocki" class="countdown__module hide" data-date="2020/8/13" style="">
-                                    <p><span>%D</span> Días</p>
-                                    <p><span>%H</span> Horas</p>
-                                    <p><span>%M</span> Minutos</p>
-                                </div><!-- End / countdown__module hide undefined -->         
+                                
+                                <a href="#" class="btn-leerMasIndex scroll-link" data-id="book-table">Leer más<img src="{{ asset('img/ico/puerta.png') }}"  ></a>
+                                      
                             </div>
                               
                         </div>
                     </div>
-
             </div>
         </div>
         <div class="mesita" style=""> <img src="{{ asset('img/logos/escritorio.png') }}" style="width:100%"></div> 
+        
     </div><!-- End / hero -->
     
     <!--comienza div de banners y sliders-->
+    <section id="book-table">
     <div id="div_contenido" class="md-content" style="">
         <div class="title_index" style="">
             <h2 class="text_title" style="">LIBROS</h2>
@@ -235,7 +233,7 @@
             </div>
         </div>
         {{-- Fin slider libros --}}
-
+    </section>
         {{--INICIA SLIDER ESCONDIDO LIBROS--}}
         <div id="carruselLibrosHide" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -852,6 +850,42 @@
         });
     </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        // navigation click actions 
+        $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+            var sectionID = $(this).attr("data-id");
+            scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+            event.preventDefault();
+            $('#main-nav').toggleClass("open");
+        });
+    });
+    // scroll function
+    function scrollToID(id, speed){
+        var offSet = 0;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+            mainNav.removeClass("open");
+        }
+    }
+    if (typeof console === "undefined") {
+        console = {
+            log: function() { }
+        };
+    }
+    </script>
 
 </div>
 <!-- End / Content-->
