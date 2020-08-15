@@ -176,7 +176,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="field">
-                                            <input type="number" autocomplete="on" id="numCasa" name="numCasa" value="" onchange="this.setAttribute('value', this.value);" min="0">
+                                            <input type="text" autocomplete="on" id="numCasa" name="numCasa" value="" onchange="this.setAttribute('value', this.value);">
                                             <label for="numCasa" title="Número interior (opcional)" data-title="Número interior (opcional)"></label>
                                         </div>
                                     </div>

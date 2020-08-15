@@ -48,6 +48,6 @@ class SendMailable extends Mailable
             $cont++;
         }
         return $this->subject('Su compra en uno4cinco se ha realizado con éxito!')
-        ->view('emails.pedidoemail',['sell'=>$sell,'librosVendidos'=>$librosVendidos,'libros'=>$libros,'links'=>$links]);
+        ->view('emails.pedidoemailPreventa',['sell'=>$sell,'librosVendidos'=>$librosVendidos,'libros'=>$libros,'links'=>$links]);
     }
 }
