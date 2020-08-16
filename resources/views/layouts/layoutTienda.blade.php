@@ -30,6 +30,7 @@
     {{-- Verifica que existan colecciones --}}
     @php                           
         use App\Collection;
+        use App\Genre;
 
         //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
         //esto se hace porque usar paginate con select distinct causa problemas
@@ -108,17 +109,42 @@
                                     selected
                                 @endif
                             @endif>Género</option>
+                            @if(count($collectionsV2) > 0)
+                                <option value="coleccion"
+                                @if(isset($_REQUEST["filtro"]))
+                                    @if($_REQUEST["filtro"] == "coleccion")
+                                        selected
+                                    @endif
+                                @endif>Collección</option>
+                            @endif
                         </select>
 
                         @if(isset($_REQUEST["filtro"]))
                             @if($_REQUEST["filtro"] == "genero")
                                 <p>Seleccionar género: </p>
-                                
+                                @php
+                                    //Obtiene unicamente los generos que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+                                    //esto se hace porque usar paginate con select distinct causa problemas
+                                    $genresIDS = Genre::select('genres.id')
+                                                                ->leftJoin('book_genre', 'genres.id', '=', 'book_genre.genre_id')
+                                                                ->distinct()
+                                                                ->pluck('id')->toArray();
+                                    //obtiene los generos
+                                    $genres = Genre::whereIn('id', $genresIDS)->orderBy('created_at','Desc')->get();
+                                    $primero = true;
+                                @endphp
                                 <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
-                                    <option value="az">A-Z</option>
-                                    <option value="za">Z-A</option>
-                                    <option value="ant">Más antiguos</option>
-                                    <option value="nue">Más Nuevos</option>
+                                    @foreach ($genres as $genre)
+                                        <option value="{{ $genre->id }}" 
+                                        @if(isset($_REQUEST["orden"]) && !is_numeric($_REQUEST["orden"]) && $primero)
+                                            selected
+                                            @php
+                                                $primero = false;
+                                            @endphp
+                                        @elseif(isset($_REQUEST["orden"]) && $_REQUEST["orden"] == $genre->id)
+                                            selected
+                                        @endif>{{ $genre->nombre}}</option>
+                                    @endforeach
                                 </select>
                             @else
                                 <p>Ordenar Por: </p>
