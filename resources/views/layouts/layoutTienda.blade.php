@@ -60,7 +60,7 @@
                 Resultados de búsqueda
             @endif
             
-            @if(!Route::is('tiendaNovedades'))
+            @if(!Route::is('tiendaNovedades') && !Route::is('colecciones') && !Route::is('coleccion'))
                 {{-- <form class="" action="" method="GET" enctype="multipart/form-data">
                     <div class="blog_barra_busqueda">
                         @if(!Route::is('colecciones'))
@@ -126,7 +126,7 @@
                                     //Obtiene unicamente los generos que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
                                     //esto se hace porque usar paginate con select distinct causa problemas
                                     $genresIDS = Genre::select('genres.id')
-                                                                ->leftJoin('book_genre', 'genres.id', '=', 'book_genre.genre_id')
+                                                                ->Join('book_genre', 'genres.id', '=', 'book_genre.genre_id')
                                                                 ->distinct()
                                                                 ->pluck('id')->toArray();
                                     //obtiene los generos

@@ -9,6 +9,7 @@ use App\Author;
 use App\Tipoenvio;
 use App\Collection;
 use App\Promotion;
+use App\Genre;
 
 class paginaTiendaController extends Controller
 {
@@ -102,7 +103,7 @@ class paginaTiendaController extends Controller
                         $resultado = $resultado->orderBy('fechaPublicacion','Desc')->paginate(12);
                         break;
                     default:
-                        $resultado = $resultado->orderBy('titulo','Desc')->paginate(12);
+                        $resultado = $resultado->orderBy('titulo','Asc')->paginate(12);
                         break;
                 }
                 break;
@@ -123,29 +124,28 @@ class paginaTiendaController extends Controller
                         $resultado = $resultado->orderBy('authors.created_at','Desc')->paginate(12);
                         break;
                     default:
-                        $resultado = $resultado->orderBy('authors.nombre','Desc')->paginate(12);
+                        $resultado = $resultado->orderBy('authors.nombre','Asc')->paginate(12);
                         break;
                 }
                 break;
             case 'genero':
                 $resultado = $resultado->leftJoin('book_genre', 'books.id', '=', 'book_genre.book_id')
                                         ->leftJoin('genres','book_genre.genre_id','=','genres.id');
-                switch($_REQUEST["orden"]){
-                    case 'az':
-                        $resultado = $resultado->orderBy('genres.nombre','Asc')->paginate(12);
-                        break;
-                    case 'za':
-                        $resultado = $resultado->orderBy('genres.nombre','Desc')->paginate(12);
-                        break;
-                    case 'ant':
-                        $resultado = $resultado->orderBy('fechaPublicacion','Asc')->paginate(12);
-                        break;
-                    case 'nue':
-                        $resultado = $resultado->orderBy('fechaPublicacion','Desc')->paginate(12);
-                        break;
-                    default:
-                        $resultado = $resultado->orderBy('genres.nombre','Desc')->paginate(12);
-                        break;
+                
+                //Obtiene unicamente los generos que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
+                //esto se hace porque usar paginate con select distinct causa problemas
+                $genresIDS = Genre::select('genres.id')
+                                    ->Join('book_genre', 'genres.id', '=', 'book_genre.genre_id')
+                                    ->distinct()
+                                    ->pluck('id')->toArray();
+                //obtiene los generos
+                $genres = Genre::whereIn('id', $genresIDS)->orderBy('created_at','Desc')->get();
+
+                if(is_numeric($_REQUEST["orden"]) && in_array($_REQUEST["orden"], $genresIDS)){
+                    $resultado = $resultado->where('genres.id','=',$_REQUEST["orden"])->orderBy('genres.nombre','Asc')->paginate(12);
+                }
+                else{
+                    $resultado = $resultado->where('genres.id','=',$genresIDS[0])->orderBy('genres.nombre','Asc')->paginate(12);
                 }
                 break;
             case 'coleccion':
@@ -165,7 +165,7 @@ class paginaTiendaController extends Controller
                         $resultado = $resultado->orderBy('collections.created_at','Desc')->paginate(12);
                         break;
                     default:
-                        $resultado = $resultado->orderBy('collections.nombre','Desc')->paginate(12);
+                        $resultado = $resultado->orderBy('collections.nombre','Asc')->paginate(12);
                         break;
                 }
                 break;

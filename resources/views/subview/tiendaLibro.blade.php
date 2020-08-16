@@ -1,34 +1,4 @@
 <div class="container" id="loadBooks">
-    {{-- @php
-        use App\Book;
-        if(isset($_REQUEST["filtro"]) && isset($_REQUEST["tipo"])){
-            switch($_REQUEST["tipo"]){
-            case 'index':
-                $resultado = Book::where('nuevo','1')->orderBy('fechaPublicacion','Desc')->with("collection");
-                break;
-            case 'catalogo':
-                $resultado = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc');
-                echo "HOLAAAAAAAAAAAAAAA";
-                break;
-            case '145':
-                $resultado = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'145')->orderBy('ventas','Desc');
-                break;
-            case 'coleccion':
-                $resultado = Book::where('collection_id',$id)->orderBy('ventas','Desc');
-                break;
-            case 'colecciones':
-                //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
-                //esto se hace porque usar paginate con select distinct causa problemas
-                $collectionsIds = Collection::select('collections.id')
-                                            ->join('books', 'books.collection_id', '=', 'collections.id')
-                                            ->distinct()
-                                            ->pluck('id')->toArray();
-                //obtiene las colecciones
-                $resultado = Collection::whereIn('id', $collectionsIds)->orderBy('created_at','Desc');
-                break;
-            }
-        }
-    @endphp --}}
     <div class="row justify-content-start">
         @if (count($books) > 0)
             {{-- LIBRO --}}
@@ -266,7 +236,7 @@
                 </div>
             @endforeach
         @else
-            <div style="min-height: 413px; text-align: center; width:100%; font-weight: 500;">
+            <div style="min-height: 413px; text-align: center; width:100%; font-weight: 500; z-index: -1;">
                 <h5 style="padding-top:200px">No hay libros que mostrar</h5>
             </div>
         @endif

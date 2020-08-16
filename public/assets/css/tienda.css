@@ -790,6 +790,7 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
     margin-top: -30px;
     margin-right: 5%;
     margin-left: auto;
+    z-index: 99999;
 }
 
 .blog_barra_busqueda_tienda p{
@@ -800,7 +801,7 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
     height: 40px !important;
 }
 
-@media(max-width: 1200px){
+@media(max-width: 1300px){
     .blog_barra_busqueda_tienda{
         margin-top: 0px;
         margin:auto;
@@ -812,5 +813,26 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
 @media(max-width:360px){
     .blog_barra_busqueda_tienda{
         width: 100%;
+    }
+}
+
+@media(max-width:560px){
+    .blog_barra_busqueda_tienda{
+        display: flex;
+    flex-direction: column;
+        width: fit-content;
+        height: fit-content;
+        margin-right: auto;
+    }
+
+    .blog_barra_busqueda_tienda select{
+        width: 90%;
+        height: 40px;
+        margin: auto;
+    }
+    .blog_barra_busqueda_tienda p{
+        width: 90%;
+        height: 40px;
+        margin: auto;
     }
 }
