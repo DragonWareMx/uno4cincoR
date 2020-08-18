@@ -70,6 +70,10 @@ class PaymentController extends Controller
         if($request->numCasa!=null){
             $request->numCasa=' int '.$request->numCasa;
         }
+        if($request->action=='stripe'){
+            Session::put('datos', $request->all());
+            return redirect()->route('checkout.index');
+        }
         if($request->action=='bancaria'){
             $sell=new Sell();
             $mytime = Carbon::now();

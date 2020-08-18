@@ -403,3 +403,43 @@ input[type=submit]{
         width: 95%;
     }
 }
+
+.StripeElement {
+    /* box-sizing: border-box;
+  
+    height: 40px;
+  
+    padding: 10px 12px;
+  
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white; */
+  
+    height: 42px;
+    padding: 0px 15px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+  }
+  
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+  
+  .StripeElement--invalid {
+    border-color: #f84040;
+  }
+  
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+
+  #card-errors{
+      color:#f84040;
+  }
