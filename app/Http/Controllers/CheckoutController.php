@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Book;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
-
+use App\Book_Sell;
+use App\Sell;
+use App\Tipoenvio;
+use Illuminate\Support\Carbon;
 use function GuzzleHttp\Promise\all;
 
 class CheckoutController extends Controller
@@ -20,6 +23,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $datos=session('datos');
+        //dd($datos);
         $books = Book::all();
         //session()->forget('datos');
         return view('publicitaria.checkout',['datos'=>$datos,'books'=>$books]);
@@ -43,8 +47,23 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        
+        try {
+            $contents=[];
+            $quantity=0;
+            foreach (session('cart') as $id => $details) {
+                $libro=Book::findOrFail($id);
+                if ($details['cantidadFisico'] > 0) {
+                    $nombre=$libro->titulo.'(Fisico)';
+                    $contents[$nombre]=$details['cantidadFisico'];
+                }
+                if ($details['cantidadDigital'] > 0) {
+                    $nombre=$libro->titulo.'(Digital)';
+                    $contents[$nombre]=$details['cantidadDigital'];
+                }
+                $quantity++;
+            }
+            $content=json_encode($contents);
+
             $charge = Stripe::charges()->create([
                 'amount'=> $request->total,
                 'currency'=> 'MXN',
@@ -52,15 +71,90 @@ class CheckoutController extends Controller
                 'description'=>'Compra en uno4cinco.com',
                 'receipt_email'=> $request->email,
                 'metadata' => [
-                    //'contents'=>contents,
-                    //'quantity'=>quantity,
+                    'contents'=>$content,
+                    'quantity'=>$quantity,
                 ],
             ]);
 
             //SUCCESSFUL
-            $status="Gracias por su compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
+            if($request->numCasa!=null){
+                $request->numCasa=' int '.$request->numCasa;
+            }
+            $sell=new Sell();
+            $mytime = Carbon::now();
+            $sell->status='completado';
+            $sell->nombreCliente=trim($request->fname)." ".trim($request->lname);
+            $sell->edad=$request->age;
+            $sell->pais=$request->country;
+            $sell->genero=$request->genero;                                               
+            $sell->ciudad=$request->ciudad;
+            $sell->estado=$request->state;
+            $sell->correo=$request->email;
+            $sell->formaPago="3";
+            $sell->comprobantePago="1";
+            $sell->telefono=$request->tel;
+            $sell->direccion=$request->calle." ".$request->numCasa." ".$request->colonia;
+            $sell->fecha=$mytime->toDateString();
+            if($request->envio){
+                $envio=Tipoenvio::findOrFail($request->envio);    
+                $sell->precio_envio=$envio->costo;
+                $sell->nombre_envio=$envio->nombre.' - '.$envio->descripcion;
+                if($request->referencias!=null){
+                    $sell->direccion=$sell->direccion.' Referencia: '.$request->referencias;
+                }
+            }
+            $sell->save();
+
+            
+
+            foreach (session('cart') as $id => $details) {
+                $libro=Book::findOrFail($id);
+                if ($details['cantidadFisico'] > 0) {
+                    $compra=new Book_Sell();
+                    $compra->book_id=$libro->id;
+                    $compra->sell_id=$sell->id;
+                    $compra->precio=number_format(($libro->precioFisico - $libro->precioFisico*($libro->descuentoFisico/100))*$details['cantidadFisico'], 2 , ".", "" );
+                    $compra->digital="0";
+                    $compra->cantidad=$details['cantidadFisico'];
+                    $compra->save();
+                    $libro->stockFisico=$libro->stockFisico-$details['cantidadFisico'];
+                    $libro->save();
+                }
+                if ($details['cantidadDigital'] > 0) {
+                    $compra=new Book_Sell();
+                    $compra->book_id=$libro->id;
+                    $compra->sell_id=$sell->id;
+                    $compra->precio=number_format(($libro->precioDigital - $libro->precioDigital*($libro->descuentoDigital/100)), 2 , ".", "" );
+                    $compra->digital="1";
+                    $compra->cantidad=$details['cantidadDigital'];
+                    $compra->save();
+                }
+            }
+
+            $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tiendaCatalogo')->with(compact('status'));
-        
+        } catch (CardErrorException $e) {
+            //throw $th;
+            if($e->getMessage()=='Your card has insufficient funds.'){
+                $status='Error! Tu tarjeta no tiene fondos suficientes.';    
+            }
+            else if($e->getMessage()=='Your card was declined.'){
+                $status='Error! Tu tarjeta fue declinada.';    
+            }
+            else if($e->getMessage()=='Your card has expired.'){
+                $status='Error! Tu tarjeta ha expirado.';    
+            }
+            else if($e->getMessage()=="Your card's security code is incorrect."){
+                $status='Error! El código de seguridad de tu tarjeta es incorrecto.';    
+            }
+            else if($e->getMessage()=="An error occurred while processing your card. Try again in a little bit."){
+                $status='Error! Un problema ocurrió mientras procesabamos tu tarjeta. Inténtalo de nuevo en un momento.';    
+            }
+            else{
+                $status='Error! '.$e->getMessage();
+            }
+            return redirect()->route('compra')->with(compact('status'));
+        }        
     }
 
     /**

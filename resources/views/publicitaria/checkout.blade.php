@@ -109,9 +109,11 @@
                         <input type="hidden" id="calle" name="calle" value="{{$datos['calle']}}">
                         <input type="hidden" name="numCasa" value="{{$datos['numCasa']}}">
                         <input type="hidden" id="cp" name="cp" value="{{$datos['cp']}}">
+                        <input type="hidden" name="envio" value="{{$datos['envio']}}">
+                        <input type="hidden" name="referencia" value="{{$datos['referencias']}}">
                         <input type="hidden" name="cupon" value="{{$datos['cupon']}}">
-                        <input type="hidden" name="subtotal" value="{{$datos['subtotal']}}">
-                        <input type="hidden" name="total" value="{{$datos['total']}}">
+                        <input type="hidden" id="subtotalAnt" name="subtotal" value="{{$datos['subtotal']}}">
+                        <input type="hidden" id="totalAnt" name="total" value="{{$datos['total']}}">
 
 
                         <div class="compra-cell cell-20">
@@ -204,8 +206,6 @@
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
-                                                <input type="hidden"  name="subtotalHidden" value="{{ number_format($total, 2 , ".", "" ) }}">
-                                                <input type="hidden" id="totalHidden" name="totalHidden" value="{{ number_format($total, 2 , ".", "" ) }}">
                                             </div>
                                         </div>
                                     </div>
@@ -254,6 +254,17 @@
                 return num;
             }
 
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var envio=document.getElementById("totalAnt").value - document.getElementById("subtotalAnt").value;
+                if(envio!=0){
+                    document.getElementById('envio-totales').classList.remove('envio-totales');
+                    document.getElementById('envio-totales').innerHTML='$'+formatearNumero(envio);
+                    document.getElementById('total').innerHTML='$'+formatearNumero(totalCosto + envio);
+                }
+            });
         </script>
 
         <script>
