@@ -79,14 +79,11 @@
                   {{-- Sacando total de la venta --}}
                   @php
                     $total=0;
-                    $cantidad=0;
                   @endphp
                     @foreach ($book_sell as $item)   
                       @php
                           if($item->sell_id == $venta->id){
-                            $cantidad=$item->precio * $item->cantidad;
-                            $total+=$cantidad;
-                            $cantidad=0;
+                            $total+=$item->precio;
                           }
                       @endphp
                     @endforeach
@@ -95,7 +92,7 @@
                     <td >{{$venta->status}}</td> 
                     <td >{{$venta->fecha}}</td>
                     <td >
-                     ${{$total}},
+                     ${{$total}}
                      @if($venta->promotion_id != null)
                      <b>ID de promoción:</b> {{$venta->promotion_id}}
                      @endif
@@ -110,7 +107,10 @@
                             @endif
                           @endforeach
                           <b>cantidad:</b> {{$item->cantidad}},
-                          <b>precio c/u:</b> ${{$item->precio}},
+                          @php
+                              $precioUni=$item->precio / $item->cantidad;
+                          @endphp
+                          <b>precio c/u:</b> ${{$precioUni}},
                           @if($item->digital == 1)
                           <b>versión:</b> digital.
                           @else
@@ -126,9 +126,18 @@
                           if($venta->formaPago == 1){
                             $forma="Paypal";
                           }
+                          else if($venta->formaPago == 3){
+                            $forma="Stripe";
+                          }
                       @endphp
                       {{$forma}}</td> 
-                    <td >{{$venta->nombre_envio}}&nbsp;${{$venta->precio_envio}}</td> 
+                    <td >
+                      @if ($venta->nombre_envio==null && $venta->precio_envio==null)
+                          No aplica
+                      @else
+                      {{$venta->nombre_envio}}&nbsp;${{$venta->precio_envio}}
+                      @endif
+                    </td> 
                     <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
                       <br>
                       {{$venta->pais}},&nbsp;{{$venta->estado}},&nbsp;{{$venta->ciudad}},&nbsp;{{$venta->direccion}}.

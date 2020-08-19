@@ -194,57 +194,6 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            
-
-            <!-- Nav Item - Alerts -->
-             
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-counter">1</span>
-                {{-- @else 
-                <span class="badge badge-danger badge-counter">{{$nnoti}}</span>
-                @endif --}}
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in scrollChido" aria-labelledby="alertsDropdown" style="overflow-y: auto;max-height:350px; ">
-                <h6 class="dropdown-header" style="background-color:#181A2C">
-                  Notificaciones
-                </h6>
-                
-                <a class="dropdown-item d-flex align-items-center" href="">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-bell-slash text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500"></div>
-                    <span class="font-weight-bold">No tienes notificaciones!</span>
-                  </div>
-                </a>
-                
-                <a class="dropdown-item d-flex align-items-center" href="/sgtepetate/revisarpedido/">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-concierge-bell text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">13/07/2020</div>
-                    <span class="font-weight-bold">Nuevo pedido registrado: <br> Orden #1</span>
-                  </div>
-                </a>
-                
-              </div>
-            </li>
-            
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

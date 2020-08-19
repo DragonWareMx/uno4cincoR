@@ -202,7 +202,7 @@
     @endphp
     @if ($yearf==$añoSelec)
         @php
-            $sumaVentasTotales[$monthf]+=($venta->precio * $venta->cantidad);
+            $sumaVentasTotales[$monthf]+=($venta->precio);
         @endphp
   @endif
 @endforeach
