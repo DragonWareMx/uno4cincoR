@@ -14,6 +14,10 @@
         <!-- Fuentes -->
         <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
+        <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
+
+        <title>Checkout | Editorial uno4cinco</title>
+
         <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body>

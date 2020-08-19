@@ -11,6 +11,8 @@ use App\Book_Sell;
 use App\Sell;
 use App\Tipoenvio;
 use Illuminate\Support\Carbon;
+use App\Mail\SendMailable;
+use Illuminate\Support\Facades\Mail;
 use function GuzzleHttp\Promise\all;
 
 class CheckoutController extends Controller
@@ -25,7 +27,7 @@ class CheckoutController extends Controller
         $datos=session('datos');
         //dd($datos);
         $books = Book::all();
-        //session()->forget('datos');
+        session()->forget('datos');
         return view('publicitaria.checkout',['datos'=>$datos,'books'=>$books]);
     }
 
@@ -131,6 +133,8 @@ class CheckoutController extends Controller
                 }
             }
 
+            Mail::to($sell->correo)->send(new SendMailable($sell->id));
+            session()->forget('cart');
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tiendaCatalogo')->with(compact('status'));
         } catch (CardErrorException $e) {
@@ -148,7 +152,7 @@ class CheckoutController extends Controller
                 $status='Error! El código de seguridad de tu tarjeta es incorrecto.';    
             }
             else if($e->getMessage()=="An error occurred while processing your card. Try again in a little bit."){
-                $status='Error! Un problema ocurrió mientras procesabamos tu tarjeta. Inténtalo de nuevo en un momento.';    
+                $status='Error! Un problema ocurrió mientras procesabamos tu tarjeta. Inténtalo de nuevo más tarde.';    
             }
             else{
                 $status='Error! '.$e->getMessage();
