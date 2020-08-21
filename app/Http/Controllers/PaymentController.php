@@ -70,6 +70,9 @@ class PaymentController extends Controller
         if($request->numCasa!=null){
             $request->numCasa=' int '.$request->numCasa;
         }
+        if($request->descuento > 0){
+            $request->subtotal=$request->subtotal - $request->descuento;
+        }
         if($request->action=='stripe'){
             Session::put('datos', $request->all());
             return redirect()->route('checkout.index');
@@ -161,6 +164,16 @@ class PaymentController extends Controller
             }
             $contador++;
         }
+        //si tienen descuento de un codigo pasa esto
+        if($request->descuento > 0){
+            $items[$contador] = new Item();
+                        $items[$contador]->setName('Código promoción') /** item name **/
+                                    ->setCurrency('MXN')
+                                    ->setQuantity('1')
+                                    ->setPrice( '-'.$request->descuento); 
+                        
+        }
+
         $item_list = new ItemList();
         $item_list->setItems($items);
         

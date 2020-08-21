@@ -35,6 +35,7 @@ class CreateSellsTable extends Migration
                 ->references('id')
                 ->on('promotions')
                 ->onDelete('cascade');
+            $table->float('discount')->nullable();
             $table->timestamps();
         });
     }

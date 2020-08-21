@@ -337,7 +337,7 @@
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
-                                                <input type="hidden"  name="subtotal" value="{{ number_format($total, 2 , ".", "" ) }}">
+                                                <input type="hidden" id="subtotalHidden" name="subtotal" value="{{ number_format($total, 2 , ".", "" ) }}">
                                                 <input type="hidden" id="totalHidden" name="total" value="{{ number_format($total, 2 , ".", "" ) }}">
                                                 <input type="hidden" id="cuponHidden" name="descuento" value="">
                                             </div>
@@ -417,13 +417,13 @@
                                 var cuponDate = Date.parse(cupon['limiteFecha']);
 
                                 if(today > cuponDate){
-                                    alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
+                                    alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado su limite.');
                                     return;
                                 }
                             }
                             else if(cupon['numUsos'] <= 0){
                                 //sino entonces significa que expira por el numero de usos
-                                alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado si limite.');
+                                alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado su limite.');
                                 return;
                             }
 
@@ -709,14 +709,19 @@
                                         }
                                     }
                                     break;
+                                case 'descargas':
+                                        //se pone la cantidad a descontar
+                                        document.getElementById("cuponDescuento").innerHTML = "Descargas ilimitadas";
+                                        $('#cuponHidden').val('descargas');
+                                        break;
                             }
-
                             //se muestra el descuento en la compra
                             cuponHTML = document.getElementById("cuponHTML");
                             cuponHTML.style.display = "flex";
 
                             return;
-                        } 
+                        }
+                        alert('Cupón no válido.'); 
                     }
                 }
             }
