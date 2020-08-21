@@ -320,6 +320,11 @@ input[type=submit]{
 
 }
 
+.boton_compra:disabled{
+    color: gray;
+    cursor: not-allowed;
+}
+
 .libro-regresar{
     width: 90%;
     max-width: 1169px;

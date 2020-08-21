@@ -117,6 +117,7 @@
                         <input type="hidden" name="referencia" value="{{$datos['referencias']}}">
                         <input type="hidden" name="cupon" value="{{$datos['cupon']}}">
                         <input type="hidden" id="subtotalAnt" name="subtotal" value="{{$datos['subtotal']}}">
+                        <input type="hidden" id="descuentoAnt" name="descuento" value="{{$datos['descuento']}}">
                         <input type="hidden" id="totalAnt" name="total" value="{{$datos['total']}}">
 
 
@@ -206,7 +207,9 @@
                                                         <p>Subtotal</p><p id="subtotal">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                     </div>
                                                 @endif
-                        
+                                                <div class="totales" id="cuponHTML" style="display: none;">
+                                                    <p>Cupón de descuento</p><p id="cuponDescuento">${{ number_format(0, 2 , ".", "," ) }}</p>
+                                                </div>
                                                 <div class="totales">
                                                     <p>Total</p><p id="total">${{ number_format($total, 2 , ".", "," ) }}</p>
                                                 </div>
@@ -214,7 +217,7 @@
                                         </div>
                                     </div>
                                     {{-- <input type="submit" value="Realizar compra" class="shrink"> --}}
-                                    <button type="submit" class="boton_compra shrink" name="action">Pagar</button>
+                                    <button type="submit" id="complete-order" class="boton_compra shrink" name="action">Pagar</button>
                                     
                                 @else
                                     <h1 style="padding-top:50px">No hay productos en su carrito</h1>
@@ -263,10 +266,18 @@
         <script>
             document.addEventListener("DOMContentLoaded", function(){
                 var envio=document.getElementById("totalAnt").value - document.getElementById("subtotalAnt").value;
+                var descuento=document.getElementById("descuentoAnt").value-0;
+                if(descuento!=0 && descuento>=0){
+                    document.getElementById('cuponDescuento').innerHTML='$-'+formatearNumero(descuento);
+                    cuponHTML = document.getElementById("cuponHTML");
+                    cuponHTML.style.display = "flex";
+                    envio=document.getElementById("totalAnt").value  - document.getElementById("subtotalAnt").value + descuento;
+                }
                 if(envio!=0){
                     document.getElementById('envio-totales').classList.remove('envio-totales');
                     document.getElementById('envio-totales').innerHTML='$'+formatearNumero(envio);
-                    document.getElementById('total').innerHTML='$'+formatearNumero(totalCosto + envio);
+                    var total=document.getElementById("totalAnt").value-0;
+                    document.getElementById('total').innerHTML='$'+formatearNumero(total);
                 }
             });
         </script>
@@ -320,6 +331,8 @@
                 form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
+                document.getElementById('complete-order').disabled=true;
+
                 var options = {
                     name: document.getElementById('titularname').value,
                     address_line1: document.getElementById('calle').value+' '+document.getElementById('colonia').value ,
@@ -331,9 +344,10 @@
 
                 stripe.createToken(card, options).then(function(result) {
                     if (result.error) {
-                    // Inform the user if there was an error.
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
+                        // Inform the user if there was an error.
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                        document.getElementById('complete-order').disabled=false;
                     } else {
                     // Send the token to your server.
                     stripeTokenHandler(result.token);

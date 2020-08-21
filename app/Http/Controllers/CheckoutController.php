@@ -27,7 +27,6 @@ class CheckoutController extends Controller
         $datos=session('datos');
         //dd($datos);
         $books = Book::all();
-        session()->forget('datos');
         return view('publicitaria.checkout',['datos'=>$datos,'books'=>$books]);
     }
 
@@ -135,6 +134,7 @@ class CheckoutController extends Controller
 
             Mail::to($sell->correo)->send(new SendMailable($sell->id));
             session()->forget('cart');
+            session()->forget('datos');
             $status="Gracias por tu compra!. Se te enviará un correo electrónico con los detalles de tu pedido.";
             return redirect()->route('tiendaCatalogo')->with(compact('status'));
         } catch (CardErrorException $e) {
