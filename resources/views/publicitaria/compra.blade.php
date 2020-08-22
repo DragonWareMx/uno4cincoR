@@ -386,8 +386,8 @@
 
             //obtenemos todos los cupones
             var cupones = @json($cupones);
-
             var cuponesUsuario = @json(session()->get('cupones'));
+            var cuponSeleccionado = 0;
 
             var hayFisico = {{ json_encode($fisico) }};
             
@@ -421,12 +421,14 @@
 
                                 if(today > cuponDate){
                                     alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado su limite.');
+                                    cuponSeleccionado = 0;
                                     return;
                                 }
                             }
                             else if(cupon['numUsos'] <= 0){
                                 //sino entonces significa que expira por el numero de usos
                                 alert('Cupón no válido: Es posible que el cupón esté expirado o haya alcanzado su limite.');
+                                cuponSeleccionado = 0;
                                 return;
                             }
 
@@ -435,6 +437,7 @@
                                 //verifica que el total u el subtotal (en caso de que haya libros físicos) sea igual o mayor que el minimo de compra
                                 if(subtotal < cupon['minimoCompra']){
                                     alert('Cupón no válido: Para aplicar este cupón es necesario que su compra sea de al menos $'+formatearNumero(cupon['minimoCompra']));
+                                    cuponSeleccionado = 0;
                                     return;
                                 }
                             }
@@ -443,6 +446,7 @@
                             if(cupon['reusable'] == 0){
                                 if(cuponesUsuario[cupon["id"]]){
                                     alert('Cupón no válido: Este cupón solamente puede usarse una vez y ya ha sido utilizado en anteriores compras.');
+                                    cuponSeleccionado = 0;
                                     return;
                                 }
                             }
@@ -452,6 +456,7 @@
                             //aqui se verifica si aplica en nuevos
 
                             //---------------SI LLEGAMOS A ESTE PUNTO ENTONCES EL CUPON ES VALIDO-----------------------
+                            cuponSeleccionado = cupon["id"];
                             //------------------------PROCESO DE APLICACIÓN------------------------
 
                             //obtenemos el envio
@@ -787,6 +792,12 @@
                 var totalEnvio = document.getElementById("envio-totales");
                 var total = document.getElementById("total");
                 if(envio){
+                    //ya no es valido el cupon
+                    if(cuponSeleccionado != 0){
+                        cuponSeleccionado = 0;
+                        document.getElementById("cuponDescuento").innerHTML = "$0";
+                        $('#cuponHidden').val(0);
+                    }
                     //verifica que el tipo de envio exista
                     if(envio.value != ""){
                         //se obtiene el envio de la BD
