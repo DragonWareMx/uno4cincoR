@@ -388,72 +388,48 @@ class paginaTiendaController extends Controller
         }
     }
 
-    //Agrega un producto al carrito o lo actualiza
-    public function addCupon($id)
-    {
-        //obtenemos el libro
+    function prueba($id){
+        //obtenemos el cupon
         $cupon = Promotion::find($id);
- 
-        //verificamos que el libro exista
+        
+        //verificamos que el cupon exista
         if(!$cupon) {
- 
-            abort(404);
- 
-        }
- 
-        //obtenemos el carrito de la cookie
-        $cupones = session()->get('cart');
- 
-        // Si el carrito es vacio entonces es el primer producto que se agrega, se crea la variable
-        if(!$cupones) {
-            $cart = [
-                    $id => [
-                        "cantidad" => $cant
-                    ]
-            ];
-            
-            //se guarda el carrito en la cookie
-            session()->put('cart', $cart);
- 
-            return;
-        }
- 
-        // si el carrito no esta vacio entonces checa la cantidad y la actualiza
-        if(isset($cart[$id])) {
-            //checa si se quiere actualizar la version fisica o digital
-            if($formato == 'fisico'){
-                $cart[$id]['cantidadFisico'] = $cant;
-    
-                session()->put('cart', $cart);
-    
-                return;
-            }
-            else{
-                $cart[$id]['cantidadDigital'] = 1;
-    
-                session()->put('cart', $cart);
-    
-                return;
-            }
- 
-        }
- 
-        // Si el producto no existe en el carrito entonces se crea
-        if($formato == 'fisico'){
-            $cart[$id] = [
-                        "cantidadFisico" => $cant,
-                        "cantidadDigital" => 0
-                        ];
+
+            //abort(404);
+            //aqui pon lo que quieras :v
+
         }
         else{
-            $cart[$id] = [
-                    "cantidadFisico" => 0,
-                    "cantidadDigital" => 1
-            ];
+            //obtenemos los cupones de la cookie
+            $cupones = session()->get('cupones');
+
+            // Si los cupones está vacio entonces es el primer cupón que se usa
+            if(!$cupones) {
+                $cupones = [
+                        $id => [
+                            "usos" => 1
+                        ]
+                ];
+                
+                //se guarda el carrito en la cookie
+                session()->put('cupones', $cupones);
+            }
+            else{
+                // si los cupones no esta vacio entonces actualiza la cantidad
+                if(isset($cupones[$id])) {
+                    $cupones[$id]['usos']++;
+
+                    session()->put('cupones', $cupones);
+                }
+                else{
+                    // Si el cupon no existe en cupones entonces se aniade
+                    $cupones[$id] = [
+                        "usos" => 1
+                    ];
+
+                    session()->put('cupones', $cupones);
+                }
+            }
         }
- 
-        session()->put('cart', $cart);
- 
-        return;
     }
 }

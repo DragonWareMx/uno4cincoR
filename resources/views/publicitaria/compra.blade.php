@@ -387,6 +387,8 @@
             //obtenemos todos los cupones
             var cupones = @json($cupones);
 
+            var cuponesUsuario = @json(session()->get('cupones'));
+
             var hayFisico = {{ json_encode($fisico) }};
             
             window.onload = envioSelect;
@@ -438,6 +440,14 @@
                             }
 
                             //aqui se verifica lo de si es reusable
+                            if(cupon['reusable'] == 0){
+                                if(cuponesUsuario[cupon["id"]]){
+                                    alert('Cupón no válido: Este cupón solamente puede usarse una vez y ya ha sido utilizado en anteriores compras.');
+                                    return;
+                                }
+                            }
+
+                            //window.location = "/prueba/" + cupon["id"];
 
                             //aqui se verifica si aplica en nuevos
 

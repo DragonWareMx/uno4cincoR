@@ -36,6 +36,10 @@ Route::get('/libro/{id}','paginaTiendaController@libro')->name('libro');
 Route::get('/carrito','paginaTiendaController@carrito')->name('carrito');
 Route::get('/compra','paginaTiendaController@compra')->name('compra');
 
+/*--------------------------------------------------- B O R R A R --------------------------------------------------- */
+Route::get('/prueba/{id}','paginaTiendaController@prueba')->name('prueba');
+/*--------------------------------------------------- B O R R A R --------------------------------------------------- */
+
 Route::get('agregar-a-carrito/{id}/{cant}/{formato}', 'paginaTiendaController@addToCart')->name('agregarCarrito');
 Route::delete('eliminar-del-carrito', 'paginaTiendaController@remove')->name('eliminarCarrito');
 
