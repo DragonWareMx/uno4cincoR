@@ -10,6 +10,7 @@ use Cartalyst\Stripe\Exception\CardErrorException;
 use App\Book_Sell;
 use App\Sell;
 use App\Tipoenvio;
+use App\Promotion;
 use Illuminate\Support\Carbon;
 use App\Mail\SendMailable;
 use Illuminate\Support\Facades\Mail;
@@ -78,6 +79,53 @@ class CheckoutController extends Controller
             ]);
 
             //SUCCESSFUL
+            //Este if es donde empieza el código que me mandó adrian
+            if($request->cuponId>0 && $request->descuento >0){
+                //obtenemos el cupon
+                $id=$request->cuponId;
+                $cupon = Promotion::find($id);
+                
+                //verificamos que el cupon exista
+                if(!$cupon) {
+
+                    //abort(404);
+                    //aqui pon lo que quieras :v
+
+                }
+                else{
+                    //obtenemos los cupones de la cookie
+                    $cupones = session()->get('cupones');
+
+                    // Si los cupones está vacio entonces es el primer cupón que se usa
+                    if(!$cupones) {
+                        $cupones = [
+                                $id => [
+                                    "usos" => 1
+                                ]
+                        ];
+                        
+                        //se guarda el carrito en la cookie
+                        session()->put('cupones', $cupones);
+                    }
+                    else{
+                        // si los cupones no esta vacio entonces actualiza la cantidad
+                        if(isset($cupones[$id])) {
+                            $cupones[$id]['usos']++;
+
+                            session()->put('cupones', $cupones);
+                        }
+                        else{
+                            // Si el cupon no existe en cupones entonces se aniade
+                            $cupones[$id] = [
+                                "usos" => 1
+                            ];
+
+                            session()->put('cupones', $cupones);
+                        }
+                    }
+                }
+            }
+
             if($request->numCasa!=null){
                 $request->numCasa=' int '.$request->numCasa;
             }
@@ -104,6 +152,10 @@ class CheckoutController extends Controller
                     $sell->direccion=$sell->direccion.' Referencia: '.$request->referencias;
                 }
             }
+            if($request->cuponId!=null && $request->descuento!=null){
+                $sell->discount=$request->descuento;
+                $sell->promotion_id=$request->cuponId;
+            }  
             $sell->save();
 
             

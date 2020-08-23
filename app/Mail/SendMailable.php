@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\Book_Sell;
 use App\Sell;
 use App\Book;
+use App\Promotion;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -35,6 +36,7 @@ class SendMailable extends Mailable
         $sell=Sell::findOrFail($this->idVenta);
         $librosVendidos=Book_Sell::where('sell_id',$sell->id)->get();
         $libros=Book::get();
+        $cupones=Promotion::get();
         $links=[];
         $cont=0;
         foreach ($librosVendidos as $libro) {
@@ -48,6 +50,6 @@ class SendMailable extends Mailable
             $cont++;
         }
         return $this->subject('Su compra en uno4cinco se ha realizado con éxito!')
-        ->view('emails.pedidoemail',['sell'=>$sell,'librosVendidos'=>$librosVendidos,'libros'=>$libros,'links'=>$links]);
+        ->view('emails.pedidoemail',['sell'=>$sell,'librosVendidos'=>$librosVendidos,'libros'=>$libros,'links'=>$links,'cupones'=>$cupones]);
     }
 }

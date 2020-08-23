@@ -207,14 +207,30 @@
                   @php
                     $precioTotal += $libroV->precio;               
                   @endphp
-                  <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">${{ number_format($libroV->precio, 2)}}</td>
+                  <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"> &nbsp;${{ number_format($libroV->precio, 2)}}</td>
                 </tr>
                 @endforeach
+                @if ($sell->discount!=null)
+                <tr>
+                    <td align="left" width="10%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"></td>
+                    <td align="left" width="70%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                    @foreach ($cupones as $cupon)
+                        @if ($cupon->id == $sell->promotion_id)
+                            Código de promoción "{{$cupon->codigo}}"
+                        @endif
+                    @endforeach  
+                    </td>    
+                    <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">-${{ number_format($sell->discount, 2)}}</td>
+                </tr>
+                @php
+                    $precioTotal -= $sell->discount;               
+                @endphp
+                @endif
                 @if ($sell->precio_envio!=null)
                 <tr>
                     <td align="left" width="10%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"></td>
                     <td align="left" width="70%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">{{$sell->nombre_envio}}</td>    
-                    <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">${{ number_format($sell->precio_envio, 2)}}</td>
+                    <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"> &nbsp;${{ number_format($sell->precio_envio, 2)}}</td>
                 </tr>
                 @php
                     $precioTotal += $sell->precio_envio;               
@@ -223,7 +239,7 @@
                 <tr>
                   <td align="left" width="10%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">&nbsp;</td>  
                   <td align="left" width="70%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong>Total</strong></td>
-                  <td align="left" width="20%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong>${{ number_format($precioTotal, 2)}}</strong></td>    
+                  <td align="left" width="20%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong> &nbsp;${{ number_format($precioTotal, 2)}}</strong></td>    
                 </tr>
               </table>
             </td>
@@ -235,10 +251,14 @@
             @php
                 $i=0;
                 $j=0;
+                $title=0;
             @endphp
             @foreach ($links as $link)
-              @if ($i==0)
-              <p style="margin: 0;"><strong>Enlace(s) de descarga</strong></p>
+              @if ($title==0 && $link!=null)
+                <p style="margin: 0;"><strong>Enlace(s) de descarga</strong></p>
+                @php
+                    $title++;
+                @endphp
               @endif
               @foreach ($librosVendidos as $libroV)
                 @foreach ($libros as $libro)

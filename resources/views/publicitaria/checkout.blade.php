@@ -118,6 +118,7 @@
                         <input type="hidden" name="cupon" value="{{$datos['cupon']}}">
                         <input type="hidden" id="subtotalAnt" name="subtotal" value="{{$datos['subtotal']}}">
                         <input type="hidden" id="descuentoAnt" name="descuento" value="{{$datos['descuento']}}">
+                        <input type="hidden" name="cuponId" value="{{$datos['cuponId']}}">
                         <input type="hidden" id="totalAnt" name="total" value="{{$datos['total']}}">
 
 

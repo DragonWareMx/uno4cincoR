@@ -340,6 +340,7 @@
                                                 <input type="hidden" id="subtotalHidden" name="subtotal" value="{{ number_format($total, 2 , ".", "" ) }}">
                                                 <input type="hidden" id="totalHidden" name="total" value="{{ number_format($total, 2 , ".", "" ) }}">
                                                 <input type="hidden" id="cuponHidden" name="descuento" value="">
+                                                <input type="hidden" id="cupSelHidden" name="cuponId" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -500,7 +501,7 @@
                                             //se actualiza el hidden
                                             $('#totalHidden').val(totalCosto - subtotal*(cupon['porcentajeDesc']/100));
                                             $('#cuponHidden').val(subtotal*(cupon['porcentajeDesc']/100));
-
+                                            $('#cupSelHidden').val(cuponSeleccionado);
                                             alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
                                         }
                                         else{
@@ -516,6 +517,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(oldTotal - oldTotal*(cupon['porcentajeDesc']/100));
                                                 $('#cuponHidden').val(oldTotal*(cupon['porcentajeDesc']/100));
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
                                             }
                                         }
@@ -536,6 +538,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(totalCosto - cupon['valorDesc']);
                                                 $('#cuponHidden').val(cupon['valorDesc']);
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                             }
                                             else{
@@ -548,6 +551,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(0);
                                                 $('#cuponHidden').val(cupon['valorDesc']);
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                             }
                                         }
@@ -569,6 +573,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(oldTotal - cupon['valorDesc']);
                                                     $('#cuponHidden').val(cupon['valorDesc']);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                                 }
                                                 else{
@@ -581,6 +586,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(0);
                                                     $('#cuponHidden').val(cupon['valorDesc']);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del total de tu compra!' );
                                                 }
                                             }
@@ -606,6 +612,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(subtotal + descuentoEnvioP);
                                                 $('#cuponHidden').val(descuentoEnvioP);
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del costo de envío de tu compra!' );
                                             }
                                         }
@@ -626,6 +633,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(totalCosto - cupon['valorDesc']);
                                                     $('#cuponHidden').val(cupon['valorDesc']);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del costo de envío de tu compra!' );
                                                 }
                                                 else{
@@ -638,6 +646,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(totalCosto);
                                                     $('#cuponHidden').val(envioData["costo"]);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(envioData["costo"]) +' del costo de envío de tu compra!' );
                                                 }
                                             }
@@ -664,6 +673,7 @@
                                             //se actualiza el hidden
                                             $('#totalHidden').val(totalCompraDesc);
                                             $('#cuponHidden').val(subtotal*(cupon['porcentajeDesc']/100));
+                                            $('#cupSelHidden').val(cuponSeleccionado);
                                             alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del total de tu compra!' );
                                         }
                                         else{
@@ -679,6 +689,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(totalCompraDesc + envioData["costo"]);
                                                 $('#cuponHidden').val(subtotal*(cupon['porcentajeDesc']/100));
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado el '+cupon['porcentajeDesc']+'% del subtotal de tu compra!' );
                                             }
                                         }
@@ -699,6 +710,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(totalCosto - cupon['valorDesc']);
                                                 $('#cuponHidden').val(cupon['valorDesc']);
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del subtotal de tu compra!' );
                                             }
                                             else{
@@ -711,6 +723,7 @@
                                                 //se actualiza el hidden
                                                 $('#totalHidden').val(0);
                                                 $('#cuponHidden').val(totalCosto);
+                                                $('#cupSelHidden').val(cuponSeleccionado);
                                                 alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(totalCosto) +' del subtotal de tu compra!' );
                                             }
                                         }
@@ -729,6 +742,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(nuevoTotal + envioData["costo"]);
                                                     $('#cuponHidden').val(cupon['valorDesc']);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del subtotal de tu compra!' );
                                                 }
                                                 else{
@@ -741,6 +755,7 @@
                                                     //se actualiza el hidden
                                                     $('#totalHidden').val(envioData["costo"]);
                                                     $('#cuponHidden').val(totalCosto);
+                                                    $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del subtotal de tu compra!' );
                                                 }
                                             }
@@ -751,6 +766,7 @@
                                     //se pone la cantidad a descontar
                                     document.getElementById("cuponDescuento").innerHTML = "Descargas ilimitadas";
                                     $('#cuponHidden').val('descargas');
+                                    $('#cupSelHidden').val(cuponSeleccionado);
                                     break;
                             }
                             //se muestra el descuento en la compra
