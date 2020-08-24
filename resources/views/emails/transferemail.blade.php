@@ -211,7 +211,20 @@
                 </tr>
                 @endforeach
                 @if ($sell->discount!=null)
-                <tr>
+                  @if ($sell->discount=='descargas')
+                  <tr>
+                    <td align="left" width="10%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"></td>
+                    <td align="left" width="70%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                    @foreach ($cupones as $cupon)
+                        @if ($cupon->id == $sell->promotion_id)
+                            Código de promoción "{{$cupon->codigo}}"
+                        @endif
+                    @endforeach  
+                    </td>    
+                    <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">Descargas Ilimitadas</td>
+                  </tr>
+                  @else
+                  <tr>
                     <td align="left" width="10%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"></td>
                     <td align="left" width="70%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                     @foreach ($cupones as $cupon)
@@ -221,10 +234,11 @@
                     @endforeach  
                     </td>    
                     <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">-${{ number_format($sell->discount, 2)}}</td>
-                </tr>
-                @php
-                    $precioTotal -= $sell->discount;               
-                @endphp
+                  </tr>
+                  @php
+                      $precioTotal -= $sell->discount;               
+                  @endphp
+                  @endif
                 @endif
                 @if ($sell->precio_envio!=null)
                 <tr>

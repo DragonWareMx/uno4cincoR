@@ -67,11 +67,15 @@
               <th>ID</th>
               <th>Estatus</th> 
               <th>Fecha</th> 
-              <th>Total</th> 
+              <th>Subtotal</th> 
               <th>Descripción</th> 
               <th>Tipo de pago</th> 
-              <th>Tipo de envío</th> 
-              <th>Detalles del comprador</th> 
+              <th>Tipo de envío</th>
+              <th>Total envío</th>
+              <th>Código promoción</th>
+              <th>Total Código</th> 
+              <th>Detalles del comprador</th>
+              <th>Total Compra</th> 
               </tr>
           </thead>
           <tbody>
@@ -93,9 +97,6 @@
                     <td >{{$venta->fecha}}</td>
                     <td >
                      ${{$total}}
-                     @if($venta->promotion_id != null)
-                     <b>ID de promoción:</b> {{$venta->promotion_id}}
-                     @endif
                     </td>
                     <td>
                       @foreach ($book_sell as $item)   
@@ -135,7 +136,39 @@
                       @if ($venta->nombre_envio==null && $venta->precio_envio==null)
                           No aplica
                       @else
-                      {{$venta->nombre_envio}}&nbsp;${{$venta->precio_envio}}
+                      {{$venta->nombre_envio}}&nbsp;
+                      @endif
+                    </td>
+                    <td>
+                      @if ($venta->precio_envio==null)
+                        No aplica
+                      @else
+                      ${{$venta->precio_envio}}
+                      @php
+                          $total=$total+$venta->precio_envio;
+                      @endphp
+                      @endif  
+                    </td>
+                    <td>
+                      @foreach ($cupones as $cupon)
+                          @if ($cupon->id == $venta->promotion_id)
+                              {{$cupon->codigo}}
+                          @endif
+                      @endforeach
+                      @if ($venta->promotion_id==null)
+                          No aplica
+                      @endif
+                    </td>
+                    <td>
+                      @if ($venta->discount==null)
+                          No aplica
+                      @elseif($venta->discount=='descargas')
+                        Descargas ilimitadas
+                      @else
+                        ${{$venta->discount}}
+                        @php
+                            $total=$total+$venta->precio_envio;
+                        @endphp
                       @endif
                     </td> 
                     <td >{{$venta->nombreCliente}},&nbsp;{{$venta->edad}}&nbsp;años,&nbsp;{{$venta->genero}}.
@@ -144,6 +177,9 @@
                       <br>
                       {{$venta->correo}},&nbsp;{{$venta->telefono}}
                     </td> 
+                    <td>
+                      ${{$total}}
+                    </td>
                   </tr>   
                   @endforeach                
           </tbody>

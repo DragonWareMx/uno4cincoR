@@ -39,15 +39,29 @@ class SendMailable extends Mailable
         $cupones=Promotion::get();
         $links=[];
         $cont=0;
-        foreach ($librosVendidos as $libro) {
-            if($libro->digital==1){
-                $link=\Linkeys\UrlSigner\Facade\UrlSigner::generate(route('descargar'), ['id_libro' => $libro->book_id], '+720 hours', 3);
-                $links[$cont]=$link->getFullUrl();
+        if($sell->discount=='descargas'){
+            foreach ($librosVendidos as $libro) {
+                if($libro->digital==1){
+                    $link=\Linkeys\UrlSigner\Facade\UrlSigner::generate(route('descargar'), ['id_libro' => $libro->book_id]);
+                    $links[$cont]=$link->getFullUrl();
+                }
+                else{
+                    $links[$cont]=null;
+                }
+                $cont++;
             }
-            else{
-                $links[$cont]=null;
+        }
+        else{
+            foreach ($librosVendidos as $libro) {
+                if($libro->digital==1){
+                    $link=\Linkeys\UrlSigner\Facade\UrlSigner::generate(route('descargar'), ['id_libro' => $libro->book_id], '+720 hours', 3);
+                    $links[$cont]=$link->getFullUrl();
+                }
+                else{
+                    $links[$cont]=null;
+                }
+                $cont++;
             }
-            $cont++;
         }
         return $this->subject('Su compra en uno4cinco se ha realizado con éxito!')
         ->view('emails.pedidoemail',['sell'=>$sell,'librosVendidos'=>$librosVendidos,'libros'=>$libros,'links'=>$links,'cupones'=>$cupones]);

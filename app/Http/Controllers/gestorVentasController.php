@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Sell;
 use App\Book_Sell;
 use App\Book;
+use App\Promotion;
 
 class gestorVentasController extends Controller
 {
@@ -18,7 +19,8 @@ class gestorVentasController extends Controller
         $ventas=Sell::orderBy('id','desc')->get();
         $book_sell=Book_Sell::get();
         $books=Book::get();
-        return view ('gestor.historialVentas',['ventas'=>$ventas,'book_sell'=>$book_sell,'books'=>$books]);
+        $cupones=Promotion::get();
+        return view ('gestor.historialVentas',['ventas'=>$ventas,'book_sell'=>$book_sell,'books'=>$books,'cupones'=>$cupones]);
     } 
 
     public function editSell(Request $request){

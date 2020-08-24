@@ -267,7 +267,10 @@
         <script>
             document.addEventListener("DOMContentLoaded", function(){
                 var envio=document.getElementById("totalAnt").value - document.getElementById("subtotalAnt").value;
-                var descuento=document.getElementById("descuentoAnt").value-0;
+                var descuento=document.getElementById("descuentoAnt").value;
+                if(descuento!='descargas'){
+                    descuento=descuento-0;
+                }
                 if(descuento!=0 && descuento>=0){
                     document.getElementById('cuponDescuento').innerHTML='$-'+formatearNumero(descuento);
                     cuponHTML = document.getElementById("cuponHTML");
@@ -279,6 +282,11 @@
                     document.getElementById('envio-totales').innerHTML='$'+formatearNumero(envio);
                     var total=document.getElementById("totalAnt").value-0;
                     document.getElementById('total').innerHTML='$'+formatearNumero(total);
+                }
+                if(descuento=='descargas'){
+                    document.getElementById('cuponDescuento').innerHTML='Descargas Ilimitadas';
+                    cuponHTML = document.getElementById("cuponHTML");
+                    cuponHTML.style.display = "flex";
                 }
             });
         </script>
