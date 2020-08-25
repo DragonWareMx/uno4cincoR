@@ -37,7 +37,7 @@
             <p class="txt-informacionHV" id="fecha"></p>
           </div>
           <div class="div_registroVentas">
-            <p class="txt-titulosHV">Total:&nbsp;</p>
+            <p class="txt-titulosHV">Subtotal:&nbsp;</p>
             <p class="txt-informacionHV" id="total"></p>
           </div>
           <div class="div_registroVentas">
@@ -53,8 +53,24 @@
             <p class="txt-informacionHV" id="tipoEnvio"></p>
           </div>
           <div class="div_registroVentas">
+            <p class="txt-titulosHV">Total envío:&nbsp;</p>
+            <p class="txt-informacionHV" id="totalEnvio"></p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Código promoción:&nbsp;</p>
+            <p class="txt-informacionHV" id="codigoPromocion"></p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Total código:&nbsp;</p>
+            <p class="txt-informacionHV" id="totalCodigo"></p>
+          </div>
+          <div class="div_registroVentas">
             <p class="txt-titulosHV">Detalles del comprador:&nbsp;</p>
             <p class="txt-informacionHV" id="detalles"></p>
+          </div>
+          <div class="div_registroVentas">
+            <p class="txt-titulosHV">Total de la compra:&nbsp;</p>
+            <p class="txt-informacionHV" id="totalCompra"></p>
           </div>
           <div id="actualizar" class ="div_registroVentas"></div >
         </div>
@@ -207,7 +223,11 @@
           $("#desc").html(data[4]);
           $("#tipo").html(data[5]);
           $("#tipoEnvio").html(data[6]);
-          $("#detalles").html(data[7] );
+          $("#totalEnvio").html(data[7]);
+          $("#codigoPromocion").html(data[8]);
+          $("#totalCodigo").html(data[9]);
+          $("#detalles").html(data[10] );
+          $("#totalCompra").html(data[11]);
 
       $(".container-fluid_datosl").show();  
       $('html, body').animate({ scrollTop: 80 }, 500);
