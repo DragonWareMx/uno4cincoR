@@ -445,7 +445,7 @@
 
                             //aqui se verifica lo de si es reusable
                             if(cupon['reusable'] == 0){
-                                if(cupon['id'] && cuponesUsuario[cupon['id']]){
+                                if(cupon['id'] && cuponesUsuario && cuponesUsuario[cupon['id']]){
                                     alert('Cupón no válido: Este cupón solamente puede usarse una vez y ya ha sido utilizado en anteriores compras.');
                                     cuponSeleccionado = 0;
                                     return;
