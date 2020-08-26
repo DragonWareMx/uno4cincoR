@@ -445,7 +445,7 @@
 
                             //aqui se verifica lo de si es reusable
                             if(cupon['reusable'] == 0){
-                                if(cuponesUsuario[cupon["id"]]){
+                                if(cupon['id'] && cuponesUsuario[cupon['id']]){
                                     alert('Cupón no válido: Este cupón solamente puede usarse una vez y ya ha sido utilizado en anteriores compras.');
                                     cuponSeleccionado = 0;
                                     return;
@@ -767,6 +767,7 @@
                                     document.getElementById("cuponDescuento").innerHTML = "Descargas ilimitadas";
                                     $('#cuponHidden').val('descargas');
                                     $('#cupSelHidden').val(cuponSeleccionado);
+                                    alert('Cupón aplicado: Puedes descargar los libros digitales de manera ilimitada.');
                                     break;
                             }
                             //se muestra el descuento en la compra
