@@ -22,6 +22,7 @@
     <body>
         @php
             $fisico = false;
+            $hayNuevo = false;
         @endphp
         @foreach(session('cart') as $id => $details)
             @foreach ($books as $libro)
@@ -273,6 +274,11 @@
                                             @foreach(session('cart') as $id => $details)
                                                 @foreach ($books as $libro)
                                                     @if ($libro->id == $id)
+                                                        @if (!$hayNuevo && $libro->nuevo == 1)
+                                                            @php
+                                                                $hayNuevo = true;
+                                                            @endphp
+                                                        @endif
                                                         @if ($details['cantidadFisico'] > 0)
                                                             <div class="producto-row">
                                                                 <div class="producto-cell imagen-producto">
@@ -391,6 +397,7 @@
             var cuponSeleccionado = 0;
 
             var hayFisico = {{ json_encode($fisico) }};
+            var hayNuevo = {{ json_encode($hayNuevo) }};
             
             window.onload = envioSelect;
 
@@ -455,6 +462,11 @@
                             //window.location = "/prueba/" + cupon["id"];
 
                             //aqui se verifica si aplica en nuevos
+                            if(cupon['nuevos'] == 1 && !hayNuevo){
+                                alert('Cupón no válido: Este cupón solamente puede usarse si hay libros nuevos en el carrito. ¡Puedes verlos en la sección de NOVEDADES!');
+                                cuponSeleccionado = 0;
+                                return;
+                            }
 
                             //---------------SI LLEGAMOS A ESTE PUNTO ENTONCES EL CUPON ES VALIDO-----------------------
                             cuponSeleccionado = cupon["id"];
