@@ -17,7 +17,7 @@ class CreateSellsTable extends Migration
             $table->id();
             $table->string('nombreCliente',191);
             $table->enum('status', ['pendiente', 'completado','terminado']);
-            $table->string('edad',2)->nullable();
+            $table->string('edad',3)->nullable();
             $table->string('pais',100);
             $table->enum('genero',['Hombre','Mujer','Otros'])->nullable();
             $table->string('ciudad',100);
