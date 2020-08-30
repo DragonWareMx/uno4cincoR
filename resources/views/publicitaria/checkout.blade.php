@@ -113,8 +113,12 @@
                         <input type="hidden" id="calle" name="calle" value="{{$datos['calle']}}">
                         <input type="hidden" name="numCasa" value="{{$datos['numCasa']}}">
                         <input type="hidden" id="cp" name="cp" value="{{$datos['cp']}}">
-                        <input type="hidden" name="envio" value="{{$datos['envio']}}">
-                        <input type="hidden" name="referencia" value="{{$datos['referencias']}}">
+                        <input type="hidden" name="envio" value="@if (isset($datos['envio']))
+                        {{$datos['envio']}}
+                        @endif">
+                        <input type="hidden" name="referencia" value="@if (isset($datos['referencias']))
+                        {{$datos['referencias']}}
+                        @endif">
                         <input type="hidden" name="cupon" value="{{$datos['cupon']}}">
                         <input type="hidden" id="subtotalAnt" name="subtotal" value="{{$datos['subtotal']}}">
                         <input type="hidden" id="descuentoAnt" name="descuento" value="{{$datos['descuento']}}">
@@ -343,7 +347,7 @@
                 document.getElementById('complete-order').disabled=true;
 
                 var options = {
-                    name: document.getElementById('titularname').value,
+                    name: document.getElementById('nombreTarjeta').value,
                     address_line1: document.getElementById('calle').value+' '+document.getElementById('colonia').value ,
                     address_city: document.getElementById('ciudad').value,
                     address_state: document.getElementById('estado').value,
