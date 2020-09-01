@@ -113,7 +113,7 @@
                                                 <option value="" id="AF">Elegir opción</option>
                                                 <option value="Hombre" id="H">Hombre</option>
                                                 <option value="Mujer" id="M">Mujer</option>
-                                                <option value="Otros" id="0">Otro</option>
+                                                <option value="Otro" id="0">Otro</option>
                                             </select>
                                             <label for="genero" title="Género" data-title="Género"></label>
                                         </div>
