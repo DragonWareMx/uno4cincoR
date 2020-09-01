@@ -640,10 +640,10 @@
                                                     document.getElementById("cuponDescuento").innerHTML = "-$"+formatearNumero(cupon['valorDesc']);
 
                                                     //se actualiza el total
-                                                    total.innerHTML = "$"+formatearNumero(totalCosto - cupon['valorDesc']);
+                                                    total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"] - cupon['valorDesc']);
 
                                                     //se actualiza el hidden
-                                                    $('#totalHidden').val(totalCosto - cupon['valorDesc']);
+                                                    $('#totalHidden').val(totalCosto + envioData["costo"] - cupon['valorDesc']);
                                                     $('#cuponHidden').val(cupon['valorDesc']);
                                                     $('#cupSelHidden').val(cuponSeleccionado);
                                                     alert('Cupón aplicado: Se ha descontado la cantidad de $'+ formatearNumero(cupon['valorDesc']) +' del costo de envío de tu compra!' );
