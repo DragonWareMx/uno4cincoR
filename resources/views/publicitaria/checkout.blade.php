@@ -13,6 +13,8 @@
 
         <!-- Fuentes -->
         <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 
         <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
 
@@ -308,7 +310,7 @@
                 var style = {
                 base: {
                     color: '#32325d',
-                    fontFamily: '"Karla", Helvetica, sans-serif',
+                    fontFamily: '"Roboto", Helvetica, sans-serif',
                     fontSmoothing: 'antialiased',
                     fontSize: '16px',
                     '::placeholder': {
@@ -391,7 +393,7 @@
                 form.appendChild(hiddenInput);
 
                 // Submit the form
-                form.submit();
+                //form.submit();
                 }
             })();
         </script>
