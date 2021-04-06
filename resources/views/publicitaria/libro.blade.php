@@ -204,6 +204,14 @@
                         @if (strlen($book->sinopsis) > 460)
                             <button onclick="leerMas()" id="myBtn" class="leer-mas">Leer más</button>
                         @endif
+                        @if ($book->linkDemo)
+                        <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" class="sm-link sm-link3 sm-link_padding-bottom">
+                            <p style="color:#83d7b5;">
+                            Descarga el pdf promocional
+                            </p> 
+                        </a>    
+                        @endif
+                        
                     </div>
                 </div>
 

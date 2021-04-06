@@ -26,6 +26,7 @@ class CreateBooksTable extends Migration
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
             $table->text('linkDescarga');
+            $table->text('linkDemo')->nullable();
             $table->text('portadaImagen');
             $table->text('bannerImagen');
             $table->text('tiendaImagen');
