@@ -57,15 +57,7 @@
             <div class="row">
                 <div class="col-12" >
                     <nav class="main-nav nav-space-between">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="{{ route('tiendaNovedades') }}" class="logo" style="
-                            @php
-                                if(Request::path() != '/' )
-                                echo 'display:none';
-                            @endphp
-                        ">
-                            <img class="logonovedades" src="{{ asset('img/ico/signo!.png') }}">&nbsp;&nbsp;&nbsp;Novedades
-                        </a>
+                        
                         <a href="{{ route('inicio') }}" class="logo2" style="display:none">
                             <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
                         </a>
@@ -80,49 +72,7 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class=""><a href="{{ route('sobreNosotros') }}" class="">¿QUIÉNES SOMOS?</a></li>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">TIENDA&nbsp;<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="{{ route('tiendaNovedades') }}" class="">NOVEDADES</a></li>
-                                    <li><a href="{{ route('tiendaCatalogo') }}" class="">CATÁLOGO</a></li>
-                                    <li><a href="{{ route('tienda145') }}" class="">145</a></li>
-                                    {{-- Verifica que existan colecciones --}}
-                                    @php
-                                        use App\Collection;
-
-                                        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
-                                        //esto se hace porque usar paginate con select distinct causa problemas
-                                        $collectionsIdsV = Collection::select('collections.id')
-                                                                    ->join('books', 'books.collection_id', '=', 'collections.id')
-                                                                    ->distinct()
-                                                                    ->pluck('id')->toArray();
-                                        //obtiene las colecciones
-                                        $collectionsV = Collection::whereIn('id', $collectionsIdsV)->orderBy('created_at','Desc')->get();
-                                    @endphp
-                                    @if(count($collectionsV) > 0)
-                                        <li><a href="{{ route('colecciones') }}" class="">COLECCIONES</a></li>
-                                    @endif
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">AUTORES&nbsp;<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="{{ route('autoresUno4cinco') }}" class="">UNO4CINCO</a></li>
-                                    <li><a href="{{ route('autores145') }}" class="">145</a></li>
-                                </ul>
-                            </li> 
-                            <li class="submenu">
-                                <a href="javascript:;">BLOG&nbsp;<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="{{ route('blogs', ['id' => '1', 'tipo' => 'tag'])}}" class="">EVENTOS</a></li>
-                                    <li><a href="{{ route('blogs', ['id' =>'4', 'tipo' => 'tag'])}}" class="">ARTÍCULOS</a></li>
-                                    <li><a href="{{ route('blogs', ['id' => 0])}}" class="">VER TODO</a></li>
-                                </ul>
-                            </li>
-                            <li class=""><a href="{{ route('contacto') }}" class="">CONTACTO</a></li>
-                            <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
+                                <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
                                 <div class="cargar-info">
                                 @if(session('cart'))
                                     @php
