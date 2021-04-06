@@ -296,6 +296,7 @@
                                     <p>
                                         Pueden aplicarse gastos de envío,
                                     </p>
+                                    <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
                                     <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
                                 </div>
 
