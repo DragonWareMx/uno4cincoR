@@ -27,5 +27,6 @@ class book_imageTable extends Seeder
             'book_id'=>'4',
             'image_id'=>'4',
         ]);
+     
     }
 }

@@ -13,7 +13,7 @@
     <div class="footer-center">
       <div>
         <p class="footer-titulos">
-            NAVEGACIÓN
+            PUBLICA CON UNO4CINCO
         </p>    
       </div>
       <div>
@@ -26,23 +26,8 @@
         </p> --}}
         <ul>
           <li>
-            <a href="{{ route('inicio') }}">INICIO</a><br>
+            <a href="https://editorial.uno4cinco.com">Conoce nuestros planes editoriales</a><br>
           </li>
-          <li>
-              <a href="{{ route('sobreNosotros') }}">¿QUIÉNES SOMOS?</a><br>
-          </li>
-          <li>
-              <a href="{{ route('tiendaCatalogo') }}">TIENDA</a><br>
-          </li>
-          <li>
-              <a href="{{ route('autoresUno4cinco') }}">AUTORES</a> <br>
-          </li>
-          <li>
-            <a href="{{ route('blogs',0) }}">BLOG</a> <br>
-        </li>
-        <li>
-          <a href="{{ route('contacto') }}">CONTACTO</a> <br>
-      </li>
       <li>
         <a href="{{route('avisoPrivacidad')}}" >Política de privacidad y uso de cookies.</a>
         </li>

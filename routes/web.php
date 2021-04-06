@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get('/','paginaInicioController@index')->name('inicio');
+Route::get('/','paginaInicioController@tinyversion')->name('inicio');
 Route::get('/contacto','paginaInicioController@contacto')->name('contacto');
 Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobreNosotros');
 Route::get('/registro','paginaInicioController@registro')->name('registro');

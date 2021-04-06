@@ -41,7 +41,7 @@
         //obtiene las colecciones
         $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_at','Desc')->get();
     @endphp
-
+    @yield('bannerinicio')
     <section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
         {{-- TITTLE --}}
         <p class="txt-TitulosApartados">Tienda | @yield('seccionTienda')</p>

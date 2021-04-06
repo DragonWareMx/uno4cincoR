@@ -12,19 +12,20 @@ class imagesTable extends Seeder
     public function run()
     {
         DB::table('images')->insert([
-            'imagen'=>'aless.png',
+            'imagen'=>'contra-los-desordenes-de-la-memoria.jpg',
         ]);
         
         DB::table('images')->insert([
-            'imagen'=>'estefania.png',
+            'imagen'=>'contra-este-es-el-manicomio-de-Dios,-Marianela.jpg',
         ]);
         
         DB::table('images')->insert([
-            'imagen'=>'cesar.png',
+            'imagen'=>'contra-este-libro-no-habla-de-ti.jpg',
         ]);
         
         DB::table('images')->insert([
-            'imagen'=>'agustin.png',
+            'imagen'=>'cp-estos-poemas-culeros-que-son-lo-menos-culero-que-tengo.jpg',
         ]);
+
     }
 }
