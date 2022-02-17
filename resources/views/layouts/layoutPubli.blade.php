@@ -33,19 +33,6 @@
 </head>
 
 <body>
-
-    <!-- ***** Preloader Start ***** -->
-    
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-
-
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header" 
     @php
