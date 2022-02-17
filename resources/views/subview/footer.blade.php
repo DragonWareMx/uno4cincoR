@@ -2,10 +2,10 @@
 <footer class="footer-distributed" style="background-color: #FAFAFA">
  
     <div class="footer-left">
-      <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/logo.png') }}"> </a>
-      <p class="footer-company-name" style="margin-top: 15px">© 2020 Editorial uno4cinco</p>
+      <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/logoNuevo.png') }}"> </a>
+      <p class="footer-company-name" style="margin-top: 15px">© 2022 Editorial uno4cinco</p>
 
-      <a href="https://www.facebook.com/DragonWare-110557344026414" target="blank">
+      <a href="https://www.dragonware.com.mx" target="blank">
         <p class="footer-company-name dragonware-name">Desarrollado por DragonWare <img class="logodragon" src="{{ asset('img/logos/dragonware.png') }}"></p>
       </a>
     </div>
@@ -78,6 +78,7 @@
             <a href="https://www.youtube.com/channel/UCuYHXFV2FXf76TyP3aKSEqQ" target="blank"><img src="{{ asset('img/ico/ytb.png')}}" width="22px"></a>
             <a href="https://www.facebook.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/fb.png') }}" width="22px"></a>
             <a href="https://www.instagram.com/uno4cinco" target="blank"><img src="{{ asset('img/ico/ig.png') }}" width="22px"></a>
+            <a href="https://www.tiktok.com/@amorfatimx" target="blank"><img src="{{ asset('img/ico/tiktok.png') }}" width="20x"></a>
         </div>
     </div>
   </footer>
