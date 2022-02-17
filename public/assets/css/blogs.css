@@ -34,11 +34,18 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
-    border:0;
+    border:1px solid #EBEBEB;
+    transition: all ease-in-out 0.25s;
+    cursor: pointer !important;
 
+}
+.busqueda_clasificacion:focus{
+    border:1px solid #cecece;
+    transition: all ease-in-out 0.25s;
 }
 .busqueda_clasificacion option{
     font-family: Karla;
+    cursor: pointer !important;
 }
 #busqueda_busqueda{
     border-radius: 0px;
