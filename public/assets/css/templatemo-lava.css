@@ -1287,7 +1287,7 @@ preloader
   -webkit-border-radius: 14px;
   border-radius: 14px;
 
-  background-color: #F9C56A;
+  background-color: #1FC6AC;
   top: -34px;
   right: -90px;
 }
@@ -1295,7 +1295,7 @@ preloader
 .contador-carrito p{
   text-align: center;
   vertical-align: middle;
-  color: rgb(0, 0, 0);
+  color: white;
   font-size: 12px;
   font-weight: bold;
 }

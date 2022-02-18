@@ -48,7 +48,7 @@
                     <nav class="main-nav nav-space-between">
                         
                         <a href="{{ route('inicio') }}" class="logo2" style="display:none">
-                            <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="" height="40px">
+                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="40px">
                         </a>
 
                         <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php 
@@ -61,7 +61,7 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                                <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
+                                <li class="carritoli"><a href="{{ route('carrito') }}" class=""><img src="{{ asset('img/ico/bolsa.png') }}" alt="" srcset="" width="20px">&nbsp;CARRITO
                                 <div class="cargar-info">
                                 @if(session('cart'))
                                     @php
@@ -83,7 +83,7 @@
                         </a>
 
                         <a class='menu-carrito' href="{{ route('carrito') }}">
-                            <img src="{{ asset('img/ico/carrito.png') }}" alt="" srcset="" height="30px">
+                            <img src="{{ asset('img/ico/bolsa.png') }}" alt="" srcset="" height="30px">
                             <div class="cargar-info2">
                             @if(session('cart'))
                                 <div class="contador-carrito"><p class="contador-carrito-value2">{{ $contador }}</p></div>
