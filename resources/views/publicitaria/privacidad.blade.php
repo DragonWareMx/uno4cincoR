@@ -13,14 +13,9 @@
 
 @section('content')
 
-<section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
+<section class="section" id="about" style="width:100%; height:100%; background-color:white">
     {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Política de privacidad y uso de cookies</p>
-    <hr class="hr-Titulos-long">
-    <hr class="hr-Titulos-small">
-    {{-- BANNER IMAGE --}}
-
-    
+    <p class="txt-TitulosApartados">Política de privacidad y uso de cookies</p>    
 
     <p class="p-txt-content" style="text-align: justify">
         De conformidad con lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, uno4cinco pone a su disposición el siguiente aviso de privacidad.

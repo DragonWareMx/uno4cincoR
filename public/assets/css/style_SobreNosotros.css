@@ -1,12 +1,12 @@
 .txt-TitulosApartados{
-    font-family: 'Abril Fatface', cursive;
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 24px;
     line-height: 32px;
     text-align: center;
     margin-top: 25px;
-    color:black;
+    color:#2E2E2E;
 }
 .hr-Titulos-long{
     border: 0.05px solid #29B390;
@@ -40,13 +40,13 @@
     text-align: center;
 }
 .p-txt-content{
-    font-family: 'Karla', sans-serif;
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
     text-align: center;
-    color: #1D2120;
+    color: #2E2E2E;
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
