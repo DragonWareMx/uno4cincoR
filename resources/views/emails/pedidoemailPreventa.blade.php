@@ -125,7 +125,7 @@
           <tr>
             <td align="center" valign="top" style="padding: 36px 24px;">
               <a href="www.uno4cinco.com" target="_blank" style="display: inline-block;">
-                <img src="{{asset('img/logos/logo.png')}}" alt="Logo" border="0" width="250" style="display: block; width: 250px; max-width: 250px; min-width: 48px; filter: opacity(1)">
+                <img src="{{asset('img/logos/logoNuevo.png')}}" alt="Logo" border="0" width="250" style="display: block; width: 250px; max-width: 250px; min-width: 48px; filter: opacity(1)">
               </a>
             </td>
           </tr>

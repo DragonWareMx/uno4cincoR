@@ -28,7 +28,7 @@
                 <div class="hero__wrapper">
                     <div class="row">
                         <div class="col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-1 ">
-                            <div class="hero__title_inner"><img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
+                            <div class="hero__title_inner"><img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="">
                                 <br>
                                 <br>
                                 <h1 class="hero__text" style="color:black">Página en construcción</h1>

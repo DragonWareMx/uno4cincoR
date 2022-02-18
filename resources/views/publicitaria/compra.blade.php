@@ -44,7 +44,7 @@
                     <div class="compra-header">
                         <div style="width: 100%">
                             <a href="{{ route('inicio') }}" class="logo">
-                                <img src="{{ asset('img/logos/logo.png') }}">
+                                <img src="{{ asset('img/logos/logoNuevo.png') }}">
                             </a>
                         </div>
                         <hr>

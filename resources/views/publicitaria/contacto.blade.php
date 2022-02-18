@@ -22,7 +22,7 @@
     <div class="p-txt-content">
         <div class="border-contacto">
             <div class="div-contacto">
-                <img src="{{ asset('img/logos/logo.png') }}" alt="" srcset="">
+                <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="">
                 <div class="slideshow-container">
 
                     <div id="first" class="mySlides fade">
