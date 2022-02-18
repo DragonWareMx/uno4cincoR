@@ -1,9 +1,9 @@
 .producto-tienda{
     position: relative;
     width: 228px;
-    height: 354px;
     margin:auto;
-    margin-top: 59px;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .producto-tienda .imagen{

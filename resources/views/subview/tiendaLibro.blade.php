@@ -1,5 +1,6 @@
 <div class="container" id="loadBooks">
-    <div class="row justify-content-start" style="margin-bottom:120px">
+    <div class="row justify-content-start">
+            
         @if (count($books) > 0)
             {{-- LIBRO --}}
             @foreach ($books as $book)
