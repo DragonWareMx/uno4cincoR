@@ -74,7 +74,7 @@
                     </div>
                 </form> --}}
 
-                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" style="margin-top:55px !important">
+                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" class="filter-margin">
                     <div class="blog_barra_busqueda_tienda" style="border:none">
                         <p>Filtrar: </p>
                         <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f" onchange="this.form.submit()">

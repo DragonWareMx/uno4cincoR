@@ -14,10 +14,12 @@
 
                             <!--titulo del libro-->
                             <div class="titulo" style="margin:25px 0px 15px 0px">
-                                <p>{{Str::limit($book->titulo,42)}}</p>
+                                <p>{{Str::limit($book->titulo,34)}}</p>
                             </div>
 
-                            <p class="autor-limit">{{Str::limit($book->authors[0]->nombre,56)}}</p>
+                            <p class="autor-limit hidden-512">{{Str::limit($book->authors[0]->nombre,45)}}</p>
+
+                            <p class="autor-limit responsive-autor">{{Str::limit($book->authors[0]->nombre,33)}}</p>
 
                             <p class="precio-rango">$100 - $100</p>
                         </a>
