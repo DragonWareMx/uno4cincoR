@@ -24,11 +24,7 @@
 
 @section('content')
 
-<section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
-    {{-- TITTLE --}}
-    <p class="txt-TitulosApartados">Tienda | {{ $book->titulo }}</p>
-    <hr class="hr-Titulos-long">
-    <hr class="hr-Titulos-small">
+<section class="section" id="about" style="width:100%; height:100%; background-color:white">
     
     <div class="container-fluid">
         {{-- INFORMACIÓN DEL LIBRO --}}
@@ -361,17 +357,6 @@
                 </div>
             {{-- </div> --}}
         @endif
-
-        <hr class="hr-tienda">
-
-        {{-- BOTON REGRESAR --}}
-        <div class="div_contenidoBack">
-            <a class="btn_regresar" href="javascript:history.back(-1);">
-                &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i>
-                <br>
-                Regresar
-            </a>
-        </div>
         <br>
     </div>
 </section>
