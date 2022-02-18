@@ -43,25 +43,14 @@
     @endphp
     @yield('bannerinicio')
     <section class="section" id="about" style="width:100%; height:100%; background-color:white">
-        {{-- TITTLE --}}
-        <p class="txt-TitulosApartados">Tienda | @yield('seccionTienda')</p>
-        <hr class="hr-Titulos-long">
-        <hr class="hr-Titulos-small ">
-        <br><br>
 
         {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
         @yield('carrusel')
 
         <div class="blog_encabezado">
-
-            @if(!request('clasificacion') || !request('busqueda'))
-                @yield('encabezadoTienda')
-            @else
-                Resultados de búsqueda
-            @endif
             
             @if(!Route::is('tiendaNovedades') && !Route::is('colecciones') && !Route::is('coleccion'))
-                {{-- <form class="" action="" method="GET" enctype="multipart/form-data">
+                {{-- <form class="" action="" method="GET" enctype="multipart/form-data" >
                     <div class="blog_barra_busqueda">
                         @if(!Route::is('colecciones'))
                             <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
@@ -85,7 +74,7 @@
                     </div>
                 </form> --}}
 
-                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data">
+                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" style="margin-top:55px !important">
                     <div class="blog_barra_busqueda_tienda" style="border:none">
                         <p>Filtrar: </p>
                         <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f" onchange="this.form.submit()">
