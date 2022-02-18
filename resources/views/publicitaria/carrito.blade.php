@@ -17,11 +17,9 @@
 
 @section('content')
 
-<section class="section" id="about" style="width:100%; height:100%; background-color:#F2ECD5">
+<section class="section" id="about" style="width:100%; height:100%; background-color:white">
     {{-- TITTLE --}}
     <p class="txt-TitulosApartados">Carrito</p>
-    <hr class="hr-Titulos-long">
-    <hr class="hr-Titulos-small">
     
     <div class="container-fluid">
         <div class="row">
