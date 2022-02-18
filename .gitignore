@@ -10,3 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+storage/app/public/libros/1037400_1645142941.png
+*.jpg
+*.jpeg
+*.png
