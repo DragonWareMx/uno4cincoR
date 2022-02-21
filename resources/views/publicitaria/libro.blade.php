@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
     <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
-    
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
@@ -20,34 +19,129 @@
     {{-- Carrusel --}}
     <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
+    <style>
+        .cj-titulo{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 23px;
+            color: #2E2E2E;
+
+            height: 41.6px;
+        }
+
+        .cj-info{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 12px;
+            color: #2E2E2E;
+            height: 41.6px;
+
+            width: 100%;
+        }
+
+        .cj-info2{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #2E2E2E;
+            height: 41.6px;
+
+            width: 100%;
+        }
+
+
+        .cj-button{
+            width: 100%;
+            background-color: #1FC6AC;
+
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 19px;
+            
+            border: none;
+            color: white;
+
+            padding-top: 8px;
+            padding-bottom: 8px;
+
+            box-sizing: border-box;
+            border-radius: 25px;
+            outline: none;
+            transition-duration: .1s, .1s;
+            -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+            transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+            -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+            -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+            box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+        }
+
+        .cj-button-bolsa{
+            width: 50%;
+            margin: auto;
+            background-color: #1FC6AC;
+
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 19px;
+            
+            border: none;
+            color: white;
+
+            padding-top: 8px;
+            padding-bottom: 8px;
+
+            box-sizing: border-box;
+            border-radius: 25px;
+            outline: none;
+            transition-duration: .1s, .1s;
+            -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+            transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+            -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+            -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+            box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+        }
+
+        .cj-scroll{
+            height: 470px !important;
+        }
+    </style>
 @endsection
 
 @section('content')
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:white">
     
-    <div class="container-fluid">
+    <div class="container">
         {{-- INFORMACIÓN DEL LIBRO --}}
         <div class="row">
-            <div class="libro-tabla">
                 {{-- IMAGENES --}}
-                <div class="libro-cell libro-cell-md libro-cell-head">
-                    <div class="libro-fotos">
-                        <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onmousemove="zoomIn(event)" onmouseout="zoomOut()">
-                        {{-- SLIDER --}}
+                <div class="col">
+                    {{-- <div class="libro-fotos">
+                        <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
+                        {{-- SLIDER 
                         @if (count($book->images) > 0)
                             <div class="owl-carousel">
-                                {{-- IMAGEN DE LA TIENDA --}}
+                                {{-- IMAGEN DE LA TIENDA 
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}')">
                                 </div>
 
-                                {{-- IMAGEN DE LA PORTADA --}}
+                                {{-- IMAGEN DE LA PORTADA 
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$book->portadaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->portadaImagen)}}')">
                                 </div>
 
-                                {{-- IMAGENES EXTRA --}}
+                                {{-- IMAGENES EXTRA 
                                 @foreach($book->images as $imagen)
                                     <div class="imagen-carrusel">
                                         <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
@@ -55,151 +149,140 @@
                                 @endforeach
                             </div>
                         @endif
+                    </div> --}}
+
+                    {{-- CARRUSEL --}}
+                    <div class="row">
+                        
+                    </div>
+                    {{-- NOMBRE LIBRO --}}
+                    <div class="row">
+                        <p class="cj-titulo">{{Str::limit($book->titulo,61)}}</p>
+                    </div>
+                    {{-- AUTOR --}}
+                    <div class="row mt-4">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info align-middle">
+                                <b style="font-weight: bold">Autor: </b> {{$book->authors[0]->nombre}}
+                            </p>
+
+                            {{-- @if (count($book->authors) > 1)
+                                <p class="libro-info-res"><b>Autores: </b>
+                            @else
+                                <p class="libro-info-res"><b>Autor: </b>
+                            @endif
+                                @php
+                                    $contador = 1;
+                                    $cantAutores = count($book->authors);
+                                @endphp
+                                @foreach ($book->authors as $author)
+                                    @if ($contador == 1)
+                                        <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
+                                    @elseif($contador == $cantAutores)
+                                        y <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
+                                    @else
+                                        , <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
+                                    @endif
+                                    @php
+                                        $contador++;
+                                    @endphp
+                                @endforeach
+                            </p> --}}
+                        </div>
+                        <div class="col">
+                            <button class="shrink cj-button align-top">
+                                Seguir al autor
+                                <img
+                                    class="ml-1"
+                                    style="width: 18px; height: 18px"
+                                    src="{{ asset('assets/fonts/plus.svg') }}"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 {{-- INFO --}}
-                <div class="libro-cell libro-cell-lg libro-cell-footer">
-                    <div class="libro-info">
-                        {{-- AUTORES --}}
-                        @if (count($book->authors) > 1)
-                            <p class="libro-info-res"><b>Autores: </b>
-                        @else
-                            <p class="libro-info-res"><b>Autor: </b>
-                        @endif
-                            @php
-                                $contador = 1;
-                                $cantAutores = count($book->authors);
-                            @endphp
-                            @foreach ($book->authors as $author)
-                                @if ($contador == 1)
-                                    <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                @elseif($contador == $cantAutores)
-                                    y <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                @else
-                                    , <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                @endif
-                                @php
-                                    $contador++;
-                                @endphp
-                            @endforeach
+                <div class="col-5">
+                    {{-- Sinopsis --}}
+                    <div class="row">
+                        <p class="cj-info2 align-middle cj-scroll">
+                            <b style="font-weight: bold">Sinopsis: </b> {{ $book->sinopsis }}
                         </p>
+                    </div>
 
-                        {{-- GENEROS --}}
-                        @if (count($book->genres) > 1)
-                            <p class="libro-info-res"><b>Géneros: </b>
-                        @else
-                            <p class="libro-info-res"><b>Género: </b>
-                        @endif
-                            @php
-                                $contador = 1;
-                                $cantGeneros = count($book->genres);
-                            @endphp
-                            @foreach ($book->genres as $genre)
-                                @if ($contador == 1)
-                                    {{$genre->nombre}}
-                                @elseif($contador == $cantGeneros)
-                                    y {{$genre->nombre}}
-                                @else
-                                    , {{$genre->nombre}}
-                                @endif
+
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Idioma: </b> Español
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Páginas: </b> {{ $book->paginas }}
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Publicado: </b>
                                 @php
-                                    $contador++;
-                                @endphp
-                            @endforeach
-                        </p>
-
-                        {{-- FECHA --}}
-                        <p class="libro-info-res"><b>Fecha de publicación: </b>
-                            @php
                                     $separa=explode("-",$book->fechaPublicacion);
                                     $anio=$separa[0];
                                     $mes=$separa[1];
                                     $dia=$separa[2];
                                 @endphp
-                                {{-- {{$dia}}&nbsp;de --}}
-                                @switch($mes)
-                                    @case('01')
-                                        Enero&nbsp;de
-                                        @break
-                                    @case('02')
-                                        Febrero&nbsp;de
-                                        @break
-                                    @case('03')
-                                        Marzo&nbsp;de
-                                        @break
-                                    @case('04')
-                                        Abril&nbsp;de
-                                        @break
-                                    @case('05')
-                                        Mayo&nbsp;de
-                                        @break
-                                    @case('06')
-                                        Junio&nbsp;de
-                                        @break
-                                    @case('07')
-                                        Julio&nbsp;de
-                                        @break
-                                    @case('08')
-                                        Agosto&nbsp;de
-                                        @break
-                                    @case('09')
-                                        Septiembre&nbsp;de
-                                        @break
-                                    @case('10')
-                                        Octubre&nbsp;de
-                                        @break
-                                    @case('11')
-                                        Noviembre&nbsp;de
-                                        @break
-                                    @case('12')
-                                        Diciembre&nbsp;de
-                                        @break
-                                @endswitch
-                                {{$anio}}
-                        </p>
+                                {{$dia}}/{{$mes}}/{{$anio}}
+                            </p>
+                        </div>
+                    </div>
 
-                        {{-- PAGAINAS --}}
-                        {{-- <p class="libro-info-res"><b>Número de páginas: </b>{{ $book->paginas }}</p> --}}
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">
+                                    @if (count($book->genres) > 1)
+                                        Géneros:
+                                    @else
+                                        Género:
+                                    @endif
+                                </b>
+                                @php
+                                    $contador = 1;
+                                    $cantGeneros = count($book->genres);
+                                @endphp
+                                @foreach ($book->genres as $genre)
+                                    @if ($contador == 1)
+                                        {{$genre->nombre}}
+                                    @elseif($contador == $cantGeneros)
+                                        y {{$genre->nombre}}
+                                    @else
+                                        , {{$genre->nombre}}
+                                    @endif
+                                    @php
+                                        $contador++;
+                                    @endphp
+                                @endforeach
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Edad de lectura: </b>
+                                18 y más
+                            </p>
+                        </div>
+                    </div>
 
-                        {{-- EDITORIAL --}}
-                        <p class="libro-info-res"><b>Editorial: </b>{{ $book->sello->nombre }}</p>
+                    <div class="libro-info">
 
-                        {{-- EDICION --}}
-                        <p class="libro-info-res"><b>Edición: </b>{{ $book->numEdicion }}</p>
-
-                        {{-- COLECCION --}}
-                        @if($book->collection)
-                            <p class="libro-info-res"><b>Colección: </b><a href="{{ route('coleccion', ['id'=>$book->collection->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{ $book->collection->nombre }}</span></a></p>
-                        @endif
-                        
-                        {{-- FORMATO --}}
-                        <p class="libro-info-res"><b>Formato: </b>
-                            @if ($book->stockFisico > 0 && $book->stockDigital > 0)
-                                Físico y Digital
-                            @elseif($book->stockFisico > 0)
-                                Físico
-                            @elseif($book->stockDigital > 0)
-                                Digital
-                            @else
-                                No disponible en ningún formato
-                            @endif
-                        </p>
-
-                        <p class="libro-info-res"><b>Sinopsis</b></p>
-
-                        {{-- Contenido del libro --}}
-                        <p>
-                            @if (strlen($book->sinopsis) > 460)
-                                <span id="dots1"><< </span>
-                            @endif
-                            {{-- DISCULPEN LA BASURA DE IDENTACION EN ESTA PARTE PERO ES NECESARIO QUE ESTE EN UNA SOLA LINEA XD --}}
-                            {{ Str::limit($book->sinopsis, 460, '') }}@if (strlen($book->sinopsis) > 460)<span id="dots2"> >></span><span id="more">{{ substr($book->sinopsis, 460) }}</span>
-                            @endif
-                        </p>
-                        @if (strlen($book->sinopsis) > 460)
-                            <button onclick="leerMas()" id="myBtn" class="leer-mas">Leer más</button>
-                        @endif
                         @if ($book->linkDemo)
                         <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" class="sm-link sm-link3 sm-link_padding-bottom">
                             <p style="color:#83d7b5;">
@@ -212,7 +295,76 @@
                 </div>
 
                 {{-- PRECIOS --}}
-                <div class="libro-cell libro-cell-md libro-cell-middle">
+                <div class="col">
+                    @if ($book->linkDemo)
+                    <div class="row">
+                        <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    @if ($book->stockDigital > 0)
+                    <div class="row">
+                        <p class="cj-titulo">Libro Digital:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0)
+                                    Gratis
+                                @else
+                                    @if($book->descuentoDigital > 0)
+                                        ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
+                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    @if ($book->stockFisico > 0)
+                    <div class="row">
+                        <p class="cj-titulo">Libro Físico:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioFisico <= 0)
+                                    Gratis
+                                @else
+                                {{-- Si no entonces se muestra el precio --}}
+                                    @if($book->descuentoFisico > 0)
+                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                    @else
+                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    @endif
+                                @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                    <div class="mensaje">
+                        <p>
+                            Pueden aplicarse gastos de envío,
+                        </p>
+                        <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
+                        <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
+                    </div>
+
                     <div class="libro-comprar">
                         <div class="comprar">
                             {{-- FISICO --}}
@@ -311,7 +463,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
 
         {{-- CARRUSEL DE LIBROS DE LOS AUTORES --}}
@@ -553,23 +704,6 @@
         pre.src = nuevaImagen;
         //obtiene la imagen para el zoom
         imagen = nuevaImagen;
-    }
-
-    //controla el zoom en el hover
-    function zoomIn(event) {
-        if ($('#imagen-seleccionada').is(':hover')) {
-            pre.style.backgroundImage = "url('" + imagen + "')";
-            pre.src = "{{asset('img/ico/invisible.png')}}";
-        }
-        
-        var posX = event.offsetX;
-        var posY = event.offsetY;
-        pre.style.backgroundPosition=(-posX*2.5)+"px "+(-posY*2.5)+"px";
-    }
-
-    function zoomOut() {
-        pre.src = imagen;
-        pre.style.backgroundImage = "";
     }
 </script>
 
