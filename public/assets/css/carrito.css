@@ -375,6 +375,27 @@
     margin-bottom: 50px;
 }
 
+::-webkit-scrollbar {
+    width: 11px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #F2F2F2;
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1FC6AC; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1FC6AC; 
+  }
+
 .carrito-vacio a:hover{
     color: white;
     font-size: 16px;
