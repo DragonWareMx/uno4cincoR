@@ -261,6 +261,8 @@
     box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
 }
 
+
+
 .carrito-table .carrito-cell .compra-container .comprar{
     background: #2E2E2E;
     width: 100%;
@@ -333,39 +335,49 @@
 }
 
 .carrito-vacio p{
-    font-family: Karla;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 23px;
+    margin-top: 12px;
+    line-height: 16px;
     text-align: center;
-
-    color: #000000;
+    color: #2E2E2E;
+    font-family: 'Montserrat';
+    font-weight: light;
+    font-size: 15px;
 
     padding: 0px 30px;
-    margin-bottom: 50px;
+    margin-bottom: 50px;       
 }
 
 .carrito-vacio a{
-    background: black;
-    border-radius: 5px;
+    background: #2E2E2E;
+    width: 100%;
+    margin-bottom:30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px; 
+    /* identical to box height */
+
+    border:none;
     color: white;
-    padding: 10px 50px;
-    
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-
-    margin-bottom: 50px;
-
+    box-sizing: border-box;
+    border-radius: 25px;
+    outline: none !important;
     transition-duration: .1s, .1s;
     -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+    /* sombra */
+    -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    padding: 10px 50px;
+
+    margin-bottom: 50px;
 }
 
 .carrito-vacio a:hover{
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     transition-duration: .1s, .1s;
     -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
     transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
