@@ -449,7 +449,15 @@
     display:none;
 }
 
+#loadBooks{
+    padding:0px 40px 0px 40px;
+}
 
+@media(max-width:700px){
+    #loadBooks{
+        padding:0px 30px 0px 30px;
+    }
+}
 @media(max-width: 1245px) and (min-width: 1200px){
     .tooltip-carrito
     {
