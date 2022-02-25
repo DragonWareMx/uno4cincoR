@@ -449,6 +449,7 @@
     display:none;
 }
 
+
 @media(max-width: 1245px) and (min-width: 1200px){
     .tooltip-carrito
     {
@@ -467,6 +468,15 @@
     .tooltip-carrito
     {
         right: -10px;
+    }
+}
+
+@media(max-width:990px){
+    .hidden-990{
+        display: none;
+    }
+    .show-990{
+        display: block !important;
     }
 }
 
