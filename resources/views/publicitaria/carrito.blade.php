@@ -39,7 +39,7 @@
                                             <div class="producto">
                                                 {{-- IMAGEN --}}
                                                 <div class="imagen">
-                                                    <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
+                                                <a href="{{ route('libro', ['id' => $id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
                                                 </div>
 
                                                 {{-- DATOS DEL LIBRO --}}
@@ -65,11 +65,11 @@
                                                                 @endphp
                                                                 @foreach ($libro->authors as $author)
                                                                     @if ($contador == 1)
-                                                                    <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                    <a>{{$author->nombre}}</a>
                                                                     @elseif($contador == $cantAutores)
-                                                                        y <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                        y <a>{{$author->nombre}}</a>
                                                                     @else
-                                                                        , <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                        , <a>{{$author->nombre}}</a>
                                                                     @endif
                                                                     @php
                                                                         $contador++;
@@ -144,7 +144,7 @@
                                             <div class="producto">
                                                 {{-- IMAGEN --}}
                                                 <div class="imagen">
-                                                    <img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}">
+                                                    <a href="{{ route('libro', ['id' => $id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
                                                 </div>
 
                                                 {{-- DATOS --}}
@@ -170,11 +170,11 @@
                                                                 @endphp
                                                                 @foreach ($libro->authors as $author)
                                                                     @if ($contador == 1)
-                                                                    <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                    <a>{{$author->nombre}}</a>
                                                                     @elseif($contador == $cantAutores)
-                                                                        y <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                        y <a>{{$author->nombre}}</a>
                                                                     @else
-                                                                        , <a href="{{ route('autor', ['id' => $author->id]) }}">{{$author->nombre}}</a>
+                                                                        , <a>{{$author->nombre}}</a>
                                                                     @endif
                                                                     @php
                                                                         $contador++;
@@ -183,7 +183,7 @@
                                                             </p>
 
                                                             {{-- FORMATO --}}
-                                                            <p><b>Formato: </b>Digital</p>
+                                                            <div class="titulo"><p><b>Formato: </b><a>Digital</a></p></div>
                                                         </div>
 
                                                         {{-- TOTALES --}}
@@ -250,7 +250,7 @@
                         <div class="compra-container">
                             <div style="width: 225px; margin:auto;">
                                 <h1 id="total-carrito">Total : ${{ number_format($total, 2 , ".", "," ) }}</h1>
-                                <p>Pueden aplicarse gastos de envío,</p>
+                                <p class="txt-gastos-envio">Pueden aplicarse gastos de envío</p>
                                 <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
                                 <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
 
