@@ -1,7 +1,7 @@
 <div class="container-md" id="loadBooks">
     <div class="row flex-wrap-reverse">
         <div class="col-lg-10 col-md-12" style="padding:0px">
-            <div class="container-lg div-scroll-libros" style="max-height:1520px;">
+            <div class="container-lg div-scroll-libros" style="max-height:500px;">
                 <div class="row">
                     @if (count($books) > 0)
                         {{-- LIBRO --}}
@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+    <!-- PAGINACION -->
     <div class="paginate-tienda">
         <div style="width: fit-content; margin:auto;">
         {{ $books->links() }}
