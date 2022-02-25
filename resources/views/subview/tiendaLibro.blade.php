@@ -39,6 +39,12 @@
                     @endif
                 </div>
             </div>
+            <!-- PAGINACION -->
+            <div class="paginate-tienda">
+                <div style="width: fit-content; margin:auto;">
+                {{ $books->links() }}
+                </div>
+            </div>
         </div>
         <!-- PUBLICIDAD -->
         <div class="col-lg-2 col-mg-12 justify-content-center d-flex" style="padding:0px">
@@ -50,10 +56,5 @@
             </div>
         </div>
     </div>
-    <!-- PAGINACION -->
-    <div class="paginate-tienda">
-        <div style="width: fit-content; margin:auto;">
-        {{ $books->links() }}
-        </div>
-    </div>
+    
 </div>
