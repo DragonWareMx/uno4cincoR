@@ -30,7 +30,7 @@
     display: table;
     padding: 7px 10px;
 
-    border-bottom: 1.5px solid #e9e9e9;
+    border-bottom: 1.5px solid #c5c5c5;
     box-sizing: border-box;
 
     margin-bottom: 25px;
@@ -188,7 +188,7 @@
 
 .carrito-table .carrito-cell .compra-container{
     width: 100%;
-    border: 0.5px solid #707070;
+    border: 0.5px solid #c5c5c5;
     box-sizing: border-box;
     border-radius: 5px;
     text-align: center;
