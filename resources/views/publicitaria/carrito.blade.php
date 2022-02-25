@@ -254,7 +254,7 @@
                                 <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
                                 <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
 
-                                <button class="tienda shrink" onclick="location.href='{{ route('tiendaCatalogo') }}'">Volver a la tienda</button>
+                                <button class="tienda shrink" onclick="location.href='{{ route('inicio') }}'">Volver a la tienda</button>
                                 <button class="comprar shrink" onclick="location.href='{{ route('compra') }}'">Comprar ahora</button>
                             </div>
                         </div>
