@@ -21,16 +21,16 @@ Table of contents
 10. preloader
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -106,10 +106,10 @@ p {
   color: #888;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -233,26 +233,22 @@ button.main-button:hover {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
-  background-color: #f1faf7;
-  height: 67px!important;
+  background-color: #FFFFFF;
+  height: 140px!important;
   position: fixed!important;
   top: 0px;
   left: 0px;
   right: 0px;
   /*¨se debería quitar el box shadow pero de momento se ve bien*/
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
-}
-
-.background-header,
-.background-header .main-nav .nav li a {
-  color: #474444 !important;
+  border-bottom: 1px solid #707070;
+  /* box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important; */
 }
 
 .background-header .main-nav .nav li:hover a {
@@ -269,7 +265,7 @@ header
   left: 0px;
   right: 0px;
   z-index: 100;
-  height: 100px;
+  height: 140px;
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
@@ -283,7 +279,7 @@ header
   width: 140px;
 }
 .header-area .main-nav {
-  min-height: 67px;
+  min-height: 140px;
   background: transparent;
   width: 100%;
 }
@@ -316,12 +312,14 @@ header
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+
+  display: flex;
+  align-items: center;
 }
 
 
 .header-area .main-nav .nav {
   float: left;
-  margin-top: 27px;
   padding-left: auto;
   margin-right: 0px;
   background-color: transparent;
@@ -350,9 +348,6 @@ header
 
 .header-area .main-nav .nav li a {
   display: block;
-  font-weight: 500;
-  font-size: 13px;
-  color: #474444;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -361,6 +356,8 @@ header
   line-height: 40px;
   border: transparent;
   letter-spacing: 1px;
+  color: #2E2E2E !important;
+  font-weight: bold !important;
 }
 
 .header-area .main-nav .nav li:hover a {
@@ -582,7 +579,8 @@ header
 }
 
 .header-area.header-sticky .nav {
-  margin-top: 20px !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
 }
 
 .header-area.header-sticky .nav li a.active {
@@ -620,7 +618,7 @@ header
     text-align: center;
     float: none!important;
     display: block !important;
-    
+
   }
 .logo2:hover{
   border-top: 1px #BA1F00;
@@ -635,7 +633,7 @@ header
   }
 
   .header-area {
-    background-color: #f1faf7;
+    background-color: #FFFFFF;
     padding: 0px 15px;
     height: 80px;
     box-shadow: none;
@@ -668,11 +666,11 @@ header
     margin-left: 0px;
   }
   .header-area .main-nav .nav li:first-child {
-    
+
   }
   .header-area .main-nav .nav li {
     width: 100%;
-    background: #fff;
+    background: #FFFFFF;
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
@@ -682,10 +680,13 @@ header
     padding: 0px !important;
     border: none !important;
     background: #f1faf7 !important;
-    color: #191a20 !important;
+    color: #2E2E2E !important;
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: bold;
   }
   .header-area .main-nav .nav li a:hover {
-    background: #eee !important;
+    background: #FFFFFF !important;
     color: #BA1F00!important;
   }
   .header-area .main-nav .nav li.submenu ul {
@@ -738,10 +739,10 @@ header
 }
 
 
-/* 
+/*
 ---------------------------------------------
 welcome
---------------------------------------------- 
+---------------------------------------------
 */
 .welcome-area {
   width: 100%;
@@ -804,7 +805,7 @@ welcome
   .welcome-area {
     height: auto;
   }
-  .welcome-area .header-text {       
+  .welcome-area .header-text {
     width: 92%;
     padding-top: 793px;
   }
@@ -822,7 +823,7 @@ welcome
     padding-top: 100%;
     margin-left: 0;
   }
-    
+
   .container-fluid .col-md-12 {
     margin-right: 0px;
     padding-right: 0px;
@@ -1005,10 +1006,10 @@ testimonials
   margin-bottom: -60px;
 }
 
-/* 
+/*
 ---------------------------------------------
 footer
---------------------------------------------- 
+---------------------------------------------
 */
 
 @media (max-width: 992px) {
@@ -1036,7 +1037,7 @@ footer .footer-content {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  
+
 }
 
 footer .right-content {
@@ -1189,10 +1190,10 @@ footer .sub-footer p {
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 #preloader {
   overflow: hidden;
@@ -1328,4 +1329,9 @@ preloader
       font-size: 14px;
       border-radius: 15px;
     }
+}
+
+.l-container{
+  width: 100%;
+  padding: 0px 5%;
 }
