@@ -12,12 +12,12 @@
 @endsection
 
 @section('menu')
-<a href="{{ route('verSliders') }}" class="txt-titulosGestor">Sliders</a>
-    @if ($aux)
+<a href="{{ route('verSliders') }}" class="txt-titulosGestor">Publicidad</a>
+    <!-- @if ($aux)
     | Nuevo banner libro
     @else
     | Nuevo banner autor
-    @endif     
+    @endif      -->
 @endsection
 
 
@@ -47,7 +47,7 @@
         </div>
         <div class="div_empareja_elementos">
             
-        <div class="elementos_slider_100">
+        <!-- <div class="elementos_slider_100">
             <div class="elementos_slider_imagen">
                 <p class="slidertxt" style="width: 120px">Relacionado con: </p>
                 <select class="select_slider img_datosAuthor" name="relacionBanner" style="margin-left: 0px" required>
@@ -63,9 +63,9 @@
                     @endforeach
                 </select>
             </div>
-        </div>
+        </div> -->
 
-        <a id="banner_existente" style="color: #29B390; text-decoration:underline">Elegir banner existente</a>
+        <!-- <a id="banner_existente" style="color: #29B390; text-decoration:underline">Elegir banner existente</a> -->
         
         </div>
 

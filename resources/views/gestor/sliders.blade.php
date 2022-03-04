@@ -24,9 +24,9 @@
     
     <div class="all_sliders_contenido">
     <a class="text_agregar" style="margin:0px 20px 0px 0px !important; width:100%; text-align:right" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
-    <p style="width:100%">El Slider más nuevo es el que será mostrado en el inicio de la página</p>
+    <p style="width:100%">El Slider más nuevo es el que será mostrado en el inicio de la página. Click sobre un slider para eliminarlo</p>
     <!--slider LIBROS-->
-    <!-- <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+    <div id="carruselLibros" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @php
                 $i=0; 
@@ -81,7 +81,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div> -->
+    </div>
     {{-- Fin slider libros --}}
     
     <!-- <div class="title_index" style="">

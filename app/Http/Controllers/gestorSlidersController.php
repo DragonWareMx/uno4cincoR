@@ -95,7 +95,8 @@ class gestorSlidersController extends Controller
                         $banner->author_id=request('relacionBanner');
                     }
                     else{
-                        $banner->book_id=request('relacionBanner');
+                        // $banner->book_id=request('relacionBanner');
+                        $banner->book_id=1;
                     }
 
                     $banner->save();
