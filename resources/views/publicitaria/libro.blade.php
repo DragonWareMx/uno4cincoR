@@ -86,6 +86,7 @@
         .cj-button-bolsa{
             width: 50%;
             margin: auto;
+            margin-bottom: 30px;
             background-color: #1FC6AC;
 
             font-family: 'Montserrat';
@@ -113,6 +114,21 @@
 
         .cj-scroll{
             height: 470px !important;
+        }
+
+        .cj-book-border{
+            border-color: #707070;
+            border-radius: 62px;
+            border: 1px;
+            box-shadow: 0px 3px 6px #888888;
+
+            padding: 50px 20px 50px 20px;
+            text-align: center;
+        }
+
+        .cj-book-price{
+            margin: auto !important;
+            width: fit-content !important;
         }
     </style>
 @endsection
@@ -296,87 +312,89 @@
 
                 {{-- PRECIOS --}}
                 <div class="col">
-                    @if ($book->linkDemo)
-                    <div class="row">
-                        <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
-                    </div>
-                    <div class="row">
-                        <button class="shrink cj-button-bolsa">
-                            Agregar a la bolsa
-                        </button>
-                    </div>
-                    @endif
-
-                    @if ($book->stockDigital > 0)
-                    <div class="row">
-                        <p class="cj-titulo">Libro Digital:
-                            <span style="color: #1FC6AC">
-                                {{-- Si el precio es 0 se muestra Gratis--}}
-                                @if($book->precioDigital <= 0)
-                                    Gratis
-                                @else
-                                    @if($book->descuentoDigital > 0)
-                                        ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                    <div class="cj-book-border">
+                        @if ($book->linkDemo)
+                        <div class="row cj-book-price">
+                            <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
+                        </div>
+                        <div class="row">
+                            <button class="shrink cj-button-bolsa">
+                                Agregar a la bolsa
+                            </button>
+                        </div>
+                        @endif
+    
+                        @if ($book->stockDigital > 0)
+                        <div class="row cj-book-price">
+                            <p class="cj-titulo">Libro Digital:
+                                <span style="color: #1FC6AC">
+                                    {{-- Si el precio es 0 se muestra Gratis--}}
+                                    @if($book->precioDigital <= 0)
+                                        Gratis
                                     @else
-                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                        @if($book->descuentoDigital > 0)
+                                            ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                        @else
+                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                        @endif
                                     @endif
-                                @endif
-                            </span>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <button class="shrink cj-button-bolsa">
-                            Agregar a la bolsa
-                        </button>
-                    </div>
-                    @endif
-
-                    @if ($book->stockFisico > 0)
-                    <div class="row">
-                        <p class="cj-titulo">Libro Físico:
-                            <span style="color: #1FC6AC">
-                                {{-- Si el precio es 0 se muestra Gratis--}}
-                                @if($book->precioFisico <= 0)
-                                    Gratis
-                                @else
-                                {{-- Si no entonces se muestra el precio --}}
-                                    @if($book->descuentoFisico > 0)
-                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <button class="shrink cj-button-bolsa">
+                                Agregar a la bolsa
+                            </button>
+                        </div>
+                        @endif
+    
+                        @if ($book->stockFisico > 0)
+                        <div class="row cj-book-price">
+                            <p class="cj-titulo">Libro Físico:
+                                <span style="color: #1FC6AC">
+                                    {{-- Si el precio es 0 se muestra Gratis--}}
+                                    @if($book->precioFisico <= 0)
+                                        Gratis
                                     @else
-                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    {{-- Si no entonces se muestra el precio --}}
+                                        @if($book->descuentoFisico > 0)
+                                            ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                        @else
+                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                        @endif
                                     @endif
-                                @endif
-                            </span>
-                        </p>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <button class="shrink cj-button-bolsa">
+                                Agregar a la bolsa
+                            </button>
+                        </div>
+                        @endif
+    
+                        {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                        <div class="mensaje">
+                            <p>
+                                Pueden aplicarse gastos de envío,
+                            </p>
+                            <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
+                            <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
+                        </div>
                     </div>
-                    <div class="row">
-                        <button class="shrink cj-button-bolsa">
-                            Agregar a la bolsa
-                        </button>
-                    </div>
-                    @endif
 
-                    {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
-                    <div class="mensaje">
-                        <p>
-                            Pueden aplicarse gastos de envío,
-                        </p>
-                        <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
-                        <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
-                    </div>
-
-                    <div class="libro-comprar">
+                    {{-- <div class="libro-comprar">
                         <div class="comprar">
-                            {{-- FISICO --}}
+                            {{-- FISICO 
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Físico:</p>
                             </div>
                             <div class="precio">
-                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                {{-- Si el precio es 0 se muestra Gratis
                                 @if($book->precioFisico <= 0)
                                     Gratis
                                 @else
-                                {{-- Si no entonces se muestra el precio --}}
+                                {{-- Si no entonces se muestra el precio
                                     @if($book->descuentoFisico > 0)
                                         <div class="oferta">
                                             ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
@@ -389,14 +407,14 @@
                                 @endif
                             </div>
 
-                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis --}}
+                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis 
                             @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
                                 <div class="ahorro">
                                     <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 </div>
                             @endif
 
-                            {{-- DISPONIBILIDAD --}}
+                            {{-- DISPONIBILIDAD 
                             @if ($book->stockFisico > 0)
                                 <div class="disponibilidad">
                                     <p style="color: #29B390;">Disponible</p>
@@ -407,8 +425,8 @@
                                 </div>
                             @endif
 
-                            {{-- DIGITAL --}}
-                            {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA--}}
+                            {{-- DIGITAL 
+                            {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA
                             <div class="formato">
                                 <p style="padding-top: 7px;">Formato Digital:</p>
                             </div>
@@ -428,14 +446,14 @@
                                 @endif
                             </div>
 
-                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis --}}
+                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis 
                             @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
                                 <div class="ahorro">
                                     <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                                 </div>
                             @endif
 
-                            {{-- DISPONIBILIDAD --}}
+                            {{-- DISPONIBILIDAD 
                             @if ($book->stockDigital > 0)
                                 <div class="disponibilidad">
                                     <p style="color: #29B390;">Disponible</p>
@@ -447,7 +465,7 @@
                             @endif
 
                             @if($book->stockFisico > 0 || $book->stockDigital > 0)
-                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE 
                                 <div class="mensaje">
                                     <p>
                                         Pueden aplicarse gastos de envío,
@@ -456,12 +474,12 @@
                                     <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
                                 </div>
 
-                                {{-- BOTONES DE COMPRA --}}
+                                {{-- BOTONES DE COMPRA 
                                 <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito</button>
                                 <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
         </div>
 
