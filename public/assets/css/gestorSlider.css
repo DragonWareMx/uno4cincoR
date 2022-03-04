@@ -164,7 +164,7 @@
 .all_sliders_contenido{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    /* justify-content: center;  */
 }
 
 .title_index{
@@ -238,12 +238,13 @@
     display:inline-block;
     position: relative;
     background:transparent;
-    width: 90%;
+    width: 260px;
+    height:690px !important;
     transition: all 0.5s;
 }
 
 #boton_delete{
-    width: 10%;
+    width: 80px;
     height: 38px;
     z-index: 0;
     position: absolute;
@@ -258,12 +259,12 @@
     color: white;
     background-color:#BA1F00;
     top: 162px;
-    right: 45%;
+    right: 35%;
     transition: all 0.3s;
     display: none;
 }
 #img_carrusel{
-    height: 300px;
+    height: 690px;
 }
 .newPosition{
     height: 300px !important;
@@ -276,9 +277,9 @@
     }
 }
 @media (max-width:1000px){
-    #img_carrusel{
+    /* #img_carrusel{
         height: 200px;
-    }
+    } */
     #boton_delete{
         top:100px;
         width: 15%;
@@ -293,9 +294,9 @@
     }
 }
 @media (max-width:600px){
-    #img_carrusel{
+    /* #img_carrusel{
         height: 150px;
-    }
+    } */
     #boton_delete{
         top:60px;
         width: 20%;
@@ -315,9 +316,9 @@
     }
 }
 @media (max-width:400px){
-    #img_carrusel{
+    /* #img_carrusel{
         height: 100px;
-    }
+    } */
     #boton_delete{
         top:30px;
         font-size: 14px;

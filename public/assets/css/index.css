@@ -44,10 +44,11 @@
 }
 
 #carruselLibros:hover{
-    width: 95%;  
-    transition: all 0.5s;
+    /* width: 95%;   */
+    cursor: pointer;
+    transition: all 0.25s;
 }
-#carruselLibrosHide:hover{
+/* #carruselLibrosHide:hover{
     width: 95%;
     transition: all 0.5s;
 }
@@ -64,7 +65,7 @@
 #carruselBlogs:hover{
     width: 95%; 
     transition: all 0.5s;
-}
+} */
 
 .img_carrusel{
     height: 400px;

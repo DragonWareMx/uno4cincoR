@@ -26,7 +26,7 @@
     <a class="text_agregar" style="margin:0px 20px 0px 0px !important; width:100%; text-align:right" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
     <p style="width:100%">El Slider más nuevo es el que será mostrado en el inicio de la página. Click sobre un slider para eliminarlo</p>
     <!--slider LIBROS-->
-    <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+    <div id="carruselLibros" class="carousel slide" data-ride="carousel" style="margin-bottom:60px !important">
         <div class="carousel-inner">
             @php
                 $i=0; 
@@ -34,21 +34,21 @@
             @foreach ($bannerLibros as $banner)
                 @if ($i==0)
                     <div class="carousel-item active" >
-                    <div class="transparente_libros">
-                        <div id="img_carrusel" class="img_libros" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
-                            background-size: 100% 100%;
-                            -moz-background-size: 100% 100%;
-                            -o-background-size: 100% 100%;
-                            -webkit-background-size: 100% 100%;">
+                        <div class="transparente_libros">
+                            <div id="img_carrusel" class="img_libros" style="background: url('{{asset('storage/banners/'.$banner->imagenPC)}}');
+                                background-size: 100% 100%;
+                                -moz-background-size: 100% 100%;
+                                -o-background-size: 100% 100%;
+                                -webkit-background-size: 100% 100%;">
+                            </div>
+                            Slider página de inicio
+                            <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
+                                @csrf
+                                @method('patch')
+                                <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                            </form>
+                        
                         </div>
-
-                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
-                            @csrf
-                            @method('patch')
-                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
-                        </form>
-                    
-                    </div>
                     </div>
                 @else
                     <div class="carousel-item " >
