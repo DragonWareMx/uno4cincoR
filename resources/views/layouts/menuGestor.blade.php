@@ -117,21 +117,22 @@
       </li>
 
       <!-- Nav Item - Bitacora Collapse sliders -->
-      <li class="nav-item">
+      <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
+        <a class="nav-link" href="{{ route('verSliders') }}">
+        <i class="fas fa-clone"></i>
+          <span>Publicidad</span></a>
+      </li>
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#"  data-toggle="collapse" data-target="#collapseSliders" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-clone"></i>
           <span>Sliders</span>
         </a>
         <div id="collapseSliders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{ route('verSliders') }}">Ver Sliders</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Categorías:</h6>
-            <a class="collapse-item" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar Banner Libro</a>
-            <a class="collapse-item" href="{{ route('nuevoSlider', ['tipo' => 'autor'])}}">Agregar Banner Autor</a>
+            <a class="collapse-item" href="{{ route('verSliders') }}">Ver Sliders</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">

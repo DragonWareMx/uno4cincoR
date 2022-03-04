@@ -7,8 +7,8 @@
 }
 
 .producto-tienda .imagen{
-    width: 228px;
-    height: 228px;
+    width: 258px;
+    height: 338px;
     cursor: pointer;
 }
 
@@ -585,6 +585,14 @@ background: linear-gradient(180deg, rgba(1,1,1,0) 0%, rgba(0,0,0,0.2805497198879
     line-height: 35px;
 
     color: white;
+}
+
+@media(max-width:1650px){
+    .producto-tienda .imagen{
+        width: 228px;
+        height: 228px;
+        cursor: pointer;
+    }
 }
 
 @media(max-width: 1199px){

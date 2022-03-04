@@ -8,7 +8,7 @@
 
 @endsection
 @section('menu')
-    Sliders
+    Publicidad
 @endsection
 @section('contenido')
 @if (session()->has('success'))
@@ -22,14 +22,11 @@
     </script>
 @endif
     
-   <div class="all_sliders_contenido">
-    <div class="title_index" >
-        <h2 class="text_title_slider" >LIBROS</h2> 
-    </div>
-    <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
-    
+    <div class="all_sliders_contenido">
+    <a class="text_agregar" style="margin:0px 20px 0px 0px !important; width:100%; text-align:right" href="{{ route('nuevoSlider', ['tipo' => 'libro'])}}">Agregar</a>
+    <p style="width:100%">El Slider más nuevo es el que será mostrado en el inicio de la página</p>
     <!--slider LIBROS-->
-    <div id="carruselLibros" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carruselLibros" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @php
                 $i=0; 
@@ -84,16 +81,15 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
+    </div> -->
     {{-- Fin slider libros --}}
     
-    <div class="title_index" style="">
+    <!-- <div class="title_index" style="">
         <h2 class="text_title_slider" style="">AUTORES</h2>
     </div>
-    <a class="text_agregar" href="{{ route('nuevoSlider', ['tipo' => 'autor'])}}">Agregar</a>
     
     <!--SLIDER AUTORES-->
-    <div id="carruselAutores" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carruselAutores" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @php
                 $i=0; 
@@ -146,64 +142,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
-
-
-    <!--SLIDER AUTORES ESCONDIDO-->
-    <div id="carruselAutoresHide" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            @php
-                $i=0; 
-            @endphp
-            @foreach ($bannerAutores as $banner)
-                @if ($i==0)
-                    
-                    <div class="carousel-item active" >
-                        <div class="transparente_autores">
-                        <div class="img_autores" id="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
-                            background-size: 100% 100%;
-                            -moz-background-size: 100% 100%;
-                            -o-background-size: 100% 100%;
-                            -webkit-background-size: 100% 100%;">
-                        </div>
-                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
-                            @csrf
-                            @method('patch')
-                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
-                        </form>
-                    </div>    
-                    </div>
-                @else
-                    <div class="carousel-item" >
-                        <div class="transparente_autores">
-                        <div class="img_autores" id="img_carrusel" style="background: url('{{asset('storage/banners/'.$banner->imagenCell)}}');
-                            background-size: 100% 100%;
-                            -moz-background-size: 100% 100%;
-                            -o-background-size: 100% 100%;
-                            -webkit-background-size: 100% 100%;">
-                        </div>
-                        <form action="{{ route('editarSlider', ['id'=>$banner->id])}}" method="post">
-                            @csrf
-                            @method('patch')
-                            <input type="submit" id="boton_delete" class="boton_delete_autores" value="Eliminar">
-                        </form>
-                        </div>
-                    </div>      
-                @endif
-                @php
-                    $i++;
-                @endphp
-            @endforeach
-            <a class="carousel-control-prev flechasPosicion newPosition" data-target="#carruselAutores" data-slide="prev" style="cursor: pointer; cursor:hand;">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next flechasPosicion newPosition" data-target="#carruselAutores" data-slide="next" style="cursor: pointer; cursor:hand;">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
+    </div> -->
 
 
 

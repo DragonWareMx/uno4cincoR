@@ -1,7 +1,7 @@
 <div class="container-md" id="loadBooks">
     <div class="row flex-wrap-reverse">
         <div class="col-lg-10 col-md-12" style="padding:0px">
-            <div class="container-lg div-scroll-libros" style="max-height:500px;">
+            <div class="container-lg div-scroll-libros" style="max-height:670px;">
                 <div class="row">
                     @if (count($books) > 0)
                         {{-- LIBRO --}}
@@ -48,7 +48,8 @@
         </div>
         <!-- PUBLICIDAD -->
         <div class="col-lg-2 col-mg-12 justify-content-center d-flex" style="padding:0px">
-            <div class="hidden-990" style="width:260px; height:1520px; background-color:blue">
+            <!-- Slider 1520px  o 690, con el que queda mejor -->
+            <div class="hidden-990" style="width:260px; height:690px; background-color:blue">
                 <img src="/img/ico/slider.png" style="width:100%; height:100%; ">    
             </div>
             <div class="show-990" style="width:1000px; height:260px; background-color:blue; display:none">
