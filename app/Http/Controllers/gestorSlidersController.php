@@ -27,7 +27,7 @@ class gestorSlidersController extends Controller
         $Banners=Banner::where('tipo',$tipo)->where('active','inactivo')->get();
         $Activos=Banner::where('tipo',$tipo)->where('active','activo')->count();
 
-        if($Activos<5){
+        // if($Activos<5){
             if($tipo=='libro'){
                 $Relaciones=Book::get();
                 $aux=true;
@@ -38,12 +38,12 @@ class gestorSlidersController extends Controller
             }
             
             return view('gestor.addSlider', ['banners'=>$Banners, 'relaciones'=>$Relaciones, 'aux'=>$aux]);
-        }
-        else{
+        // }
+        // else{
 
-            return redirect()->route('verSliders')->with('success',true);
+        //     return redirect()->route('verSliders')->with('success',true);
 
-        }
+        // }
 
        
     }
