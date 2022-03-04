@@ -46,7 +46,7 @@
                     <nav class="main-nav nav-space-between">
 
                         <a href="{{ route('inicio') }}" class="logo2">
-                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="70px">
+                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="60px">
                         </a>
 
                         <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php
