@@ -315,6 +315,8 @@ header
 
   display: flex;
   align-items: center;
+
+  width: fit-content !important;
 }
 
 
@@ -451,7 +453,7 @@ header
   cursor: pointer;
   display: block;
   position: absolute;
-  top: 23px;
+  top: 35px;
   width: 32px;
   height: 40px;
   text-indent: -9999em;
@@ -486,8 +488,8 @@ header
   background-color: #1e1e1e;
   display: block;
   position: absolute;
-  width: 30px;
-  height: 2px;
+  width: 42px;
+  height: 5px;
   left: 0;
 }
 
@@ -506,8 +508,8 @@ header
   background-color: #1e1e1e;
   display: block;
   position: absolute;
-  width: 30px;
-  height: 2px;
+  width: 42px;
+  height: 5px;
   left: 0;
   width: 100%;
 }
@@ -618,6 +620,9 @@ header
     text-align: center;
     float: none!important;
     display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-top: 5px !important;
 
   }
 .logo2:hover{
@@ -634,7 +639,7 @@ header
 
   .header-area {
     background-color: #FFFFFF;
-    padding: 0px 15px;
+    padding: 0px 05px;
     height: 80px;
     box-shadow: none;
     text-align: center;
@@ -657,7 +662,7 @@ header
   .header-area .main-nav .nav {
     float: none;
     width: 100%;
-    margin-top: 0px !important;
+    margin-top: 14px !important;
     display: none;
     -webkit-transition: all 0s ease 0s;
     -moz-transition: all 0s ease 0s;
@@ -665,9 +670,7 @@ header
     transition: all 0s ease 0s;
     margin-left: 0px;
   }
-  .header-area .main-nav .nav li:first-child {
 
-  }
   .header-area .main-nav .nav li {
     width: 100%;
     background: #FFFFFF;
@@ -727,7 +730,6 @@ header
   }
 
   .contador-carrito{
-    top: -20px !important;
     right: -25px !important;
   }
 }
@@ -837,7 +839,7 @@ about
 */
 
 #about {
-  padding-top: 110px;
+  padding-top: 150px;
   padding-bottom: 100px;
   position: relative;
   z-index: 9;
@@ -1304,6 +1306,58 @@ preloader
   line-height: 20px !important;
 }
 
+.ld-links-header{
+  min-width: 1000px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1600px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 850px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 750px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 650px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 550px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 450px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  /* For mobile phones: */
+  .ld-links-header{
+    min-width: 100px;
+  }
+
+  .menu-carrito{
+    top: 21px !important;
+  }
+}
+
 #cajacookies {
   box-shadow: 0px 0px 5px 5px #808080;
   background-color: white;
@@ -1337,4 +1391,22 @@ preloader
 .l-container{
   width: 100%;
   padding: 0px 5%;
+}
+
+@media (max-width: 800px){
+  .logo2 img{
+    height: 50px !important;
+  }
+}
+
+@media (max-width: 600px){
+  .logo2 img{
+    height: 45px !important;
+  }
+}
+
+@media (max-width: 500px){
+  .logo2 img{
+    height: 38px !important;
+  }
 }
