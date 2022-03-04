@@ -19,6 +19,22 @@
     {{-- Carrusel --}}
     <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
+     <!-- Core CSS file -->
+     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.css') }}"> 
+
+     <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+         In the folder of skin CSS file there are also:
+         - .png and .svg icons sprite, 
+         - preloader.gif (for browsers that do not support CSS animations) -->
+     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/default-skin/default-skin.css') }}"> 
+ 
+     <!-- Core JS file -->
+     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.min.js') }}"></script> 
+ 
+     <!-- UI JS file -->
+     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js') }}"></script>
+ 
+
     <style>
         .cj-titulo{
             font-family: 'Montserrat';
@@ -687,6 +703,120 @@
       </div>
     </div>
 </div>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                    <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    var index = 0;
+    function setIndex(i){
+        index = i;
+    }
+    // build items array
+    var openPhotoSwipe = function() {
+        var items = [
+            {
+                src: '{{asset('storage/libros/'.$book->tiendaImagen)}}',
+                w: 0,
+                h: 0
+            },
+            // foreach ($propiedad->photos as $photo)
+            // {
+            //     src: '{asset($photo->path)}}',
+            //     w: 0,
+            //     h: 0
+            // },
+            // endforeach
+        ];
+        // define options (if needed)
+        var options = {
+            // optionName: 'option value'
+            // for example:
+            index: index // start at first slide
+        };
+        // Initializes and opens PhotoSwipe
+        var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.listen('gettingData', function(index, item) {
+            if (item.w < 1 || item.h < 1) { // unknown size
+                var img = new Image(); 
+                img.onload = function() { // will get size after load
+                    item.w = this.width; // set image width
+                    item.h = this.height; // set image height
+                    gallery.invalidateCurrItems(); // reinit Items
+                    gallery.updateSize(true); // reinit Items
+                }
+                img.src = item.src; // let's download image
+            }
+        });
+        gallery.init();
+    };
+    document.getElementById('imagen-seleccionada').onclick = openPhotoSwipe;
+</script>
 
 {{-- ESTE SCRIPT CONTROLA EL ZOOM DE LA IMAGEN Y EL LEER MAS --}}
 <script>
