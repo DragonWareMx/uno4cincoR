@@ -158,9 +158,9 @@
         <div class="row">
                 {{-- IMAGENES --}}
                 <div class="col">
-                    {{-- <div class="libro-fotos">
+                    {{-- <div class="libro-fotos"> --}}
                         <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
-                        {{-- SLIDER 
+                        {{-- SLIDER  
                         @if (count($book->images) > 0)
                             <div class="owl-carousel">
                                 {{-- IMAGEN DE LA TIENDA 
@@ -180,8 +180,8 @@
                                     </div>
                                 @endforeach
                             </div>
-                        @endif
-                    </div> --}}
+                        @endif --}}
+                    </div>
 
                     {{-- CARRUSEL --}}
                     <div class="row">
@@ -394,7 +394,7 @@
                             <p>
                                 Pueden aplicarse gastos de envío,
                             </p>
-                            <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
+                            <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
                             <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
                         </div>
                     </div>
