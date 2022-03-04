@@ -158,9 +158,13 @@
         <div class="row">
                 {{-- IMAGENES --}}
                 <div class="col">
-                    {{-- <div class="libro-fotos"> --}}
+                    <div class="libro-fotos">
+                        <div>
+                        </div>
                         <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
-                        {{-- SLIDER  
+                        <div>
+                        </div>
+                        {{-- SLIDER 
                         @if (count($book->images) > 0)
                             <div class="owl-carousel">
                                 {{-- IMAGEN DE LA TIENDA 
