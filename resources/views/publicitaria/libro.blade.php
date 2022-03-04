@@ -2,313 +2,341 @@
 
 @section('header')
 
-    <title>Libro | Editorial uno4cinco</title>
+<title>Libro | Editorial uno4cinco</title>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
+<link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('/css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" href="{{asset('/css/owl.theme.default.min.css')}}">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 
-    {{-- Carrusel --}}
-    <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
+{{-- Carrusel --}}
+<link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
-     <!-- Core CSS file -->
-     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.css') }}">
+<!-- Core CSS file -->
+<link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.css') }}">
 
-     <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+<!-- Skin CSS file (styling of UI - buttons, caption, etc.)
          In the folder of skin CSS file there are also:
          - .png and .svg icons sprite,
          - preloader.gif (for browsers that do not support CSS animations) -->
-     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/default-skin/default-skin.css') }}">
+<link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/default-skin/default-skin.css') }}">
 
-     <!-- Core JS file -->
-     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.min.js') }}"></script>
+<!-- Core JS file -->
+<script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.min.js') }}"></script>
 
-     <!-- UI JS file -->
-     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js') }}"></script>
-
-
-    <style>
-        .cj-titulo{
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 23px;
-            color: #2E2E2E;
-
-            height: 41.6px;
-        }
-
-        .cj-info{
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 12px;
-            color: #2E2E2E;
-            height: 41.6px;
-
-            width: 100%;
-        }
-
-        .cj-info2{
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
-            color: #2E2E2E;
-            height: 41.6px;
-
-            width: 100%;
-        }
+<!-- UI JS file -->
+<script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js') }}"></script>
 
 
-        .cj-button{
-            width: 100%;
-            background-color: #1FC6AC;
+<style>
+    .cj-titulo {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 23px;
+        color: #2E2E2E;
 
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: bold;
-            font-size: 10px;
-            line-height: 19px;
+        height: 41.6px;
+    }
 
-            border: none;
-            color: white;
+    .cj-info {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 12px;
+        color: #2E2E2E;
+        height: 41.6px;
 
-            padding-top: 8px;
-            padding-bottom: 8px;
+        width: 100%;
+    }
 
-            box-sizing: border-box;
-            border-radius: 25px;
-            outline: none;
-            transition-duration: .1s, .1s;
-            -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
-            transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
-            -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
-            -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-            box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
-        }
+    .cj-info2 {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #2E2E2E;
+        height: 41.6px;
 
-        .cj-button-bolsa{
-            width: 50%;
-            margin: auto;
-            margin-bottom: 30px;
-            background-color: #1FC6AC;
-
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 19px;
-
-            border: none;
-            color: white;
-
-            padding-top: 8px;
-            padding-bottom: 8px;
-
-            box-sizing: border-box;
-            border-radius: 25px;
-            outline: none;
-            transition-duration: .1s, .1s;
-            -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
-            transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
-            -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
-            -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-            box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
-        }
-
-        .cj-scroll{
-            height: 470px !important;
-        }
-
-        .cj-book-border{
-            border-color: #707070;
-            border-radius: 62px;
-            border: 1px;
-            box-shadow: 0px 3px 6px #888888;
-
-            padding: 50px 20px 50px 20px;
-            text-align: center;
-        }
-
-        .cj-book-price{
-            margin: auto !important;
-            width: fit-content !important;
-        }
-
-        .invisible {
-    opacity: 0;
-}
-
-#wrapper{
-	width:300px;
-	margin:auto;
-	height:300px;
-	position:relative;
-	color:#fff;
-	text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
-}
-
-#slider-wrap{
-	width:300px;
-	height:300px;
-	position:relative;
-	overflow:hidden;
-}
-
-#slider-wrap ul#slider{
-	width:100%;
-	height:100%;
-
-	position:absolute;
-	top:0;
-	left:0;
-}
-
-#slider-wrap ul#slider li{
-	float:left;
-	position:relative;
-	width:300px;
-	height:300px;
-}
-
-#slider-wrap ul#slider li > div{
-	position:absolute;
-	/* top:-10px; */
-	/* left:35px; */
-}
-
-#slider-wrap ul#slider li > div h3{
-	font-size:36px;
-	text-transform:uppercase;
-}
-
-#slider-wrap ul#slider li > div span{
-	font-family: Neucha, Arial, sans serif;
-	font-size:21px;
-}
-
-#slider-wrap ul#slider li i{
-	text-align:center;
-	line-height:400px;
-	display:block;
-	width:100%;
-	font-size:90px;
-}
+        width: 100%;
+    }
 
 
-/*btns*/
-.btns{
-	position:absolute;
-	width:50px;
-	height:60px;
-	top:50%;
-	margin-top:-25px;
-	line-height:57px;
-	text-align:center;
-	cursor:pointer;
-	background:rgba(0,0,0,0.1);
-	z-index:100;
+    .cj-button {
+        width: 100%;
+        background-color: #1FC6AC;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 19px;
+
+        border: none;
+        color: white;
+
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        box-sizing: border-box;
+        border-radius: 25px;
+        outline: none;
+        transition-duration: .1s, .1s;
+        -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+        transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+        -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+        -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+    }
+
+    .cj-button-bolsa {
+        width: 50%;
+        margin: auto;
+        margin-bottom: 30px;
+        background-color: #1FC6AC;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 19px;
+
+        border: none;
+        color: white;
+
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        box-sizing: border-box;
+        border-radius: 25px;
+        outline: none;
+        transition-duration: .1s, .1s;
+        -webkit-transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+        transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+        -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+        -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+    }
+
+    .cj-scroll {
+        height: 470px !important;
+    }
+
+    .cj-book-border {
+        border-color: #707070;
+        border-radius: 62px;
+        border: 1px;
+        box-shadow: 0px 3px 6px #888888;
+
+        padding: 50px 20px 50px 20px;
+        text-align: center;
+    }
+
+    .cj-book-price {
+        margin: auto !important;
+        width: fit-content !important;
+    }
+
+    .invisible {
+        opacity: 0;
+    }
+
+    #wrapper {
+        width: 300px;
+        margin: auto;
+        height: 300px;
+        position: relative;
+        color: #fff;
+        text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 0px;
+    }
+
+    #slider-wrap {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #slider-wrap ul#slider {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #slider-wrap ul#slider li {
+        float: left;
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    #slider-wrap ul#slider li>div {
+        position: absolute;
+        /* top:-10px; */
+        /* left:35px; */
+    }
+
+    #slider-wrap ul#slider li>div h3 {
+        font-size: 36px;
+        text-transform: uppercase;
+    }
+
+    #slider-wrap ul#slider li>div span {
+        font-family: Neucha, Arial, sans serif;
+        font-size: 21px;
+    }
+
+    #slider-wrap ul#slider li i {
+        text-align: center;
+        line-height: 400px;
+        display: block;
+        width: 100%;
+        font-size: 90px;
+    }
 
 
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-ms-user-select: none;
-
-	-webkit-transition: all 0.1s ease;
-	-moz-transition: all 0.1s ease;
-	-o-transition: all 0.1s ease;
-	-ms-transition: all 0.1s ease;
-	transition: all 0.1s ease;
-}
-
-.btns:hover{
-	background:rgba(0,0,0,0.3);
-}
-
-#next{right:-50px; border-radius:7px 0px 0px 7px;}
-#previous{left:-50px; border-radius:0px 7px 7px 7px;}
-#counter{
-	top: 30px;
-	right:35px;
-	width:auto;
-	position:absolute;
-}
-
-#slider-wrap.active #next{right:0px;}
-#slider-wrap.active #previous{left:0px;}
+    /*btns*/
+    .btns {
+        position: absolute;
+        width: 50px;
+        height: 60px;
+        top: 50%;
+        margin-top: -25px;
+        line-height: 57px;
+        text-align: center;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 100;
 
 
-/*bar*/
-#pagination-wrap{
-	min-width:20px;
-	margin-top:270px;
-	margin-left: auto;
-	margin-right: auto;
-	height:15px;
-	position:relative;
-	text-align:center;
-}
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -ms-user-select: none;
 
-#pagination-wrap ul {
-	width:100%;
-}
+        -webkit-transition: all 0.1s ease;
+        -moz-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        -ms-transition: all 0.1s ease;
+        transition: all 0.1s ease;
+    }
 
-#pagination-wrap ul li{
-	margin: 0 4px;
-	display: inline-block;
-	width:5px;
-	height:5px;
-	border-radius:50%;
-	background:#fff;
-	opacity:0.5;
-	position:relative;
-  top:0;
+    .btns:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
 
+    #next {
+        right: -50px;
+        border-radius: 7px 0px 0px 7px;
+    }
 
-}
+    #previous {
+        left: -50px;
+        border-radius: 0px 7px 7px 7px;
+    }
 
-#pagination-wrap ul li.active{
-  width:12px;
-  height:12px;
-  top:3px;
-	opacity:1;
-	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px;
-}
+    #counter {
+        top: 30px;
+        right: 35px;
+        width: auto;
+        position: absolute;
+    }
 
+    #slider-wrap.active #next {
+        right: 0px;
+    }
 
-
-
-/*Header*/
-h1, h2{text-shadow:none; text-align:center;}
-h1{	color: #666; text-transform:uppercase;	font-size:36px;}
-h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;}
+    #slider-wrap.active #previous {
+        left: 0px;
+    }
 
 
+    /*bar*/
+    #pagination-wrap {
+        min-width: 20px;
+        margin-top: 270px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 15px;
+        position: relative;
+        text-align: center;
+    }
+
+    #pagination-wrap ul {
+        width: 100%;
+    }
+
+    #pagination-wrap ul li {
+        margin: 0 4px;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0.5;
+        position: relative;
+        top: 0;
 
 
-/*ANIMATION*/
-#slider-wrap ul, #pagination-wrap ul li{
-	-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
-	-moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
-	-o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
-	-ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
-	transition: all 0.3s cubic-bezier(1,.01,.32,1);
-}
+    }
 
-    </style>
+    #pagination-wrap ul li.active {
+        width: 12px;
+        height: 12px;
+        top: 3px;
+        opacity: 1;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 0px;
+    }
+
+
+
+
+    /*Header*/
+    h1,
+    h2 {
+        text-shadow: none;
+        text-align: center;
+    }
+
+    h1 {
+        color: #666;
+        text-transform: uppercase;
+        font-size: 36px;
+    }
+
+    h2 {
+        color: #7f8c8d;
+        font-family: Neucha, Arial, sans serif;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+
+
+
+    /*ANIMATION*/
+    #slider-wrap ul,
+    #pagination-wrap ul li {
+        -webkit-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
+        -moz-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
+        -o-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
+        -ms-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
+        transition: all 0.3s cubic-bezier(1, .01, .32, 1);
+    }
+</style>
 @endsection
 
 @section('content')
@@ -318,617 +346,642 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     <div class="container">
         {{-- INFORMACIÓN DEL LIBRO --}}
         <div class="row">
-                {{-- IMAGENES --}}
-                <div class="col">
-                    <div class="libro-fotos">
-                        {{-- <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}"> --}}
-                        {{-- <div id="imagen-seleccionada" class="mx-auto" style="height: 400px; width: 400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
-                        <div class="item" style="width:400px; height:400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}'); setIndex(0)"></div> --}}
+            {{-- IMAGENES --}}
+            <div class="col">
+                <div class="libro-fotos">
+                    {{-- <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}"> --}}
+                    {{-- <div id="imagen-seleccionada" class="mx-auto"
+                        style="height: 400px; width: 400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;">
+                    </div>
+                    <div class="item"
+                        style="width:400px; height:400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"
+                        onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}'); setIndex(0)"></div>
+                    --}}
 
-                        <div id="wrapper">
+                    <div id="wrapper">
 
-                            <div id="slider-wrap">
-                               <ul id="slider">
+                        <div id="slider-wrap">
+                            <ul id="slider">
                                 <li data-color="#1abc9c">
-                                    <div class="imagen-seleccionada" class="mx-auto" style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
+                                    <div class="imagen-seleccionada" class="mx-auto"
+                                        style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;">
+                                    </div>
                                 </li>
 
                                 @foreach($book->images as $imagen)
-                                    <li data-color="#1abc9c">
-                                        <div class="imagen-seleccionada" class="mx-auto" style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$imagen->imagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
-                                    </li>
+                                <li data-color="#1abc9c">
+                                    <div class="imagen-seleccionada" class="mx-auto"
+                                        style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$imagen->imagen)}}') no-repeat center center; background-size: cover; cursor: pointer;">
+                                    </div>
+                                </li>
                                 @endforeach
 
                                 {{-- <li data-color="#3498db">
-                                   <div>
-                                       <h3>Slide #2</h3>
-                                       <span>Sub-title #2</span>
-                                   </div>
-                                   <i class="fa fa-gears"></i>
+                                    <div>
+                                        <h3>Slide #2</h3>
+                                        <span>Sub-title #2</span>
+                                    </div>
+                                    <i class="fa fa-gears"></i>
                                 </li>
 
                                 <li data-color="#9b59b6">
-                                   <div>
-                                       <h3>Slide #3</h3>
-                                       <span>Sub-title #3</span>
-                                   </div>
-                                   <i class="fa fa-sliders"></i>
+                                    <div>
+                                        <h3>Slide #3</h3>
+                                        <span>Sub-title #3</span>
+                                    </div>
+                                    <i class="fa fa-sliders"></i>
                                 </li>
 
                                 <li data-color="#34495e">
-                                   <div>
-                                       <h3>Slide #4</h3>
-                                       <span>Sub-title #4</span>
-                                   </div>
-                                   <i class="fa fa-code"></i>
+                                    <div>
+                                        <h3>Slide #4</h3>
+                                        <span>Sub-title #4</span>
+                                    </div>
+                                    <i class="fa fa-code"></i>
                                 </li>
 
                                 <li data-color="#e74c3c">
-                                   <div>
-                                       <h3>Slide #5</h3>
-                                       <span>Sub-title #5</span>
-                                   </div>
-                                   <i class="fa fa-microphone-slash"></i>
+                                    <div>
+                                        <h3>Slide #5</h3>
+                                        <span>Sub-title #5</span>
+                                    </div>
+                                    <i class="fa fa-microphone-slash"></i>
                                 </li> --}}
 
 
-                             </ul>
+                            </ul>
 
-                              <!--controls-->
-                             <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-                             <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-                             <div id="counter"></div>
+                            <!--controls-->
+                            <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+                            <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+                            <div id="counter"></div>
 
-                             <div id="pagination-wrap">
-                               <ul>
-                               </ul>
-                             </div>
-                             <!--controls-->
-
-                         </div>
-
-                      </div>
-                        {{-- SLIDER
-                        @if (count($book->images) > 0)
-                            <div class="owl-carousel">
-                                {{-- IMAGEN DE LA TIENDA
-                                <div class="imagen-carrusel">
-                                    <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}')">
-                                </div>
-
-                                {{-- IMAGEN DE LA PORTADA
-                                <div class="imagen-carrusel">
-                                    <img src="{{asset('storage/libros/'.$book->portadaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->portadaImagen)}}')">
-                                </div>
-
-                                {{-- IMAGENES EXTRA
-                                @foreach($book->images as $imagen)
-                                    <div class="imagen-carrusel">
-                                        <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
-                                    </div>
-                                @endforeach
+                            <div id="pagination-wrap">
+                                <ul>
+                                </ul>
                             </div>
-                        @endif --}}
-                    </div>
+                            <!--controls-->
 
-                    {{-- CARRUSEL --}}
-                    <div class="row">
-
-                    </div>
-                    {{-- NOMBRE LIBRO --}}
-                    <div class="row">
-                        <p class="cj-titulo">{{Str::limit($book->titulo,61)}}</p>
-                    </div>
-                    {{-- AUTOR --}}
-                    <div class="row mt-4">
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info align-middle">
-                                <b style="font-weight: bold">Autor: </b> {{$book->authors[0]->nombre}}
-                            </p>
-
-                            {{-- @if (count($book->authors) > 1)
-                                <p class="libro-info-res"><b>Autores: </b>
-                            @else
-                                <p class="libro-info-res"><b>Autor: </b>
-                            @endif
-                                @php
-                                    $contador = 1;
-                                    $cantAutores = count($book->authors);
-                                @endphp
-                                @foreach ($book->authors as $author)
-                                    @if ($contador == 1)
-                                        <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                    @elseif($contador == $cantAutores)
-                                        y <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                    @else
-                                        , <a href="{{ route('autor', ['id' => $author->id]) }}" class="sm-link sm-link3 sm-link_padding-bottom"><span class="sm-link__label">{{$author->nombre}}</span></a>
-                                    @endif
-                                    @php
-                                        $contador++;
-                                    @endphp
-                                @endforeach
-                            </p> --}}
                         </div>
-                        <div class="col">
-                            <button class="shrink cj-button align-top">
-                                Seguir al autor
-                                <img
-                                    class="ml-1"
-                                    style="width: 18px; height: 18px"
-                                    src="{{ asset('assets/fonts/plus.svg') }}"
-                                />
-                            </button>
-                        </div>
+
                     </div>
+                    {{-- SLIDER
+                    @if (count($book->images) > 0)
+                    <div class="owl-carousel">
+                        {{-- IMAGEN DE LA TIENDA
+                        <div class="imagen-carrusel">
+                            <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}"
+                                onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}')">
+                        </div>
+
+                        {{-- IMAGEN DE LA PORTADA
+                        <div class="imagen-carrusel">
+                            <img src="{{asset('storage/libros/'.$book->portadaImagen)}}"
+                                onclick="clickImagen('{{asset('storage/libros/'.$book->portadaImagen)}}')">
+                        </div>
+
+                        {{-- IMAGENES EXTRA
+                        @foreach($book->images as $imagen)
+                        <div class="imagen-carrusel">
+                            <img src="{{asset('storage/libros/'.$imagen->imagen)}}"
+                                onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
+                        </div>
+                        @endforeach
+                    </div>
+                    @endif --}}
                 </div>
 
-                {{-- INFO --}}
-                <div class="col-5">
-                    {{-- Sinopsis --}}
-                    <div class="row">
-                        <p class="cj-info2 align-middle cj-scroll">
-                            <b style="font-weight: bold">Sinopsis: </b> {{ $book->sinopsis }}
+                {{-- CARRUSEL --}}
+                <div class="row">
+
+                </div>
+                {{-- NOMBRE LIBRO --}}
+                <div class="row">
+                    <p class="cj-titulo">{{Str::limit($book->titulo,61)}}</p>
+                </div>
+                {{-- AUTOR --}}
+                <div class="row mt-4">
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info align-middle">
+                            <b style="font-weight: bold">Autor: </b> {{$book->authors[0]->nombre}}
+                        </p>
+
+                        {{-- @if (count($book->authors) > 1)
+                        <p class="libro-info-res"><b>Autores: </b>
+                            @else
+                        <p class="libro-info-res"><b>Autor: </b>
+                            @endif
+                            @php
+                            $contador = 1;
+                            $cantAutores = count($book->authors);
+                            @endphp
+                            @foreach ($book->authors as $author)
+                            @if ($contador == 1)
+                            <a href="{{ route('autor', ['id' => $author->id]) }}"
+                                class="sm-link sm-link3 sm-link_padding-bottom"><span
+                                    class="sm-link__label">{{$author->nombre}}</span></a>
+                            @elseif($contador == $cantAutores)
+                            y <a href="{{ route('autor', ['id' => $author->id]) }}"
+                                class="sm-link sm-link3 sm-link_padding-bottom"><span
+                                    class="sm-link__label">{{$author->nombre}}</span></a>
+                            @else
+                            , <a href="{{ route('autor', ['id' => $author->id]) }}"
+                                class="sm-link sm-link3 sm-link_padding-bottom"><span
+                                    class="sm-link__label">{{$author->nombre}}</span></a>
+                            @endif
+                            @php
+                            $contador++;
+                            @endphp
+                            @endforeach
+                        </p> --}}
+                    </div>
+                    <div class="col">
+                        <button class="shrink cj-button align-top">
+                            Seguir al autor
+                            <img class="ml-1" style="width: 18px; height: 18px"
+                                src="{{ asset('assets/fonts/plus.svg') }}" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- INFO --}}
+            <div class="col-5">
+                {{-- Sinopsis --}}
+                <div class="row">
+                    <p class="cj-info2 align-middle cj-scroll">
+                        <b style="font-weight: bold">Sinopsis: </b> {{ $book->sinopsis }}
+                    </p>
+                </div>
+
+
+                <div class="row">
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
                         </p>
                     </div>
-
-
-                    <div class="row">
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
-                            </p>
-                        </div>
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Idioma: </b> Español
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Páginas: </b> {{ $book->paginas }}
-                            </p>
-                        </div>
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Publicado: </b>
-                                @php
-                                    $separa=explode("-",$book->fechaPublicacion);
-                                    $anio=$separa[0];
-                                    $mes=$separa[1];
-                                    $dia=$separa[2];
-                                @endphp
-                                {{$dia}}/{{$mes}}/{{$anio}}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">
-                                    @if (count($book->genres) > 1)
-                                        Géneros:
-                                    @else
-                                        Género:
-                                    @endif
-                                </b>
-                                @php
-                                    $contador = 1;
-                                    $cantGeneros = count($book->genres);
-                                @endphp
-                                @foreach ($book->genres as $genre)
-                                    @if ($contador == 1)
-                                        {{$genre->nombre}}
-                                    @elseif($contador == $cantGeneros)
-                                        y {{$genre->nombre}}
-                                    @else
-                                        , {{$genre->nombre}}
-                                    @endif
-                                    @php
-                                        $contador++;
-                                    @endphp
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="col" style="padding: 0px">
-                            <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Edad de lectura: </b>
-                                18 y más
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="libro-info">
-
-                        @if ($book->linkDemo)
-                        <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" class="sm-link sm-link3 sm-link_padding-bottom">
-                            <p style="color:#83d7b5;">
-                            Descarga el pdf promocional
-                            </p>
-                        </a>
-                        @endif
-
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">Idioma: </b> Español
+                        </p>
                     </div>
                 </div>
 
-                {{-- PRECIOS --}}
-                <div class="col">
-                    <div class="cj-book-border">
-                        @if ($book->linkDemo)
-                        <div class="row cj-book-price">
-                            <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
-                        </div>
-                        <div class="row">
-                            <button class="shrink cj-button-bolsa">
-                                Agregar a la bolsa
-                            </button>
-                        </div>
-                        @endif
+                <div class="row">
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">Páginas: </b> {{ $book->paginas }}
+                        </p>
+                    </div>
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">Publicado: </b>
+                            @php
+                            $separa=explode("-",$book->fechaPublicacion);
+                            $anio=$separa[0];
+                            $mes=$separa[1];
+                            $dia=$separa[2];
+                            @endphp
+                            {{$dia}}/{{$mes}}/{{$anio}}
+                        </p>
+                    </div>
+                </div>
 
-                        @if ($book->stockDigital > 0)
-                        <div class="row cj-book-price">
-                            <p class="cj-titulo">Libro Digital:
-                                <span style="color: #1FC6AC">
-                                    {{-- Si el precio es 0 se muestra Gratis--}}
-                                    @if($book->precioDigital <= 0)
-                                        Gratis
+                <div class="row">
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">
+                                @if (count($book->genres) > 1)
+                                Géneros:
+                                @else
+                                Género:
+                                @endif
+                            </b>
+                            @php
+                            $contador = 1;
+                            $cantGeneros = count($book->genres);
+                            @endphp
+                            @foreach ($book->genres as $genre)
+                            @if ($contador == 1)
+                            {{$genre->nombre}}
+                            @elseif($contador == $cantGeneros)
+                            y {{$genre->nombre}}
+                            @else
+                            , {{$genre->nombre}}
+                            @endif
+                            @php
+                            $contador++;
+                            @endphp
+                            @endforeach
+                        </p>
+                    </div>
+                    <div class="col" style="padding: 0px">
+                        <p class="cj-info2 align-middle">
+                            <b style="font-weight: bold">Edad de lectura: </b>
+                            18 y más
+                        </p>
+                    </div>
+                </div>
+
+                <div class="libro-info">
+
+                    @if ($book->linkDemo)
+                    <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank"
+                        class="sm-link sm-link3 sm-link_padding-bottom">
+                        <p style="color:#83d7b5;">
+                            Descarga el pdf promocional
+                        </p>
+                    </a>
+                    @endif
+
+                </div>
+            </div>
+
+            {{-- PRECIOS --}}
+            <div class="col">
+                <div class="cj-book-border">
+                    @if ($book->linkDemo)
+                    <div class="row cj-book-price">
+                        <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    @if ($book->stockDigital > 0)
+                    <div class="row cj-book-price">
+                        <p class="cj-titulo">Libro Digital:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
+                                    ${{ number_format($book->precioDigital -
+                                    $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
                                     @else
-                                        @if($book->descuentoDigital > 0)
-                                            ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
-                                        @else
-                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                        @endif
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                     @endif
-                                </span>
-                            </p>
+                                    @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    @if ($book->stockFisico > 0)
+                    <div class="row cj-book-price">
+                        <p class="cj-titulo">Libro Físico:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioFisico <= 0) Gratis @else {{-- Si no entonces se muestra el precio --}}
+                                    @if($book->descuentoFisico > 0)
+                                    ${{ number_format($book->precioFisico -
+                                    $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <button class="shrink cj-button-bolsa">
+                            Agregar a la bolsa
+                        </button>
+                    </div>
+                    @endif
+
+                    {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                    <div class="mensaje">
+                        <p>
+                            Pueden aplicarse gastos de envío,
+                        </p>
+                        <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
+                        <!-- PayPal Logo --><a title="PayPal"><img
+                                src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0"
+                                alt="PayPal Logo"></a>
+                    </div>
+                </div>
+
+                {{-- <div class="libro-comprar">
+                    <div class="comprar">
+                        {{-- FISICO
+                        <div class="formato">
+                            <p style="padding-top: 20px;">Formato Físico:</p>
                         </div>
-                        <div class="row">
-                            <button class="shrink cj-button-bolsa">
-                                Agregar a la bolsa
-                            </button>
+                        <div class="precio">
+                            {{-- Si el precio es 0 se muestra Gratis
+                            @if($book->precioFisico <= 0) Gratis @else {{-- Si no entonces se muestra el precio
+                                @if($book->descuentoFisico > 0)
+                                <div class="oferta">
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                </div>
+
+                                ${{ number_format($book->precioFisico -
+                                $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                @else
+                                ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                @endif
+                                @endif
+                        </div>
+
+                        {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis
+                        @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
+                        <div class="ahorro">
+                            <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", ","
+                                ) }}</p>
                         </div>
                         @endif
 
+                        {{-- DISPONIBILIDAD
                         @if ($book->stockFisico > 0)
-                        <div class="row cj-book-price">
-                            <p class="cj-titulo">Libro Físico:
-                                <span style="color: #1FC6AC">
-                                    {{-- Si el precio es 0 se muestra Gratis--}}
-                                    @if($book->precioFisico <= 0)
-                                        Gratis
-                                    @else
-                                    {{-- Si no entonces se muestra el precio --}}
-                                        @if($book->descuentoFisico > 0)
-                                            ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
-                                        @else
-                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                        @endif
-                                    @endif
-                                </span>
-                            </p>
+                        <div class="disponibilidad">
+                            <p style="color: #29B390;">Disponible</p>
                         </div>
-                        <div class="row">
-                            <button class="shrink cj-button-bolsa">
-                                Agregar a la bolsa
-                            </button>
+                        @else
+                        <div class="disponibilidad">
+                            <p style="color: #BA1F00;">No Disponible</p>
                         </div>
                         @endif
 
-                        {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
+                        {{-- DIGITAL
+                        {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA
+                        <div class="formato">
+                            <p style="padding-top: 7px;">Formato Digital:</p>
+                        </div>
+                        <div class="precio">
+                            @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
+                                <div class="oferta">
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                </div>
+
+                                ${{ number_format($book->precioDigital -
+                                $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                @else
+                                ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                @endif
+                                @endif
+                        </div>
+
+                        {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis
+                        @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
+                        <div class="ahorro">
+                            <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".",
+                                "," ) }}</p>
+                        </div>
+                        @endif
+
+                        {{-- DISPONIBILIDAD
+                        @if ($book->stockDigital > 0)
+                        <div class="disponibilidad">
+                            <p style="color: #29B390;">Disponible</p>
+                        </div>
+                        @else
+                        <div class="disponibilidad">
+                            <p style="color: #BA1F00;">No Disponible</p>
+                        </div>
+                        @endif
+
+                        @if($book->stockFisico > 0 || $book->stockDigital > 0)
+                        {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE
                         <div class="mensaje">
                             <p>
                                 Pueden aplicarse gastos de envío,
                             </p>
-                            <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
-                            <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
+                            <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
+                            <!-- PayPal Logo --><a title="PayPal"><img
+                                    src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0"
+                                    alt="PayPal Logo"></a>
                         </div>
+
+                        {{-- BOTONES DE COMPRA
+                        <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato"
+                            onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al
+                            carrito</button>
+                        <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato"
+                            onclick="comprarAhora()">Comprar ahora</button>
+                        @endif
                     </div>
-
-                    {{-- <div class="libro-comprar">
-                        <div class="comprar">
-                            {{-- FISICO
-                            <div class="formato">
-                                <p style="padding-top: 20px;">Formato Físico:</p>
-                            </div>
-                            <div class="precio">
-                                {{-- Si el precio es 0 se muestra Gratis
-                                @if($book->precioFisico <= 0)
-                                    Gratis
-                                @else
-                                {{-- Si no entonces se muestra el precio
-                                    @if($book->descuentoFisico > 0)
-                                        <div class="oferta">
-                                            ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                        </div>
-
-                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
-                                    @else
-                                        ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
-                                    @endif
-                                @endif
-                            </div>
-
-                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis
-                            @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
-                                <div class="ahorro">
-                                    <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
-                                </div>
-                            @endif
-
-                            {{-- DISPONIBILIDAD
-                            @if ($book->stockFisico > 0)
-                                <div class="disponibilidad">
-                                    <p style="color: #29B390;">Disponible</p>
-                                </div>
-                            @else
-                                <div class="disponibilidad">
-                                    <p style="color: #BA1F00;">No Disponible</p>
-                                </div>
-                            @endif
-
-                            {{-- DIGITAL
-                            {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA
-                            <div class="formato">
-                                <p style="padding-top: 7px;">Formato Digital:</p>
-                            </div>
-                            <div class="precio">
-                                @if($book->precioDigital <= 0)
-                                    Gratis
-                                @else
-                                    @if($book->descuentoDigital > 0)
-                                        <div class="oferta">
-                                            ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                        </div>
-
-                                        ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
-                                    @else
-                                        ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
-                                    @endif
-                                @endif
-                            </div>
-
-                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis
-                            @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
-                                <div class="ahorro">
-                                    <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
-                                </div>
-                            @endif
-
-                            {{-- DISPONIBILIDAD
-                            @if ($book->stockDigital > 0)
-                                <div class="disponibilidad">
-                                    <p style="color: #29B390;">Disponible</p>
-                                </div>
-                            @else
-                                <div class="disponibilidad">
-                                    <p style="color: #BA1F00;">No Disponible</p>
-                                </div>
-                            @endif
-
-                            @if($book->stockFisico > 0 || $book->stockDigital > 0)
-                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE
-                                <div class="mensaje">
-                                    <p>
-                                        Pueden aplicarse gastos de envío,
-                                    </p>
-                                    <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
-                                    <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
-                                </div>
-
-                                {{-- BOTONES DE COMPRA
-                                <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito</button>
-                                <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
-                            @endif
-                        </div>
-                    </div> --}}
-                </div>
+                </div> --}}
+            </div>
         </div>
 
         {{-- CARRUSEL DE LIBROS DE LOS AUTORES --}}
         @if(count($books) > 1)
-            <hr class="hr-tienda">
-            {{-- <div class="container"> --}}
-                <div class="row">
-                    <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                        @if (count($book->authors) > 1)
-                            <p class="mas-autor-libro">Más de estos autores</p>
-                        @else
-                            <p class="mas-autor-libro">Más de este autor</p>
-                        @endif
-                        <div class="MultiCarousel-inner">
-                            @foreach ($books as $bookBanner)
-                            @if($book->id != $bookBanner->id)
-                                <div class="item" onclick="window.location.href='{{ route('libro',['id' => $bookBanner->id]) }}'">
-                                    <div class="pad15">
-                                        <div class="div_portadapad15">
-                                            <img alt="{{$bookBanner->bannerImagen}}" src="{{asset('storage/libros/'.$bookBanner->bannerImagen)}}">
-                                        </div>
-                                        <div class="div_infoCarrusel">
-                                            <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
-                                                <i>{{$bookBanner->titulo}}</i>
-                                            </p>
-                                            <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-
-                                                <i>{{$bookBanner->genres[0]->nombre}}</i>
-                                            </p>
-
-                                        </div>
-
-                                    </div>
+        <hr class="hr-tienda">
+        {{-- <div class="container"> --}}
+            <div class="row">
+                <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel" data-interval="1000">
+                    @if (count($book->authors) > 1)
+                    <p class="mas-autor-libro">Más de estos autores</p>
+                    @else
+                    <p class="mas-autor-libro">Más de este autor</p>
+                    @endif
+                    <div class="MultiCarousel-inner">
+                        @foreach ($books as $bookBanner)
+                        @if($book->id != $bookBanner->id)
+                        <div class="item"
+                            onclick="window.location.href='{{ route('libro',['id' => $bookBanner->id]) }}'">
+                            <div class="pad15">
+                                <div class="div_portadapad15">
+                                    <img alt="{{$bookBanner->bannerImagen}}"
+                                        src="{{asset('storage/libros/'.$bookBanner->bannerImagen)}}">
                                 </div>
-                            @endif
-                            @endforeach
+                                <div class="div_infoCarrusel">
+                                    <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
+                                        <i>{{$bookBanner->titulo}}</i>
+                                    </p>
+                                    <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
 
+                                        <i>{{$bookBanner->genres[0]->nombre}}</i>
+                                    </p>
 
+                                </div>
+
+                            </div>
                         </div>
-                        <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
-                        <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
+                        @endif
+                        @endforeach
+
+
                     </div>
+                    <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
+                    <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
                 </div>
-            {{-- </div> --}}
+            </div>
+            {{--
+        </div> --}}
         @endif
         <br>
     </div>
 </section>
 
 {{-- MODAL DE COMPRA --}}
-<div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle" aria-hidden="true">
+<div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;">{{ $book->titulo }}</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;">{{
+                    $book->titulo }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <div class="modal-body">
-            <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
-            <div style="display: table; width:100%;">
-                {{-- FORMATO FISICO --}}
-                <div class="formato-comprar">
-                    <div class="formato-container shrink" style="height: 213.8px">
-                        <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target=
-                        @if ($book->stockFisico > 0)
-                            {!!"#comprarFormato"!!}
-                        @endif>
-                            <div class="formato">
-                                <p style="padding-top: 20px;">Formato Físico:</p>
-                            </div>
-                            {{-- PRECIO --}}
-                            <div class="precio" id="precioFisico">
-                            {{-- Si el precio es 0 se muestra Gratis--}}
-                                @if($book->precioFisico <= 0)
-                                    Gratis
-                                @else
-                                {{-- Si no entonces se muestra el precio --}}
-                                    @if($book->descuentoFisico > 0)
+            <div class="modal-body">
+                <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
+                <div style="display: table; width:100%;">
+                    {{-- FORMATO FISICO --}}
+                    <div class="formato-comprar">
+                        <div class="formato-container shrink" style="height: 213.8px">
+                            <div class="boton-formato" id="botonFisico" data-toggle="modal" data-target=@if ($book->
+                                stockFisico > 0)
+                                {!!"#comprarFormato"!!}
+                                @endif>
+                                <div class="formato">
+                                    <p style="padding-top: 20px;">Formato Físico:</p>
+                                </div>
+                                {{-- PRECIO --}}
+                                <div class="precio" id="precioFisico">
+                                    {{-- Si el precio es 0 se muestra Gratis--}}
+                                    @if($book->precioFisico <= 0) Gratis @else {{-- Si no entonces se muestra el precio
+                                        --}} @if($book->descuentoFisico > 0)
                                         <div class="oferta">
                                             ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
                                         </div>
 
-                                        ${{ number_format($book->precioFisico - $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
-                                    @else
+                                        ${{ number_format($book->precioFisico -
+                                        $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                        @else
                                         ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                        @endif
+                                        @endif
+                                </div>
+
+                                {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
+                                <div class="ahorro" id="ahorroFisico">
+                                    @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
+                                    <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 ,
+                                        ".", "," ) }}</p>
                                     @endif
-                                @endif
-                            </div>
+                                </div>
 
-                            {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
-                            <div class="ahorro" id="ahorroFisico">
-                                @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
-                                    <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
-                                @endif
-                            </div>
-
-                            {{-- DISPONIBILIDAD --}}
-                            <div class="disponibilidad" id="disponibleFisico">
-                                @if ($book->stockFisico > 0)
+                                {{-- DISPONIBILIDAD --}}
+                                <div class="disponibilidad" id="disponibleFisico">
+                                    @if ($book->stockFisico > 0)
                                     <p style="color: #29B390;">Disponible</p>
-                                @else
+                                    @else
                                     <p style="color: #BA1F00;">No Disponible</p>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- CANTIDAD --}}
-                        <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
-                            {{-- si hay libros disponibles se muestra la cantidad que puede pedir --}}
-                            @if ($book->stockFisico > 0)
+                            {{-- CANTIDAD --}}
+                            <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
+                                {{-- si hay libros disponibles se muestra la cantidad que puede pedir --}}
+                                @if ($book->stockFisico > 0)
                                 <p id="cantidad-p">Cantidad: </p>
                                 {{-- se establece un minimo como cero --}}
                                 @php
-                                    $min = 0;
+                                $min = 0;
                                 @endphp
-                                {{-- en caso que el producto se encuentre en el carrito se establece el minimo como la cantidad que ya está en el carrito --}}
+                                {{-- en caso que el producto se encuentre en el carrito se establece el minimo como la
+                                cantidad que ya está en el carrito --}}
                                 @if (session('cart'))
-                                    @foreach(session('cart') as $id => $details)
-                                        @if ($id == $book->id && $details['cantidadFisico'] > 0)
-                                            @php
-                                                $min = $details['cantidadFisico'];
-                                            @endphp
-                                        @endif
-                                    @endforeach
+                                @foreach(session('cart') as $id => $details)
+                                @if ($id == $book->id && $details['cantidadFisico'] > 0)
+                                @php
+                                $min = $details['cantidadFisico'];
+                                @endphp
                                 @endif
-                                {{-- si el producto no se encontraba en el carrito entonces el minimo se establece como 1 --}}
+                                @endforeach
+                                @endif
+                                {{-- si el producto no se encontraba en el carrito entonces el minimo se establece como
+                                1 --}}
                                 @if ($min == 0)
-                                    @php
-                                        $min = 1;
-                                    @endphp
+                                @php
+                                $min = 1;
+                                @endphp
                                 @endif
                                 {{-- si hay mas de un libro en stock entonces se pone el minimo como cantidad --}}
                                 @if ($book->stockFisico > 1)
-                                    <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
-                                    <input type="numeric" id="cantidadFisico" value="{{ $min }}" />
-                                    <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
+                                <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-
+                                </div>
+                                <input type="numeric" id="cantidadFisico" value="{{ $min }}" />
+                                <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+
+                                </div>
                                 @else
-                                    {{-- si solo hay un libro disponible entonces solamente se podra seleccionar un libro como maximo --}}
-                                    <input type="numeric" id="cantidadFisico" value="1" />
+                                {{-- si solo hay un libro disponible entonces solamente se podra seleccionar un libro
+                                como maximo --}}
+                                <input type="numeric" id="cantidadFisico" value="1" />
                                 @endif
-                            @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {{-- FORMATO DIGITAL --}}
-                <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target=
-                @if ($book->stockDigital > 0)
-                    {!!"#comprarFormato"!!}
-                @endif>
-                    <div class="formato-container shrink" style="height: 213.8px">
-                        <div class="formato">
-                            <p style="padding-top: 20px;">Formato Digital:</p>
-                        </div>
+                    {{-- FORMATO DIGITAL --}}
+                    <div class="formato-comprar" id="botonDigital" data-toggle="modal" data-target=@if ($book->
+                        stockDigital > 0)
+                        {!!"#comprarFormato"!!}
+                        @endif>
+                        <div class="formato-container shrink" style="height: 213.8px">
+                            <div class="formato">
+                                <p style="padding-top: 20px;">Formato Digital:</p>
+                            </div>
 
-                        {{-- PRECIO --}}
-                        <div class="precio" id="precioDigital">
-                            {{-- Si el precio es 0 se muestra Gratis--}}
-                            @if($book->precioDigital <= 0)
-                                Gratis
-                            @else
-                            {{-- Si no entonces se muestra el precio --}}
-                                @if($book->descuentoDigital > 0)
+                            {{-- PRECIO --}}
+                            <div class="precio" id="precioDigital">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0) Gratis @else {{-- Si no entonces se muestra el precio
+                                    --}} @if($book->descuentoDigital > 0)
                                     <div class="oferta">
                                         ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
                                     </div>
 
-                                    ${{ number_format($book->precioDigital - $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
-                                @else
+                                    ${{ number_format($book->precioDigital -
+                                    $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
                                     ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </div>
+
+                            {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
+                            <div class="ahorro" id="ahorroDigital">
+                                @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
+                                <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 ,
+                                    ".", "," ) }}</p>
                                 @endif
-                            @endif
-                        </div>
+                            </div>
 
-                        {{-- AHORRO (EN CASO DE DESCUENTO Y QUE NO SEA GRATIS) --}}
-                        <div class="ahorro" id="ahorroDigital">
-                            @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
-                                <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
-                            @endif
-                        </div>
-
-                        {{-- DISPONIBILIDAD --}}
-                        <div class="disponibilidad" id="disponibleDigital">
-                            @if ($book->stockDigital > 0)
+                            {{-- DISPONIBILIDAD --}}
+                            <div class="disponibilidad" id="disponibleDigital">
+                                @if ($book->stockDigital > 0)
                                 <p style="color: #29B390;">Disponible</p>
-                            @else
+                                @else
                                 <p style="color: #BA1F00;">No Disponible</p>
-                            @endif
-                        </div>
+                                @endif
+                            </div>
 
-                        {{-- LA CANTIDAD EN DIGITAL SIEMPRE SERÁ UNO --}}
-                        <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
-                            @if ($book->stockDigital > 0)
+                            {{-- LA CANTIDAD EN DIGITAL SIEMPRE SERÁ UNO --}}
+                            <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
+                                @if ($book->stockDigital > 0)
                                 <p id="cantidad-p">Cantidad: </p>
                                 <p>1</p>
-                            @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
 </div>
 
@@ -972,9 +1025,9 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
                 <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
                     <div class="pswp__preloader__icn">
-                    <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                    </div>
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1477,7 +1530,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 </script>
 
 <script>
-//current position
+    //current position
 var pos = 0;
 //number of slides
 var totalSlides = $('#slider-wrap ul li').length;
