@@ -20,20 +20,20 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 
      <!-- Core CSS file -->
-     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.css') }}">
 
      <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
          In the folder of skin CSS file there are also:
-         - .png and .svg icons sprite, 
+         - .png and .svg icons sprite,
          - preloader.gif (for browsers that do not support CSS animations) -->
-     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/default-skin/default-skin.css') }}"> 
- 
+     <link rel="stylesheet" href="{{ asset('/plugins/PhotoSwipe/dist/default-skin/default-skin.css') }}">
+
      <!-- Core JS file -->
-     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.min.js') }}"></script> 
- 
+     <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe.min.js') }}"></script>
+
      <!-- UI JS file -->
      <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js') }}"></script>
- 
+
 
     <style>
         .cj-titulo{
@@ -81,7 +81,7 @@
             font-weight: bold;
             font-size: 10px;
             line-height: 19px;
-            
+
             border: none;
             color: white;
 
@@ -110,7 +110,7 @@
             font-weight: bold;
             font-size: 14px;
             line-height: 19px;
-            
+
             border: none;
             color: white;
 
@@ -146,38 +146,262 @@
             margin: auto !important;
             width: fit-content !important;
         }
+
+        .invisible {
+    opacity: 0;
+}
+
+#wrapper{
+	width:300px;
+	margin:auto;
+	height:300px;
+	position:relative;
+	color:#fff;
+	text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
+}
+
+#slider-wrap{
+	width:300px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+}
+
+#slider-wrap ul#slider{
+	width:100%;
+	height:100%;
+
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+#slider-wrap ul#slider li{
+	float:left;
+	position:relative;
+	width:300px;
+	height:300px;
+}
+
+#slider-wrap ul#slider li > div{
+	position:absolute;
+	/* top:-10px; */
+	/* left:35px; */
+}
+
+#slider-wrap ul#slider li > div h3{
+	font-size:36px;
+	text-transform:uppercase;
+}
+
+#slider-wrap ul#slider li > div span{
+	font-family: Neucha, Arial, sans serif;
+	font-size:21px;
+}
+
+#slider-wrap ul#slider li i{
+	text-align:center;
+	line-height:400px;
+	display:block;
+	width:100%;
+	font-size:90px;
+}
+
+
+/*btns*/
+.btns{
+	position:absolute;
+	width:50px;
+	height:60px;
+	top:50%;
+	margin-top:-25px;
+	line-height:57px;
+	text-align:center;
+	cursor:pointer;
+	background:rgba(0,0,0,0.1);
+	z-index:100;
+
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
+
+	-webkit-transition: all 0.1s ease;
+	-moz-transition: all 0.1s ease;
+	-o-transition: all 0.1s ease;
+	-ms-transition: all 0.1s ease;
+	transition: all 0.1s ease;
+}
+
+.btns:hover{
+	background:rgba(0,0,0,0.3);
+}
+
+#next{right:-50px; border-radius:7px 0px 0px 7px;}
+#previous{left:-50px; border-radius:0px 7px 7px 7px;}
+#counter{
+	top: 30px;
+	right:35px;
+	width:auto;
+	position:absolute;
+}
+
+#slider-wrap.active #next{right:0px;}
+#slider-wrap.active #previous{left:0px;}
+
+
+/*bar*/
+#pagination-wrap{
+	min-width:20px;
+	margin-top:270px;
+	margin-left: auto;
+	margin-right: auto;
+	height:15px;
+	position:relative;
+	text-align:center;
+}
+
+#pagination-wrap ul {
+	width:100%;
+}
+
+#pagination-wrap ul li{
+	margin: 0 4px;
+	display: inline-block;
+	width:5px;
+	height:5px;
+	border-radius:50%;
+	background:#fff;
+	opacity:0.5;
+	position:relative;
+  top:0;
+
+
+}
+
+#pagination-wrap ul li.active{
+  width:12px;
+  height:12px;
+  top:3px;
+	opacity:1;
+	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px;
+}
+
+
+
+
+/*Header*/
+h1, h2{text-shadow:none; text-align:center;}
+h1{	color: #666; text-transform:uppercase;	font-size:36px;}
+h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;}
+
+
+
+
+/*ANIMATION*/
+#slider-wrap ul, #pagination-wrap ul li{
+	-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	transition: all 0.3s cubic-bezier(1,.01,.32,1);
+}
+
     </style>
 @endsection
 
 @section('content')
 
 <section class="section" id="about" style="width:100%; height:100%; background-color:white">
-    
+
     <div class="container">
         {{-- INFORMACIÓN DEL LIBRO --}}
         <div class="row">
                 {{-- IMAGENES --}}
                 <div class="col">
                     <div class="libro-fotos">
-                        <div>
-                        </div>
-                        <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
-                        <div>
-                        </div>
-                        {{-- SLIDER 
+                        {{-- <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}"> --}}
+                        {{-- <div id="imagen-seleccionada" class="mx-auto" style="height: 400px; width: 400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
+                        <div class="item" style="width:400px; height:400px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}'); setIndex(0)"></div> --}}
+
+                        <div id="wrapper">
+
+                            <div id="slider-wrap">
+                               <ul id="slider">
+                                <li data-color="#1abc9c">
+                                    <div class="imagen-seleccionada" class="mx-auto" style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$book->tiendaImagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
+                                </li>
+
+                                @foreach($book->images as $imagen)
+                                    <li data-color="#1abc9c">
+                                        <div class="imagen-seleccionada" class="mx-auto" style="height: 300px; width: 300px; background: url('{{asset('storage/libros/'.$imagen->imagen)}}') no-repeat center center; background-size: cover; cursor: pointer;"></div>
+                                    </li>
+                                @endforeach
+
+                                {{-- <li data-color="#3498db">
+                                   <div>
+                                       <h3>Slide #2</h3>
+                                       <span>Sub-title #2</span>
+                                   </div>
+                                   <i class="fa fa-gears"></i>
+                                </li>
+
+                                <li data-color="#9b59b6">
+                                   <div>
+                                       <h3>Slide #3</h3>
+                                       <span>Sub-title #3</span>
+                                   </div>
+                                   <i class="fa fa-sliders"></i>
+                                </li>
+
+                                <li data-color="#34495e">
+                                   <div>
+                                       <h3>Slide #4</h3>
+                                       <span>Sub-title #4</span>
+                                   </div>
+                                   <i class="fa fa-code"></i>
+                                </li>
+
+                                <li data-color="#e74c3c">
+                                   <div>
+                                       <h3>Slide #5</h3>
+                                       <span>Sub-title #5</span>
+                                   </div>
+                                   <i class="fa fa-microphone-slash"></i>
+                                </li> --}}
+
+
+                             </ul>
+
+                              <!--controls-->
+                             <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+                             <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+                             <div id="counter"></div>
+
+                             <div id="pagination-wrap">
+                               <ul>
+                               </ul>
+                             </div>
+                             <!--controls-->
+
+                         </div>
+
+                      </div>
+                        {{-- SLIDER
                         @if (count($book->images) > 0)
                             <div class="owl-carousel">
-                                {{-- IMAGEN DE LA TIENDA 
+                                {{-- IMAGEN DE LA TIENDA
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->tiendaImagen)}}')">
                                 </div>
 
-                                {{-- IMAGEN DE LA PORTADA 
+                                {{-- IMAGEN DE LA PORTADA
                                 <div class="imagen-carrusel">
                                     <img src="{{asset('storage/libros/'.$book->portadaImagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$book->portadaImagen)}}')">
                                 </div>
 
-                                {{-- IMAGENES EXTRA 
+                                {{-- IMAGENES EXTRA
                                 @foreach($book->images as $imagen)
                                     <div class="imagen-carrusel">
                                         <img src="{{asset('storage/libros/'.$imagen->imagen)}}" onclick="clickImagen('{{asset('storage/libros/'.$imagen->imagen)}}')">
@@ -189,7 +413,7 @@
 
                     {{-- CARRUSEL --}}
                     <div class="row">
-                        
+
                     </div>
                     {{-- NOMBRE LIBRO --}}
                     <div class="row">
@@ -323,10 +547,10 @@
                         <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" class="sm-link sm-link3 sm-link_padding-bottom">
                             <p style="color:#83d7b5;">
                             Descarga el pdf promocional
-                            </p> 
-                        </a>    
+                            </p>
+                        </a>
                         @endif
-                        
+
                     </div>
                 </div>
 
@@ -343,7 +567,7 @@
                             </button>
                         </div>
                         @endif
-    
+
                         @if ($book->stockDigital > 0)
                         <div class="row cj-book-price">
                             <p class="cj-titulo">Libro Digital:
@@ -367,7 +591,7 @@
                             </button>
                         </div>
                         @endif
-    
+
                         @if ($book->stockFisico > 0)
                         <div class="row cj-book-price">
                             <p class="cj-titulo">Libro Físico:
@@ -392,7 +616,7 @@
                             </button>
                         </div>
                         @endif
-    
+
                         {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
                         <div class="mensaje">
                             <p>
@@ -405,7 +629,7 @@
 
                     {{-- <div class="libro-comprar">
                         <div class="comprar">
-                            {{-- FISICO 
+                            {{-- FISICO
                             <div class="formato">
                                 <p style="padding-top: 20px;">Formato Físico:</p>
                             </div>
@@ -427,14 +651,14 @@
                                 @endif
                             </div>
 
-                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis 
+                            {{-- AHORRO (EN CASO DE OFERTA) y que no sea gratis
                             @if ($book->descuentoFisico > 0 && $book->precioFisico > 0)
                                 <div class="ahorro">
                                     <p>Ahorras: ${{ number_format($book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}</p>
                                 </div>
                             @endif
 
-                            {{-- DISPONIBILIDAD 
+                            {{-- DISPONIBILIDAD
                             @if ($book->stockFisico > 0)
                                 <div class="disponibilidad">
                                     <p style="color: #29B390;">Disponible</p>
@@ -445,7 +669,7 @@
                                 </div>
                             @endif
 
-                            {{-- DIGITAL 
+                            {{-- DIGITAL
                             {{-- SI EL PRECIO DEL FORMATO DIGITAL ES MAYOR A CERO SE MUESTRA
                             <div class="formato">
                                 <p style="padding-top: 7px;">Formato Digital:</p>
@@ -466,14 +690,14 @@
                                 @endif
                             </div>
 
-                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis 
+                            {{-- AHORRO (EN CASO DE OFERTA) y que sea gratis
                             @if ($book->descuentoDigital > 0 && $book->precioDigital > 0)
                                 <div class="ahorro">
                                     <p>Ahorras: ${{ number_format($book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}</p>
                                 </div>
                             @endif
 
-                            {{-- DISPONIBILIDAD 
+                            {{-- DISPONIBILIDAD
                             @if ($book->stockDigital > 0)
                                 <div class="disponibilidad">
                                     <p style="color: #29B390;">Disponible</p>
@@ -485,7 +709,7 @@
                             @endif
 
                             @if($book->stockFisico > 0 || $book->stockDigital > 0)
-                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE 
+                                {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE
                                 <div class="mensaje">
                                     <p>
                                         Pueden aplicarse gastos de envío,
@@ -494,7 +718,7 @@
                                     <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
                                 </div>
 
-                                {{-- BOTONES DE COMPRA 
+                                {{-- BOTONES DE COMPRA
                                 <button class="carrito-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarCarrito()"><img src="{{asset('img/ico/carrito.png')}}"> Agregar al carrito</button>
                                 <button class="comprar-button shrink" data-toggle="modal" data-target="#comprarFormato" onclick="comprarAhora()">Comprar ahora</button>
                             @endif
@@ -527,18 +751,18 @@
                                                 <i>{{$bookBanner->titulo}}</i>
                                             </p>
                                             <p class="txt-infoCarrusel" style="margin-top: 4%"><b>Género:</b>&nbsp;
-                                                
+
                                                 <i>{{$bookBanner->genres[0]->nombre}}</i>
                                             </p>
-                                            
+
                                         </div>
-            
+
                                     </div>
                                 </div>
                             @endif
                             @endforeach
-                                            
-                            
+
+
                         </div>
                         <button class="btn  leftLst"><i class="fas fa-chevron-left" style="color:gray"></i></button>
                         <button class="btn  rightLst"><i class="fas fa-chevron-right" style="color:gray"></i></button>
@@ -711,14 +935,14 @@
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    <!-- Background of PhotoSwipe. 
+    <!-- Background of PhotoSwipe.
         It's a separate element as animating opacity is faster than rgba(). -->
     <div class="pswp__bg"></div>
 
     <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
 
-        <!-- Container that holds slides. 
+        <!-- Container that holds slides.
             PhotoSwipe keeps only 3 of them in the DOM to save memory.
             Don't modify these 3 pswp__item elements, data is added later on. -->
         <div class="pswp__container">
@@ -756,7 +980,7 @@
             </div>
 
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
+                <div class="pswp__share-tooltip"></div>
             </div>
 
             <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
@@ -789,6 +1013,13 @@
                 w: 0,
                 h: 0
             },
+            @foreach($book->images as $imagen)
+                {
+                    src: '{{asset('storage/libros/'.$imagen->imagen)}}',
+                    w: 0,
+                    h: 0
+                },
+            @endforeach
             // foreach ($propiedad->photos as $photo)
             // {
             //     src: '{asset($photo->path)}}',
@@ -807,7 +1038,7 @@
         var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.listen('gettingData', function(index, item) {
             if (item.w < 1 || item.h < 1) { // unknown size
-                var img = new Image(); 
+                var img = new Image();
                 img.onload = function() { // will get size after load
                     item.w = this.width; // set image width
                     item.h = this.height; // set image height
@@ -819,16 +1050,22 @@
         });
         gallery.init();
     };
-    document.getElementById('imagen-seleccionada').onclick = openPhotoSwipe;
+    // document.getElementById('imagen-seleccionada').onclick = openPhotoSwipe;
+    // document.getElementsByClassName('imagen-seleccionada').onclick = openPhotoSwipe;
+    var anchors = document.getElementsByClassName('imagen-seleccionada');
+        for(var i = 0; i < anchors.length; i++) {
+            var anchor = anchors[i];
+            anchor.onclick = openPhotoSwipe;
+        }
 </script>
 
 {{-- ESTE SCRIPT CONTROLA EL ZOOM DE LA IMAGEN Y EL LEER MAS --}}
 <script>
     //pre es el elemento donde se muestra la previsualizacion de la imagen seleccionada
     //"imagen-seleccionada" es el visualizador de la imagen
-    var pre = document.getElementById("imagen-seleccionada");
-    //imagen es la imagen que se ha seleccionado
-    var imagen = pre.src;
+    // var pre = document.getElementById("imagen-seleccionada");
+    // //imagen es la imagen que se ha seleccionado
+    // var imagen = pre.src;
 
     //Controla el boton de leer mas
     function leerMas() {
@@ -851,12 +1088,12 @@
     }
 
     //controla cuando se selecciona una imagen
-    function clickImagen(nuevaImagen){
-        //hace que se muestre la nueva imagen en el visualizador
-        pre.src = nuevaImagen;
-        //obtiene la imagen para el zoom
-        imagen = nuevaImagen;
-    }
+    // function clickImagen(nuevaImagen){
+    //     //hace que se muestre la nueva imagen en el visualizador
+    //     pre.src = nuevaImagen;
+    //     //obtiene la imagen para el zoom
+    //     imagen = nuevaImagen;
+    // }
 </script>
 
 {{-- ESTE SCRIPT CONTROLA LA ANIMACION DE COMPRA Y EL CARRITO --}}
@@ -874,7 +1111,7 @@
     }
 
     $(document).ready(function(){
-  
+
         $('.owl-carousel').owlCarousel({
             loop:true,
             margin:2.5,
@@ -997,15 +1234,15 @@
     var tooltipTimeout;
 
     //CANTIDAD, BOTON MENOS
-    $('#menosCarrito').click(function(){            
+    $('#menosCarrito').click(function(){
         //se obtiene el numero del input y se hace la resta
         var number = document.getElementById("cantidadFisico").value;
 
         var libro = @json($book);
         var max = libro['stockFisico'];
-        
+
         number--;
-        
+
         //no se deja que la cantidad sea menor a 0
         if(number < 1){
             number = 1;
@@ -1026,9 +1263,9 @@
 
         //se obtiene el numero del input y se hace la resta
         var number = document.getElementById("cantidadFisico").value;
-        
+
         number++;
-        
+
         //no se deja que la cantidad sea menor a 0
         if(number > max){
             number = max;
@@ -1043,13 +1280,13 @@
     });
 
     //CANTIDAD, INPUT ENTER
-    $("#cantidadFisico").keypress(function(event) { 
-        // Only ASCII charactar in that range allowed 
-        var ASCIICode = (event.which) ? event.which : event.keyCode 
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+    $("#cantidadFisico").keypress(function(event) {
+        // Only ASCII charactar in that range allowed
+        var ASCIICode = (event.which) ? event.which : event.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
             return false;
 
-        if (event.keyCode === 13) { 
+        if (event.keyCode === 13) {
             var libro = @json($book);
             var max = libro['stockFisico'];
 
@@ -1064,14 +1301,14 @@
             }
 
             document.getElementById("cantidadFisico").value = number;
-        } 
+        }
     });
-    
+
 
     //CUANDO SE SELECCIONA EL FORMATO SE GUARDA EN LA COOKIE
     $("#botonFisico").click(function (e) {
         e.preventDefault();
-        
+
         //SE OBTIENE LA CANTIDAD
         var cantidad = $("#cantidadFisico").val();
 
@@ -1141,7 +1378,7 @@
             $.ajax({
                 url: '/agregar-a-carrito/'+seleccionado+'/1/digital',
                 method: "get",
-                success: function (response) { 
+                success: function (response) {
                     if(carrito){
                         if(carrito[seleccionado]){
                             if(carrito[seleccionado]['cantidadDigital'] > 0){
@@ -1238,4 +1475,118 @@
         }, 500);
     }
 </script>
+
+<script>
+//current position
+var pos = 0;
+//number of slides
+var totalSlides = $('#slider-wrap ul li').length;
+//get the slide width
+var sliderWidth = $('#slider-wrap').width();
+
+
+$(document).ready(function(){
+
+
+	/*****************
+	 BUILD THE SLIDER
+	*****************/
+	//set width to be 'x' times the number of slides
+	$('#slider-wrap ul#slider').width(sliderWidth*totalSlides);
+
+    //next slide
+	$('#next').click(function(){
+		slideRight();
+	});
+
+	//previous slide
+	$('#previous').click(function(){
+		slideLeft();
+	});
+
+
+
+	/*************************
+	 //*> OPTIONAL SETTINGS
+	************************/
+	//automatic slider
+	var autoSlider = setInterval(slideRight, 3000);
+
+	//for each slide
+	$.each($('#slider-wrap ul li'), function() {
+	   //set its color
+	   var c = $(this).attr("data-color");
+	   $(this).css("background",c);
+
+	   //create a pagination
+	   var li = document.createElement('li');
+	   $('#pagination-wrap ul').append(li);
+	});
+
+	//counter
+	countSlides();
+
+	//pagination
+	pagination();
+
+	//hide/show controls/btns when hover
+	//pause automatic slide when hover
+	$('#slider-wrap').hover(
+	  function(){ $(this).addClass('active'); clearInterval(autoSlider); },
+	  function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 10000); }
+	);
+
+
+
+});//DOCUMENT READY
+
+
+
+/***********
+ SLIDE LEFT
+************/
+function slideLeft(){
+	pos--;
+	if(pos==-1){ pos = totalSlides-1; }
+    setIndex(pos)
+	$('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));
+
+	//*> optional
+	countSlides();
+	pagination();
+}
+
+
+/************
+ SLIDE RIGHT
+*************/
+function slideRight(){
+	pos++;
+	if(pos==totalSlides){ pos = 0; }
+    setIndex(pos)
+	$('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));
+
+	//*> optional
+	countSlides();
+	pagination();
+}
+
+
+
+
+/************************
+ //*> OPTIONAL SETTINGS
+************************/
+function countSlides(){
+	$('#counter').html(pos+1 + ' / ' + totalSlides);
+}
+
+function pagination(){
+	$('#pagination-wrap ul li').removeClass('active');
+	$('#pagination-wrap ul li:eq('+pos+')').addClass('active');
+}
+
+
+</script>
+
 @endsection
