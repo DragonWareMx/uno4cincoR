@@ -113,7 +113,7 @@ class gestorSlidersController extends Controller
         $banner=Banner::findOrFail($id);
         $Activos=Banner::where('tipo',$banner->tipo)->where('active','activo')->count();
 
-        if($Activos>2){
+        if($Activos>1){
             try{
                 
                 $banner->active='inactivo';

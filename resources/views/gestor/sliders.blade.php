@@ -18,7 +18,7 @@
 @endif
 @if (session()->has('success2'))
     <script>
-        alert('No puedes eliminar más banners. Debe haber al menos 2 en cada carrusel');
+        alert('No puedes eliminar más banners. Debe haber al menos 1');
     </script>
 @endif
     
