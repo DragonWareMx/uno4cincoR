@@ -905,7 +905,7 @@ promotion
 }
 
 #promotion {
-  padding-top: 110px;
+  padding-top: 150px;
   padding-bottom: 100px;
 }
 
@@ -958,7 +958,7 @@ testimonials
 }
 
 #testimonials {
-  padding-top: 100px;
+  padding-top: 150px;
   position: relative;
   z-index: 9;
 }
@@ -1409,4 +1409,118 @@ preloader
   .logo2 img{
     height: 38px !important;
   }
+}
+
+.ld-inverso{
+  display: none;
+}
+
+@media (max-width: 991px){
+  #col-carrusel{
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0px 10%;
+  }
+
+  #col-info{
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 20px 10%;
+    flex-direction: column-reverse !important;
+    display: flex !important;
+  }
+
+  .ld-oculto{
+    display: none;
+  }
+
+  .ld-inverso{
+    display: flex !important;
+  }
+
+  .cj-scroll{
+    height: fit-content !important;
+    margin-bottom: 20px !important;
+    margin-top: 40px !important;
+  }
+
+  #about{
+    padding-bottom: 50px !important;
+  }
+}
+
+.ld-button{
+  border-radius: 25px;
+  background-color: transparent;
+  border: 1px #17D4C1 solid;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 20px;
+  color: #17D4C1;
+}
+
+.container-buttons{
+  flex-wrap: nowrap;
+  min-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  height: 155px !important;
+  margin-top: 30px !important;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.container-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.button-purchase{
+  width: 150px;
+  height: 135px;
+  border-radius: 10%;
+  border: 1px solid #707070;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button-purchase .text1{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+}
+
+.button-purchase .text2{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+.button-purchase:hover .text2{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  color: #1FC6AC;
+}
+
+.button-purchase:hover{
+  background-color: #EFFEFB !important;
+  border: 1px solid #1FC6AC !important;
+}
+
+.inside-button{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 }
