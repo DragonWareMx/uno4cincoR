@@ -347,7 +347,7 @@
         {{-- INFORMACIÓN DEL LIBRO --}}
         <div class="row">
             {{-- IMAGENES --}}
-            <div class="col">
+            <div class="col" id="col-carrusel">
                 <div class="libro-fotos">
                     {{-- <img id="imagen-seleccionada" src="{{asset('storage/libros/'.$book->tiendaImagen)}}"> --}}
                     {{-- <div id="imagen-seleccionada" class="mx-auto"
@@ -505,8 +505,38 @@
                 </div>
             </div>
 
+            {{-- BOTONES COMPRA CELULAR --}}
+            <div class="col ld-inverso" id="col-carrusel">
+                <div class="container-buttons">
+                    <div class="button-purchase">
+                        <div class="inside-button">
+                            <span class="text1">Libro físico:</span>
+                            <span class="text2">$500</span>
+                        </div>
+                    </div>
+                    <div class="button-purchase">
+                        <div class="inside-button">
+                            <span class="text1">Libro digital:</span>
+                            <span class="text2">$500</span>
+                        </div>
+                    </div>
+                    <div class="button-purchase">
+                        <div class="inside-button">
+                            <span class="text1">Audio libro:</span>
+                            <span class="text2">$500</span>
+                        </div>
+                    </div>
+                    <div class="button-purchase">
+                        <div class="inside-button">
+                            <span class="text1">Prueba el libro:</span>
+                            <span class="text2">GRATIS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {{-- INFO --}}
-            <div class="col-5">
+            <div class="col-5" id="col-info">
                 {{-- Sinopsis --}}
                 <div class="row">
                     <p class="cj-info2 align-middle cj-scroll">
@@ -515,76 +545,78 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
-                        </p>
+                <div>
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Idioma: </b> Español
+                            </p>
+                        </div>
                     </div>
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">Idioma: </b> Español
-                        </p>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">Páginas: </b> {{ $book->paginas }}
-                        </p>
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Páginas: </b> {{ $book->paginas }}
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Publicado: </b>
+                                @php
+                                $separa=explode("-",$book->fechaPublicacion);
+                                $anio=$separa[0];
+                                $mes=$separa[1];
+                                $dia=$separa[2];
+                                @endphp
+                                {{$dia}}/{{$mes}}/{{$anio}}
+                            </p>
+                        </div>
                     </div>
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">Publicado: </b>
-                            @php
-                            $separa=explode("-",$book->fechaPublicacion);
-                            $anio=$separa[0];
-                            $mes=$separa[1];
-                            $dia=$separa[2];
-                            @endphp
-                            {{$dia}}/{{$mes}}/{{$anio}}
-                        </p>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">
-                                @if (count($book->genres) > 1)
-                                Géneros:
+                    <div class="row">
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">
+                                    @if (count($book->genres) > 1)
+                                    Géneros:
+                                    @else
+                                    Género:
+                                    @endif
+                                </b>
+                                @php
+                                $contador = 1;
+                                $cantGeneros = count($book->genres);
+                                @endphp
+                                @foreach ($book->genres as $genre)
+                                @if ($contador == 1)
+                                {{$genre->nombre}}
+                                @elseif($contador == $cantGeneros)
+                                y {{$genre->nombre}}
                                 @else
-                                Género:
+                                , {{$genre->nombre}}
                                 @endif
-                            </b>
-                            @php
-                            $contador = 1;
-                            $cantGeneros = count($book->genres);
-                            @endphp
-                            @foreach ($book->genres as $genre)
-                            @if ($contador == 1)
-                            {{$genre->nombre}}
-                            @elseif($contador == $cantGeneros)
-                            y {{$genre->nombre}}
-                            @else
-                            , {{$genre->nombre}}
-                            @endif
-                            @php
-                            $contador++;
-                            @endphp
-                            @endforeach
-                        </p>
-                    </div>
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info2 align-middle">
-                            <b style="font-weight: bold">Edad de lectura: </b>
-                            18 y más
-                        </p>
+                                @php
+                                $contador++;
+                                @endphp
+                                @endforeach
+                            </p>
+                        </div>
+                        <div class="col" style="padding: 0px">
+                            <p class="cj-info2 align-middle">
+                                <b style="font-weight: bold">Edad de lectura: </b>
+                                18 y más
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="libro-info">
+                {{-- <div class="libro-info">
 
                     @if ($book->linkDemo)
                     <a href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank"
@@ -595,11 +627,11 @@
                     </a>
                     @endif
 
-                </div>
+                </div> --}}
             </div>
 
             {{-- PRECIOS --}}
-            <div class="col">
+            <div class="col ld-oculto" id="col-precios">
                 <div class="cj-book-border">
                     @if ($book->linkDemo)
                     <div class="row cj-book-price">
@@ -770,13 +802,20 @@
                     </div>
                 </div> --}}
             </div>
+
+            {{-- BOTON COMPARTIR CELULAR --}}
+            <div class="col ld-inverso" id="col-carrusel">
+                <div style="width: 100%; display: flex; justify-content: center">
+                    <button class="ld-button">Compartir este libro</button>
+                </div>
+            </div>
         </div>
 
         {{-- CARRUSEL DE LIBROS DE LOS AUTORES --}}
         @if(count($books) > 1)
-        <hr class="hr-tienda">
+        <hr class="hr-tienda ld-oculto">
         {{-- <div class="container"> --}}
-            <div class="row">
+            <div class="row ld-oculto">
                 <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel" data-interval="1000">
                     @if (count($book->authors) > 1)
                     <p class="mas-autor-libro">Más de estos autores</p>
