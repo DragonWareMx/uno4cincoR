@@ -638,9 +638,9 @@
                         <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
                     </div>
                     <div class="row">
-                        <button class="shrink cj-button-bolsa">
+                        <a class="shrink cj-button-bolsa" href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" style="text-decoration: none; color: white;">
                             Agregar a la bolsa
-                        </button>
+                        </a>
                     </div>
                     @endif
 
@@ -660,7 +660,7 @@
                         </p>
                     </div>
                     <div class="row">
-                        <button class="shrink cj-button-bolsa">
+                        <button class="shrink cj-button-bolsa" id="agregarBolsaDigital">
                             Agregar a la bolsa
                         </button>
                     </div>
@@ -683,7 +683,7 @@
                         </p>
                     </div>
                     <div class="row">
-                        <button class="shrink cj-button-bolsa">
+                        <button class="shrink cj-button-bolsa" id="agregarBolsaFisico">
                             Agregar a la bolsa
                         </button>
                     </div>
@@ -1501,6 +1501,118 @@
 
                     return;
                 },
+            });
+        }
+    });
+
+    $("#agregarBolsaDigital").click(function (e) {
+        e.preventDefault();
+
+        var libro = @json($book);
+        var cantidad = libro['stockDigital'];
+
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            return;
+        }
+
+        if(cantidad > 0){
+            var x = window.matchMedia("(max-width: 991px)");
+            $.ajax({
+                url: '/agregar-a-carrito/'+seleccionado+'/1/digital',
+                method: "get",
+                success: function (response) {
+                    if(carrito){
+                        if(carrito[seleccionado]){
+                            if(carrito[seleccionado]['cantidadDigital'] > 0){
+                                if(carrito[seleccionado]['cantidadDigital'] != cantidad)
+                                    showTooltip("Producto actualizado");
+                                else
+                                    showTooltip("Producto ya en el carrito");
+                            }
+                            else{
+                                showTooltip("Producto agregado");
+                            }
+                            carrito[seleccionado]['cantidadDigital'] = cantidad;
+                        }
+                        else{
+                            carrito[seleccionado] = {"cantidadFisico": 0, "cantidadDigital": cantidad};
+                            showTooltip("Producto agregado");
+                        }
+                    }
+                    else{
+                        var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "0","cantidadDigital": "'+cantidad+'"}}';
+                        carrito = JSON.parse(jsonSt);
+                        showTooltip("Producto agregado");
+                    }
+                    carritoCant(x);
+
+                    if(comraA)
+                        window.location.replace('{{ route('carrito') }}');
+
+                    return;
+                },
+            });
+        }
+    });
+
+    $("#agregarBolsaFisico").click(function (e) {
+        e.preventDefault();
+        
+        var cantidad;
+        //SE OBTIENE LA CANTIDAD
+        if(carrito && carrito[seleccionado]  && parseInt(carrito[seleccionado]['cantidadFisico']) > 0){
+            cantidad = parseInt(carrito[seleccionado]['cantidadFisico']) * 1 + 1;
+        }
+        else
+            cantidad = 1;
+
+
+
+        var libro = @json($book);
+        var max = libro['stockFisico'];
+
+        if(cantidad > max)
+            cantidad = max;
+
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            return;
+        }
+
+        if(cantidad > 0){
+            var x = window.matchMedia("(max-width: 991px)");
+            $.ajax({
+                url: '/agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
+                method: "get",
+                success: function (response) {
+                    if(carrito){
+                        if(carrito[seleccionado]){
+                            if(carrito[seleccionado]['cantidadFisico'] > 0){
+                                showTooltip("Producto actualizado");
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                            }
+                            else{
+                                showTooltip("Producto agregado");
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                            }
+                        }
+                        else{
+                            carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
+                            showTooltip("Producto agregado");
+                        }
+                    }
+                    else{
+                        var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
+                        carrito = JSON.parse(jsonSt);
+                        showTooltip("Producto agregado");
+                    }
+                    carritoCant(x);
+
+                    if(comraA)
+                        window.location.replace('{{ route('carrito') }}');
+                    return;
+                }
             });
         }
     });
