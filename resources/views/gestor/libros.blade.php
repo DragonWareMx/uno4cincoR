@@ -47,7 +47,7 @@
 
                     <p class="autor-limit">{{Str::limit($book->authors[0]->nombre,56)}}</p>
 
-                    <p class="precio-rango">$100 - $100</p>
+                    <p class="precio-rango">{{$book->isbn}}</p>
 
                     <!--boton de editar-->
                     <div class="btn_editarAutorG" >
