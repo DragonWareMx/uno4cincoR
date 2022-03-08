@@ -41,9 +41,10 @@
         font-style: normal;
         font-weight: bold;
         font-size: 18px;
-        line-height: 23px;
+        line-height: 28px;
         color: #2E2E2E;
-
+        padding-left:15px;
+        margin-top:20px;
         height: 41.6px;
     }
 
@@ -463,9 +464,9 @@
                     <p class="cj-titulo">{{Str::limit($book->titulo,61)}}</p>
                 </div>
                 {{-- AUTOR --}}
-                <div class="row mt-4">
-                    <div class="col" style="padding: 0px">
-                        <p class="cj-info align-middle">
+                <div class="row mt-4" style="display:flex; align-items:center">
+                    <div class="col" style="padding: 0px; padding-left:15px">
+                        <p class="cj-info align-middle" style="line-height:20px">
                             <b style="font-weight: bold">Autor: </b> {{$book->authors[0]->nombre}}
                         </p>
 
