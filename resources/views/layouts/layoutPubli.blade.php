@@ -46,27 +46,22 @@
                     <nav class="main-nav nav-space-between">
 
                         <a href="{{ route('inicio') }}" class="logo2">
-                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="70px">
+                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="60px">
                         </a>
 
-                        <a href="{{ route('inicio') }}" class="logo imagotipoLogo @php
-                                if(Request::path() == '/' )
-                                echo 'ocultoIndex';
-                            @endphp
-                            " style=" height: 80px;display: flex;align-items: center;">
-                            <img src="{{ asset('/img/ico/puerta.png') }}" alt="" srcset="" height="40px"
-                                style="vertical-align: middle;margin: auto;">
-                        </a>
+
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="">
-                                <a href="{{ route('carrito') }}" class="">NOSOTROS</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('carrito') }}" class="">BLOG</a>
-                            </li>
-                        </ul>
+                        <div class="ld-links-header">
+                            <ul class="nav">
+                                <li class="">
+                                    <a href="{{ route('carrito') }}" class="">NOSOTROS</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('carrito') }}" class="">BLOG</a>
+                                </li>
+                            </ul>
+                        </div>
                         <ul class="nav">
                             <li class="carritoli"><a href="{{ route('carrito') }}" class="">
                                     <img src="{{ asset('img/ico/bolsa.png') }}" alt="" srcset="" width="20px">
