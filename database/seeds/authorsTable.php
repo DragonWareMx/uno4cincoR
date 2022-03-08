@@ -18,6 +18,7 @@ class authorsTable extends Seeder
                         Antologado en el mapa poético nacional "Parkour pop.ético"  de la Secretaría de Educación Pública. Ha sido ganador del concurso 
                         de poesía joven del estado de Campeche en 2019 y del concurso convocado por la editorial Lumpérica Cartonera (Lima,Perú) en ese mismo año.',
             'foto'=>'fotoAless2.jpg',
+            'link' => 'https://www.facebook.com/aless.segoviahaas',
             'fotoPerfil'=>'fotoAless.jpg',
             'fechaNac'=>'1992-10-17'
 
@@ -26,6 +27,7 @@ class authorsTable extends Seeder
                 'nombre'=>'Estefanía Licea',
                 'descripcion'=>'Autora de Toluca estado de México.',
                 'foto'=>'fotoLicea2.jpg',
+                'link' => 'https://www.facebook.com/EstefaniaPLicea',
                 'fotoPerfil'=>'fotoLicea.jpg',
                 'fechaNac'=>'1988-11-25'
                 
@@ -35,6 +37,7 @@ class authorsTable extends Seeder
             'descripcion'=>'Autor de Nayarit.',
             'foto'=>'fotoJordan2.jpg',
             'fotoPerfil'=>'fotoJordan.jpg',
+            'link' => 'https://www.facebook.com/145jordan/',
             'fechaNac'=>'1990-11-12'
            
         ]);
@@ -46,7 +49,8 @@ class authorsTable extends Seeder
                     y de las novelas “Ciudad en blanco” (SECUM, 2019) y “Rompecabezas” (FOEM, 2015).',
             'foto'=>'fotoAgustin2.jpg',
             'fotoPerfil'=>'fotoAgustin.jpg',
-            'fechaNac'=>'1987-08-07'
+            'fechaNac'=>'1987-08-07',
+            'link' => 'https://instagram.com/joseagustinsolorzano?utm_medium=copy_link'
             ]);
     }
 }

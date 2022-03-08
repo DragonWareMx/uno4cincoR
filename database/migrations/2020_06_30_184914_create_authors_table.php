@@ -16,6 +16,7 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',191)->unique();
+            $table->string('link',255);
             $table->text('descripcion');
             $table->date('fechaNac')->nullable();
             $table->date('fechaMuerte')->nullable();
