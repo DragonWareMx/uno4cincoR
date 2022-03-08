@@ -23,9 +23,11 @@ class CreateBooksTable extends Migration
             $table->float('precioDigital');
             $table->float('descuentoFisico');
             $table->float('descuentoDigital');
+            $table->float('descuentoAudio');
             $table->text('sinopsis');
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
+            $table->tinyInteger('stockAudio')->default(0);
             $table->text('linkDescarga');
             $table->text('linkDemo')->nullable();
             $table->text('portadaImagen');

@@ -23,7 +23,7 @@
 
                                         <p class="autor-limit responsive-autor">{{Str::limit($book->authors[0]->nombre,33)}}</p>
 
-                                        <p class="precio-rango">$100 - $100</p>
+                                        <p class="precio-rango">{{$book->isbn}}</p>
                                     </a>
                                     <!--boton de bolsa-->
                                     <button class="shrink" onclick="comprarCarrito({{ $book->id }})" data-toggle="modal" data-target="#comprarFormato">

@@ -197,6 +197,74 @@ class paginaInicioController extends Controller
         $banner=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(1)->get();
         if(!$books)
             $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(12);
+        
+        // RANGO DE PRECIOS
+        // El rango se guardara en el string ISBN !!
+        $maximo = 0;
+        $minimo = 0;
+        
+        foreach($books as $book){
+            // Si el libro se creo para los 3 formatos y existen
+            if($book->stockFisico > 0 && $book->stockDigital > 0 && $book->stockAudio > 0){
+                $maximo = max(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))),
+                            ($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))),
+                            ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+
+                $minimo = min(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))),
+                            ($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))),
+                            ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+
+                if($maximo == $minimo)
+                    $book->isbn = "$ ".$maximo;
+                else
+                    $book->isbn = "$ ".$minimo." - $".$maximo;
+            }
+            // Solo hay fisico
+            if($book->stockDigital==0 && $book->stockAudio==0 && $book->stockFisico>0){
+                $book->precioFisico = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100));
+                $book->isbn = "$ ".$book->precioFisico;
+            }
+            // Solo hay digital
+            if($book->stockFisico==0 && $book->stockAudio==0 && $book->stockDigital>0){
+                $book->precioDigital = $book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100));
+                $book->isbn = "$ ".$book->precioDigital;
+            }
+            // Solo hay audio
+            if($book->stockFisico==0 && $book->stockDigital==0 && $book->stockAudio>0){
+                $book->precioAudio = $book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100));
+                $book->isbn = "$ ".$book->precioAudio;
+            }
+            // Solo hay fisico y digital
+            if($book->stockFisico > 0 && $book->stockDigital > 0 && $book->stockAudio == 0){
+                $maximo = max(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))), ($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))));
+                $minimo = min(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))), ($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))));
+
+                if($maximo == $minimo)
+                    $book->isbn = "$ ".$maximo;
+                else
+                    $book->isbn = "$ ".$minimo." - $".$maximo;
+            }
+            // Solo hay fisico y audio
+            if($book->stockFisico > 0 && $book->stockDigital == 0 && $book->stockAudio > 0){
+                $maximo = max(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))), ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+                $minimo = min(($book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100))), ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+
+                if($maximo == $minimo)
+                    $book->isbn = "$ ".$maximo;
+                else
+                    $book->isbn = "$ ".$minimo." - $".$maximo;
+            }
+            // Solo hay digital y audio
+            if($book->stockFisico == 0 && $book->stockDigital > 0 && $book->stockAudio > 0){
+                $maximo = max(($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))), ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+                $minimo = min(($book->precioDigital - ($book->precioDigital * ($book->descuentoDigital / 100))), ($book->precioAudio - ($book->precioAudio * ($book->descuentoAudio / 100))));
+
+                if($maximo == $minimo)
+                    $book->isbn = "$ ".$maximo;
+                else
+                    $book->isbn = "$ ".$minimo." - $".$maximo;
+            }
+        }        
         return view('publicitaria.index', ['books'=>$books, 'banner' => $banner]);
     }
 
