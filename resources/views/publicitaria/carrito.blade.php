@@ -251,7 +251,7 @@
                             <div style="width: 225px; margin:auto;">
                                 <h1 id="total-carrito">Total : ${{ number_format($total, 2 , ".", "," ) }}</h1>
                                 <p class="txt-gastos-envio">Pueden aplicarse gastos de envío</p>
-                                <a title="Stripe"><img src="{{asset('storage/stripe.png')}}" width="50%"></a>
+                                <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
                                 <!-- PayPal Logo --><a title="PayPal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></a>
 
                                 <button class="tienda shrink" onclick="location.href='{{ route('inicio') }}'">Volver a la tienda</button>
