@@ -19,6 +19,7 @@ class CreateBooksTable extends Migration
             $table->text('titulo');
             $table->string('numEdicion',3);
             $table->float('precioFisico');
+            $table->float('precioAudio');
             $table->float('precioDigital');
             $table->float('descuentoFisico');
             $table->float('descuentoDigital');
