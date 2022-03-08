@@ -73,6 +73,7 @@ class gestorAutoresController extends Controller
             'nacimiento'=>'date',
             'muerte'=>'nullable|date',
             'imagen'=>'nullable|image',
+            'link' =>'required|url',
             'fotoPerfil'=>'nullable|image'
         ]);
 
@@ -88,6 +89,7 @@ class gestorAutoresController extends Controller
                 $autor->descripcion=request('biografia');
                 $autor->fechaNac=request('nacimiento');
                 $autor->fechaMuerte=request('muerte');
+                $autor->link=request('link');
         
                 if(request('imagen')==null){
                     $newFileName=$autor->foto;
@@ -145,6 +147,7 @@ class gestorAutoresController extends Controller
             'nacimiento'=>'date',
             'muerte'=>'nullable|date',
             'imagen'=>'required|image',
+            'link' =>'required|url',
             'fotoPerfil'=>'required|image'
         ]);
         
@@ -156,6 +159,7 @@ class gestorAutoresController extends Controller
                 $autor->descripcion=request('biografia');
                 $autor->fechaNac=request('nacimiento');
                 $autor->fechaMuerte=request('muerte');
+                $autor->link=request('link');
         
                 $fileNameWithTheExtension = request('imagen')->getClientOriginalName();
                 $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);

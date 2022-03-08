@@ -38,6 +38,11 @@
                 </div>
 
                 <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Link red social:</p>
+                    <input name="link" class="input_datosAuthor" type="url" value="{{old('link')}}" required autofocus>
+                </div>
+
+                <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Fecha Nacimiento:</p>
                     <input name="nacimiento" style="margin-left: 0px" class="input_datosAuthor dateAuthor" type="date" value="{{old('nacimiento')}}" autofocus>
                 </div>
