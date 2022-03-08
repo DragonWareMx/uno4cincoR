@@ -133,10 +133,13 @@
     }
 
     .cj-book-border {
-        border-color: #707070;
-        border-radius: 62px;
-        border: 1px;
-        box-shadow: 0px 3px 6px #888888;
+        border: 0.5px solid #c5c5c5;
+        box-sizing: border-box;
+        border-radius: 30px;
+
+        -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+        -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
 
         padding: 50px 20px 50px 20px;
         text-align: center;
@@ -693,8 +696,8 @@
 
                     {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
                     <div class="mensaje">
-                        <p>
-                            Pueden aplicarse gastos de envío,
+                        <p style="color:#2E2E2E; font-size:13px; margin-bottom:17px; font-family:'Montserrat'; font-weight:light">
+                            Pueden aplicarse gastos de envío
                         </p>
                         <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
                         <!-- PayPal Logo --><a title="PayPal"><img
