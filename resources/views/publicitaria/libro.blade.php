@@ -496,11 +496,13 @@
                         </p> --}}
                     </div>
                     <div class="col">
+                        <a href="{{$book->authors[0]->link}}" target="_blank">
                         <button class="shrink cj-button align-top">
-                            Seguir al autor
+                            Seguir al autor 
                             <img class="ml-1" style="width: 18px; height: 18px"
                                 src="{{ asset('assets/fonts/plus.svg') }}" />
                         </button>
+                        </a>
                     </div>
                 </div>
             </div>
