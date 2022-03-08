@@ -65,7 +65,7 @@
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
-        line-height: 18px;
+        line-height: 20px;
         color: #2E2E2E;
         height: 41.6px;
 
