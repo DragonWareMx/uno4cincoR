@@ -246,9 +246,6 @@ header
   top: 0px;
   left: 0px;
   right: 0px;
-  /*¨se debería quitar el box shadow pero de momento se ve bien*/
-  border-bottom: 1px solid #707070;
-  /* box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important; */
 }
 
 .background-header .main-nav .nav li:hover a {
@@ -358,7 +355,7 @@ header
   line-height: 40px;
   border: transparent;
   letter-spacing: 1px;
-  color: #2E2E2E !important;
+  color: #362358 !important;
   font-weight: bold !important;
 }
 
@@ -458,7 +455,7 @@ header
   height: 40px;
   text-indent: -9999em;
   z-index: 99;
-  left: 40px;
+  right: 40px;
   display: none;
 }
 
@@ -485,7 +482,8 @@ header
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  background-color: #1e1e1e;
+  background-color: #362358 !important;
+  /* border: solid 2px red;  */
   display: block;
   position: absolute;
   width: 42px;
@@ -620,9 +618,9 @@ header
     text-align: center;
     float: none!important;
     display: block !important;
-    margin-left: auto !important;
+    /* margin-left: auto !important; */
     margin-right: auto !important;
-    padding-top: 5px !important;
+    padding-top: 12px !important;
 
   }
 .logo2:hover{
@@ -683,7 +681,7 @@ header
     padding: 0px !important;
     border: none !important;
     background: #f1faf7 !important;
-    color: #2E2E2E !important;
+    color: #362358 !important;
     font-family: Montserrat;
     font-size: 25px;
     font-weight: bold;
@@ -1354,7 +1352,7 @@ preloader
   }
 
   .menu-carrito{
-    top: 21px !important;
+    top: 26px !important;
   }
 }
 

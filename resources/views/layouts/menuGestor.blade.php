@@ -41,7 +41,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco">
         <div class="sidebar-brand-icon" style="margin-left:auto;margin-right:auto ">
-          <img src="{{asset('img/logos/blancouno4cinco.png')}}" class="imgMenuGestor" style="width: 126px;height: 38px">
+          <img src="{{asset('img/logos/ElBooke3.png')}}" class="imgMenuGestor" style="width: 126px;height: 38px">
         </div>
       </a>
 

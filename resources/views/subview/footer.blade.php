@@ -2,7 +2,7 @@
 <footer class="footer-distributed" style="background-color: #FAFAFA">
  
     <div class="footer-left">
-      <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/logoNuevo.png') }}"> </a>
+      <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/ElBooke2.png') }}"> </a>
       <p class="footer-company-name" style="margin-top: 15px">© 2022 Editorial uno4cinco</p>
 
       <a href="https://www.dragonware.com.mx" target="blank">

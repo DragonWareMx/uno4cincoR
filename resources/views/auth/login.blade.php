@@ -9,7 +9,7 @@
     <div class="row no-gutter">
       <div class="izq-login d-none d-md-flex col-md-4 col-lg-6 bg-image">
         <div class="div-grandote" >
-          <img src="{{ asset('img/logos/coloresuno4cinco.png') }}" class="logo-login">
+          <img src="{{ asset('img/logos/ElBooke.png') }}" class="logo-login">
           <div class="linea-login"></div>
           <p class="parrafo-login">
             Para todas, arte.

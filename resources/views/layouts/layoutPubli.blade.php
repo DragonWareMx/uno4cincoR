@@ -40,13 +40,14 @@
 <body>
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header">
-        <div class="l-container">
+        <div >
             <div class="row">
                 <div class="col-12">
-                    <nav class="main-nav nav-space-between">
+                    <nav class="main-nav nav-space-between" style="padding: 0px 40px 0px 10px !important">
 
                         <a href="{{ route('inicio') }}" class="logo2">
-                            <img src="{{ asset('img/logos/logoNuevo.png') }}" alt="" srcset="" height="60px">
+                            
+                            <img src="{{ asset('img/logos/ElBooke.png') }}" alt="" srcset="" height="60px">
                         </a>
 
 
@@ -55,16 +56,21 @@
                         <div class="ld-links-header">
                             <ul class="nav">
                                 <li class="">
-                                    <a href="{{ route('carrito') }}" class="">NOSOTROS</a>
+                                    <a href="#!" class="">Nosotros</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('carrito') }}" class="">BLOG</a>
+                                    <a href="#!" class="">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="">Filtros</a>
                                 </li>
                             </ul>
                         </div>
                         <ul class="nav">
                             <li class="carritoli"><a href="{{ route('carrito') }}" class="">
-                                    <img src="{{ asset('img/ico/bolsa.png') }}" alt="" srcset="" width="20px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 32 37">
+                                        <path id="Unión_9" data-name="Unión 9" d="M0,37V12.082H3.81A11.948,11.948,0,0,1,7.38,3.539a12.267,12.267,0,0,1,17.239,0,11.948,11.948,0,0,1,3.57,8.543H32V37ZM25.288,12.082a9.288,9.288,0,0,0-18.575,0Z" fill="#362358"/>
+                                    </svg>
                                     <div class="cargar-info">
                                         @if(session('cart'))
                                         @php
@@ -84,11 +90,13 @@
                                 </a></li>
                         </ul>
                         <a class='menu-trigger'>
-                            <span>Menu</span>
+                            <span >Menu</span>
                         </a>
 
-                        <a class='menu-carrito' href="{{ route('carrito') }}">
-                            <img src="{{ asset('img/ico/bolsa.png') }}" alt="" srcset="" height="30px">
+                        <a class='menu-carrito' href="{{ route('carrito') }}" style="right:110px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 32 37">
+                                <path id="Unión_9" data-name="Unión 9" d="M0,37V12.082H3.81A11.948,11.948,0,0,1,7.38,3.539a12.267,12.267,0,0,1,17.239,0,11.948,11.948,0,0,1,3.57,8.543H32V37ZM25.288,12.082a9.288,9.288,0,0,0-18.575,0Z" fill="#362358"/>
+                            </svg>
                             <div class="cargar-info2">
                                 @if(session('cart'))
                                 <div class="contador-carrito">
