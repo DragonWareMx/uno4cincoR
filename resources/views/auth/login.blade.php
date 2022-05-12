@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-<title>Iniciar Sesión | Editorial uno4cinco</title>
+<title>Iniciar Sesión | ElBooke</title>
 @endsection
 
 @section('content')
@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-          <p class="footer-login">© 2020 Editorial uno4cinco</p>
+          <p class="footer-login">© 2022 Editorial ElBooke</p>
         </div>
       </div>
     </div>

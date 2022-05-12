@@ -2,7 +2,7 @@
 
 @section('header')
 
-    <title>Tienda | Editorial uno4cinco</title>
+    <title>Tienda | ElBooke</title>
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">

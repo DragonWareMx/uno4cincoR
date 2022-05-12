@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Inicio | Editorial uno4cinco</title>
+<title>Inicio | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
 		<!-- Vendors-->

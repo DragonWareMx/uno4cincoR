@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-<title>Olvidé mi contraseña | Editorial uno4cinco</title>
+<title>Olvidé mi contraseña | ElBooke</title>
 <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
 @endsection
 
@@ -10,7 +10,7 @@
     <div class="row no-gutter">
       <div class="izq-login d-none d-md-flex col-md-4 col-lg-6 bg-image">
         <div class="div-grandote" >
-          <img src="{{ asset('img/logos/coloresuno4cinco.png') }}" class="logo-login">
+          <img src="{{ asset('img/logos/ElBooke.png') }}" class="logo-login">
           <div class="linea-login"></div>
           <p class="parrafo-login">
             Para todas, arte.
@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <p class="footer-login">© 2020 Editorial uno4cinco</p>
+          <p class="footer-login">© 2022 Editorial ElBooke</p>
         </div>
       </div>
     </div>

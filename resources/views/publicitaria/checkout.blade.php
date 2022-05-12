@@ -18,7 +18,7 @@
 
         <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
 
-        <title>Checkout | Editorial uno4cinco</title>
+        <title>Checkout | ElBooke</title>
 
         <script src="https://js.stripe.com/v3/"></script>
     </head>

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dashboard | Editorial uno4cinco</title>
+  <title>Dashboard | ElBooke</title>
 
   <link rel="icon" href="{{asset('/img/ico/puerta.png')}}" type="image/icon type">
 

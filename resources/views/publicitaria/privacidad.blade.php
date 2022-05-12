@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Política de privacidad | Editorial uno4cinco</title>
+<title>Política de privacidad | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 

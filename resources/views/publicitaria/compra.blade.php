@@ -16,7 +16,7 @@
 
         <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
 
-        <title>Checkout | Editorial uno4cinco</title>
+        <title>Checkout | ElBooke</title>
 
     </head>
     <body>
@@ -44,7 +44,7 @@
                     <div class="compra-header">
                         <div style="width: 100%">
                             <a href="{{ route('inicio') }}" class="logo">
-                                <img src="{{ asset('img/logos/logoNuevo.png') }}">
+                                <img src="{{ asset('img/logos/ElBooke.png') }}">
                             </a>
                         </div>
                         <hr>

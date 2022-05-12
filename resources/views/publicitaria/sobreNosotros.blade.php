@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Quiénes somos | Editorial uno4cinco</title>
+<title>Quiénes somos | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

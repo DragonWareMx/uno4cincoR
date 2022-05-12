@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Registro | Editorial uno4cinco</title>
+<title>Registro | ElBooke</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">

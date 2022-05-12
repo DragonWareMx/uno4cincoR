@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Costo Edición | Editorial uno4cinco</title>
+<title>Costo Edición | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/contacto.css">

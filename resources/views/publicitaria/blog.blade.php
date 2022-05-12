@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Blogs | Editorial uno4cinco</title>
+<title>Blogs | ElBooke</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style_Autores.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/blogs.css">

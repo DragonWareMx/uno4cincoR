@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Error | Editorial uno4cinco</title>
+<title>Error | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/style_SobreNosotros.css">
 

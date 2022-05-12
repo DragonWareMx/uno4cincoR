@@ -1,7 +1,7 @@
 @extends('layouts.layoutPubli')
 
 @section('header')
-<title>Carrito | Editorial uno4cinco</title>
+<title>Carrito | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/carrito.css')}}">
