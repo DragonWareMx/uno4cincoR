@@ -95,6 +95,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/costo-edicion',function(){
+    return view('publicitaria.costoEdicion'); 
+})->name('costoEdicion');
+
 Route::get('/adminuno4cinco',function(){
     return view('gestor.inicio'); 
 })->name('gestorInicio')->middleware('auth');
