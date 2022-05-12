@@ -66,7 +66,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <ul class="nav">
+                        <ul class="nav" style="right:100px">
                             <li class="carritoli"><a href="{{ route('carrito') }}" class="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 32 37">
                                         <path id="Unión_9" data-name="Unión 9" d="M0,37V12.082H3.81A11.948,11.948,0,0,1,7.38,3.539a12.267,12.267,0,0,1,17.239,0,11.948,11.948,0,0,1,3.57,8.543H32V37ZM25.288,12.082a9.288,9.288,0,0,0-18.575,0Z" fill="#362358"/>

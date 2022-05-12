@@ -3,7 +3,7 @@
  
     <div class="footer-left">
       <a href="{{ route('inicio') }}"> <img class="logo145" src="{{ asset('img/logos/ElBooke2.png') }}"> </a>
-      <p class="footer-company-name" style="margin-top: 15px">© 2022 Editorial uno4cinco</p>
+      <p class="footer-company-name" style="margin-top: 15px">© 2022 ElBooke</p>
 
       <a href="https://www.dragonware.com.mx" target="blank">
         <p class="footer-company-name dragonware-name">Desarrollado por DragonWare <img class="logodragon" src="{{ asset('img/logos/dragonware.png') }}"></p>
@@ -13,7 +13,7 @@
     <div class="footer-center">
       <div>
         <p class="footer-titulos">
-            PUBLICA CON UNO4CINCO
+            PUBLICA CON ELBOOKE
         </p>    
       </div>
       <div>
