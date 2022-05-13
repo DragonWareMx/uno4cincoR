@@ -359,6 +359,16 @@ header
   font-weight: bold !important;
 }
 
+.a-filter{
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  border: transparent;
+  letter-spacing: 1px;
+  color: #362358 !important;
+  font-weight: bold !important;
+}
+
 .header-area .main-nav .nav li:hover a {
   color: #BA1F00;
 }
