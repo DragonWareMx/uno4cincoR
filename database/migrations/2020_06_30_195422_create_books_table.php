@@ -29,7 +29,11 @@ class CreateBooksTable extends Migration
             $table->tinyInteger('stockDigital');
             $table->tinyInteger('stockAudio')->default(0);
             $table->text('linkDescarga');
+            
             $table->text('linkDemo')->nullable();
+            $table->text('linkDigital')->nullable();
+            $table->text('linkAudio')->nullable();
+
             $table->text('portadaImagen');
             $table->text('bannerImagen');
             $table->text('tiendaImagen');
@@ -37,7 +41,7 @@ class CreateBooksTable extends Migration
             $table->date('fechaPublicacion');
             $table->integer('ventas')->default(0);
             $table->integer('paginas');
-            $table->unsignedBigInteger('sello_id');
+            $table->unsignedBigInteger('sello_id')->nullable();
             $table->foreign('sello_id')
                 ->references('id') 
                 ->on('sellos')

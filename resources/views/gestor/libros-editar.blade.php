@@ -86,7 +86,7 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Costo de envío:</p>
-                    <input name="envio" class="input_datosAuthor" type="number" value="" required autofocus>
+                    <input name="envio" class="input_datosAuthor" type="number" value=""  autofocus>
                 </div>
 
                 <p style="color:#29b390; font-size:11px"><b>FORMATO FÍSICO</b></p>
@@ -133,7 +133,7 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Link de compra:</p>
-                    <input name="link-digital" class="input_datosAuthor" type="text" value="" required autofocus>
+                    <input name="link-digital" class="input_datosAuthor" type="text" value="{{$book->linkDigital}}"autofocus>
                 </div>
 
                 <div class="div_elementosAuthor"  id="digital">
@@ -156,7 +156,7 @@
 
                 <div class="div_elementosAuthor">
                     <p class="txt_datosAuthor">Link de compra:</p>
-                    <input name="link-audiolibro" class="input_datosAuthor" type="text" value="" required autofocus>
+                    <input name="link-audiolibro" class="input_datosAuthor" type="text" value="{{$book->linkAudio}}" autofocus>
                 </div>
 
                 <div class="div_elementosAuthor" id="digital">
@@ -164,14 +164,14 @@
                         <p class="txt_datosAuthor" style="width:auto">Precio Audiolibro:</p>
                         <input id="precioaudiolibro" name="precioaudiolibro" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value=" "  >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{$book->precioAudio}}"  >
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
                         <p class="txt_datosAuthor">Oferta Audiolibro %:</p>
                         <input id="ofertaaudiolibro" name="ofertaaudiolibro" class="input_datosAuthor input_datosAuthor50" type="number" min="0" pattern="^[0-9]+" 
                         onpaste="return false;" onDrop="return false;" autocomplete=off
-                        onkeypress="return solonumerosdecimales(event)" step="any" value="" >
+                        onkeypress="return solonumerosdecimales(event)" step="any" value="{{$book->descuentoAudio}}" >
                     </div>
                 </div>
 

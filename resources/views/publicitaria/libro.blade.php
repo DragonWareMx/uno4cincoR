@@ -127,6 +127,11 @@
         -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
         -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
         box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
+        text-decoration: none !important;
+    }
+    .cj-button-bolsa:hover{
+        text-decoration: none !important;
+        color: white !important;
     }
 
     .cj-scroll {
@@ -529,7 +534,8 @@
                             </span>
                         </div>
                     </div>
-                    <div class="button-purchase">
+                    @if ($book->linkDigital)
+                    <a class="button-purchase" href="{{$book->linkDigital}}" target="_blank">
                         <div class="inside-button">
                             <span class="text1">Libro digital:</span>
                             <span class="text2">
@@ -543,19 +549,35 @@
                                     @endif
                             </span>
                         </div>
-                    </div>
-                    <div class="button-purchase">
+                    </a>
+                    @endif
+
+                    @if ($book->linkAudio)
+                    <a class="button-purchase" href="{{$book->linkAudio}}" target="_blank">
                         <div class="inside-button">
                             <span class="text1">Audio libro:</span>
-                            <span class="text2">$500</span>
+                            <span class="text2">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioAudio <= 0) Gratis @else @if($book->descuentoAudio > 0)
+                                    ${{ number_format($book->precioAudio -
+                                    $book->precioAudio*($book->descuentoAudio/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioAudio, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
                         </div>
-                    </div>
-                    <div class="button-purchase">
+                    </a>
+                    @endif
+
+                    @if ($book->linkDemo)
+                    <a class="button-purchase" href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank">
                         <div class="inside-button">
                             <span class="text1">Prueba el libro:</span>
                             <span class="text2">GRATIS</span>
                         </div>
-                    </div>
+                    </a>
+                    @endif
                 </div>
             </div>
 
@@ -573,7 +595,7 @@
                     <div class="row">
                         <div class="col" style="padding: 0px">
                             <p class="cj-info2 align-middle">
-                                <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }}
+                                {{-- <b style="font-weight: bold">Editorial: </b> {{ $book->sello->nombre }} --}}
                             </p>
                         </div>
                         <div class="col" style="padding: 0px">
@@ -669,7 +691,7 @@
                     </div>
                     @endif
 
-                    @if ($book->stockDigital > 0)
+                    @if ($book->linkDigital)
                     <div class="row cj-book-price">
                         <p class="cj-titulo">Libro Digital:
                             <span style="color: #1FC6AC">
@@ -685,9 +707,31 @@
                         </p>
                     </div>
                     <div class="row">
-                        <button class="shrink cj-button-bolsa" id="agregarBolsaDigital">
+                        <a class="shrink cj-button-bolsa" href="{{$book->linkDigital}}" target="_blank">
                             Agregar a la bolsa
-                        </button>
+                        </a>
+                    </div>
+                    @endif
+
+                    @if ($book->linkAudio)
+                    <div class="row cj-book-price">
+                        <p class="cj-titulo">Audio Libro:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioAudio <= 0) Gratis @else @if($book->descuentoAudio > 0)
+                                    ${{ number_format($book->precioAudio -
+                                    $book->precioAudio*($book->descuentoAudio/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioAudio, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <a class="shrink cj-button-bolsa" href="{{$book->linkAudio}}" target="_blank">
+                            Agregar a la bolsa
+                        </a>
                     </div>
                     @endif
 
