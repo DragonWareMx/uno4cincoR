@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::get('/','paginaInicioController@tinyversion')->name('inicio');
-Route::get('/contacto','paginaInicioController@contacto')->name('contacto');
-Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobreNosotros');
-Route::get('/registro','paginaInicioController@registro')->name('registro');
-Route::get('/blogs/{id}','paginaBlogsController@index')->name('blogs'); 
-Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
-Route::get('/autores-uno4cinco','paginaAutoresController@uno4cinco')->name('autoresUno4cinco');
-Route::get('/autores-145','paginaAutoresController@autores145')->name('autores145'); 
-Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
+// Route::get('/contacto','paginaInicioController@contacto')->name('contacto');
+// Route::get('/quienes-somos','paginaInicioController@sobreNosotros')->name('sobreNosotros');
+// Route::get('/registro','paginaInicioController@registro')->name('registro');
+// Route::get('/blogs/{id}','paginaBlogsController@index')->name('blogs'); 
+// Route::get('/blog/{id}','paginaBlogsController@show')->name('blog');
+// Route::get('/autores-uno4cinco','paginaAutoresController@uno4cinco')->name('autoresUno4cinco');
+// Route::get('/autores-145','paginaAutoresController@autores145')->name('autores145'); 
+// Route::get('/autor-leer/{id}','paginaAutoresController@index')->name('autor');
 
 /* RUTAS DE LA TIENDA Y EL CARRITO */
 Route::get('/tienda-novedades','paginaTiendaController@index')->name('tiendaNovedades');
