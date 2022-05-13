@@ -186,8 +186,8 @@ class gestorLibrosController extends Controller
         $data=request()->validate([
             'titulo'=>'required|max:65535',
             'autor'=>'required',
-            'sello'=>'required',
-            'formato'=>'required',
+            // 'sello'=>'required',
+            // 'formato'=>'required',
             'estatus'=>'required',
             'ejemplares'=>'nullable|numeric',
             'preciofisico'=>'nullable|numeric',
@@ -204,7 +204,12 @@ class gestorLibrosController extends Controller
             'imagenPortada'=>'nullable|image',
             'imagenTienda'=>'nullable|image',
             'imagenBanner'=>'nullable|image',
-            'imagenExtra.*'=>'image'
+            'imagenExtra.*'=>'image',
+
+            'link-digital'=>'nullable',
+            'link-audiolibro'=>'nullable',
+            'precioaudiolibro'=>'nullable|numeric',
+            'ofertaaudiolibro'=>'nullable|numeric',
         ]);
 
         $book=Book::findOrFail($id);
@@ -215,7 +220,7 @@ class gestorLibrosController extends Controller
         $book->paginas=request('paginas');
         $book->fechaPublicacion=request('publicacion');
         $book->sinopsis=request('sinopsis');
-        $book->sello_id=request('sello');
+        // $book->sello_id=request('sello');
         if(request('coleccion')){
             $book->collection_id=request('coleccion');
         }
@@ -243,8 +248,14 @@ class gestorLibrosController extends Controller
         if (request('ofertadigital')){  $book->descuentoDigital=request('ofertadigital');}
         else{   $book->descuentoDigital=0;}
         $book->sinopsis=request('sinopsis');
+        if (request('precioaudiolibro')){  $book->precioAudio=request('precioaudiolibro');}
+        else{   $book->precioDigital=0; }
+        if (request('ofertaaudiolibro')){   $book->descuentoAudio=request('ofertaaudiolibro');}
+        else{   $book->descuentoFisico=0;}
         if(request('ejemplares')){  $book->stockFisico=request('ejemplares');}
         else{   $book->stockFisico=0;}
+        $book->linkDigital  = request('link-digital');
+        $book->linkAudio  = request('link-audiolibro');
         $book->stockDigital=request('estatus');
 
         // LINK DESCARGA---------------------------------------------------
