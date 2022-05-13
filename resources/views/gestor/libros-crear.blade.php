@@ -178,6 +178,16 @@
                     <input id="imagenExtra" class="img_datosAuthor" type="file"  multiple="multiple" name="imagenExtra[]" value="{{old('imagenExtra[]')}}">
                 </div>
 
+                <div class="div_elementosAuthor" style="margin-bottom: 25px">
+                    <p class="txt_datosAuthor">Sinopsis:</p>
+                    <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
+                </div>
+
+                <div class="div_elementosAuthor" id="archivoLibroDiv"">
+                    <p class="txt_datosAuthor">Demo libro:</p>
+                    <input id="archivoLibro" class="img_datosAuthor" type="file"  name="archivoLibro" value="{{old('archivoLibro')}}">
+                </div>
+
                 <!-- <div class="div_elementosAuthor">
                     <div class="div_elementosAuthor50">
                         <p class="txt_datosAuthor" style="width:auto">Sello:</p>
@@ -210,21 +220,7 @@
                             </select>
                         </div>
                     </div>
-                @endif
-                
-                
-                <div class="div_elementosAuthor" style="margin-bottom: 25px">
-                    <p class="txt_datosAuthor">Sinopsis:</p>
-                    <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required ></textarea>
-                </div>
-
-                <div class="div_elementosAuthor" id="archivoLibroDiv"">
-                    <p class="txt_datosAuthor">Demo libro:</p>
-                    <input id="archivoLibro" class="img_datosAuthor" type="file"  name="archivoLibro" value="{{old('archivoLibro')}}">
-                </div>
-
-                
-
+                @endif                
 
                 <div class="botones_blog_100">
                     <div class="botones_blog_derecha">
