@@ -14,7 +14,7 @@
         <!-- Fuentes -->
         <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
-        <link rel="icon" href="{{ asset('/img/ico/puerta.png') }}" type="image/icon type">
+        <link rel="icon" href="{{ asset('/img/ico/ebook.png') }}" type="image/icon type">
 
         <title>Checkout | ElBooke</title>
 

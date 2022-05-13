@@ -8,6 +8,7 @@ use App\Author;
 use App\Book;
 use App\Image;
 use App\Blog;
+use App\Genre;
 
 class paginaInicioController extends Controller
 {
