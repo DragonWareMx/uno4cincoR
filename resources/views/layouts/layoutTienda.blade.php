@@ -485,7 +485,6 @@ $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_
 
         function agregarLibro(id){
              //SE OBTIENE LA CANTIDAD
-            console.log("a ver")
            var cantidad = 1;
 
             var libro = getLibro(id);
