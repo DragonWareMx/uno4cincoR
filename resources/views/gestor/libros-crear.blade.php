@@ -80,6 +80,11 @@
                     <input name="publicacion" class="input_datosAuthor dateAuthor" type="date" value="{{old('publicacion')}}" required >
                 </div>
 
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Costo de envío:</p>
+                    <input name="envio" class="input_datosAuthor" type="number" value="" required autofocus>
+                </div>
+
                 <p style="color:#29b390; font-size:11px"><b>FORMATO FÍSICO</b></p>
 
                 <div class="div_elementosAuthor">
