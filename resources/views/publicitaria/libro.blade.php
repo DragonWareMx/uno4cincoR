@@ -43,8 +43,8 @@
         font-size: 18px;
         line-height: 28px;
         color: #2E2E2E;
-        padding-left:15px;
-        margin-top:20px;
+        padding-left: 15px;
+        margin-top: 20px;
         height: 41.6px;
     }
 
@@ -138,9 +138,9 @@
         box-sizing: border-box;
         border-radius: 30px;
 
-        -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-        -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+        -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
 
         padding: 50px 20px 50px 20px;
         text-align: center;
@@ -501,11 +501,11 @@
                     </div>
                     <div class="col">
                         <a href="{{$book->authors[0]->link}}" target="_blank">
-                        <button class="shrink cj-button align-top">
-                            Seguir al autor 
-                            <img class="ml-1" style="width: 18px; height: 18px"
-                                src="{{ asset('assets/fonts/plus.svg') }}" />
-                        </button>
+                            <button class="shrink cj-button align-top">
+                                Seguir al autor
+                                <img class="ml-1" style="width: 18px; height: 18px"
+                                    src="{{ asset('assets/fonts/plus.svg') }}" />
+                            </button>
                         </a>
                     </div>
                 </div>
@@ -514,16 +514,34 @@
             {{-- BOTONES COMPRA CELULAR --}}
             <div class="col ld-inverso" id="col-carrusel">
                 <div class="container-buttons">
-                    <div class="button-purchase">
+                    <div class="button-purchase" id="agregarBolsaFisicoMobile">
                         <div class="inside-button">
                             <span class="text1">Libro físico:</span>
-                            <span class="text2">$500</span>
+                            <span class="text2">
+                                @if($book->precioFisico <= 0) Gratis @else {{-- Si no entonces se muestra el precio --}}
+                                    @if($book->descuentoFisico > 0)
+                                    ${{ number_format($book->precioFisico -
+                                    $book->precioFisico*($book->descuentoFisico/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioFisico, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
                         </div>
                     </div>
                     <div class="button-purchase">
                         <div class="inside-button">
                             <span class="text1">Libro digital:</span>
-                            <span class="text2">$500</span>
+                            <span class="text2">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
+                                    ${{ number_format($book->precioDigital -
+                                    $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
                         </div>
                     </div>
                     <div class="button-purchase">
@@ -644,7 +662,8 @@
                         <p class="cj-titulo">Prueba el libro: <span style="color: #1FC6AC">GRATIS</span></p>
                     </div>
                     <div class="row">
-                        <a class="shrink cj-button-bolsa" href="{{asset('storage/libros/'.$book->linkDemo)}}" target="_blank" style="text-decoration: none; color: white;">
+                        <a class="shrink cj-button-bolsa" href="{{asset('storage/libros/'.$book->linkDemo)}}"
+                            target="_blank" style="text-decoration: none; color: white;">
                             Agregar a la bolsa
                         </a>
                     </div>
@@ -697,7 +716,8 @@
 
                     {{-- EN CASO DE QUE EL LIBRO ESTÉ DISPONIBLE SE MUESTRA EL SIGUIENTE MENSAJE --}}
                     <div class="mensaje">
-                        <p style="color:#2E2E2E; font-size:13px; margin-bottom:17px; font-family:'Montserrat'; font-weight:light">
+                        <p
+                            style="color:#2E2E2E; font-size:13px; margin-bottom:17px; font-family:'Montserrat'; font-weight:light">
                             Pueden aplicarse gastos de envío
                         </p>
                         <a title="Stripe"><img src="{{asset('img/ico/stripe.png')}}" width="50%"></a>
@@ -1564,7 +1584,68 @@
 
     $("#agregarBolsaFisico").click(function (e) {
         e.preventDefault();
-        
+
+        var cantidad;
+        //SE OBTIENE LA CANTIDAD
+        if(carrito && carrito[seleccionado]  && parseInt(carrito[seleccionado]['cantidadFisico']) > 0){
+            cantidad = parseInt(carrito[seleccionado]['cantidadFisico']) * 1 + 1;
+        }
+        else
+            cantidad = 1;
+
+
+
+        var libro = @json($book);
+        var max = libro['stockFisico'];
+
+        if(cantidad > max)
+            cantidad = max;
+
+        //verificar que la cantidad sea numerica
+        if(isNaN(cantidad)){
+            return;
+        }
+
+        if(cantidad > 0){
+            var x = window.matchMedia("(max-width: 991px)");
+            $.ajax({
+                url: '/agregar-a-carrito/'+seleccionado+'/'+cantidad+'/fisico',
+                method: "get",
+                success: function (response) {
+                    if(carrito){
+                        if(carrito[seleccionado]){
+                            if(carrito[seleccionado]['cantidadFisico'] > 0){
+                                showTooltip("Producto actualizado");
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                            }
+                            else{
+                                showTooltip("Producto agregado");
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                            }
+                        }
+                        else{
+                            carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
+                            showTooltip("Producto agregado");
+                        }
+                    }
+                    else{
+                        var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
+                        carrito = JSON.parse(jsonSt);
+                        showTooltip("Producto agregado");
+                    }
+                    carritoCant(x);
+
+                    if(comraA)
+                        window.location.replace('{{ route('carrito') }}');
+                    return;
+                }
+            });
+        }
+    });
+
+    $("#agregarBolsaFisicoMobile").click(function (e) {
+        e.preventDefault();
+
         var cantidad;
         //SE OBTIENE LA CANTIDAD
         if(carrito && carrito[seleccionado]  && parseInt(carrito[seleccionado]['cantidadFisico']) > 0){

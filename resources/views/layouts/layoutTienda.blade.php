@@ -2,217 +2,174 @@
 
 @section('header')
 
-    <title>Tienda | ElBooke</title>
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
+<title>Tienda | ElBooke</title>
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/blogs.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/tienda.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assetsTimer/fonts/fontawesome/font-awesome.min.css">
 
-            <!-- Vendors-->
-            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
-            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
-            <link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
-            <!-- App & fonts-->
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
-            <link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css"><!--[if lt IE 9] -->
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<!-- Vendors-->
+<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/bootstrap/grid.css">
+<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css">
+<link rel="stylesheet" type="text/css" href="assetsTimer/vendors/vegas/vegas.min.css">
+<!-- App & fonts-->
+<link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
+<link rel="stylesheet" type="text/css" id="app-stylesheet" href="assetsTimer/css/main.css">
+<!--[if lt IE 9] -->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 
-    <!--hoja de estilos-->
-    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
+<!--hoja de estilos-->
+<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" type="text/css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 @endsection
 
 @section('content')
-    {{-- Verifica que existan colecciones --}}
-    @php                           
-        use App\Collection;
-        use App\Genre;
+{{-- Verifica que existan colecciones --}}
+@php
+use App\Collection;
+use App\Genre;
 
-        //Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
-        //esto se hace porque usar paginate con select distinct causa problemas
-        $collectionsIdsV2 = Collection::select('collections.id')
-                                    ->join('books', 'books.collection_id', '=', 'collections.id')
-                                    ->distinct()
-                                    ->pluck('id')->toArray();
-        //obtiene las colecciones
-        $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_at','Desc')->get();
-    @endphp
-    @yield('bannerinicio')
-    <section class="section" id="about" style="width:100%; height:100%; background-color:white">
+//Obtiene unicamente las colecciones que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo
+//de IDs
+//esto se hace porque usar paginate con select distinct causa problemas
+$collectionsIdsV2 = Collection::select('collections.id')
+->join('books', 'books.collection_id', '=', 'collections.id')
+->distinct()
+->pluck('id')->toArray();
+//obtiene las colecciones
+$collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_at','Desc')->get();
+@endphp
+@yield('bannerinicio')
+<section class="section" id="about" style="width:100%; height:100%; background-color:white">
 
-        {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
-        @yield('carrusel')
+    {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
+    @yield('carrusel')
 
-        <div class="blog_encabezado">
-            
-            @if(!Route::is('tiendaNovedades') && !Route::is('colecciones') && !Route::is('coleccion'))
-                {{-- <form class="" action="" method="GET" enctype="multipart/form-data" >
-                    <div class="blog_barra_busqueda">
-                        @if(!Route::is('colecciones'))
-                            <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                                <option value="titulo" @if(request('clasificacion') == "titulo") selected @endif>Título</option>
-                                <option value="autor" @if(request('clasificacion') == "autor") selected @endif>Autor</option>
-                                <option value="precio" @if(request('clasificacion') == "precio") selected @endif>Precio</option>
-                                <option value="contenido" @if(request('clasificacion') == "contenido") selected @endif>Contenido</option>
-                                <option value="genero" @if(request('clasificacion') == "genero") selected @endif>Género</option>
-                                
-                                @if(count($collectionsV2) > 0)
-                                    <option value="collecion" @if(request('clasificacion') == "collecion") selected @endif>Collección</option>
-                                @endif
-                            </select>
-                        @else
-                            <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
-                                <option value="colecciones" @if(request('clasificacion') == "colecciones") selected @endif>Colección</option>
-                            </select>
-                        @endif
-                    <input type="text" id="busqueda_busqueda" class ="" name="busqueda" value="{{ request('busqueda') }}">
-                        <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
-                    </div>
-                </form> --}}
+    <div class="blog_encabezado">
 
-                <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" class="filter-margin">
-                    <div class="blog_barra_busqueda_tienda" style="border:none">
-                        <p>Filtrar: </p>
-                        <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f" onchange="this.form.submit()">
-                            <option value="titulo"
-                            @if(isset($_REQUEST["filtro"]))
-                                @if($_REQUEST["filtro"] == "titulo" || ($_REQUEST["filtro"] != "titulo" && $_REQUEST["filtro"] != "autor" && $_REQUEST["filtro"] != "genero"))
-                                    selected
-                                @endif
-                            @else
-                                selected 
-                            @endif>Título</option>
-                            <option value="autor" 
-                            @if(isset($_REQUEST["filtro"]))
-                                @if($_REQUEST["filtro"] == "autor")
-                                    selected
-                                @endif
-                            @endif>Autor</option>
-                            <option value="genero"
-                            @if(isset($_REQUEST["filtro"]))
-                                @if($_REQUEST["filtro"] == "genero")
-                                    selected
-                                @endif
-                            @endif>Género</option>
-                            @if(count($collectionsV2) > 0)
-                                <option value="coleccion"
-                                @if(isset($_REQUEST["filtro"]))
-                                    @if($_REQUEST["filtro"] == "coleccion")
-                                        selected
-                                    @endif
-                                @endif>Collección</option>
-                            @endif
-                        </select>
+        @if(!Route::is('tiendaNovedades') && !Route::is('colecciones') && !Route::is('coleccion'))
+        {{-- <form class="" action="" method="GET" enctype="multipart/form-data">
+            <div class="blog_barra_busqueda">
+                @if(!Route::is('colecciones'))
+                <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                    <option value="titulo" @if(request('clasificacion')=="titulo" ) selected @endif>Título</option>
+                    <option value="autor" @if(request('clasificacion')=="autor" ) selected @endif>Autor</option>
+                    <option value="precio" @if(request('clasificacion')=="precio" ) selected @endif>Precio</option>
+                    <option value="contenido" @if(request('clasificacion')=="contenido" ) selected @endif>Contenido
+                    </option>
+                    <option value="genero" @if(request('clasificacion')=="genero" ) selected @endif>Género</option>
 
-                        @if(isset($_REQUEST["filtro"]))
-                            @if($_REQUEST["filtro"] == "genero")
-                                <p>Seleccionar género: </p>
-                                @php
-                                    //Obtiene unicamente los generos que se encuentren relacionadas con al menos un libro y lo convierte en un arreglo de IDs
-                                    //esto se hace porque usar paginate con select distinct causa problemas
-                                    $genresIDS = Genre::select('genres.id')
-                                                                ->Join('book_genre', 'genres.id', '=', 'book_genre.genre_id')
-                                                                ->distinct()
-                                                                ->pluck('id')->toArray();
-                                    //obtiene los generos
-                                    $genres = Genre::whereIn('id', $genresIDS)->orderBy('created_at','Desc')->get();
-                                    $primero = true;
-                                @endphp
-                                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
-                                    @foreach ($genres as $genre)
-                                        <option value="{{ $genre->id }}" 
-                                        @if(isset($_REQUEST["orden"]) && !is_numeric($_REQUEST["orden"]) && $primero)
-                                            selected
-                                            @php
-                                                $primero = false;
-                                            @endphp
-                                        @elseif(isset($_REQUEST["orden"]) && $_REQUEST["orden"] == $genre->id)
-                                            selected
-                                        @endif>{{ $genre->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            @else
-                                <p>Ordenar Por: </p>
-                                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
-                                    <option value="az" 
-                                    @if(isset($_REQUEST["orden"]))
-                                        @if($_REQUEST["orden"] == "az" || ($_REQUEST["orden"] != "az" && $_REQUEST["orden"] != "za" && $_REQUEST["orden"] != "ant" && $_REQUEST["orden"] != "nue"))
-                                            selected
-                                        @endif
-                                    @else
-                                        selected
-                                    @endif>A-Z</option>
-                                    <option value="za"
-                                    @if(isset($_REQUEST["orden"]))
-                                        @if($_REQUEST["orden"] == "za")
-                                            selected
-                                        @endif
-                                    @endif>Z-A</option>
-                                    <option value="ant"
-                                    @if(isset($_REQUEST["orden"]))
-                                        @if($_REQUEST["orden"] == "ant")
-                                            selected
-                                        @endif
-                                    @endif>Más antiguos</option>
-                                    <option value="nue"
-                                    @if(isset($_REQUEST["orden"]))
-                                        @if($_REQUEST["orden"] == "nue")
-                                            selected
-                                        @endif
-                                    @endif>Más Nuevos</option>
-                                </select>
-                            @endif
-                        @else
-                            <p>Ordenar Por: </p>
-                            <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs" onchange="this.form.submit()">
-                                <option value="az" 
-                                @if(isset($_REQUEST["orden"]))
-                                    @if($_REQUEST["orden"] == "az" || ($_REQUEST["orden"] != "az" && $_REQUEST["orden"] != "za" && $_REQUEST["orden"] != "ant" && $_REQUEST["orden"] != "nue"))
-                                        selected
-                                    @endif
-                                @else
-                                    selected
-                                @endif>A-Z</option>
-                                <option value="za"
-                                @if(isset($_REQUEST["orden"]))
-                                    @if($_REQUEST["orden"] == "za")
-                                        selected
-                                    @endif
-                                @endif>Z-A</option>
-                                <option value="ant"
-                                @if(isset($_REQUEST["orden"]))
-                                    @if($_REQUEST["orden"] == "ant")
-                                        selected
-                                    @endif
-                                @endif>Más antiguos</option>
-                                <option value="nue"
-                                @if(isset($_REQUEST["orden"]))
-                                    @if($_REQUEST["orden"] == "nue")
-                                        selected
-                                    @endif
-                                @endif>Más Nuevos</option>
-                            </select>
-                        @endif
-                    </div>
-                </form>
-            @endif
-        </div>
+                    @if(count($collectionsV2) > 0)
+                    <option value="collecion" @if(request('clasificacion')=="collecion" ) selected @endif>Collección
+                    </option>
+                    @endif
+                </select>
+                @else
+                <select class="busqueda_clasificacion" name="clasificacion" id="tipos_blogs">
+                    <option value="colecciones" @if(request('clasificacion')=="colecciones" ) selected @endif>Colección
+                    </option>
+                </select>
+                @endif
+                <input type="text" id="busqueda_busqueda" class="" name="busqueda" value="{{ request('busqueda') }}">
+                <button type="submit" class="busqueda_boton"><i class="fas fa-search"></i></button>
+            </div>
+        </form> --}}
 
-        @yield('contenidoTienda')
-    </section>
+        <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" class="filter-margin">
+            <div class="blog_barra_busqueda_tienda" style="border:none">
+                <p>Filtrar: </p>
+                <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f"
+                    onchange="this.form.submit()">
+                    <option value="titulo" @if(isset($_REQUEST["filtro"])) @if($_REQUEST["filtro"]=="titulo" ||
+                        ($_REQUEST["filtro"] !="titulo" && $_REQUEST["filtro"] !="autor" && $_REQUEST["filtro"]
+                        !="genero" )) selected @endif @else selected @endif>Título</option>
+                    <option value="autor" @if(isset($_REQUEST["filtro"])) @if($_REQUEST["filtro"]=="autor" ) selected
+                        @endif @endif>Autor</option>
+                    <option value="genero" @if(isset($_REQUEST["filtro"])) @if($_REQUEST["filtro"]=="genero" ) selected
+                        @endif @endif>Género</option>
+                    @if(count($collectionsV2) > 0)
+                    <option value="coleccion" @if(isset($_REQUEST["filtro"])) @if($_REQUEST["filtro"]=="coleccion" )
+                        selected @endif @endif>Collección</option>
+                    @endif
+                </select>
 
-    <div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
+                @if(isset($_REQUEST["filtro"]))
+                @if($_REQUEST["filtro"] == "genero")
+                <p>Seleccionar género: </p>
+                @php
+                //Obtiene unicamente los generos que se encuentren relacionadas con al menos un libro y lo convierte en
+                //un arreglo de IDs
+                //esto se hace porque usar paginate con select distinct causa problemas
+                $genresIDS = Genre::select('genres.id')
+                ->Join('book_genre', 'genres.id', '=', 'book_genre.genre_id')
+                ->distinct()
+                ->pluck('id')->toArray();
+                //obtiene los generos
+                $genres = Genre::whereIn('id', $genresIDS)->orderBy('created_at','Desc')->get();
+                $primero = true;
+                @endphp
+                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs"
+                    onchange="this.form.submit()">
+                    @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}" @if(isset($_REQUEST["orden"]) && !is_numeric($_REQUEST["orden"]) &&
+                        $primero) selected @php $primero=false; @endphp @elseif(isset($_REQUEST["orden"]) &&
+                        $_REQUEST["orden"]==$genre->id)
+                        selected
+                        @endif>{{ $genre->nombre}}</option>
+                    @endforeach
+                </select>
+                @else
+                <p>Ordenar Por: </p>
+                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs"
+                    onchange="this.form.submit()">
+                    <option value="az" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="az" ||
+                        ($_REQUEST["orden"] !="az" && $_REQUEST["orden"] !="za" && $_REQUEST["orden"] !="ant" &&
+                        $_REQUEST["orden"] !="nue" )) selected @endif @else selected @endif>A-Z</option>
+                    <option value="za" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="za" ) selected @endif
+                        @endif>Z-A</option>
+                    <option value="ant" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="ant" ) selected @endif
+                        @endif>Más antiguos</option>
+                    <option value="nue" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="nue" ) selected @endif
+                        @endif>Más Nuevos</option>
+                </select>
+                @endif
+                @else
+                <p>Ordenar Por: </p>
+                <select class="busqueda_clasificacion busquedaTienda" name="orden" id="tipos_blogs"
+                    onchange="this.form.submit()">
+                    <option value="az" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="az" ||
+                        ($_REQUEST["orden"] !="az" && $_REQUEST["orden"] !="za" && $_REQUEST["orden"] !="ant" &&
+                        $_REQUEST["orden"] !="nue" )) selected @endif @else selected @endif>A-Z</option>
+                    <option value="za" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="za" ) selected @endif
+                        @endif>Z-A</option>
+                    <option value="ant" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="ant" ) selected @endif
+                        @endif>Más antiguos</option>
+                    <option value="nue" @if(isset($_REQUEST["orden"])) @if($_REQUEST["orden"]=="nue" ) selected @endif
+                        @endif>Más Nuevos</option>
+                </select>
+                @endif
+            </div>
+        </form>
+        @endif
+    </div>
+
+    @yield('contenidoTienda')
+</section>
+
+<div class="modal fade" id="comprarFormato" tabindex="-1" role="dialog" aria-labelledby="comprarFormatoTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="width: 100%; text-align:center;"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <h6 style="width: 100%; text-align:center; padding-bottom: 7px;">Elige el formato:</h6>
@@ -225,22 +182,24 @@
                                 </div>
                                 <div class="precio" id="precioFisico">
                                     <div class="oferta">
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="ahorro" id="ahorroFisico">
-                                    
+
                                 </div>
                                 <div class="disponibilidad" id="disponibleFisico">
-                                    
+
                                 </div>
                             </div>
                             <div class="cantidad" style="padding-bottom: 20px; height: 71px;">
                                 <p id="cantidad-p">Cantidad: </p>
-                                <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-</div>
-                                    <input type="numeric" id="cantidadFisico" value="1" />
-                                <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+</div>
+                                <div role="button" tabindex="0" class="qty qty-minus botonCantidad" id="menosCarrito">-
+                                </div>
+                                <input type="numeric" id="cantidadFisico" value="1" />
+                                <div role="button" tabindex="0" class="qty qty-plus botonCantidad" id="masCarrito">+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -256,24 +215,24 @@
                                 $100
                             </div>
                             <div class="ahorro" id="ahorroDigital">
-                                
+
                             </div>
                             <div class="disponibilidad" id="disponibleDigital">
-                                
+
                             </div>
                             <div class="cantidad" style="padding-bottom: 20px; height: 71px;" id="cantidadDigital">
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
         </div>
     </div>
+</div>
 
-    <script>
-        var libros = @json($books);
+<script>
+    var libros = @json($books);
         var seleccionado;
         //cada vez que se recarga la página obtenemos el carrito
         var carrito = @json(session()->get('cart'));
@@ -299,16 +258,16 @@
         //separa los numeros por coma y pone dos decimales
         function formatearNumero(numero){
             var parts = numero.toFixed(2).split(".");
-            var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + 
+            var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") +
                 (parts[1] ? "." + parts[1] : "");
 
             return num;
         }
 
         //ABRE EL MODAL PARA ELEGIR EL FORMATO
-        function comprarCarrito(id){ 
+        function comprarCarrito(id){
             var minFisico;
-            var minDigital;  
+            var minDigital;
             var libro = getLibro(id);
 
             //SE OBTIENE EL ID DEL LIBRO SELECCIONADO Y SE GUARDA EN UNA VARIABLE GLOBAL
@@ -454,15 +413,15 @@
         }
 
         //CANTIDAD, BOTON MENOS
-        $('#menosCarrito').click(function(){            
+        $('#menosCarrito').click(function(){
             //se obtiene el numero del input y se hace la resta
             var number = document.getElementById("cantidadFisico").value;
-            
+
             number--;
 
             var libro = getLibro(seleccionado);
             var max = libro['stockFisico'];
-            
+
             //no se deja que la cantidad sea menor a 0
             if(number < 1){
                 number = 1;
@@ -483,9 +442,9 @@
 
             //se obtiene el numero del input y se hace la resta
             var number = document.getElementById("cantidadFisico").value;
-            
+
             number++;
-            
+
             //no se deja que la cantidad sea menor a 0
             if(number > max){
                 number = max;
@@ -500,13 +459,13 @@
         });
 
         //CANTIDAD, INPUT ENTER
-        $("#cantidadFisico").keypress(function(event) { 
-            // Only ASCII charactar in that range allowed 
+        $("#cantidadFisico").keypress(function(event) {
+            // Only ASCII charactar in that range allowed
             var ASCIICode = (event.which) ? event.which : event.keyCode ;
-            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
                 return false;
 
-            if (event.keyCode === 13) { 
+            if (event.keyCode === 13) {
                 var libro = getLibro(seleccionado);
                 var max = libro['stockFisico'];
 
@@ -521,13 +480,65 @@
                 }
 
                 document.getElementById("cantidadFisico").value = number;
-            } 
+            }
         });
+
+        function agregarLibro(id){
+             //SE OBTIENE LA CANTIDAD
+            console.log("a ver")
+           var cantidad = 1;
+
+            var libro = getLibro(id);
+            var max = libro['stockFisico'];
+
+            if(cantidad > max)
+                cantidad = max;
+
+            //verificar que la cantidad sea numerica
+            if(isNaN(cantidad)){
+                return;
+            }
+
+            if(cantidad > 0){
+                var x = window.matchMedia("(max-width: 991px)");
+                $.ajax({
+                    url: 'agregar-a-carrito/'+id+'/'+cantidad+'/fisico',
+                    method: "get",
+                    success: function (response) {
+                        if(carrito){
+                            if(carrito[seleccionado]){
+                                if(carrito[seleccionado]['cantidadFisico'] > 0){
+                                    if(carrito[seleccionado]['cantidadFisico'] != cantidad)
+                                        showTooltip("Producto actualizado");
+                                    else
+                                        showTooltip("Producto ya en el carrito");
+                                }
+                                else{
+                                    showTooltip("Producto agregado");
+                                }
+                                carrito[seleccionado]['cantidadFisico'] = cantidad;
+                            }
+                            else{
+                                carrito[seleccionado] = {"cantidadFisico": cantidad, "cantidadDigital": 0};
+                                showTooltip("Producto agregado");
+                            }
+                        }
+                        else{
+                            var jsonSt = '{"'+seleccionado+'": {"cantidadFisico": "'+cantidad+'","cantidadDigital": "0"}}';
+                            carrito = JSON.parse(jsonSt);
+                            showTooltip("Producto agregado");
+                        }
+                        carritoCant(x);
+                        return;
+                    }
+                });
+            }
+        }
 
         //CUANDO SE SELECCIONA EL FORMATO SE GUARDA EN LA COOKIE
         $("#botonFisico").click(function (e) {
            e.preventDefault();
-           
+
            //SE OBTIENE LA CANTIDAD
            var cantidad = $("#cantidadFisico").val();
 
@@ -580,7 +591,7 @@
 
         $("#botonDigital").click(function (e) {
            e.preventDefault();
-           
+
            //SE OBTIENE LA CANTIDAD
            var cantidad = $("#cantidadDigitalValue").html();
 
@@ -725,7 +736,7 @@
         }
 
         function ordenarFiltro(){
-            
+
         }
-    </script>
+</script>
 @endsection
