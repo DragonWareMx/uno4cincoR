@@ -13,14 +13,14 @@ class userTable extends Seeder
     {
         //
         DB::table('users')->insert([
-            'name'=>'Dragon Ware',
-            'email'=>'DragonWareOficial@hotmail.com',
-            'password'=>bcrypt('viledruid9000')
+            'name' => 'Dragon Ware',
+            'email' => 'DragonWareOficial@hotmail.com',
+            'password' => bcrypt('viledruid9000')
         ]);
         DB::table('users')->insert([
-            'name'=>'Cesar Jordán',
-            'email'=>'cesar.jordan@uno4cinco.com',
-            'password'=>bcrypt('L12@16b2@16')
+            'name' => 'Alex Ramírez',
+            'email' => 'alexsiegart@gmail.com',
+            'password' => bcrypt('Password123')
         ]);
     }
 }
