@@ -257,7 +257,8 @@
   }
 
   .footer-distributed .logodragon{
-      width: 7%;
+      width: 5%;
+      opacity: 0.8;
   }
 
   .footer-distributed .footernav,
