@@ -15,10 +15,11 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('isbn',30)->unique()->nullable();
+            $table->string('isbn', 30)->unique()->nullable();
             $table->text('titulo');
-            $table->string('numEdicion',3);
+            $table->string('numEdicion', 3);
             $table->float('precioFisico');
+            $table->float('costoEnvio');
             $table->float('precioAudio')->nullable();
             $table->float('precioDigital');
             $table->float('descuentoFisico');
@@ -29,7 +30,7 @@ class CreateBooksTable extends Migration
             $table->tinyInteger('stockDigital');
             $table->tinyInteger('stockAudio')->default(0);
             $table->text('linkDescarga');
-            
+
             $table->text('linkDemo')->nullable();
             $table->text('linkDigital')->nullable();
             $table->text('linkAudio')->nullable();
@@ -43,7 +44,7 @@ class CreateBooksTable extends Migration
             $table->integer('paginas');
             $table->unsignedBigInteger('sello_id')->nullable();
             $table->foreign('sello_id')
-                ->references('id') 
+                ->references('id')
                 ->on('sellos')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('collection_id')->nullable();
@@ -54,7 +55,7 @@ class CreateBooksTable extends Migration
             $table->timestamps();
         });
     }
- 
+
     /**
      * Reverse the migrations.
      *

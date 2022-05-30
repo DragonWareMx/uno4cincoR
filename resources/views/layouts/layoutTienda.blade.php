@@ -50,7 +50,7 @@ $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_
     {{-- Aquí va el carrusel, esprar a que agustín lo termine de diseñar --}}
     @yield('carrusel')
 
-    <div class="blog_encabezado">
+    {{-- <div class="blog_encabezado"> --}}
 
         @if(!Route::is('tiendaNovedades') && !Route::is('colecciones') && !Route::is('coleccion'))
         {{-- <form class="" action="" method="GET" enctype="multipart/form-data">
@@ -80,7 +80,9 @@ $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_
             </div>
         </form> --}}
 
-        <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" class="filter-margin">
+
+        {{-- ---------FILTRADO--------------- --}}
+        {{-- <form action="{{ Request::path() }}" method="GET" enctype="multipart/form-data" class="filter-margin">
             <div class="blog_barra_busqueda_tienda" style="border:none">
                 <p>Filtrar: </p>
                 <select class="busqueda_clasificacion busquedaTienda" name="filtro" id="f"
@@ -154,9 +156,9 @@ $collectionsV2 = Collection::whereIn('id', $collectionsIdsV2)->orderBy('created_
                 </select>
                 @endif
             </div>
-        </form>
+        </form> --}}
         @endif
-    </div>
+        {{-- </div> --}}
 
     @yield('contenidoTienda')
 </section>
