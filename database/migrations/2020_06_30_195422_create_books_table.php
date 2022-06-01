@@ -22,9 +22,9 @@ class CreateBooksTable extends Migration
             $table->float('costoEnvio');
             $table->float('precioAudio')->nullable();
             $table->float('precioDigital');
-            $table->float('descuentoFisico');
-            $table->float('descuentoDigital');
-            $table->float('descuentoAudio');
+            $table->float('descuentoFisico')->default(0);;
+            $table->float('descuentoDigital')->default(0);;
+            $table->float('descuentoAudio')->default(0);;
             $table->text('sinopsis');
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
@@ -35,9 +35,9 @@ class CreateBooksTable extends Migration
             $table->text('linkDigital')->nullable();
             $table->text('linkAudio')->nullable();
 
-            $table->text('portadaImagen');
-            $table->text('bannerImagen');
-            $table->text('tiendaImagen');
+            $table->text('portadaImagen')->default('');
+            $table->text('bannerImagen')->default('');
+            $table->text('tiendaImagen')->default('');
             $table->boolean('nuevo')->default(0);
             $table->date('fechaPublicacion');
             $table->integer('ventas')->default(0);

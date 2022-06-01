@@ -66,8 +66,11 @@ class CheckoutController extends Controller
             }
             $content = json_encode($contents);
 
+
+            $totalStripe = (float)$request->subtotal + (float)$request->total;
+
             $charge = Stripe::charges()->create([
-                'amount' => $request->total,
+                'amount' => $totalStripe,
                 'currency' => 'MXN',
                 'source' => $request->stripeToken,
                 'description' => 'Compra en elbooke.com',
@@ -79,49 +82,6 @@ class CheckoutController extends Controller
             ]);
 
             //SUCCESSFUL
-            //Este if es donde empieza el código que me mandó adrian
-            if ($request->cuponId > 0 && $request->descuento > 0) {
-                //obtenemos el cupon
-                $id = $request->cuponId;
-                $cupon = Promotion::find($id);
-
-                //verificamos que el cupon exista
-                if (!$cupon) {
-
-                    //abort(404);
-                    //aqui pon lo que quieras :v
-
-                } else {
-                    //obtenemos los cupones de la cookie
-                    $cupones = session()->get('cupones');
-
-                    // Si los cupones está vacio entonces es el primer cupón que se usa
-                    if (!$cupones) {
-                        $cupones = [
-                            $id => [
-                                "usos" => 1
-                            ]
-                        ];
-
-                        //se guarda el carrito en la cookie
-                        session()->put('cupones', $cupones);
-                    } else {
-                        // si los cupones no esta vacio entonces actualiza la cantidad
-                        if (isset($cupones[$id])) {
-                            $cupones[$id]['usos']++;
-
-                            session()->put('cupones', $cupones);
-                        } else {
-                            // Si el cupon no existe en cupones entonces se aniade
-                            $cupones[$id] = [
-                                "usos" => 1
-                            ];
-
-                            session()->put('cupones', $cupones);
-                        }
-                    }
-                }
-            }
 
             if ($request->numCasa != null) {
                 $request->numCasa = ' int ' . $request->numCasa;
@@ -141,14 +101,7 @@ class CheckoutController extends Controller
             $sell->telefono = $request->tel;
             $sell->direccion = $request->calle . " " . $request->numCasa . " " . $request->colonia;
             $sell->fecha = $mytime->toDateString();
-            if ($request->envio) {
-                $envio = Tipoenvio::findOrFail($request->envio);
-                $sell->precio_envio = $envio->costo;
-                $sell->nombre_envio = $envio->nombre . ' - ' . $envio->descripcion;
-                if ($request->referencias != null) {
-                    $sell->direccion = $sell->direccion . ' Referencia: ' . $request->referencias;
-                }
-            }
+            $sell->direccion = $sell->direccion . ' Referencia: ' . $request->referencias;
             if ($request->cuponId != null && $request->descuento != null) {
                 $sell->discount = $request->descuento;
                 $sell->promotion_id = $request->cuponId;

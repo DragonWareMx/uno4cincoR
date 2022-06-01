@@ -189,9 +189,13 @@ class PaymentController extends Controller
         $books = Book::get();
         $contador = 0;
         $items = [];
+        $envioAmount = 0;
         foreach (session('cart') as $id => $details) {
             foreach ($books as $libro) {
                 if ($libro->id == $id) {
+                    if ($libro->costoEnvio > $envioAmount) {
+                        $envioAmount = $libro->costoEnvio;
+                    }
                     if ($details['cantidadFisico'] > 0) {
                         $items[$contador] = new Item();
                         $items[$contador]->setName($libro->titulo . ' (Físico - Preventa)')
@@ -255,19 +259,16 @@ class PaymentController extends Controller
         ];
         $item_list->setShippingAddress($shippingAddress);
 
-        if ($request->envio) {
-            $envio = Tipoenvio::findOrFail($request->envio);
-            $details = new Details();
-            $details->setSubtotal($request->subtotal)
-                ->setShipping($envio->costo);
-        }
+        $details = new Details();
+        $details->setSubtotal($request->subtotal)
+            ->setShipping($envioAmount);
+
 
         $amount = new Amount();
         $amount->setTotal($request->total);
         $amount->setCurrency('MXN');
-        if ($request->envio) {
-            $amount->setDetails($details);
-        }
+        $amount->setDetails($details);
+
         $transaction = new Transaction();
         $transaction->setAmount($amount);
         $transaction->setDescription('Compra en elbooke.com');
@@ -329,6 +330,7 @@ class PaymentController extends Controller
             $sell->direccion = $result->getPayer()->getPayerInfo()->getShippingAddress()->getLine1() . " " .
                 $result->getPayer()->getPayerInfo()->getShippingAddress()->getLine2();
             $sell->fecha = $mytime->toDateString();
+            $sell->direccion = $sell->direccion . ' Referencia: ' . Session::get('referencias');
             if (Session::get('envio') != null) {
                 $envio = Tipoenvio::findOrFail(Session::get('envio'));
                 $sell->precio_envio = $envio->costo;

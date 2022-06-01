@@ -91,7 +91,8 @@ Route::post('/paypal/pay', 'PaymentController@payWithPayPal')->name('pagoPayPal'
 Route::get('/paypal/status', 'PaymentController@payPalStatus')->name('statusPayPal');
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
 Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
-Auth::routes();
+
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

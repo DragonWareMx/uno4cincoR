@@ -28,11 +28,17 @@
 
 <body>
     @php
+    $envioAmount=0;
     $fisico = false;
     @endphp
     @foreach(session('cart') as $id => $details)
     @foreach ($books as $libro)
     @if ($libro->id == $id)
+    @if($libro['costoEnvio'] >= $envioAmount)
+    @php
+    $envioAmount = $libro['costoEnvio'];
+    @endphp
+    @endif
     @if ($details['cantidadFisico'] > 0)
     @php
     $fisico = true;
@@ -50,7 +56,7 @@
                 <div class="compra-header">
                     <div style="width: 100%">
                         <a href="{{ route('inicio') }}" class="logo">
-                            <img src="{{ asset('img/logos/logoNuevo.png') }}">
+                            <img src="{{ asset('img/logos/ElBooke.PNG') }}">
                         </a>
                     </div>
                     <hr>
@@ -129,11 +135,14 @@
                     <input type="hidden" name="referencia" value="@if (isset($datos['referencias']))
                         {{$datos['referencias']}}
                         @endif">
-                    <input type="hidden" name="cupon" value="{{$datos['cupon']}}">
+                    <input type="hidden" name="cupon" value="@if (isset($datos['cupon']))
+                    {{$datos['cupon']}}
+                    @endif">
                     <input type="hidden" id="subtotalAnt" name="subtotal" value="{{$datos['subtotal']}}">
                     <input type="hidden" id="descuentoAnt" name="descuento" value="{{$datos['descuento']}}">
                     <input type="hidden" name="cuponId" value="{{$datos['cuponId']}}">
                     <input type="hidden" id="totalAnt" name="total" value="{{$datos['total']}}">
+                    <input type="hidden" id="costoEnvio" name="total" value="{{$envioAmount}}">
 
 
                     <div class="compra-cell cell-20">
@@ -321,7 +330,7 @@
     <script>
         (function(){
                 // Create a Stripe client.
-                var stripe = Stripe('pk_test_51HHHSrDINHvQO7l2gCKyjrAPWXBfg7kTPQOyvjkmQFbghqNpjucfMqES9L0DuSdhDQT7nXYAQ02j0N4Wa0QeKSzS00CPKytdCO');
+                var stripe = Stripe('pk_test_51L0usREueBOcRyUNDnnl1BjocuO7B5HOjO4PVRtZ5IVKZy0UZbPQ63g3k3bcXuQtA4qPUYXFnu1BtqOCpmVZRRj100mwCFow1S');
 
                 // Create an instance of Elements.
                 var elements = stripe.elements();
@@ -414,7 +423,7 @@
                 form.appendChild(hiddenInput);
 
                 // Submit the form
-                //form.submit();
+                form.submit();
                 }
             })();
     </script>

@@ -23,12 +23,18 @@
 
 <body>
     @php
+    $envioAmount = 0;
     $fisico = false;
     $hayNuevo = false;
     @endphp
     @foreach(session('cart') as $id => $details)
     @foreach ($books as $libro)
     @if ($libro->id == $id)
+    @if($libro['costoEnvio'] >= $envioAmount)
+    @php
+    $envioAmount = $libro['costoEnvio'];
+    @endphp
+    @endif
     @if ($details['cantidadFisico'] > 0)
     @php
     $fisico = true;
@@ -224,7 +230,7 @@
                             </div>
 
                             {{--METODO ENVIO--}}
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-sm">
                                     <div class="field">
                                         <select name="envio" id="envio" value="" onchange="envioSelect()" required>
@@ -243,13 +249,13 @@
                                         <label for="envio" title="Tipo de envío" data-title="Tipo de envío"></label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             @endif
 
-                            <h1 class="row-m">¿Desea utilizar un cupón?</h1>
+                            {{-- <h1 class="row-m">¿Desea utilizar un cupón?</h1> --}}
 
                             {{-- CUPON --}}
-                            <div class="row row-p">
+                            {{-- <div class="row row-p">
                                 <div class="col-sm">
                                     <div class="field">
                                         <input type="text" autocomplete="off" id="cupon" name="cupon" value=""
@@ -265,7 +271,7 @@
                                             style="width: 100%; height: 42px; margin: 0px;">Validar cupón</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 
@@ -392,8 +398,9 @@
                             {{-- <input type="submit" value="Realizar compra" class="shrink"> --}}
                             <button type="submit" class="boton_compra shrink" name="action" value="paypal">Pago con
                                 Paypal</button>
-                            <button type="submit" class="boton_compra shrink" name="action" value="bancaria">Pago con
-                                transferencia o deposito bancario</button>
+                            {{-- <button type="submit" class="boton_compra shrink" name="action" value="bancaria">Pago
+                                con
+                                transferencia o deposito bancario</button> --}}
                             <button type="submit" class="boton_compra shrink" name="action" value="stripe">Pago con
                                 tarjeta de crédito/débito</button>
                             @else
@@ -433,6 +440,8 @@
             var subtotal = {{ $total }};
 
             var envios = @json($envios);
+
+            var costoEnvio = {{$envioAmount}}
 
             //obtenemos todos los cupones
             var cupones = @json($cupones);
@@ -860,8 +869,9 @@
 
             function envioSelect(){
                 //obtenemos el envio
-                var envio = document.getElementById("envio");
+                var envio = 'basico'
                 var totalEnvio = document.getElementById("envio-totales");
+                var envioCosto = costoEnvio
                 var total = document.getElementById("total");
                 if(envio){
                     //ya no es valido el cupon
@@ -870,35 +880,19 @@
                         document.getElementById("cuponDescuento").innerHTML = "$0";
                         $('#cuponHidden').val(0);
                     }
-                    //verifica que el tipo de envio exista
-                    if(envio.value != ""){
                         //se obtiene el envio de la BD
-                        envioData = getEnvio(envio.value);
 
-                        //verifica que el envio exista en la BD
-                        if(envioData["costo"]){
                             //se agrega el costo a los totales
-                            totalEnvio.innerHTML = "$"+formatearNumero(envioData["costo"]);
+                            totalEnvio.innerHTML = "$"+formatearNumero(costoEnvio);
 
                             //se elimina la clase de "envio-totales"
                             totalEnvio.classList.remove("envio-totales");
 
                             //se actualiza el total
-                            total.innerHTML = "$"+formatearNumero(totalCosto + envioData["costo"]);
+                            total.innerHTML = "$"+formatearNumero(totalCosto + costoEnvio);
+                            $('#totalHidden').val(totalCosto + costoEnvio);
+                            $('#subtotalHidden').val(subtotal);
 
-                            $('#totalHidden').val(totalCosto + envioData["costo"]);
-                        }
-                    }
-                    else{
-                        //se pide al usuario que seleccione el tipo
-                        totalEnvio.innerHTML = "Selecciona el tipo de envío";
-
-                        //se agrega la clase de "envio-totales"
-                        totalEnvio.classList.add("envio-totales");
-
-                        //se actualiza el total
-                        total.innerHTML = "$"+formatearNumero(totalCosto);
-                    }
                 }
             }
     </script>
