@@ -197,7 +197,7 @@ class paginaInicioController extends Controller
         $books = $this->busqueda("catalogo",0);
         $banner=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(1)->get();
         if(!$books)
-            $books = Book::join('sellos', 'books.sello_id', '=', 'sellos.id')->select('books.*','sellos.nombre')->where("nombre",'uno4cinco')->orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(12);
+            $books = Book::orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(12);
         
         // RANGO DE PRECIOS
         // El rango se guardara en el string ISBN !!

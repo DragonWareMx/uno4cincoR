@@ -135,7 +135,11 @@
     }
 
     .cj-scroll {
-        height: 470px !important;
+        height: 450px !important;
+        max-height: 450px !important;
+        overflow-y: auto;
+        text-align: justify;
+        padding-right: 5px;
     }
 
     .cj-book-border {
@@ -876,7 +880,7 @@
             {{-- BOTON COMPARTIR CELULAR --}}
             <div class="col ld-inverso" id="col-carrusel">
                 <div style="width: 100%; display: flex; justify-content: center">
-                    <button class="ld-button">Compartir este libro</button>
+                    <button class="ld-button share-button">Compartir este libro</button>
                 </div>
             </div>
         </div>
@@ -900,7 +904,7 @@
                             <div class="pad15">
                                 <div class="div_portadapad15">
                                     <img alt="{{$bookBanner->bannerImagen}}"
-                                        src="{{asset('storage/libros/'.$bookBanner->bannerImagen)}}">
+                                        src="{{asset('storage/libros/'.$bookBanner->tiendaImagen)}}">
                                 </div>
                                 <div class="div_infoCarrusel">
                                     <p class="txt-infoCarrusel"><b>Nombre:</b>&nbsp;
@@ -1922,6 +1926,22 @@ function pagination(){
 }
 
 
+</script>
+
+<script>
+    const shareButton = document.querySelector('.share-button');
+
+    shareButton.addEventListener('click', event => {
+    if (navigator.share) { 
+    navigator.share({
+        title: 'Booke | Libro' ,
+        url: window.url
+        }).then(() => {
+        console.log('Gracias por compartir!');
+        })
+        .catch(console.error);
+        } 
+    });
 </script>
 
 @endsection
