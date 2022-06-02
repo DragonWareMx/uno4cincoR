@@ -12,19 +12,27 @@ class genresTable extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
-            'nombre'=>'poesía',
+            'nombre'=>'Booke Wellness',
             'descripcion'=>'',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'cuento',
+            'nombre'=>'Novela',
             'descripcion'=>'',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'ensayo',
+            'nombre'=>'Poesía',
             'descripcion'=>'',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'novela',
+            'nombre'=>'Ensayo',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Investigación',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Religión',
             'descripcion'=>'',
         ]);
     }

@@ -193,11 +193,69 @@ class paginaInicioController extends Controller
     }
 
 
-    public function tinyversion(){
+    public function tinyversion(Request $request){
+        $generos = [];
+        if($request->booke){
+            $generos[] = 'Booke Wellness';
+        }
+        if($request->novela){
+            $generos[] = 'Novela';
+        }
+        if($request->poesia){
+            $generos[] = 'Poesía';
+        }
+        if($request->ensayo){
+            $generos[] = 'Ensayo';
+        }
+        if($request->investigacion){
+            $generos[] = 'Investigación';
+        }
+        if($request->religion){
+            $generos[] = 'Religión';
+        }
         $books = $this->busqueda("catalogo",0);
         $banner=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(1)->get();
+
+        if(!empty($generos)){
+            if($request->fisico && $request->digital){
+                $books = Book::with('genres')
+                ->whereHas('genres', function ($query) use ($generos) {
+                    $query->whereIn('nombre', $generos); 
+                })->where([['stockFisico','>',0], ['stockDigital','>',0]])->orderBy('titulo','Asc')->paginate(8);
+            }
+            elseif ($request->fisico ) {
+                $books = Book::with('genres')
+                ->whereHas('genres', function ($query) use ($generos) {
+                    $query->whereIn('nombre', $generos); 
+                })->where([['stockFisico','>',0], ['stockDigital','=',0]])->orderBy('titulo','Asc')->paginate(8);
+            }
+            elseif ($request->digital) {
+                $books = Book::with('genres')
+                ->whereHas('genres', function ($query) use ($generos) {
+                    $query->whereIn('nombre', $generos); 
+                })->where([['stockFisico','=',0], ['stockDigital','>',0]])->orderBy('titulo','Asc')->paginate(8);
+            }
+            else {
+                $books = Book::with('genres')
+                ->whereHas('genres', function ($query) use ($generos) {
+                    $query->whereIn('nombre', $generos); 
+                })->orderBy('titulo','Asc')->paginate(8);
+            }
+                
+        }
+        else{
+            if($request->fisico && $request->digital){
+                $books = Book::where([['stockFisico','>',0], ['stockDigital','>',0]])->orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(8);
+            }
+            else if($request->digital){
+                $books = Book::where([['stockFisico','=',0], ['stockDigital','>',0]])->orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(8);
+            }
+            else if($request->fisico){
+                $books = Book::where([['stockFisico','>',0], ['stockDigital','=',0]])->orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(8);
+            }
+        }
         if(!$books)
-            $books = Book::orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(12);
+            $books = Book::orderBy('ventas','Desc')->orderBy('titulo','Asc')->paginate(8);
         
         // RANGO DE PRECIOS
         // El rango se guardara en el string ISBN !!

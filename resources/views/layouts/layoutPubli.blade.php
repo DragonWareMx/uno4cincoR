@@ -107,72 +107,100 @@
                                         </svg>
                                     </a>
                                     <ul class="dropdown-menu down-filter" aria-labelledby="dropdownMenu2" style="padding-left:10px">
-                                    <li>
-                                        <p  style="border:none !important" class="a-filter" style="background-color:white !important">Categorias</p>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="booke">Booke wellness&nbsp;&nbsp;</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="booke">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="novela">Novela</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="novela">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="poesia">Poesía</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="poesia">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="ensayo">Ensayo</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="ensayo">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="investigacion">Investigación</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="investigacion">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="religion">Religión</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="religion">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p  style="border:none !important" class="a-filter">Formato</p>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="ebookFormato">Ebook</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="ebookFormato">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="fisico">Físico</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="fisico">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check form-check-inline form-checkboxes">
-                                            <label class="form-check-label checkbox-filter" for="google">Google</label>
-                                            <input class="form-check-input checkbox-input" type="checkbox" id="google">
-                                        </div>
-                                    </li>
-                                    <li>
+                                    <form action="{{ route('inicio') }}"  method="get">
+                                        <li>
+                                            <p  style="border:none !important" class="a-filter" style="background-color:white !important">Categorias</p>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="booke">Booke wellness&nbsp;&nbsp;</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="booke" name="booke" onChange="this.form.submit()" 
+                                                    @if( Request::get('booke') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="novela">Novela</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="novela" name="novela" onChange="this.form.submit()" 
+                                                    @if( Request::get('novela') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="poesia">Poesía</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="poesia" name="poesia" onChange="this.form.submit()" 
+                                                    @if( Request::get('poesia') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="ensayo">Ensayo</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="ensayo" name="ensayo" onChange="this.form.submit()" 
+                                                    @if( Request::get('ensayo') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="investigacion">Investigación</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="investigacion" name="investigacion" onChange="this.form.submit()" 
+                                                    @if( Request::get('investigacion') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="religion">Religión</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="religion" name="religion" onChange="this.form.submit()" 
+                                                    @if( Request::get('religion') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p  style="border:none !important" class="a-filter">Formato</p>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline form-checkboxes">
+                                                <label class="form-check-label checkbox-filter" for="fisico">Físico</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="fisico" name="fisico" onChange="this.form.submit()" 
+                                                    @if( Request::get('fisico') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label checkbox-filter" for="digital" style="margin-right:80px">Digital</label>
+                                                <input class="form-check-input checkbox-input" type="checkbox" id="digital" name="digital" onChange="this.form.submit()" 
+                                                    @if( Request::get('digital') )
+                                                        checked
+                                                    @endif
+                                                >
+                                            </div>
+                                        </li>
+                                    </form>
+                                    <!-- <li>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label checkbox-filter" for="amazon" style="margin-right:64px">Amazon</label>
                                             <input class="form-check-input checkbox-input" type="checkbox" id="amazon">
                                         </div>
-                                    </li>
+                                    </li> -->
                                     </ul>
                                 </li>
                             </ul>
