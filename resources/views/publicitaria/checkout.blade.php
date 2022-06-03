@@ -330,7 +330,7 @@
     <script>
         (function(){
                 // Create a Stripe client.
-                var stripe = Stripe('pk_test_51L0usREueBOcRyUNDnnl1BjocuO7B5HOjO4PVRtZ5IVKZy0UZbPQ63g3k3bcXuQtA4qPUYXFnu1BtqOCpmVZRRj100mwCFow1S');
+                var stripe = Stripe('pk_live_51L0usREueBOcRyUN6VwDzqYAOeJtdJP47QrwK9d1HYjqw3wrurHcBhHO1rxT76dGqGYySfiEhTLqm49JFDuaqEZr008eAXPz4V');
 
                 // Create an instance of Elements.
                 var elements = stripe.elements();
