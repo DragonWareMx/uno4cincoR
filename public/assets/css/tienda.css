@@ -8,8 +8,9 @@
 
 .producto-tienda .imagen{
     width: 258px;
-    height: 338px;
+    height: 258px;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .producto-tienda .imagen img{

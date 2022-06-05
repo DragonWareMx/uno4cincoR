@@ -12,12 +12,12 @@ class tipoenviosTable extends Seeder
     public function run()
     {
         //
-        DB::table('tipoenvios')->insert([
+        DB::table('tipoEnvios')->insert([
             'nombre'=>'Tradicional',
             'descripcion'=>'7 días',
             'costo'=>'100'
         ]);
-        DB::table('tipoenvios')->insert([
+        DB::table('tipoEnvios')->insert([
             'nombre'=>'Express',
             'descripcion'=>'2 o 3 días',
             'costo'=>'130'

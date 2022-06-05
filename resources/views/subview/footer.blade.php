@@ -26,10 +26,10 @@
         </p> --}}
         <ul>
           <li>
-            <a href="https://editorial.uno4cinco.com">Conoce nuestros planes editoriales</a><br>
+            <a href="http://editorial.elbooke.com/#pricing">Conoce nuestros planes editoriales</a><br>
           </li>
       <li>
-        <a href="{{route('avisoPrivacidad')}}" >Política de privacidad y uso de cookies.</a>
+        <a href="http://editorial.elbooke.com/politicas-de-privacidad/" >Política de privacidad y uso de cookies.</a>
         </li>
       </ul>
       </div>
@@ -55,7 +55,7 @@
                     <a href="https://www.google.com/maps/place/Toluca+de+Lerdo,+M%C3%A9x./@19.294109,-99.6662331,13z/data=!3m1!4b1!4m5!3m4!1s0x85cd89892a50ebb9:0xad3f4ad5550208c4!8m2!3d19.2826098!4d-99.6556653" target="_blank"><img class="logodragon" src="{{ asset('img/ico/gps.png') }}">&nbsp;Montecito 38, Nápoles, Benito Juárez, 03810 Ciudad de México, CDMX</a><br>
                 </li>
                 <li>
-                    <a href="mailto: contacto@uno4cinco.com"><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp;  contacto@uno4cinco.com</a> <br>
+                    <a href="mailto: contacto@elbooke.com"><img class="logodragon" src="{{ asset('img/ico/email.png') }}">&nbsp;  contacto@elbooke.com</a> <br>
                 </li>
                 
             </ul>

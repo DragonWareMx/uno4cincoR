@@ -96,10 +96,10 @@
                         <div class="ld-links-header">
                             <ul class="nav">
                                 <li class="">
-                                    <a href="#!" class="">Nosotros</a>
+                                    <a href="http://editorial.elbooke.com/" target="_blank" class="">Nosotros</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="">Blog</a>
+                                    <a href="http://editorial.elbooke.com/blog/" target="_blank" class="">Blog</a>
                                 </li>
                                 <li>
                                     <a style="cursor:pointer" class="" id="dropdownMenu2" data-bs-toggle="dropdown">Filtros <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 17 14">

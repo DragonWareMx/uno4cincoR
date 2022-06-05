@@ -41,8 +41,8 @@ class bannersTable extends Seeder
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'autor',
-                'imagenPC'=>'José.jpg',
-                'imagenCell'=>'José-vertical.jpg',
+                'imagenPC'=>'Jose.jpg',
+                'imagenCell'=>'Jose-vertical.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'author_id'=>'4',
@@ -77,8 +77,8 @@ class bannersTable extends Seeder
             ]);
             DB::table('banners')->insert([
                 'tipo'=>'libro',
-                'imagenPC'=>'José-libro.jpg',
-                'imagenCell'=>'José-libro-vertical.jpg',
+                'imagenPC'=>'Jose-libro-vertical.jpg',
+                'imagenCell'=>'Jose-libro.jpg',
                 'boton'=>'',
                 'link'=>'http://uno4cinco.com/registro',
                 'book_id'=>'4',
