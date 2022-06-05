@@ -16,15 +16,17 @@
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('temaGestor/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="{{asset('temaGestor/css/app.css')}}" rel="stylesheet">
 
-   {{-- JQuery bugeado --}}
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-   {{-- Fuentes--}}
-   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+  {{-- JQuery bugeado --}}
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  {{-- Fuentes--}}
+  <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 
   @yield('importOwl')
 
@@ -41,7 +43,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adminuno4cinco">
         <div class="sidebar-brand-icon" style="margin-left:auto;margin-right:auto ">
-          <img src="{{asset('img/logos/ElBooke3.png')}}" class="imgMenuGestor" style="width: 126px;height: 38px">
+          <img src="{{asset('img/logos/ElBooke3.PNG')}}" class="imgMenuGestor" style="width: 126px;height: 38px">
         </div>
       </a>
 
@@ -51,7 +53,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
         <a class="nav-link" href="{{ route('gestorInicio') }}">
-            <i class="fas fa-home"></i>
+          <i class="fas fa-home"></i>
           <span>Inicio</span></a>
       </li>
 
@@ -60,50 +62,53 @@
 
       <!-- Heading -->
       {{-- <div class="sidebar-heading">
-        
+
       </div> --}}
 
       <!-- Nav Item - Usuarios Collapse Menu -->
-      
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-book"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLibros" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-book"></i>
           <span>Libros</span>
         </a>
         <div id="collapseLibros" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="{{route('verLibros')}}">Ver todo</a> 
-              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catálogo</a>
-              <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=145">145</a>
-              <a class="collapse-item" href="{{route('verColecciones')}}">Colecciones</a>
-              <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="{{route('libros-crear')}}">Agregar libro</a>
-            </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('verLibros')}}">Ver todo</a>
+            <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=Catalogo">Catálogo</a>
+            <a class="collapse-item" href="{{route('verLibros')}}?clasificacion=145">145</a>
+            <a class="collapse-item" href="{{route('verColecciones')}}">Colecciones</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('libros-crear')}}">Agregar libro</a>
+          </div>
         </div>
       </li>
-      
+
 
       <li class="nav-item {{ Request::path() ==  'sgtepetate/perfil' ? 'active' : ''  }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-user-edit"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAutores"
+          aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-user-edit"></i>
           <span>Autores</span>
         </a>
         <div id="collapseAutores" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="{{route('autores-uno4cinco')}}">uno4cinco</a>
-              <a class="collapse-item" href="{{route('autores-145')}}">145</a>
-              <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Acceso directo:</h6>
-              <a class="collapse-item" href="{{route('autores-nuevo')}}">Agregar autor</a>
-            </div>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('autores-uno4cinco')}}">uno4cinco</a>
+            <a class="collapse-item" href="{{route('autores-145')}}">145</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Acceso directo:</h6>
+            <a class="collapse-item" href="{{route('autores-nuevo')}}">Agregar autor</a>
           </div>
+        </div>
       </li>
 
       <!-- Nav Item - Bitacora Collapse blog -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-pencil-alt"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBitacora"
+          aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-pencil-alt"></i>
           <span>Blogs</span>
         </a>
         <div id="collapseBitacora" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -119,7 +124,7 @@
       <!-- Nav Item - Bitacora Collapse sliders -->
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
         <a class="nav-link" href="{{ route('verSliders') }}">
-        <i class="fas fa-clone"></i>
+          <i class="fas fa-clone"></i>
           <span>Publicidad</span></a>
       </li>
       <!-- <li class="nav-item">
@@ -136,15 +141,16 @@
 
       <!-- Nav Item - Inventario Collapse ventas -->
       <li class="nav-item "">
-        <a class="nav-link" href="{{route('historial')}}">
-            <i class="fas fa-home"></i>
-          <span>Ventas</span></a>
+        <a class=" nav-link" href="{{route('historial')}}">
+        <i class="fas fa-home"></i>
+        <span>Ventas</span></a>
       </li>
 
-       <!-- Nav Item - Inventario Collapse cupones -->
-      
-       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCupones" aria-expanded="true" aria-controls="collapsePages">
+      <!-- Nav Item - Inventario Collapse cupones -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCupones"
+          aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-percentage"></i>
           <span>Cupones</span>
         </a>
@@ -157,15 +163,15 @@
           </div>
         </div>
       </li>
-      
 
-      
+
+
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <li class="nav-item {{ Request::path() ==  'sgtepetate' ? 'active' : ''  }}">
         <a class="nav-link" href="{{ route('resumen') }}">
-            <i class="fas fa-chart-pie"></i>
+          <i class="fas fa-chart-pie"></i>
           <span>Resumen</span></a>
       </li>
 
@@ -197,13 +203,15 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                <img class="img-profile rounded-circle" style="object-fit:cover;" src="{{asset('/img/ico/icons-user.png')}}">
+                <img class="img-profile rounded-circle" style="object-fit:cover;"
+                  src="{{asset('/img/ico/icons-user.png')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                
+
                 <a class="dropdown-item" href="{{ route('resumen') }}">
                   <i class="fas fa-clipboard-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Resumen
@@ -260,7 +268,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
