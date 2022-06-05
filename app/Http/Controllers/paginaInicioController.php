@@ -214,7 +214,7 @@ class paginaInicioController extends Controller
             $generos[] = 'Religión';
         }
         $books = $this->busqueda("catalogo",0);
-        $banner=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(1)->get();
+        $banner=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->get();
 
         if(!empty($generos)){
             if($request->fisico && $request->digital){

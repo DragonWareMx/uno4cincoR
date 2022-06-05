@@ -514,6 +514,19 @@
     }
 }
 
+#carruselBanner{
+    display:inline-block;
+    position: relative;
+    background:transparent;
+    width: 260px;
+    height:690px !important;
+    transition: all 0.5s;
+}
+
+.img_carrusel{
+    height: 400px;
+}
+
 @media(max-width: 810px) and (min-width: 770px){
     .tooltip-carrito
     {

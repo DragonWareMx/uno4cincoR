@@ -49,9 +49,71 @@
         <!-- PUBLICIDAD -->
         <div class="col-lg-2 col-mg-12 justify-content-center d-flex" style="padding:0px">
             <!-- Slider 1520px  o 690, con el que queda mejor -->
-            <div class="hidden-990" style="width:260px; height:690px;">
+            {{-- <div class="hidden-990" style="width:260px; height:690px;">
                 <img src="{{asset('storage/banners/'.$banner[0]->imagenPC)}}"
+<<<<<<< Updated upstream
                     style="width:100%; height:100%; border-radius: 22px; ">
+=======
+                    style="width:100%; height:100%; border-radius: 22px; object-fit:cover ">
+            </div> --}}
+            <div class="hidden-990" style="width:260px; height:690px;">
+                <div id="carruselBanner" class="carousel slide" data-ride="carousel" style="margin-bottom:60px !important">
+                    <div class="carousel-inner">
+                        @php
+                            $i=0; 
+                        @endphp
+                        @foreach ($banner as $bann)
+                            @if ($i==0)
+                                <div class="carousel-item active" >
+                                    <div class="transparente_libros">
+                                        <div id="img_carrusel" class="img_libros" style="background: url('{{asset('storage/banners/'.$bann->imagenPC)}}');
+                                            background-size: 100% 100%;
+                                            -moz-background-size: 100% 100%;
+                                            -o-background-size: 100% 100%;
+                                            -webkit-background-size: 100% 100%;">
+                                        </div>
+                                        Slider página de inicio
+                                        <form action="{{ route('editarSlider', ['id'=>$bann->id])}}" method="post">
+                                            @csrf
+                                            @method('patch')
+                                            <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                                        </form>
+                                    
+                                    </div>
+                                </div>
+                            @else
+                                <div class="carousel-item " >
+                                    <div class="transparente_libros">
+                                    <div id="img_carrusel" class="img_libros" style="background: url('{{asset('storage/banners/'.$bann->imagenPC)}}');
+                                        background-size: 100% 100%;
+                                        -moz-background-size: 100% 100%;
+                                        -o-background-size: 100% 100%;
+                                        -webkit-background-size: 100% 100%;">
+                                    </div>
+                                    <form action="{{ route('editarSlider', ['id'=>$bann->id])}}" method="post">
+                                        @csrf
+                                        @method('patch')
+                                        <input type="submit" id="boton_delete" class="boton_delete_libros" value="Eliminar">
+                                    </form>  
+                                </div>
+
+                                </div>  
+                            @endif
+                            @php
+                                $i++;
+                            @endphp
+                        @endforeach
+                        <a class="carousel-control-prev flechasPosicion newPosition" data-target="#carruselBanner" data-slide="prev" style="cursor: pointer; cursor:hand;">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next flechasPosicion newPosition" data-target="#carruselBanner" data-slide="next" style="cursor: pointer; cursor:hand;">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+>>>>>>> Stashed changes
             </div>
             <div class="show-990" style="width:1000px; height:260px;display:none; margin-bottom:40px">
                 <img src="{{asset('storage/banners/'.$banner[0]->imagenCell)}}"
