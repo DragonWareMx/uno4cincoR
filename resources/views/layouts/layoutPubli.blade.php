@@ -193,10 +193,29 @@
                                             <li>
                                                 <div class="form-check form-check-inline">
                                                     <label class="form-check-label checkbox-filter" for="digital"
-                                                        style="margin-right:80px">Digital</label>
+                                                        style="margin-right:97px">Ebook</label>
                                                     <input class="form-check-input checkbox-input" type="checkbox"
                                                         id="digital" name="digital" onChange="this.form.submit()" @if(
                                                         Request::get('digital') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline" style="margin-top: 8px">
+                                                    <label class="form-check-label checkbox-filter" for="amazon"
+                                                        style="margin-right:80px">Amazon</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="amazon" name="amazon" onChange="this.form.submit()" @if(
+                                                        Request::get('amazon') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline"
+                                                    style="margin-top: 8px; margin-bottom: 8px">
+                                                    <label class="form-check-label checkbox-filter" for="google"
+                                                        style="margin-right:88px">Google</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="google" name="google" onChange="this.form.submit()" @if(
+                                                        Request::get('google') ) checked @endif>
                                                 </div>
                                             </li>
                                         </form>
