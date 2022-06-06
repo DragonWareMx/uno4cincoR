@@ -140,10 +140,20 @@
 
             <p style="color:#29b390; font-size:11px"><b>FORMATO DÍGITAL</b></p>
 
-            <div class="div_elementosAuthor">
+            {{-- <div class="div_elementosAuthor">
                 <p class="txt_datosAuthor">Link de compra:</p>
                 <input name="link-digital" class="input_datosAuthor" type="text" value="{{$book->linkDigital}}"
                     autofocus>
+            </div> --}}
+
+            <div class="div_elementosAuthor">
+                <p class="txt_datosAuthor">Link de Amazon:</p>
+                <input name="linkAmazon" class="input_datosAuthor" type="text" value="{{$book->linkAmazon}}" autofocus>
+            </div>
+
+            <div class="div_elementosAuthor">
+                <p class="txt_datosAuthor">Link de Google:</p>
+                <input name="linkGoogle" class="input_datosAuthor" type="text" value="{{$book->linkGoogle}}" autofocus>
             </div>
 
             <div class="div_elementosAuthor" id="digital">

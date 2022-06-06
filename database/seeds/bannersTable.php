@@ -12,78 +12,77 @@ class bannersTable extends Seeder
     public function run()
     {
         DB::table('banners')->insert([
-            'tipo'=>'autor',
-            'imagenPC'=>'Aless.jpg',
-            'imagenCell'=>'Aless-vertical.jpg',
-            'boton'=>'',
-            'link'=>'http://uno4cinco.com/registro',
-            'author_id'=>'1',
-            'active'=>'activo',
-            ]);
-            
-            DB::table('banners')->insert([
-                'tipo'=>'autor',
-                'imagenPC'=>'Estefania.jpg',
-                'imagenCell'=>'Estefania-vertical.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'author_id'=>'2',
-                'active'=>'activo',
-                ]);
-            DB::table('banners')->insert([
-                    'tipo'=>'autor',
-                    'imagenPC'=>'Jordán.jpg',
-                    'imagenCell'=>'Jordán-vertical.jpg',
-                    'boton'=>'',
-                    'link'=>'http://uno4cinco.com/registro',
-                    'author_id'=>'3',
-                    'active'=>'activo',
-            ]);
-            DB::table('banners')->insert([
-                'tipo'=>'autor',
-                'imagenPC'=>'Jose.jpg',
-                'imagenCell'=>'Jose-vertical.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'author_id'=>'4',
-                'active'=>'activo',
-            ]);
-            DB::table('banners')->insert([
-                'tipo'=>'libro',
-                'imagenPC'=>'Aless-libro.jpg',
-                'imagenCell'=>'Aless-libro-vertical.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'book_id'=>'1',
-                'active'=>'activo',
-                ]);
-            DB::table('banners')->insert([
-                    'tipo'=>'libro',
-                    'imagenPC'=>'Estefania-libro.jpg',
-                    'imagenCell'=>'Estefania-libro-vertical.jpg',
-                    'boton'=>'',
-                    'link'=>'http://uno4cinco.com/registro',
-                    'book_id'=>'2',
-                    'active'=>'activo',
-            ]);
-            DB::table('banners')->insert([
-                'tipo'=>'libro',
-                'imagenPC'=>'Jordán-libro.jpg',
-                'imagenCell'=>'Jordán-libro-vertical.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'book_id'=>'3',
-                'active'=>'activo',
-            ]);
-            DB::table('banners')->insert([
-                'tipo'=>'libro',
-                'imagenPC'=>'Jose-libro-vertical.jpg',
-                'imagenCell'=>'Jose-libro.jpg',
-                'boton'=>'',
-                'link'=>'http://uno4cinco.com/registro',
-                'book_id'=>'4',
-                'active'=>'activo',
-            ]);
-    }
+            'tipo' => 'autor',
+            'imagenPC' => 'Aless.jpg',
+            'imagenCell' => 'Aless-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'author_id' => '1',
+            'active' => 'activo',
+        ]);
 
+        DB::table('banners')->insert([
+            'tipo' => 'autor',
+            'imagenPC' => 'Estefania.jpg',
+            'imagenCell' => 'Estefania-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'author_id' => '2',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'autor',
+            'imagenPC' => 'Jordán.jpg',
+            'imagenCell' => 'Jordán-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'author_id' => '3',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'autor',
+            'imagenPC' => 'Jose.jpg',
+            'imagenCell' => 'Jose-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'author_id' => '4',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'libro',
+            'imagenPC' => 'Aless-libro.jpg',
+            'imagenCell' => 'Aless-libro-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'book_id' => '1',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'libro',
+            'imagenPC' => 'Estefania-libro.jpg',
+            'imagenCell' => 'Estefania-libro-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'book_id' => '2',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'libro',
+            'imagenPC' => 'Jordán-libro.jpg',
+            'imagenCell' => 'Jordán-libro-vertical.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'book_id' => '3',
+            'active' => 'activo',
+        ]);
+        DB::table('banners')->insert([
+            'tipo' => 'libro',
+            'imagenPC' => 'Jose-libro-vertical.jpg',
+            'imagenCell' => 'Jose-libro.jpg',
+            'boton' => '',
+            'link' => 'http://uno4cinco.com/registro',
+            'book_id' => '4',
+            'active' => 'activo',
+        ]);
+    }
 }

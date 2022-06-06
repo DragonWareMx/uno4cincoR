@@ -10,34 +10,38 @@ use App\Banner;
 
 class gestorSlidersController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
-    
-    public function index(){
-        $BannerLibros=Banner::where('tipo','libro')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
-        $BannerAutores=Banner::where('tipo','autor')->where('active','activo')->orderBy('id', 'desc')->limit(5)->get();
-        $BannerBlogs=Banner::where('tipo','blog')->get();
-        return view('gestor.sliders', ['bannerLibros'=>$BannerLibros, 'bannerAutores'=>$BannerAutores, 
-        'bannerBlogs'=>$BannerBlogs]);
+
+    public function index()
+    {
+        $BannerLibros = Banner::where('tipo', 'libro')->where('active', 'activo')->orderBy('id', 'desc')->limit(5)->get();
+        $BannerAutores = Banner::where('tipo', 'autor')->where('active', 'activo')->orderBy('id', 'desc')->limit(5)->get();
+        $BannerBlogs = Banner::where('tipo', 'blog')->get();
+        return view('gestor.sliders', [
+            'bannerLibros' => $BannerLibros, 'bannerAutores' => $BannerAutores,
+            'bannerBlogs' => $BannerBlogs
+        ]);
     }
 
-    public function addSlider($tipo){
+    public function addSlider($tipo)
+    {
 
-        $Banners=Banner::where('tipo',$tipo)->where('active','inactivo')->get();
-        $Activos=Banner::where('tipo',$tipo)->where('active','activo')->count();
+        $Banners = Banner::where('tipo', $tipo)->where('active', 'inactivo')->get();
+        $Activos = Banner::where('tipo', $tipo)->where('active', 'activo')->count();
 
         // if($Activos<5){
-            if($tipo=='libro'){
-                $Relaciones=Book::get();
-                $aux=true;
-            }
-            else{
-                $Relaciones=Author::get();
-                $aux=false;
-            }
-            
-            return view('gestor.addSlider', ['banners'=>$Banners, 'relaciones'=>$Relaciones, 'aux'=>$aux]);
+        if ($tipo == 'libro') {
+            $Relaciones = Book::get();
+            $aux = true;
+        } else {
+            $Relaciones = Author::get();
+            $aux = false;
+        }
+
+        return view('gestor.addSlider', ['banners' => $Banners, 'relaciones' => $Relaciones, 'aux' => $aux]);
         // }
         // else{
 
@@ -45,92 +49,87 @@ class gestorSlidersController extends Controller
 
         // }
 
-       
+
     }
 
     public function storeSlider($tipo)
     {
-        $data=request()->validate([ 
-            'imagenPC'=>'nullable|image',
-            'imagenCell'=>'nullable|image',
-            'relacionBanner'=>'nullable',
-            'imgSelected'=>'nullable',
+        $data = request()->validate([
+            'imagenPC' => 'nullable|image',
+            'imagenCell' => 'nullable|image',
+            'relacionBanner' => 'nullable',
+            'imgSelected' => 'nullable',
         ]);
 
-        try{
-            
-                if(request('imgSelected')){
-                    $banner=Banner::findOrFail(request('imgSelected'));
-                    $banner->active='activo';
+        try {
 
-                    $banner->save();
+            if (request('imgSelected')) {
+                $banner = Banner::findOrFail(request('imgSelected'));
+                $banner->active = 'activo';
+
+                $banner->save();
+            } else {
+                $banner = new Banner();
+                //para el formato de imagen
+
+                $fileNameWithTheExtension = request('imagenPC')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithTheExtension, PATHINFO_FILENAME);
+                $extension = request('imagenPC')->getClientOriginalExtension();
+                $newFileNamePC = $fileName . '_' . time() . '.' . $extension;
+                $path = request('imagenPC')->storeAs('public/banners/', $newFileNamePC);
+
+                $fileNameWithTheExtension = request('imagenCell')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithTheExtension, PATHINFO_FILENAME);
+                $extension = request('imagenCell')->getClientOriginalExtension();
+                $newFileNameCell = $fileName . '_' . time() . '.' . $extension;
+                $path = request('imagenCell')->storeAs('public/banners/', $newFileNameCell);
+
+
+                $banner->imagenPC = $newFileNameCell;
+                $banner->imagenCell = $newFileNamePC;
+
+                //termina formato imagenes
+
+                $banner->tipo = $tipo;
+                $banner->active = 'activo';
+                if (request('link')) {
+                    $banner->link = request('link');
+                } else {
+                    $banner->link = '';
                 }
-                else{
-                    $banner=new Banner();
-                    //para el formato de imagen 
 
-                    $fileNameWithTheExtension = request('imagenPC')->getClientOriginalName();
-                    $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-                    $extension = request('imagenPC')->getClientOriginalExtension();
-                    $newFileNamePC=$fileName.'_'.time().'.'.$extension;
-                    $path = request('imagenPC')->storeAs('public/banners/',$newFileNamePC);
-                    
-                    $fileNameWithTheExtension = request('imagenCell')->getClientOriginalName();
-                    $fileName = pathinfo( $fileNameWithTheExtension,PATHINFO_FILENAME);
-                    $extension = request('imagenCell')->getClientOriginalExtension();
-                    $newFileNameCell=$fileName.'_'.time().'.'.$extension;
-                    $path = request('imagenCell')->storeAs('public/banners/',$newFileNameCell);
-                    
-
-                    $banner->imagenPC=$newFileNamePC;
-                    $banner->imagenCell=$newFileNameCell;
-                    
-                    //termina formato imagenes
-
-                    $banner->tipo=$tipo;
-                    $banner->active='activo';
-                    $banner->link='http://uno4cinco.com/registro';
-                    
-                    if($tipo=='autor'){
-                        $banner->author_id=request('relacionBanner');
-                    }
-                    else{
-                        // $banner->book_id=request('relacionBanner');
-                        $banner->book_id=1;
-                    }
-
-                    $banner->save();
+                if ($tipo == 'autor') {
+                    $banner->author_id = request('relacionBanner');
+                } else {
+                    // $banner->book_id=request('relacionBanner');
+                    $banner->book_id = 1;
                 }
-            
-        }
-        catch(QueryException $ex){
+
+                $banner->save();
+            }
+        } catch (QueryException $ex) {
             return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo guardar el slider!']);
         }
         return redirect()->route('verSliders');
     }
 
-    public function updateSlider($id){
-        $banner=Banner::findOrFail($id);
-        $Activos=Banner::where('tipo',$banner->tipo)->where('active','activo')->count();
+    public function updateSlider($id)
+    {
+        $banner = Banner::findOrFail($id);
+        $Activos = Banner::where('tipo', $banner->tipo)->where('active', 'activo')->count();
 
-        if($Activos>1){
-            try{
-                
-                $banner->active='inactivo';
+        if ($Activos > 1) {
+            try {
+
+                $banner->active = 'inactivo';
                 $banner->save();
-            }
-            catch(QueryException $ex){
+            } catch (QueryException $ex) {
                 return redirect()->back()->withErrors(['error' => 'ERROR: No se pudo actualizar el slider!']);
             }
 
             return redirect()->route('verSliders');
+        } else {
+            return redirect()->route('verSliders')->with('success2', true);
         }
-        else{
-            return redirect()->route('verSliders')->with('success2',true);
-        }
-        
     }
-
 }
-
- 

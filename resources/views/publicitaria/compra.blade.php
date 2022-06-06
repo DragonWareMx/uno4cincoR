@@ -52,7 +52,7 @@
                 <div class="compra-header">
                     <div style="width: 100%">
                         <a href="{{ route('inicio') }}" class="logo">
-                            <img src="{{ asset('img/logos/ElBooke.png') }}">
+                            <img src="{{ asset('img/logos/ElBooke.PNG') }}">
                         </a>
                     </div>
                     <hr>

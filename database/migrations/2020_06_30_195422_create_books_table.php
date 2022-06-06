@@ -33,6 +33,8 @@ class CreateBooksTable extends Migration
 
             $table->text('linkDemo')->nullable();
             $table->text('linkDigital')->nullable();
+            $table->text('linkAmazon')->nullable();
+            $table->text('linkGoogle')->nullable();
             $table->text('linkAudio')->nullable();
 
             $table->text('portadaImagen')->default('');

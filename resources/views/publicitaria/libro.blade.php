@@ -129,7 +129,8 @@
         box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 16%);
         text-decoration: none !important;
     }
-    .cj-button-bolsa:hover{
+
+    .cj-button-bolsa:hover {
         text-decoration: none !important;
         color: white !important;
     }
@@ -538,10 +539,28 @@
                             </span>
                         </div>
                     </div>
-                    @if ($book->linkDigital)
-                    <a class="button-purchase" href="{{$book->linkDigital}}" target="_blank">
+                    @if ($book->linkAmazon)
+                    <a class="button-purchase" href="{{$book->linkAmazon}}" target="_blank">
                         <div class="inside-button">
-                            <span class="text1">Libro digital:</span>
+                            <span class="text1">Libro Amazon:</span>
+                            <span class="text2">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
+                                    ${{ number_format($book->precioDigital -
+                                    $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
+                        </div>
+                    </a>
+                    @endif
+
+                    @if ($book->linkGoogle)
+                    <a class="button-purchase" href="{{$book->linkGoogle}}" target="_blank">
+                        <div class="inside-button">
+                            <span class="text1">Libro Google:</span>
                             <span class="text2">
                                 {{-- Si el precio es 0 se muestra Gratis--}}
                                 @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
@@ -695,9 +714,9 @@
                     </div>
                     @endif
 
-                    @if ($book->linkDigital)
+                    @if ($book->linkAmazon)
                     <div class="row cj-book-price">
-                        <p class="cj-titulo">Libro Digital:
+                        <p class="cj-titulo">Libro Amazon:
                             <span style="color: #1FC6AC">
                                 {{-- Si el precio es 0 se muestra Gratis--}}
                                 @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
@@ -711,7 +730,29 @@
                         </p>
                     </div>
                     <div class="row">
-                        <a class="shrink cj-button-bolsa" href="{{$book->linkDigital}}" target="_blank">
+                        <a class="shrink cj-button-bolsa" href="{{$book->linkAmazon}}" target="_blank">
+                            Agregar a la bolsa
+                        </a>
+                    </div>
+                    @endif
+
+                    @if ($book->linkGoogle)
+                    <div class="row cj-book-price">
+                        <p class="cj-titulo">Libro Google:
+                            <span style="color: #1FC6AC">
+                                {{-- Si el precio es 0 se muestra Gratis--}}
+                                @if($book->precioDigital <= 0) Gratis @else @if($book->descuentoDigital > 0)
+                                    ${{ number_format($book->precioDigital -
+                                    $book->precioDigital*($book->descuentoDigital/100), 2 , ".", "," ) }}
+                                    @else
+                                    ${{ number_format($book->precioDigital, 2 , ".", "," ) }}
+                                    @endif
+                                    @endif
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <a class="shrink cj-button-bolsa" href="{{$book->linkGoogle}}" target="_blank">
                             Agregar a la bolsa
                         </a>
                     </div>
@@ -1932,7 +1973,7 @@ function pagination(){
     const shareButton = document.querySelector('.share-button');
 
     shareButton.addEventListener('click', event => {
-    if (navigator.share) { 
+    if (navigator.share) {
     navigator.share({
         title: 'Booke | Libro' ,
         url: window.url
@@ -1940,7 +1981,7 @@ function pagination(){
         console.log('Gracias por compartir!');
         })
         .catch(console.error);
-        } 
+        }
     });
 </script>
 

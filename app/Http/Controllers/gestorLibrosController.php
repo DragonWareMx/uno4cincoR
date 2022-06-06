@@ -282,6 +282,8 @@ class gestorLibrosController extends Controller
             $book->stockFisico = 0;
         }
         $book->linkDigital  = request('link-digital');
+        $book->linkAmazon  = request('linkAmazon');
+        $book->linkGoogle  = request('linkGoogle');
         $book->linkAudio  = request('link-audiolibro');
         $book->stockDigital = request('estatus');
 
@@ -303,21 +305,22 @@ class gestorLibrosController extends Controller
         $book->linkDescarga = $newFileName;
 
         // LINK IMAGEN PORTADA---------------------------------------------------
-        if (request('imagenPortada')) {
-            $newFileName = $book->portadaImagen;
-        } else {
-            $fileNameWithTheExtension = request('imagenPortada')->getClientOriginalName();
-            $fileName = pathinfo($fileNameWithTheExtension, PATHINFO_FILENAME);
-            $extension = request('imagenPortada')->getClientOriginalExtension();
-            $newFileName = $fileName . '_' . time() . '.' . $extension;
-            $path = request('imagenPortada')->storeAs('/public/libros/', $newFileName);
+        // if (request('imagenPortada')) {
+        //     $newFileName = $book->portadaImagen;
+        // } else {
+        //     $fileNameWithTheExtension = request('imagenPortada')->getClientOriginalName();
+        //     $fileName = pathinfo($fileNameWithTheExtension, PATHINFO_FILENAME);
+        //     $extension = request('imagenPortada')->getClientOriginalExtension();
+        //     $newFileName = $fileName . '_' . time() . '.' . $extension;
+        //     $path = request('imagenPortada')->storeAs('/public/libros/', $newFileName);
 
-            $oldFile = public_path() . '/storage/libros/' . $book->portadaImagen;
-            if (file_exists($oldFile)) {
-                unlink($oldFile);
-            }
-        }
-        $book->portadaImagen = $newFileName;
+        //     $oldFile = public_path() . '/storage/libros/' . $book->portadaImagen;
+        //     if (file_exists($oldFile)) {
+        //         unlink($oldFile);
+        //     }
+        // }
+        // $book->portadaImagen = $newFileName;
+        $book->portadaImagen = '';
 
         // LINK IMAGEN TIENDA---------------------------------------------------
         if (request('imagenTienda') == null) {
@@ -463,9 +466,9 @@ class gestorLibrosController extends Controller
             $extension = request('archivoLibro')->getClientOriginalExtension();
             $newFileName = $fileName . '_' . time() . '.' . $extension;
             $path = request('archivoLibro')->storeAs('/public/descargas/', $newFileName);
-            $book->linkDescarga = $newFileName;
+            $book->linkDemo = $newFileName;
         } else {
-            $book->linkDescarga = 'sinarchivo';
+            $book->linkDemo = null;
         }
 
         //AQUÍ GUARDA LA IMAGEN DE PORTADA
@@ -543,6 +546,11 @@ class gestorLibrosController extends Controller
 
         //AQUI SE GUARDA COMO NUEVO LIBRO
         $book->nuevo = 1;
+
+        $book->linkDigital  = request('link-digital');
+        $book->linkAmazon  = request('linkAmazon');
+        $book->linkGoogle  = request('linkGoogle');
+        $book->linkAudio  = request('link-audiolibro');
 
         $book->save();
         $book->genres()->sync(request('genero'));
