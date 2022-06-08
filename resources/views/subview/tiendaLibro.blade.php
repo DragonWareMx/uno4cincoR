@@ -116,10 +116,11 @@
                         <div class="carousel-item active">
                             <div class="transparente_libros">
                                 <div id="img_carrusel_cel" class="img_libros" style="background: url('{{asset('storage/banners/'.$bann->imagenCell)}}');
-                                            background-size: cover;
-                                            -moz-background-size: cover;
-                                            -o-background-size: cover;
-                                            -webkit-background-size: cover;">
+                                            background-size: contain;
+                                            -moz-background-size: contain;
+                                            background-repeat: no-repeat;
+                                            -o-background-size: contain;
+                                            -webkit-background-size: contain;">
                                     <a href="{{$bann->link}}" style="display: block; height: 100%"></a>
                                 </div>
                             </div>
@@ -128,10 +129,11 @@
                         <div class="carousel-item ">
                             <div class="transparente_libros">
                                 <div id="img_carrusel_cel" class="img_libros" style="background: url('{{asset('storage/banners/'.$bann->imagenCell)}}');
-                                        background-size: cover;
-                                        -moz-background-size: cover;
-                                        -o-background-size: cover;
-                                        -webkit-background-size: cover;">
+                                        background-size: contain;
+                                        -moz-background-size: contain;
+                                        background-repeat: no-repeat;
+                                        -o-background-size: contain;
+                                        -webkit-background-size: contain;">
                                     <a href="{{$bann->link}}" style="display: block; height: 100%"></a>
                                 </div>
                             </div>
