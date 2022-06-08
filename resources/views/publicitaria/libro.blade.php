@@ -2,7 +2,7 @@
 
 @section('header')
 
-<title>Libro | ElBooke</title>
+<title>{{$book->titulo}} | ElBooke</title>
 
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style_SobreNosotros.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/libro.css')}}">
@@ -34,6 +34,13 @@
 <!-- UI JS file -->
 <script src="{{ asset('/plugins/PhotoSwipe/dist/photoswipe-ui-default.min.js') }}"></script>
 
+{{-- Para facebook --}}
+<meta property="fb:app_id" content="353673553502093" />
+<meta property="og:title" content="ElBooke | {{$book->titulo}} " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{URL::current()}}" />
+<meta property="og:description" content="Sinopsis: {{$book->sinopsis}}" />
+<meta property="og:image" content="{{asset('storage/libros/'.$book->tiendaImagen)}}"/>
 
 <style>
     .cj-titulo {
