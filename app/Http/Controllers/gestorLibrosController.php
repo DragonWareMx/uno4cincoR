@@ -564,24 +564,32 @@ class gestorLibrosController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        $oldFile = public_path() . '/public/descargas/' . $book->linkDescarga;
-        if (file_exists($oldFile)) {
-            unlink($oldFile);
+        if($book->linkDescarga){
+            $oldFile = public_path() . '/public/descargas/' . $book->linkDescarga;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
         }
 
-        $oldFile = public_path() . '/storage/libros/' . $book->portadaImagen;
-        if (file_exists($oldFile)) {
-            unlink($oldFile);
+        if($book->portadaImagen){
+            $oldFile = public_path() . '/storage/libros/' . $book->portadaImagen;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
         }
 
-        $oldFile = public_path() . '/storage/libros/' . $book->tiendaImagen;
-        if (file_exists($oldFile)) {
-            unlink($oldFile);
+        if($book->tiendaImagen){
+            $oldFile = public_path() . '/storage/libros/' . $book->tiendaImagen;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
         }
 
-        $oldFile = public_path() . '/storage/libros/' . $book->bannerImagen;
-        if (file_exists($oldFile)) {
-            unlink($oldFile);
+        if($book->bannerImagen){
+            $oldFile = public_path() . '/storage/libros/' . $book->bannerImagen;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
         }
 
         foreach ($book->images as $extras) {
