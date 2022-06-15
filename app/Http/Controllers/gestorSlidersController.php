@@ -85,8 +85,8 @@ class gestorSlidersController extends Controller
                 $path = request('imagenCell')->storeAs('public/banners/', $newFileNameCell);
 
 
-                $banner->imagenPC = $newFileNameCell;
-                $banner->imagenCell = $newFileNamePC;
+                $banner->imagenCell = $newFileNameCell;
+                $banner->imagenPC = $newFileNamePC;
 
                 //termina formato imagenes
 
