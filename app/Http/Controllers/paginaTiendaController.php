@@ -246,7 +246,7 @@ class paginaTiendaController extends Controller
     
     //libro
     public function libro($id){
-        $book = Book::find($id);
+        $book = Book::findOrFail($id);
 
         //se obtienen los autores
         $idsAutores = $book->authors->pluck('id')->toArray();
