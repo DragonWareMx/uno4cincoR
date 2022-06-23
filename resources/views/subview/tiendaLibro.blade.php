@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="show-990" style="width:1000px; height:260px;display:none; margin-bottom:40px">
+            <div class="show-990" style="width:1000px; height:200px;display:none; margin-bottom:40px">
                 <div id="carruselPhone" class="carousel slide" data-ride="carousel"
                     style="margin-bottom:60px !important">
                     <div class="carousel-inner">
