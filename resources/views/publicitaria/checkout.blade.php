@@ -126,6 +126,7 @@
                     <input type="hidden" id="estado" name="state" value="{{$datos['state']}}">
                     <input type="hidden" id="ciudad" name="ciudad" value="{{$datos['ciudad']}}">
                     <input type="hidden" id="colonia" name="colonia" value="{{$datos['colonia']}}">
+                    <input type="hidden" id="dedicatoria" name="dedicatoria" value="{{$datos['dedicatoria']}}">
                     <input type="hidden" id="calle" name="calle" value="{{$datos['calle']}}">
                     <input type="hidden" name="numCasa" value="{{$datos['numCasa']}}">
                     <input type="hidden" id="cp" name="cp" value="{{$datos['cp']}}">

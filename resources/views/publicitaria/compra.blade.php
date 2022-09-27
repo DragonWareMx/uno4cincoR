@@ -153,18 +153,15 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="field">
-                                        <select name="country" class="countries order-alpha presel-MX" id="countryId"
-                                            autocomplete="country-name" required>
-                                            <option value="">Select Country</option>
-                                        </select>
+                                        <input type="text" autocomplete="on" id="countryId" name="country" value=""
+                                            onchange="this.setAttribute('value', this.value);" required>
                                         <label for="countryId" title="País" data-title="País"></label>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="field">
-                                        <select name="state" class="states" id="stateId" required>
-                                            <option value="">Select State</option>
-                                        </select>
+                                        <input type="text" autocomplete="on" id="stateId" name="state" value=""
+                                            onchange="this.setAttribute('value', this.value);" required>
                                         <label for="stateId" title="Estado" data-title="Estado"></label>
                                     </div>
                                 </div>
@@ -226,6 +223,15 @@
                                         onchange="this.setAttribute('value', this.value);">
                                     <label for="referencias" title="Referencias (opcional)"
                                         data-title="Referencias (opcional)"></label>
+                                </div>
+                            </div>
+
+                            {{-- DEDICATORIA --}}
+                            <div class="row row-p">
+                                <div class="field">
+                                    <textarea style="height:200px;resize:vertical;width: 100%"  type="text" name="dedicatoria"
+                                    placeholder='Dedicatoria (opcional)'
+                                    ></textarea>
                                 </div>
                             </div>
 

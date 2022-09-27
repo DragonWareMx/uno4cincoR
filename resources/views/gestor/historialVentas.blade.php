@@ -69,6 +69,10 @@
             <p class="txt-informacionHV" id="detalles"></p>
           </div>
           <div class="div_registroVentas">
+            <p class="txt-titulosHV">Dedicatoria:&nbsp;</p>
+            <p class="txt-informacionHV" id="dedicatoria"></p>
+          </div>
+          <div class="div_registroVentas">
             <p class="txt-titulosHV">Total de la compra:&nbsp;</p>
             <p class="txt-informacionHV" id="totalCompra"></p>
           </div>
@@ -92,6 +96,7 @@
               <th>Total Código</th> 
               <th>Detalles del comprador</th>
               <th>Total Compra</th> 
+              <th>Dedicatoria</th>
               </tr>
           </thead>
           <tbody>
@@ -196,6 +201,7 @@
                     <td>
                       ${{$total}}
                     </td>
+                    <td>{{$venta->dedicatoria}}</td>
                   </tr>   
                   @endforeach                
           </tbody>
@@ -214,6 +220,7 @@
      
       $('#dataTable tbody').on('click', 'tr', function () {
           var data = table.row( this ).data();
+          console.log(data);
           var selector = document.getElementById("estatusSelect");
           idCard=data[0];
           $("#id").html("ID de venta: "+data[0]);
@@ -228,6 +235,7 @@
           $("#totalCodigo").html(data[9]);
           $("#detalles").html(data[10] );
           $("#totalCompra").html(data[11]);
+          $("#dedicatoria").html(data[12]);
 
       $(".container-fluid_datosl").show();  
       $('html, body').animate({ scrollTop: 80 }, 500);

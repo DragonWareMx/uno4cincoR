@@ -96,6 +96,7 @@ class CheckoutController extends Controller
             $sell->ciudad = $request->ciudad;
             $sell->estado = $request->state;
             $sell->correo = $request->email;
+            $sell->dedicatoria = $request->dedicatoria;
             $sell->formaPago = "3";
             $sell->comprobantePago = "1";
             $sell->telefono = $request->tel;

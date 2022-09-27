@@ -36,6 +36,7 @@ class CreateSellsTable extends Migration
                 ->on('promotions')
                 ->onDelete('cascade');
             $table->string('discount')->nullable();
+            $table->text('dedicatoria')->nullable();
             $table->timestamps();
         });
     }

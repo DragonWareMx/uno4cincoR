@@ -269,12 +269,12 @@ class gestorLibrosController extends Controller
         if (request('precioaudiolibro')) {
             $book->precioAudio = request('precioaudiolibro');
         } else {
-            $book->precioDigital = 0;
+            $book->precioAudio = 0;
         }
         if (request('ofertaaudiolibro')) {
             $book->descuentoAudio = request('ofertaaudiolibro');
         } else {
-            $book->descuentoFisico = 0;
+            $book->descuentoAudio = 0;
         }
         if (request('ejemplares')) {
             $book->stockFisico = request('ejemplares');
@@ -420,7 +420,9 @@ class gestorLibrosController extends Controller
             'sinopsis' => 'required|max:65535',
             'archivoLibro' => 'mimes:pdf,epub',
             'imagenTienda' => 'required|image',
-            'imagenExtra.*' => 'image'
+            'imagenExtra.*' => 'image',
+            'precioaudiolibro'=>'nullable|numeric',
+            'ofertaaudiolibro'=>'nullable|numeric'
         ]);
         // .......................................convertir a transacción...........................................................................
         $book = new Book();
@@ -458,6 +460,16 @@ class gestorLibrosController extends Controller
             $book->costoEnvio = request('envio');
         } else {
             $book->costoEnvio = 0;
+        }
+        if (request('precioaudiolibro')) {
+            $book->precioAudio = request('precioaudiolibro');
+        } else {
+            $book->precioAudio = 0;
+        }
+        if (request('ofertaaudiolibro')) {
+            $book->descuentoAudio = request('ofertaaudiolibro');
+        } else {
+            $book->descuentoAudio = 0;
         }
 
         //AQUÍ GUARDA EL ARCHIVO PDF

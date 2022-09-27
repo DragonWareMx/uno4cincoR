@@ -78,7 +78,7 @@
                 <div class="div_elementosAuthor50">
                     <div class="div_space">&nbsp;&nbsp;</div>
                     <p class="txt_datosAuthor">Edición:</p>
-                    <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1" value="1"
+                    <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
                         value="{{$book->numEdicion}}" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
                         autocomplete=off step="1" onkeypress="return solonumeros(event)" required>
                 </div>
