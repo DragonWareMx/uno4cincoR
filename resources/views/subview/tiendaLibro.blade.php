@@ -15,8 +15,8 @@
                                 </div>
 
                                 <!--titulo del libro-->
-                                <div class="titulo" style="margin:25px 0px 15px 0px">
-                                    <p>{{Str::limit($book->titulo,34)}}</p>
+                                <div class="titulo" style="margin:25px 0px 15px 0px" data-toggle='tooltip' data-placement='bottom' title='{{$book->titulo}}'>
+                                    <p>{{Str::limit($book->titulo,48)}}</p>
                                 </div>
 
                                 <p class="autor-limit hidden-512">{{Str::limit($book->authors[0]->nombre,45)}}</p>

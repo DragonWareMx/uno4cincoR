@@ -696,7 +696,7 @@
             <div class="col-5" id="col-info">
                 {{-- Sinopsis --}}
                 <div class="row">
-                    <p class="cj-info2 align-middle cj-scroll">
+                    <p class="cj-info2 align-middle cj-scroll" style="white-space: pre-wrap; text-align: center;"> 
                         <b style="font-weight: bold">Sinopsis: </b> {{ $book->sinopsis }}
                     </p>
                 </div>

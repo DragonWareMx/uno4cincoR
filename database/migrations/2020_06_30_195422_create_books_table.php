@@ -29,7 +29,7 @@ class CreateBooksTable extends Migration
             $table->integer('stockFisico');
             $table->tinyInteger('stockDigital');
             $table->tinyInteger('stockAudio')->default(0);
-            $table->text('linkDescarga');
+            $table->text('linkDescarga')->nullable();
 
             $table->text('linkDemo')->nullable();
             $table->text('linkDigital')->nullable();

@@ -397,7 +397,8 @@ class gestorLibrosController extends Controller
     {
         $authors = Author::orderBy('nombre', 'desc')->get('nombre');
         $collections = Collection::orderBy('nombre', 'desc')->get();
-        return view('gestor.libros-crear', ['authors' => $authors, 'collections' => $collections]);
+        $generos = Genre::get();
+        return view('gestor.libros-crear', ['authors' => $authors, 'collections' => $collections, 'generos' => $generos]);
     }
     public function storeBook()
     {

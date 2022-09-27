@@ -48,10 +48,10 @@
                 <div class="div_elementosAuthor50">
                     <p class="txt_datosAuthor" style="width:auto">Género:</p>
                     <select name="genero" class="input_datosAuthor50" value="{{old('genero')}}">
-                        <option selected value="2">Cuento</option>
-                        <option value="3">Ensayo</option>
-                        <option value="4">Novela</option>
-                        <option value="1">Poesía</option>
+                        <option selected value='' disabled>Selecciona una opción</option>
+                        @foreach ($generos as $g)
+                        <option value="{{$g->id}}"> {{$g->nombre}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="div_elementosAuthor50">

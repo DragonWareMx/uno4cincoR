@@ -35,5 +35,33 @@ class genresTable extends Seeder
             'nombre'=>'Religión',
             'descripcion'=>'',
         ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Booke Selecto',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Negocios',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'MTG singles',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Witch Tok',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Fantasía',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Formato',
+            'descripcion'=>'',
+        ]);
+        DB::table('genres')->insert([
+            'nombre'=>'Audio libro',
+            'descripcion'=>'',
+        ]);
     }
 }
