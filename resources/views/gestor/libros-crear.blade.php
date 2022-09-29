@@ -37,6 +37,11 @@
             </div>
 
             <div class="div_elementosAuthor">
+                <p class="txt_datosAuthor">Nombre URL:</p>
+                <input name="name" class="input_datosAuthor" type="text" value="{{old('name')}}" maxlength="30" required>
+            </div>
+
+            <div class="div_elementosAuthor">
                 {{--
                 .--------------------------------------------....................-------------------..................
                 --}}
@@ -92,14 +97,7 @@
             <p style="color:#29b390; font-size:11px"><b>FORMATO FÍSICO</b></p>
 
             <div class="div_elementosAuthor">
-                <div class="div_elementosAuthor50" id="estatus">
-                    <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
-                    <select id="estatusValor" name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"
-                        required>
-                        <option value="1">Disponible</option>
-                        <option selected value="0">No disponible</option>
-                    </select>
-                </div>
+                
                 <div id="ejemplares" class="div_elementosAuthor50">
                     <div class="div_space" id="espacio">&nbsp;&nbsp;</div>
                     <p class="txt_datosAuthor">Ejemplares:</p>
@@ -128,6 +126,14 @@
             </div>
 
             <p style="color:#29b390; font-size:11px"><b>FORMATO DÍGITAL</b></p>
+            <div class="div_elementosAuthor50" id="estatus">
+                    <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
+                    <select id="estatusValor" name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"
+                        required>
+                        <option value="1">Disponible</option>
+                        <option selected value="0">No disponible</option>
+                    </select>
+                </div>
 
             {{-- <div class="div_elementosAuthor">
                 <p class="txt_datosAuthor">Link de compra:</p>

@@ -320,7 +320,7 @@ class paginaInicioController extends Controller
                     $book->isbn = "$ " . $minimo . " - $" . $maximo;
             }
             // Solo hay fisico
-            if ($book->stockDigital == 0 && $book->stockAudio == 0 && $book->stockFisico > 0) {
+            if (($book->stockDigital == 0 && $book->stockAudio == 0 && $book->stockFisico > 0)) {
                 $book->precioFisico = $book->precioFisico - ($book->precioFisico * ($book->descuentoFisico / 100));
                 $book->isbn = "$ " . $book->precioFisico;
             }

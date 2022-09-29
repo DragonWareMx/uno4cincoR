@@ -1043,7 +1043,7 @@
                         @foreach ($books as $bookBanner)
                         @if($book->id != $bookBanner->id)
                         <div class="item"
-                            onclick="window.location.href='{{ route('libro',['id' => $bookBanner->id]) }}'">
+                            onclick="window.location.href='{{ route('libro',['id' => $bookBanner->name ?? $bookBanner->id]) }}'">
                             <div class="pad15">
                                 <div class="div_portadapad15">
                                     <img alt="{{$bookBanner->bannerImagen}}"

@@ -39,7 +39,7 @@
                                             <div class="producto">
                                                 {{-- IMAGEN --}}
                                                 <div class="imagen">
-                                                <a href="{{ route('libro', ['id' => $id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
+                                                <a href="{{ route('libro', ['id' => $libro->name ?? $libro->id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
                                                 </div>
 
                                                 {{-- DATOS DEL LIBRO --}}
@@ -49,7 +49,7 @@
 
                                                             {{-- TITULO --}}
                                                             <div class="titulo">
-                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
+                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $libro->name ?? $libro->id])}}">{{ $libro->titulo }}</a></p>
                                                                 <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'fisico')" class="eliminar">Eliminar</div>
                                                             </div>
 
@@ -144,7 +144,7 @@
                                             <div class="producto">
                                                 {{-- IMAGEN --}}
                                                 <div class="imagen">
-                                                    <a href="{{ route('libro', ['id' => $id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
+                                                    <a href="{{ route('libro', ['id' => $libro->name ?? $libro->id])}}"><img src="{{ asset('/storage/libros/'.$libro->tiendaImagen) }}"></a>
                                                 </div>
 
                                                 {{-- DATOS --}}
@@ -154,7 +154,7 @@
 
                                                             {{-- TITULO --}}
                                                             <div class="titulo">
-                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $id])}}">{{ $libro->titulo }}</a></p>
+                                                                <p><b>Título: </b><a href="{{ route('libro', ['id' => $libro->name ?? $libro->id])}}">{{ $libro->titulo }}</a></p>
                                                                 <div role="button" tabindex="0" style="margin-left: auto" onclick="eliminarProducto({{ $libro->id }}, 'digital')" class="eliminar">Eliminar</div>
                                                             </div>
 

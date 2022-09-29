@@ -100,7 +100,7 @@
         <div class="MultiCarousel" data-items="1,3,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
                 @foreach ($autor->books as $book)
-                <div class="item" onclick="window.location.href='{{ route('libro',['id' => $book->id]) }}'"> 
+                <div class="item" onclick="window.location.href='{{ route('libro',['id' => $book->name ?? $book->id]) }}'"> 
                     <div class="pad15">
                         <div class="div_portadapad15">
                             <img alt="{{$book->images[0]->imagen}}" src="{{asset('storage/libros/'.$book->images[0]->imagen)}}">

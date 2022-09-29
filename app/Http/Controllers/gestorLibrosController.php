@@ -186,6 +186,7 @@ class gestorLibrosController extends Controller
     {
         $data = request()->validate([
             'titulo' => 'required|max:65535',
+            'name' => 'required|max:30',
             'autor' => 'required',
             // 'sello'=>'required',
             // 'formato'=>'required',
@@ -218,6 +219,7 @@ class gestorLibrosController extends Controller
 
         $book->isbn = request('isbn');
         $book->titulo = request('titulo');
+        $book->name = request('name');
         $book->numEdicion = request('edicion');
         if (request('envio')) {
             $book->costoEnvio = request('envio');
@@ -404,6 +406,7 @@ class gestorLibrosController extends Controller
     {
         $data = request()->validate([
             'titulo' => 'required|max:65535',
+            'name' => 'required|max:30',
             'autor' => 'required',
             'estatus' => 'required',
             'envio' => 'nullable|numeric',
@@ -428,6 +431,7 @@ class gestorLibrosController extends Controller
         $book = new Book();
         $book->isbn = request('isbn');
         $book->titulo = request('titulo');
+        $book->name = request('name');
         $book->numEdicion = request('edicion');
         if (request('preciofisico')) {
             $book->precioFisico = request('preciofisico');

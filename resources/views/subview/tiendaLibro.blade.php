@@ -8,7 +8,7 @@
                     @foreach ($books as $book)
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">
                         <div class="producto-tienda">
-                            <a href="{{ route('libro', ['id' => $book->id])}}">
+                            <a href="{{ route('libro', ['id' => $book->name ?? $book->id])}}">
                                 <!--imagen del producto-->
                                 <div class="imagen">
                                     <img src="{{asset('storage/libros/'.$book->tiendaImagen)}}">
