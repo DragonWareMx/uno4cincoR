@@ -188,6 +188,51 @@
                                                 </div>
                                             </li>
                                             <li>
+                                                <div class="form-check form-check-inline form-checkboxes">
+                                                    <label class="form-check-label checkbox-filter"
+                                                        for="bselecto">Booke Selecto</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="bselecto" name="bselecto" onChange="this.form.submit()" @if(
+                                                        Request::get('bselecto') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline form-checkboxes">
+                                                    <label class="form-check-label checkbox-filter"
+                                                        for="negocios">Negocios</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="negocios" name="negocios" onChange="this.form.submit()" @if(
+                                                        Request::get('negocios') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline form-checkboxes">
+                                                    <label class="form-check-label checkbox-filter"
+                                                        for="mtg">MTG singles</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="mtg" name="mtg" onChange="this.form.submit()" @if(
+                                                        Request::get('mtg') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline form-checkboxes">
+                                                    <label class="form-check-label checkbox-filter"
+                                                        for="witch">Witch Tok</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="witch" name="witch" onChange="this.form.submit()" @if(
+                                                        Request::get('witch') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline form-checkboxes">
+                                                    <label class="form-check-label checkbox-filter"
+                                                        for="fantasia">Fantasía</label>
+                                                    <input class="form-check-input checkbox-input" type="checkbox"
+                                                        id="fantasia" name="fantasia" onChange="this.form.submit()" @if(
+                                                        Request::get('fantasia') ) checked @endif>
+                                                </div>
+                                            </li>
+                                            <li>
                                                 <p style="border:none !important" class="a-filter">Formato</p>
                                             </li>
                                             <li>

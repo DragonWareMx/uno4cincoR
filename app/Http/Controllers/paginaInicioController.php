@@ -217,6 +217,21 @@ class paginaInicioController extends Controller
         if ($request->religion) {
             $generos[] = 'Religión';
         }
+        if ($request->bselecto) {
+            $generos[] = 'Booke Selecto';
+        }
+        if ($request->negocios) {
+            $generos[] = 'Negocios';
+        }
+        if ($request->mtg) {
+            $generos[] = 'MTG singles';
+        }
+        if ($request->witch) {
+            $generos[] = 'Witch Tok';
+        }
+        if ($request->fantasia) {
+            $generos[] = 'Fantasía';
+        }
         $books = $this->busqueda("catalogo", 0);
         $banner = Banner::where('tipo', 'libro')->where('active', 'activo')->inRandomOrder()->get();
 
