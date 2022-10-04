@@ -12,56 +12,56 @@ class genresTable extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
-            'nombre'=>'Booke Wellness',
-            'descripcion'=>'',
+            'nombre' => 'Booke Wellness',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Novela',
-            'descripcion'=>'',
+            'nombre' => 'Novela',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Poesía',
-            'descripcion'=>'',
+            'nombre' => 'Poesía',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Ensayo',
-            'descripcion'=>'',
+            'nombre' => 'Ensayo',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Investigación',
-            'descripcion'=>'',
+            'nombre' => 'Investigación',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Religión',
-            'descripcion'=>'',
+            'nombre' => 'Religión',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Booke Selecto',
-            'descripcion'=>'',
+            'nombre' => 'Booke Selecto',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Negocios',
-            'descripcion'=>'',
+            'nombre' => 'Negocios',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'MTG singles',
-            'descripcion'=>'',
+            'nombre' => 'MTG singles',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Witch Tok',
-            'descripcion'=>'',
+            'nombre' => 'Witch Tok',
+            'descripcion' => '',
         ]);
         DB::table('genres')->insert([
-            'nombre'=>'Fantasía',
-            'descripcion'=>'',
+            'nombre' => 'Fantasía',
+            'descripcion' => '',
         ]);
-        DB::table('genres')->insert([
-            'nombre'=>'Formato',
-            'descripcion'=>'',
-        ]);
-        DB::table('genres')->insert([
-            'nombre'=>'Audio libro',
-            'descripcion'=>'',
-        ]);
+        // DB::table('genres')->insert([
+        //     'nombre'=>'Formato',
+        //     'descripcion'=>'',
+        // ]);
+        // DB::table('genres')->insert([
+        //     'nombre'=>'Audio libro',
+        //     'descripcion'=>'',
+        // ]);
     }
 }

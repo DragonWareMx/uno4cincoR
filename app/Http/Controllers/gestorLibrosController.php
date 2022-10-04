@@ -186,7 +186,7 @@ class gestorLibrosController extends Controller
     {
         $data = request()->validate([
             'titulo' => 'required|max:65535',
-            'name' => 'required|max:30',
+            'name' => 'required|max:150',
             'autor' => 'required',
             // 'sello'=>'required',
             // 'formato'=>'required',
@@ -406,7 +406,7 @@ class gestorLibrosController extends Controller
     {
         $data = request()->validate([
             'titulo' => 'required|max:65535',
-            'name' => 'required|max:30',
+            'name' => 'required|max:150',
             'autor' => 'required',
             'estatus' => 'required',
             'envio' => 'nullable|numeric',
@@ -424,8 +424,8 @@ class gestorLibrosController extends Controller
             'archivoLibro' => 'mimes:pdf,epub',
             'imagenTienda' => 'required|image',
             'imagenExtra.*' => 'image',
-            'precioaudiolibro'=>'nullable|numeric',
-            'ofertaaudiolibro'=>'nullable|numeric'
+            'precioaudiolibro' => 'nullable|numeric',
+            'ofertaaudiolibro' => 'nullable|numeric'
         ]);
         // .......................................convertir a transacción...........................................................................
         $book = new Book();
@@ -581,28 +581,28 @@ class gestorLibrosController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        if($book->linkDescarga){
+        if ($book->linkDescarga) {
             $oldFile = public_path() . '/public/descargas/' . $book->linkDescarga;
             if (file_exists($oldFile)) {
                 unlink($oldFile);
             }
         }
 
-        if($book->portadaImagen){
+        if ($book->portadaImagen) {
             $oldFile = public_path() . '/storage/libros/' . $book->portadaImagen;
             if (file_exists($oldFile)) {
                 unlink($oldFile);
             }
         }
 
-        if($book->tiendaImagen){
+        if ($book->tiendaImagen) {
             $oldFile = public_path() . '/storage/libros/' . $book->tiendaImagen;
             if (file_exists($oldFile)) {
                 unlink($oldFile);
             }
         }
 
-        if($book->bannerImagen){
+        if ($book->bannerImagen) {
             $oldFile = public_path() . '/storage/libros/' . $book->bannerImagen;
             if (file_exists($oldFile)) {
                 unlink($oldFile);

@@ -1,272 +1,281 @@
 @extends('layouts.menuGestor')
 
 @section('importOwl')
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/tags.css">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-<script type="text/javascript" src='/assets/js/tags.js'></script>
-<script type="text/javascript" src='/assets/js/autofill.js'></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/gestorAutores.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/gestorBlogs.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/tags.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <script type="text/javascript" src='/assets/js/tags.js'></script>
+    <script type="text/javascript" src='/assets/js/autofill.js'></script>
 @endsection
 
 @section('menu')
-<a href="{{ route('verLibros') }}" class="txt-titulosGestor">Libros</a> | Editar libro
+    <a href="{{ route('verLibros') }}" class="txt-titulosGestor">Libros</a> | Editar libro
 @endsection
 
 @section('contenido')
 
-@if($errors->any())
-<div class="alert alert-danger" role="alert">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-<div class="div_containerAuthor">
-    <div class="div_datosAuthor">
-        <form action="{{Route('libros-editar',['id'=>$book->id])}}" style="width:100%;" method="POST"
-            enctype="multipart/form-data">
-            @method("PATCH")
-            @csrf
-            <p style="color:#29b390; font-size:11px"><b>INFORMACIÓN GENERAL</b></p>
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Título:</p>
-                <input name="titulo" class="input_datosAuthor" type="text" value="{{$book->titulo}}" required autofocus>
-            </div>
+    <div class="div_containerAuthor">
+        <div class="div_datosAuthor">
+            <form action="{{ Route('libros-editar', ['id' => $book->id]) }}" style="width:100%;" method="POST"
+                enctype="multipart/form-data">
+                @method('PATCH')
+                @csrf
+                <p style="color:#29b390; font-size:11px"><b>INFORMACIÓN GENERAL</b></p>
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Título:</p>
+                    <input name="titulo" class="input_datosAuthor" type="text" value="{{ $book->titulo }}" required
+                        autofocus>
+                </div>
 
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Nombre URL:</p>
-                <input name="name" class="input_datosAuthor" type="text" value="{{$book->name}}" maxlength="30" required>
-            </div>
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Nombre URL:</p>
+                    <input name="name" class="input_datosAuthor" type="text" value="{{ $book->name }}"
+                        maxlength="150" required>
+                </div>
 
-            <div class="div_elementosAuthor">
-                {{--
+                <div class="div_elementosAuthor">
+                    {{--
                 .--------------------------------------------....................-------------------..................
                 --}}
-                <p class="txt_datosAuthor">Autor:</p>
-                <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags" value="{{$autoresActuales}}"
-                    required>
-            </div>
-
-            <div class="div_elementosAuthor">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor" style="width:auto">Género:</p>
-                    <select name="genero" class="input_datosAuthor50" value="{{old('genero')}}">
-                        @foreach ($generos as $g)
-                        @if($book->genres[0]->nombre == $g->nombre)
-                        <option selected value="{{$book->genres[0]->id}}"> {{$book->genres[0]->nombre}}</option>
-                        @else
-                        <option value="{{$g->id}}"> {{$g->nombre}}</option>
-                        @endif
-                        @endforeach
-                    </select>
+                    <p class="txt_datosAuthor">Autor:</p>
+                    <input type="text" name="autor" class="input_datosAuthor" id="AutoresTags"
+                        value="{{ $autoresActuales }}" required>
                 </div>
-                <div class="div_elementosAuthor50">
-                    <div class="div_space">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">ISBN:</p>
-                    <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text"
-                        value="{{$book->isbn}}">
+
+                <div class="div_elementosAuthor">
+                    <div class="div_elementosAuthor50">
+                        <p class="txt_datosAuthor" style="width:auto">Género:</p>
+                        <select name="genero" class="input_datosAuthor50" value="{{ old('genero') }}">
+                            @foreach ($generos as $g)
+                                @if ($book->genres[0]->nombre == $g->nombre)
+                                    <option selected value="{{ $book->genres[0]->id }}"> {{ $book->genres[0]->nombre }}
+                                    </option>
+                                @else
+                                    <option value="{{ $g->id }}"> {{ $g->nombre }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="div_elementosAuthor50">
+                        <div class="div_space">&nbsp;&nbsp;</div>
+                        <p class="txt_datosAuthor">ISBN:</p>
+                        <input name="isbn" class="input_datosAuthor input_datosAuthor50" type="text"
+                            value="{{ $book->isbn }}">
+                    </div>
                 </div>
-            </div>
 
-            <div class="div_elementosAuthor">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor">Páginas:</p>
-                    <input name="paginas" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
-                        value="{{$book->paginas}}" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off step="1" onkeypress="return solonumeros(event)" required>
+                <div class="div_elementosAuthor">
+                    <div class="div_elementosAuthor50">
+                        <p class="txt_datosAuthor">Páginas:</p>
+                        <input name="paginas" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
+                            value="{{ $book->paginas }}" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
+                            autocomplete=off step="1" onkeypress="return solonumeros(event)" required>
+                    </div>
+                    <div class="div_elementosAuthor50">
+                        <div class="div_space">&nbsp;&nbsp;</div>
+                        <p class="txt_datosAuthor">Edición:</p>
+                        <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
+                            value="{{ $book->numEdicion }}" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off step="1" onkeypress="return solonumeros(event)"
+                            required>
+                    </div>
                 </div>
-                <div class="div_elementosAuthor50">
-                    <div class="div_space">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">Edición:</p>
-                    <input name="edicion" class="input_datosAuthor input_datosAuthor50" type="number" min="1"
-                        value="{{$book->numEdicion}}" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off step="1" onkeypress="return solonumeros(event)" required>
+
+                <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
+                    <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
+                    <input name="publicacion" class="input_datosAuthor dateAuthor" type="date"
+                        value="{{ $book->fechaPublicacion }}" required>
                 </div>
-            </div>
 
-            <div style="margin-top:25px; margin-bottom:25px;" class="div_elementosAuthor">
-                <p class="txt_datosAuthor txt_datosAuthorFECHA">Fecha de publicación:</p>
-                <input name="publicacion" class="input_datosAuthor dateAuthor" type="date"
-                    value="{{$book->fechaPublicacion}}" required>
-            </div>
-
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Costo de envío:</p>
-                <input name="envio" class="input_datosAuthor" type="number" value="{{$book->costoEnvio}}" autofocus>
-            </div>
-
-            <p style="color:#29b390; font-size:11px"><b>FORMATO FÍSICO</b></p>
-
-            <div class="div_elementosAuthor">
-
-                <div id="ejemplares" class="div_elementosAuthor50">
-                    <div class="div_space" id="espacio">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">Ejemplares:</p>
-                    <input id="ejemplaresValor" name="ejemplares" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off step="1" value="{{$book->stockFisico}}" onkeypress="return solonumeros(event)">
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Costo de envío:</p>
+                    <input name="envio" class="input_datosAuthor" type="number" value="{{ $book->costoEnvio }}"
+                        autofocus>
                 </div>
-            </div>
 
-            <div class="div_elementosAuthor" id="fisico">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor" style="width:auto">Precio Físico:</p>
-                    <input id="preciofisico" name="preciofisico" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->precioFisico}}">
-                </div>
-                <div class="div_elementosAuthor50">
-                    <div class="div_space">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">Oferta Físico %:</p>
-                    <input id="ofertafisico" name="ofertafisico" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->descuentoFisico}}">
-                </div>
-            </div>
+                <p style="color:#29b390; font-size:11px"><b>FORMATO FÍSICO</b></p>
 
-            <p style="color:#29b390; font-size:11px"><b>FORMATO DÍGITAL</b></p>
-            <div class="div_elementosAuthor50" id="estatus">
+                <div class="div_elementosAuthor">
+
+                    <div id="ejemplares" class="div_elementosAuthor50">
+                        <div class="div_space" id="espacio">&nbsp;&nbsp;</div>
+                        <p class="txt_datosAuthor">Ejemplares:</p>
+                        <input id="ejemplaresValor" name="ejemplares" class="input_datosAuthor input_datosAuthor50"
+                            type="number" min="0" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off step="1" value="{{ $book->stockFisico }}"
+                            onkeypress="return solonumeros(event)">
+                    </div>
+                </div>
+
+                <div class="div_elementosAuthor" id="fisico">
+                    <div class="div_elementosAuthor50">
+                        <p class="txt_datosAuthor" style="width:auto">Precio Físico:</p>
+                        <input id="preciofisico" name="preciofisico" class="input_datosAuthor input_datosAuthor50"
+                            type="number" min="0" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off onkeypress="return solonumerosdecimales(event)"
+                            step="any" value="{{ $book->precioFisico }}">
+                    </div>
+                    <div class="div_elementosAuthor50">
+                        <div class="div_space">&nbsp;&nbsp;</div>
+                        <p class="txt_datosAuthor">Oferta Físico %:</p>
+                        <input id="ofertafisico" name="ofertafisico" class="input_datosAuthor input_datosAuthor50"
+                            type="number" min="0" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off onkeypress="return solonumerosdecimales(event)"
+                            step="any" value="{{ $book->descuentoFisico }}">
+                    </div>
+                </div>
+
+                <p style="color:#29b390; font-size:11px"><b>FORMATO DÍGITAL</b></p>
+                <div class="div_elementosAuthor50" id="estatus">
                     <p class="txt_datosAuthor" style="width:auto">Estatus:</p>
-                    <select id="estatusValor" name="estatus" class="input_datosAuthor50" value="{{old('estatus')}}"
+                    <select id="estatusValor" name="estatus" class="input_datosAuthor50" value="{{ old('estatus') }}"
                         required>
-                        @if($book->stockDigital == 1)
-                        <option value="1" selected>Disponible</option>
-                        <option value="0">No disponible</option>
+                        @if ($book->stockDigital == 1)
+                            <option value="1" selected>Disponible</option>
+                            <option value="0">No disponible</option>
                         @else
-                        <option value="1">Disponible</option>
-                        <option selected value="0">No disponible</option>
+                            <option value="1">Disponible</option>
+                            <option selected value="0">No disponible</option>
                         @endif
                     </select>
                 </div>
 
-            {{-- <div class="div_elementosAuthor">
+                {{-- <div class="div_elementosAuthor">
                 <p class="txt_datosAuthor">Link de compra:</p>
                 <input name="link-digital" class="input_datosAuthor" type="text" value="{{$book->linkDigital}}"
                     autofocus>
             </div> --}}
 
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Link de Amazon:</p>
-                <input name="linkAmazon" class="input_datosAuthor" type="text" value="{{$book->linkAmazon}}" autofocus>
-            </div>
-
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Link de Google:</p>
-                <input name="linkGoogle" class="input_datosAuthor" type="text" value="{{$book->linkGoogle}}" autofocus>
-            </div>
-
-            <div class="div_elementosAuthor" id="digital">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor" style="width:auto">Precio Digital:</p>
-                    <input id="preciodigital" name="preciodigital" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->precioDigital}}">
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Link de Amazon:</p>
+                    <input name="linkAmazon" class="input_datosAuthor" type="text" value="{{ $book->linkAmazon }}"
+                        autofocus>
                 </div>
-                <div class="div_elementosAuthor50">
-                    <div class="div_space">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">Oferta Digital %:</p>
-                    <input id="ofertadigital" name="ofertadigital" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->descuentoDigital}}">
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Link de Google:</p>
+                    <input name="linkGoogle" class="input_datosAuthor" type="text" value="{{ $book->linkGoogle }}"
+                        autofocus>
                 </div>
-            </div>
 
-            <p style="color:#29b390; font-size:11px"><b>FORMATO AUDIO LIBRO</b></p>
-
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Link de compra:</p>
-                <input name="link-audiolibro" class="input_datosAuthor" type="text" value="{{$book->linkAudio}}"
-                    autofocus>
-            </div>
-
-            <div class="div_elementosAuthor" id="digital">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor" style="width:auto">Precio Audiolibro:</p>
-                    <input id="precioaudiolibro" name="precioaudiolibro" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->precioAudio}}">
-                </div>
-                <div class="div_elementosAuthor50">
-                    <div class="div_space">&nbsp;&nbsp;</div>
-                    <p class="txt_datosAuthor">Oferta Audiolibro %:</p>
-                    <input id="ofertaaudiolibro" name="ofertaaudiolibro" class="input_datosAuthor input_datosAuthor50"
-                        type="number" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;"
-                        autocomplete=off onkeypress="return solonumerosdecimales(event)" step="any"
-                        value="{{$book->descuentoAudio}}">
-                </div>
-            </div>
-
-            <p style="color:#29b390; font-size:11px"><b>VISTA PREVIA</b></p>
-
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Imagen en Tienda:</p>
-                <input id="imagenTienda" class="img_datosAuthor" type="file" name="imagenTienda"
-                    value="{{old('imagenTienda')}}">
-            </div>
-
-            <div class="div_elementosAuthor">
-                <p class="txt_datosAuthor">Imágenes extra:</p>
-                <input id="imagenExtra" class="img_datosAuthor" type="file" multiple="multiple" name="imagenExtra[]"
-                    value="{{old('imagenExtra[]')}}">
-            </div>
-
-            <div class="div_elementosAuthor" style="margin-bottom: 25px">
-                <p class="txt_datosAuthor">Sinopsis:</p>
-                <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis"
-                    required>{{$book->sinopsis}}</textarea>
-                    <script>
-                        CKEDITOR.replace( 'sinopsis' );
-                </script>
-            </div>
-
-            <div class="div_elementosAuthor" id="archivoLibroDiv"">
-                    <p class=" txt_datosAuthor">Demo libro:</p>
-                <input id="archivoLibro" class="img_datosAuthor" type="file" name="archivoLibro"
-                    value="{{old('archivoLibro')}}">
-            </div>
-
-            <div class="div_elementosAuthor" id="archivoLibroDiv" style="display:none;">
-                <p class="txt_datosAuthor">Archivo de libro:</p>
-                <input id="archivoLibro" class="img_datosAuthor" type="file" name="archivoLibro"
-                    value="{{old('archivoLibro')}}">
-            </div>
-
-            <!-- <div class="div_elementosAuthor">
+                <div class="div_elementosAuthor" id="digital">
                     <div class="div_elementosAuthor50">
-                        <p class="txt_datosAuthor" style="width:auto">Sello:</p>
-                        <select name="sello" class="input_datosAuthor50" value="{{old('sello')}}"required>
-                            @if($book->sello_id=="1")
-                            <option  selected="selected" value="1">uno4cinco</option>
-                            <option value="2">145</option>
-                            @endif
-                            @if($book->sello_id=="2")
-                            <option  selected="selected" value="2">145</option>
-                            <option value="1">uno4cinco</option>
-                            @endif
-                        </select>
+                        <p class="txt_datosAuthor" style="width:auto">Precio Digital:</p>
+                        <input id="preciodigital" name="preciodigital" class="input_datosAuthor input_datosAuthor50"
+                            type="number" min="0" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off onkeypress="return solonumerosdecimales(event)"
+                            step="any" value="{{ $book->precioDigital }}">
                     </div>
                     <div class="div_elementosAuthor50">
                         <div class="div_space">&nbsp;&nbsp;</div>
-                        <p class="txt_datosAuthor">Formato:</p>
-                        <select id="formatoSelect" name="formato" class="input_datosAuthor50" value="{{old('formato')}}" required>
-                            <option value="fisico">Físico</option>
-                            <option value="fisico/digital">Físico/Digital</option>
-                            <option value="digital">Digital</option>
-                            <option value="" selected="selected" hidden>Selecciona el formato</option>
-                        </select>
+                        <p class="txt_datosAuthor">Oferta Digital %:</p>
+                        <input id="ofertadigital" name="ofertadigital" class="input_datosAuthor input_datosAuthor50"
+                            type="number" min="0" pattern="^[0-9]+" onpaste="return false;"
+                            onDrop="return false;" autocomplete=off onkeypress="return solonumerosdecimales(event)"
+                            step="any" value="{{ $book->descuentoDigital }}">
                     </div>
-                </div> -->
+                </div>
+
+                <p style="color:#29b390; font-size:11px"><b>FORMATO AUDIO LIBRO</b></p>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Link de compra:</p>
+                    <input name="link-audiolibro" class="input_datosAuthor" type="text"
+                        value="{{ $book->linkAudio }}" autofocus>
+                </div>
+
+                <div class="div_elementosAuthor" id="digital">
+                    <div class="div_elementosAuthor50">
+                        <p class="txt_datosAuthor" style="width:auto">Precio Audiolibro:</p>
+                        <input id="precioaudiolibro" name="precioaudiolibro"
+                            class="input_datosAuthor input_datosAuthor50" type="number" min="0"
+                            pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off
+                            onkeypress="return solonumerosdecimales(event)" step="any"
+                            value="{{ $book->precioAudio }}">
+                    </div>
+                    <div class="div_elementosAuthor50">
+                        <div class="div_space">&nbsp;&nbsp;</div>
+                        <p class="txt_datosAuthor">Oferta Audiolibro %:</p>
+                        <input id="ofertaaudiolibro" name="ofertaaudiolibro"
+                            class="input_datosAuthor input_datosAuthor50" type="number" min="0"
+                            pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off
+                            onkeypress="return solonumerosdecimales(event)" step="any"
+                            value="{{ $book->descuentoAudio }}">
+                    </div>
+                </div>
+
+                <p style="color:#29b390; font-size:11px"><b>VISTA PREVIA</b></p>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Imagen en Tienda:</p>
+                    <input id="imagenTienda" class="img_datosAuthor" type="file" name="imagenTienda"
+                        value="{{ old('imagenTienda') }}">
+                </div>
+
+                <div class="div_elementosAuthor">
+                    <p class="txt_datosAuthor">Imágenes extra:</p>
+                    <input id="imagenExtra" class="img_datosAuthor" type="file" multiple="multiple"
+                        name="imagenExtra[]" value="{{ old('imagenExtra[]') }}">
+                </div>
+
+                <div class="div_elementosAuthor" style="margin-bottom: 25px">
+                    <p class="txt_datosAuthor">Sinopsis:</p>
+                    <textarea style="height:200px;resize:vertical" class="textarea_biografia" type="text" name="sinopsis" required>{{ $book->sinopsis }}</textarea>
+                    <script>
+                        CKEDITOR.replace('sinopsis');
+                    </script>
+                </div>
+
+                <div class="div_elementosAuthor" id="archivoLibroDiv"">
+                    <p class=" txt_datosAuthor">Demo libro:</p>
+                    <input id="archivoLibro" class="img_datosAuthor" type="file" name="archivoLibro"
+                        value="{{ old('archivoLibro') }}">
+                </div>
+
+                <div class="div_elementosAuthor" id="archivoLibroDiv" style="display:none;">
+                    <p class="txt_datosAuthor">Archivo de libro:</p>
+                    <input id="archivoLibro" class="img_datosAuthor" type="file" name="archivoLibro"
+                        value="{{ old('archivoLibro') }}">
+                </div>
+
+                <!-- <div class="div_elementosAuthor">
+                        <div class="div_elementosAuthor50">
+                            <p class="txt_datosAuthor" style="width:auto">Sello:</p>
+                            <select name="sello" class="input_datosAuthor50" value="{{ old('sello') }}"required>
+                                @if ($book->sello_id == '1')
+    <option  selected="selected" value="1">uno4cinco</option>
+                                <option value="2">145</option>
+    @endif
+                                @if ($book->sello_id == '2')
+    <option  selected="selected" value="2">145</option>
+                                <option value="1">uno4cinco</option>
+    @endif
+                            </select>
+                        </div>
+                        <div class="div_elementosAuthor50">
+                            <div class="div_space">&nbsp;&nbsp;</div>
+                            <p class="txt_datosAuthor">Formato:</p>
+                            <select id="formatoSelect" name="formato" class="input_datosAuthor50" value="{{ old('formato') }}" required>
+                                <option value="fisico">Físico</option>
+                                <option value="fisico/digital">Físico/Digital</option>
+                                <option value="digital">Digital</option>
+                                <option value="" selected="selected" hidden>Selecciona el formato</option>
+                            </select>
+                        </div>
+                    </div> -->
 
 
 
@@ -278,166 +287,166 @@
 
 
 
-            @if(sizeOf($collections)>0)
-            <div class="div_elementosAuthor">
-                <div class="div_elementosAuthor50">
-                    <p class="txt_datosAuthor txt_datosAuthorFECHA">Colección:</p>
-                    @if($book->collection_id ==null)
-                    <select name="coleccion" class="input_datosAuthor50" value="{{old('coleccion')}}">
-                        <option value="" selected>Selecciona una colección</option>
-                        @foreach ($collections as $collection)
-                        <option value="{{$collection->id}}">{{$collection->nombre}}</option>
-                        @endforeach
-                        <option value="">Ninguna</option>
-                    </select>
-                    @else
-                    <select name="coleccion" class="input_datosAuthor50" value="{{old('coleccion')}}">
-                        <option value="" selected>{{$book->collection->nombre}}</option>
-                        @foreach ($collections as $collection)
-                        @if($collection->id != $book->collection->id)
-                        <option value="{{$collection->id}}">{{$collection->nombre}}</option>
-                        @endif
-                        @endforeach
-                        <option value="">Ninguna</option>
-                    </select>
-                    @endif
+                @if (sizeOf($collections) > 0)
+                    <div class="div_elementosAuthor">
+                        <div class="div_elementosAuthor50">
+                            <p class="txt_datosAuthor txt_datosAuthorFECHA">Colección:</p>
+                            @if ($book->collection_id == null)
+                                <select name="coleccion" class="input_datosAuthor50" value="{{ old('coleccion') }}">
+                                    <option value="" selected>Selecciona una colección</option>
+                                    @foreach ($collections as $collection)
+                                        <option value="{{ $collection->id }}">{{ $collection->nombre }}</option>
+                                    @endforeach
+                                    <option value="">Ninguna</option>
+                                </select>
+                            @else
+                                <select name="coleccion" class="input_datosAuthor50" value="{{ old('coleccion') }}">
+                                    <option value="" selected>{{ $book->collection->nombre }}</option>
+                                    @foreach ($collections as $collection)
+                                        @if ($collection->id != $book->collection->id)
+                                            <option value="{{ $collection->id }}">{{ $collection->nombre }}</option>
+                                        @endif
+                                    @endforeach
+                                    <option value="">Ninguna</option>
+                                </select>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
+                <div class="botones_blog_100">
+                    <div class="botones_blog_derecha">
+                        <a class="gestor_blog_cancelar" href="javascript:history.back(-1);">Cancelar</a>
+                        <input class="gestor_blog_guardar" type="submit" value="Actualizar">
+                    </div>
+                </div>
+                <a href="#" data-toggle="modal" data-target="#logoutModal" style="color: #b30000">Eliminar</a>
+            </form>
+        </div>
+        <div class="preview_imagen_blog">
+            <div id="preview_imagen" class="gestor_blog_mostrar_imagen">
+                <img src="" alt="Imagen" class="preview_imagen_imagen">
+                <span class="preview_imagen_default" style="display: none">Imagen</span>
+                <img src="{{ asset('/storage/libros/' . $book->tiendaImagen) }}" alt="Imagen" class="imagen_actual">
+            </div>
+        </div>
+
+
+    </div>
+
+    <br>
+    <br>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar título</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align:center">¿Estás seguro de que deseas eliminar este título?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <form action="{{ Route('libros-borrar', ['id' => $book->id]) }}" method="POST">
+                        {{ csrf_field() }}
+                        @method('DELETE')
+                        <button class="btn bg-danger text-white">Eliminar</button>
+                    </form>
                 </div>
             </div>
-            @endif
-
-            <div class="botones_blog_100">
-                <div class="botones_blog_derecha">
-                    <a class="gestor_blog_cancelar" href="javascript:history.back(-1);">Cancelar</a>
-                    <input class="gestor_blog_guardar" type="submit" value="Actualizar">
-                </div>
-            </div>
-            <a href="#" data-toggle="modal" data-target="#logoutModal" style="color: #b30000">Eliminar</a>
-        </form>
-    </div>
-    <div class="preview_imagen_blog">
-        <div id="preview_imagen" class="gestor_blog_mostrar_imagen">
-            <img src="" alt="Imagen" class="preview_imagen_imagen">
-            <span class="preview_imagen_default" style="display: none">Imagen</span>
-            <img src="{{asset('/storage/libros/'.$book->tiendaImagen)}}" alt="Imagen" class="imagen_actual">
         </div>
     </div>
-
-
-</div>
-
-<br>
-<br>
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar título</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p style="text-align:center">¿Estás seguro de que deseas eliminar este título?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <form action="{{Route('libros-borrar',['id'=>$book->id])}}" method="POST">
-                    {{csrf_field()}}
-                    @method('DELETE')
-                    <button class="btn bg-danger text-white">Eliminar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    const inpFile = document.getElementById("imagenTienda");
-        const previewContainer= document.getElementById("preview_imagen");
+    <script>
+        const inpFile = document.getElementById("imagenTienda");
+        const previewContainer = document.getElementById("preview_imagen");
         const previewImage = previewContainer.querySelector(".preview_imagen_imagen");
         const previewImageAnterior = previewContainer.querySelector(".imagen_actual");
         const previewDefaultText = previewContainer.querySelector(".preview_imagen_default");
 
-        inpFile.addEventListener("change", function(){
+        inpFile.addEventListener("change", function() {
             const file = this.files[0];
 
-            if(file){
+            if (file) {
                 const reader = new FileReader();
 
-                previewDefaultText.style.display="none";
-                previewImageAnterior.style.display="none";
-                previewImage.style.display="block";
+                previewDefaultText.style.display = "none";
+                previewImageAnterior.style.display = "none";
+                previewImage.style.display = "block";
 
-                reader.addEventListener("load", function(){
+                reader.addEventListener("load", function() {
                     previewImage.setAttribute("src", this.result);
-                    previewContainer.style.width="auto";
-                    previewContainer.style.height="auto";
-                    previewContainer.style.border="none";
+                    previewContainer.style.width = "auto";
+                    previewContainer.style.height = "auto";
+                    previewContainer.style.border = "none";
 
                 });
                 reader.readAsDataURL(file);
             }
         });
-</script>
-<script>
-    function solonumeros(e){
-            key=e.keyCode || e.which;
-            teclado=String.fromCharCode(key);
-            numeros="0123456789";
-            especiales=[8];
-            teclado_especial=false;
+    </script>
+    <script>
+        function solonumeros(e) {
+            key = e.keyCode || e.which;
+            teclado = String.fromCharCode(key);
+            numeros = "0123456789";
+            especiales = [8];
+            teclado_especial = false;
 
-            for(var i in especiales){
-                if(key==especiales[i]){
-                    teclado_especial=true;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true;
                 }
             }
-            if(numeros.indexOf(teclado)==-1 && !teclado_especial){
+            if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
             }
         }
-</script>
-<script>
-    function solonumerosdecimales(e){
-            key=e.keyCode || e.which;
-            teclado=String.fromCharCode(key);
-            numeros="0123456789";
-            especiales=[8,46];
-            teclado_especial=false;
+    </script>
+    <script>
+        function solonumerosdecimales(e) {
+            key = e.keyCode || e.which;
+            teclado = String.fromCharCode(key);
+            numeros = "0123456789";
+            especiales = [8, 46];
+            teclado_especial = false;
 
-            for(var i in especiales){
-                if(key==especiales[i]){
-                    teclado_especial=true;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true;
                 }
             }
-            if(numeros.indexOf(teclado)==-1 && !teclado_especial){
+            if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
                 return false;
             }
         }
-</script>
-<script>
-    $(function() {
+    </script>
+    <script>
+        $(function() {
             const authors = @json($authors);
-            var i =0;
-            var datos=[];
+            var i = 0;
+            var datos = [];
             authors.forEach(element => {
-                datos[i]=authors[i]['nombre'];
+                datos[i] = authors[i]['nombre'];
                 i++;
             });
             $("#AutoresTags").tags({
-                requireData:true,
-                unique:true
+                requireData: true,
+                unique: true
             }).autofill({
                 data: datos
             });
         });
-</script>
+    </script>
 
-<script>
-    var valor="";
-         $(document).ready(function() {
-            $('#formatoSelect').change(function () {
-                if(this.value=='fisico'){
+    <script>
+        var valor = "";
+        $(document).ready(function() {
+            $('#formatoSelect').change(function() {
+                if (this.value == 'fisico') {
                     $('#ejemplares').show();
                     $('#fisico').show();
                     $('#estatus').hide();
@@ -445,16 +454,15 @@
                     $('#archivoLibroDiv').hide();
                     // document.getElementById('preciodigital').value=valor;
                     // document.getElementById('ofertadigital').value=valor;
-                     document.getElementById('estatusValor').value=0;
+                    document.getElementById('estatusValor').value = 0;
 
-                        $('#ejemplaresValor').prop("required", true);
-                        document.getElementById("espacio").style.display = "none";
-                        $('#preciofisico').prop("required", true);
-                        $('#preciodigital').prop("required", false);
-                        $('#estatusValor').prop("required", false);
+                    $('#ejemplaresValor').prop("required", true);
+                    document.getElementById("espacio").style.display = "none";
+                    $('#preciofisico').prop("required", true);
+                    $('#preciodigital').prop("required", false);
+                    $('#estatusValor').prop("required", false);
 
-                }
-                else if(this.value=='digital'){
+                } else if (this.value == 'digital') {
                     $('#estatus').show();
                     $('#digital').show();
                     $('#archivoLibroDiv').show();
@@ -462,14 +470,13 @@
                     $('#fisico').hide();
                     // document.getElementById('preciofisico').value=valor;
                     // document.getElementById('ofertafisico').value=valor;
-                     document.getElementById('ejemplaresValor').value=valor;
+                    document.getElementById('ejemplaresValor').value = valor;
 
                     $('#ejemplaresValor').prop("required", false);
                     $('#preciofisico').prop("required", false);
                     $('#preciodigital').prop("required", true);
                     $('#estatusValor').prop("required", true);
-                }
-                else if(this.value=='fisico/digital'){
+                } else if (this.value == 'fisico/digital') {
                     $('#estatus').show();
                     $('#ejemplares').show();
                     $('#archivoLibroDiv').show();
@@ -483,6 +490,6 @@
                 }
             });
         });
-</script>
+    </script>
 
 @endsection
